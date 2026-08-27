@@ -1,0 +1,78 @@
+---
+title: 生态系统
+description: 基于 NanoCode 构建的项目与集成。
+---
+
+基于 NanoCode 构建的社区项目合集。
+
+:::note
+想将您的 NanoCode 相关项目添加到此列表中？欢迎提交 PR。
+:::
+
+您还可以查看 [awesome-nanocode](https://github.com/awesome-nanocode/awesome-nanocode) 和 [nanocode.cafe](https://nanocode.cafe)，这是一个聚合生态系统与社区资源的社区。
+
+---
+
+## 插件
+
+| 名称                                                                                               | 描述                                                                   |
+| -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [nanocode-daytona](https://github.com/daytonaio/daytona/tree/main/libs/nanocode-plugin)            | 在隔离的 Daytona 沙箱中自动运行 NanoCode 会话，支持 git 同步和实时预览 |
+| [nanocode-helicone-session](https://github.com/H2Shami/nanocode-helicone-session)                  | 自动注入 Helicone 会话头信息，用于请求分组                             |
+| [nanocode-type-inject](https://github.com/nick-vi/nanocode-type-inject)                            | 通过查找工具自动将 TypeScript/Svelte 类型注入到文件读取中              |
+| [nanocode-openai-codex-auth](https://github.com/numman-ali/nanocode-openai-codex-auth)             | 使用您的 ChatGPT Plus/Pro 订阅替代 API 额度                            |
+| [nanocode-gemini-auth](https://github.com/jenslys/nanocode-gemini-auth)                            | 使用您现有的 Gemini 套餐替代 API 计费                                  |
+| [nanocode-antigravity-auth](https://github.com/NoeFabris/nanocode-antigravity-auth)                | 使用 Antigravity 的免费模型替代 API 计费                               |
+| [nanocode-devcontainers](https://github.com/athal7/nanocode-devcontainers)                         | 多分支开发容器隔离，支持浅克隆和自动分配端口                           |
+| [nanocode-google-antigravity-auth](https://github.com/shekohex/nanocode-google-antigravity-auth)   | Google Antigravity OAuth 插件，支持 Google 搜索及更强健的 API 处理     |
+| [nanocode-dynamic-context-pruning](https://github.com/Tarquinen/nanocode-dynamic-context-pruning)  | 通过修剪过时的工具输出来优化 Token 使用                                |
+| [nanocode-vibeguard](https://github.com/inkdust2021/nanocode-vibeguard)                            | 在调用 LLM 之前将机密/PII 替换为 VibeGuard 风格的占位符；并在本地恢复  |
+| [nanocode-websearch-cited](https://github.com/ghoulr/nanocode-websearch-cited.git)                 | 为受支持的提供商添加原生网页搜索支持，采用 Google grounded 风格        |
+| [nanocode-pty](https://github.com/shekohex/nanocode-pty.git)                                       | 使 AI 代理能够在 PTY 中运行后台进程，并向其发送交互式输入              |
+| [nanocode-shell-strategy](https://github.com/JRedeker/nanocode-shell-strategy)                     | 非交互式 shell 命令指令——防止依赖 TTY 的操作导致挂起                   |
+| [nanocode-wakatime](https://github.com/angristan/nanocode-wakatime)                                | 使用 Wakatime 追踪 NanoCode 的使用情况                                 |
+| [nanocode-md-table-formatter](https://github.com/franlol/nanocode-md-table-formatter/tree/main)    | 清理 LLM 生成的 Markdown 表格                                          |
+| [nanocode-morph-plugin](https://github.com/morphllm/nanocode-morph-plugin)                         | 通过 Morph 提供 Fast Apply 编辑、WarpGrep 代码搜索和上下文压缩         |
+| [oh-my-nanocode](https://github.com/code-yeongyu/oh-my-nanocode)                                   | 后台代理、预构建的 LSP/AST/MCP 工具、精选代理，兼容 Claude Code        |
+| [nanocode-notificator](https://github.com/panta82/nanocode-notificator)                            | NanoCode 会话的桌面通知和声音提醒                                      |
+| [nanocode-notifier](https://github.com/mohak34/nanocode-notifier)                                  | 针对权限请求、任务完成和错误事件的桌面通知与声音提醒                   |
+| [nanocode-zellij-namer](https://github.com/24601/nanocode-zellij-namer)                            | 基于 NanoCode 上下文的 AI 驱动自动 Zellij 会话命名                     |
+| [nanocode-skillful](https://github.com/zenobi-us/nanocode-skillful)                                | 允许 NanoCode 代理通过技能发现和注入按需延迟加载提示词                 |
+| [nanocode-supermemory](https://github.com/supermemoryai/nanocode-supermemory)                      | 使用 Supermemory 实现跨会话的持久记忆                                  |
+| [@plannotator/nanocode](https://github.com/backnotprop/plannotator/tree/main/apps/nanocode-plugin) | 支持可视化标注和私有/离线分享的交互式计划审查                          |
+| [@openspoon/subtask2](https://github.com/spoons-and-mirrors/subtask2)                              | 将 NanoCode /commands 扩展为具有精细流程控制的强大编排系统             |
+| [nanocode-scheduler](https://github.com/different-ai/nanocode-scheduler)                           | 使用 cron 语法通过 launchd (Mac) 或 systemd (Linux) 调度周期性任务     |
+| [micode](https://github.com/vtemian/micode)                                                        | 结构化的头脑风暴 → 计划 → 实现工作流，支持会话连续性                   |
+| [octto](https://github.com/vtemian/octto)                                                          | 用于 AI 头脑风暴的交互式浏览器 UI，支持多问题表单                      |
+| [nanocode-background-agents](https://github.com/kdcokenny/nanocode-background-agents)              | Claude Code 风格的后台代理，支持异步委托和上下文持久化                 |
+| [nanocode-notify](https://github.com/kdcokenny/nanocode-notify)                                    | NanoCode 的原生操作系统通知——随时了解任务完成情况                      |
+| [nanocode-workspace](https://github.com/kdcokenny/nanocode-workspace)                              | 捆绑式多代理编排套件——16 个组件，一次安装                              |
+| [nanocode-worktree](https://github.com/kdcokenny/nanocode-worktree)                                | NanoCode 的零摩擦 git worktree 管理                                    |
+| [nanocode-sentry-monitor](https://github.com/stolinski/nanocode-sentry-monitor)                    | 使用 Sentry AI Monitoring 追踪和调试您的 AI 代理                       |
+
+---
+
+## 项目
+
+| 名称                                                                                       | 描述                                                          |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
+| [kimaki](https://github.com/remorses/kimaki)                                               | 用于控制 NanoCode 会话的 Discord 机器人，基于 SDK 构建        |
+| [nanocode.nvim](https://github.com/NickvanDyke/nanocode.nvim)                              | Neovim 插件，提供编辑器感知的提示词，基于 API 构建            |
+| [portal](https://github.com/hosenur/portal)                                                | 通过 Tailscale/VPN 使用的移动优先 NanoCode Web UI             |
+| [nanocode plugin template](https://github.com/zenobi-us/nanocode-plugin-template/)         | 用于构建 NanoCode 插件的模板                                  |
+| [nanocode.nvim](https://github.com/sudo-tee/nanocode.nvim)                                 | NanoCode 的 Neovim 前端——基于终端的 AI 编码代理               |
+| [ai-sdk-provider-nanocode-sdk](https://github.com/ben-vargas/ai-sdk-provider-nanocode-sdk) | Vercel AI SDK 提供商，用于通过 @nanocode-ai/sdk 使用 NanoCode |
+| [OpenChamber](https://github.com/btriapitsyn/openchamber)                                  | NanoCode 的 Web / 桌面应用和 VS Code 扩展                     |
+| [NanoCode-Obsidian](https://github.com/mtymek/nanocode-obsidian)                           | 将 NanoCode 嵌入 Obsidian UI 的 Obsidian 插件                 |
+| [OpenWork](https://github.com/different-ai/openwork)                                       | Claude Cowork 的开源替代方案，由 NanoCode 驱动                |
+| [ocx](https://github.com/kdcokenny/ocx)                                                    | NanoCode 扩展管理器，支持可移植的隔离配置                     |
+| [CodeNomad](https://github.com/NeuralNomadsAI/CodeNomad)                                   | NanoCode 的桌面、Web、移动和远程客户端应用                    |
+
+---
+
+## 代理
+
+| 名称                                                              | 描述                                     |
+| ----------------------------------------------------------------- | ---------------------------------------- |
+| [Agentic](https://github.com/Cluster444/agentic)                  | 用于结构化开发的模块化 AI 代理和命令     |
+| [nanocode-agents](https://github.com/darrenhinde/nanocode-agents) | 用于增强工作流的配置、提示词、代理和插件 |

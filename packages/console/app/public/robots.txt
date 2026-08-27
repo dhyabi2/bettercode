@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow shared content pages
+Disallow: /s/
+Disallow: /share/
+
+Sitemap: https://nanocode.ai/sitemap.xml
+Sitemap: https://nanocode.ai/data/sitemap.xml

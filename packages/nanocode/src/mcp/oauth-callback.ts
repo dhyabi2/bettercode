@@ -1,0 +1,201 @@
+import { createServer } from "http"
+import { OauthCallbackPage } from "@nanocode-ai/core/oauth/page"
+import { OAUTH_CALLBACK_PORT, OAUTH_CALLBACK_PATH, parseRedirectUri } from "./oauth-provider"
+
+const OAUTH_CALLBACK_HOST = "127.0.0.1"
+
+// Current callback server configuration (may differ from defaults if custom redirectUri is used)
+let currentPort = OAUTH_CALLBACK_PORT
+let currentPath = OAUTH_CALLBACK_PATH
+
+interface PendingAuth {
+  resolve: (code: string) => void
+  reject: (error: Error) => void
+  timeout: ReturnType<typeof setTimeout>
+}
+
+let server: ReturnType<typeof createServer> | undefined
+const pendingAuths = new Map<string, PendingAuth>()
+// Reverse index: mcpName → oauthState, so cancelPending(mcpName) can
+// find the right entry in pendingAuths (which is keyed by oauthState).
+const mcpNameToState = new Map<string, string>()
+
+const CALLBACK_TIMEOUT_MS = 5 * 60 * 1000 // 5 minutes
+
+function cleanupStateIndex(oauthState: string) {
+  for (const [name, state] of mcpNameToState) {
+    if (state === oauthState) {
+      mcpNameToState.delete(name)
+      break
+    }
+  }
+}
+
+function stopIfIdle() {
+  if (pendingAuths.size > 0 || !server) return
+
+  server.close()
+  server = undefined
+}
+
+const HEALTH_CHECK_HEADER = "x-nanocode-oauth-callback"
+const HEALTH_CHECK_TIMEOUT_MS = 2000
+
+function handleRequest(req: import("http").IncomingMessage, res: import("http").ServerResponse) {
+  const url = new URL(req.url || "/", `http://localhost:${currentPort}`)
+
+  if (url.pathname !== currentPath) {
+    res.writeHead(404)
+    res.end("Not found")
+    return
+  }
+
+  if (url.searchParams.get("health")) {
+    res.writeHead(200, { [HEALTH_CHECK_HEADER]: "1" })
+    res.end("ok")
+    return
+  }
+
+  const code = url.searchParams.get("code")
+  const state = url.searchParams.get("state")
+  const error = url.searchParams.get("error")
+  const errorDescription = url.searchParams.get("error_description")
+
+  // Enforce state parameter presence
+  if (!state) {
+    const errorMsg = "Missing required state parameter - potential CSRF attack"
+    res.writeHead(400, { "Content-Type": "text/html; charset=utf-8" })
+    res.end(OauthCallbackPage.error(errorMsg, { provider: "MCP" }))
+    return
+  }
+
+  if (error) {
+    const errorMsg = errorDescription || error
+    if (pendingAuths.has(state)) {
+      const pending = pendingAuths.get(state)!
+      clearTimeout(pending.timeout)
+      pendingAuths.delete(state)
+      cleanupStateIndex(state)
+      pending.reject(new Error(errorMsg))
+    }
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" })
+    res.end(OauthCallbackPage.error(errorMsg, { provider: "MCP" }))
+    stopIfIdle()
+    return
+  }
+
+  if (!code) {
+    res.writeHead(400, { "Content-Type": "text/html; charset=utf-8" })
+    res.end(OauthCallbackPage.error("No authorization code provided", { provider: "MCP" }))
+    return
+  }
+
+  // Validate state parameter
+  if (!pendingAuths.has(state)) {
+    const errorMsg = "Invalid or expired state parameter - potential CSRF attack"
+    res.writeHead(400, { "Content-Type": "text/html; charset=utf-8" })
+    res.end(OauthCallbackPage.error(errorMsg, { provider: "MCP" }))
+    return
+  }
+
+  const pending = pendingAuths.get(state)!
+
+  clearTimeout(pending.timeout)
+  pendingAuths.delete(state)
+  cleanupStateIndex(state)
+  pending.resolve(code)
+
+  res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" })
+  res.end(OauthCallbackPage.success({ provider: "MCP" }))
+  stopIfIdle()
+}
+
+async function isOwnedByNanocode(port: number, path: string): Promise<boolean> {
+  try {
+    const res = await fetch(`http://${OAUTH_CALLBACK_HOST}:${port}${path}?health=1`, {
+      signal: AbortSignal.timeout(HEALTH_CHECK_TIMEOUT_MS),
+    })
+    return res.headers.get(HEALTH_CHECK_HEADER) === "1"
+  } catch {
+    return false
+  }
+}
+
+export async function ensureRunning(redirectUri?: string): Promise<void> {
+  // Parse the redirect URI to get port and path (uses defaults if not provided)
+  const { port, path } = parseRedirectUri(redirectUri)
+
+  // If server is running on a different port/path, stop it first
+  if (server && (currentPort !== port || currentPath !== path)) {
+    await stop()
+  }
+
+  if (server) return
+
+  const candidate = createServer(handleRequest)
+  try {
+    await new Promise<void>((resolve, reject) => {
+      candidate.once("error", reject)
+      candidate.listen(port, OAUTH_CALLBACK_HOST, () => resolve())
+    })
+  } catch (error) {
+    candidate.close()
+    if ((error as NodeJS.ErrnoException).code !== "EADDRINUSE") throw error
+    if (await isOwnedByNanocode(port, path)) return
+    throw new Error(`Port ${port} is in use by another process (not nanocode)`)
+  }
+
+  currentPort = port
+  currentPath = path
+  server = candidate
+}
+
+export function waitForCallback(oauthState: string, mcpName?: string): Promise<string> {
+  if (mcpName) mcpNameToState.set(mcpName, oauthState)
+  return new Promise((resolve, reject) => {
+    const timeout = setTimeout(() => {
+      if (pendingAuths.has(oauthState)) {
+        pendingAuths.delete(oauthState)
+        if (mcpName) mcpNameToState.delete(mcpName)
+        reject(new Error("OAuth callback timeout - authorization took too long"))
+        stopIfIdle()
+      }
+    }, CALLBACK_TIMEOUT_MS)
+
+    pendingAuths.set(oauthState, { resolve, reject, timeout })
+  })
+}
+
+export function cancelPending(mcpName: string): void {
+  // Look up the oauthState for this mcpName via the reverse index
+  const oauthState = mcpNameToState.get(mcpName)
+  const key = oauthState ?? mcpName
+  const pending = pendingAuths.get(key)
+  if (pending) {
+    clearTimeout(pending.timeout)
+    pendingAuths.delete(key)
+    mcpNameToState.delete(mcpName)
+    pending.reject(new Error("Authorization cancelled"))
+    stopIfIdle()
+  }
+}
+
+export async function stop(): Promise<void> {
+  if (server) {
+    await new Promise<void>((resolve) => server!.close(() => resolve()))
+    server = undefined
+  }
+
+  for (const [_name, pending] of pendingAuths) {
+    clearTimeout(pending.timeout)
+    pending.reject(new Error("OAuth callback server stopped"))
+  }
+  pendingAuths.clear()
+  mcpNameToState.clear()
+}
+
+export function isRunning(): boolean {
+  return server !== undefined
+}
+
+export * as McpOAuthCallback from "./oauth-callback"
