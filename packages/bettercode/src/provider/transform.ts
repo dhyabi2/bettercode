@@ -1414,10 +1414,6 @@ export function providerOptions(model: Provider.Model, options: { [x: string]: a
 
 export function maxOutputTokens(model: Provider.Model, outputTokenMax = OUTPUT_TOKEN_MAX): number {
   if (model.limit.outputExplicit) return model.limit.output || outputTokenMax
-  if (model.limit.output > outputTokenMax)
-    console.warn(
-      `[provider] clamping ${model.providerID}/${model.id} output limit ${model.limit.output} to ${outputTokenMax}`,
-    )
   return Math.min(model.limit.output, outputTokenMax) || outputTokenMax
 }
 
