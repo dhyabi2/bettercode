@@ -136,10 +136,12 @@ const layer = Layer.effect(
     ) {
       if (snapshotUnavailableWarned.has(sessionID)) return
       snapshotUnavailableWarned.add(sessionID)
+      // Non-git directories and `snapshot: false` never snapshot by design; only warn on real failures.
+      if (!(yield* snapshot.enabled())) return
       yield* events
         .publish(TuiEvent.ToastShow, {
           title: "Snapshot Unavailable",
-          message: "Snapshotting is unavailable for this session — undo will not be available for recent changes.",
+          message: "Snapshotting failed for this session — undo will not be available for recent changes. See the log for details.",
           variant: "warning",
           duration: 8000,
         })

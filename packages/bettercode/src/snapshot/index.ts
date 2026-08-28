@@ -50,6 +50,7 @@ type State = Omit<Interface, "init">
 export interface Interface {
   readonly init: () => Effect.Effect<void>
   readonly cleanup: () => Effect.Effect<void>
+  readonly enabled: () => Effect.Effect<boolean>
   readonly track: () => Effect.Effect<string | undefined>
   readonly patch: (hash: string, toHash?: string) => Effect.Effect<Patch>
   readonly restore: (snapshot: string) => Effect.Effect<void, RestoreError>
@@ -954,7 +955,7 @@ const layer: Layer.Layer<Service, never, FSUtil.Service | AppProcess.Service | C
           Effect.forkScoped,
         )
 
-        return { cleanup, track, patch, restore, revert, diff, diffFull }
+        return { cleanup, enabled, track, patch, restore, revert, diff, diffFull }
       }),
     )
 
@@ -964,6 +965,9 @@ const layer: Layer.Layer<Service, never, FSUtil.Service | AppProcess.Service | C
       }),
       cleanup: Effect.fn("Snapshot.cleanup")(function* () {
         return yield* InstanceState.useEffect(state, (s) => s.cleanup())
+      }),
+      enabled: Effect.fn("Snapshot.enabled")(function* () {
+        return yield* InstanceState.useEffect(state, (s) => s.enabled())
       }),
       track: Effect.fn("Snapshot.track")(function* () {
         return yield* InstanceState.useEffect(state, (s) => s.track())
