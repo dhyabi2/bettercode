@@ -1,9 +1,9 @@
-import { base64Encode } from "@nanocode-ai/core/util/encode"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
 import { expect, test, type Page } from "@playwright/test"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectSessionTitle } from "../utils/waits"
 
-const directory = "C:/NanoCode/TerminalComposerFocus"
+const directory = "C:/BetterCode/TerminalComposerFocus"
 const projectID = "proj_terminal_composer_focus"
 const sessionID = "ses_terminal_composer_focus"
 const ptyID = "pty_terminal_composer_focus"
@@ -12,7 +12,7 @@ const newPtyID = "pty_terminal_composer_focus_new"
 test.use({ viewport: { width: 1440, height: 900 } })
 
 test.beforeEach(async ({ page }) => {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     protocol: "v2",
     directory,
     project: {
@@ -26,13 +26,13 @@ test.beforeEach(async ({ page }) => {
     provider: {
       all: [
         {
-          id: "nanocode",
-          name: "NanoCode",
+          id: "bettercode",
+          name: "BetterCode",
           models: { test: { id: "test", name: "Test", limit: { context: 200_000 } } },
         },
       ],
-      connected: ["nanocode"],
-      default: { providerID: "nanocode", modelID: "test" },
+      connected: ["bettercode"],
+      default: { providerID: "bettercode", modelID: "test" },
     },
     sessions: [
       {
@@ -205,7 +205,7 @@ test("focuses a terminal created from the new-terminal button", async ({ page })
 function seedCachedTerminal(page: Page) {
   return page.addInitScript(
     ({ terminalKey, ptyID }) => {
-      localStorage.setItem("nanocode.global.dat:layout", JSON.stringify({ terminal: { height: 320, opened: true } }))
+      localStorage.setItem("bettercode.global.dat:layout", JSON.stringify({ terminal: { height: 320, opened: true } }))
       localStorage.setItem(
         terminalKey,
         JSON.stringify({

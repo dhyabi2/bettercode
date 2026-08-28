@@ -1,7 +1,7 @@
 import type { APIEvent } from "@solidjs/start/server"
-import { Workspace } from "@nanocode-ai/console-core/workspace.js"
-import { safeEqual } from "@nanocode-ai/console-core/util/crypto.js"
-import { Resource } from "@nanocode-ai/console-resource"
+import { Workspace } from "@bettercode-ai/console-core/workspace.js"
+import { safeEqual } from "@bettercode-ai/console-core/util/crypto.js"
+import { Resource } from "@bettercode-ai/console-resource"
 import z from "zod"
 
 const Body = z.object({ workspaceID: z.string().startsWith("wrk_") })

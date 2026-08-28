@@ -3,18 +3,18 @@ import fs from "fs/promises"
 import { describe, expect } from "bun:test"
 import { Effect, Layer, Schema } from "effect"
 import { FastCheck } from "effect/testing"
-import { Config } from "@nanocode-ai/core/config"
-import { ConfigProvider } from "@nanocode-ai/core/config/provider"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { ConfigMigrateV1 } from "@nanocode-ai/core/v1/config/migrate"
-import { ConfigV1 } from "@nanocode-ai/core/v1/config/config"
-import { FSUtil } from "@nanocode-ai/core/fs-util"
-import { Global } from "@nanocode-ai/core/global"
-import { Location } from "@nanocode-ai/core/location"
-import { Policy } from "@nanocode-ai/core/policy"
-import { Project } from "@nanocode-ai/core/project"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
+import { Config } from "@bettercode-ai/core/config"
+import { ConfigProvider } from "@bettercode-ai/core/config/provider"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { ConfigMigrateV1 } from "@bettercode-ai/core/v1/config/migrate"
+import { ConfigV1 } from "@bettercode-ai/core/v1/config/config"
+import { FSUtil } from "@bettercode-ai/core/fs-util"
+import { Global } from "@bettercode-ai/core/global"
+import { Location } from "@bettercode-ai/core/location"
+import { Policy } from "@bettercode-ai/core/policy"
+import { Project } from "@bettercode-ai/core/project"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
 import { location } from "../fixture/location"
 import { tmpdir } from "../fixture/tmpdir"
 import { testEffect } from "../lib/effect"
@@ -161,7 +161,7 @@ describe("Config", () => {
     ),
   )
 
-  it.live("loads nanocode JSON and JSONC files from lowest to highest priority", () =>
+  it.live("loads bettercode JSON and JSONC files from lowest to highest priority", () =>
     Effect.acquireRelease(
       Effect.promise(() => tmpdir()),
       (tmp) => Effect.promise(() => tmp[Symbol.asyncDispose]()),
@@ -171,11 +171,11 @@ describe("Config", () => {
           yield* Effect.promise(() =>
             Promise.all([
               fs.writeFile(
-                path.join(tmp.path, "nanocode.json"),
+                path.join(tmp.path, "bettercode.json"),
                 JSON.stringify({ $schema: "base", providers: { base: provider } }),
               ),
               fs.writeFile(
-                path.join(tmp.path, "nanocode.jsonc"),
+                path.join(tmp.path, "bettercode.jsonc"),
                 `{
                   // Later global files override scalar fields while retaining providers.
                   "$schema": "last",
@@ -192,11 +192,11 @@ describe("Config", () => {
             expect(documents.map((document) => document.type)).toEqual(["document", "document"])
             expect(documents.map((document) => document.info.$schema)).toEqual(["base", "last"])
             expect(documents[0]).toBeInstanceOf(Config.Document)
-            expect(documents[0]?.path).toBe(path.join(tmp.path, "nanocode.json"))
+            expect(documents[0]?.path).toBe(path.join(tmp.path, "bettercode.json"))
             expect(documents[1]?.info.providers?.last).toBeInstanceOf(ConfigProvider.Info)
 
             yield* Effect.promise(() =>
-              fs.writeFile(path.join(tmp.path, "nanocode.jsonc"), JSON.stringify({ $schema: "changed" })),
+              fs.writeFile(path.join(tmp.path, "bettercode.jsonc"), JSON.stringify({ $schema: "changed" })),
             )
             expect(
               (yield* config.entries())
@@ -238,7 +238,7 @@ describe("Config", () => {
     ).pipe(
       Effect.flatMap((tmp) =>
         Effect.gen(function* () {
-          const file = path.join(tmp.path, "nanocode.json")
+          const file = path.join(tmp.path, "bettercode.json")
           const contents = JSON.stringify({
             shell: "/bin/zsh",
             experimental: { policies: [{ effect: "deny", action: "provider.use", resource: "openai" }] },
@@ -273,7 +273,7 @@ describe("Config", () => {
         Effect.gen(function* () {
           yield* Effect.promise(() =>
             fs.writeFile(
-              path.join(tmp.path, "nanocode.json"),
+              path.join(tmp.path, "bettercode.json"),
               JSON.stringify({
                 shell: "/bin/bash",
                 model: "anthropic/claude",
@@ -349,7 +349,7 @@ describe("Config", () => {
                   shorthand: "github.com/example/docs",
                 },
                 plugins: [
-                  "nanocode-helicone-session",
+                  "bettercode-helicone-session",
                   { package: "@my-org/audit-plugin", options: { endpoint: "https://audit.example.com" } },
                 ],
               }),
@@ -443,7 +443,7 @@ describe("Config", () => {
               shorthand: "github.com/example/docs",
             })
             expect(documents[0]?.info.plugins).toEqual([
-              "nanocode-helicone-session",
+              "bettercode-helicone-session",
               { package: "@my-org/audit-plugin", options: { endpoint: "https://audit.example.com" } },
             ])
           }).pipe(Effect.provide(testLayer(tmp.path)))
@@ -461,7 +461,7 @@ describe("Config", () => {
         Effect.gen(function* () {
           yield* Effect.promise(() =>
             fs.writeFile(
-              path.join(tmp.path, "nanocode.json"),
+              path.join(tmp.path, "bettercode.json"),
               JSON.stringify({
                 reference: {
                   local: { path: "../library" },
@@ -497,7 +497,7 @@ describe("Config", () => {
         Effect.gen(function* () {
           yield* Effect.promise(() =>
             fs.writeFile(
-              path.join(tmp.path, "nanocode.json"),
+              path.join(tmp.path, "bettercode.json"),
               JSON.stringify({
                 shell: "/bin/zsh",
                 default_agent: "reviewer",
@@ -517,7 +517,7 @@ describe("Config", () => {
                   },
                 },
                 plugin: [
-                  "nanocode-helicone-session",
+                  "bettercode-helicone-session",
                   ["@my-org/audit-plugin", { endpoint: "https://audit.example.com" }],
                 ],
                 skills: { paths: ["./skills"], urls: ["https://example.com/.well-known/skills/"] },
@@ -596,7 +596,7 @@ describe("Config", () => {
               permissions: [{ action: "read", resource: "*", effect: "allow" }],
             })
             expect(documents[0]?.info.plugins).toEqual([
-              "nanocode-helicone-session",
+              "bettercode-helicone-session",
               { package: "@my-org/audit-plugin", options: { endpoint: "https://audit.example.com" } },
             ])
             expect(documents[0]?.info.skills).toEqual(["./skills", "https://example.com/.well-known/skills/"])
@@ -675,8 +675,8 @@ describe("Config", () => {
         Effect.gen(function* () {
           yield* Effect.promise(() =>
             Promise.all([
-              fs.writeFile(path.join(tmp.path, "nanocode.json"), JSON.stringify({ $schema: "base" })),
-              fs.writeFile(path.join(tmp.path, "nanocode.jsonc"), "{ invalid"),
+              fs.writeFile(path.join(tmp.path, "bettercode.json"), JSON.stringify({ $schema: "base" })),
+              fs.writeFile(path.join(tmp.path, "bettercode.jsonc"), "{ invalid"),
             ]),
           )
           return yield* Effect.gen(function* () {
@@ -701,13 +701,13 @@ describe("Config", () => {
           yield* Effect.promise(async () => {
             await fs.mkdir(global, { recursive: true })
             await fs.writeFile(
-              path.join(global, "nanocode.json"),
+              path.join(global, "bettercode.json"),
               JSON.stringify({
                 experimental: { policies: [{ effect: "deny", action: "provider.use", resource: "openai" }] },
               }),
             )
             await fs.writeFile(
-              path.join(tmp.path, "nanocode.json"),
+              path.join(tmp.path, "bettercode.json"),
               JSON.stringify({
                 experimental: { policies: [{ effect: "allow", action: "provider.use", resource: "openai" }] },
               }),
@@ -724,7 +724,7 @@ describe("Config", () => {
     ),
   )
 
-  it.live("loads global, ancestor, and .nanocode configuration up to the project boundary", () =>
+  it.live("loads global, ancestor, and .bettercode configuration up to the project boundary", () =>
     Effect.acquireRelease(
       Effect.promise(() => tmpdir()),
       (tmp) => Effect.promise(() => tmp[Symbol.asyncDispose]()),
@@ -738,17 +738,17 @@ describe("Config", () => {
           yield* Effect.promise(async () => {
             await fs.mkdir(global, { recursive: true })
             await fs.mkdir(directory, { recursive: true })
-            await fs.mkdir(path.join(root, ".nanocode"), { recursive: true })
-            await fs.mkdir(path.join(directory, ".nanocode"), { recursive: true })
+            await fs.mkdir(path.join(root, ".bettercode"), { recursive: true })
+            await fs.mkdir(path.join(directory, ".bettercode"), { recursive: true })
             await Promise.all([
-              fs.writeFile(path.join(tmp.path, "nanocode.json"), JSON.stringify({ $schema: "outside" })),
-              fs.writeFile(path.join(global, "nanocode.json"), JSON.stringify({ $schema: "global" })),
-              fs.writeFile(path.join(root, "nanocode.json"), JSON.stringify({ $schema: "root" })),
-              fs.writeFile(path.join(parent, "nanocode.jsonc"), JSON.stringify({ $schema: "parent" })),
-              fs.writeFile(path.join(directory, "nanocode.json"), JSON.stringify({ $schema: "directory" })),
-              fs.writeFile(path.join(root, ".nanocode", "nanocode.json"), JSON.stringify({ $schema: "root-dot" })),
+              fs.writeFile(path.join(tmp.path, "bettercode.json"), JSON.stringify({ $schema: "outside" })),
+              fs.writeFile(path.join(global, "bettercode.json"), JSON.stringify({ $schema: "global" })),
+              fs.writeFile(path.join(root, "bettercode.json"), JSON.stringify({ $schema: "root" })),
+              fs.writeFile(path.join(parent, "bettercode.jsonc"), JSON.stringify({ $schema: "parent" })),
+              fs.writeFile(path.join(directory, "bettercode.json"), JSON.stringify({ $schema: "directory" })),
+              fs.writeFile(path.join(root, ".bettercode", "bettercode.json"), JSON.stringify({ $schema: "root-dot" })),
               fs.writeFile(
-                path.join(directory, ".nanocode", "nanocode.jsonc"),
+                path.join(directory, ".bettercode", "bettercode.jsonc"),
                 JSON.stringify({ $schema: "directory-dot" }),
               ),
             ])
@@ -761,8 +761,8 @@ describe("Config", () => {
 
             expect(entries.filter((entry) => entry.type === "directory").map((entry) => entry.path)).toEqual([
               AbsolutePath.make(global),
-              AbsolutePath.make(path.join(root, ".nanocode")),
-              AbsolutePath.make(path.join(directory, ".nanocode")),
+              AbsolutePath.make(path.join(root, ".bettercode")),
+              AbsolutePath.make(path.join(directory, ".bettercode")),
             ])
             expect(documents.map((document) => document.info.$schema)).toEqual([
               "global",
@@ -779,9 +779,9 @@ describe("Config", () => {
               "parent",
               "directory",
               "root-dot",
-              AbsolutePath.make(path.join(root, ".nanocode")),
+              AbsolutePath.make(path.join(root, ".bettercode")),
               "directory-dot",
-              AbsolutePath.make(path.join(directory, ".nanocode")),
+              AbsolutePath.make(path.join(directory, ".bettercode")),
             ])
           }).pipe(
             Effect.provide(

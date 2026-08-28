@@ -3,7 +3,7 @@ declare module "*.mp3" {
   export default path
 }
 
-declare module "@nanocode-ai/ui/audio/*.mp3" {
+declare module "@bettercode-ai/ui/audio/*.mp3" {
   const path: string
   export default path
 }

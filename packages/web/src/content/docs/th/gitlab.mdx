@@ -1,68 +1,68 @@
 ---
 title: GitLab
-description: ใช้ NanoCode ในปัญหา GitLab และรวมคำขอ
+description: ใช้ BetterCode ในปัญหา GitLab และรวมคำขอ
 ---
 
-NanoCode ทำงานร่วมกับเวิร์กโฟลว์ GitLab ของคุณผ่านไปป์ไลน์ GitLab CI/CD หรือกับ GitLab Duo
+BetterCode ทำงานร่วมกับเวิร์กโฟลว์ GitLab ของคุณผ่านไปป์ไลน์ GitLab CI/CD หรือกับ GitLab Duo
 
-ในทั้งสองกรณี NanoCode จะทำงานบน GitLab runners ของคุณ
+ในทั้งสองกรณี BetterCode จะทำงานบน GitLab runners ของคุณ
 
 ---
 
 ## GitLab CI
 
-NanoCode ทำงานในไปป์ไลน์ GitLab ปกติ คุณสามารถสร้างมันลงในไปป์ไลน์เป็น [องค์ประกอบ CI](https://docs.gitlab.com/ee/ci/components/)
+BetterCode ทำงานในไปป์ไลน์ GitLab ปกติ คุณสามารถสร้างมันลงในไปป์ไลน์เป็น [องค์ประกอบ CI](https://docs.gitlab.com/ee/ci/components/)
 
-ที่นี่เรากำลังใช้คอมโพเนนต์ CI/CD ที่สร้างโดยชุมชนสำหรับ NanoCode — [nagyv/gitlab-nanocode](https://gitlab.com/nagyv/gitlab-nanocode)
+ที่นี่เรากำลังใช้คอมโพเนนต์ CI/CD ที่สร้างโดยชุมชนสำหรับ BetterCode — [nagyv/gitlab-bettercode](https://gitlab.com/nagyv/gitlab-bettercode)
 
 ---
 
 ### คุณสมบัติ
 
-- **ใช้การกำหนดค่าแบบกำหนดเองต่องาน**: กำหนดค่า NanoCode ด้วยไดเร็กทอรีการกำหนดค่าแบบกำหนดเอง เช่น `./config/#custom-directory` เพื่อเปิดหรือปิดฟังก์ชันการทำงานต่อการเรียกใช้ NanoCode
-- **การตั้งค่าขั้นต่ำ**: องค์ประกอบ CI จะตั้งค่า NanoCode ในเบื้องหลัง คุณเพียงแค่ต้องสร้างการกำหนดค่า NanoCode และข้อความแจ้งเริ่มต้นเท่านั้น
+- **ใช้การกำหนดค่าแบบกำหนดเองต่องาน**: กำหนดค่า BetterCode ด้วยไดเร็กทอรีการกำหนดค่าแบบกำหนดเอง เช่น `./config/#custom-directory` เพื่อเปิดหรือปิดฟังก์ชันการทำงานต่อการเรียกใช้ BetterCode
+- **การตั้งค่าขั้นต่ำ**: องค์ประกอบ CI จะตั้งค่า BetterCode ในเบื้องหลัง คุณเพียงแค่ต้องสร้างการกำหนดค่า BetterCode และข้อความแจ้งเริ่มต้นเท่านั้น
 - **ยืดหยุ่น**: ส่วนประกอบ CI รองรับอินพุตหลายอินพุตเพื่อปรับแต่งลักษณะการทำงาน
 
 ---
 
 ### ตั้งค่า
 
-1. จัดเก็บการรับรองความถูกต้อง NanoCode ของคุณ JSON เป็นประเภทไฟล์ CI ตัวแปรสภาพแวดล้อมภายใต้ **การตั้งค่า** > **CI/CD** > **ตัวแปร** ตรวจสอบให้แน่ใจว่าได้ทำเครื่องหมายว่าเป็น "ปิดบังและซ่อนไว้"
+1. จัดเก็บการรับรองความถูกต้อง BetterCode ของคุณ JSON เป็นประเภทไฟล์ CI ตัวแปรสภาพแวดล้อมภายใต้ **การตั้งค่า** > **CI/CD** > **ตัวแปร** ตรวจสอบให้แน่ใจว่าได้ทำเครื่องหมายว่าเป็น "ปิดบังและซ่อนไว้"
 2. เพิ่มสิ่งต่อไปนี้ในไฟล์ `.gitlab-ci.yml` ของคุณ
 
    ```yaml title=".gitlab-ci.yml"
    include:
-     - component: $CI_SERVER_FQDN/nagyv/gitlab-nanocode/nanocode@2
+     - component: $CI_SERVER_FQDN/nagyv/gitlab-bettercode/bettercode@2
        inputs:
-         config_dir: ${CI_PROJECT_DIR}/nanocode-config
-         auth_json: $NANOCODE_AUTH_JSON # The variable name for your NanoCode authentication JSON
+         config_dir: ${CI_PROJECT_DIR}/bettercode-config
+         auth_json: $BETTERCODE_AUTH_JSON # The variable name for your BetterCode authentication JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```
 
-หากต้องการข้อมูลเพิ่มเติมและกรณีการใช้งาน [ตรวจสอบเอกสาร](https://gitlab.com/explore/catalog/nagyv/gitlab-nanocode) สำหรับส่วนประกอบนี้
+หากต้องการข้อมูลเพิ่มเติมและกรณีการใช้งาน [ตรวจสอบเอกสาร](https://gitlab.com/explore/catalog/nagyv/gitlab-bettercode) สำหรับส่วนประกอบนี้
 
 ---
 
 ## GitLab Duo
 
-NanoCode ทำงานร่วมกับเวิร์กโฟลว์ GitLab ของคุณ
-พูดถึง `@nanocode` ในความคิดเห็น แล้ว NanoCode จะดำเนินการงานภายในไปป์ไลน์ GitLab CI ของคุณ
+BetterCode ทำงานร่วมกับเวิร์กโฟลว์ GitLab ของคุณ
+พูดถึง `@bettercode` ในความคิดเห็น แล้ว BetterCode จะดำเนินการงานภายในไปป์ไลน์ GitLab CI ของคุณ
 
 ---
 
 ### คุณสมบัติ
 
-- **Issue Triage**: ขอให้ NanoCode ตรวจสอบปัญหาและอธิบายให้คุณทราบ
-- **แก้ไขและนำไปใช้**: ขอให้ NanoCode แก้ไขปัญหาหรือใช้ฟีเจอร์
+- **Issue Triage**: ขอให้ BetterCode ตรวจสอบปัญหาและอธิบายให้คุณทราบ
+- **แก้ไขและนำไปใช้**: ขอให้ BetterCode แก้ไขปัญหาหรือใช้ฟีเจอร์
   มันจะสร้างสาขาใหม่และขอรวมการเปลี่ยนแปลง
-- **ปลอดภัย**: NanoCode ทำงานบนนักวิ่ง GitLab ของคุณ
+- **ปลอดภัย**: BetterCode ทำงานบนนักวิ่ง GitLab ของคุณ
 
 ---
 
 ### ตั้งค่า
 
-NanoCode ทำงานในไปป์ไลน์ GitLab CI/CD ของคุณ นี่คือสิ่งที่คุณจะต้องตั้งค่า:
+BetterCode ทำงานในไปป์ไลน์ GitLab CI/CD ของคุณ นี่คือสิ่งที่คุณจะต้องตั้งค่า:
 
 :::tip
 ตรวจสอบ [**เอกสาร GitLab**](https://docs.gitlab.com/user/duo_agent_platform/agent_assistant/) เพื่อดูคำแนะนำล่าสุด
@@ -82,19 +82,19 @@ NanoCode ทำงานในไปป์ไลน์ GitLab CI/CD ของค
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing nanocode"
-      - npm install --global nanocode-ai
+      - echo "Installing bettercode"
+      - npm install --global bettercode-ai
       - echo "Installing glab"
-      - export GITLAB_TOKEN=$GITLAB_TOKEN_NANOCODE
+      - export GITLAB_TOKEN=$GITLAB_TOKEN_BETTERCODE
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
       - curl --silent --show-error --location "https://raw.githubusercontent.com/upciti/wakemeops/main/assets/install_repository" | bash
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating NanoCode auth configuration"
-      - mkdir --parents ~/.local/share/nanocode
+      - echo "Creating BetterCode auth configuration"
+      - mkdir --parents ~/.local/share/bettercode
       - |
-        cat > ~/.local/share/nanocode/auth.json << EOF
+        cat > ~/.local/share/bettercode/auth.json << EOF
         {
           "anthropic": {
             "type": "api",
@@ -103,13 +103,13 @@ NanoCode ทำงานในไปป์ไลน์ GitLab CI/CD ของค
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "nanocode@gitlab.com"
-      - git config --global user.name "NanoCode"
+      - git config --global user.email "bettercode@gitlab.com"
+      - git config --global user.name "BetterCode"
       - echo "Testing glab"
       - glab issue list
-      - echo "Running NanoCode"
+      - echo "Running BetterCode"
       - |
-        nanocode run "
+        bettercode run "
         You are an AI assistant helping with GitLab operations.
 
         Context: $AI_FLOW_CONTEXT
@@ -146,7 +146,7 @@ NanoCode ทำงานในไปป์ไลน์ GitLab CI/CD ของค
         fi
     variables:
       - ANTHROPIC_API_KEY
-      - GITLAB_TOKEN_NANOCODE
+      - GITLAB_TOKEN_BETTERCODE
       - GITLAB_HOST
     ```
 
@@ -158,10 +158,10 @@ NanoCode ทำงานในไปป์ไลน์ GitLab CI/CD ของค
 
 ### ตัวอย่าง
 
-นี่คือตัวอย่างบางส่วนของวิธีที่คุณสามารถใช้ NanoCode ใน GitLab
+นี่คือตัวอย่างบางส่วนของวิธีที่คุณสามารถใช้ BetterCode ใน GitLab
 
 :::tip
-คุณสามารถกำหนดค่าให้ใช้วลีทริกเกอร์ที่แตกต่างจาก `@nanocode`
+คุณสามารถกำหนดค่าให้ใช้วลีทริกเกอร์ที่แตกต่างจาก `@bettercode`
 :::
 
 - **อธิบายปัญหา**
@@ -169,27 +169,27 @@ NanoCode ทำงานในไปป์ไลน์ GitLab CI/CD ของค
   เพิ่มความคิดเห็นนี้ในปัญหา GitLab
 
   ```
-  @nanocode explain this issue
+  @bettercode explain this issue
   ```
 
-  NanoCode จะอ่านปัญหาและตอบกลับพร้อมคำอธิบายที่ชัดเจน
+  BetterCode จะอ่านปัญหาและตอบกลับพร้อมคำอธิบายที่ชัดเจน
 
 - **แก้ไขปัญหา**
 
   ในปัญหา GitLab ให้พูดว่า:
 
   ```
-  @nanocode fix this
+  @bettercode fix this
   ```
 
-  NanoCode จะสร้างสาขาใหม่ ดำเนินการเปลี่ยนแปลง และเปิดคำขอรวมที่มีการเปลี่ยนแปลง
+  BetterCode จะสร้างสาขาใหม่ ดำเนินการเปลี่ยนแปลง และเปิดคำขอรวมที่มีการเปลี่ยนแปลง
 
 - **ตรวจสอบคำขอรวม**
 
   แสดงความคิดเห็นต่อไปนี้ในคำขอรวม GitLab
 
   ```
-  @nanocode review this merge request
+  @bettercode review this merge request
   ```
 
-  NanoCode จะตรวจสอบคำขอรวมและให้ข้อเสนอแนะ
+  BetterCode จะตรวจสอบคำขอรวมและให้ข้อเสนอแนะ

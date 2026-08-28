@@ -1,4 +1,4 @@
-import type { ModelV2Info, ProviderV2Info } from "@nanocode-ai/sdk/v2/types"
+import type { ModelV2Info, ProviderV2Info } from "@bettercode-ai/sdk/v2/types"
 import type { Hooks } from "./registration.js"
 
 export interface CatalogProviderRecord {

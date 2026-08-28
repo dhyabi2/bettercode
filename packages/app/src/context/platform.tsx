@@ -1,4 +1,4 @@
-import { createSimpleContext } from "@nanocode-ai/ui/context"
+import { createSimpleContext } from "@bettercode-ai/ui/context"
 import type { AsyncStorage, SyncStorage } from "@solid-primitives/storage"
 import type { Accessor } from "solid-js"
 import type { DesktopMenuAction } from "../desktop-menu"

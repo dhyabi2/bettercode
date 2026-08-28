@@ -1,12 +1,12 @@
-import { TextField } from "@nanocode-ai/ui/text-field"
+import { TextField } from "@bettercode-ai/ui/text-field"
 import * as Sentry from "@sentry/solid"
-import { Logo } from "@nanocode-ai/ui/logo"
-import { Button } from "@nanocode-ai/ui/button"
+import { Logo } from "@bettercode-ai/ui/logo"
+import { Button } from "@bettercode-ai/ui/button"
 import { Component, createSignal, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { usePlatform } from "@/context/platform"
 import { useLanguage } from "@/context/language"
-import { Icon } from "@nanocode-ai/ui/icon"
+import { Icon } from "@bettercode-ai/ui/icon"
 import { errorDescriptionKey } from "./error-description"
 
 export type InitError = {
@@ -354,7 +354,7 @@ export const ErrorPage: Component<ErrorPageProps> = (props) => {
             <button
               type="button"
               class="flex items-center text-text-interactive-base gap-1"
-              onClick={() => platform.openExternal("https://nanocode.ai/desktop-feedback")}
+              onClick={() => platform.openExternal("https://bettercode.ai/desktop-feedback")}
             >
               <div>{language.t("error.page.report.discord")}</div>
               <Icon name="discord" class="text-text-interactive-base" />

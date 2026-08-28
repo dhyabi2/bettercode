@@ -1,4 +1,4 @@
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
 import { ServerConnection } from "@/context/server"
 import { usePlatform } from "@/context/platform"
 import { useSettings } from "@/context/settings"

@@ -1,67 +1,67 @@
 ---
 title: GitLab
-description: 在 GitLab issue 和合并请求中使用 NanoCode。
+description: 在 GitLab issue 和合并请求中使用 BetterCode。
 ---
 
-NanoCode 通过 GitLab CI/CD 流水线或 GitLab Duo 与你的 GitLab 工作流集成。
+BetterCode 通过 GitLab CI/CD 流水线或 GitLab Duo 与你的 GitLab 工作流集成。
 
-在这两种情况下，NanoCode 都将在你的 GitLab Runner 上运行。
+在这两种情况下，BetterCode 都将在你的 GitLab Runner 上运行。
 
 ---
 
 ## GitLab CI
 
-NanoCode 可以在常规的 GitLab 流水线中运行。你可以将其作为 [CI 组件](https://docs.gitlab.com/ee/ci/components/) 集成到流水线中。
+BetterCode 可以在常规的 GitLab 流水线中运行。你可以将其作为 [CI 组件](https://docs.gitlab.com/ee/ci/components/) 集成到流水线中。
 
-这里我们使用的是社区创建的 NanoCode CI/CD 组件 — [nagyv/gitlab-nanocode](https://gitlab.com/nagyv/gitlab-nanocode)。
+这里我们使用的是社区创建的 BetterCode CI/CD 组件 — [nagyv/gitlab-bettercode](https://gitlab.com/nagyv/gitlab-bettercode)。
 
 ---
 
 ### 功能特性
 
-- **按任务自定义配置**：使用自定义配置目录来配置 NanoCode，例如 `./config/#custom-directory`，以便为每次 NanoCode 调用启用或禁用特定功能。
-- **最小化配置**：CI 组件会在后台完成 NanoCode 的设置，你只需创建 NanoCode 配置和初始提示词即可。
+- **按任务自定义配置**：使用自定义配置目录来配置 BetterCode，例如 `./config/#custom-directory`，以便为每次 BetterCode 调用启用或禁用特定功能。
+- **最小化配置**：CI 组件会在后台完成 BetterCode 的设置，你只需创建 BetterCode 配置和初始提示词即可。
 - **灵活可定制**：CI 组件支持多种输入参数来自定义其行为。
 
 ---
 
 ### 设置
 
-1. 将你的 NanoCode 身份验证 JSON 作为文件类型的 CI 环境变量存储在 **Settings** > **CI/CD** > **Variables** 下。请确保将其标记为 "Masked and hidden"。
+1. 将你的 BetterCode 身份验证 JSON 作为文件类型的 CI 环境变量存储在 **Settings** > **CI/CD** > **Variables** 下。请确保将其标记为 "Masked and hidden"。
 2. 将以下内容添加到你的 `.gitlab-ci.yml` 文件中。
 
    ```yaml title=".gitlab-ci.yml"
    include:
-     - component: $CI_SERVER_FQDN/nagyv/gitlab-nanocode/nanocode@2
+     - component: $CI_SERVER_FQDN/nagyv/gitlab-bettercode/bettercode@2
        inputs:
-         config_dir: ${CI_PROJECT_DIR}/nanocode-config
-         auth_json: $NANOCODE_AUTH_JSON # The variable name for your NanoCode authentication JSON
+         config_dir: ${CI_PROJECT_DIR}/bettercode-config
+         auth_json: $BETTERCODE_AUTH_JSON # The variable name for your BetterCode authentication JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```
 
-有关更多输入参数和使用场景，请[查看该组件的文档](https://gitlab.com/explore/catalog/nagyv/gitlab-nanocode)。
+有关更多输入参数和使用场景，请[查看该组件的文档](https://gitlab.com/explore/catalog/nagyv/gitlab-bettercode)。
 
 ---
 
 ## GitLab Duo
 
-NanoCode 与你的 GitLab 工作流集成。
-在评论中提及 `@nanocode`，NanoCode 将在你的 GitLab CI 流水线中执行任务。
+BetterCode 与你的 GitLab 工作流集成。
+在评论中提及 `@bettercode`，BetterCode 将在你的 GitLab CI 流水线中执行任务。
 
 ---
 
 ### 功能特性
 
-- **问题分类**：让 NanoCode 调查某个 issue 并为你解释。
-- **修复与实现**：让 NanoCode 修复 issue 或实现某个功能。它会创建一个新分支，并提交包含更改的合并请求。
-- **安全可靠**：NanoCode 在你的 GitLab Runner 上运行。
+- **问题分类**：让 BetterCode 调查某个 issue 并为你解释。
+- **修复与实现**：让 BetterCode 修复 issue 或实现某个功能。它会创建一个新分支，并提交包含更改的合并请求。
+- **安全可靠**：BetterCode 在你的 GitLab Runner 上运行。
 
 ---
 
 ### 设置
 
-NanoCode 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步骤：
+BetterCode 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步骤：
 
 :::tip
 请查看 [**GitLab 文档**](https://docs.gitlab.com/user/duo_agent_platform/agent_assistant/) 获取最新说明。
@@ -81,19 +81,19 @@ NanoCode 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing nanocode"
-      - npm install --global nanocode-ai
+      - echo "Installing bettercode"
+      - npm install --global bettercode-ai
       - echo "Installing glab"
-      - export GITLAB_TOKEN=$GITLAB_TOKEN_NANOCODE
+      - export GITLAB_TOKEN=$GITLAB_TOKEN_BETTERCODE
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
       - curl --silent --show-error --location "https://raw.githubusercontent.com/upciti/wakemeops/main/assets/install_repository" | bash
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating NanoCode auth configuration"
-      - mkdir --parents ~/.local/share/nanocode
+      - echo "Creating BetterCode auth configuration"
+      - mkdir --parents ~/.local/share/bettercode
       - |
-        cat > ~/.local/share/nanocode/auth.json << EOF
+        cat > ~/.local/share/bettercode/auth.json << EOF
         {
           "anthropic": {
             "type": "api",
@@ -102,13 +102,13 @@ NanoCode 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "nanocode@gitlab.com"
-      - git config --global user.name "NanoCode"
+      - git config --global user.email "bettercode@gitlab.com"
+      - git config --global user.name "BetterCode"
       - echo "Testing glab"
       - glab issue list
-      - echo "Running NanoCode"
+      - echo "Running BetterCode"
       - |
-        nanocode run "
+        bettercode run "
         You are an AI assistant helping with GitLab operations.
 
         Context: $AI_FLOW_CONTEXT
@@ -145,7 +145,7 @@ NanoCode 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步
         fi
     variables:
       - ANTHROPIC_API_KEY
-      - GITLAB_TOKEN_NANOCODE
+      - GITLAB_TOKEN_BETTERCODE
       - GITLAB_HOST
     ```
 
@@ -157,10 +157,10 @@ NanoCode 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步
 
 ### 示例
 
-以下是在 GitLab 中使用 NanoCode 的一些示例。
+以下是在 GitLab 中使用 BetterCode 的一些示例。
 
 :::tip
-你可以配置使用不同于 `@nanocode` 的触发词。
+你可以配置使用不同于 `@bettercode` 的触发词。
 :::
 
 - **解释 issue**
@@ -168,27 +168,27 @@ NanoCode 在你的 GitLab CI/CD 流水线中运行，以下是设置所需的步
   在 GitLab issue 中添加以下评论。
 
   ```
-  @nanocode explain this issue
+  @bettercode explain this issue
   ```
 
-  NanoCode 会阅读该 issue 并回复清晰的解释。
+  BetterCode 会阅读该 issue 并回复清晰的解释。
 
 - **修复 issue**
 
   在 GitLab issue 中输入：
 
   ```
-  @nanocode fix this
+  @bettercode fix this
   ```
 
-  NanoCode 会创建一个新分支，实现更改，并提交包含更改的合并请求。
+  BetterCode 会创建一个新分支，实现更改，并提交包含更改的合并请求。
 
 - **审查合并请求**
 
   在 GitLab 合并请求中留下以下评论。
 
   ```
-  @nanocode review this merge request
+  @bettercode review this merge request
   ```
 
-  NanoCode 会审查合并请求并提供反馈。
+  BetterCode 会审查合并请求并提供反馈。

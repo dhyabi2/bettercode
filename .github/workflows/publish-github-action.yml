@@ -24,7 +24,7 @@ jobs:
 
       - name: Publish
         run: |
-          git config --global user.email "nanocode@sst.dev"
-          git config --global user.name "nanocode"
+          git config --global user.email "bettercode@sst.dev"
+          git config --global user.name "bettercode"
           ./script/publish
         working-directory: ./github

@@ -1,6 +1,6 @@
 ---
 title: SDK
-description: Типобезопасный JS-клиент для сервера nanocode.
+description: Типобезопасный JS-клиент для сервера bettercode.
 ---
 
 import config from "../../../../config.mjs"
@@ -18,19 +18,19 @@ SDK JS/TS с открытым кодом предоставляет типобе
 Установите SDK из npm:
 
 ```bash
-npm install @nanocode-ai/sdk
+npm install @bettercode-ai/sdk
 ```
 
 ---
 
 ## Создать клиента
 
-Создайте экземпляр nanocode:
+Создайте экземпляр bettercode:
 
 ```javascript
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 
-const { client } = await createNanocode()
+const { client } = await createBettercode()
 ```
 
 Это запускает и сервер, и клиент.
@@ -49,12 +49,12 @@ const { client } = await createNanocode()
 
 ## Конфигурация
 
-Вы можете передать объект конфигурации для настройки поведения. Экземпляр по-прежнему получает ваш `nanocode.json`, но вы можете переопределить или добавить встроенную конфигурацию:
+Вы можете передать объект конфигурации для настройки поведения. Экземпляр по-прежнему получает ваш `bettercode.json`, но вы можете переопределить или добавить встроенную конфигурацию:
 
 ```javascript
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 
-const nanocode = await createNanocode({
+const bettercode = await createBettercode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,19 +62,19 @@ const nanocode = await createNanocode({
   },
 })
 
-console.log(`Server running at ${nanocode.server.url}`)
+console.log(`Server running at ${bettercode.server.url}`)
 
-nanocode.server.close()
+bettercode.server.close()
 ```
 
 ## Только клиент
 
-Если у вас уже есть работающий экземпляр nanocode, вы можете создать экземпляр клиента для подключения к нему:
+Если у вас уже есть работающий экземпляр bettercode, вы можете создать экземпляр клиента для подключения к нему:
 
 ```javascript
-import { createNanocodeClient } from "@nanocode-ai/sdk"
+import { createBettercodeClient } from "@bettercode-ai/sdk"
 
-const client = createNanocodeClient({
+const client = createBettercodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createNanocodeClient({
 SDK включает определения TypeScript для всех типов API. Импортируйте их напрямую:
 
 ```typescript
-import type { Session, Message, Part } from "@nanocode-ai/sdk"
+import type { Session, Message, Part } from "@bettercode-ai/sdk"
 ```
 
 Все типы генерируются на основе спецификации OpenAPI сервера и доступны в файле <a href={typesUrl}>types</a>.
@@ -376,7 +376,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*nanocode" },
+  query: { pattern: "function.*bettercode" },
 })
 
 const files = await client.find.files({

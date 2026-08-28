@@ -1,5 +1,5 @@
 {
-  "name": "@nanocode-ai/session-ui",
+  "name": "@bettercode-ai/session-ui",
   "version": "1.18.21",
   "private": true,
   "type": "module",
@@ -38,10 +38,10 @@
   },
   "dependencies": {
     "@kobalte/core": "catalog:",
-    "@nanocode-ai/client": "file:../app/vendor/nanocode-ai-client-1.17.13-v2.tgz",
-    "@nanocode-ai/core": "workspace:*",
-    "@nanocode-ai/sdk": "workspace:*",
-    "@nanocode-ai/ui": "workspace:*",
+    "@bettercode-ai/client": "file:../app/vendor/bettercode-ai-client-1.17.13-v2.tgz",
+    "@bettercode-ai/core": "workspace:*",
+    "@bettercode-ai/sdk": "workspace:*",
+    "@bettercode-ai/ui": "workspace:*",
     "@pierre/diffs": "catalog:",
     "@shikijs/stream": "catalog:",
     "@shikijs/transformers": "3.9.2",

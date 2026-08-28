@@ -1,9 +1,9 @@
 import { expect, test, type Page } from "@playwright/test"
-import { base64Encode } from "@nanocode-ai/core/util/encode"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectAppVisible, expectSessionTitle } from "../utils/waits"
 
-const directory = "C:/NanoCode/ReviewImageFlashRegression"
+const directory = "C:/BetterCode/ReviewImageFlashRegression"
 const sessionID = "ses_review_image_flash_regression"
 const title = "Review image flash regression"
 const imageFile = "assets/preview.png"
@@ -29,7 +29,7 @@ async function openReview(page: Page) {
   await page.addInitScript(() => {
     localStorage.setItem("settings.v3", JSON.stringify({ general: { newLayoutDesigns: true } }))
   })
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     directory,
     project: {
       id: "proj_review_image_flash_regression",
@@ -119,7 +119,7 @@ async function openReview(page: Page) {
             time: { created: 1700000000000 },
             summary: { diffs: [] },
             agent: "build",
-            model: { providerID: "nanocode", modelID: "test" },
+            model: { providerID: "bettercode", modelID: "test" },
           },
           parts: [
             {

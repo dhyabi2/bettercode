@@ -1,19 +1,19 @@
 ---
 title: Konfiguracija
-description: Korištenje NanoCode JSON konfiguracije.
+description: Korištenje BetterCode JSON konfiguracije.
 ---
 
-Možete konfigurirati NanoCode koristeći JSON konfiguracijski fajl.
+Možete konfigurirati BetterCode koristeći JSON konfiguracijski fajl.
 
 ---
 
 ## Format
 
-NanoCode podržava i **JSON** i **JSONC** (JSON sa komentarima) formate.
+BetterCode podržava i **JSON** i **JSONC** (JSON sa komentarima) formate.
 
-```jsonc title="nanocode.jsonc"
+```jsonc title="bettercode.jsonc"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "model": "anthropic/claude-sonnet-4-5",
   "autoupdate": true,
   "server": {
@@ -42,30 +42,30 @@ Na primjer, ako vaša globalna konfiguracija postavlja `autoupdate: true`, a va�
 
 Izvori konfiguracije se učitavaju ovim redoslijedom (kasniji izvori poništavaju ranije):
 
-1. **Udaljena konfiguracija** (od `.well-known/nanocode`) - organizacijske postavke
-2. **Globalna konfiguracija** (`~/.config/nanocode/nanocode.json`) - korisničke preferencije
-3. **Prilagođena konfiguracija** (`NANOCODE_CONFIG` env var) - prilagođena preinačenja
-4. **Konfiguracija projekta** (`nanocode.json` u projektu) - postavke specifične za projekat
-5. **`.nanocode` direktoriji** - agenti, komande, dodaci
-6. **Inline konfiguracija** (`NANOCODE_CONFIG_CONTENT` env var) - runtime preinačenja
+1. **Udaljena konfiguracija** (od `.well-known/bettercode`) - organizacijske postavke
+2. **Globalna konfiguracija** (`~/.config/bettercode/bettercode.json`) - korisničke preferencije
+3. **Prilagođena konfiguracija** (`BETTERCODE_CONFIG` env var) - prilagođena preinačenja
+4. **Konfiguracija projekta** (`bettercode.json` u projektu) - postavke specifične za projekat
+5. **`.bettercode` direktoriji** - agenti, komande, dodaci
+6. **Inline konfiguracija** (`BETTERCODE_CONFIG_CONTENT` env var) - runtime preinačenja
 
 To znači da konfiguracije projekta mogu nadjačati globalne zadane postavke, a globalne konfiguracije mogu nadjačati postavke udaljene organizacije.
 
 :::note
-Direktoriji `.nanocode` i `~/.config/nanocode` koriste **imena u množini** za poddirektorije: `agents/`, `commands/`, `modes/`, `plugins/`, `skills/`, `tools/` i `themes/`. Pojedinačna imena (npr. `agent/`) su također podržana za kompatibilnost unatrag.
+Direktoriji `.bettercode` i `~/.config/bettercode` koriste **imena u množini** za poddirektorije: `agents/`, `commands/`, `modes/`, `plugins/`, `skills/`, `tools/` i `themes/`. Pojedinačna imena (npr. `agent/`) su također podržana za kompatibilnost unatrag.
 :::
 
 ---
 
 ### Udaljeno (Remote)
 
-Organizacije mogu pružiti zadanu konfiguraciju preko `.well-known/nanocode` krajnje tačke. Ovo se automatski preuzima kada se autentifikujete kod provajdera koji to podržava.
+Organizacije mogu pružiti zadanu konfiguraciju preko `.well-known/bettercode` krajnje tačke. Ovo se automatski preuzima kada se autentifikujete kod provajdera koji to podržava.
 
 Prvo se učitava udaljena konfiguracija koja služi kao osnovni sloj. Svi ostali izvori konfiguracije (globalni, projektni) mogu nadjačati ove zadane postavke.
 
 Na primjer, ako vaša organizacija nudi MCP servere koji su po defaultu onemogućeni:
 
-```json title="Remote config from .well-known/nanocode"
+```json title="Remote config from .well-known/bettercode"
 {
   "mcp": {
     "jira": {
@@ -79,7 +79,7 @@ Na primjer, ako vaša organizacija nudi MCP servere koji su po defaultu onemogu�
 
 Možete omogućiti određene servere u vašoj lokalnoj konfiguraciji:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
   "mcp": {
     "jira": {
@@ -95,9 +95,9 @@ Možete omogućiti određene servere u vašoj lokalnoj konfiguraciji:
 
 ### Globalno
 
-Postavite svoju globalnu NanoCode konfiguraciju u `~/.config/nanocode/nanocode.json`. Koristite globalnu konfiguraciju za korisničke preferencije kao što su provajderi, modeli i dozvole.
+Postavite svoju globalnu BetterCode konfiguraciju u `~/.config/bettercode/bettercode.json`. Koristite globalnu konfiguraciju za korisničke preferencije kao što su provajderi, modeli i dozvole.
 
-Za postavke specifične za TUI, koristite `~/.config/nanocode/tui.json`.
+Za postavke specifične za TUI, koristite `~/.config/bettercode/tui.json`.
 
 Globalna konfiguracija poništava zadane postavke udaljene organizacije.
 
@@ -105,7 +105,7 @@ Globalna konfiguracija poništava zadane postavke udaljene organizacije.
 
 ### Projekt
 
-Dodajte `nanocode.json` u korijen projekta. Konfiguracija projekta ima najveći prioritet među standardnim konfiguracijskim datotekama - ona nadjačava globalne i udaljene konfiguracije.
+Dodajte `bettercode.json` u korijen projekta. Konfiguracija projekta ima najveći prioritet među standardnim konfiguracijskim datotekama - ona nadjačava globalne i udaljene konfiguracije.
 
 Za TUI postavke specifične za projekat, dodajte `tui.json` pored njega.
 
@@ -113,7 +113,7 @@ Za TUI postavke specifične za projekat, dodajte `tui.json` pored njega.
 Postavite specifičnu konfiguraciju projekta u korijen vašeg projekta.
 :::
 
-Kada se NanoCode pokrene, traži konfiguracijsku datoteku u trenutnom direktoriju ili prelazi do najbližeg Git direktorija.
+Kada se BetterCode pokrene, traži konfiguracijsku datoteku u trenutnom direktoriju ili prelazi do najbližeg Git direktorija.
 
 Ovo je također sigurno provjeriti u Git i koristi istu shemu kao globalna.
 
@@ -121,11 +121,11 @@ Ovo je također sigurno provjeriti u Git i koristi istu shemu kao globalna.
 
 ### Prilagođena konfiguracija
 
-Navedite prilagođenu putanju konfiguracijske datoteke koristeći varijablu okruženja `NANOCODE_CONFIG`.
+Navedite prilagođenu putanju konfiguracijske datoteke koristeći varijablu okruženja `BETTERCODE_CONFIG`.
 
 ```bash
-export NANOCODE_CONFIG=/path/to/my/custom-config.json
-nanocode run "Hello world"
+export BETTERCODE_CONFIG=/path/to/my/custom-config.json
+bettercode run "Hello world"
 ```
 
 Prilagođena konfiguracija se učitava između globalne i projektne konfiguracije po redoslijedu prioriteta.
@@ -134,22 +134,22 @@ Prilagođena konfiguracija se učitava između globalne i projektne konfiguracij
 
 ### Prilagođeni direktorij
 
-Navedite prilagođeni konfiguracijski direktorij koristeći `NANOCODE_CONFIG_DIR` varijablu okruženja. U ovom direktoriju će se tražiti agenti, komande, modovi i dodaci baš kao standardni `.nanocode` direktorij, i trebali bi pratiti istu strukturu.
+Navedite prilagođeni konfiguracijski direktorij koristeći `BETTERCODE_CONFIG_DIR` varijablu okruženja. U ovom direktoriju će se tražiti agenti, komande, modovi i dodaci baš kao standardni `.bettercode` direktorij, i trebali bi pratiti istu strukturu.
 
 ```bash
-export NANOCODE_CONFIG_DIR=/path/to/my/config-directory
-nanocode run "Hello world"
+export BETTERCODE_CONFIG_DIR=/path/to/my/config-directory
+bettercode run "Hello world"
 ```
 
-Prilagođeni direktorij se učitava nakon direktorija globalne konfiguracije i `.nanocode`, tako da **može nadjačati** njihove postavke.
+Prilagođeni direktorij se učitava nakon direktorija globalne konfiguracije i `.bettercode`, tako da **može nadjačati** njihove postavke.
 
 ---
 
 ## Šema
 
-Konfiguracijski fajl ima šemu koja je definirana u [**`nanocode.ai/config.json`**](https://nanocode.ai/config.json).
+Konfiguracijski fajl ima šemu koja je definirana u [**`bettercode.ai/config.json`**](https://bettercode.ai/config.json).
 
-TUI konfiguracija koristi [**`nanocode.ai/tui.json`**](https://nanocode.ai/tui.json).
+TUI konfiguracija koristi [**`bettercode.ai/tui.json`**](https://bettercode.ai/tui.json).
 
 Vaš editor bi trebao biti u mogućnosti da validira i autodovršava na osnovu šeme.
 
@@ -161,7 +161,7 @@ Koristite namjenski `tui.json` (ili `tui.jsonc`) fajl za postavke specifične za
 
 ```json title="tui.json"
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "scroll_speed": 3,
   "scroll_acceleration": {
     "enabled": true
@@ -170,9 +170,9 @@ Koristite namjenski `tui.json` (ili `tui.jsonc`) fajl za postavke specifične za
 }
 ```
 
-Koristite `NANOCODE_TUI_CONFIG` da pokažete na prilagođeni TUI konfiguracijski fajl.
+Koristite `BETTERCODE_TUI_CONFIG` da pokažete na prilagođeni TUI konfiguracijski fajl.
 
-Stari `theme`, `keybinds`, i `tui` ključevi u `nanocode.json` su zastarjeli i automatski će se migrirati kada je to moguće.
+Stari `theme`, `keybinds`, i `tui` ključevi u `bettercode.json` su zastarjeli i automatski će se migrirati kada je to moguće.
 
 [Saznajte više o korištenju TUI ovdje](/docs/tui#configure).
 
@@ -180,11 +180,11 @@ Stari `theme`, `keybinds`, i `tui` ključevi u `nanocode.json` su zastarjeli i a
 
 ### Server
 
-Možete konfigurirati postavke servera za naredbe `nanocode serve` i `nanocode web` putem opcije `server`.
+Možete konfigurirati postavke servera za naredbe `bettercode serve` i `bettercode web` putem opcije `server`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -199,8 +199,8 @@ Dostupne opcije:
 
 - `port` - Port za slušanje.
 - `hostname` - Hostname za slušanje. Kada je `mdns` omogućen i nije postavljeno ime hosta, podrazumevano je `0.0.0.0`.
-- `mdns` - Omogući mDNS otkrivanje servisa. Ovo omogućava drugim uređajima na mreži da otkriju vaš NanoCode server.
-- `mdnsDomain` - Prilagođeno ime domene za mDNS servis. Zadano je `nanocode.local`. Korisno za pokretanje više instanci na istoj mreži.
+- `mdns` - Omogući mDNS otkrivanje servisa. Ovo omogućava drugim uređajima na mreži da otkriju vaš BetterCode server.
+- `mdnsDomain` - Prilagođeno ime domene za mDNS servis. Zadano je `bettercode.local`. Korisno za pokretanje više instanci na istoj mreži.
 - `cors` - Dodatni origini koji omogućavaju CORS kada koristite HTTP server iz klijenta baziranog na pretraživaču. Vrijednosti moraju biti puni origin (shema + host + opcijski port), npr. `https://app.example.com`.
 
 [Saznajte više o serveru ovdje](/docs/server).
@@ -211,9 +211,9 @@ Dostupne opcije:
 
 Možete upravljati alatima koje LLM može koristiti putem opcije `tools`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -227,24 +227,24 @@ Možete upravljati alatima koje LLM može koristiti putem opcije `tools`.
 
 ### Model
 
-Možete konfigurirati dobavljače i modele koje želite koristiti u svojoj NanoCode konfiguraciji kroz opcije `provider`, `model` i `small_model`.
+Možete konfigurirati dobavljače i modele koje želite koristiti u svojoj BetterCode konfiguraciji kroz opcije `provider`, `model` i `small_model`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
 }
 ```
 
-Opcija `small_model` konfigurira poseban model za lagane zadatke poput generiranja naslova. Podrazumevano, NanoCode pokušava da koristi jeftiniji model ako je dostupan od vašeg provajdera, inače se vraća na vaš glavni model.
+Opcija `small_model` konfigurira poseban model za lagane zadatke poput generiranja naslova. Podrazumevano, BetterCode pokušava da koristi jeftiniji model ako je dostupan od vašeg provajdera, inače se vraća na vaš glavni model.
 
 Opcije provajdera mogu uključivati ​​`timeout` i `setCacheKey`:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -271,9 +271,9 @@ Neki provajderi podržavaju dodatne opcije konfiguracije osim generičkih postav
 
 Amazon Bedrock podržava konfiguraciju specifičnu za AWS:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -304,7 +304,7 @@ Postavite vašu UI temu u `tui.json`.
 
 ```json title="tui.json"
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "theme": "tokyonight"
 }
 ```
@@ -317,9 +317,9 @@ Postavite vašu UI temu u `tui.json`.
 
 Možete konfigurirati specijalizirane agente za određene zadatke putem opcije `agent`.
 
-```jsonc title="nanocode.jsonc"
+```jsonc title="bettercode.jsonc"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -335,7 +335,7 @@ Možete konfigurirati specijalizirane agente za određene zadatke putem opcije `
 }
 ```
 
-Također možete definirati agente koristeći markdown datoteke u `~/.config/nanocode/agents/` ili `.nanocode/agents/`. [Saznajte više ovdje](/docs/agents).
+Također možete definirati agente koristeći markdown datoteke u `~/.config/bettercode/agents/` ili `.bettercode/agents/`. [Saznajte više ovdje](/docs/agents).
 
 ---
 
@@ -343,16 +343,16 @@ Također možete definirati agente koristeći markdown datoteke u `~/.config/nan
 
 Možete postaviti zadanog agenta koristeći opciju `default_agent`. Ovo određuje koji se agent koristi kada nijedan nije eksplicitno specificiran.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "default_agent": "plan"
 }
 ```
 
-Zadani agent mora biti primarni agent (ne podagent). Ovo može biti ugrađeni agent kao što je `"build"` ili `"plan"`, ili [prilagođeni agent](/docs/agents) koji ste definirali. Ako navedeni agent ne postoji ili je podagent, NanoCode će se vratiti na `"build"` s upozorenjem.
+Zadani agent mora biti primarni agent (ne podagent). Ovo može biti ugrađeni agent kao što je `"build"` ili `"plan"`, ili [prilagođeni agent](/docs/agents) koji ste definirali. Ako navedeni agent ne postoji ili je podagent, BetterCode će se vratiti na `"build"` s upozorenjem.
 
-Ova postavka se primjenjuje na sva sučelja: TUI, CLI (`nanocode run`), desktop aplikaciju i GitHub Action.
+Ova postavka se primjenjuje na sva sučelja: TUI, CLI (`bettercode run`), desktop aplikaciju i GitHub Action.
 
 ---
 
@@ -360,9 +360,9 @@ Ova postavka se primjenjuje na sva sučelja: TUI, CLI (`nanocode run`), desktop 
 
 Možete konfigurirati funkciju [share](/docs/share) putem opcije `share`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "share": "manual"
 }
 ```
@@ -381,9 +381,9 @@ Podrazumevano, dijeljenje je postavljeno na ručni način rada gdje trebate eksp
 
 Možete konfigurirati prilagođene naredbe za ponavljanje zadataka putem opcije `command`.
 
-```jsonc title="nanocode.jsonc"
+```jsonc title="bettercode.jsonc"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -399,7 +399,7 @@ Možete konfigurirati prilagođene naredbe za ponavljanje zadataka putem opcije 
 }
 ```
 
-Također možete definirati naredbe koristeći markdown fajlove u `~/.config/nanocode/commands/` ili `.nanocode/commands/`. [Saznajte više ovdje](/docs/commands).
+Također možete definirati naredbe koristeći markdown fajlove u `~/.config/bettercode/commands/` ili `.bettercode/commands/`. [Saznajte više ovdje](/docs/commands).
 
 ---
 
@@ -409,7 +409,7 @@ Prilagodite prečice tipki u `tui.json`.
 
 ```json title="tui.json"
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "keybinds": {}
 }
 ```
@@ -420,11 +420,11 @@ Prilagodite prečice tipki u `tui.json`.
 
 ### Automatsko ažuriranje
 
-NanoCode će automatski preuzeti sva nova ažuriranja kada se pokrene. Ovo možete onemogućiti opcijom `autoupdate`.
+BetterCode će automatski preuzeti sva nova ažuriranja kada se pokrene. Ovo možete onemogućiti opcijom `autoupdate`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "autoupdate": false
 }
 ```
@@ -438,9 +438,9 @@ Imajte na umu da ovo funkcionira samo ako nije instalirano pomoću upravitelja p
 
 Možete konfigurirati formatere koda putem opcije `formatter`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -462,13 +462,13 @@ Možete konfigurirati formatere koda putem opcije `formatter`.
 
 ### Dozvole
 
-Prema zadanim postavkama, NanoCode **dopušta sve operacije** bez potrebe za eksplicitnim dopuštenjem. Ovo možete promijeniti koristeći opciju `permission`.
+Prema zadanim postavkama, BetterCode **dopušta sve operacije** bez potrebe za eksplicitnim dopuštenjem. Ovo možete promijeniti koristeći opciju `permission`.
 
 Na primjer, da osigurate da alati `edit` i `bash` zahtijevaju odobrenje korisnika:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -484,9 +484,9 @@ Na primjer, da osigurate da alati `edit` i `bash` zahtijevaju odobrenje korisnik
 
 Možete kontrolirati ponašanje sažimanja konteksta putem opcije `compaction`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "compaction": {
     "auto": true,
     "prune": false,
@@ -505,9 +505,9 @@ Možete kontrolirati ponašanje sažimanja konteksta putem opcije `compaction`.
 
 Možete konfigurirati obrasce ignoriranja promatrača datoteka putem opcije `watcher`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -522,9 +522,9 @@ Obrasci prate glob sintaksu. Koristite ovo da isključite bučne direktorije iz 
 
 Možete konfigurirati MCP servere koje želite koristiti putem opcije `mcp`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "mcp": {}
 }
 ```
@@ -535,14 +535,14 @@ Možete konfigurirati MCP servere koje želite koristiti putem opcije `mcp`.
 
 ### Dodaci
 
-[Plugins](/docs/plugins) proširuju NanoCode sa prilagođenim alatima, kukicama i integracijama.
+[Plugins](/docs/plugins) proširuju BetterCode sa prilagođenim alatima, kukicama i integracijama.
 
-Postavite datoteke dodataka u `.nanocode/plugins/` ili `~/.config/nanocode/plugins/`. Također možete učitati dodatke iz npm-a preko opcije `plugin`.
+Postavite datoteke dodataka u `.bettercode/plugins/` ili `~/.config/bettercode/plugins/`. Također možete učitati dodatke iz npm-a preko opcije `plugin`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
-  "plugin": ["nanocode-helicone-session", "@my-org/custom-plugin"]
+  "$schema": "https://bettercode.ai/config.json",
+  "plugin": ["bettercode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
 
@@ -554,9 +554,9 @@ Postavite datoteke dodataka u `.nanocode/plugins/` ili `~/.config/nanocode/plugi
 
 Možete konfigurirati upute za model koji koristite putem opcije `instructions`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -569,9 +569,9 @@ Ovo uzima niz putanja i glob uzoraka do datoteka instrukcija. [Saznajte više o 
 
 Možete onemogućiti dobavljače koji se automatski učitavaju preko opcije `disabled_providers`. Ovo je korisno kada želite spriječiti učitavanje određenih provajdera čak i ako su njihovi vjerodajnici dostupni.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -592,14 +592,14 @@ Opcija `disabled_providers` prihvata niz ID-ova provajdera. Kada je provajder on
 
 Možete odrediti listu dozvoljenih dobavljača putem opcije `enabled_providers`. Kada se podesi, samo navedeni provajderi će biti omogućeni, a svi ostali će biti zanemareni.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
 
-Ovo je korisno kada želite da ograničite NanoCode da koristi samo određene provajdere umjesto da ih onemogućavate jednog po jednog.
+Ovo je korisno kada želite da ograničite BetterCode da koristi samo određene provajdere umjesto da ih onemogućavate jednog po jednog.
 
 :::note
 `disabled_providers` ima prioritet nad `enabled_providers`.
@@ -613,9 +613,9 @@ Ako se provajder pojavljuje i u `enabled_providers` i `disabled_providers`, `dis
 
 Ključ `experimental` sadrži opcije koje su u aktivnom razvoju.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "experimental": {}
 }
 ```
@@ -636,10 +636,10 @@ Možete koristiti zamjenu varijabli u vašim konfiguracijskim datotekama da bist
 
 Koristite `{env:VARIABLE_NAME}` za zamjenu varijabli okruženja:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
-  "model": "{env:NANOCODE_MODEL}",
+  "$schema": "https://bettercode.ai/config.json",
+  "model": "{env:BETTERCODE_MODEL}",
   "provider": {
     "anthropic": {
       "models": {},
@@ -659,9 +659,9 @@ Ako varijabla okruženja nije postavljena, bit će zamijenjena praznim nizom.
 
 Koristite `{file:path/to/file}` da zamijenite sadržaj fajla:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {

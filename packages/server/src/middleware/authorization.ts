@@ -1,8 +1,8 @@
 import { ServerAuth } from "../auth"
-import { UnauthorizedError } from "@nanocode-ai/protocol/errors"
-import { Authorization } from "@nanocode-ai/protocol/middleware/authorization"
-export { Authorization } from "@nanocode-ai/protocol/middleware/authorization"
-import { hasPtyConnectTicketURL } from "@nanocode-ai/protocol/groups/pty"
+import { UnauthorizedError } from "@bettercode-ai/protocol/errors"
+import { Authorization } from "@bettercode-ai/protocol/middleware/authorization"
+export { Authorization } from "@bettercode-ai/protocol/middleware/authorization"
+import { hasPtyConnectTicketURL } from "@bettercode-ai/protocol/groups/pty"
 import { Effect, Encoding, Layer, Redacted } from "effect"
 import { HttpEffect, HttpServerRequest, HttpServerResponse } from "effect/unstable/http"
 

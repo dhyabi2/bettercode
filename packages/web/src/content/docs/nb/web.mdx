@@ -1,21 +1,21 @@
 ---
 title: Web
-description: Bruke NanoCode i nettleseren din.
+description: Bruke BetterCode i nettleseren din.
 ---
 
-NanoCode kan kjøres som en nettapplikasjon i nettleseren din, og gir den samme kraftige AI-kodingsopplevelsen uten at du trenger en terminal.
+BetterCode kan kjøres som en nettapplikasjon i nettleseren din, og gir den samme kraftige AI-kodingsopplevelsen uten at du trenger en terminal.
 
-![NanoCode Web - Ny økt](../../../assets/web/web-homepage-new-session.png)
+![BetterCode Web - Ny økt](../../../assets/web/web-homepage-new-session.png)
 
 ## Komme i gang
 
 Start web-grensesnittet ved å kjøre:
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-Dette starter en lokal server på `127.0.0.1` med en tilfeldig tilgjengelig port og åpner automatisk NanoCode i standard nettleser.
+Dette starter en lokal server på `127.0.0.1` med en tilfeldig tilgjengelig port og åpner automatisk BetterCode i standard nettleser.
 
 ---
 
@@ -25,49 +25,49 @@ Du kan konfigurere webserveren ved å bruke kommandolinjeflagg eller i [konfigur
 
 ### Port
 
-Som standard velger NanoCode en tilgjengelig port. Du kan spesifisere en port:
+Som standard velger BetterCode en tilgjengelig port. Du kan spesifisere en port:
 
 ```bash
-nanocode web --port 4096
+bettercode web --port 4096
 ```
 
 ### Vertsnavn
 
-Som standard binder serveren seg til `127.0.0.1` (kun localhost). Slik gjør du NanoCode tilgjengelig på nettverket ditt:
+Som standard binder serveren seg til `127.0.0.1` (kun localhost). Slik gjør du BetterCode tilgjengelig på nettverket ditt:
 
 ```bash
-nanocode web --hostname 0.0.0.0
+bettercode web --hostname 0.0.0.0
 ```
 
 ---
 
 ### Autentisering
 
-For å beskytte tilgang, angi et passord ved hjelp av miljøvariabelen `NANOCODE_SERVER_PASSWORD`:
+For å beskytte tilgang, angi et passord ved hjelp av miljøvariabelen `BETTERCODE_SERVER_PASSWORD`:
 
 ```bash
-NANOCODE_SERVER_PASSWORD=secret nanocode web
+BETTERCODE_SERVER_PASSWORD=secret bettercode web
 ```
 
-Brukernavnet er satt til `nanocode` som standard, men kan endres med `NANOCODE_SERVER_USERNAME`.
+Brukernavnet er satt til `bettercode` som standard, men kan endres med `BETTERCODE_SERVER_USERNAME`.
 
 ---
 
 ## Bruke webgrensesnittet
 
-Når den er startet, gir nettgrensesnittet tilgang til dine NanoCode-økter.
+Når den er startet, gir nettgrensesnittet tilgang til dine BetterCode-økter.
 
 ### Sesjoner
 
 Se og administrer øktene dine fra hjemmesiden. Du kan se aktive økter og starte nye.
 
-![NanoCode Web - Active Session](../../../assets/web/web-homepage-active-session.png)
+![BetterCode Web - Active Session](../../../assets/web/web-homepage-active-session.png)
 
 ### Serverstatus
 
 Klikk på "Se servere" for å se tilkoblede servere og deres status.
 
-![NanoCode Web - Se servere](../../../assets/web/web-homepage-see-servers.png)
+![BetterCode Web - Se servere](../../../assets/web/web-homepage-see-servers.png)
 
 ---
 
@@ -77,10 +77,10 @@ Du kan koble en terminal TUI til en kjørende webserver:
 
 ```bash
 # Start the web server
-nanocode web --port 4096
+bettercode web --port 4096
 
 # In another terminal, attach the TUI
-nanocode attach http://localhost:4096
+bettercode attach http://localhost:4096
 ```
 
 Dette lar deg bruke både nettgrensesnittet og terminalen samtidig, og deler samme økter og tilstand.
@@ -89,7 +89,7 @@ Dette lar deg bruke både nettgrensesnittet og terminalen samtidig, og deler sam
 
 ## Konfigurasjonsfil
 
-Du kan også konfigurere serverinnstillinger i `nanocode.json` konfigurasjonsfilen:
+Du kan også konfigurere serverinnstillinger i `bettercode.json` konfigurasjonsfilen:
 
 ```json
 {

@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://nanocode.ai">
+  <a href="https://bettercode.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="NanoCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="BetterCode logo">
     </picture>
   </a>
 </p>
 <p align="center">Ο πράκτορας τεχνητής νοημοσύνης ανοικτού κώδικα για προγραμματισμό.</p>
 <p align="center">
-  <a href="https://nanocode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/nanocode-ai"><img alt="npm" src="https://img.shields.io/npm/v/nanocode-ai?style=flat-square" /></a>
-  <a href="https://github.com/dhyabi2/nanocode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/nanocode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://bettercode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/bettercode-ai"><img alt="npm" src="https://img.shields.io/npm/v/bettercode-ai?style=flat-square" /></a>
+  <a href="https://github.com/dhyabi2/bettercode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/bettercode/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -39,7 +39,7 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![NanoCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://nanocode.ai)
+[![BetterCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://bettercode.ai)
 
 ---
 
@@ -47,18 +47,18 @@
 
 ```bash
 # YOLO
-curl -fsSL https://nanocode.ai/install | bash
+curl -fsSL https://bettercode.ai/install | bash
 
 # Διαχειριστές πακέτων
-npm i -g nanocode-ai@latest        # ή bun/pnpm/yarn
-scoop install nanocode             # Windows
-choco install nanocode             # Windows
-brew install dhyabi2/tap/nanocode # macOS και Linux (προτείνεται, πάντα ενημερωμένο)
-brew install nanocode              # macOS και Linux (επίσημος τύπος brew, λιγότερο συχνές ενημερώσεις)
-sudo pacman -S nanocode            # Arch Linux (Σταθερό)
-paru -S nanocode-bin               # Arch Linux (Τελευταία έκδοση από AUR)
-mise use -g nanocode               # Οποιοδήποτε λειτουργικό σύστημα
-nix run nixpkgs#nanocode           # ή github:dhyabi2/nanocode με βάση την πιο πρόσφατη αλλαγή από το dev branch
+npm i -g bettercode-ai@latest        # ή bun/pnpm/yarn
+scoop install bettercode             # Windows
+choco install bettercode             # Windows
+brew install dhyabi2/tap/bettercode # macOS και Linux (προτείνεται, πάντα ενημερωμένο)
+brew install bettercode              # macOS και Linux (επίσημος τύπος brew, λιγότερο συχνές ενημερώσεις)
+sudo pacman -S bettercode            # Arch Linux (Σταθερό)
+paru -S bettercode-bin               # Arch Linux (Τελευταία έκδοση από AUR)
+mise use -g bettercode               # Οποιοδήποτε λειτουργικό σύστημα
+nix run nixpkgs#bettercode           # ή github:dhyabi2/bettercode με βάση την πιο πρόσφατη αλλαγή από το dev branch
 ```
 
 > [!TIP]
@@ -66,40 +66,40 @@ nix run nixpkgs#nanocode           # ή github:dhyabi2/nanocode με βάση τ
 
 ### Εφαρμογή Desktop (BETA)
 
-Το NanoCode είναι επίσης διαθέσιμο ως εφαρμογή. Κατέβασε το απευθείας από τη [σελίδα εκδόσεων](https://github.com/dhyabi2/nanocode/releases) ή το [nanocode.ai/download](https://nanocode.ai/download).
+Το BetterCode είναι επίσης διαθέσιμο ως εφαρμογή. Κατέβασε το απευθείας από τη [σελίδα εκδόσεων](https://github.com/dhyabi2/bettercode/releases) ή το [bettercode.ai/download](https://bettercode.ai/download).
 
 | Πλατφόρμα             | Λήψη                               |
 | --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `nanocode-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `nanocode-desktop-mac-x64.dmg`     |
-| Windows               | `nanocode-desktop-windows-x64.exe` |
+| macOS (Apple Silicon) | `bettercode-desktop-mac-arm64.dmg`   |
+| macOS (Intel)         | `bettercode-desktop-mac-x64.dmg`     |
+| Windows               | `bettercode-desktop-windows-x64.exe` |
 | Linux                 | `.deb`, `.rpm`, ή AppImage         |
 
 ```bash
 # macOS (Homebrew)
-brew install --cask nanocode-desktop
+brew install --cask bettercode-desktop
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/nanocode-desktop
+scoop bucket add extras; scoop install extras/bettercode-desktop
 ```
 
 #### Κατάλογος Εγκατάστασης
 
 Το script εγκατάστασης τηρεί την ακόλουθη σειρά προτεραιότητας για τη διαδρομή εγκατάστασης:
 
-1. `$NANOCODE_INSTALL_DIR` - Προσαρμοσμένος κατάλογος εγκατάστασης
+1. `$BETTERCODE_INSTALL_DIR` - Προσαρμοσμένος κατάλογος εγκατάστασης
 2. `$XDG_BIN_DIR` - Διαδρομή συμβατή με τις προδιαγραφές XDG Base Directory
 3. `$HOME/bin` - Τυπικός κατάλογος εκτελέσιμων αρχείων χρήστη (εάν υπάρχει ή μπορεί να δημιουργηθεί)
-4. `$HOME/.nanocode/bin` - Προεπιλεγμένη εφεδρική διαδρομή
+4. `$HOME/.bettercode/bin` - Προεπιλεγμένη εφεδρική διαδρομή
 
 ```bash
 # Παραδείγματα
-NANOCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://nanocode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://nanocode.ai/install | bash
+BETTERCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://bettercode.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://bettercode.ai/install | bash
 ```
 
 ### Πράκτορες
 
-Το NanoCode περιλαμβάνει δύο ενσωματωμένους πράκτορες μεταξύ των οποίων μπορείτε να εναλλάσσεστε με το πλήκτρο `Tab`.
+Το BetterCode περιλαμβάνει δύο ενσωματωμένους πράκτορες μεταξύ των οποίων μπορείτε να εναλλάσσεστε με το πλήκτρο `Tab`.
 
 - **build** - Προεπιλεγμένος πράκτορας με πλήρη πρόσβαση για εργασία πάνω σε κώδικα
 - **plan** - Πράκτορας μόνο ανάγνωσης για ανάλυση και εξερεύνηση κώδικα
@@ -110,20 +110,20 @@ XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://nanocode.ai/install | bash
 Περιλαμβάνεται επίσης ένας **general** υποπράκτορας για σύνθετες αναζητήσεις και πολυβηματικές διεργασίες.
 Χρησιμοποιείται εσωτερικά και μπορεί να κληθεί χρησιμοποιώντας `@general` στα μηνύματα.
 
-Μάθετε περισσότερα για τους [πράκτορες](https://nanocode.ai/docs/agents).
+Μάθετε περισσότερα για τους [πράκτορες](https://bettercode.ai/docs/agents).
 
 ### Οδηγός Χρήσης
 
-Για περισσότερες πληροφορίες σχετικά με τη ρύθμιση του NanoCode, [**πλοηγήσου στον οδηγό χρήσης μας**](https://nanocode.ai/docs).
+Για περισσότερες πληροφορίες σχετικά με τη ρύθμιση του BetterCode, [**πλοηγήσου στον οδηγό χρήσης μας**](https://bettercode.ai/docs).
 
 ### Συνεισφορά
 
-Εάν ενδιαφέρεσαι να συνεισφέρεις στο NanoCode, διαβάστε τα [οδηγό χρήσης συνεισφοράς](./CONTRIBUTING.md) πριν υποβάλεις ένα pull request.
+Εάν ενδιαφέρεσαι να συνεισφέρεις στο BetterCode, διαβάστε τα [οδηγό χρήσης συνεισφοράς](./CONTRIBUTING.md) πριν υποβάλεις ένα pull request.
 
-### Δημιουργία πάνω στο NanoCode
+### Δημιουργία πάνω στο BetterCode
 
-Εάν εργάζεσαι σε ένα έργο σχετικό με το NanoCode και χρησιμοποιείτε το "nanocode" ως μέρος του ονόματός του, για παράδειγμα "nanocode-dashboard" ή "nanocode-mobile", πρόσθεσε μια σημείωση στο README σας για να διευκρινίσεις ότι δεν είναι κατασκευασμένο από την ομάδα του NanoCode και δεν έχει καμία σχέση με εμάς.
+Εάν εργάζεσαι σε ένα έργο σχετικό με το BetterCode και χρησιμοποιείτε το "bettercode" ως μέρος του ονόματός του, για παράδειγμα "bettercode-dashboard" ή "bettercode-mobile", πρόσθεσε μια σημείωση στο README σας για να διευκρινίσεις ότι δεν είναι κατασκευασμένο από την ομάδα του BetterCode και δεν έχει καμία σχέση με εμάς.
 
 ---
 
-**Γίνε μέλος της κοινότητάς μας** [Discord](https://discord.gg/nanocode) | [X.com](https://x.com/nanocode)
+**Γίνε μέλος της κοινότητάς μας** [Discord](https://discord.gg/bettercode) | [X.com](https://x.com/bettercode)

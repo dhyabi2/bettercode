@@ -3,7 +3,7 @@ import * as mod from "./icon"
 import { create } from "../storybook/scaffold"
 
 const docs = `### Overview
-Inline icon renderer using the built-in NanoCode icon set.
+Inline icon renderer using the built-in BetterCode icon set.
 
 Use with \`Button\`, \`IconButton\`, and menu items.
 

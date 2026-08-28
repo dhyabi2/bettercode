@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://nanocode.ai">
+  <a href="https://bettercode.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="NanoCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="BetterCode logo">
     </picture>
   </a>
 </p>
 <p align="center">Der Open-Source KI-Coding-Agent.</p>
 <p align="center">
-  <a href="https://nanocode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/nanocode-ai"><img alt="npm" src="https://img.shields.io/npm/v/nanocode-ai?style=flat-square" /></a>
-  <a href="https://github.com/dhyabi2/nanocode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/nanocode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://bettercode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/bettercode-ai"><img alt="npm" src="https://img.shields.io/npm/v/bettercode-ai?style=flat-square" /></a>
+  <a href="https://github.com/dhyabi2/bettercode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/bettercode/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -39,7 +39,7 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![NanoCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://nanocode.ai)
+[![BetterCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://bettercode.ai)
 
 ---
 
@@ -47,18 +47,18 @@
 
 ```bash
 # YOLO
-curl -fsSL https://nanocode.ai/install | bash
+curl -fsSL https://bettercode.ai/install | bash
 
 # Paketmanager
-npm i -g nanocode-ai@latest        # oder bun/pnpm/yarn
-scoop install nanocode             # Windows
-choco install nanocode             # Windows
-brew install dhyabi2/tap/nanocode # macOS und Linux (empfohlen, immer aktuell)
-brew install nanocode              # macOS und Linux (offizielle Brew-Formula, seltener aktualisiert)
-sudo pacman -S nanocode            # Arch Linux (Stable)
-paru -S nanocode-bin               # Arch Linux (Latest from AUR)
-mise use -g nanocode               # jedes Betriebssystem
-nix run nixpkgs#nanocode           # oder github:dhyabi2/nanocode für den neuesten dev-Branch
+npm i -g bettercode-ai@latest        # oder bun/pnpm/yarn
+scoop install bettercode             # Windows
+choco install bettercode             # Windows
+brew install dhyabi2/tap/bettercode # macOS und Linux (empfohlen, immer aktuell)
+brew install bettercode              # macOS und Linux (offizielle Brew-Formula, seltener aktualisiert)
+sudo pacman -S bettercode            # Arch Linux (Stable)
+paru -S bettercode-bin               # Arch Linux (Latest from AUR)
+mise use -g bettercode               # jedes Betriebssystem
+nix run nixpkgs#bettercode           # oder github:dhyabi2/bettercode für den neuesten dev-Branch
 ```
 
 > [!TIP]
@@ -66,40 +66,40 @@ nix run nixpkgs#nanocode           # oder github:dhyabi2/nanocode für den neues
 
 ### Desktop-App (BETA)
 
-NanoCode ist auch als Desktop-Anwendung verfügbar. Lade sie direkt von der [Releases-Seite](https://github.com/dhyabi2/nanocode/releases) oder [nanocode.ai/download](https://nanocode.ai/download) herunter.
+BetterCode ist auch als Desktop-Anwendung verfügbar. Lade sie direkt von der [Releases-Seite](https://github.com/dhyabi2/bettercode/releases) oder [bettercode.ai/download](https://bettercode.ai/download) herunter.
 
 | Plattform             | Download                           |
 | --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `nanocode-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `nanocode-desktop-mac-x64.dmg`     |
-| Windows               | `nanocode-desktop-windows-x64.exe` |
+| macOS (Apple Silicon) | `bettercode-desktop-mac-arm64.dmg`   |
+| macOS (Intel)         | `bettercode-desktop-mac-x64.dmg`     |
+| Windows               | `bettercode-desktop-windows-x64.exe` |
 | Linux                 | `.deb`, `.rpm` oder AppImage       |
 
 ```bash
 # macOS (Homebrew)
-brew install --cask nanocode-desktop
+brew install --cask bettercode-desktop
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/nanocode-desktop
+scoop bucket add extras; scoop install extras/bettercode-desktop
 ```
 
 #### Installationsverzeichnis
 
 Das Installationsskript beachtet die folgende Prioritätsreihenfolge für den Installationspfad:
 
-1. `$NANOCODE_INSTALL_DIR` - Benutzerdefiniertes Installationsverzeichnis
+1. `$BETTERCODE_INSTALL_DIR` - Benutzerdefiniertes Installationsverzeichnis
 2. `$XDG_BIN_DIR` - XDG Base Directory Specification-konformer Pfad
 3. `$HOME/bin` - Standard-Binärverzeichnis des Users (falls vorhanden oder erstellbar)
-4. `$HOME/.nanocode/bin` - Standard-Fallback
+4. `$HOME/.bettercode/bin` - Standard-Fallback
 
 ```bash
 # Beispiele
-NANOCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://nanocode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://nanocode.ai/install | bash
+BETTERCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://bettercode.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://bettercode.ai/install | bash
 ```
 
 ### Agents
 
-NanoCode enthält zwei eingebaute Agents, zwischen denen du mit der `Tab`-Taste wechseln kannst.
+BetterCode enthält zwei eingebaute Agents, zwischen denen du mit der `Tab`-Taste wechseln kannst.
 
 - **build** - Standard-Agent mit vollem Zugriff für Entwicklungsarbeit
 - **plan** - Nur-Lese-Agent für Analyse und Code-Exploration
@@ -110,20 +110,20 @@ NanoCode enthält zwei eingebaute Agents, zwischen denen du mit der `Tab`-Taste 
 Außerdem ist ein **general**-Subagent für komplexe Suchen und mehrstufige Aufgaben enthalten.
 Dieser wird intern genutzt und kann in Nachrichten mit `@general` aufgerufen werden.
 
-Mehr dazu unter [Agents](https://nanocode.ai/docs/agents).
+Mehr dazu unter [Agents](https://bettercode.ai/docs/agents).
 
 ### Dokumentation
 
-Mehr Infos zur Konfiguration von NanoCode findest du in unseren [**Docs**](https://nanocode.ai/docs).
+Mehr Infos zur Konfiguration von BetterCode findest du in unseren [**Docs**](https://bettercode.ai/docs).
 
 ### Beitragen
 
-Wenn du zu NanoCode beitragen möchtest, lies bitte unsere [Contributing Docs](./CONTRIBUTING.md), bevor du einen Pull Request einreichst.
+Wenn du zu BetterCode beitragen möchtest, lies bitte unsere [Contributing Docs](./CONTRIBUTING.md), bevor du einen Pull Request einreichst.
 
-### Auf NanoCode aufbauen
+### Auf BetterCode aufbauen
 
-Wenn du an einem Projekt arbeitest, das mit NanoCode zusammenhängt und "nanocode" als Teil seines Namens verwendet (z.B. "nanocode-dashboard" oder "nanocode-mobile"), füge bitte einen Hinweis in deine README ein, dass es nicht vom NanoCode-Team gebaut wird und nicht in irgendeiner Weise mit uns verbunden ist.
+Wenn du an einem Projekt arbeitest, das mit BetterCode zusammenhängt und "bettercode" als Teil seines Namens verwendet (z.B. "bettercode-dashboard" oder "bettercode-mobile"), füge bitte einen Hinweis in deine README ein, dass es nicht vom BetterCode-Team gebaut wird und nicht in irgendeiner Weise mit uns verbunden ist.
 
 ---
 
-**Tritt unserer Community bei** [Discord](https://discord.gg/nanocode) | [X.com](https://x.com/nanocode)
+**Tritt unserer Community bei** [Discord](https://discord.gg/bettercode) | [X.com](https://x.com/bettercode)

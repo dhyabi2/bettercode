@@ -1,19 +1,19 @@
-import { Pty } from "@nanocode-ai/core/pty"
-import { PtyProtocol } from "@nanocode-ai/core/pty/protocol"
-import { PtyTicket } from "@nanocode-ai/core/pty/ticket"
-import { Location } from "@nanocode-ai/core/location"
+import { Pty } from "@bettercode-ai/core/pty"
+import { PtyProtocol } from "@bettercode-ai/core/pty/protocol"
+import { PtyTicket } from "@bettercode-ai/core/pty/ticket"
+import { Location } from "@bettercode-ai/core/location"
 import { Effect, Queue } from "effect"
 import { HttpServerRequest, HttpServerResponse } from "effect/unstable/http"
 import { HttpApiBuilder, HttpApiSchema } from "effect/unstable/httpapi"
 import * as Socket from "effect/unstable/socket/Socket"
 import { Api } from "../api"
 import { CorsConfig, isAllowedRequestOrigin } from "../cors"
-import { ForbiddenError, PtyNotFoundError } from "@nanocode-ai/protocol/errors"
+import { ForbiddenError, PtyNotFoundError } from "@bettercode-ai/protocol/errors"
 import {
   PTY_CONNECT_TICKET_QUERY,
   PTY_CONNECT_TOKEN_HEADER,
   PTY_CONNECT_TOKEN_HEADER_VALUE,
-} from "@nanocode-ai/protocol/groups/pty"
+} from "@bettercode-ai/protocol/groups/pty"
 import { response } from "../location"
 import { PtyEnvironment } from "../pty-environment"
 

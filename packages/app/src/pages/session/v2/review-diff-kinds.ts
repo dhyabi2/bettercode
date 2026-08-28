@@ -1,5 +1,5 @@
-import type { SnapshotFileDiff, VcsFileDiff } from "@nanocode-ai/sdk/v2"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
+import type { SnapshotFileDiff, VcsFileDiff } from "@bettercode-ai/sdk/v2"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
 import type { Kind } from "@/components/file-tree-v2"
 import { normalizeFileTreeV2Path } from "@/components/file-tree-v2-model"
 

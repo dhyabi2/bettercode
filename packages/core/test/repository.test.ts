@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
 import path from "path"
 import { pathToFileURL } from "url"
-import { Repository } from "@nanocode-ai/core/repository"
+import { Repository } from "@bettercode-ai/core/repository"
 
 describe("Repository", () => {
   test("parses github shorthand and builds an explicit-root cache path", () => {

@@ -73,7 +73,7 @@ async function fetchReleases(): Promise<Release[]> {
   const per = 100
 
   while (true) {
-    const url = `https://api.github.com/repos/dhyabi2/nanocode/releases?page=${page}&per_page=${per}`
+    const url = `https://api.github.com/repos/dhyabi2/bettercode/releases?page=${page}&per_page=${per}`
 
     const response = await fetch(url)
     if (!response.ok) {
@@ -188,15 +188,15 @@ async function save(githubTotal: number, npmDownloads: number) {
   )
 }
 
-console.log("Fetching GitHub releases for dhyabi2/nanocode...\n")
+console.log("Fetching GitHub releases for dhyabi2/bettercode...\n")
 
 const releases = await fetchReleases()
 console.log(`\nFetched ${releases.length} releases total\n`)
 
 const { total: githubTotal } = calculate(releases)
 
-console.log("Fetching npm all-time downloads for nanocode-ai...\n")
-const npmDownloads = await fetchNpmDownloads("nanocode-ai")
+console.log("Fetching npm all-time downloads for bettercode-ai...\n")
+const npmDownloads = await fetchNpmDownloads("bettercode-ai")
 console.log(`Fetched npm all-time downloads: ${npmDownloads.toLocaleString()}\n`)
 
 await save(githubTotal, npmDownloads)

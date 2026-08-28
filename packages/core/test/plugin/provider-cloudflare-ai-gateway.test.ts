@@ -1,11 +1,11 @@
-import { AISDK } from "@nanocode-ai/core/aisdk"
+import { AISDK } from "@bettercode-ai/core/aisdk"
 import { describe, expect, mock } from "bun:test"
 import { Effect } from "effect"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { PluginHost } from "@nanocode-ai/core/plugin/host"
-import { CloudflareAIGatewayPlugin } from "@nanocode-ai/core/plugin/provider/cloudflare-ai-gateway"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { PluginHost } from "@bettercode-ai/core/plugin/host"
+import { CloudflareAIGatewayPlugin } from "@bettercode-ai/core/plugin/provider/cloudflare-ai-gateway"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
 
@@ -144,7 +144,7 @@ describe("CloudflareAIGatewayPlugin", () => {
           package: "ai-gateway-provider",
           options: {
             name: "cloudflare-ai-gateway",
-            metadata: { invoked_by: "test", project: "nanocode" },
+            metadata: { invoked_by: "test", project: "bettercode" },
             cacheTtl: 300,
             cacheKey: "cache-key",
             skipCache: true,
@@ -158,13 +158,13 @@ describe("CloudflareAIGatewayPlugin", () => {
           gateway: "env-gateway",
           apiKey: "env-token",
           options: {
-            metadata: { invoked_by: "test", project: "nanocode" },
+            metadata: { invoked_by: "test", project: "bettercode" },
             cacheTtl: 300,
             cacheKey: "cache-key",
             skipCache: true,
             collectLog: false,
             headers: {
-              "User-Agent": expect.stringContaining("nanocode/"),
+              "User-Agent": expect.stringContaining("bettercode/"),
             },
           },
         })
@@ -189,13 +189,13 @@ describe("CloudflareAIGatewayPlugin", () => {
           options: {
             name: "cloudflare-ai-gateway",
             headers: {
-              "cf-aig-metadata": JSON.stringify({ invoked_by: "header", project: "nanocode" }),
+              "cf-aig-metadata": JSON.stringify({ invoked_by: "header", project: "bettercode" }),
             },
           },
         })
 
         expect(aiGatewayCalls[0]?.options).toMatchObject({
-          metadata: { invoked_by: "header", project: "nanocode" },
+          metadata: { invoked_by: "header", project: "bettercode" },
         })
       }),
     ),

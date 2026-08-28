@@ -1,8 +1,8 @@
-import { SessionV2 } from "@nanocode-ai/core/session"
+import { SessionV2 } from "@bettercode-ai/core/session"
 import { DateTime, Effect, Stream } from "effect"
 import { HttpApiBuilder, HttpApiSchema } from "effect/unstable/httpapi"
 import { Api } from "../api"
-import { SessionsCursor } from "@nanocode-ai/protocol/groups/session"
+import { SessionsCursor } from "@bettercode-ai/protocol/groups/session"
 import {
   ConflictError,
   InvalidCursorError,
@@ -10,8 +10,8 @@ import {
   ServiceUnavailableError,
   SessionNotFoundError,
   UnknownError,
-} from "@nanocode-ai/protocol/errors"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
+} from "@bettercode-ai/protocol/errors"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
 
 const DefaultSessionsLimit = 50
 const DefaultSessionHistoryLimit = 50

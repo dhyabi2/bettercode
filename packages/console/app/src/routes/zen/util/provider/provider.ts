@@ -1,4 +1,4 @@
-import { ZenData } from "@nanocode-ai/console-core/model.js"
+import { ZenData } from "@bettercode-ai/console-core/model.js"
 import {
   fromAnthropicChunk,
   fromAnthropicRequest,

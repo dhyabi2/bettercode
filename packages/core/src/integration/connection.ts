@@ -1,6 +1,6 @@
 export * as IntegrationConnection from "./connection"
 
-import { Connection } from "@nanocode-ai/schema/connection"
+import { Connection } from "@bettercode-ai/schema/connection"
 
 export const CredentialInfo = Connection.CredentialInfo
 export type CredentialInfo = Connection.CredentialInfo

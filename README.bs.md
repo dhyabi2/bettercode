@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://nanocode.ai">
+  <a href="https://bettercode.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="NanoCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="BetterCode logo">
     </picture>
   </a>
 </p>
-<p align="center">NanoCode je open source AI agent za programiranje.</p>
+<p align="center">BetterCode je open source AI agent za programiranje.</p>
 <p align="center">
-  <a href="https://nanocode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/nanocode-ai"><img alt="npm" src="https://img.shields.io/npm/v/nanocode-ai?style=flat-square" /></a>
-  <a href="https://github.com/dhyabi2/nanocode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/nanocode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://bettercode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/bettercode-ai"><img alt="npm" src="https://img.shields.io/npm/v/bettercode-ai?style=flat-square" /></a>
+  <a href="https://github.com/dhyabi2/bettercode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/bettercode/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -39,7 +39,7 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![NanoCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://nanocode.ai)
+[![BetterCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://bettercode.ai)
 
 ---
 
@@ -47,18 +47,18 @@
 
 ```bash
 # YOLO
-curl -fsSL https://nanocode.ai/install | bash
+curl -fsSL https://bettercode.ai/install | bash
 
 # Package manageri
-npm i -g nanocode-ai@latest        # ili bun/pnpm/yarn
-scoop install nanocode             # Windows
-choco install nanocode             # Windows
-brew install dhyabi2/tap/nanocode # macOS i Linux (preporučeno, uvijek ažurno)
-brew install nanocode              # macOS i Linux (zvanična brew formula, rjeđe se ažurira)
-sudo pacman -S nanocode            # Arch Linux (Stable)
-paru -S nanocode-bin               # Arch Linux (Latest from AUR)
-mise use -g nanocode               # Bilo koji OS
-nix run nixpkgs#nanocode           # ili github:dhyabi2/nanocode za najnoviji dev branch
+npm i -g bettercode-ai@latest        # ili bun/pnpm/yarn
+scoop install bettercode             # Windows
+choco install bettercode             # Windows
+brew install dhyabi2/tap/bettercode # macOS i Linux (preporučeno, uvijek ažurno)
+brew install bettercode              # macOS i Linux (zvanična brew formula, rjeđe se ažurira)
+sudo pacman -S bettercode            # Arch Linux (Stable)
+paru -S bettercode-bin               # Arch Linux (Latest from AUR)
+mise use -g bettercode               # Bilo koji OS
+nix run nixpkgs#bettercode           # ili github:dhyabi2/bettercode za najnoviji dev branch
 ```
 
 > [!TIP]
@@ -66,40 +66,40 @@ nix run nixpkgs#nanocode           # ili github:dhyabi2/nanocode za najnoviji de
 
 ### Desktop aplikacija (BETA)
 
-NanoCode je dostupan i kao desktop aplikacija. Preuzmi je direktno sa [stranice izdanja](https://github.com/dhyabi2/nanocode/releases) ili sa [nanocode.ai/download](https://nanocode.ai/download).
+BetterCode je dostupan i kao desktop aplikacija. Preuzmi je direktno sa [stranice izdanja](https://github.com/dhyabi2/bettercode/releases) ili sa [bettercode.ai/download](https://bettercode.ai/download).
 
 | Platforma             | Preuzimanje                        |
 | --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `nanocode-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `nanocode-desktop-mac-x64.dmg`     |
-| Windows               | `nanocode-desktop-windows-x64.exe` |
+| macOS (Apple Silicon) | `bettercode-desktop-mac-arm64.dmg`   |
+| macOS (Intel)         | `bettercode-desktop-mac-x64.dmg`     |
+| Windows               | `bettercode-desktop-windows-x64.exe` |
 | Linux                 | `.deb`, `.rpm`, ili AppImage       |
 
 ```bash
 # macOS (Homebrew)
-brew install --cask nanocode-desktop
+brew install --cask bettercode-desktop
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/nanocode-desktop
+scoop bucket add extras; scoop install extras/bettercode-desktop
 ```
 
 #### Instalacijski direktorij
 
 Instalacijska skripta koristi sljedeći redoslijed prioriteta za putanju instalacije:
 
-1. `$NANOCODE_INSTALL_DIR` - Prilagođeni instalacijski direktorij
+1. `$BETTERCODE_INSTALL_DIR` - Prilagođeni instalacijski direktorij
 2. `$XDG_BIN_DIR` - Putanja usklađena sa XDG Base Directory specifikacijom
 3. `$HOME/bin` - Standardni korisnički bin direktorij (ako postoji ili se može kreirati)
-4. `$HOME/.nanocode/bin` - Podrazumijevana rezervna lokacija
+4. `$HOME/.bettercode/bin` - Podrazumijevana rezervna lokacija
 
 ```bash
 # Primjeri
-NANOCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://nanocode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://nanocode.ai/install | bash
+BETTERCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://bettercode.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://bettercode.ai/install | bash
 ```
 
 ### Agenti
 
-NanoCode uključuje dva ugrađena agenta između kojih možeš prebacivati tasterom `Tab`.
+BetterCode uključuje dva ugrađena agenta između kojih možeš prebacivati tasterom `Tab`.
 
 - **build** - Podrazumijevani agent sa punim pristupom za razvoj
 - **plan** - Agent samo za čitanje za analizu i istraživanje koda
@@ -110,20 +110,20 @@ NanoCode uključuje dva ugrađena agenta između kojih možeš prebacivati taste
 Uključen je i **general** pod-agent za složene pretrage i višekoračne zadatke.
 Koristi se interno i može se pozvati pomoću `@general` u porukama.
 
-Saznaj više o [agentima](https://nanocode.ai/docs/agents).
+Saznaj više o [agentima](https://bettercode.ai/docs/agents).
 
 ### Dokumentacija
 
-Za više informacija o konfiguraciji NanoCode-a, [**pogledaj dokumentaciju**](https://nanocode.ai/docs).
+Za više informacija o konfiguraciji BetterCode-a, [**pogledaj dokumentaciju**](https://bettercode.ai/docs).
 
 ### Doprinosi
 
-Ako želiš doprinositi NanoCode-u, pročitaj [upute za doprinošenje](./CONTRIBUTING.md) prije slanja pull requesta.
+Ako želiš doprinositi BetterCode-u, pročitaj [upute za doprinošenje](./CONTRIBUTING.md) prije slanja pull requesta.
 
-### Gradnja na NanoCode-u
+### Gradnja na BetterCode-u
 
-Ako radiš na projektu koji je povezan s NanoCode-om i koristi "nanocode" kao dio naziva, npr. "nanocode-dashboard" ili "nanocode-mobile", dodaj napomenu u svoj README da projekat nije napravio NanoCode tim i da nije povezan s nama.
+Ako radiš na projektu koji je povezan s BetterCode-om i koristi "bettercode" kao dio naziva, npr. "bettercode-dashboard" ili "bettercode-mobile", dodaj napomenu u svoj README da projekat nije napravio BetterCode tim i da nije povezan s nama.
 
 ---
 
-**Pridruži se našoj zajednici** [Discord](https://discord.gg/nanocode) | [X.com](https://x.com/nanocode)
+**Pridruži se našoj zajednici** [Discord](https://discord.gg/bettercode) | [X.com](https://x.com/bettercode)

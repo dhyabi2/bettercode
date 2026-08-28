@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://nanocode.ai">
+  <a href="https://bettercode.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="NanoCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="BetterCode logo">
     </picture>
   </a>
 </p>
 <p align="center">开源的 AI Coding Agent。</p>
 <p align="center">
-  <a href="https://nanocode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/nanocode-ai"><img alt="npm" src="https://img.shields.io/npm/v/nanocode-ai?style=flat-square" /></a>
-  <a href="https://github.com/dhyabi2/nanocode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/nanocode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://bettercode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/bettercode-ai"><img alt="npm" src="https://img.shields.io/npm/v/bettercode-ai?style=flat-square" /></a>
+  <a href="https://github.com/dhyabi2/bettercode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/bettercode/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -39,7 +39,7 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![NanoCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://nanocode.ai)
+[![BetterCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://bettercode.ai)
 
 ---
 
@@ -47,18 +47,18 @@
 
 ```bash
 # 直接安装 (YOLO)
-curl -fsSL https://nanocode.ai/install | bash
+curl -fsSL https://bettercode.ai/install | bash
 
 # 软件包管理器
-npm i -g nanocode-ai@latest        # 也可使用 bun/pnpm/yarn
-scoop install nanocode             # Windows
-choco install nanocode             # Windows
-brew install dhyabi2/tap/nanocode # macOS 和 Linux（推荐，始终保持最新）
-brew install nanocode              # macOS 和 Linux（官方 brew formula，更新频率较低）
-sudo pacman -S nanocode            # Arch Linux (Stable)
-paru -S nanocode-bin               # Arch Linux (Latest from AUR)
-mise use -g nanocode               # 任意系统
-nix run nixpkgs#nanocode           # 或用 github:dhyabi2/nanocode 获取最新 dev 分支
+npm i -g bettercode-ai@latest        # 也可使用 bun/pnpm/yarn
+scoop install bettercode             # Windows
+choco install bettercode             # Windows
+brew install dhyabi2/tap/bettercode # macOS 和 Linux（推荐，始终保持最新）
+brew install bettercode              # macOS 和 Linux（官方 brew formula，更新频率较低）
+sudo pacman -S bettercode            # Arch Linux (Stable)
+paru -S bettercode-bin               # Arch Linux (Latest from AUR)
+mise use -g bettercode               # 任意系统
+nix run nixpkgs#bettercode           # 或用 github:dhyabi2/bettercode 获取最新 dev 分支
 ```
 
 > [!TIP]
@@ -66,40 +66,40 @@ nix run nixpkgs#nanocode           # 或用 github:dhyabi2/nanocode 获取最新
 
 ### 桌面应用程序 (BETA)
 
-NanoCode 也提供桌面版应用。可直接从 [发布页 (releases page)](https://github.com/dhyabi2/nanocode/releases) 或 [nanocode.ai/download](https://nanocode.ai/download) 下载。
+BetterCode 也提供桌面版应用。可直接从 [发布页 (releases page)](https://github.com/dhyabi2/bettercode/releases) 或 [bettercode.ai/download](https://bettercode.ai/download) 下载。
 
 | 平台                  | 下载文件                           |
 | --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `nanocode-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `nanocode-desktop-mac-x64.dmg`     |
-| Windows               | `nanocode-desktop-windows-x64.exe` |
+| macOS (Apple Silicon) | `bettercode-desktop-mac-arm64.dmg`   |
+| macOS (Intel)         | `bettercode-desktop-mac-x64.dmg`     |
+| Windows               | `bettercode-desktop-windows-x64.exe` |
 | Linux                 | `.deb`、`.rpm` 或 AppImage         |
 
 ```bash
 # macOS (Homebrew Cask)
-brew install --cask nanocode-desktop
+brew install --cask bettercode-desktop
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/nanocode-desktop
+scoop bucket add extras; scoop install extras/bettercode-desktop
 ```
 
 #### 安装目录
 
 安装脚本按照以下优先级决定安装路径：
 
-1. `$NANOCODE_INSTALL_DIR` - 自定义安装目录
+1. `$BETTERCODE_INSTALL_DIR` - 自定义安装目录
 2. `$XDG_BIN_DIR` - 符合 XDG 基础目录规范的路径
 3. `$HOME/bin` - 如果存在或可创建的用户二进制目录
-4. `$HOME/.nanocode/bin` - 默认备用路径
+4. `$HOME/.bettercode/bin` - 默认备用路径
 
 ```bash
 # 示例
-NANOCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://nanocode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://nanocode.ai/install | bash
+BETTERCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://bettercode.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://bettercode.ai/install | bash
 ```
 
 ### Agents
 
-NanoCode 内置两种 Agent，可用 `Tab` 键快速切换：
+BetterCode 内置两种 Agent，可用 `Tab` 键快速切换：
 
 - **build** - 默认模式，具备完整权限，适合开发工作
 - **plan** - 只读模式，适合代码分析与探索
@@ -109,20 +109,20 @@ NanoCode 内置两种 Agent，可用 `Tab` 键快速切换：
 
 另外还包含一个 **general** 子 Agent，用于复杂搜索和多步任务，内部使用，也可在消息中输入 `@general` 调用。
 
-了解更多 [Agents](https://nanocode.ai/docs/agents) 相关信息。
+了解更多 [Agents](https://bettercode.ai/docs/agents) 相关信息。
 
 ### 文档
 
-更多配置说明请查看我们的 [**官方文档**](https://nanocode.ai/docs)。
+更多配置说明请查看我们的 [**官方文档**](https://bettercode.ai/docs)。
 
 ### 参与贡献
 
 如有兴趣贡献代码，请在提交 PR 前阅读 [贡献指南 (Contributing Docs)](./CONTRIBUTING.md)。
 
-### 基于 NanoCode 进行开发
+### 基于 BetterCode 进行开发
 
-如果你在项目名中使用了 “nanocode”（如 “nanocode-dashboard” 或 “nanocode-mobile”），请在 README 里注明该项目不是 NanoCode 团队官方开发，且不存在隶属关系。
+如果你在项目名中使用了 “bettercode”（如 “bettercode-dashboard” 或 “bettercode-mobile”），请在 README 里注明该项目不是 BetterCode 团队官方开发，且不存在隶属关系。
 
 ---
 
-**加入我们的社区** [飞书](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=52ao9352-5623-4fa0-b7dd-3407c392c1af&qr_code=true) | [X.com](https://x.com/nanocode)
+**加入我们的社区** [飞书](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=52ao9352-5623-4fa0-b7dd-3407c392c1af&qr_code=true) | [X.com](https://x.com/bettercode)

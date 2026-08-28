@@ -1,6 +1,6 @@
 import { useFile } from "@/context/file"
-import { FileIcon } from "@nanocode-ai/ui/file-icon"
-import "@nanocode-ai/ui/v2/file-tree-v2.css"
+import { FileIcon } from "@bettercode-ai/ui/file-icon"
+import "@bettercode-ai/ui/v2/file-tree-v2.css"
 import {
   createEffect,
   createMemo,
@@ -12,8 +12,8 @@ import {
   type ParentProps,
 } from "solid-js"
 import { Dynamic } from "solid-js/web"
-import type { FileNode } from "@nanocode-ai/sdk/v2"
-import { Icon } from "@nanocode-ai/ui/v2/icon"
+import type { FileNode } from "@bettercode-ai/sdk/v2"
+import { Icon } from "@bettercode-ai/ui/v2/icon"
 import { pathToFileUrl, withFileDragImage, type Kind } from "@/components/file-tree"
 import { createVirtualizer, defaultRangeExtractor } from "@tanstack/solid-virtual"
 import {

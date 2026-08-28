@@ -1,7 +1,7 @@
 export * as PtyTicket from "./ticket"
 
 import { WorkspaceV2 } from "../workspace"
-import { PtyTicket } from "@nanocode-ai/schema/pty-ticket"
+import { PtyTicket } from "@bettercode-ai/schema/pty-ticket"
 import { PtyID } from "./schema"
 import { Cache, Context, Duration, Effect, Layer } from "effect"
 import { makeGlobalNode } from "../effect/app-node"
@@ -22,7 +22,7 @@ export interface Interface {
   consume(input: Scope & { readonly ticket: string }): Effect.Effect<boolean>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/PtyTicket") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/PtyTicket") {}
 
 function matches(record: Scope, input: Scope) {
   return (

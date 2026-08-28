@@ -1,15 +1,15 @@
 import { expect, test } from "@playwright/test"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectAppVisible } from "../utils/waits"
 
-const directory = "C:/NanoCode/NewProject"
+const directory = "C:/BetterCode/NewProject"
 
-test("creates a session in a new project, connects NanoCode Go, and selects its model", async ({ page }) => {
+test("creates a session in a new project, connects BetterCode Go, and selects its model", async ({ page }) => {
   let connectedGo = false
   let pendingGo = false
   const connections: Array<{ integrationID: string; body: unknown }> = []
 
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     directory,
     project: {
       id: "proj_model_selection_flow",
@@ -22,8 +22,8 @@ test("creates a session in a new project, connects NanoCode Go, and selects its 
     provider: () => ({
       all: [
         {
-          id: "nanocode",
-          name: "NanoCode",
+          id: "bettercode",
+          name: "BetterCode",
           models: {
             "free-model": {
               id: "free-model",
@@ -34,8 +34,8 @@ test("creates a session in a new project, connects NanoCode Go, and selects its 
           },
         },
         {
-          id: "nanocode-go",
-          name: "NanoCode Go",
+          id: "bettercode-go",
+          name: "BetterCode Go",
           models: {
             "go-model-1": {
               id: "go-model-1",
@@ -46,13 +46,13 @@ test("creates a session in a new project, connects NanoCode Go, and selects its 
           },
         },
       ],
-      connected: connectedGo ? ["nanocode", "nanocode-go"] : ["nanocode"],
-      default: { providerID: "nanocode", modelID: "free-model" },
+      connected: connectedGo ? ["bettercode", "bettercode-go"] : ["bettercode"],
+      default: { providerID: "bettercode", modelID: "free-model" },
     }),
-    integrationMethods: { "nanocode-go": [{ type: "api", label: "API key" }] },
+    integrationMethods: { "bettercode-go": [{ type: "api", label: "API key" }] },
     onConnectKey: (input) => {
       connections.push(input)
-      if (input.integrationID === "nanocode-go") pendingGo = true
+      if (input.integrationID === "bettercode-go") pendingGo = true
     },
     onInstanceDispose: () => {
       if (pendingGo) connectedGo = true
@@ -65,7 +65,7 @@ test("creates a session in a new project, connects NanoCode Go, and selects its 
   })
   await page.addInitScript(() => {
     localStorage.setItem("settings.v3", JSON.stringify({ general: { newLayoutDesigns: true } }))
-    localStorage.setItem("nanocode.global.dat:server", JSON.stringify({ projects: { local: [] } }))
+    localStorage.setItem("bettercode.global.dat:server", JSON.stringify({ projects: { local: [] } }))
   })
 
   await page.goto("/")
@@ -79,17 +79,17 @@ test("creates a session in a new project, connects NanoCode Go, and selects its 
 
   const modelControl = page.locator('[data-action="prompt-model"]')
   await modelControl.click()
-  await expect(page.locator('[data-section="free-models"]')).toContainText("Free models provided by NanoCode")
+  await expect(page.locator('[data-section="free-models"]')).toContainText("Free models provided by BetterCode")
 
-  await page.locator('[data-provider-id="nanocode-go"]').click()
+  await page.locator('[data-provider-id="bettercode-go"]').click()
   await page.locator('[data-input="provider-api-key"]').fill("mock-go-api-key")
   await page.locator('[data-action="provider-connect-submit"]').click()
   await expect(page.locator('[data-component="dialog-v2"]')).toHaveCount(0)
-  expect(connections).toEqual([{ integrationID: "nanocode-go", body: { type: "api", key: "mock-go-api-key" } }])
+  expect(connections).toEqual([{ integrationID: "bettercode-go", body: { type: "api", key: "mock-go-api-key" } }])
 
   await expect(modelControl).toHaveAttribute("data-control-type", "popover")
   await modelControl.click()
-  const goModel = page.locator('[data-option-key="nanocode-go:go-model-1"]')
+  const goModel = page.locator('[data-option-key="bettercode-go:go-model-1"]')
   await expect(goModel).toBeVisible()
   await goModel.click()
 

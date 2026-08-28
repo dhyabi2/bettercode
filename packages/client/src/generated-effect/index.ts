@@ -1,2 +1,2 @@
 export { ClientError } from "./client-error"
-export * as NanoCode from "./client"
+export * as BetterCode from "./client"

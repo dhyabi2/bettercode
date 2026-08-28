@@ -1,17 +1,17 @@
 ---
 title: GitHub
-description: Bruk nanocode i GitHub-problemer og pull-forespørsler.
+description: Bruk bettercode i GitHub-problemer og pull-forespørsler.
 ---
 
-NanoCode integreres med GitHub-arbeidsflyten din. Nevn `/nanocode` eller `/oc` i kommentaren din, og NanoCode vil utføre oppgaver i din GitHub Actions-løper.
+BetterCode integreres med GitHub-arbeidsflyten din. Nevn `/bettercode` eller `/oc` i kommentaren din, og BetterCode vil utføre oppgaver i din GitHub Actions-løper.
 
 ---
 
 ## Funksjoner
 
-- **Triage saker**: Be NanoCode se på en sak og forklare den for deg.
-- **Fiks og implementer**: Be NanoCode om å fikse en sak eller implementere en funksjon. Den vil jobbe i en ny gren og sende inn en PR med alle endringene.
-- **Sikkert**: NanoCode kjører i GitHub-runners.
+- **Triage saker**: Be BetterCode se på en sak og forklare den for deg.
+- **Fiks og implementer**: Be BetterCode om å fikse en sak eller implementere en funksjon. Den vil jobbe i en ny gren og sende inn en PR med alle endringene.
+- **Sikkert**: BetterCode kjører i GitHub-runners.
 
 ---
 
@@ -20,7 +20,7 @@ NanoCode integreres med GitHub-arbeidsflyten din. Nevn `/nanocode` eller `/oc` i
 Kjør følgende kommando i et prosjekt som er et GitHub-repo:
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 Dette vil lede deg gjennom å installere GitHub-appen, lage arbeidsflyten og sette opp secrets (hemmeligheter).
@@ -33,14 +33,14 @@ Eller du kan sette den opp manuelt.
 
 1. **Installer GitHub-appen**
 
-   Gå over til [**github.com/apps/nanocode-agent**](https://github.com/apps/nanocode-agent). Sørg for at den er installert på mållageret.
+   Gå over til [**github.com/apps/bettercode-agent**](https://github.com/apps/bettercode-agent). Sørg for at den er installert på mållageret.
 
 2. **Legg til arbeidsflyten**
 
-   Legg til følgende arbeidsflytfil til `.github/workflows/nanocode.yml` i repoen. Sørg for å sette riktig `model` og nødvendige API-nøkler i `env`.
+   Legg til følgende arbeidsflytfil til `.github/workflows/bettercode.yml` i repoen. Sørg for å sette riktig `model` og nødvendige API-nøkler i `env`.
 
-   ```yml title=".github/workflows/nanocode.yml" {24,26}
-   name: nanocode
+   ```yml title=".github/workflows/bettercode.yml" {24,26}
+   name: bettercode
 
    on:
      issue_comment:
@@ -49,10 +49,10 @@ Eller du kan sette den opp manuelt.
        types: [created]
 
    jobs:
-     nanocode:
+     bettercode:
        if: |
          contains(github.event.comment.body, '/oc') ||
-         contains(github.event.comment.body, '/nanocode')
+         contains(github.event.comment.body, '/bettercode')
        runs-on: ubuntu-latest
        permissions:
          id-token: write
@@ -63,8 +63,8 @@ Eller du kan sette den opp manuelt.
               fetch-depth: 1
               persist-credentials: false
 
-          - name: Run NanoCode
-           uses: dhyabi2/nanocode/github@latest
+          - name: Run BetterCode
+           uses: dhyabi2/bettercode/github@latest
            env:
              ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
            with:
@@ -81,13 +81,13 @@ Eller du kan sette den opp manuelt.
 
 ## Konfigurasjon
 
-- `model`: Modellen som skal brukes med NanoCode. Tar formatet `provider/model`. Dette er **obligatorisk**.
+- `model`: Modellen som skal brukes med BetterCode. Tar formatet `provider/model`. Dette er **obligatorisk**.
 - `agent`: Agenten som skal brukes. Må være en primær agent. Faller tilbake til `default_agent` fra config eller `"build"` hvis ikke funnet.
-- `share`: Om NanoCode-økten skal deles. Standard er **true** for offentlige depoter.
-- `prompt`: Valgfri egendefinert melding for å overstyre standard oppførsel. Bruk dette til å tilpasse hvordan NanoCode behandler forespørsler.
-- `token`: Valgfritt GitHub-tilgangstoken for å utføre operasjoner som å lage kommentarer, foreta endringer og åpne pull-forespørsler. Som standard bruker NanoCode installasjonstilgangstokenet fra NanoCode GitHub-appen, så commits, kommentarer og pull-forespørsler ser ut til å komme fra appen.
+- `share`: Om BetterCode-økten skal deles. Standard er **true** for offentlige depoter.
+- `prompt`: Valgfri egendefinert melding for å overstyre standard oppførsel. Bruk dette til å tilpasse hvordan BetterCode behandler forespørsler.
+- `token`: Valgfritt GitHub-tilgangstoken for å utføre operasjoner som å lage kommentarer, foreta endringer og åpne pull-forespørsler. Som standard bruker BetterCode installasjonstilgangstokenet fra BetterCode GitHub-appen, så commits, kommentarer og pull-forespørsler ser ut til å komme fra appen.
 
-  Alternativt kan du bruke GitHub Action-løperens [innebygde `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) uten å installere NanoCode GitHub-appen. Bare sørg for å gi de nødvendige tillatelsene i arbeidsflyten din:
+  Alternativt kan du bruke GitHub Action-løperens [innebygde `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) uten å installere BetterCode GitHub-appen. Bare sørg for å gi de nødvendige tillatelsene i arbeidsflyten din:
 
   ```yaml
   permissions:
@@ -103,30 +103,30 @@ Eller du kan sette den opp manuelt.
 
 ## Støttede hendelser
 
-NanoCode kan utløses av følgende GitHub-hendelser:
+BetterCode kan utløses av følgende GitHub-hendelser:
 
 | Hendelsestype                 | Utløst av                               | Detaljer                                                                                                                |
 | ----------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `issue_comment`               | Kommentar på sak eller PR               | Nevn `/nanocode` eller `/oc` i kommentaren din. NanoCode leser kontekst og kan opprette grener, åpne PR-er eller svare. |
-| `pull_request_review_comment` | Kommenter spesifikke kodelinjer i en PR | Nevn `/nanocode` eller `/oc` mens du ser gjennom koden. NanoCode mottar filbane, linjenummer og diff-kontekst.          |
-| `issues`                      | Sak åpnet eller redigert                | Utløs NanoCode automatisk når saker opprettes eller endres. Krever `prompt` inngang.                                    |
-| `pull_request`                | PR åpnet eller oppdatert                | Utløs NanoCode automatisk når PR-er åpnes, synkroniseres eller gjenåpnes. Nyttig for automatiserte anmeldelser.         |
-| `schedule`                    | Cron-basert tidsplan                    | Kjør NanoCode etter en tidsplan. Krever `prompt` inngang. Utdata går til logger og PR (ingen sak å kommentere).         |
-| `workflow_dispatch`           | Manuell utløser fra GitHub UI           | Utløs NanoCode på forespørsel via fanen Handlinger. Krever `prompt` inngang. Utdata går til logger og PR-er.            |
+| `issue_comment`               | Kommentar på sak eller PR               | Nevn `/bettercode` eller `/oc` i kommentaren din. BetterCode leser kontekst og kan opprette grener, åpne PR-er eller svare. |
+| `pull_request_review_comment` | Kommenter spesifikke kodelinjer i en PR | Nevn `/bettercode` eller `/oc` mens du ser gjennom koden. BetterCode mottar filbane, linjenummer og diff-kontekst.          |
+| `issues`                      | Sak åpnet eller redigert                | Utløs BetterCode automatisk når saker opprettes eller endres. Krever `prompt` inngang.                                    |
+| `pull_request`                | PR åpnet eller oppdatert                | Utløs BetterCode automatisk når PR-er åpnes, synkroniseres eller gjenåpnes. Nyttig for automatiserte anmeldelser.         |
+| `schedule`                    | Cron-basert tidsplan                    | Kjør BetterCode etter en tidsplan. Krever `prompt` inngang. Utdata går til logger og PR (ingen sak å kommentere).         |
+| `workflow_dispatch`           | Manuell utløser fra GitHub UI           | Utløs BetterCode på forespørsel via fanen Handlinger. Krever `prompt` inngang. Utdata går til logger og PR-er.            |
 
 ### Eksempel på tidsplan
 
-Kjør NanoCode på en tidsplan for å utføre automatiserte oppgaver:
+Kjør BetterCode på en tidsplan for å utføre automatiserte oppgaver:
 
-```yaml title=".github/workflows/nanocode-scheduled.yml"
-name: Scheduled NanoCode Task
+```yaml title=".github/workflows/bettercode-scheduled.yml"
+name: Scheduled BetterCode Task
 
 on:
   schedule:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  nanocode:
+  bettercode:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -139,8 +139,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run NanoCode
-        uses: dhyabi2/nanocode/github@latest
+      - name: Run BetterCode
+        uses: dhyabi2/bettercode/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         with:
@@ -150,7 +150,7 @@ jobs:
             If you find issues worth addressing, open an issue to track them.
 ```
 
-For planlagte arrangementer er `prompt`-inngangen **påkrevd** siden det ikke er noen kommentarer å trekke ut instruksjoner fra. Planlagte workflows kjører uten brukerkontekst for tillatelsessjekking, så arbeidsflyten må gi `contents: write` og `pull-requests: write` hvis du forventer at NanoCode oppretter grener eller PR-er.
+For planlagte arrangementer er `prompt`-inngangen **påkrevd** siden det ikke er noen kommentarer å trekke ut instruksjoner fra. Planlagte workflows kjører uten brukerkontekst for tillatelsessjekking, så arbeidsflyten må gi `contents: write` og `pull-requests: write` hvis du forventer at BetterCode oppretter grener eller PR-er.
 
 ---
 
@@ -158,8 +158,8 @@ For planlagte arrangementer er `prompt`-inngangen **påkrevd** siden det ikke er
 
 Gjennomgå PR-er automatisk når de åpnes eller oppdateres:
 
-```yaml title=".github/workflows/nanocode-review.yml"
-name: nanocode-review
+```yaml title=".github/workflows/bettercode-review.yml"
+name: bettercode-review
 
 on:
   pull_request:
@@ -177,7 +177,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
-      - uses: dhyabi2/nanocode/github@latest
+      - uses: dhyabi2/bettercode/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -191,7 +191,7 @@ jobs:
             - Suggest improvements
 ```
 
-For `pull_request`-hendelser, hvis ingen `prompt` er oppgitt, går NanoCode som standard gjennom PR-en.
+For `pull_request`-hendelser, hvis ingen `prompt` er oppgitt, går BetterCode som standard gjennom PR-en.
 
 ---
 
@@ -199,7 +199,7 @@ For `pull_request`-hendelser, hvis ingen `prompt` er oppgitt, går NanoCode som 
 
 Automatisk triage av nye saker. Dette eksemplet filtrerer til kontoer eldre enn 30 dager for å redusere spam:
 
-```yaml title=".github/workflows/nanocode-triage.yml"
+```yaml title=".github/workflows/bettercode-triage.yml"
 name: Issue Triage
 
 on:
@@ -233,7 +233,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: dhyabi2/nanocode/github@latest
+      - uses: dhyabi2/bettercode/github@latest
         if: steps.check.outputs.result == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -252,10 +252,10 @@ For `issues`-hendelser er `prompt`-inngangen **påkrevd** siden det ikke er noen
 
 ## Egendefinerte prompter
 
-Overstyr standardprompten for å tilpasse oppførselen til NanoCode for arbeidsflyten din.
+Overstyr standardprompten for å tilpasse oppførselen til BetterCode for arbeidsflyten din.
 
-```yaml title=".github/workflows/nanocode.yml"
-- uses: dhyabi2/nanocode/github@latest
+```yaml title=".github/workflows/bettercode.yml"
+- uses: dhyabi2/bettercode/github@latest
   with:
     model: anthropic/claude-sonnet-4-5
     prompt: |
@@ -271,10 +271,10 @@ Dette er nyttig for å håndheve spesifikke vurderingskriterier, kodestandarder 
 
 ## Eksempler
 
-Her er noen eksempler på hvordan du kan bruke NanoCode i GitHub.
+Her er noen eksempler på hvordan du kan bruke BetterCode i GitHub.
 
 :::tip
-Du kan konfigurere til å bruke en annen triggerfrase enn `@nanocode`.
+Du kan konfigurere til å bruke en annen triggerfrase enn `@bettercode`.
 :::
 
 - **Forklar en sak (issue)**
@@ -282,20 +282,20 @@ Du kan konfigurere til å bruke en annen triggerfrase enn `@nanocode`.
   Legg til denne kommentaren i en GitHub-sak.
 
   ```
-  /nanocode explain this issue
+  /bettercode explain this issue
   ```
 
-  NanoCode vil lese hele tråden, inkludert alle kommentarer, og svare med en tydelig forklaring.
+  BetterCode vil lese hele tråden, inkludert alle kommentarer, og svare med en tydelig forklaring.
 
 - **Fiks en sak**
 
   I en GitHub-sak, si:
 
   ```
-  /nanocode fix this
+  /bettercode fix this
   ```
 
-  Og NanoCode vil opprette en ny gren, implementere endringene og åpne en PR med endringene.
+  Og BetterCode vil opprette en ny gren, implementere endringene og åpne en PR med endringene.
 
 - **Se gjennom PR-er og gjør endringer**
 
@@ -305,18 +305,18 @@ Du kan konfigurere til å bruke en annen triggerfrase enn `@nanocode`.
   Delete the attachment from S3 when the note is removed /oc
   ```
 
-  NanoCode vil implementere den forespurte endringen og committe den til samme PR.
+  BetterCode vil implementere den forespurte endringen og committe den til samme PR.
 
 - **Review av spesifikke kodelinjer**
 
-  Legg igjen en kommentar direkte på kodelinjer i PRs "Filer"-fane. NanoCode oppdager automatisk filen, linjenumrene og diff-konteksten for å gi presise svar.
+  Legg igjen en kommentar direkte på kodelinjer i PRs "Filer"-fane. BetterCode oppdager automatisk filen, linjenumrene og diff-konteksten for å gi presise svar.
 
   ```
   [Comment on specific lines in Files tab]
   /oc add error handling here
   ```
 
-  Når du kommenterer spesifikke linjer, mottar NanoCode:
+  Når du kommenterer spesifikke linjer, mottar BetterCode:
   - Den nøyaktige filen blir gjennomgått
   - De spesifikke kodelinjene
   - Den omkringliggende diff-konteksten

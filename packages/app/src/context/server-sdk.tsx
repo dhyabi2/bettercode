@@ -1,6 +1,6 @@
-import type { NanoCodeEvent } from "@nanocode-ai/client/promise"
-import type { Event } from "@nanocode-ai/sdk/v2/client"
-import { createSimpleContext } from "@nanocode-ai/ui/context"
+import type { BetterCodeEvent } from "@bettercode-ai/client/promise"
+import type { Event } from "@bettercode-ai/sdk/v2/client"
+import { createSimpleContext } from "@bettercode-ai/ui/context"
 import { createGlobalEmitter } from "@solid-primitives/event-bus"
 import { makeEventListener } from "@solid-primitives/event-listener"
 import { type Accessor, batch, createMemo, createResource, onCleanup, onMount } from "solid-js"
@@ -18,14 +18,14 @@ const isAbortError = (error: unknown) =>
   error !== null && typeof error === "object" && "name" in error && error.name === "AbortError"
 
 const isStreamClosed = (error: unknown, signal?: AbortSignal) => isAbortError(error) || signal?.aborted === true
-export type ServerEvent = Event & { current?: NanoCodeEvent }
+export type ServerEvent = Event & { current?: BetterCodeEvent }
 type QueuedServerEvent = { directory: string; payload: ServerEvent }
 type CurrentDelta = Extract<
-  NanoCodeEvent,
+  BetterCodeEvent,
   { type: "session.text.delta" | "session.reasoning.delta" | "session.tool.input.delta" | "session.compaction.delta" }
 >
 
-export function adaptServerEvent(event: NanoCodeEvent): ServerEvent {
+export function adaptServerEvent(event: BetterCodeEvent): ServerEvent {
   if (event.type === "permission.v2.asked") {
     return {
       id: event.id,
@@ -138,7 +138,7 @@ export function coalesceServerEvents(events: QueuedServerEvent[]) {
   return output
 }
 
-function currentDelta(event: NanoCodeEvent | undefined): CurrentDelta | undefined {
+function currentDelta(event: BetterCodeEvent | undefined): CurrentDelta | undefined {
   if (
     event?.type === "session.text.delta" ||
     event?.type === "session.reasoning.delta" ||

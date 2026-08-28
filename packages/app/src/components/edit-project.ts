@@ -1,5 +1,5 @@
-import { getFilename } from "@nanocode-ai/core/util/path"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
+import { getFilename } from "@bettercode-ai/core/util/path"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
 import { useMutation } from "@tanstack/solid-query"
 import { normalizeProjectInfo } from "@/context/global-sync/utils"
 import { createMemo } from "solid-js"

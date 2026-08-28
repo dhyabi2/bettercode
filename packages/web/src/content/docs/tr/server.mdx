@@ -1,19 +1,19 @@
 ---
 title: Sunucu
-description: nanocode sunucusuyla HTTP uzerinden etkilesin.
+description: bettercode sunucusuyla HTTP uzerinden etkilesin.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-`nanocode serve` komutu, nanocode istemcisinin kullanabileceği bir OpenAPI endpoint'i açan headless bir HTTP sunucusu çalıştırır.
+`bettercode serve` komutu, bettercode istemcisinin kullanabileceği bir OpenAPI endpoint'i açan headless bir HTTP sunucusu çalıştırır.
 
 ---
 
 ### Kullanım
 
 ```bash
-nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
+bettercode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 ```
 
 #### Seçenekler
@@ -23,39 +23,39 @@ nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | Dinlenecek bağlantı noktası                    | `4096`           |
 | `--hostname`    | Dinlenecek ana bilgisayar adı                  | `127.0.0.1`      |
 | `--mdns`        | mDNS keşfini etkinleştir                       | `false`          |
-| `--mdns-domain` | mDNS hizmeti için özel alan adı                | `nanocode.local` |
+| `--mdns-domain` | mDNS hizmeti için özel alan adı                | `bettercode.local` |
 | `--cors`        | İzin verilecek ek tarayıcı kaynakları (origin) | `[]`             |
 
 `--cors` birden fazla kez geçilebilir:
 
 ```bash
-nanocode serve --cors http://localhost:5173 --cors https://app.example.com
+bettercode serve --cors http://localhost:5173 --cors https://app.example.com
 ```
 
 ---
 
 ### Kimlik Doğrulama
 
-Sunucuyu HTTP temel kimlik doğrulama (basic auth) ile korumak için `NANOCODE_SERVER_PASSWORD` ayarlayın. Kullanıcı adı varsayılan olarak `nanocode` değeridir; değiştirmek isterseniz `NANOCODE_SERVER_USERNAME` ayarlayabilirsiniz. Bu ayar hem `nanocode serve` hem de `nanocode web` için geçerlidir.
+Sunucuyu HTTP temel kimlik doğrulama (basic auth) ile korumak için `BETTERCODE_SERVER_PASSWORD` ayarlayın. Kullanıcı adı varsayılan olarak `bettercode` değeridir; değiştirmek isterseniz `BETTERCODE_SERVER_USERNAME` ayarlayabilirsiniz. Bu ayar hem `bettercode serve` hem de `bettercode web` için geçerlidir.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve
 ```
 
 ---
 
 ### Nasıl çalışır
 
-`nanocode` çalıştırdığınızda hem TUI hem de sunucu başlar. TUI, sunucuyla konuşan istemci tarafıdır.
+`bettercode` çalıştırdığınızda hem TUI hem de sunucu başlar. TUI, sunucuyla konuşan istemci tarafıdır.
 Sunucu bir OpenAPI 3.1 spesifikasyon uç noktası açar. Bu uç nokta [SDK](/docs/sdk) üretiminde de kullanılır.
 
 :::tip
-nanocode ile programatik etkileşim için nanocode sunucusunu kullanın.
+bettercode ile programatik etkileşim için bettercode sunucusunu kullanın.
 :::
 
-Bu mimari, nanocode'un birden fazla istemciyi desteklemesini ve programatik kullanımları mümkün kılmasını sağlar.
+Bu mimari, bettercode'un birden fazla istemciyi desteklemesini ve programatik kullanımları mümkün kılmasını sağlar.
 
-`nanocode serve` ile bağımsız bir sunucu başlatabilirsiniz. nanocode TUI açıksa, `nanocode serve` yeni bir sunucu başlatır.
+`bettercode serve` ile bağımsız bir sunucu başlatabilirsiniz. bettercode TUI açıksa, `bettercode serve` yeni bir sunucu başlatır.
 
 ---
 
@@ -63,7 +63,7 @@ Bu mimari, nanocode'un birden fazla istemciyi desteklemesini ve programatik kull
 
 TUI başlarken rastgele bir port ve hostname atanır. Bunun yerine `--hostname` ve `--port` [bayraklarını](/docs/cli) verebilirsiniz.
 
-[`/tui`](#tui) uç noktası sunucu üzerinden TUI'yi sürmek için kullanılabilir. Örneğin bir istemi önceden doldurabilir veya çalıştırabilirsiniz. Bu kurulum nanocode [IDE](/docs/ide) eklentileri tarafından kullanılır.
+[`/tui`](#tui) uç noktası sunucu üzerinden TUI'yi sürmek için kullanılabilir. Örneğin bir istemi önceden doldurabilir veya çalıştırabilirsiniz. Bu kurulum bettercode [IDE](/docs/ide) eklentileri tarafından kullanılır.
 
 ---
 
@@ -81,7 +81,7 @@ http://<hostname>:<port>/doc
 
 ## API'ler
 
-nanocode sunucusu aşağıdaki API'leri sunar.
+bettercode sunucusu aşağıdaki API'leri sunar.
 
 ---
 

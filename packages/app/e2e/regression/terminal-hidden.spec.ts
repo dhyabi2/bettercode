@@ -1,15 +1,15 @@
 import { expect, test } from "@playwright/test"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectSessionTitle } from "../utils/waits"
 
-const directory = "C:/NanoCode/HiddenTerminalRegression"
+const directory = "C:/BetterCode/HiddenTerminalRegression"
 const projectID = "proj_hidden_terminal_regression"
 const sessionID = "ses_hidden_terminal_regression"
 const title = "Hidden terminal regression"
 
 test("unmounts the terminal panel while it is hidden", async ({ page }) => {
   await page.setViewportSize({ width: 1400, height: 900 })
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     protocol: "v2",
     directory,
     project: {
@@ -23,13 +23,13 @@ test("unmounts the terminal panel while it is hidden", async ({ page }) => {
     provider: {
       all: [
         {
-          id: "nanocode",
-          name: "NanoCode",
+          id: "bettercode",
+          name: "BetterCode",
           models: { test: { id: "test", name: "Test", limit: { context: 200_000 } } },
         },
       ],
-      connected: ["nanocode"],
-      default: { providerID: "nanocode", modelID: "test" },
+      connected: ["bettercode"],
+      default: { providerID: "bettercode", modelID: "test" },
     },
     sessions: [
       {

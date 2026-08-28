@@ -1,9 +1,9 @@
 ---
 title: การรองรับ ACP
-description: ใช้ NanoCode ในโปรแกรมแก้ไขที่รองรับ ACP
+description: ใช้ BetterCode ในโปรแกรมแก้ไขที่รองรับ ACP
 ---
 
-NanoCode รองรับ [Agent Client Protocol](https://agentclientprotocol.com) (ACP) ซึ่งช่วยให้สามารถทำงานร่วมกับ editor และ IDE ต่างๆ ได้โดยตรง
+BetterCode รองรับ [Agent Client Protocol](https://agentclientprotocol.com) (ACP) ซึ่งช่วยให้สามารถทำงานร่วมกับ editor และ IDE ต่างๆ ได้โดยตรง
 
 :::tip
 สำหรับรายชื่อเครื่องมือที่รองรับ ACP สามารถดูได้ที่ [ACP progress report](https://zed.dev/blog/acp-progress-report#available-now)
@@ -15,9 +15,9 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
 
 ## การกำหนดค่า
 
-ในการใช้ NanoCode ผ่าน ACP ให้กำหนดค่าโปรแกรมแก้ไขของคุณให้รันคำสั่ง `nanocode acp`
+ในการใช้ BetterCode ผ่าน ACP ให้กำหนดค่าโปรแกรมแก้ไขของคุณให้รันคำสั่ง `bettercode acp`
 
-คำสั่งนี้จะเริ่ม NanoCode เป็น process ย่อยที่รองรับ ACP ซึ่งสื่อสารกับโปรแกรมแก้ไขของคุณผ่าน JSON-RPC ทาง stdio
+คำสั่งนี้จะเริ่ม BetterCode เป็น process ย่อยที่รองรับ ACP ซึ่งสื่อสารกับโปรแกรมแก้ไขของคุณผ่าน JSON-RPC ทาง stdio
 
 นี่คือตัวอย่างสำหรับโปรแกรมแก้ไขยอดนิยมที่รองรับ ACP
 
@@ -30,8 +30,8 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
 ```json title="~/.config/zed/settings.json"
 {
   "agent_servers": {
-    "NanoCode": {
-      "command": "nanocode",
+    "BetterCode": {
+      "command": "bettercode",
       "args": ["acp"]
     }
   }
@@ -51,9 +51,9 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
         {
           "agent": {
             "custom": {
-              "name": "NanoCode",
+              "name": "BetterCode",
               "command": {
-                "command": "nanocode",
+                "command": "bettercode",
                 "args": ["acp"]
               }
             }
@@ -74,15 +74,15 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
 ```json title="acp.json"
 {
   "agent_servers": {
-    "NanoCode": {
-      "command": "/absolute/path/bin/nanocode",
+    "BetterCode": {
+      "command": "/absolute/path/bin/bettercode",
       "args": ["acp"]
     }
   }
 }
 ```
 
-นี่เป็นการเปิดให้ตัวแทน 'NanoCode' ในเนื้อหาของตัวแทน AI Chat
+นี่เป็นการเปิดให้ตัวแทน 'BetterCode' ในเนื้อหาของตัวแทน AI Chat
 
 ---
 
@@ -93,24 +93,24 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
 ```lua
 {
   acp_providers = {
-    ["nanocode"] = {
-      command = "nanocode",
+    ["bettercode"] = {
+      command = "bettercode",
       args = { "acp" }
     }
   }
 }
 ```
 
-หากคุณต้องการส่งผ่าน environment variables (เช่น `NANOCODE_API_KEY`) คุณต้องระบุใน `env`:
+หากคุณต้องการส่งผ่าน environment variables (เช่น `BETTERCODE_API_KEY`) คุณต้องระบุใน `env`:
 
 ```lua {6-8}
 {
   acp_providers = {
-    ["nanocode"] = {
-      command = "nanocode",
+    ["bettercode"] = {
+      command = "bettercode",
       args = { "acp" },
       env = {
-        NANOCODE_API_KEY = os.getenv("NANOCODE_API_KEY")
+        BETTERCODE_API_KEY = os.getenv("BETTERCODE_API_KEY")
       }
     }
   }
@@ -121,14 +121,14 @@ ACP เป็นมาตรฐานเปิดสำหรับการส�
 
 ### CodeCompanion.nvim
 
-ลองใช้ NanoCode ACP ใน [CodeCompanion.nvim](https://github.com/olimorris/codecompanion.nvim) ให้เพิ่มสิ่งต่อไปนี้ใน Neovim ของคุณ:
+ลองใช้ BetterCode ACP ใน [CodeCompanion.nvim](https://github.com/olimorris/codecompanion.nvim) ให้เพิ่มสิ่งต่อไปนี้ใน Neovim ของคุณ:
 
 ```lua
 require("codecompanion").setup({
   interactions = {
     chat = {
       adapter = {
-        name = "nanocode",
+        name = "bettercode",
         model = "claude-sonnet-4",
       },
     },
@@ -136,13 +136,13 @@ require("codecompanion").setup({
 })
 ```
 
-คุณสามารถใช้ CodeCompanion เพื่อใช้ nanocode เป็น ACP agent สำหรับแชท
+คุณสามารถใช้ CodeCompanion เพื่อใช้ bettercode เป็น ACP agent สำหรับแชท
 
-หากคุณต้องส่ง environment variables (เช่น `NANOCODE_API_KEY`) โปรดดู [Configuring Adapters: Environment Variables](https://codecompanion.olimorris.dev/getting-started#setting-an-api-key) ในเอกสารของ CodeCompanion.nvim สำหรับรายละเอียดทั้งหมด
+หากคุณต้องส่ง environment variables (เช่น `BETTERCODE_API_KEY`) โปรดดู [Configuring Adapters: Environment Variables](https://codecompanion.olimorris.dev/getting-started#setting-an-api-key) ในเอกสารของ CodeCompanion.nvim สำหรับรายละเอียดทั้งหมด
 
 ## การรองรับ
 
-nanocode ทำงานผ่าน ACP เหมือนกับใน terminal และรองรับฟีเจอร์ทั้งหมด:
+bettercode ทำงานผ่าน ACP เหมือนกับใน terminal และรองรับฟีเจอร์ทั้งหมด:
 
 :::note
 คำสั่ง slash ในตัวบางคำสั่งเช่น `/undo` และ `/redo` ยังไม่รองรับในขณะนี้
@@ -150,7 +150,7 @@ nanocode ทำงานผ่าน ACP เหมือนกับใน termi
 
 - เครื่องมือใน (ไฟล์ไฟล์คำสั่งอื่นๆ)
 - คำอธิบายและคำสั่งสแลช
-- MCP แขกที่นี่คือข้อมูลเพิ่มเติมของ NanoCode ของคุณ
+- MCP แขกที่นี่คือข้อมูลเพิ่มเติมของ BetterCode ของคุณ
 - กฎเฉพาะโครงการจาก `AGENTS.md`
 - คนจัดรูปแบบและ linters เวียนนา
 - ระบบตัวแทนและระบบ

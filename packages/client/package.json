@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@nanocode-ai/client",
+  "name": "@bettercode-ai/client",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -15,8 +15,8 @@
     "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
-    "@nanocode-ai/schema": "workspace:*",
-    "@nanocode-ai/protocol": "workspace:*"
+    "@bettercode-ai/schema": "workspace:*",
+    "@bettercode-ai/protocol": "workspace:*"
   },
   "peerDependencies": {
     "effect": "4.0.0-beta.83"
@@ -28,9 +28,9 @@
   },
   "devDependencies": {
     "@effect/platform-node": "catalog:",
-    "@nanocode-ai/core": "workspace:*",
-    "@nanocode-ai/httpapi-codegen": "workspace:*",
-    "@nanocode-ai/server": "workspace:*",
+    "@bettercode-ai/core": "workspace:*",
+    "@bettercode-ai/httpapi-codegen": "workspace:*",
+    "@bettercode-ai/server": "workspace:*",
     "@tsconfig/bun": "catalog:",
     "@types/bun": "catalog:",
     "@typescript/native-preview": "catalog:",

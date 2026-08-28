@@ -1,7 +1,7 @@
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
-import { Tag } from "@nanocode-ai/ui/v2/badge-v2"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
+import { Tag } from "@bettercode-ai/ui/v2/badge-v2"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
 import { showToast } from "@/utils/toast"
 import { popularProviders, useProviders } from "@/hooks/use-providers"
 import { createMemo, type Accessor, type Component, For, Show } from "solid-js"
@@ -17,8 +17,8 @@ type ProviderSource = "env" | "api" | "config" | "custom"
 type ProviderItem = ReturnType<ReturnType<typeof useProviders>["connected"]>[number]
 
 const PROVIDER_NOTES = [
-  { match: (id: string) => id === "nanocode", key: "dialog.provider.nanocode.note" },
-  { match: (id: string) => id === "nanocode-go", key: "dialog.provider.nanocodeGo.tagline" },
+  { match: (id: string) => id === "bettercode", key: "dialog.provider.bettercode.note" },
+  { match: (id: string) => id === "bettercode-go", key: "dialog.provider.bettercodeGo.tagline" },
   { match: (id: string) => id === "anthropic", key: "dialog.provider.anthropic.note" },
   { match: (id: string) => id.startsWith("github-copilot"), key: "dialog.provider.copilot.note" },
   { match: (id: string) => id === "openai", key: "dialog.provider.openai.note" },
@@ -49,7 +49,7 @@ export const SettingsProvidersV2: Component<{
   const connected = createMemo(() => {
     return providers
       .connected()
-      .filter((p) => p.id !== "nanocode" || Object.values(p.models).find((m) => m.cost?.input))
+      .filter((p) => p.id !== "bettercode" || Object.values(p.models).find((m) => m.cost?.input))
   })
 
   const popular = createMemo(() => {
@@ -208,7 +208,7 @@ export const SettingsProvidersV2: Component<{
                     <div class="settings-v2-provider-copy">
                       <div class="settings-v2-provider-main">
                         <span class="settings-v2-provider-name">{item.name}</span>
-                        <Show when={item.id === "nanocode" || item.id === "nanocode-go"}>
+                        <Show when={item.id === "bettercode" || item.id === "bettercode-go"}>
                           <Tag>{language.t("dialog.provider.tag.recommended")}</Tag>
                         </Show>
                       </div>

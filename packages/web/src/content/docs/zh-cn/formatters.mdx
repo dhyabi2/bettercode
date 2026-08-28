@@ -1,15 +1,15 @@
 ---
 title: 格式化工具
-description: NanoCode 使用特定语言的格式化工具。
+description: BetterCode 使用特定语言的格式化工具。
 ---
 
-NanoCode 会在文件写入或编辑后，自动使用特定语言的格式化工具对其进行格式化。这确保了生成的代码遵循你项目的代码风格。
+BetterCode 会在文件写入或编辑后，自动使用特定语言的格式化工具对其进行格式化。这确保了生成的代码遵循你项目的代码风格。
 
 ---
 
 ## 内置格式化工具
 
-NanoCode 内置了多种适用于主流语言和框架的格式化工具。下表列出了各格式化工具、支持的文件扩展名以及所需的命令或配置选项。
+BetterCode 内置了多种适用于主流语言和框架的格式化工具。下表列出了各格式化工具、支持的文件扩展名以及所需的命令或配置选项。
 
 | 格式化工具           | 扩展名                                                                                                | 要求                                                                                    |
 | -------------------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -40,13 +40,13 @@ NanoCode 内置了多种适用于主流语言和框架的格式化工具。下�
 | uv                   | .py, .pyi                                                                                             | `uv` 命令可用                                                                           |
 | zig                  | .zig, .zon                                                                                            | `zig` 命令可用                                                                          |
 
-因此，如果你的项目 `package.json` 中包含 `prettier`，NanoCode 会自动使用它进行格式化。
+因此，如果你的项目 `package.json` 中包含 `prettier`，BetterCode 会自动使用它进行格式化。
 
 ---
 
 ## 工作原理
 
-当 NanoCode 写入或编辑文件时，它会：
+当 BetterCode 写入或编辑文件时，它会：
 
 1. 根据所有已启用的格式化工具检查文件扩展名。
 2. 对文件运行相应的格式化命令。
@@ -58,11 +58,11 @@ NanoCode 内置了多种适用于主流语言和框架的格式化工具。下�
 
 ## 配置
 
-你可以通过 NanoCode 配置中的 `formatter` 部分自定义格式化工具。
+你可以通过 BetterCode 配置中的 `formatter` 部分自定义格式化工具。
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {}
 }
 ```
@@ -84,18 +84,18 @@ NanoCode 内置了多种适用于主流语言和框架的格式化工具。下�
 
 要全局禁用**所有**格式化工具，将 `formatter` 设为 `false`：
 
-```json title="nanocode.json" {3}
+```json title="bettercode.json" {3}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": false
 }
 ```
 
 要禁用**特定**格式化工具，将 `disabled` 设为 `true`：
 
-```json title="nanocode.json" {5}
+```json title="bettercode.json" {5}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -110,9 +110,9 @@ NanoCode 内置了多种适用于主流语言和框架的格式化工具。下�
 
 你可以通过指定命令、环境变量和文件扩展名来覆盖内置格式化工具或添加新的格式化工具：
 
-```json title="nanocode.json" {4-14}
+```json title="bettercode.json" {4-14}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

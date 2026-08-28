@@ -1,6 +1,6 @@
-# @nanocode-ai/slack
+# @bettercode-ai/slack
 
-Slack bot integration for nanocode that creates threaded conversations.
+Slack bot integration for bettercode that creates threaded conversations.
 
 ## Setup
 
@@ -24,4 +24,4 @@ Slack bot integration for nanocode that creates threaded conversations.
 bun dev
 ```
 
-The bot will respond to messages in channels where it's added, creating separate nanocode sessions for each thread.
+The bot will respond to messages in channels where it's added, creating separate bettercode sessions for each thread.

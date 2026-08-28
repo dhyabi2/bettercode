@@ -1,17 +1,17 @@
-import { Npm } from "@nanocode-ai/core/npm"
+import { Npm } from "@bettercode-ai/core/npm"
 import { describe, expect } from "bun:test"
 import { Cause, Effect, Layer } from "effect"
 import fs from "fs/promises"
 import os from "os"
 import path from "path"
 import { fileURLToPath } from "url"
-import { AISDK } from "@nanocode-ai/core/aisdk"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { PluginHost } from "@nanocode-ai/core/plugin/host"
-import { DynamicProviderPlugin } from "@nanocode-ai/core/plugin/provider/dynamic"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
+import { AISDK } from "@bettercode-ai/core/aisdk"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { PluginHost } from "@bettercode-ai/core/plugin/host"
+import { DynamicProviderPlugin } from "@bettercode-ai/core/plugin/provider/dynamic"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
 
@@ -37,7 +37,7 @@ const addPlugin = Effect.fn(function* (npm?: Npm.Interface) {
 function tempEntrypoint(source: string) {
   return Effect.acquireRelease(
     Effect.promise(async () => {
-      const directory = await fs.mkdtemp(path.join(os.tmpdir(), "nanocode-provider-dynamic-"))
+      const directory = await fs.mkdtemp(path.join(os.tmpdir(), "bettercode-provider-dynamic-"))
       const entrypoint = path.join(directory, "provider.mjs")
       await Bun.write(entrypoint, source)
       return { directory, entrypoint }

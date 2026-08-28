@@ -1,4 +1,4 @@
-import { define } from "@nanocode-ai/plugin/v2/promise"
+import { define } from "@bettercode-ai/plugin/v2/promise"
 
 export default define({
   id: "config-promise-plugin",

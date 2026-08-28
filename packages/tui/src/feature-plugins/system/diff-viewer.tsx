@@ -1,6 +1,6 @@
 /** @jsxImportSource @opentui/solid */
-import type { TuiPlugin, TuiPluginApi, TuiRouteCurrent } from "@nanocode-ai/plugin/tui"
-import type { SnapshotFileDiff, VcsFileDiff } from "@nanocode-ai/sdk/v2"
+import type { TuiPlugin, TuiPluginApi, TuiRouteCurrent } from "@bettercode-ai/plugin/tui"
+import type { SnapshotFileDiff, VcsFileDiff } from "@bettercode-ai/sdk/v2"
 import {
   TextAttributes,
   type BorderSides,
@@ -38,7 +38,7 @@ import {
 const ROUTE = "diff"
 const MIN_SPLIT_WIDTH = 100
 const FILE_TREE_WIDTH = 32
-const PLAIN_TEXT_FILETYPE = "nanocode-plain-text"
+const PLAIN_TEXT_FILETYPE = "bettercode-plain-text"
 const VCS_DIFF_CONTEXT_LINES = 12
 const KV_SHOW_FILE_TREE = "diff_viewer_show_file_tree"
 const KV_SINGLE_PATCH = "diff_viewer_single_patch"

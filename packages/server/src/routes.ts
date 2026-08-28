@@ -1,16 +1,16 @@
-import { Database } from "@nanocode-ai/core/database/database"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { httpClient } from "@nanocode-ai/core/effect/app-node-platform"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { EventV2 } from "@nanocode-ai/core/event"
-import { Credential } from "@nanocode-ai/core/credential"
-import { PermissionSaved } from "@nanocode-ai/core/permission/saved"
-import { PtyTicket } from "@nanocode-ai/core/pty/ticket"
-import { SessionV2 } from "@nanocode-ai/core/session"
-import { SessionExecution } from "@nanocode-ai/core/session/execution"
-import { LocationServiceMap } from "@nanocode-ai/core/location-service-map"
-import { SessionExecutionLocal } from "@nanocode-ai/core/session/execution/local"
-import { ToolOutputStore } from "@nanocode-ai/core/tool-output-store"
+import { Database } from "@bettercode-ai/core/database/database"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { httpClient } from "@bettercode-ai/core/effect/app-node-platform"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { EventV2 } from "@bettercode-ai/core/event"
+import { Credential } from "@bettercode-ai/core/credential"
+import { PermissionSaved } from "@bettercode-ai/core/permission/saved"
+import { PtyTicket } from "@bettercode-ai/core/pty/ticket"
+import { SessionV2 } from "@bettercode-ai/core/session"
+import { SessionExecution } from "@bettercode-ai/core/session/execution"
+import { LocationServiceMap } from "@bettercode-ai/core/location-service-map"
+import { SessionExecutionLocal } from "@bettercode-ai/core/session/execution/local"
+import { ToolOutputStore } from "@bettercode-ai/core/tool-output-store"
 import { HttpRouter, HttpServer } from "effect/unstable/http"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Layer, Option } from "effect"
@@ -39,13 +39,13 @@ const applicationServices = LayerNode.group([
 export function createRoutes(password?: string) {
   return makeRoutes(
     password
-      ? ServerAuth.Config.configLayer({ username: "nanocode", password: Option.some(password) })
+      ? ServerAuth.Config.configLayer({ username: "bettercode", password: Option.some(password) })
       : ServerAuth.Config.layer,
   )
 }
 
 export function createEmbeddedRoutes() {
-  return makeRoutes(ServerAuth.Config.configLayer({ username: "nanocode", password: Option.none() }))
+  return makeRoutes(ServerAuth.Config.configLayer({ username: "bettercode", password: Option.none() }))
 }
 
 function makeRoutes<AuthError, AuthServices>(auth: Layer.Layer<ServerAuth.Config, AuthError, AuthServices>) {

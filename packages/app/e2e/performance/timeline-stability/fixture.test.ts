@@ -22,7 +22,7 @@ describe("timeline fixture validation", () => {
     ).toThrow()
     expect(() =>
       validateTimelineEvent({
-        directory: "C:/NanoCode/TimelineStability",
+        directory: "C:/BetterCode/TimelineStability",
         payload: {
           id: "evt_invalid_status",
           type: "session.status",

@@ -1,4 +1,4 @@
-import { ScrollView } from "@nanocode-ai/ui/scroll-view"
+import { ScrollView } from "@bettercode-ai/ui/scroll-view"
 import { createHomeController } from "./home/home-controller"
 import { createHomeProjectsController } from "./home/home-projects-controller"
 import { HomeUtilityNav } from "./home/home-projects-view"

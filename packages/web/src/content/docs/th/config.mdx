@@ -1,19 +1,19 @@
 ---
 title: การกำหนดค่า
-description: การใช้การกำหนดค่า NanoCode JSON
+description: การใช้การกำหนดค่า BetterCode JSON
 ---
 
-คุณสามารถกำหนดค่า NanoCode ได้โดยใช้ไฟล์กำหนดค่า JSON
+คุณสามารถกำหนดค่า BetterCode ได้โดยใช้ไฟล์กำหนดค่า JSON
 
 ---
 
 ## รูปแบบ
 
-NanoCode รองรับทั้งรูปแบบ **JSON** และ **JSONC** (JSON พร้อมความคิดเห็น)
+BetterCode รองรับทั้งรูปแบบ **JSON** และ **JSONC** (JSON พร้อมความคิดเห็น)
 
-```jsonc title="nanocode.jsonc"
+```jsonc title="bettercode.jsonc"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "model": "anthropic/claude-sonnet-4-5",
   "autoupdate": true,
   "server": {
@@ -43,30 +43,30 @@ NanoCode รองรับทั้งรูปแบบ **JSON** และ **J
 
 แหล่งที่มาของการกำหนดค่าถูกโหลดตามลำดับนี้ (แหล่งที่มาภายหลังจะแทนที่แหล่งที่มาก่อนหน้า):
 
-1. **การกำหนดค่าระยะไกล** (จาก `.well-known/nanocode`) - ค่าเริ่มต้นขององค์กร
-2. **การกำหนดค่าสากล** (`~/.config/nanocode/nanocode.json`) - การตั้งค่าของผู้ใช้
-3. **การกำหนดค่าแบบกำหนดเอง** (`NANOCODE_CONFIG` env var) - การแทนที่แบบกำหนดเอง
-4. **การกำหนดค่าโครงการ** (`nanocode.json` ในโครงการ) - การตั้งค่าเฉพาะโครงการ
-5. **`.nanocode` ไดเรกทอรี** - ตัวแทน คำสั่ง ปลั๊กอิน
-6. **การกำหนดค่าแบบอินไลน์** (`NANOCODE_CONFIG_CONTENT` env var) - การแทนที่รันไทม์
+1. **การกำหนดค่าระยะไกล** (จาก `.well-known/bettercode`) - ค่าเริ่มต้นขององค์กร
+2. **การกำหนดค่าสากล** (`~/.config/bettercode/bettercode.json`) - การตั้งค่าของผู้ใช้
+3. **การกำหนดค่าแบบกำหนดเอง** (`BETTERCODE_CONFIG` env var) - การแทนที่แบบกำหนดเอง
+4. **การกำหนดค่าโครงการ** (`bettercode.json` ในโครงการ) - การตั้งค่าเฉพาะโครงการ
+5. **`.bettercode` ไดเรกทอรี** - ตัวแทน คำสั่ง ปลั๊กอิน
+6. **การกำหนดค่าแบบอินไลน์** (`BETTERCODE_CONFIG_CONTENT` env var) - การแทนที่รันไทม์
 
 ซึ่งหมายความว่าการกำหนดค่าโปรเจ็กต์สามารถแทนที่ค่าเริ่มต้นส่วนกลางได้ และการกำหนดค่าส่วนกลางสามารถแทนที่ค่าเริ่มต้นขององค์กรระยะไกลได้
 
 :::note
-ไดเรกทอรี `.nanocode` และ `~/.config/nanocode` ใช้ **ชื่อพหูพจน์** สำหรับไดเรกทอรีย่อย: `agents/`, `commands/`, `modes/`, `plugins/`, `skills/`, `tools/` และ `themes/` ชื่อเอกพจน์ (เช่น `agent/`) ยังรองรับความเข้ากันได้แบบย้อนหลังด้วย
+ไดเรกทอรี `.bettercode` และ `~/.config/bettercode` ใช้ **ชื่อพหูพจน์** สำหรับไดเรกทอรีย่อย: `agents/`, `commands/`, `modes/`, `plugins/`, `skills/`, `tools/` และ `themes/` ชื่อเอกพจน์ (เช่น `agent/`) ยังรองรับความเข้ากันได้แบบย้อนหลังด้วย
 :::
 
 ---
 
 ### ระยะไกล
 
-องค์กรสามารถจัดเตรียมการกำหนดค่าเริ่มต้นผ่านทางจุดสิ้นสุด `.well-known/nanocode` สิ่งนี้จะถูกดึงออกมาโดยอัตโนมัติเมื่อคุณตรวจสอบสิทธิ์กับผู้ให้บริการที่รองรับ
+องค์กรสามารถจัดเตรียมการกำหนดค่าเริ่มต้นผ่านทางจุดสิ้นสุด `.well-known/bettercode` สิ่งนี้จะถูกดึงออกมาโดยอัตโนมัติเมื่อคุณตรวจสอบสิทธิ์กับผู้ให้บริการที่รองรับ
 
 โหลดการกำหนดค่าระยะไกลก่อน โดยทำหน้าที่เป็นเลเยอร์พื้นฐาน แหล่งการกำหนดค่าอื่นๆ ทั้งหมด (ส่วนกลาง โปรเจ็กต์) สามารถแทนที่ค่าเริ่มต้นเหล่านี้ได้
 
 ตัวอย่างเช่น หากองค์กรของคุณมีเซิร์ฟเวอร์ MCP ที่ถูกปิดใช้งานตามค่าเริ่มต้น:
 
-```json title="Remote config from .well-known/nanocode"
+```json title="Remote config from .well-known/bettercode"
 {
   "mcp": {
     "jira": {
@@ -80,7 +80,7 @@ NanoCode รองรับทั้งรูปแบบ **JSON** และ **J
 
 คุณสามารถเปิดใช้งานเซิร์ฟเวอร์เฉพาะในการกำหนดค่าภายในเครื่องของคุณได้:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
   "mcp": {
     "jira": {
@@ -96,9 +96,9 @@ NanoCode รองรับทั้งรูปแบบ **JSON** และ **J
 
 ### ทั่วโลก
 
-วางการกำหนดค่า NanoCode ส่วนกลางของคุณใน `~/.config/nanocode/nanocode.json` ใช้การกำหนดค่าส่วนกลางสำหรับการตั้งค่าทั้งผู้ใช้ เช่น ผู้ให้บริการ รุ่น และสิทธิ์
+วางการกำหนดค่า BetterCode ส่วนกลางของคุณใน `~/.config/bettercode/bettercode.json` ใช้การกำหนดค่าส่วนกลางสำหรับการตั้งค่าทั้งผู้ใช้ เช่น ผู้ให้บริการ รุ่น และสิทธิ์
 
-สำหรับการตั้งค่าเฉพาะ TUI ให้ใช้ `~/.config/nanocode/tui.json`
+สำหรับการตั้งค่าเฉพาะ TUI ให้ใช้ `~/.config/bettercode/tui.json`
 
 การกำหนดค่าส่วนกลางจะแทนที่ค่าเริ่มต้นขององค์กรระยะไกล
 
@@ -106,7 +106,7 @@ NanoCode รองรับทั้งรูปแบบ **JSON** และ **J
 
 ### ต่อโครงการ
 
-เพิ่ม `nanocode.json` ในรูทโปรเจ็กต์ของคุณ การกำหนดค่าโปรเจ็กต์มีความสำคัญสูงสุดในบรรดาไฟล์กำหนดค่ามาตรฐาน โดยจะแทนที่การกำหนดค่าทั้งส่วนกลางและระยะไกล
+เพิ่ม `bettercode.json` ในรูทโปรเจ็กต์ของคุณ การกำหนดค่าโปรเจ็กต์มีความสำคัญสูงสุดในบรรดาไฟล์กำหนดค่ามาตรฐาน โดยจะแทนที่การกำหนดค่าทั้งส่วนกลางและระยะไกล
 
 สำหรับการตั้งค่า TUI เฉพาะโครงการ ให้เพิ่ม `tui.json` ควบคู่ไปกับมัน
 
@@ -114,7 +114,7 @@ NanoCode รองรับทั้งรูปแบบ **JSON** และ **J
 วางการกำหนดค่าเฉพาะโปรเจ็กต์ไว้ที่รากของโปรเจ็กต์ของคุณ
 :::
 
-เมื่อ NanoCode เริ่มต้นระบบ จะค้นหาไฟล์กำหนดค่าในไดเร็กทอรีปัจจุบันหรือข้ามไปยังไดเร็กทอรี Git ที่ใกล้ที่สุด
+เมื่อ BetterCode เริ่มต้นระบบ จะค้นหาไฟล์กำหนดค่าในไดเร็กทอรีปัจจุบันหรือข้ามไปยังไดเร็กทอรี Git ที่ใกล้ที่สุด
 
 นอกจากนี้ยังปลอดภัยที่จะตรวจสอบใน Git และใช้สคีมาเดียวกันกับสคีมาระดับโลก
 
@@ -122,11 +122,11 @@ NanoCode รองรับทั้งรูปแบบ **JSON** และ **J
 
 ### เส้นทางที่กำหนดเอง
 
-ระบุเส้นทางไฟล์กำหนดค่าที่กำหนดเองโดยใช้ตัวแปรสภาพแวดล้อม `NANOCODE_CONFIG`
+ระบุเส้นทางไฟล์กำหนดค่าที่กำหนดเองโดยใช้ตัวแปรสภาพแวดล้อม `BETTERCODE_CONFIG`
 
 ```bash
-export NANOCODE_CONFIG=/path/to/my/custom-config.json
-nanocode run "Hello world"
+export BETTERCODE_CONFIG=/path/to/my/custom-config.json
+bettercode run "Hello world"
 ```
 
 มีการโหลดการกำหนดค่าแบบกำหนดเองระหว่างการกำหนดค่าส่วนกลางและโครงการตามลำดับความสำคัญ
@@ -135,25 +135,25 @@ nanocode run "Hello world"
 
 ### ไดเรกทอรีที่กำหนดเอง
 
-ระบุไดเร็กทอรีการกำหนดค่าที่กำหนดเองโดยใช้ `NANOCODE_CONFIG_DIR`
+ระบุไดเร็กทอรีการกำหนดค่าที่กำหนดเองโดยใช้ `BETTERCODE_CONFIG_DIR`
 ตัวแปรสภาพแวดล้อม ไดเร็กทอรีนี้จะถูกค้นหาตัวแทน, คำสั่ง,
-โหมดและปลั๊กอินเหมือนกับไดเร็กทอรี `.nanocode` มาตรฐานและควร
+โหมดและปลั๊กอินเหมือนกับไดเร็กทอรี `.bettercode` มาตรฐานและควร
 เป็นไปตามโครงสร้างเดียวกัน
 
 ```bash
-export NANOCODE_CONFIG_DIR=/path/to/my/config-directory
-nanocode run "Hello world"
+export BETTERCODE_CONFIG_DIR=/path/to/my/config-directory
+bettercode run "Hello world"
 ```
 
-ไดเร็กทอรีที่กำหนดเองถูกโหลดหลังจากไดเร็กทอรี config ส่วนกลางและ `.nanocode` ดังนั้นจึง **สามารถแทนที่** การตั้งค่าได้
+ไดเร็กทอรีที่กำหนดเองถูกโหลดหลังจากไดเร็กทอรี config ส่วนกลางและ `.bettercode` ดังนั้นจึง **สามารถแทนที่** การตั้งค่าได้
 
 ---
 
 ## สคีมา
 
-ไฟล์กำหนดค่ามีสคีมาที่กำหนดไว้ใน [**`nanocode.ai/config.json`**](https://nanocode.ai/config.json)
+ไฟล์กำหนดค่ามีสคีมาที่กำหนดไว้ใน [**`bettercode.ai/config.json`**](https://bettercode.ai/config.json)
 
-การกำหนดค่า TUI ใช้ [**`nanocode.ai/tui.json`**](https://nanocode.ai/tui.json)
+การกำหนดค่า TUI ใช้ [**`bettercode.ai/tui.json`**](https://bettercode.ai/tui.json)
 
 ผู้แก้ไขของคุณควรสามารถตรวจสอบและเติมข้อความอัตโนมัติตามสคีมาได้
 
@@ -165,7 +165,7 @@ nanocode run "Hello world"
 
 ```json title="tui.json"
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "scroll_speed": 3,
   "scroll_acceleration": {
     "enabled": true
@@ -174,9 +174,9 @@ nanocode run "Hello world"
 }
 ```
 
-ใช้ `NANOCODE_TUI_CONFIG` เพื่อชี้ไปยังไฟล์กำหนดค่า TUI ที่กำหนดเอง
+ใช้ `BETTERCODE_TUI_CONFIG` เพื่อชี้ไปยังไฟล์กำหนดค่า TUI ที่กำหนดเอง
 
-คีย์ `theme`, `keybinds` และ `tui` แบบเดิมใน `nanocode.json` เลิกใช้แล้วและจะถูกย้ายโดยอัตโนมัติเมื่อเป็นไปได้
+คีย์ `theme`, `keybinds` และ `tui` แบบเดิมใน `bettercode.json` เลิกใช้แล้วและจะถูกย้ายโดยอัตโนมัติเมื่อเป็นไปได้
 
 [เรียนรู้เพิ่มเติมเกี่ยวกับการใช้ TUI ที่นี่](/docs/tui#configure)
 
@@ -184,11 +184,11 @@ nanocode run "Hello world"
 
 ### เซิร์ฟเวอร์
 
-คุณสามารถกำหนดการตั้งค่าเซิร์ฟเวอร์สำหรับคำสั่ง `nanocode serve` และ `nanocode web` ผ่านตัวเลือก `server`
+คุณสามารถกำหนดการตั้งค่าเซิร์ฟเวอร์สำหรับคำสั่ง `bettercode serve` และ `bettercode web` ผ่านตัวเลือก `server`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -203,8 +203,8 @@ nanocode run "Hello world"
 
 - `port` - ​​พอร์ตสำหรับฟัง
 - `hostname` - ​​ชื่อโฮสต์ที่จะฟัง เมื่อเปิดใช้งาน `mdns` และไม่ได้ตั้งชื่อโฮสต์ ค่าเริ่มต้นจะเป็น `0.0.0.0`
-- `mdns` - ​​เปิดใช้งานการค้นหาบริการ mDNS ซึ่งช่วยให้อุปกรณ์อื่นๆ บนเครือข่ายค้นพบเซิร์ฟเวอร์ NanoCode ของคุณได้
-- `mdnsDomain` - ​​ชื่อโดเมนที่กำหนดเองสำหรับบริการ mDNS ค่าเริ่มต้นเป็น `nanocode.local` มีประโยชน์สำหรับการเรียกใช้หลายอินสแตนซ์บนเครือข่ายเดียวกัน
+- `mdns` - ​​เปิดใช้งานการค้นหาบริการ mDNS ซึ่งช่วยให้อุปกรณ์อื่นๆ บนเครือข่ายค้นพบเซิร์ฟเวอร์ BetterCode ของคุณได้
+- `mdnsDomain` - ​​ชื่อโดเมนที่กำหนดเองสำหรับบริการ mDNS ค่าเริ่มต้นเป็น `bettercode.local` มีประโยชน์สำหรับการเรียกใช้หลายอินสแตนซ์บนเครือข่ายเดียวกัน
 - `cors` - ​​ต้นกำเนิดเพิ่มเติมเพื่ออนุญาต CORS เมื่อใช้เซิร์ฟเวอร์ HTTP จากไคลเอนต์ที่ใช้เบราว์เซอร์ ค่าจะต้องเป็นต้นกำเนิดแบบเต็ม (สคีมา + โฮสต์ + พอร์ตเสริม) เช่น `https://app.example.com`
 
 [เรียนรู้เพิ่มเติมเกี่ยวกับเซิร์ฟเวอร์ที่นี่](/docs/server)
@@ -215,9 +215,9 @@ nanocode run "Hello world"
 
 คุณสามารถจัดการเครื่องมือที่ LLM สามารถใช้ได้ผ่านตัวเลือก `tools`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -231,24 +231,24 @@ nanocode run "Hello world"
 
 ### Models
 
-คุณสามารถกำหนดค่าผู้ให้บริการและรุ่นที่คุณต้องการใช้ในการกำหนดค่า NanoCode ของคุณได้ผ่านตัวเลือก `provider`, `model` และ `small_model`
+คุณสามารถกำหนดค่าผู้ให้บริการและรุ่นที่คุณต้องการใช้ในการกำหนดค่า BetterCode ของคุณได้ผ่านตัวเลือก `provider`, `model` และ `small_model`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
 }
 ```
 
-ตัวเลือก `small_model` จะกำหนดค่าโมเดลแยกต่างหากสำหรับงานที่ไม่ซับซ้อน เช่น การสร้างชื่อเรื่อง ตามค่าเริ่มต้น NanoCode จะพยายามใช้โมเดลที่ถูกกว่าหากมีให้บริการจากผู้ให้บริการของคุณ ไม่เช่นนั้นโมเดลจะกลับไปเป็นโมเดลหลักของคุณ
+ตัวเลือก `small_model` จะกำหนดค่าโมเดลแยกต่างหากสำหรับงานที่ไม่ซับซ้อน เช่น การสร้างชื่อเรื่อง ตามค่าเริ่มต้น BetterCode จะพยายามใช้โมเดลที่ถูกกว่าหากมีให้บริการจากผู้ให้บริการของคุณ ไม่เช่นนั้นโมเดลจะกลับไปเป็นโมเดลหลักของคุณ
 
 ตัวเลือกผู้ให้บริการอาจรวมถึง `timeout` และ `setCacheKey`:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -275,9 +275,9 @@ nanocode run "Hello world"
 
 Amazon Bedrock รองรับ AWS-การกำหนดค่าเฉพาะ:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -308,7 +308,7 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 
 ```json title="tui.json"
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "theme": "tokyonight"
 }
 ```
@@ -321,9 +321,9 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 
 คุณสามารถกำหนดค่าตัวแทนเฉพาะสำหรับงานเฉพาะผ่านตัวเลือก `agent`
 
-```jsonc title="nanocode.jsonc"
+```jsonc title="bettercode.jsonc"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -339,7 +339,7 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 }
 ```
 
-คุณยังสามารถกำหนดตัวแทนโดยใช้ไฟล์ Markdown ใน `~/.config/nanocode/agents/` หรือ `.nanocode/agents/` [เรียนรู้เพิ่มเติมที่นี่](/docs/agents)
+คุณยังสามารถกำหนดตัวแทนโดยใช้ไฟล์ Markdown ใน `~/.config/bettercode/agents/` หรือ `.bettercode/agents/` [เรียนรู้เพิ่มเติมที่นี่](/docs/agents)
 
 ---
 
@@ -347,16 +347,16 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 
 คุณสามารถตั้งค่าตัวแทนเริ่มต้นได้โดยใช้ตัวเลือก `default_agent` ซึ่งจะกำหนดว่าเอเจนต์ใดที่จะใช้เมื่อไม่มีการระบุอย่างชัดเจน
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "default_agent": "plan"
 }
 ```
 
-ตัวแทนเริ่มต้นจะต้องเป็นตัวแทนหลัก (ไม่ใช่ตัวแทนย่อย) ซึ่งอาจเป็นตัวแทนในตัว เช่น `"build"` หรือ `"plan"` หรือ [ตัวแทนที่กำหนดเอง](/docs/agents) ที่คุณกำหนดไว้ หากไม่มีตัวแทนที่ระบุหรือเป็นตัวแทนย่อย NanoCode จะถอยกลับไปที่ `"build"` พร้อมคำเตือน
+ตัวแทนเริ่มต้นจะต้องเป็นตัวแทนหลัก (ไม่ใช่ตัวแทนย่อย) ซึ่งอาจเป็นตัวแทนในตัว เช่น `"build"` หรือ `"plan"` หรือ [ตัวแทนที่กำหนดเอง](/docs/agents) ที่คุณกำหนดไว้ หากไม่มีตัวแทนที่ระบุหรือเป็นตัวแทนย่อย BetterCode จะถอยกลับไปที่ `"build"` พร้อมคำเตือน
 
-การตั้งค่านี้ใช้กับอินเทอร์เฟซทั้งหมด: TUI, CLI (`nanocode run`) แอปเดสก์ท็อป และ GitHub Action
+การตั้งค่านี้ใช้กับอินเทอร์เฟซทั้งหมด: TUI, CLI (`bettercode run`) แอปเดสก์ท็อป และ GitHub Action
 
 ---
 
@@ -364,9 +364,9 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 
 คุณสามารถกำหนดค่าคุณสมบัติ [แบ่งปัน](/docs/share) ได้ผ่านทางตัวเลือก `share`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "share": "manual"
 }
 ```
@@ -385,9 +385,9 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 
 คุณสามารถกำหนดค่าคำสั่งที่กำหนดเองสำหรับงานซ้ำๆ ได้ผ่านตัวเลือก `command`
 
-```jsonc title="nanocode.jsonc"
+```jsonc title="bettercode.jsonc"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -403,7 +403,7 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 }
 ```
 
-คุณยังสามารถกำหนดคำสั่งโดยใช้ไฟล์ Markdown ใน `~/.config/nanocode/commands/` หรือ `.nanocode/commands/` [เรียนรู้เพิ่มเติมที่นี่](/docs/commands)
+คุณยังสามารถกำหนดคำสั่งโดยใช้ไฟล์ Markdown ใน `~/.config/bettercode/commands/` หรือ `.bettercode/commands/` [เรียนรู้เพิ่มเติมที่นี่](/docs/commands)
 
 ---
 
@@ -413,7 +413,7 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 
 ```json title="tui.json"
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "keybinds": {}
 }
 ```
@@ -424,11 +424,11 @@ Bearer Token (`AWS_BEARER_TOKEN_BEDROCK` หรือ `/connect`) มีคว�
 
 ### อัปเดตอัตโนมัติ
 
-NanoCode จะดาวน์โหลดการอัปเดตใหม่โดยอัตโนมัติเมื่อเริ่มต้นระบบ คุณสามารถปิดการใช้งานนี้ได้โดยใช้ตัวเลือก `autoupdate`
+BetterCode จะดาวน์โหลดการอัปเดตใหม่โดยอัตโนมัติเมื่อเริ่มต้นระบบ คุณสามารถปิดการใช้งานนี้ได้โดยใช้ตัวเลือก `autoupdate`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "autoupdate": false
 }
 ```
@@ -442,9 +442,9 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 คุณสามารถกำหนดค่าตัวจัดรูปแบบโค้ดผ่านตัวเลือก `formatter`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -466,13 +466,13 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 ### การอนุญาต
 
-ตามค่าเริ่มต้น nanocode **อนุญาตการดำเนินการทั้งหมด** โดยไม่ต้องมีการอนุมัติอย่างชัดเจน คุณสามารถเปลี่ยนสิ่งนี้ได้โดยใช้ตัวเลือก `permission`
+ตามค่าเริ่มต้น bettercode **อนุญาตการดำเนินการทั้งหมด** โดยไม่ต้องมีการอนุมัติอย่างชัดเจน คุณสามารถเปลี่ยนสิ่งนี้ได้โดยใช้ตัวเลือก `permission`
 
 ตัวอย่างเช่น เพื่อให้แน่ใจว่าเครื่องมือ `edit` และ `bash` ต้องได้รับการอนุมัติจากผู้ใช้:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -488,9 +488,9 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 คุณสามารถควบคุมลักษณะการทำงานของการบีบอัดบริบทได้โดยใช้ตัวเลือก `compaction`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "compaction": {
     "auto": true,
     "prune": false,
@@ -509,9 +509,9 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 คุณสามารถกำหนดค่ารูปแบบการละเว้นตัวเฝ้าดูไฟล์ได้ผ่านตัวเลือก `watcher`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -526,9 +526,9 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 คุณสามารถกำหนดค่าเซิร์ฟเวอร์ MCP ที่คุณต้องการใช้ผ่านตัวเลือก `mcp`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "mcp": {}
 }
 ```
@@ -539,14 +539,14 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 ### ปลั๊กอิน
 
-[ปลั๊กอิน](/docs/plugins) ขยาย NanoCode ด้วยเครื่องมือที่กำหนดเอง hooks และการผสานรวม
+[ปลั๊กอิน](/docs/plugins) ขยาย BetterCode ด้วยเครื่องมือที่กำหนดเอง hooks และการผสานรวม
 
-วางไฟล์ปลั๊กอินใน `.nanocode/plugins/` หรือ `~/.config/nanocode/plugins/` คุณยังสามารถโหลดปลั๊กอินจาก npm ผ่านตัวเลือก `plugin`
+วางไฟล์ปลั๊กอินใน `.bettercode/plugins/` หรือ `~/.config/bettercode/plugins/` คุณยังสามารถโหลดปลั๊กอินจาก npm ผ่านตัวเลือก `plugin`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
-  "plugin": ["nanocode-helicone-session", "@my-org/custom-plugin"]
+  "$schema": "https://bettercode.ai/config.json",
+  "plugin": ["bettercode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
 
@@ -558,9 +558,9 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 คุณสามารถกำหนดค่าคำแนะนำสำหรับรุ่นที่คุณใช้ผ่านตัวเลือก `instructions`
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -574,9 +574,9 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 คุณสามารถปิดการใช้งานผู้ให้บริการที่โหลดโดยอัตโนมัติผ่านตัวเลือก `disabled_providers` สิ่งนี้มีประโยชน์เมื่อคุณต้องการป้องกันไม่ให้โหลดผู้ให้บริการบางรายแม้ว่าจะมีข้อมูลประจำตัวอยู่ก็ตาม
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -597,14 +597,14 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 คุณสามารถระบุรายชื่อผู้ให้บริการที่อนุญาตได้ผ่านตัวเลือก `enabled_providers` เมื่อตั้งค่าแล้ว เฉพาะผู้ให้บริการที่ระบุเท่านั้นที่จะเปิดใช้งาน และผู้ให้บริการอื่นๆ ทั้งหมดจะถูกละเว้น
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
 
-สิ่งนี้มีประโยชน์เมื่อคุณต้องการจำกัด NanoCode ให้ใช้เฉพาะผู้ให้บริการบางราย แทนที่จะปิดการใช้งานทีละราย
+สิ่งนี้มีประโยชน์เมื่อคุณต้องการจำกัด BetterCode ให้ใช้เฉพาะผู้ให้บริการบางราย แทนที่จะปิดการใช้งานทีละราย
 
 :::note
 `disabled_providers` มีลำดับความสำคัญมากกว่า `enabled_providers`
@@ -618,9 +618,9 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 ปุ่ม `experimental` มีตัวเลือกที่อยู่ระหว่างการพัฒนา
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "experimental": {}
 }
 ```
@@ -641,10 +641,10 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 ใช้ `{env:VARIABLE_NAME}` เพื่อทดแทนตัวแปรสภาพแวดล้อม:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
-  "model": "{env:NANOCODE_MODEL}",
+  "$schema": "https://bettercode.ai/config.json",
+  "model": "{env:BETTERCODE_MODEL}",
   "provider": {
     "anthropic": {
       "models": {},
@@ -664,9 +664,9 @@ NanoCode จะดาวน์โหลดการอัปเดตใหม�
 
 ใช้ `{file:path/to/file}` เพื่อทดแทนเนื้อหาของไฟล์:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {

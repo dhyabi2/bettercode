@@ -1,8 +1,8 @@
 import { query } from "@solidjs/router"
 
-export const modelCatalogSourceUrl = "https://models.nanocode.ai/catalog.json"
-export const modelCatalogPricingUrl = "https://models.nanocode.ai/api.json"
-export const modelCatalogLabSourceUrl = "https://models.nanocode.ai/labs"
+export const modelCatalogSourceUrl = "https://models.bettercode.ai/catalog.json"
+export const modelCatalogPricingUrl = "https://models.bettercode.ai/api.json"
+export const modelCatalogLabSourceUrl = "https://models.bettercode.ai/labs"
 
 export type ModelCatalogCost = {
   input: number

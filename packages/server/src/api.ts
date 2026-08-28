@@ -1,4 +1,4 @@
-import { makeDefaultApi } from "@nanocode-ai/protocol/api"
+import { makeDefaultApi } from "@bettercode-ai/protocol/api"
 import { LocationMiddleware } from "./location"
 import { SessionLocationMiddleware } from "./middleware/session-location"
 

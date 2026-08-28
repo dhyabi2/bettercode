@@ -59,7 +59,7 @@ export declare namespace GeoStatRepo {
   }
 }
 
-export class GeoStatRepo extends Context.Service<GeoStatRepo, GeoStatRepo.Service>()("@nanocode/stats/GeoStatRepo") {
+export class GeoStatRepo extends Context.Service<GeoStatRepo, GeoStatRepo.Service>()("@bettercode/stats/GeoStatRepo") {
   static readonly layer: Layer.Layer<GeoStatRepo, never, DrizzleClient> = Layer.effect(
     GeoStatRepo,
     Effect.gen(function* () {

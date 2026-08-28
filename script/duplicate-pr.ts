@@ -2,7 +2,7 @@
 
 import path from "path"
 import { pathToFileURL } from "bun"
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 import { parseArgs } from "util"
 
 async function main() {
@@ -35,7 +35,7 @@ Examples:
     process.exit(1)
   }
 
-  const nanocode = await createNanocode({ port: 0 })
+  const bettercode = await createBettercode({ port: 0 })
 
   try {
     const parts: Array<{ type: "text"; text: string } | { type: "file"; url: string; filename: string; mime: string }> =
@@ -58,8 +58,8 @@ Examples:
 
     parts.push({ type: "text", text: message })
 
-    const session = await nanocode.client.session.create()
-    const result = await nanocode.client.session
+    const session = await bettercode.client.session.create()
+    const result = await bettercode.client.session
       .prompt({
         path: { id: session.data!.id },
         body: {
@@ -72,7 +72,7 @@ Examples:
 
     console.log(result.trim())
   } finally {
-    nanocode.server.close()
+    bettercode.server.close()
   }
 }
 

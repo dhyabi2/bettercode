@@ -125,19 +125,19 @@ beforeAll(async () => {
     useSearchParams: () => [search, () => undefined],
   }))
 
-  mock.module("@nanocode-ai/sdk/v2/client", () => ({
-    createNanocodeClient: (input: { directory: string }) => {
+  mock.module("@bettercode-ai/sdk/v2/client", () => ({
+    createBettercodeClient: (input: { directory: string }) => {
       createdClients.push(input.directory)
       return clientFor(input.directory)
     },
   }))
 
-  mock.module("@nanocode-ai/ui/toast", () => ({
+  mock.module("@bettercode-ai/ui/toast", () => ({
     Toast: { Region: () => null },
     showToast: () => 0,
   }))
 
-  mock.module("@nanocode-ai/core/util/encode", () => ({
+  mock.module("@bettercode-ai/core/util/encode", () => ({
     base64Encode: (value: string) => value,
   }))
 

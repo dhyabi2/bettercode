@@ -1,12 +1,12 @@
-import { AISDK } from "@nanocode-ai/core/aisdk"
+import { AISDK } from "@bettercode-ai/core/aisdk"
 import { describe, expect, mock } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@nanocode-ai/core/catalog"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { PluginHost } from "@nanocode-ai/core/plugin/host"
-import { GoogleVertexPlugin } from "@nanocode-ai/core/plugin/provider/google-vertex"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
+import { Catalog } from "@bettercode-ai/core/catalog"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { PluginHost } from "@bettercode-ai/core/plugin/host"
+import { GoogleVertexPlugin } from "@bettercode-ai/core/plugin/provider/google-vertex"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
 import type { LanguageModelV3 } from "@ai-sdk/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
@@ -91,17 +91,17 @@ describe("GoogleVertexPlugin", () => {
     Effect.gen(function* () {
       const catalog = yield* Catalog.Service
       yield* catalog.transform((catalog) =>
-        catalog.provider.update(ProviderV2.ID.nanocode, (provider) => {
+        catalog.provider.update(ProviderV2.ID.bettercode, (provider) => {
           provider.api = {
             type: "aisdk",
             package: "@ai-sdk/openai-compatible",
-            url: "https://nanocode.ai/zen/v1",
+            url: "https://bettercode.ai/zen/v1",
           }
         }),
       )
       yield* addPlugin()
 
-      const provider = required(yield* catalog.provider.get(ProviderV2.ID.nanocode))
+      const provider = required(yield* catalog.provider.get(ProviderV2.ID.bettercode))
       expect(provider.request.body).toEqual({})
     }),
   )

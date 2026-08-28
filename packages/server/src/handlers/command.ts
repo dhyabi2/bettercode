@@ -1,4 +1,4 @@
-import { CommandV2 } from "@nanocode-ai/core/command"
+import { CommandV2 } from "@bettercode-ai/core/command"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"
 import { response } from "../location"

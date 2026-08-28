@@ -1,31 +1,31 @@
-import { Message, Model, Part, Session, SessionStatus, SnapshotFileDiff, UserMessage } from "@nanocode-ai/sdk/v2"
-import { SessionTurn } from "@nanocode-ai/session-ui/session-turn"
-import { SessionReview } from "@nanocode-ai/session-ui/session-review"
-import { DataProvider } from "@nanocode-ai/session-ui/context"
-import { FileComponentProvider } from "@nanocode-ai/ui/context/file"
-import { WorkerPoolProvider } from "@nanocode-ai/ui/context/worker-pool"
+import { Message, Model, Part, Session, SessionStatus, SnapshotFileDiff, UserMessage } from "@bettercode-ai/sdk/v2"
+import { SessionTurn } from "@bettercode-ai/session-ui/session-turn"
+import { SessionReview } from "@bettercode-ai/session-ui/session-review"
+import { DataProvider } from "@bettercode-ai/session-ui/context"
+import { FileComponentProvider } from "@bettercode-ai/ui/context/file"
+import { WorkerPoolProvider } from "@bettercode-ai/ui/context/worker-pool"
 import { createAsync, query, useParams } from "@solidjs/router"
 import { createMemo, createSignal, ErrorBoundary, For, Match, Show, Switch } from "solid-js"
 import { Share } from "~/core/share"
-import { Logo, Mark } from "@nanocode-ai/ui/logo"
-import { IconButton } from "@nanocode-ai/ui/icon-button"
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
-import { iife } from "@nanocode-ai/core/util/iife"
-import { Binary } from "@nanocode-ai/core/util/binary"
-import { NamedError } from "@nanocode-ai/core/util/error"
+import { Logo, Mark } from "@bettercode-ai/ui/logo"
+import { IconButton } from "@bettercode-ai/ui/icon-button"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
+import { iife } from "@bettercode-ai/core/util/iife"
+import { Binary } from "@bettercode-ai/core/util/binary"
+import { NamedError } from "@bettercode-ai/core/util/error"
 import { DateTime } from "luxon"
 import { createStore } from "solid-js/store"
 import NotFound from "../[...404]"
-import { Tabs } from "@nanocode-ai/ui/tabs"
-import { MessageNav } from "@nanocode-ai/session-ui/message-nav"
-import { FileSSR } from "@nanocode-ai/session-ui/file-ssr"
+import { Tabs } from "@bettercode-ai/ui/tabs"
+import { MessageNav } from "@bettercode-ai/session-ui/message-nav"
+import { FileSSR } from "@bettercode-ai/session-ui/file-ssr"
 import { clientOnly } from "@solidjs/start"
 import { Meta, Title } from "@solidjs/meta"
 import { Base64 } from "js-base64"
 import { getRequestEvent } from "solid-js/web"
 
 const ClientOnlyWorkerPoolProvider = clientOnly(() =>
-  import("@nanocode-ai/session-ui/pierre/worker").then((m) => ({
+  import("@bettercode-ai/session-ui/pierre/worker").then((m) => ({
     default: (props: { children: any }) => (
       <WorkerPoolProvider pools={m.getWorkerPools()}>{props.children}</WorkerPoolProvider>
     ),
@@ -179,15 +179,15 @@ export default function () {
               modelParam = "unknown"
             }
             const version = `v${info().version}`
-            return `https://social-cards.sst.dev/nanocode-share/${encodedTitle}.png?model=${modelParam}&version=${version}&id=${data().shareID}`
+            return `https://social-cards.sst.dev/bettercode-share/${encodedTitle}.png?model=${modelParam}&version=${version}&id=${data().shareID}`
           })
 
           return (
             <>
               <Show when={info().title}>
-                <Title>{info().title} | NanoCode</Title>
+                <Title>{info().title} | BetterCode</Title>
               </Show>
-              <Meta name="description" content="nanocode - The AI coding agent built for the terminal." />
+              <Meta name="description" content="bettercode - The AI coding agent built for the terminal." />
               <Meta property="og:image" content={ogImage()} />
               <Meta name="twitter:image" content={ogImage()} />
               <ClientOnlyWorkerPoolProvider>
@@ -274,21 +274,21 @@ export default function () {
                         <div class="relative bg-background-stronger w-screen h-screen overflow-hidden flex flex-col">
                           <header class="h-12 px-6 py-2 flex items-center justify-between self-stretch bg-background-base border-b border-border-weak-base">
                             <div class="">
-                              <a href="https://nanocode.ai">
+                              <a href="https://bettercode.ai">
                                 <Mark />
                               </a>
                             </div>
                             <div class="flex gap-3 items-center">
                               <IconButton
                                 as={"a"}
-                                href="https://github.com/dhyabi2/nanocode"
+                                href="https://github.com/dhyabi2/bettercode"
                                 target="_blank"
                                 icon="github"
                                 variant="ghost"
                               />
                               <IconButton
                                 as={"a"}
-                                href="https://nanocode.ai/discord"
+                                href="https://bettercode.ai/discord"
                                 target="_blank"
                                 icon="discord"
                                 variant="ghost"

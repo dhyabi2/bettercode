@@ -1,4 +1,4 @@
-import type { TuiPlugin, TuiPluginModule } from "@nanocode-ai/plugin/tui"
+import type { TuiPlugin, TuiPluginModule } from "@bettercode-ai/plugin/tui"
 import HomeFooter from "./home/footer"
 import HomeTips from "./home/tips"
 import SidebarContext from "./sidebar/context"

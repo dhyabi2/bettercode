@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: NanoCode CLI opcije i naredbe.
+description: BetterCode CLI opcije i naredbe.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-NanoCode CLI po defaultu pokreće [TUI](/docs/tui) kada se pokrene bez ikakvih argumenata.
+BetterCode CLI po defaultu pokreće [TUI](/docs/tui) kada se pokrene bez ikakvih argumenata.
 
 ```bash
-nanocode
+bettercode
 ```
 
-Ali takođe prihvata naredbe kao što je dokumentovano na ovoj stranici. Ovo vam omogućava programsku interakciju sa NanoCode.
+Ali takođe prihvata naredbe kao što je dokumentovano na ovoj stranici. Ovo vam omogućava programsku interakciju sa BetterCode.
 
 ```bash
-nanocode run "Explain how closures work in JavaScript"
+bettercode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-Pokrenite NanoCode terminalski korisnički interfejs.
+Pokrenite BetterCode terminalski korisnički interfejs.
 
 ```bash
-nanocode [project]
+bettercode [project]
 ```
 
 #### Opcije
@@ -44,36 +44,36 @@ nanocode [project]
 
 ## Naredbe
 
-NanoCode CLI takođe ima sljedeće naredbe.
+BetterCode CLI takođe ima sljedeće naredbe.
 
 ---
 
 ### agent
 
-Upravljajte NanoCode agentima.
+Upravljajte BetterCode agentima.
 
 ```bash
-nanocode agent [command]
+bettercode agent [command]
 ```
 
 ---
 
 ### attach
 
-Priključite terminal na već pokrenut NanoCode backend server pokrenut putem `serve` ili `web` naredbi.
+Priključite terminal na već pokrenut BetterCode backend server pokrenut putem `serve` ili `web` naredbi.
 
 ```bash
-nanocode attach [url]
+bettercode attach [url]
 ```
 
-Ovo omogućava korištenje TUI-ja sa udaljenim NanoCode backend-om. Na primjer:
+Ovo omogućava korištenje TUI-ja sa udaljenim BetterCode backend-om. Na primjer:
 
 ```bash
 # Start the backend server for web/mobile access
-nanocode web --port 4096 --hostname 0.0.0.0
+bettercode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-nanocode attach http://10.20.30.40:4096
+bettercode attach http://10.20.30.40:4096
 ```
 
 #### Opcije
@@ -84,8 +84,8 @@ nanocode attach http://10.20.30.40:4096
 | <nobr><code>{"--continue"}</code></nobr> | `-c`   | Nastavi posljednju sesiju                                                                     |
 | <nobr><code>{"--session"}</code></nobr>  | `-s`   | ID sesije za nastavak                                                                         |
 | <nobr><code>{"--fork"}</code></nobr>     |        | Forkuj sesiju prilikom nastavka (koristite sa `--continue` ili `--session`)                   |
-| <nobr><code>{"--password"}</code></nobr> | `-p`   | Lozinka za osnovnu autentifikaciju (zadano: `NANOCODE_SERVER_PASSWORD`)                       |
-| <nobr><code>{"--username"}</code></nobr> | `-u`   | Korisničko ime za osnovnu autentifikaciju (zadano: `NANOCODE_SERVER_USERNAME` ili `nanocode`) |
+| <nobr><code>{"--password"}</code></nobr> | `-p`   | Lozinka za osnovnu autentifikaciju (zadano: `BETTERCODE_SERVER_PASSWORD`)                       |
+| <nobr><code>{"--username"}</code></nobr> | `-u`   | Korisničko ime za osnovnu autentifikaciju (zadano: `BETTERCODE_SERVER_USERNAME` ili `bettercode`) |
 
 ---
 
@@ -94,7 +94,7 @@ nanocode attach http://10.20.30.40:4096
 Kreirajte novog agenta s prilagođenom konfiguracijom.
 
 ```bash
-nanocode agent create
+bettercode agent create
 ```
 
 Ova naredba će vas voditi kroz kreiranje novog agenta sa prilagođenim sistemskim promptom i konfiguracijom alata.
@@ -106,7 +106,7 @@ Ova naredba će vas voditi kroz kreiranje novog agenta sa prilagođenim sistemsk
 Navedite sve dostupne agente.
 
 ```bash
-nanocode agent list
+bettercode agent list
 ```
 
 ---
@@ -116,20 +116,20 @@ nanocode agent list
 Naredba za upravljanje vjerodajnicama i prijavom za provajdere.
 
 ```bash
-nanocode auth [command]
+bettercode auth [command]
 ```
 
 ---
 
 #### login
 
-NanoCode pokreće lista provajdera na [Models.dev](https://models.dev), tako da možete koristiti `nanocode auth login` da konfigurirate API ključeve za bilo kojeg provajdera kojeg želite koristiti. Ovo je pohranjeno u `~/.local/share/nanocode/auth.json`.
+BetterCode pokreće lista provajdera na [Models.dev](https://models.dev), tako da možete koristiti `bettercode auth login` da konfigurirate API ključeve za bilo kojeg provajdera kojeg želite koristiti. Ovo je pohranjeno u `~/.local/share/bettercode/auth.json`.
 
 ```bash
-nanocode auth login
+bettercode auth login
 ```
 
-Kada se NanoCode pokrene, učitava dobavljače iz datoteke vjerodajnica. I ako postoje neki ključevi definirani u vašim okruženjima ili `.env` fajl u vašem projektu.
+Kada se BetterCode pokrene, učitava dobavljače iz datoteke vjerodajnica. I ako postoje neki ključevi definirani u vašim okruženjima ili `.env` fajl u vašem projektu.
 
 ---
 
@@ -138,13 +138,13 @@ Kada se NanoCode pokrene, učitava dobavljače iz datoteke vjerodajnica. I ako p
 Navodi sve autentifikovane dobavljače pohranjene u datoteci vjerodajnica.
 
 ```bash
-nanocode auth list
+bettercode auth list
 ```
 
 Ili kratka verzija.
 
 ```bash
-nanocode auth ls
+bettercode auth ls
 ```
 
 ---
@@ -154,7 +154,7 @@ nanocode auth ls
 Odjavljuje vas s provajdera tako što ga briše iz datoteke vjerodajnica.
 
 ```bash
-nanocode auth logout
+bettercode auth logout
 ```
 
 ---
@@ -164,7 +164,7 @@ nanocode auth logout
 Upravljajte GitHub agentom za automatizaciju repozitorija.
 
 ```bash
-nanocode github [command]
+bettercode github [command]
 ```
 
 ---
@@ -174,7 +174,7 @@ nanocode github [command]
 Instalirajte GitHub agenta u svoj repozitorij.
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 Ovo postavlja neophodni tok rada GitHub Actions i vodi vas kroz proces konfiguracije. [Saznajte više](/docs/github).
@@ -186,7 +186,7 @@ Ovo postavlja neophodni tok rada GitHub Actions i vodi vas kroz proces konfigura
 Pokrenite GitHub agent. Ovo se obično koristi u GitHub Actions.
 
 ```bash
-nanocode github run
+bettercode github run
 ```
 
 ##### Opcije
@@ -203,7 +203,7 @@ nanocode github run
 Upravljajte Model Context Protocol (MCP) serverima.
 
 ```bash
-nanocode mcp [command]
+bettercode mcp [command]
 ```
 
 ---
@@ -213,7 +213,7 @@ nanocode mcp [command]
 Dodajte MCP server svojoj konfiguraciji.
 
 ```bash
-nanocode mcp add
+bettercode mcp add
 ```
 
 Ova naredba će vas voditi kroz dodavanje lokalnog ili udaljenog MCP servera.
@@ -225,13 +225,13 @@ Ova naredba će vas voditi kroz dodavanje lokalnog ili udaljenog MCP servera.
 Navedite sve konfigurirane MCP servere i njihov status veze.
 
 ```bash
-nanocode mcp list
+bettercode mcp list
 ```
 
 Ili koristite kratku verziju.
 
 ```bash
-nanocode mcp ls
+bettercode mcp ls
 ```
 
 ---
@@ -241,20 +241,20 @@ nanocode mcp ls
 Autentifikujte se sa MCP serverom koji je omogućen za OAuth.
 
 ```bash
-nanocode mcp auth [name]
+bettercode mcp auth [name]
 ```
 
 Ako ne navedete ime servera, od vas će biti zatraženo da izaberete neki od dostupnih servera koji podržavaju OAuth.
 Također možete navesti servere koji podržavaju OAuth i njihov status autentifikacije.
 
 ```bash
-nanocode mcp auth list
+bettercode mcp auth list
 ```
 
 Ili koristite kratku verziju.
 
 ```bash
-nanocode mcp auth ls
+bettercode mcp auth ls
 ```
 
 ---
@@ -264,7 +264,7 @@ nanocode mcp auth ls
 Uklonite OAuth vjerodajnice za MCP server.
 
 ```bash
-nanocode mcp logout [name]
+bettercode mcp logout [name]
 ```
 
 ---
@@ -274,7 +274,7 @@ nanocode mcp logout [name]
 Otklanjanje grešaka (debug) OAuth veze sa MCP serverom.
 
 ```bash
-nanocode mcp debug <name>
+bettercode mcp debug <name>
 ```
 
 ---
@@ -284,7 +284,7 @@ nanocode mcp debug <name>
 Navedite sve dostupne modele konfiguriranih provajdera.
 
 ```bash
-nanocode models [provider]
+bettercode models [provider]
 ```
 
 Ova naredba prikazuje sve modele dostupne kod vaših konfiguriranih provajdera u formatu `provider/model`.
@@ -292,7 +292,7 @@ Ovo je korisno za pronalaženje tačnog naziva modela za korištenje u [vašoj k
 Opciono možete proslijediti ID provajdera za filtriranje modela po tom dobavljaču.
 
 ```bash
-nanocode models anthropic
+bettercode models anthropic
 ```
 
 #### Opcije
@@ -302,36 +302,36 @@ nanocode models anthropic
 | <nobr><code>{"--refresh"}</code></nobr> | Osvježite keš modela sa models.dev                                       |
 | <nobr><code>{"--verbose"}</code></nobr> | Koristite detaljniji izlaz modela (uključuje metapodatke poput troškova) |
 
-Koristite `--refresh` zastavicu da ažurirate keširanu listu modela. Ovo je korisno kada su novi modeli dodani provajderu i želite da ih vidite u NanoCode.
+Koristite `--refresh` zastavicu da ažurirate keširanu listu modela. Ovo je korisno kada su novi modeli dodani provajderu i želite da ih vidite u BetterCode.
 
 ```bash
-nanocode models --refresh
+bettercode models --refresh
 ```
 
 ---
 
 ### run
 
-Pokrenite NanoCode u neinteraktivnom modu tako što ćete direktno proslijediti prompt.
+Pokrenite BetterCode u neinteraktivnom modu tako što ćete direktno proslijediti prompt.
 
 ```bash
-nanocode run [message..]
+bettercode run [message..]
 ```
 
 Ovo je korisno za skriptiranje, automatizaciju ili kada želite brz odgovor bez pokretanja punog TUI-ja. Na primjer:
 
-```bash "nanocode run"
-nanocode run Explain the use of context in Go
+```bash "bettercode run"
+bettercode run Explain the use of context in Go
 ```
 
-Također možete priključiti pokrenutu `nanocode serve` instancu kako biste izbjegli vrijeme hladnog pokretanja MCP servera pri svakom pokretanju:
+Također možete priključiti pokrenutu `bettercode serve` instancu kako biste izbjegli vrijeme hladnog pokretanja MCP servera pri svakom pokretanju:
 
 ```bash
 # Start a headless server in one terminal
-nanocode serve
+bettercode serve
 
 # In another terminal, run commands that attach to it
-nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+bettercode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### Opcije
@@ -348,9 +348,9 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f`   | Fajlovi koje treba priložiti poruci                                                           |
 | <nobr><code>{"--format"}</code></nobr>   |        | Format: default (formatiran) ili json (sirovi JSON događaji)                                  |
 | <nobr><code>{"--title"}</code></nobr>    |        | Naslov sesije (koristi skraćeni prompt ako nije navedena vrijednost)                          |
-| <nobr><code>{"--attach"}</code></nobr>   |        | Priključite na pokrenuti NanoCode server (npr. http://localhost:4096)                         |
-| <nobr><code>{"--password"}</code></nobr> | `-p`   | Lozinka za osnovnu autentifikaciju (zadano: `NANOCODE_SERVER_PASSWORD`)                       |
-| <nobr><code>{"--username"}</code></nobr> | `-u`   | Korisničko ime za osnovnu autentifikaciju (zadano: `NANOCODE_SERVER_USERNAME` ili `nanocode`) |
+| <nobr><code>{"--attach"}</code></nobr>   |        | Priključite na pokrenuti BetterCode server (npr. http://localhost:4096)                         |
+| <nobr><code>{"--password"}</code></nobr> | `-p`   | Lozinka za osnovnu autentifikaciju (zadano: `BETTERCODE_SERVER_PASSWORD`)                       |
+| <nobr><code>{"--username"}</code></nobr> | `-u`   | Korisničko ime za osnovnu autentifikaciju (zadano: `BETTERCODE_SERVER_USERNAME` ili `bettercode`) |
 | <nobr><code>{"--dir"}</code></nobr>      |        | Direktorij za pokretanje, ili putanja na udaljenom serveru pri spajanju                       |
 | <nobr><code>{"--variant"}</code></nobr>  |        | Varijanta modela (napor zaključivanja specifičan za provajdera)                               |
 | <nobr><code>{"--thinking"}</code></nobr> |        | Prikaži blokove razmišljanja                                                                  |
@@ -360,13 +360,13 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 
 ### serve
 
-Pokrenite NanoCode headless server za API pristup. Pogledajte [server docs](/docs/server) za kompletan HTTP interfejs.
+Pokrenite BetterCode headless server za API pristup. Pogledajte [server docs](/docs/server) za kompletan HTTP interfejs.
 
 ```bash
-nanocode serve
+bettercode serve
 ```
 
-Ovo pokreće HTTP server koji pruža API pristup funkcionalnosti NanoCode-a bez TUI interfejsa. Postavite `NANOCODE_SERVER_PASSWORD` da omogućite HTTP osnovnu auth (korisničko ime je zadano na `nanocode`).
+Ovo pokreće HTTP server koji pruža API pristup funkcionalnosti BetterCode-a bez TUI interfejsa. Postavite `BETTERCODE_SERVER_PASSWORD` da omogućite HTTP osnovnu auth (korisničko ime je zadano na `bettercode`).
 
 #### Opcije
 
@@ -381,20 +381,20 @@ Ovo pokreće HTTP server koji pruža API pristup funkcionalnosti NanoCode-a bez 
 
 ### session
 
-Upravljajte NanoCode sesijama.
+Upravljajte BetterCode sesijama.
 
 ```bash
-nanocode session [command]
+bettercode session [command]
 ```
 
 ---
 
 #### list
 
-Navedite sve NanoCode sesije.
+Navedite sve BetterCode sesije.
 
 ```bash
-nanocode session list
+bettercode session list
 ```
 
 ##### Opcije
@@ -408,10 +408,10 @@ nanocode session list
 
 ### stats
 
-Prikaži statistiku upotrebe tokena i troškova za vaše NanoCode sesije.
+Prikaži statistiku upotrebe tokena i troškova za vaše BetterCode sesije.
 
 ```bash
-nanocode stats
+bettercode stats
 ```
 
 #### Opcije
@@ -430,7 +430,7 @@ nanocode stats
 Izvezite podatke sesije kao JSON.
 
 ```bash
-nanocode export [sessionID]
+bettercode export [sessionID]
 ```
 
 Ako ne unesete ID sesije, od vas će biti zatraženo da odaberete neku od dostupnih sesija.
@@ -439,30 +439,30 @@ Ako ne unesete ID sesije, od vas će biti zatraženo da odaberete neku od dostup
 
 ### import
 
-Uvezite podatke sesije iz JSON datoteke ili NanoCode dijeljenog URL-a.
+Uvezite podatke sesije iz JSON datoteke ili BetterCode dijeljenog URL-a.
 
 ```bash
-nanocode import <file>
+bettercode import <file>
 ```
 
-Možete uvesti iz lokalne datoteke ili NanoCode dijeljenog URL-a.
+Možete uvesti iz lokalne datoteke ili BetterCode dijeljenog URL-a.
 
 ```bash
-nanocode import session.json
-nanocode import https://opncd.ai/s/abc123
+bettercode import session.json
+bettercode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-Pokrenite NanoCode headless server sa web interfejsom.
+Pokrenite BetterCode headless server sa web interfejsom.
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-Ovo pokreće HTTP server i otvara web pretraživač za pristup NanoCode-u preko web interfejsa. Postavite `NANOCODE_SERVER_PASSWORD` da omogućite HTTP osnovnu auth (korisničko ime je zadano na `nanocode`).
+Ovo pokreće HTTP server i otvara web pretraživač za pristup BetterCode-u preko web interfejsa. Postavite `BETTERCODE_SERVER_PASSWORD` da omogućite HTTP osnovnu auth (korisničko ime je zadano na `bettercode`).
 
 #### Opcije
 
@@ -480,7 +480,7 @@ Ovo pokreće HTTP server i otvara web pretraživač za pristup NanoCode-u preko 
 Pokrenite ACP (Agent Client Protocol) server.
 
 ```bash
-nanocode acp
+bettercode acp
 ```
 
 Ova naredba pokreće ACP server koji komunicira preko stdin/stdout koristeći nd-JSON.
@@ -497,10 +497,10 @@ Ova naredba pokreće ACP server koji komunicira preko stdin/stdout koristeći nd
 
 ### uninstall
 
-Deinstalirajte NanoCode i uklonite sve povezane datoteke.
+Deinstalirajte BetterCode i uklonite sve povezane datoteke.
 
 ```bash
-nanocode uninstall
+bettercode uninstall
 ```
 
 #### Opcije
@@ -516,22 +516,22 @@ nanocode uninstall
 
 ### upgrade
 
-Ažurira NanoCode na najnoviju verziju ili određenu verziju.
+Ažurira BetterCode na najnoviju verziju ili određenu verziju.
 
 ```bash
-nanocode upgrade [target]
+bettercode upgrade [target]
 ```
 
 Za nadogradnju na najnoviju verziju.
 
 ```bash
-nanocode upgrade
+bettercode upgrade
 ```
 
 Za nadogradnju na određenu verziju.
 
 ```bash
-nanocode upgrade v0.1.48
+bettercode upgrade v0.1.48
 ```
 
 #### Opcije
@@ -544,7 +544,7 @@ nanocode upgrade v0.1.48
 
 ## Globalne opcije
 
-NanoCode CLI prihvata sljedeće globalne zastavice.
+BetterCode CLI prihvata sljedeće globalne zastavice.
 
 | Opcija                                     | Kratko | Opis                                      |
 | ------------------------------------------ | ------ | ----------------------------------------- |
@@ -557,34 +557,34 @@ NanoCode CLI prihvata sljedeće globalne zastavice.
 
 ## Varijable okruženja
 
-NanoCode se može konfigurirati pomoću varijabli okruženja.
+BetterCode se može konfigurirati pomoću varijabli okruženja.
 
 | Varijabla                             | Tip     | Opis                                                               |
 | ------------------------------------- | ------- | ------------------------------------------------------------------ |
-| `NANOCODE_AUTO_SHARE`                 | boolean | Automatski dijeli sesije                                           |
-| `NANOCODE_GIT_BASH_PATH`              | string  | Putanja do Git Bash izvršne datoteke na Windows-u                  |
-| `NANOCODE_CONFIG`                     | string  | Putanja do konfiguracijskog fajla                                  |
-| `NANOCODE_TUI_CONFIG`                 | string  | Putanja do TUI konfiguracijskog fajla                              |
-| `NANOCODE_CONFIG_DIR`                 | string  | Putanja do konfiguracijskog direktorija                            |
-| `NANOCODE_CONFIG_CONTENT`             | string  | Inline json konfiguracijski sadržaj                                |
-| `NANOCODE_DISABLE_AUTOUPDATE`         | boolean | Onemogući automatske provjere ažuriranja                           |
-| `NANOCODE_DISABLE_PRUNE`              | boolean | Onemogući brisanje (pruning) starih podataka                       |
-| `NANOCODE_DISABLE_TERMINAL_TITLE`     | boolean | Onemogući automatsko ažuriranje naslova terminala                  |
-| `NANOCODE_PERMISSION`                 | string  | Inline json konfiguracija dozvola                                  |
-| `NANOCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | Onemogući podrazumijevane dodatke (plugins)                        |
-| `NANOCODE_DISABLE_LSP_DOWNLOAD`       | boolean | Onemogući automatsko preuzimanje LSP servera                       |
-| `NANOCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | Omogući eksperimentalne modele                                     |
-| `NANOCODE_DISABLE_AUTOCOMPACT`        | boolean | Onemogući automatsko sažimanje konteksta                           |
-| `NANOCODE_DISABLE_CLAUDE_CODE`        | boolean | Onemogući čitanje iz `.claude` (prompt + vještine)                 |
-| `NANOCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | Onemogući čitanje `~/.claude/CLAUDE.md`                            |
-| `NANOCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | Onemogući učitavanje `.claude/skills`                              |
-| `NANOCODE_DISABLE_MODELS_FETCH`       | boolean | Onemogući dohvaćanje modela iz udaljenih izvora                    |
-| `NANOCODE_FAKE_VCS`                   | string  | Lažni VCS provajder za potrebe testiranja                          |
-| `NANOCODE_CLIENT`                     | string  | Identifikator klijenta (zadano na `cli`)                           |
-| `NANOCODE_ENABLE_EXA`                 | boolean | Omogući Exa alate za web pretraživanje                             |
-| `NANOCODE_SERVER_PASSWORD`            | string  | Omogući osnovnu autentifikaciju za `serve`/`web`                   |
-| `NANOCODE_SERVER_USERNAME`            | string  | Poništi osnovno korisničko ime autentifikacije (zadano `nanocode`) |
-| `NANOCODE_MODELS_URL`                 | string  | Prilagođeni URL za dohvaćanje konfiguracije modela                 |
+| `BETTERCODE_AUTO_SHARE`                 | boolean | Automatski dijeli sesije                                           |
+| `BETTERCODE_GIT_BASH_PATH`              | string  | Putanja do Git Bash izvršne datoteke na Windows-u                  |
+| `BETTERCODE_CONFIG`                     | string  | Putanja do konfiguracijskog fajla                                  |
+| `BETTERCODE_TUI_CONFIG`                 | string  | Putanja do TUI konfiguracijskog fajla                              |
+| `BETTERCODE_CONFIG_DIR`                 | string  | Putanja do konfiguracijskog direktorija                            |
+| `BETTERCODE_CONFIG_CONTENT`             | string  | Inline json konfiguracijski sadržaj                                |
+| `BETTERCODE_DISABLE_AUTOUPDATE`         | boolean | Onemogući automatske provjere ažuriranja                           |
+| `BETTERCODE_DISABLE_PRUNE`              | boolean | Onemogući brisanje (pruning) starih podataka                       |
+| `BETTERCODE_DISABLE_TERMINAL_TITLE`     | boolean | Onemogući automatsko ažuriranje naslova terminala                  |
+| `BETTERCODE_PERMISSION`                 | string  | Inline json konfiguracija dozvola                                  |
+| `BETTERCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | Onemogući podrazumijevane dodatke (plugins)                        |
+| `BETTERCODE_DISABLE_LSP_DOWNLOAD`       | boolean | Onemogući automatsko preuzimanje LSP servera                       |
+| `BETTERCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | Omogući eksperimentalne modele                                     |
+| `BETTERCODE_DISABLE_AUTOCOMPACT`        | boolean | Onemogući automatsko sažimanje konteksta                           |
+| `BETTERCODE_DISABLE_CLAUDE_CODE`        | boolean | Onemogući čitanje iz `.claude` (prompt + vještine)                 |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | Onemogući čitanje `~/.claude/CLAUDE.md`                            |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | Onemogući učitavanje `.claude/skills`                              |
+| `BETTERCODE_DISABLE_MODELS_FETCH`       | boolean | Onemogući dohvaćanje modela iz udaljenih izvora                    |
+| `BETTERCODE_FAKE_VCS`                   | string  | Lažni VCS provajder za potrebe testiranja                          |
+| `BETTERCODE_CLIENT`                     | string  | Identifikator klijenta (zadano na `cli`)                           |
+| `BETTERCODE_ENABLE_EXA`                 | boolean | Omogući Exa alate za web pretraživanje                             |
+| `BETTERCODE_SERVER_PASSWORD`            | string  | Omogući osnovnu autentifikaciju za `serve`/`web`                   |
+| `BETTERCODE_SERVER_USERNAME`            | string  | Poništi osnovno korisničko ime autentifikacije (zadano `bettercode`) |
+| `BETTERCODE_MODELS_URL`                 | string  | Prilagođeni URL za dohvaćanje konfiguracije modela                 |
 
 ---
 
@@ -594,21 +594,21 @@ Ove varijable okruženja omogućavaju eksperimentalne karakteristike koje se mog
 
 | Varijabla                                       | Tip     | Opis                                                    |
 | ----------------------------------------------- | ------- | ------------------------------------------------------- |
-| `NANOCODE_EXPERIMENTAL`                         | boolean | Omogući eksperimentalne funkcije pod zbirnom zastavicom |
-| `NANOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | Omogući otkrivanje ikona                                |
-| `NANOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | Onemogući kopiranje pri odabiru u TUI                   |
-| `NANOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | Zadano vremensko ograničenje za bash naredbe u ms       |
-| `NANOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | Maksimalni izlazni tokeni za LLM odgovore               |
-| `NANOCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | Omogući praćenje datoteka za cijeli direktorij          |
-| `NANOCODE_EXPERIMENTAL_OXFMT`                   | boolean | Omogući oxfmt formatter                                 |
-| `NANOCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | Omogući eksperimentalni LSP alat                        |
-| `NANOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | Onemogući praćenje datoteka                             |
-| `NANOCODE_EXPERIMENTAL_EXA`                     | boolean | Omogući eksperimentalne Exa funkcije                    |
-| `NANOCODE_EXPERIMENTAL_LSP_TY`                  | boolean | Omogući TY LSP za python datoteke                       |
-| `NANOCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | Omogući Plan mod                                        |
-| `NANOCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | boolean | Omogući pozadinske zadatke subagenata                   |
-| `NANOCODE_EXPERIMENTAL_EVENT_SYSTEM`            | boolean | Omogući eksperimentalni sistem događaja                 |
-| `NANOCODE_EXPERIMENTAL_NATIVE_LLM`              | boolean | Omogući nativnu putanju LLM zahtjeva                    |
-| `NANOCODE_EXPERIMENTAL_PARALLEL`                | boolean | Omogući paralelno izvršavanje web pretrage              |
-| `NANOCODE_EXPERIMENTAL_SCOUT`                   | boolean | Omogući Scout subagenta                                 |
-| `NANOCODE_EXPERIMENTAL_WORKSPACES`              | boolean | Omogući podršku za radne prostore                       |
+| `BETTERCODE_EXPERIMENTAL`                         | boolean | Omogući eksperimentalne funkcije pod zbirnom zastavicom |
+| `BETTERCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | Omogući otkrivanje ikona                                |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | Onemogući kopiranje pri odabiru u TUI                   |
+| `BETTERCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | Zadano vremensko ograničenje za bash naredbe u ms       |
+| `BETTERCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | Maksimalni izlazni tokeni za LLM odgovore               |
+| `BETTERCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | Omogući praćenje datoteka za cijeli direktorij          |
+| `BETTERCODE_EXPERIMENTAL_OXFMT`                   | boolean | Omogući oxfmt formatter                                 |
+| `BETTERCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | Omogući eksperimentalni LSP alat                        |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | Onemogući praćenje datoteka                             |
+| `BETTERCODE_EXPERIMENTAL_EXA`                     | boolean | Omogući eksperimentalne Exa funkcije                    |
+| `BETTERCODE_EXPERIMENTAL_LSP_TY`                  | boolean | Omogući TY LSP za python datoteke                       |
+| `BETTERCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | Omogući Plan mod                                        |
+| `BETTERCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | boolean | Omogući pozadinske zadatke subagenata                   |
+| `BETTERCODE_EXPERIMENTAL_EVENT_SYSTEM`            | boolean | Omogući eksperimentalni sistem događaja                 |
+| `BETTERCODE_EXPERIMENTAL_NATIVE_LLM`              | boolean | Omogući nativnu putanju LLM zahtjeva                    |
+| `BETTERCODE_EXPERIMENTAL_PARALLEL`                | boolean | Omogući paralelno izvršavanje web pretrage              |
+| `BETTERCODE_EXPERIMENTAL_SCOUT`                   | boolean | Omogući Scout subagenta                                 |
+| `BETTERCODE_EXPERIMENTAL_WORKSPACES`              | boolean | Omogući podršku za radne prostore                       |

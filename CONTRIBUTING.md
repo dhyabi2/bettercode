@@ -1,6 +1,6 @@
-# Contributing to NanoCode
+# Contributing to BetterCode
 
-We want to make it easy for you to contribute to NanoCode. Here are the most common type of changes that get merged:
+We want to make it easy for you to contribute to BetterCode. Here are the most common type of changes that get merged:
 
 - Bug fixes
 - Additional LSPs / Formatters
@@ -14,10 +14,10 @@ However, any UI or core product feature must go through a design review with the
 
 If you are unsure if a PR would be accepted, feel free to ask a maintainer or look for issues with any of the following labels:
 
-- [`help wanted`](https://github.com/dhyabi2/nanocode/issues?q=is%3Aissue%20state%3Aopen%20label%3Ahelp-wanted)
-- [`good first issue`](https://github.com/dhyabi2/nanocode/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22)
-- [`bug`](https://github.com/dhyabi2/nanocode/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug)
-- [`perf`](https://github.com/dhyabi2/nanocode/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22perf%22)
+- [`help wanted`](https://github.com/dhyabi2/bettercode/issues?q=is%3Aissue%20state%3Aopen%20label%3Ahelp-wanted)
+- [`good first issue`](https://github.com/dhyabi2/bettercode/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22)
+- [`bug`](https://github.com/dhyabi2/bettercode/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug)
+- [`perf`](https://github.com/dhyabi2/bettercode/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22perf%22)
 
 > [!NOTE]
 > PRs that ignore these guardrails will likely be closed.
@@ -29,7 +29,7 @@ Want to take on an issue? Leave a comment and a maintainer may assign it to you 
 New providers shouldn't require many if ANY code changes, but if you want to add support for a new provider first make a PR to:
 https://github.com/dhyabi2/models.dev
 
-## Developing NanoCode
+## Developing BetterCode
 
 - Requirements: Bun 1.3+
 - Install dependencies and start the dev server from the repo root:
@@ -41,13 +41,13 @@ https://github.com/dhyabi2/models.dev
 
 ### Running against a different directory
 
-By default, `bun dev` runs NanoCode in the `packages/nanocode` directory. To run it against a different directory or repository:
+By default, `bun dev` runs BetterCode in the `packages/bettercode` directory. To run it against a different directory or repository:
 
 ```bash
 bun dev <directory>
 ```
 
-To run NanoCode in the root of the nanocode repo itself:
+To run BetterCode in the root of the bettercode repo itself:
 
 ```bash
 bun dev .
@@ -58,27 +58,27 @@ bun dev .
 To compile a standalone executable:
 
 ```bash
-./packages/nanocode/script/build.ts --single
+./packages/bettercode/script/build.ts --single
 ```
 
 Then run it with:
 
 ```bash
-./packages/nanocode/dist/nanocode-<platform>/bin/nanocode
+./packages/bettercode/dist/bettercode-<platform>/bin/bettercode
 ```
 
 Replace `<platform>` with your platform (e.g., `darwin-arm64`, `linux-x64`).
 
 - Core pieces:
-  - `packages/nanocode`: NanoCode core business logic & server.
-  - `packages/nanocode/src/cli/cmd/tui/`: The TUI code, written in SolidJS with [opentui](https://github.com/sst/opentui)
+  - `packages/bettercode`: BetterCode core business logic & server.
+  - `packages/bettercode/src/cli/cmd/tui/`: The TUI code, written in SolidJS with [opentui](https://github.com/sst/opentui)
   - `packages/app`: The shared web UI components, written in SolidJS
   - `packages/desktop`: The native desktop app, built with Electron (wraps `packages/app`)
-  - `packages/plugin`: Source for `@nanocode-ai/plugin`
+  - `packages/plugin`: Source for `@bettercode-ai/plugin`
 
-### Understanding bun dev vs nanocode
+### Understanding bun dev vs bettercode
 
-During development, `bun dev` is the local equivalent of the built `nanocode` command. Both run the same CLI interface:
+During development, `bun dev` is the local equivalent of the built `bettercode` command. Both run the same CLI interface:
 
 ```bash
 # Development (from project root)
@@ -88,15 +88,15 @@ bun dev web              # Start server + open web interface
 bun dev <directory>      # Start TUI in specific directory
 
 # Production
-nanocode --help          # Show all available commands
-nanocode serve           # Start headless API server
-nanocode web             # Start server + open web interface
-nanocode <directory>     # Start TUI in specific directory
+bettercode --help          # Show all available commands
+bettercode serve           # Start headless API server
+bettercode web             # Start server + open web interface
+bettercode <directory>     # Start TUI in specific directory
 ```
 
 ### Running the API Server
 
-To start the NanoCode headless API server:
+To start the BetterCode headless API server:
 
 ```bash
 bun dev serve
@@ -112,7 +112,7 @@ bun dev serve --port 8080
 
 To test UI changes during development:
 
-1. **First, start the NanoCode server** (see [Running the API Server](#running-the-api-server) section above)
+1. **First, start the BetterCode server** (see [Running the API Server](#running-the-api-server) section above)
 2. **Then run the web app:**
 
 ```bash
@@ -139,7 +139,7 @@ bun run --cwd packages/desktop package
 ```
 
 > [!NOTE]
-> If you make changes to the API or SDK (e.g. `packages/nanocode/src/server/server.ts`), run `./script/generate.ts` to regenerate the SDK and related files.
+> If you make changes to the API or SDK (e.g. `packages/bettercode/src/server/server.ts`), run `./script/generate.ts` to regenerate the SDK and related files.
 
 Please try to follow the [style guide](./AGENTS.md)
 
@@ -147,17 +147,17 @@ Please try to follow the [style guide](./AGENTS.md)
 
 Bun debugging is currently rough around the edges. We hope this guide helps you get set up and avoid some pain points.
 
-The most reliable way to debug NanoCode is to run it manually in a terminal via `bun run --inspect=<url> dev ...` and attach
+The most reliable way to debug BetterCode is to run it manually in a terminal via `bun run --inspect=<url> dev ...` and attach
 your debugger via that URL. Other methods can result in breakpoints being mapped incorrectly, at least in VSCode (YMMV).
 
 Caveats:
 
-- If you want to run the NanoCode TUI and have breakpoints triggered in the server code, you might need to run `bun dev spawn` instead of
+- If you want to run the BetterCode TUI and have breakpoints triggered in the server code, you might need to run `bun dev spawn` instead of
   the usual `bun dev`. This is because `bun dev` runs the server in a worker thread and breakpoints might not work there.
 - If `spawn` does not work for you, you can debug the server separately:
-  - Debug server: `bun run --inspect=ws://localhost:6499/ --cwd packages/nanocode ./src/index.ts serve --port 4096`,
-    then attach TUI with `nanocode attach http://localhost:4096`
-  - Debug TUI: `bun run --inspect=ws://localhost:6499/ --cwd packages/nanocode --conditions=browser ./src/index.ts`
+  - Debug server: `bun run --inspect=ws://localhost:6499/ --cwd packages/bettercode ./src/index.ts serve --port 4096`,
+    then attach TUI with `bettercode attach http://localhost:4096`
+  - Debug TUI: `bun run --inspect=ws://localhost:6499/ --cwd packages/bettercode --conditions=browser ./src/index.ts`
 
 Other tips and tricks:
 
@@ -171,7 +171,7 @@ If you use VSCode, you can use our example configurations [.vscode/settings.exam
 Some debug methods that can be problematic:
 
 - Debug configurations with `"request": "launch"` can have breakpoints incorrectly mapped and thus unusable
-- The same problem arises when running NanoCode in the VSCode `JavaScript Debug Terminal`
+- The same problem arises when running BetterCode in the VSCode `JavaScript Debug Terminal`
 
 With that said, you may want to try these methods, as they might work for you.
 
@@ -224,7 +224,7 @@ You can optionally include a scope to indicate which package is affected:
 
 - `feat(app):` feature in the app package
 - `fix(desktop):` bug fix in the desktop package
-- `chore(nanocode):` maintenance in the nanocode package
+- `chore(bettercode):` maintenance in the bettercode package
 
 Examples:
 
@@ -250,7 +250,7 @@ These are not strictly enforced, they are just general guidelines:
 
 ## Feature Requests
 
-For net-new functionality, start with a design conversation. Open an issue describing the problem, your proposed approach (optional), and why it belongs in NanoCode. The core team will help decide whether it should move forward; please wait for that approval instead of opening a feature PR directly.
+For net-new functionality, start with a design conversation. Open an issue describing the problem, your proposed approach (optional), and why it belongs in BetterCode. The core team will help decide whether it should move forward; please wait for that approval instead of opening a feature PR directly.
 
 ## Issue Requirements
 

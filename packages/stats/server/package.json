@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@nanocode-ai/stats-server",
+  "name": "@bettercode-ai/stats-server",
   "version": "1.18.21",
   "private": true,
   "type": "module",
@@ -16,7 +16,7 @@
   "dependencies": {
     "@aws-sdk/client-firehose": "3.933.0",
     "@effect/platform-node": "catalog:",
-    "@nanocode-ai/stats-core": "workspace:*",
+    "@bettercode-ai/stats-core": "workspace:*",
     "effect": "catalog:",
     "sst": "catalog:"
   },

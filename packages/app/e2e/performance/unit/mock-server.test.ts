@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test"
 import type { Page, Route } from "@playwright/test"
-import { mockNanoCodeServer } from "../../utils/mock-server"
+import { mockBetterCodeServer } from "../../utils/mock-server"
 
 test("applies message latency after a list response gate is released", async () => {
   const events: string[] = []
@@ -12,9 +12,9 @@ test("applies message latency after a list response gate is released", async () 
       return Promise.resolve()
     },
   } as unknown as Page
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     provider: {},
-    directory: "C:/NanoCode",
+    directory: "C:/BetterCode",
     project: {},
     sessions: [{ id: "session" }],
     messageDelay: 25,

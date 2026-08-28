@@ -1,6 +1,6 @@
-import type { UpdaterState } from "@nanocode-ai/app/updater"
+import type { UpdaterState } from "@bettercode-ai/app/updater"
 
-export type { UpdaterState } from "@nanocode-ai/app/updater"
+export type { UpdaterState } from "@bettercode-ai/app/updater"
 
 export type UpdaterReadyRecord = { version: string }
 

@@ -9,7 +9,7 @@ const lake = deployAws ? await import("./lake") : undefined
 ////////////////
 
 const cluster = planetscale.getDatabaseOutput({
-  name: "nanocode",
+  name: "bettercode",
   organization: "dhyabi2",
 })
 
@@ -104,7 +104,7 @@ export const stripeWebhook = new stripe.WebhookEndpoint("StripeWebhookEndpoint",
 })
 
 const zenLiteProduct = new stripe.Product("ZenLite", {
-  name: "NanoCode Go",
+  name: "BetterCode Go",
 })
 const zenLiteCouponFirstMonth50 = new stripe.Coupon("ZenLiteCouponFirstMonth50", {
   name: "First month 50% off",
@@ -162,7 +162,7 @@ const ZEN_LITE_PRICE = new sst.Linkable("ZEN_LITE_PRICE", {
 })
 
 const zenBlackProduct = new stripe.Product("ZenBlack", {
-  name: "NanoCode Black",
+  name: "BetterCode Black",
 })
 const zenBlackPriceProps = {
   product: zenBlackProduct.id,

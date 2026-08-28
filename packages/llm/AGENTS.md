@@ -23,12 +23,12 @@ This package is an Effect Schema-first LLM core. The Schema classes in `src/sche
 
 Primary in-repo integration point:
 
-- `packages/nanocode/src/session/llm.ts` is the session-owned orchestration layer that decides whether a request uses AI SDK or this package's native route runtime.
-- `packages/nanocode/src/session/llm/native-request.ts` is the lowering adapter from nanocode's session/AI SDK-shaped data into this package's `LLMRequest` model.
-- `packages/nanocode/src/session/llm/native-runtime.ts` is the execution adapter that calls raw `LLMClient.stream(request)` and bridges one provider turn of nanocode tool calls through this package's typed dispatcher.
-- `packages/nanocode/src/session/llm/ai-sdk.ts` keeps the default AI SDK path compatible by converting AI SDK stream parts into this package's shared `LLMEvent`s.
+- `packages/bettercode/src/session/llm.ts` is the session-owned orchestration layer that decides whether a request uses AI SDK or this package's native route runtime.
+- `packages/bettercode/src/session/llm/native-request.ts` is the lowering adapter from bettercode's session/AI SDK-shaped data into this package's `LLMRequest` model.
+- `packages/bettercode/src/session/llm/native-runtime.ts` is the execution adapter that calls raw `LLMClient.stream(request)` and bridges one provider turn of bettercode tool calls through this package's typed dispatcher.
+- `packages/bettercode/src/session/llm/ai-sdk.ts` keeps the default AI SDK path compatible by converting AI SDK stream parts into this package's shared `LLMEvent`s.
 
-Keep this package independent of session concerns. Session auth, permissions, plugins, telemetry headers, and runtime selection belong in `packages/nanocode/src/session/llm.ts` and its local adapters.
+Keep this package independent of session concerns. Session auth, permissions, plugins, telemetry headers, and runtime selection belong in `packages/bettercode/src/session/llm.ts` and its local adapters.
 
 ### Request Flow
 
@@ -126,7 +126,7 @@ packages/llm/src/
     index.ts                barrel
   llm.ts                    request constructors and convenience helpers
   route/
-    index.ts                @nanocode-ai/llm/route advanced barrel
+    index.ts                @bettercode-ai/llm/route advanced barrel
     client.ts               Route.make + LLMClient.prepare/stream/generate
     executor.ts             RequestExecutor service + transport error mapping
     protocol.ts             Protocol type + Protocol.make

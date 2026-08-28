@@ -1,6 +1,6 @@
-@import "@nanocode-ai/ui/styles/tailwind";
-@import "@nanocode-ai/session-ui/styles";
-@import "@nanocode-ai/ui/v2/styles/tailwind.css";
+@import "@bettercode-ai/ui/styles/tailwind";
+@import "@bettercode-ai/session-ui/styles";
+@import "@bettercode-ai/ui/v2/styles/tailwind.css";
 @import "tw-animate-css";
 
 @font-face {

@@ -1,9 +1,9 @@
 import { createSignal } from "solid-js"
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
 import { ToolErrorCardV2, type ToolErrorCardV2Props } from "./tool-error-card-v2"
 
 const docs = `### Overview
-Compact tool error row with optional expandable detail, aligned to the NanoCode design system spec.
+Compact tool error row with optional expandable detail, aligned to the BetterCode design system spec.
 
 ### API
 - \`ToolErrorCardV2\` wraps Kobalte \`Collapsible\` directly. Pass \`open\`, \`defaultOpen\`, and \`onOpenChange\` like any disclosure (controlled when \`open\` is defined).

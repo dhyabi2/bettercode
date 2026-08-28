@@ -1,5 +1,5 @@
-import { Skill } from "@nanocode-ai/schema/skill"
-import { Location } from "@nanocode-ai/schema/location"
+import { Skill } from "@bettercode-ai/schema/skill"
+import { Location } from "@bettercode-ai/schema/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { LocationQuery, locationQueryOpenApi } from "./location"

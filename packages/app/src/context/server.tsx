@@ -1,4 +1,4 @@
-import { createSimpleContext } from "@nanocode-ai/ui/context"
+import { createSimpleContext } from "@bettercode-ai/ui/context"
 import { type Accessor, batch, createMemo } from "solid-js"
 import { createStore, type SetStoreFunction, type Store } from "solid-js/store"
 import { Persist, persisted } from "@/utils/persist"

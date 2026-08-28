@@ -1,11 +1,11 @@
 import { expect, test } from "@playwright/test"
 import type { Page } from "@playwright/test"
 import { fixture, pageMessages } from "../smoke/session-timeline.fixture"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectAppVisible } from "../utils/waits"
 
 const NAMES = ["alpha-service", "bravo-web", "charlie-api", "delta-tools", "echo-infra", "foxtrot-docs"]
-const worktrees = NAMES.map((name) => `/nanocode-demo/${name}`)
+const worktrees = NAMES.map((name) => `/bettercode-demo/${name}`)
 
 // The sixth project sits outside the five-item recent cap, so it is only reachable if the
 // dialog hands every recent project to the list filter instead of a pre-truncated slice.
@@ -17,7 +17,7 @@ const rows = (page: Page) => page.locator("[data-directory-path]")
 const row = (page: Page, name: string) => page.locator(`[data-directory-path*="${name}"]`)
 
 async function openProjectDialog(page: Page) {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     sessions: fixture.sessions,
     provider: fixture.provider,
     directory: fixture.directory,
@@ -28,7 +28,7 @@ async function openProjectDialog(page: Page) {
   })
   await page.addInitScript((dirs) => {
     localStorage.setItem(
-      "nanocode.global.dat:server",
+      "bettercode.global.dat:server",
       JSON.stringify({
         projects: { local: dirs.map((worktree: string) => ({ worktree, expanded: false })) },
         lastProject: {},

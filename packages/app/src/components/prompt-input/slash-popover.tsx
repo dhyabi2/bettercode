@@ -1,9 +1,9 @@
 import { Component, For, Match, Show, Switch } from "solid-js"
-import { FileIcon } from "@nanocode-ai/ui/file-icon"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { Tag } from "@nanocode-ai/ui/v2/badge-v2"
-import { KeybindV2 } from "@nanocode-ai/ui/v2/keybind-v2"
-import { getDirectory, getFilename } from "@nanocode-ai/core/util/path"
+import { FileIcon } from "@bettercode-ai/ui/file-icon"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { Tag } from "@bettercode-ai/ui/v2/badge-v2"
+import { KeybindV2 } from "@bettercode-ai/ui/v2/keybind-v2"
+import { getDirectory, getFilename } from "@bettercode-ai/core/util/path"
 
 export type AtOption =
   | { type: "agent"; name: string; display: string }

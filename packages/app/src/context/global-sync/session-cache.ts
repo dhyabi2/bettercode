@@ -1,6 +1,6 @@
-import type { Message, Part, PermissionRequest, QuestionRequest, SessionStatus, Todo } from "@nanocode-ai/sdk/v2/client"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
-import type { SessionMessageInfo } from "@nanocode-ai/client/promise"
+import type { Message, Part, PermissionRequest, QuestionRequest, SessionStatus, Todo } from "@bettercode-ai/sdk/v2/client"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
+import type { SessionMessageInfo } from "@bettercode-ai/client/promise"
 
 export const SESSION_CACHE_LIMIT = 40
 

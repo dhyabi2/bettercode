@@ -1,5 +1,5 @@
-import { Session } from "@nanocode-ai/schema/session"
-import { SessionMessage } from "@nanocode-ai/schema/session-message"
+import { Session } from "@bettercode-ai/schema/session"
+import { SessionMessage } from "@bettercode-ai/schema/session-message"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { InvalidCursorError, SessionNotFoundError, UnknownError } from "../errors"

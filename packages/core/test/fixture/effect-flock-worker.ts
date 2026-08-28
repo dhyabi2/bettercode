@@ -1,9 +1,9 @@
 import fs from "fs/promises"
 import os from "os"
 import { Effect } from "effect"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { EffectFlock } from "@nanocode-ai/core/util/effect-flock"
-import { Global } from "@nanocode-ai/core/global"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { EffectFlock } from "@bettercode-ai/core/util/effect-flock"
+import { Global } from "@bettercode-ai/core/global"
 
 type Msg = {
   key: string

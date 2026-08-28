@@ -1,8 +1,8 @@
 import * as NodeRuntime from "@effect/platform-node/NodeRuntime"
-import { ModelStatRepo } from "@nanocode-ai/stats-core/domain/model"
-import { R2Sql } from "@nanocode-ai/stats-core/r2-sql"
-import { layer as statsLayer } from "@nanocode-ai/stats-core/runtime"
-import { syncStats } from "@nanocode-ai/stats-core/stat-sync"
+import { ModelStatRepo } from "@bettercode-ai/stats-core/domain/model"
+import { R2Sql } from "@bettercode-ai/stats-core/r2-sql"
+import { layer as statsLayer } from "@bettercode-ai/stats-core/runtime"
+import { syncStats } from "@bettercode-ai/stats-core/stat-sync"
 import { Cause, Duration, Effect, Layer, Schedule } from "effect"
 
 const SYNC_INTERVAL = "1 hour"

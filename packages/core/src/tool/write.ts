@@ -6,7 +6,7 @@
  */
 export * as WriteTool from "./write"
 
-import { ToolFailure } from "@nanocode-ai/llm"
+import { ToolFailure } from "@bettercode-ai/llm"
 import { Effect, Layer, Schema } from "effect"
 import { makeLocationNode } from "../effect/app-node"
 import { FileMutation } from "../file-mutation"

@@ -1,10 +1,10 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { Location } from "@nanocode-ai/core/location"
-import { Project } from "@nanocode-ai/core/project"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { WorkspaceV2 } from "@nanocode-ai/core/workspace"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { Location } from "@bettercode-ai/core/location"
+import { Project } from "@bettercode-ai/core/project"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { WorkspaceV2 } from "@bettercode-ai/core/workspace"
 import { testEffect } from "./lib/effect"
 
 const workspaceID = WorkspaceV2.ID.make("wrk_test")

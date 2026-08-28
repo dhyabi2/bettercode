@@ -10,7 +10,7 @@ describe("external URLs", () => {
   })
 
   test("opens mail links externally", () => {
-    expect(resolveExternalURL("mailto:hello@nanocode.ai")).toBe("mailto:hello@nanocode.ai")
+    expect(resolveExternalURL("mailto:hello@bettercode.ai")).toBe("mailto:hello@bettercode.ai")
   })
 
   test("rejects file URLs and unsupported protocols", () => {

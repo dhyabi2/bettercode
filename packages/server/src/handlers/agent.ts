@@ -1,4 +1,4 @@
-import { AgentV2 } from "@nanocode-ai/core/agent"
+import { AgentV2 } from "@bettercode-ai/core/agent"
 import { Effect } from "effect"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"

@@ -1,19 +1,19 @@
 ---
 title: サーバー
-description: HTTP 経由で NanoCode サーバーと通信します。
+description: HTTP 経由で BetterCode サーバーと通信します。
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-`nanocode serve` コマンドは、NanoCode クライアントが使用できる OpenAPI エンドポイントを公開するヘッドレス HTTP サーバーを実行します。
+`bettercode serve` コマンドは、BetterCode クライアントが使用できる OpenAPI エンドポイントを公開するヘッドレス HTTP サーバーを実行します。
 
 ---
 
 ### 使用法
 
 ```bash
-nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
+bettercode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 ```
 
 #### オプション
@@ -23,36 +23,36 @@ nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | リッスンするポート                | `4096`           |
 | `--hostname`    | リッスンするホスト名              | `127.0.0.1`      |
 | `--mdns`        | mDNS 検出を有効にする             | `false`          |
-| `--mdns-domain` | mDNS サービスのカスタムドメイン名 | `nanocode.local` |
+| `--mdns-domain` | mDNS サービスのカスタムドメイン名 | `bettercode.local` |
 | `--cors`        | 許可する追加のブラウザーオリジン  | `[]`             |
 
 `--cors` は複数回渡すことができます。
 
 ```bash
-nanocode serve --cors http://localhost:5173 --cors https://app.example.com
+bettercode serve --cors http://localhost:5173 --cors https://app.example.com
 ```
 
 ---
 
 ### 認証
 
-HTTP 基本認証でサーバーを保護するには、`NANOCODE_SERVER_PASSWORD` を設定します。ユーザー名はデフォルトで `nanocode` になるか、`NANOCODE_SERVER_USERNAME` を設定してオーバーライドします。これは、`nanocode serve` と `nanocode web` の両方に当てはまります。
+HTTP 基本認証でサーバーを保護するには、`BETTERCODE_SERVER_PASSWORD` を設定します。ユーザー名はデフォルトで `bettercode` になるか、`BETTERCODE_SERVER_USERNAME` を設定してオーバーライドします。これは、`bettercode serve` と `bettercode web` の両方に当てはまります。
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve
 ```
 
 ---
 
 ### 仕組み
 
-`nanocode` を実行すると、TUI とサーバーが起動します。 TUI はサーバーと通信するクライアントです。サーバーは OpenAPI 3.1 仕様のエンドポイントを公開します。このエンドポイントは、[SDK](/docs/sdk) を使用してアクセスできます。
+`bettercode` を実行すると、TUI とサーバーが起動します。 TUI はサーバーと通信するクライアントです。サーバーは OpenAPI 3.1 仕様のエンドポイントを公開します。このエンドポイントは、[SDK](/docs/sdk) を使用してアクセスできます。
 
 :::tip
-NanoCode サーバーを使用して、プログラムで NanoCode と対話します。
+BetterCode サーバーを使用して、プログラムで BetterCode と対話します。
 :::
 
-`nanocode serve` を実行してスタンドアロンサーバーを起動できます。すでに NanoCode TUI を実行している場合でも、`nanocode serve` は新しいサーバーを起動します。
+`bettercode serve` を実行してスタンドアロンサーバーを起動できます。すでに BetterCode TUI を実行している場合でも、`bettercode serve` は新しいサーバーを起動します。
 
 ---
 
@@ -60,7 +60,7 @@ NanoCode サーバーを使用して、プログラムで NanoCode と対話し�
 
 TUI を起動すると、ポートとホスト名がランダムに割り当てられます。代わりに、`--hostname` と `--port` [フラグ](/docs/cli) を使用して固定できます。次に、これを使用してサーバーに接続します。
 
-[`/tui`](#tui) エンドポイントは、サーバー経由で TUI を駆動するために使用できます。たとえば、プロンプトを事前入力したり、実行したりできます。この設定は、NanoCode [IDE](/docs/ide) プラグインによって使用されます。
+[`/tui`](#tui) エンドポイントは、サーバー経由で TUI を駆動するために使用できます。たとえば、プロンプトを事前入力したり、実行したりできます。この設定は、BetterCode [IDE](/docs/ide) プラグインによって使用されます。
 
 ---
 
@@ -78,7 +78,7 @@ http://<hostname>:<port>/doc
 
 ## API
 
-NanoCode サーバーは次の API を公開します。
+BetterCode サーバーは次の API を公開します。
 
 ---
 

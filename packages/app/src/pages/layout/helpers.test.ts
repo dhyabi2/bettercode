@@ -6,7 +6,7 @@ import {
   parseDeepLink,
   parseNewSessionDeepLink,
 } from "./deep-links"
-import { type Session } from "@nanocode-ai/sdk/v2/client"
+import { type Session } from "@bettercode-ai/sdk/v2/client"
 import {
   childSessionOnPath,
   closeHomeProject,
@@ -40,24 +40,24 @@ const session = (input: Partial<Session> & Pick<Session, "id" | "directory">) =>
 
 describe("layout deep links", () => {
   test("parses open-project deep links", () => {
-    expect(parseDeepLink("nanocode://open-project?directory=/tmp/demo")).toBe("/tmp/demo")
+    expect(parseDeepLink("bettercode://open-project?directory=/tmp/demo")).toBe("/tmp/demo")
   })
 
   test("ignores non-project deep links", () => {
-    expect(parseDeepLink("nanocode://other?directory=/tmp/demo")).toBeUndefined()
+    expect(parseDeepLink("bettercode://other?directory=/tmp/demo")).toBeUndefined()
     expect(parseDeepLink("https://example.com")).toBeUndefined()
   })
 
   test("ignores malformed deep links safely", () => {
-    expect(() => parseDeepLink("nanocode://open-project/%E0%A4%A%")).not.toThrow()
-    expect(parseDeepLink("nanocode://open-project/%E0%A4%A%")).toBeUndefined()
+    expect(() => parseDeepLink("bettercode://open-project/%E0%A4%A%")).not.toThrow()
+    expect(parseDeepLink("bettercode://open-project/%E0%A4%A%")).toBeUndefined()
   })
 
   test("parses links when URL.canParse is unavailable", () => {
     const original = Object.getOwnPropertyDescriptor(URL, "canParse")
     Object.defineProperty(URL, "canParse", { configurable: true, value: undefined })
     try {
-      expect(parseDeepLink("nanocode://open-project?directory=/tmp/demo")).toBe("/tmp/demo")
+      expect(parseDeepLink("bettercode://open-project?directory=/tmp/demo")).toBe("/tmp/demo")
     } finally {
       if (original) Object.defineProperty(URL, "canParse", original)
       if (!original) Reflect.deleteProperty(URL, "canParse")
@@ -65,49 +65,49 @@ describe("layout deep links", () => {
   })
 
   test("ignores open-project deep links without directory", () => {
-    expect(parseDeepLink("nanocode://open-project")).toBeUndefined()
-    expect(parseDeepLink("nanocode://open-project?directory=")).toBeUndefined()
+    expect(parseDeepLink("bettercode://open-project")).toBeUndefined()
+    expect(parseDeepLink("bettercode://open-project?directory=")).toBeUndefined()
   })
 
   test("collects only valid open-project directories", () => {
     const result = collectOpenProjectDeepLinks([
-      "nanocode://open-project?directory=/a",
-      "nanocode://other?directory=/b",
-      "nanocode://open-project?directory=/c",
+      "bettercode://open-project?directory=/a",
+      "bettercode://other?directory=/b",
+      "bettercode://open-project?directory=/c",
     ])
     expect(result).toEqual(["/a", "/c"])
   })
 
   test("parses new-session deep links with optional prompt", () => {
-    expect(parseNewSessionDeepLink("nanocode://new-session?directory=/tmp/demo")).toEqual({ directory: "/tmp/demo" })
-    expect(parseNewSessionDeepLink("nanocode://new-session?directory=/tmp/demo&prompt=hello%20world")).toEqual({
+    expect(parseNewSessionDeepLink("bettercode://new-session?directory=/tmp/demo")).toEqual({ directory: "/tmp/demo" })
+    expect(parseNewSessionDeepLink("bettercode://new-session?directory=/tmp/demo&prompt=hello%20world")).toEqual({
       directory: "/tmp/demo",
       prompt: "hello world",
     })
   })
 
   test("ignores new-session deep links without directory", () => {
-    expect(parseNewSessionDeepLink("nanocode://new-session")).toBeUndefined()
-    expect(parseNewSessionDeepLink("nanocode://new-session?directory=")).toBeUndefined()
+    expect(parseNewSessionDeepLink("bettercode://new-session")).toBeUndefined()
+    expect(parseNewSessionDeepLink("bettercode://new-session?directory=")).toBeUndefined()
   })
 
   test("collects only valid new-session deep links", () => {
     const result = collectNewSessionDeepLinks([
-      "nanocode://new-session?directory=/a",
-      "nanocode://open-project?directory=/b",
-      "nanocode://new-session?directory=/c&prompt=ship%20it",
+      "bettercode://new-session?directory=/a",
+      "bettercode://open-project?directory=/b",
+      "bettercode://new-session?directory=/c&prompt=ship%20it",
     ])
     expect(result).toEqual([{ directory: "/a" }, { directory: "/c", prompt: "ship it" }])
   })
 
   test("drains global deep links once", () => {
     const target = {
-      __NANOCODE__: {
-        deepLinks: ["nanocode://open-project?directory=/a"],
+      __BETTERCODE__: {
+        deepLinks: ["bettercode://open-project?directory=/a"],
       },
-    } as unknown as Window & { __NANOCODE__?: { deepLinks?: string[] } }
+    } as unknown as Window & { __BETTERCODE__?: { deepLinks?: string[] } }
 
-    expect(drainPendingDeepLinks(target)).toEqual(["nanocode://open-project?directory=/a"])
+    expect(drainPendingDeepLinks(target)).toEqual(["bettercode://open-project?directory=/a"])
     expect(drainPendingDeepLinks(target)).toEqual([])
   })
 })

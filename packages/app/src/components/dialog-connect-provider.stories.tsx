@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { Button } from "@nanocode-ai/ui/button"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
+import { Button } from "@bettercode-ai/ui/button"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
 import { QueryClient, QueryClientProvider } from "@tanstack/solid-query"
 import { mockProviderAuth } from "@/context/server-sync"
 import { onCleanup, onMount } from "solid-js"
@@ -60,8 +60,8 @@ export const ApiKey = {
   render: renderConnection("openrouter", [{ type: "api", label: "API key" }]),
 }
 
-export const NanoCodeZen = {
-  render: renderConnection("nanocode", [{ type: "api", label: "API key" }]),
+export const BetterCodeZen = {
+  render: renderConnection("bettercode", [{ type: "api", label: "API key" }]),
 }
 
 export const LoginMethods = {

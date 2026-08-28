@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# nanocode Korean IME Fix Installer
-# https://github.com/dhyabi2/nanocode/issues/14371
+# bettercode Korean IME Fix Installer
+# https://github.com/dhyabi2/bettercode/issues/14371
 #
-# Patches nanocode to prevent Korean (and other CJK) IME last character
+# Patches bettercode to prevent Korean (and other CJK) IME last character
 # truncation when pressing Enter in Kitty and other terminals.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/claudianus/nanocode/fix-zhipuai-coding-plan-thinking/patches/install-korean-ime-fix.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/claudianus/bettercode/fix-zhipuai-coding-plan-thinking/patches/install-korean-ime-fix.sh | bash
 #   # or from a cloned repo:
 #   ./patches/install-korean-ime-fix.sh
 
@@ -18,9 +18,9 @@ ORANGE='\033[38;5;214m'
 MUTED='\033[0;2m'
 NC='\033[0m'
 
-NANOCODE_DIR="${NANOCODE_DIR:-$HOME/.nanocode}"
-NANOCODE_SRC="${NANOCODE_SRC:-$HOME/.nanocode-src}"
-FORK_REPO="${FORK_REPO:-https://github.com/claudianus/nanocode.git}"
+BETTERCODE_DIR="${BETTERCODE_DIR:-$HOME/.bettercode}"
+BETTERCODE_SRC="${BETTERCODE_SRC:-$HOME/.bettercode-src}"
+FORK_REPO="${FORK_REPO:-https://github.com/claudianus/bettercode.git}"
 FORK_BRANCH="${FORK_BRANCH:-fix-zhipuai-coding-plan-thinking}"
 
 info()  { echo -e "${MUTED}$*${NC}"; }
@@ -39,18 +39,18 @@ need git
 need bun
 
 # ── 1. Clone or update fork ────────────────────────────────────────────
-if [ -d "$NANOCODE_SRC/.git" ]; then
-  info "Updating existing source at $NANOCODE_SRC ..."
-  git -C "$NANOCODE_SRC" fetch origin "$FORK_BRANCH"
-  git -C "$NANOCODE_SRC" checkout "$FORK_BRANCH"
-  git -C "$NANOCODE_SRC" reset --hard "origin/$FORK_BRANCH"
+if [ -d "$BETTERCODE_SRC/.git" ]; then
+  info "Updating existing source at $BETTERCODE_SRC ..."
+  git -C "$BETTERCODE_SRC" fetch origin "$FORK_BRANCH"
+  git -C "$BETTERCODE_SRC" checkout "$FORK_BRANCH"
+  git -C "$BETTERCODE_SRC" reset --hard "origin/$FORK_BRANCH"
 else
-  info "Cloning fork (shallow) to $NANOCODE_SRC ..."
-  git clone --depth 1 --branch "$FORK_BRANCH" "$FORK_REPO" "$NANOCODE_SRC"
+  info "Cloning fork (shallow) to $BETTERCODE_SRC ..."
+  git clone --depth 1 --branch "$FORK_BRANCH" "$FORK_REPO" "$BETTERCODE_SRC"
 fi
 
 # ── 2. Verify the IME fix is present in source ────────────────────────
-PROMPT_FILE="$NANOCODE_SRC/packages/nanocode/src/cli/cmd/tui/component/prompt/index.tsx"
+PROMPT_FILE="$BETTERCODE_SRC/packages/bettercode/src/cli/cmd/tui/component/prompt/index.tsx"
 if [ ! -f "$PROMPT_FILE" ]; then
   err "Prompt file not found: $PROMPT_FILE"
   exit 1
@@ -72,16 +72,16 @@ fi
 
 # ── 3. Install dependencies ────────────────────────────────────────────
 info "Installing dependencies (this may take a minute) ..."
-cd "$NANOCODE_SRC"
+cd "$BETTERCODE_SRC"
 bun install --frozen-lockfile 2>/dev/null || bun install
 
 # ── 4. Build (current platform only) ──────────────────────────────────
-info "Building nanocode for current platform ..."
-cd "$NANOCODE_SRC/packages/nanocode"
+info "Building bettercode for current platform ..."
+cd "$BETTERCODE_SRC/packages/bettercode"
 bun run build --single
 
 # ── 5. Install binary ──────────────────────────────────────────────────
-mkdir -p "$NANOCODE_DIR/bin"
+mkdir -p "$BETTERCODE_DIR/bin"
 
 PLATFORM=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
@@ -90,23 +90,23 @@ ARCH=$(uname -m)
 [ "$PLATFORM" = "darwin" ] && true
 [ "$PLATFORM" = "linux" ] && true
 
-BUILT_BINARY="$NANOCODE_SRC/packages/nanocode/dist/nanocode-${PLATFORM}-${ARCH}/bin/nanocode"
+BUILT_BINARY="$BETTERCODE_SRC/packages/bettercode/dist/bettercode-${PLATFORM}-${ARCH}/bin/bettercode"
 
 if [ ! -f "$BUILT_BINARY" ]; then
-  BUILT_BINARY=$(find "$NANOCODE_SRC/packages/nanocode/dist" -name "nanocode" -type f -executable 2>/dev/null | head -1)
+  BUILT_BINARY=$(find "$BETTERCODE_SRC/packages/bettercode/dist" -name "bettercode" -type f -executable 2>/dev/null | head -1)
 fi
 
 if [ -f "$BUILT_BINARY" ]; then
-  if [ -f "$NANOCODE_DIR/bin/nanocode" ]; then
-    cp "$NANOCODE_DIR/bin/nanocode" "$NANOCODE_DIR/bin/nanocode.bak.$(date +%Y%m%d%H%M%S)"
+  if [ -f "$BETTERCODE_DIR/bin/bettercode" ]; then
+    cp "$BETTERCODE_DIR/bin/bettercode" "$BETTERCODE_DIR/bin/bettercode.bak.$(date +%Y%m%d%H%M%S)"
   fi
-  cp "$BUILT_BINARY" "$NANOCODE_DIR/bin/nanocode"
-  chmod +x "$NANOCODE_DIR/bin/nanocode"
-  ok "Installed to $NANOCODE_DIR/bin/nanocode"
+  cp "$BUILT_BINARY" "$BETTERCODE_DIR/bin/bettercode"
+  chmod +x "$BETTERCODE_DIR/bin/bettercode"
+  ok "Installed to $BETTERCODE_DIR/bin/bettercode"
 else
   err "Build failed - binary not found in dist/"
   info "Try running manually:"
-  echo "  cd $NANOCODE_SRC/packages/nanocode && bun run build --single"
+  echo "  cd $BETTERCODE_SRC/packages/bettercode && bun run build --single"
   exit 1
 fi
 
@@ -114,7 +114,7 @@ echo ""
 ok "Done! Korean IME fix is now active."
 echo ""
 info "To uninstall and revert to the official release:"
-echo "  curl -fsSL https://nanocode.ai/install | bash"
+echo "  curl -fsSL https://bettercode.ai/install | bash"
 echo ""
 info "To update (re-pull and rebuild):"
 echo "  $0"

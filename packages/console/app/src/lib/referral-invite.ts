@@ -1,5 +1,5 @@
-import { Actor } from "@nanocode-ai/console-core/actor.js"
-import { Referral } from "@nanocode-ai/console-core/referral.js"
+import { Actor } from "@bettercode-ai/console-core/actor.js"
+import { Referral } from "@bettercode-ai/console-core/referral.js"
 import { getRequestEvent } from "solid-js/web"
 
 const REFERRAL_COOKIE = "oc_referral"

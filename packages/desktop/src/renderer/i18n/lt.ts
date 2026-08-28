@@ -9,17 +9,17 @@ export const dict = {
   "desktop.updater.checkFailed.title": "Naujinių patikrinti nepavyko",
   "desktop.updater.checkFailed.message": "Nepavyko patikrinti, ar nėra naujinimų",
   "desktop.updater.none.title": "Naujinių nėra",
-  "desktop.updater.none.message": "Jau naudojate naujausią NanoCode versiją",
+  "desktop.updater.none.message": "Jau naudojate naujausią BetterCode versiją",
   "desktop.updater.downloadFailed.title": "Nepavyko atnaujinti",
   "desktop.updater.downloadFailed.message": "Nepavyko atsisiųsti naujinimo",
   "desktop.updater.downloaded.title": "Naujinimas parsiųstas",
   "desktop.updater.downloaded.prompt":
-    "NanoCode versija {{version}} atsisiųsta, ar norėtumėte ją įdiegti ir paleisti iš naujo?",
+    "BetterCode versija {{version}} atsisiųsta, ar norėtumėte ją įdiegti ir paleisti iš naujo?",
   "desktop.updater.installFailed.title": "Nepavyko atnaujinti",
   "desktop.updater.installFailed.message": "Nepavyko įdiegti naujinimo",
   "desktop.cli.installed.title": "CLI įdiegtas",
   "desktop.cli.installed.message":
-    "CLI įdiegtas į {{path}}\n\nIš naujo paleiskite terminalą, kad galėtumėte naudoti komandą 'nanocode'.",
+    "CLI įdiegtas į {{path}}\n\nIš naujo paleiskite terminalą, kad galėtumėte naudoti komandą 'bettercode'.",
   "desktop.cli.failed.title": "Diegimas nepavyko",
   "desktop.cli.failed.message": "Nepavyko įdiegti CLI: {{error}}",
 

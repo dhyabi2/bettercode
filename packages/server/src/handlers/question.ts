@@ -1,8 +1,8 @@
-import { QuestionV2 } from "@nanocode-ai/core/question"
+import { QuestionV2 } from "@bettercode-ai/core/question"
 import { Effect } from "effect"
 import { HttpApiBuilder, HttpApiSchema } from "effect/unstable/httpapi"
 import { Api } from "../api"
-import { QuestionNotFoundError } from "@nanocode-ai/protocol/errors"
+import { QuestionNotFoundError } from "@bettercode-ai/protocol/errors"
 import { response } from "../location"
 
 function missingRequest(id: QuestionV2.ID) {

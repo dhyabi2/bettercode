@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import type { Project } from "@nanocode-ai/sdk/v2/client"
-import type { SessionInfo } from "@nanocode-ai/client/promise"
+import type { Project } from "@bettercode-ai/sdk/v2/client"
+import type { SessionInfo } from "@bettercode-ai/client/promise"
 import { createRoot } from "solid-js"
 import { createServerSessionEntries } from "@/components/command-palette"
 import type { LocalProject } from "@/context/layout"

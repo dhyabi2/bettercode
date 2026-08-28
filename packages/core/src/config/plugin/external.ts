@@ -1,7 +1,7 @@
 export * as ConfigExternalPlugin from "./external"
 
-import type { Plugin as EffectPlugin } from "@nanocode-ai/plugin/v2/effect"
-import type { Plugin as PromisePlugin } from "@nanocode-ai/plugin/v2/promise"
+import type { Plugin as EffectPlugin } from "@bettercode-ai/plugin/v2/effect"
+import type { Plugin as PromisePlugin } from "@bettercode-ai/plugin/v2/promise"
 import { Effect, Schema } from "effect"
 import path from "path"
 import { fileURLToPath, pathToFileURL } from "url"

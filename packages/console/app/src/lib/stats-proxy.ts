@@ -1,5 +1,5 @@
 import type { APIEvent } from "@solidjs/start/server"
-import { Resource } from "@nanocode-ai/console-resource"
+import { Resource } from "@bettercode-ai/console-resource"
 import { LOCALE_HEADER, cookie, localeFromRequest, route, tag } from "~/lib/language"
 
 const dataPath = "/data"
@@ -12,7 +12,7 @@ export async function statsProxy(evt: APIEvent) {
 
   const targetUrl = new URL(req.url)
   targetUrl.protocol = "https:"
-  targetUrl.hostname = Resource.App.stage === "production" ? "stats.nanocode.ai" : "stats.dev.nanocode.ai"
+  targetUrl.hostname = Resource.App.stage === "production" ? "stats.bettercode.ai" : "stats.dev.bettercode.ai"
   targetUrl.port = ""
 
   if (

@@ -1,8 +1,8 @@
 const model_id = "claude-3-7-sonnet"
 
 export const popularProviders = [
-  "nanocode",
-  "nanocode-go",
+  "bettercode",
+  "bettercode-go",
   "anthropic",
   "github-copilot",
   "openai",
@@ -25,8 +25,8 @@ const provider = {
 }
 
 const popular = [
-  { id: "nanocode", name: "NanoCode Zen", models: {} },
-  { id: "nanocode-go", name: "NanoCode Go", models: {} },
+  { id: "bettercode", name: "BetterCode Zen", models: {} },
+  { id: "bettercode-go", name: "BetterCode Go", models: {} },
   { id: "openai", name: "OpenAI", models: {} },
   provider,
   { id: "google", name: "Google", models: {} },

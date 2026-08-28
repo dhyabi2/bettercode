@@ -1,9 +1,9 @@
 import { For, Show } from "solid-js"
-import { MenuV2 } from "@nanocode-ai/ui/v2/menu-v2"
-import { TooltipV2 } from "@nanocode-ai/ui/v2/tooltip-v2"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { Icon as IconV2 } from "@nanocode-ai/ui/v2/icon"
-import { getFilename } from "@nanocode-ai/core/util/path"
+import { MenuV2 } from "@bettercode-ai/ui/v2/menu-v2"
+import { TooltipV2 } from "@bettercode-ai/ui/v2/tooltip-v2"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { Icon as IconV2 } from "@bettercode-ai/ui/v2/icon"
+import { getFilename } from "@bettercode-ai/core/util/path"
 import { useLanguage } from "@/context/language"
 
 export function PromptWorkspaceSelector(props: {

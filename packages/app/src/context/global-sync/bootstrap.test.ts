@@ -1,9 +1,9 @@
 import { describe, expect, test } from "bun:test"
 import { createStore } from "solid-js/store"
 import { QueryClient } from "@tanstack/solid-query"
-import type { Config, NanocodeClient, Project } from "@nanocode-ai/sdk/v2/client"
-import type { AgentApi, CatalogApi, CommandApi, ReferenceApi } from "@nanocode-ai/client/promise"
-import type { NormalizedProviderListResponse } from "@nanocode-ai/session-ui/context"
+import type { Config, BettercodeClient, Project } from "@bettercode-ai/sdk/v2/client"
+import type { AgentApi, CatalogApi, CommandApi, ReferenceApi } from "@bettercode-ai/client/promise"
+import type { NormalizedProviderListResponse } from "@bettercode-ai/session-ui/context"
 import {
   bootstrapDirectory,
   loadAgentsQuery,
@@ -125,7 +125,7 @@ describe("bootstrapDirectory", () => {
           },
         },
         provider: { list: async () => ({ data: { all: [], connected: [], default: {} } }) },
-      } as unknown as NanocodeClient,
+      } as unknown as BettercodeClient,
       api,
       store,
       setStore,
@@ -164,7 +164,7 @@ describe("bootstrapDirectory", () => {
             throw new Error("legacy directory config should not be called")
           },
         },
-      } as unknown as NanocodeClient,
+      } as unknown as BettercodeClient,
       api,
       store,
       setStore,
@@ -193,7 +193,7 @@ describe("config queries", () => {
           },
         },
       },
-    } as unknown as NanocodeClient
+    } as unknown as BettercodeClient
 
     const result = await new QueryClient().fetchQuery(
       loadGlobalConfigQuery(ServerScope.local, sdk, Promise.resolve("v2")),
@@ -214,7 +214,7 @@ describe("config queries", () => {
           },
         },
       },
-    } as unknown as NanocodeClient
+    } as unknown as BettercodeClient
 
     const result = await new QueryClient().fetchQuery(
       loadGlobalConfigQuery(ServerScope.local, sdk, Promise.resolve("v1")),

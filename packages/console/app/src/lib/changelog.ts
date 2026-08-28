@@ -39,10 +39,10 @@ export type ChangelogData = {
 }
 
 export async function loadChangelog(): Promise<ChangelogData> {
-  const response = await fetch("https://api.github.com/repos/dhyabi2/nanocode/releases?per_page=20", {
+  const response = await fetch("https://api.github.com/repos/dhyabi2/bettercode/releases?per_page=20", {
     headers: {
       Accept: "application/vnd.github.v3+json",
-      "User-Agent": "NanoCode-Console",
+      "User-Agent": "BetterCode-Console",
     },
     cf: {
       // best-effort edge caching (ignored outside Cloudflare)

@@ -1,5 +1,5 @@
-import { getFilename } from "@nanocode-ai/core/util/path"
-import { type Session } from "@nanocode-ai/sdk/v2/client"
+import { getFilename } from "@bettercode-ai/core/util/path"
+import { type Session } from "@bettercode-ai/sdk/v2/client"
 import { pathKey } from "@/utils/path-key"
 import type { ServerConnection } from "@/context/server"
 import type { HomeProjectSelection } from "@/context/layout"
@@ -84,10 +84,10 @@ export function homeSessionServerStatus(active: boolean, status: () => { working
   return status()
 }
 
-const NANOCODE_PROJECT_ID = "4b0ea68d7af9a6031a7ffda7ad66e0cb83315750"
+const BETTERCODE_PROJECT_ID = "4b0ea68d7af9a6031a7ffda7ad66e0cb83315750"
 
 export function getProjectAvatarSource(id?: string, icon?: { color?: string; url?: string; override?: string }) {
-  if (id === NANOCODE_PROJECT_ID) return "https://nanocode.ai/favicon.svg"
+  if (id === BETTERCODE_PROJECT_ID) return "https://bettercode.ai/favicon.svg"
   if (icon?.override) return icon.override
   if (icon?.color) return undefined
   return icon?.url

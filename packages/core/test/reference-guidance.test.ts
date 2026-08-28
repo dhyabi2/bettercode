@@ -1,10 +1,10 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { Reference } from "@nanocode-ai/core/reference"
-import { ReferenceGuidance } from "@nanocode-ai/core/reference/guidance"
-import { SystemContext } from "@nanocode-ai/core/system-context/index"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { Reference } from "@bettercode-ai/core/reference"
+import { ReferenceGuidance } from "@bettercode-ai/core/reference/guidance"
+import { SystemContext } from "@bettercode-ai/core/system-context/index"
 import { it } from "./lib/effect"
 
 const guidanceLayer = (referenceLayer: Layer.Layer<Reference.Service>) =>

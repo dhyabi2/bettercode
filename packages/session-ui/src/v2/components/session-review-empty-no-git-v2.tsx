@@ -1,6 +1,6 @@
-import { FileIcon } from "@nanocode-ai/ui/file-icon"
-import { useI18n } from "@nanocode-ai/ui/context/i18n"
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
+import { FileIcon } from "@bettercode-ai/ui/file-icon"
+import { useI18n } from "@bettercode-ai/ui/context/i18n"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
 import "./session-review-v2.css"
 
 export type SessionReviewEmptyNoGitV2Props = {

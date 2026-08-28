@@ -1,10 +1,10 @@
-import { SessionMessage } from "@nanocode-ai/schema/session-message"
-import { SessionInput } from "@nanocode-ai/schema/session-input"
-import { PromptInput } from "@nanocode-ai/schema/prompt-input"
-import { Session } from "@nanocode-ai/schema/session"
-import { Project } from "@nanocode-ai/schema/project"
-import { AbsolutePath, NonNegativeInt, PositiveInt, RelativePath, statics } from "@nanocode-ai/schema/schema"
-import { Workspace } from "@nanocode-ai/schema/workspace"
+import { SessionMessage } from "@bettercode-ai/schema/session-message"
+import { SessionInput } from "@bettercode-ai/schema/session-input"
+import { PromptInput } from "@bettercode-ai/schema/prompt-input"
+import { Session } from "@bettercode-ai/schema/session"
+import { Project } from "@bettercode-ai/schema/project"
+import { AbsolutePath, NonNegativeInt, PositiveInt, RelativePath, statics } from "@bettercode-ai/schema/schema"
+import { Workspace } from "@bettercode-ai/schema/workspace"
 import { Context, Effect, Encoding, Result, Schema, Struct } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiMiddleware, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import {
@@ -16,11 +16,11 @@ import {
   SessionNotFoundError,
   UnknownError,
 } from "../errors"
-import { Agent } from "@nanocode-ai/schema/agent"
-import { Model } from "@nanocode-ai/schema/model"
-import { Location } from "@nanocode-ai/schema/location"
-import { Revert } from "@nanocode-ai/schema/revert"
-import { SessionEvent } from "@nanocode-ai/schema/session-event"
+import { Agent } from "@bettercode-ai/schema/agent"
+import { Model } from "@bettercode-ai/schema/model"
+import { Location } from "@bettercode-ai/schema/location"
+import { Revert } from "@bettercode-ai/schema/revert"
+import { SessionEvent } from "@bettercode-ai/schema/session-event"
 
 const SessionsQueryFields = {
   workspace: Workspace.ID.pipe(Schema.optional),
@@ -150,7 +150,7 @@ export const makeSessionGroup = <I extends HttpApiMiddleware.AnyId, S>(sessionLo
           identifier: "v2.session.active",
           summary: "List active sessions",
           description:
-            "Retrieve foreground Session drains currently owned by this NanoCode process. Sessions absent from the result are inactive.",
+            "Retrieve foreground Session drains currently owned by this BetterCode process. Sessions absent from the result are inactive.",
         }),
       ),
     )
@@ -352,7 +352,7 @@ export const makeSessionGroup = <I extends HttpApiMiddleware.AnyId, S>(sessionLo
           OpenApi.annotations({
             identifier: "v2.session.interrupt",
             summary: "Interrupt session execution",
-            description: "Interrupt active execution owned by this NanoCode process. Idle interruption is a no-op.",
+            description: "Interrupt active execution owned by this BetterCode process. Idle interruption is a no-op.",
           }),
         ),
     )

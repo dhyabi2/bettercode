@@ -1,6 +1,6 @@
-import { Tag } from "@nanocode-ai/ui/v2/badge-v2"
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
-import { Switch } from "@nanocode-ai/ui/v2/switch-v2"
+import { Tag } from "@bettercode-ai/ui/v2/badge-v2"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
+import { Switch } from "@bettercode-ai/ui/v2/switch-v2"
 import { SettingsListV2 } from "./parts/list"
 import { SettingsRowV2 } from "./parts/row"
 

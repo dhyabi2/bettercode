@@ -1,21 +1,21 @@
 ---
 title: Regler
-description: Angiv tilpassede instruktioner til nanocode.
+description: Angiv tilpassede instruktioner til bettercode.
 ---
 
-Du kan gi tilpassede instruksjoner for at NanoCode ved at oprete en `AGENTS.md`-fil. Dette ligner på Cursors regler. Den inneholder instruksjoner som vil bli inkludert i LLMs kontekst for at tilpasse oppførselen til ditt spesifikke prosjekt.
+Du kan gi tilpassede instruksjoner for at BetterCode ved at oprete en `AGENTS.md`-fil. Dette ligner på Cursors regler. Den inneholder instruksjoner som vil bli inkludert i LLMs kontekst for at tilpasse oppførselen til ditt spesifikke prosjekt.
 
 ---
 
 ## Initialisering
 
-For at lage en ny `AGENTS.md` fil, kan du kjøre kommandoen `/init` i nanocode.
+For at lage en ny `AGENTS.md` fil, kan du kjøre kommandoen `/init` i bettercode.
 
 :::tip
 Du bør overgi prosjektets `AGENTS.md`-fil til Git.
 :::
 
-Dette vil skanne prosjektet og alt dets innhold for at forstå hva prosjektet handler om og generere en `AGENTS.md`-fil med det. Dette hjelper nanocode at navigere i prosjektet bedre.
+Dette vil skanne prosjektet og alt dets innhold for at forstå hva prosjektet handler om og generere en `AGENTS.md`-fil med det. Dette hjelper bettercode at navigere i prosjektet bedre.
 
 Hvis du har en eksisterende `AGENTS.md`-fil, vil denne prøve at tilføje til den.
 
@@ -54,7 +54,7 @@ Vi tilføjer til prosjektspesifikke instruksjoner her, og dette vil bli delt på
 
 ## Typer
 
-nanocode støtter også lesing av `AGENTS.md`-filen fra flere steder. Og dette tjener forskjellige formål.
+bettercode støtter også lesing av `AGENTS.md`-filen fra flere steder. Og dette tjener forskjellige formål.
 
 ### Projekt
 
@@ -62,58 +62,58 @@ Plasser en `AGENTS.md` i prosjektroten for prosjektspesifikke regler. Disse gjel
 
 ### Globalt
 
-Du kan også ha globale regler i en `~/.config/nanocode/AGENTS.md`-fil. Dette blir brugt på alle nanocode-sessioner.
+Du kan også ha globale regler i en `~/.config/bettercode/AGENTS.md`-fil. Dette blir brugt på alle bettercode-sessioner.
 
 Siden dette ikke er forpliktet til Git eller delt med teamet ditt, anbefaler vi at bruge dette til at spesifisere eventuelle personlige regler som LLM bør følge.
 
 ### Claude Code-kompatibilitet
 
-For brugere som migrerer fra Claude Code, støtter NanoCode Claude Codes filkonvensjoner som fallbacks:
+For brugere som migrerer fra Claude Code, støtter BetterCode Claude Codes filkonvensjoner som fallbacks:
 
 - **Prosjektregler**: `CLAUDE.md` i prosjektkatalogen din (bruges hvis ingen `AGENTS.md` eksisterer)
-- **Globale regler**: `~/.claude/CLAUDE.md` (bruges hvis ingen `~/.config/nanocode/AGENTS.md` eksisterer)
+- **Globale regler**: `~/.claude/CLAUDE.md` (bruges hvis ingen `~/.config/bettercode/AGENTS.md` eksisterer)
 - **Skills**: `~/.claude/skills/` — se [Agent Skills](/docs/skills/) for detaljer
 
 For at deaktivere Claude Code-kompatibilitet, sett en av disse miljøvariablene:
 
 ```bash
-export NANOCODE_DISABLE_CLAUDE_CODE=1        # Disable all .claude support
-export NANOCODE_DISABLE_CLAUDE_CODE_PROMPT=1 # Disable only ~/.claude/CLAUDE.md
-export NANOCODE_DISABLE_CLAUDE_CODE_SKILLS=1 # Disable only .claude/skills
+export BETTERCODE_DISABLE_CLAUDE_CODE=1        # Disable all .claude support
+export BETTERCODE_DISABLE_CLAUDE_CODE_PROMPT=1 # Disable only ~/.claude/CLAUDE.md
+export BETTERCODE_DISABLE_CLAUDE_CODE_SKILLS=1 # Disable only .claude/skills
 ```
 
 ---
 
 ## Prioritet
 
-Når nanocode starter, ser den etter regelfiler i denne rekkefølgen:
+Når bettercode starter, ser den etter regelfiler i denne rekkefølgen:
 
 1. **Lokale filer** ved at gå opp fra nuværende katalog (`AGENTS.md`, `CLAUDE.md`)
-2. **Global fil** på `~/.config/nanocode/AGENTS.md`
+2. **Global fil** på `~/.config/bettercode/AGENTS.md`
 3. **Claude Code-fil** på `~/.claude/CLAUDE.md` (med mindre de er deaktivert)
 
-Den første matchende filen vinner i hver kategori. For eksempel, hvis du har både `AGENTS.md` og `CLAUDE.md`, bruges bare `AGENTS.md`. På samme måte har `~/.config/nanocode/AGENTS.md` forrang over `~/.claude/CLAUDE.md`.
+Den første matchende filen vinner i hver kategori. For eksempel, hvis du har både `AGENTS.md` og `CLAUDE.md`, bruges bare `AGENTS.md`. På samme måte har `~/.config/bettercode/AGENTS.md` forrang over `~/.claude/CLAUDE.md`.
 
 ---
 
 ## Brugerdefinerede instruktioner
 
-Du kan spesifisere egendefinerte instruksjonsfiler i din `nanocode.json` eller den globale `~/.config/nanocode/nanocode.json`. Dette lar deg og teamet ditt gjenbruge eksisterende regler i stedet for at måtte duplisere dem til AGENTS.md.
+Du kan spesifisere egendefinerte instruksjonsfiler i din `bettercode.json` eller den globale `~/.config/bettercode/bettercode.json`. Dette lar deg og teamet ditt gjenbruge eksisterende regler i stedet for at måtte duplisere dem til AGENTS.md.
 
 Eksempel:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
 
 Du kan også bruge eksterne URL-er for at laste instruksjoner fra nettet.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["https://raw.githubusercontent.com/my-org/shared-rules/main/style.md"]
 }
 ```
@@ -126,22 +126,22 @@ Alle instruksjonsfilene er kombinert med `AGENTS.md`-filene dine.
 
 ## Reference til eksterne filer
 
-Selv om nanocode ikke automatisk analyserer filreferanser i `AGENTS.md`, kan du oppnå lignende funksjonalitet på to måter:
+Selv om bettercode ikke automatisk analyserer filreferanser i `AGENTS.md`, kan du oppnå lignende funksjonalitet på to måter:
 
-### Brug af nanocode.json
+### Brug af bettercode.json
 
-Den anbefalte tilnærmingen er at bruge feltet `instructions` i `nanocode.json`:
+Den anbefalte tilnærmingen er at bruge feltet `instructions` i `bettercode.json`:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["docs/development-standards.md", "test/testing-guidelines.md", "packages/*/AGENTS.md"]
 }
 ```
 
 ### Manuelle instruktioner i AGENTS.md
 
-Du kan lære nanocode at lese eksterne filer ved at gi eksplisitte instruksjoner i `AGENTS.md`. Her er et praktisk eksempel:
+Du kan lære bettercode at lese eksterne filer ved at gi eksplisitte instruksjoner i `AGENTS.md`. Her er et praktisk eksempel:
 
 ```markdown title="AGENTS.md"
 # TypeScript Project Rules
@@ -173,8 +173,8 @@ Denne tilnærmingen lar deg:
 - Lag modulære, gjenbrugbare regelfiler
 - Del regler på tvers av prosjekter via symbolkoblinger eller git-undermoduler
 - Hold AGENTS.md kortfattet mens du refererer til detaljerte retningslinjer
-- Sørg for at nanocode laster filer kun når det er nødvendig for den spesifikke oppgaven
+- Sørg for at bettercode laster filer kun når det er nødvendig for den spesifikke oppgaven
 
 :::tip
-For monorepos eller prosjekter med delte standarder er brug av `nanocode.json` med glob-mønstre (som `packages/*/AGENTS.md`) mer vedlikeholdbart enn manuelle instruksjoner.
+For monorepos eller prosjekter med delte standarder er brug av `bettercode.json` med glob-mønstre (som `packages/*/AGENTS.md`) mer vedlikeholdbart enn manuelle instruksjoner.
 :::

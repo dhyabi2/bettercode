@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: NanoCode CLI muligheder og kommandoer.
+description: BetterCode CLI muligheder og kommandoer.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-NanoCode CLI starter som standard [TUI](/docs/tui), når den kører uden nogen argumenter.
+BetterCode CLI starter som standard [TUI](/docs/tui), når den kører uden nogen argumenter.
 
 ```bash
-nanocode
+bettercode
 ```
 
-Men den accepterer også kommandoer som dokumenteret på denne side. Dette giver dig mulighed for at interagere med NanoCode programmatisk.
+Men den accepterer også kommandoer som dokumenteret på denne side. Dette giver dig mulighed for at interagere med BetterCode programmatisk.
 
 ```bash
-nanocode run "Explain how closures work in JavaScript"
+bettercode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-Start NanoCode terminalbrugergrænsefladen.
+Start BetterCode terminalbrugergrænsefladen.
 
 ```bash
-nanocode [project]
+bettercode [project]
 ```
 
 #### Flag
@@ -44,36 +44,36 @@ nanocode [project]
 
 ## Kommandoer
 
-NanoCode CLI har også følgende kommandoer.
+BetterCode CLI har også følgende kommandoer.
 
 ---
 
 ### agent
 
-Administrer agenter i NanoCode.
+Administrer agenter i BetterCode.
 
 ```bash
-nanocode agent [command]
+bettercode agent [command]
 ```
 
 ---
 
 ### attach
 
-Tilslut en terminal til en allerede kørende NanoCode backend-server startet via `serve` eller `web` kommandoer.
+Tilslut en terminal til en allerede kørende BetterCode backend-server startet via `serve` eller `web` kommandoer.
 
 ```bash
-nanocode attach [url]
+bettercode attach [url]
 ```
 
-Dette gør det muligt at bruge TUI med en ekstern NanoCode backend. For eksempel:
+Dette gør det muligt at bruge TUI med en ekstern BetterCode backend. For eksempel:
 
 ```bash
 # Start the backend server for web/mobile access
-nanocode web --port 4096 --hostname 0.0.0.0
+bettercode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-nanocode attach http://10.20.30.40:4096
+bettercode attach http://10.20.30.40:4096
 ```
 
 #### Flag
@@ -84,8 +84,8 @@ nanocode attach http://10.20.30.40:4096
 | <nobr><code>{"--continue"}</code></nobr> | `-c` | Fortsæt den seneste session                                                       |
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | Sessions-id for at fortsætte                                                      |
 | <nobr><code>{"--fork"}</code></nobr>     |      | Forgren sessionen ved fortsættelse (brug med `--continue` eller `--session`)      |
-| <nobr><code>{"--password"}</code></nobr> | `-p` | Adgangskode til basic auth (standard: `NANOCODE_SERVER_PASSWORD`)                 |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | Brugernavn til basic auth (standard: `NANOCODE_SERVER_USERNAME` eller `nanocode`) |
+| <nobr><code>{"--password"}</code></nobr> | `-p` | Adgangskode til basic auth (standard: `BETTERCODE_SERVER_PASSWORD`)                 |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | Brugernavn til basic auth (standard: `BETTERCODE_SERVER_USERNAME` eller `bettercode`) |
 
 ---
 
@@ -94,7 +94,7 @@ nanocode attach http://10.20.30.40:4096
 Opret en ny agent med brugerdefineret konfiguration.
 
 ```bash
-nanocode agent create
+bettercode agent create
 ```
 
 Denne kommando vil guide dig gennem oprettelse af en ny agent med en brugerdefineret systemprompt og værktøjskonfiguration.
@@ -106,7 +106,7 @@ Denne kommando vil guide dig gennem oprettelse af en ny agent med en brugerdefin
 Liste over alle tilgængelige agenter.
 
 ```bash
-nanocode agent list
+bettercode agent list
 ```
 
 ---
@@ -116,20 +116,20 @@ nanocode agent list
 Kommando til at administrere legitimationsoplysninger og login for udbydere.
 
 ```bash
-nanocode auth [command]
+bettercode auth [command]
 ```
 
 ---
 
 #### login
 
-NanoCode drives af udbyderlisten på [Models.dev](https://models.dev), så du kan bruge `nanocode auth login` til at konfigurere API-nøgler for enhver udbyder, du vil bruge. Dette er gemt i `~/.local/share/nanocode/auth.json`.
+BetterCode drives af udbyderlisten på [Models.dev](https://models.dev), så du kan bruge `bettercode auth login` til at konfigurere API-nøgler for enhver udbyder, du vil bruge. Dette er gemt i `~/.local/share/bettercode/auth.json`.
 
 ```bash
-nanocode auth login
+bettercode auth login
 ```
 
-Når NanoCode starter op, indlæser den udbyderne fra legitimationsfilen. Og hvis der er nogen nøgler defineret i dine miljøer eller en `.env` fil i dit projekt.
+Når BetterCode starter op, indlæser den udbyderne fra legitimationsfilen. Og hvis der er nogen nøgler defineret i dine miljøer eller en `.env` fil i dit projekt.
 
 ---
 
@@ -138,13 +138,13 @@ Når NanoCode starter op, indlæser den udbyderne fra legitimationsfilen. Og hvi
 Viser alle de godkendte udbydere som gemt i legitimationsfilen.
 
 ```bash
-nanocode auth list
+bettercode auth list
 ```
 
 Eller den korte version.
 
 ```bash
-nanocode auth ls
+bettercode auth ls
 ```
 
 ---
@@ -154,7 +154,7 @@ nanocode auth ls
 Logger dig ud af en udbyder ved at rydde den fra legitimationsfilen.
 
 ```bash
-nanocode auth logout
+bettercode auth logout
 ```
 
 ---
@@ -164,7 +164,7 @@ nanocode auth logout
 Administrator GitHub-agenten til lagerautomatisering.
 
 ```bash
-nanocode github [command]
+bettercode github [command]
 ```
 
 ---
@@ -174,7 +174,7 @@ nanocode github [command]
 Installatør GitHub-agenten i dit lager.
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 Dette opsætter det nødvendige GitHub Actions workflow og guider dig gennem konfigurationsprocessen. [Learn more](/docs/github).
@@ -186,7 +186,7 @@ Dette opsætter det nødvendige GitHub Actions workflow og guider dig gennem kon
 Kør GitHub-agenten. Dette bruges typisk i GitHub Actions.
 
 ```bash
-nanocode github run
+bettercode github run
 ```
 
 ##### Flag
@@ -203,7 +203,7 @@ nanocode github run
 Administrator Model Context Protocol-servere.
 
 ```bash
-nanocode mcp [command]
+bettercode mcp [command]
 ```
 
 ---
@@ -213,7 +213,7 @@ nanocode mcp [command]
 Tilføj en MCP-server til din konfiguration.
 
 ```bash
-nanocode mcp add
+bettercode mcp add
 ```
 
 Denne kommando vil guide dig gennem tilføjelse af enten en lokal eller ekstern MCP-server.
@@ -225,13 +225,13 @@ Denne kommando vil guide dig gennem tilføjelse af enten en lokal eller ekstern 
 Liste over alle konfigurerede MCP-servere og deres forbindelsesstatus.
 
 ```bash
-nanocode mcp list
+bettercode mcp list
 ```
 
 Eller brug den korte version.
 
 ```bash
-nanocode mcp ls
+bettercode mcp ls
 ```
 
 ---
@@ -241,7 +241,7 @@ nanocode mcp ls
 Godkendt med en OAuth-aktiveret MCP-server.
 
 ```bash
-nanocode mcp auth [name]
+bettercode mcp auth [name]
 ```
 
 Hvis du ikke angiver et servernavn, bliver du bedt om at vælge blandt tilgængelige OAuth-kompatible servere.
@@ -249,13 +249,13 @@ Hvis du ikke angiver et servernavn, bliver du bedt om at vælge blandt tilgænge
 Du kan også angive OAuth-kompatible servere og deres godkendelsesstatus.
 
 ```bash
-nanocode mcp auth list
+bettercode mcp auth list
 ```
 
 Eller brug den korte version.
 
 ```bash
-nanocode mcp auth ls
+bettercode mcp auth ls
 ```
 
 ---
@@ -265,7 +265,7 @@ nanocode mcp auth ls
 Fjern OAuth-legitimationsoplysninger for en MCP-server.
 
 ```bash
-nanocode mcp logout [name]
+bettercode mcp logout [name]
 ```
 
 ---
@@ -275,7 +275,7 @@ nanocode mcp logout [name]
 Fejlfinding af OAuth-forbindelsesproblemer for en MCP-server.
 
 ```bash
-nanocode mcp debug <name>
+bettercode mcp debug <name>
 ```
 
 ---
@@ -285,7 +285,7 @@ nanocode mcp debug <name>
 Liste over alle tilgængelige modeller fra konfigurerede udbydere.
 
 ```bash
-nanocode models [provider]
+bettercode models [provider]
 ```
 
 Denne kommando viser alle tilgængelige modeller på tværs af dine konfigurerede udbydere i formatet `provider/model`.
@@ -295,7 +295,7 @@ Dette er nyttigt til at finde ud af det nøjagtige modelnavn, der skal bruges i 
 Du kan eventuelt videregive et udbyder-id for at filtrere modeller efter den udbyder.
 
 ```bash
-nanocode models anthropic
+bettercode models anthropic
 ```
 
 #### Flag
@@ -305,36 +305,36 @@ nanocode models anthropic
 | <nobr><code>{"--refresh"}</code></nobr> | Opdater modelcachen fra models.dev                                      |
 | <nobr><code>{"--verbose"}</code></nobr> | Brug mere detaljeret modeloutput (inkluderer metadata som omkostninger) |
 
-Brug flaget `--refresh` til at opdatere den cachelagrede modelliste. Dette er nyttigt, når nye modeller er blevet tilføjet til en udbyder, og du vil se dem i NanoCode.
+Brug flaget `--refresh` til at opdatere den cachelagrede modelliste. Dette er nyttigt, når nye modeller er blevet tilføjet til en udbyder, og du vil se dem i BetterCode.
 
 ```bash
-nanocode models --refresh
+bettercode models --refresh
 ```
 
 ---
 
 ### run
 
-Kør nanocode i ikke-interaktiv tilstand ved at sende en prompt direkte.
+Kør bettercode i ikke-interaktiv tilstand ved at sende en prompt direkte.
 
 ```bash
-nanocode run [message..]
+bettercode run [message..]
 ```
 
 Dette er nyttigt til scripting, automatisering, eller når du vil have et hurtigt svar uden at starte hele TUI. F.eks.
 
-```bash "nanocode run"
-nanocode run Explain the use of context in Go
+```bash "bettercode run"
+bettercode run Explain the use of context in Go
 ```
 
-Du kan også vedhæfte til en kørende `nanocode serve`-instans for at undgå MCP serverens kolde opstartstider ved hver kørsel:
+Du kan også vedhæfte til en kørende `bettercode serve`-instans for at undgå MCP serverens kolde opstartstider ved hver kørsel:
 
 ```bash
 # Start a headless server in one terminal
-nanocode serve
+bettercode serve
 
 # In another terminal, run commands that attach to it
-nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+bettercode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### Flag
@@ -351,9 +351,9 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f` | Fil(er), der skal vedhæftes til meddelelsen                                         |
 | <nobr><code>{"--format"}</code></nobr>   |      | Format: standard (formateret) eller json (rå JSON hændelser)                        |
 | <nobr><code>{"--title"}</code></nobr>    |      | Titel for sessionen (bruger trunkeret prompt, hvis der ikke er angivet nogen værdi) |
-| <nobr><code>{"--attach"}</code></nobr>   |      | Tilslut til en kørende nanocode-server (f.eks. http://localhost:4096)               |
-| <nobr><code>{"--password"}</code></nobr> | `-p` | Adgangskode til basic auth (standard: `NANOCODE_SERVER_PASSWORD`)                   |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | Brugernavn til basic auth (standard: `NANOCODE_SERVER_USERNAME` eller `nanocode`)   |
+| <nobr><code>{"--attach"}</code></nobr>   |      | Tilslut til en kørende bettercode-server (f.eks. http://localhost:4096)               |
+| <nobr><code>{"--password"}</code></nobr> | `-p` | Adgangskode til basic auth (standard: `BETTERCODE_SERVER_PASSWORD`)                   |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | Brugernavn til basic auth (standard: `BETTERCODE_SERVER_USERNAME` eller `bettercode`)   |
 | <nobr><code>{"--dir"}</code></nobr>      |      | Mappe at køre i, eller sti på fjernserveren ved tilkobling                          |
 | <nobr><code>{"--variant"}</code></nobr>  |      | Modelvariant (udbyder-specifik ræsonneringsindsats)                                 |
 | <nobr><code>{"--thinking"}</code></nobr> |      | Vis tænkeblokke                                                                     |
@@ -363,13 +363,13 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 
 ### serve
 
-Start en hovedløs NanoCode-server til API-adgang. Tjek [server docs](/docs/server) for den fulde HTTP-grænseflade.
+Start en hovedløs BetterCode-server til API-adgang. Tjek [server docs](/docs/server) for den fulde HTTP-grænseflade.
 
 ```bash
-nanocode serve
+bettercode serve
 ```
 
-Dette starter en HTTP-server, der giver API-adgang til nanocode-funktionalitet uden TUI-grænsefladen. Indstil `NANOCODE_SERVER_PASSWORD` for at aktivere HTTP grundlæggende godkendelse (brugernavn er standard til `nanocode`).
+Dette starter en HTTP-server, der giver API-adgang til bettercode-funktionalitet uden TUI-grænsefladen. Indstil `BETTERCODE_SERVER_PASSWORD` for at aktivere HTTP grundlæggende godkendelse (brugernavn er standard til `bettercode`).
 
 #### Flag
 
@@ -384,20 +384,20 @@ Dette starter en HTTP-server, der giver API-adgang til nanocode-funktionalitet u
 
 ### session
 
-Administrator NanoCode sessionsholder.
+Administrator BetterCode sessionsholder.
 
 ```bash
-nanocode session [command]
+bettercode session [command]
 ```
 
 ---
 
 #### list
 
-Liste over alle NanoCode sessioner.
+Liste over alle BetterCode sessioner.
 
 ```bash
-nanocode session list
+bettercode session list
 ```
 
 ##### Flag
@@ -411,10 +411,10 @@ nanocode session list
 
 ### stats
 
-Vis tokenbrug og omkostningsstatistikker for dine NanoCode-sessioner.
+Vis tokenbrug og omkostningsstatistikker for dine BetterCode-sessioner.
 
 ```bash
-nanocode stats
+bettercode stats
 ```
 
 #### Flag
@@ -433,7 +433,7 @@ nanocode stats
 Eksporter sessionsdata som JSON.
 
 ```bash
-nanocode export [sessionID]
+bettercode export [sessionID]
 ```
 
 Hvis du ikke angiver et sessions-id, bliver du bedt om at vælge mellem tilgængelige sessioner.
@@ -442,30 +442,30 @@ Hvis du ikke angiver et sessions-id, bliver du bedt om at vælge mellem tilgæng
 
 ### import
 
-Importer sessionsdata fra en JSON fil eller NanoCode del URL.
+Importer sessionsdata fra en JSON fil eller BetterCode del URL.
 
 ```bash
-nanocode import <file>
+bettercode import <file>
 ```
 
-Du kan importere fra en lokal fil eller en NanoCode share URL.
+Du kan importere fra en lokal fil eller en BetterCode share URL.
 
 ```bash
-nanocode import session.json
-nanocode import https://opncd.ai/s/abc123
+bettercode import session.json
+bettercode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-Start en hovedløs NanoCode-server med en webgrænseflade.
+Start en hovedløs BetterCode-server med en webgrænseflade.
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-Dette starter en HTTP-server og åbner en webbrowser for at få adgang til NanoCode via en webgrænseflade. Indstil `NANOCODE_SERVER_PASSWORD` for at aktivere HTTP grundlæggende godkendelse (brugernavn er standard til `nanocode`).
+Dette starter en HTTP-server og åbner en webbrowser for at få adgang til BetterCode via en webgrænseflade. Indstil `BETTERCODE_SERVER_PASSWORD` for at aktivere HTTP grundlæggende godkendelse (brugernavn er standard til `bettercode`).
 
 #### Flag
 
@@ -483,7 +483,7 @@ Dette starter en HTTP-server og åbner en webbrowser for at få adgang til NanoC
 Start en ACP-server (Agent Client Protocol).
 
 ```bash
-nanocode acp
+bettercode acp
 ```
 
 Denne kommando starter en ACP-server, der kommunikerer via stdin/stdout ved hjælp af nd-JSON.
@@ -500,10 +500,10 @@ Denne kommando starter en ACP-server, der kommunikerer via stdin/stdout ved hjæ
 
 ### uninstall
 
-Afinstaller NanoCode og fjern alle relaterede filer.
+Afinstaller BetterCode og fjern alle relaterede filer.
 
 ```bash
-nanocode uninstall
+bettercode uninstall
 ```
 
 #### Flag
@@ -519,22 +519,22 @@ nanocode uninstall
 
 ### upgrade
 
-Opdaterer NanoCode til den nyeste version eller en specifik version.
+Opdaterer BetterCode til den nyeste version eller en specifik version.
 
 ```bash
-nanocode upgrade [target]
+bettercode upgrade [target]
 ```
 
 For at opgradere til den nyeste version.
 
 ```bash
-nanocode upgrade
+bettercode upgrade
 ```
 
 For at opgradere til en bestemt version.
 
 ```bash
-nanocode upgrade v0.1.48
+bettercode upgrade v0.1.48
 ```
 
 #### upgrade
@@ -547,7 +547,7 @@ nanocode upgrade v0.1.48
 
 ## Globale flag
 
-nanocode CLI tager følgende globale flag.
+bettercode CLI tager følgende globale flag.
 
 | Flag                                       | Kort | Beskrivelse                          |
 | ------------------------------------------ | ---- | ------------------------------------ |
@@ -560,34 +560,34 @@ nanocode CLI tager følgende globale flag.
 
 ## Miljøvariabler
 
-NanoCode kan konfigureres ved hjælp af miljøvariabler.
+BetterCode kan konfigureres ved hjælp af miljøvariabler.
 
 | Variabel                              | Skriv   | Beskrivelse                                                           |
 | ------------------------------------- | ------- | --------------------------------------------------------------------- |
-| `NANOCODE_AUTO_SHARE`                 | boolean | Del automatisk session                                                |
-| `NANOCODE_GIT_BASH_PATH`              | string  | Sti til Git Bash eksekverbar på Windows                               |
-| `NANOCODE_CONFIG`                     | string  | Sti til konfigurationsfil                                             |
-| `NANOCODE_TUI_CONFIG`                 | string  | Sti til TUI-konfigurationsfil                                         |
-| `NANOCODE_CONFIG_DIR`                 | string  | Sti til konfigurationsmappe                                           |
-| `NANOCODE_CONFIG_CONTENT`             | string  | Indbygget json-konfigurationsindhold                                  |
-| `NANOCODE_DISABLE_AUTOUPDATE`         | boolean | Deaktiver automatisk opdateringskontrol                               |
-| `NANOCODE_DISABLE_PRUNE`              | boolean | Deaktiver beskæring af gamle data                                     |
-| `NANOCODE_DISABLE_TERMINAL_TITLE`     | boolean | Deaktiver automatisk opdatering af terminaltitel                      |
-| `NANOCODE_PERMISSION`                 | string  | Indbygget json-tilladelseskonfiguration                               |
-| `NANOCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | Deaktiver standard plugins                                            |
-| `NANOCODE_DISABLE_LSP_DOWNLOAD`       | boolean | Deaktiver automatisk LSP-serverdownloads                              |
-| `NANOCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | Aktive eksperimentelle modeller                                       |
-| `NANOCODE_DISABLE_AUTOCOMPACT`        | boolean | Deaktiver automatisk kontekstkomprimering                             |
-| `NANOCODE_DISABLE_CLAUDE_CODE`        | boolean | Deaktiver læsning fra `.claude` (prompt + færdigheder)                |
-| `NANOCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | Deaktiver læsning `~/.claude/CLAUDE.md`                               |
-| `NANOCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | Deaktiver indlæsning af `.claude/skills`                              |
-| `NANOCODE_DISABLE_MODELS_FETCH`       | boolean | Deaktivering af modeller fra eksterne kilder                          |
-| `NANOCODE_FAKE_VCS`                   | string  | Falsk VCS-udbyder til testformål                                      |
-| `NANOCODE_CLIENT`                     | string  | Klient-id (standard til `cli`)                                        |
-| `NANOCODE_ENABLE_EXA`                 | boolean | Aktiver Exa-websøgeværktøjer                                          |
-| `NANOCODE_SERVER_PASSWORD`            | string  | Aktiver grundlæggende godkendelse for `serve`/`web`                   |
-| `NANOCODE_SERVER_USERNAME`            | string  | Tilsidesæt grundlæggende godkendelsesbrugernavn (standard `nanocode`) |
-| `NANOCODE_MODELS_URL`                 | string  | Brugerdefineret URL til hentning af modelkonfiguration                |
+| `BETTERCODE_AUTO_SHARE`                 | boolean | Del automatisk session                                                |
+| `BETTERCODE_GIT_BASH_PATH`              | string  | Sti til Git Bash eksekverbar på Windows                               |
+| `BETTERCODE_CONFIG`                     | string  | Sti til konfigurationsfil                                             |
+| `BETTERCODE_TUI_CONFIG`                 | string  | Sti til TUI-konfigurationsfil                                         |
+| `BETTERCODE_CONFIG_DIR`                 | string  | Sti til konfigurationsmappe                                           |
+| `BETTERCODE_CONFIG_CONTENT`             | string  | Indbygget json-konfigurationsindhold                                  |
+| `BETTERCODE_DISABLE_AUTOUPDATE`         | boolean | Deaktiver automatisk opdateringskontrol                               |
+| `BETTERCODE_DISABLE_PRUNE`              | boolean | Deaktiver beskæring af gamle data                                     |
+| `BETTERCODE_DISABLE_TERMINAL_TITLE`     | boolean | Deaktiver automatisk opdatering af terminaltitel                      |
+| `BETTERCODE_PERMISSION`                 | string  | Indbygget json-tilladelseskonfiguration                               |
+| `BETTERCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | Deaktiver standard plugins                                            |
+| `BETTERCODE_DISABLE_LSP_DOWNLOAD`       | boolean | Deaktiver automatisk LSP-serverdownloads                              |
+| `BETTERCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | Aktive eksperimentelle modeller                                       |
+| `BETTERCODE_DISABLE_AUTOCOMPACT`        | boolean | Deaktiver automatisk kontekstkomprimering                             |
+| `BETTERCODE_DISABLE_CLAUDE_CODE`        | boolean | Deaktiver læsning fra `.claude` (prompt + færdigheder)                |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | Deaktiver læsning `~/.claude/CLAUDE.md`                               |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | Deaktiver indlæsning af `.claude/skills`                              |
+| `BETTERCODE_DISABLE_MODELS_FETCH`       | boolean | Deaktivering af modeller fra eksterne kilder                          |
+| `BETTERCODE_FAKE_VCS`                   | string  | Falsk VCS-udbyder til testformål                                      |
+| `BETTERCODE_CLIENT`                     | string  | Klient-id (standard til `cli`)                                        |
+| `BETTERCODE_ENABLE_EXA`                 | boolean | Aktiver Exa-websøgeværktøjer                                          |
+| `BETTERCODE_SERVER_PASSWORD`            | string  | Aktiver grundlæggende godkendelse for `serve`/`web`                   |
+| `BETTERCODE_SERVER_USERNAME`            | string  | Tilsidesæt grundlæggende godkendelsesbrugernavn (standard `bettercode`) |
+| `BETTERCODE_MODELS_URL`                 | string  | Brugerdefineret URL til hentning af modelkonfiguration                |
 
 ---
 
@@ -597,21 +597,21 @@ Disse miljøvariabler muliggør eksperimentelle funktioner, der kan ændres elle
 
 | Variabel                                        | Skriv   | Beskrivelse                                          |
 | ----------------------------------------------- | ------- | ---------------------------------------------------- |
-| `NANOCODE_EXPERIMENTAL`                         | boolean | Aktiver eksperimentelle funktioner under samleflaget |
-| `NANOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | Aktiver ikonopdagelse                                |
-| `NANOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | Deaktiver kopi ved valg i TUI                        |
-| `NANOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | nummer  | Standard timeout for bash-kommandoer i ms            |
-| `NANOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | nummer  | Maks. output-tokens for LLM-svar                     |
-| `NANOCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | Aktiver filovervågning for hele dir                  |
-| `NANOCODE_EXPERIMENTAL_OXFMT`                   | boolean | Aktiver oxfmt formatter                              |
-| `NANOCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | Aktive eksperimenter LSP værktøj                     |
-| `NANOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | Deaktiver filovervågning                             |
-| `NANOCODE_EXPERIMENTAL_EXA`                     | boolean | Aktive eksperimenter Exa-funktioner                  |
-| `NANOCODE_EXPERIMENTAL_LSP_TY`                  | boolean | Aktiver TY LSP for python-filer                      |
-| `NANOCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | Aktiver plantilstand                                 |
-| `NANOCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | boolean | Aktiver baggrundsopgaver for subagenter              |
-| `NANOCODE_EXPERIMENTAL_EVENT_SYSTEM`            | boolean | Aktiver eksperimentelt hændelsessystem               |
-| `NANOCODE_EXPERIMENTAL_NATIVE_LLM`              | boolean | Aktiver native LLM-anmodningssti                     |
-| `NANOCODE_EXPERIMENTAL_PARALLEL`                | boolean | Aktiver parallel udførelse af websøgning             |
-| `NANOCODE_EXPERIMENTAL_SCOUT`                   | boolean | Aktiver Scout-subagent                               |
-| `NANOCODE_EXPERIMENTAL_WORKSPACES`              | boolean | Aktiver workspace-understøttelse                     |
+| `BETTERCODE_EXPERIMENTAL`                         | boolean | Aktiver eksperimentelle funktioner under samleflaget |
+| `BETTERCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | Aktiver ikonopdagelse                                |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | Deaktiver kopi ved valg i TUI                        |
+| `BETTERCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | nummer  | Standard timeout for bash-kommandoer i ms            |
+| `BETTERCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | nummer  | Maks. output-tokens for LLM-svar                     |
+| `BETTERCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | Aktiver filovervågning for hele dir                  |
+| `BETTERCODE_EXPERIMENTAL_OXFMT`                   | boolean | Aktiver oxfmt formatter                              |
+| `BETTERCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | Aktive eksperimenter LSP værktøj                     |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | Deaktiver filovervågning                             |
+| `BETTERCODE_EXPERIMENTAL_EXA`                     | boolean | Aktive eksperimenter Exa-funktioner                  |
+| `BETTERCODE_EXPERIMENTAL_LSP_TY`                  | boolean | Aktiver TY LSP for python-filer                      |
+| `BETTERCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | Aktiver plantilstand                                 |
+| `BETTERCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | boolean | Aktiver baggrundsopgaver for subagenter              |
+| `BETTERCODE_EXPERIMENTAL_EVENT_SYSTEM`            | boolean | Aktiver eksperimentelt hændelsessystem               |
+| `BETTERCODE_EXPERIMENTAL_NATIVE_LLM`              | boolean | Aktiver native LLM-anmodningssti                     |
+| `BETTERCODE_EXPERIMENTAL_PARALLEL`                | boolean | Aktiver parallel udførelse af websøgning             |
+| `BETTERCODE_EXPERIMENTAL_SCOUT`                   | boolean | Aktiver Scout-subagent                               |
+| `BETTERCODE_EXPERIMENTAL_WORKSPACES`              | boolean | Aktiver workspace-understøttelse                     |

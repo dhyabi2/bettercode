@@ -1,13 +1,13 @@
 import type {
   Config,
-  NanocodeClient,
+  BettercodeClient,
   Path,
   Project,
   ProviderAuthResponse,
   SessionStatus,
-} from "@nanocode-ai/sdk/v2/client"
+} from "@bettercode-ai/sdk/v2/client"
 import { showToast } from "@/utils/toast"
-import { getFilename } from "@nanocode-ai/core/util/path"
+import { getFilename } from "@bettercode-ai/core/util/path"
 import { type Accessor, batch, createMemo, getOwner, onCleanup, onMount, untrack } from "solid-js"
 import { createStore, produce, reconcile } from "solid-js/store"
 import { useLanguage } from "@/context/language"
@@ -38,12 +38,12 @@ import { createRefreshQueue } from "./global-sync/queue"
 import { directoryKey } from "./global-sync/utils"
 import { PathKey } from "@/utils/path-key"
 import { createDirSyncContext } from "./directory-sync"
-import { createSimpleContext } from "@nanocode-ai/ui/context"
-import { NormalizedProviderListResponse } from "@nanocode-ai/session-ui/context"
+import { createSimpleContext } from "@bettercode-ai/ui/context"
+import { NormalizedProviderListResponse } from "@bettercode-ai/session-ui/context"
 import { createRefCountMap } from "@/utils/refcount"
 import { useGlobal } from "./global"
 import { ServerConnection, useServer } from "./server"
-import { retry } from "@nanocode-ai/core/util/retry"
+import { retry } from "@bettercode-ai/core/util/retry"
 import type { ServerScope } from "@/utils/server-scope"
 import { createHomeSessionIndexCache } from "./global-sync/home-session-index"
 import { persisted } from "@/utils/persist"
@@ -56,7 +56,7 @@ import type {
   McpResourceCatalogOutput,
   McpServer,
   SessionActiveOutput,
-} from "@nanocode-ai/client/promise"
+} from "@bettercode-ai/client/promise"
 import { toggleMcp } from "./global-sync/mcp"
 import { createServerSession, type ServerSession } from "./server-session"
 
@@ -94,7 +94,7 @@ export const loadMcpQuery = (
   scope: ServerScope,
   directory: string,
   api: McpListApi,
-  legacy?: NanocodeClient,
+  legacy?: BettercodeClient,
   protocol?: Promise<"v1" | "v2">,
 ): ApiQueryOptions<Record<string, McpServer["status"]>, readonly [ServerScope, string, "mcp"]> =>
   queryOptions<
@@ -116,7 +116,7 @@ export const loadMcpResourcesQuery = (
   scope: ServerScope,
   directory: string,
   api: McpResourceApi,
-  legacy?: NanocodeClient,
+  legacy?: BettercodeClient,
   protocol?: Promise<"v1" | "v2">,
 ): ApiQueryOptions<Record<string, McpResource>, readonly [ServerScope, string, "mcpResources"]> =>
   queryOptions<
@@ -144,7 +144,7 @@ export const loadMcpResourcesQuery = (
     placeholderData: {},
   })
 
-export const loadLspQuery = (scope: ServerScope, directory: string, sdk: NanocodeClient) =>
+export const loadLspQuery = (scope: ServerScope, directory: string, sdk: BettercodeClient) =>
   queryOptions({
     queryKey: [scope, directory, "lsp"] as const,
     queryFn: () => sdk.lsp.status().then((r) => r.data ?? []),
@@ -178,9 +178,9 @@ export function seedActiveSessionStatuses(
 
 function makeQueryOptionsApi(
   scope: ServerScope,
-  serverSDK: () => NanocodeClient,
+  serverSDK: () => BettercodeClient,
   serverAPI: ServerApi,
-  sdkFor: (dir: PathKey) => NanocodeClient,
+  sdkFor: (dir: PathKey) => BettercodeClient,
   protocol: Promise<"v1" | "v2">,
 ) {
   return {
@@ -207,7 +207,7 @@ export function createServerSyncContextInner(serverSDK: ServerSDK) {
   const owner = getOwner()
   if (!owner) throw new Error("ServerSync must be created within owner")
 
-  const sdkCache = new Map<string, NanocodeClient>()
+  const sdkCache = new Map<string, BettercodeClient>()
   const booting = new Map<string, Promise<void>>()
   const sessionLoads = new Map<string, Promise<void>>()
   const sessionMeta = new Map<string, { limit: number }>()

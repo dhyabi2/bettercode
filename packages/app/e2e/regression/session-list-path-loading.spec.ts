@@ -1,10 +1,10 @@
 import { test } from "@playwright/test"
 import { fixture, pageMessages } from "../smoke/session-timeline.fixture"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectAppVisible } from "../utils/waits"
 
 test("shows loaded sessions before the directory path request resolves", async ({ page }) => {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     sessions: fixture.sessions,
     provider: fixture.provider,
     directory: fixture.directory,
@@ -24,7 +24,7 @@ test("shows loaded sessions before the directory path request resolves", async (
 
   await page.addInitScript((directory) => {
     localStorage.setItem(
-      "nanocode.global.dat:server",
+      "bettercode.global.dat:server",
       JSON.stringify({
         projects: { local: [{ worktree: directory, expanded: true }] },
         lastProject: { local: directory },

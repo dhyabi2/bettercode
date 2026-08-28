@@ -10,10 +10,10 @@ describe("hasExistingAppState", () => {
     expect(hasExistingAppState([file("Local State"), directory("Crashpad")])).toBe(false)
   })
 
-  test("recognizes state written by an earlier NanoCode launch", () => {
-    expect(hasExistingAppState([file("nanocode.settings")])).toBe(true)
-    expect(hasExistingAppState([file("nanocode.global.dat")])).toBe(true)
+  test("recognizes state written by an earlier BetterCode launch", () => {
+    expect(hasExistingAppState([file("bettercode.settings")])).toBe(true)
+    expect(hasExistingAppState([file("bettercode.global.dat")])).toBe(true)
     expect(hasExistingAppState([file("window-state-abc.json")])).toBe(true)
-    expect(hasExistingAppState([directory("nanocode")])).toBe(true)
+    expect(hasExistingAppState([directory("bettercode")])).toBe(true)
   })
 })

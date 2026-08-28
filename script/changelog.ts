@@ -27,13 +27,13 @@ if (values.help) {
   console.log(`
 Usage: bun script/changelog.ts [options]
 
-Generates UPCOMING_CHANGELOG.md by running the nanocode changelog command.
+Generates UPCOMING_CHANGELOG.md by running the bettercode changelog command.
 
 Options:
   -f, --from <version>   Starting version (default: latest non-draft GitHub release)
   -t, --to <ref>         Ending ref (default: HEAD)
-      --variant <name>   Thinking variant for nanocode run (default: low)
-      --quiet            Suppress nanocode command output unless it fails
+      --variant <name>   Thinking variant for bettercode run (default: low)
+      --quiet            Suppress bettercode command output unless it fails
       --print            Print the generated UPCOMING_CHANGELOG.md after success
   -h, --help             Show this help message
 
@@ -48,7 +48,7 @@ Examples:
 await rm(file, { force: true })
 
 const quiet = values.quiet
-const cmd = ["nanocode", "run"]
+const cmd = ["bettercode", "run"]
 cmd.push("--variant", values.variant)
 cmd.push("--command", "changelog", "--", ...args)
 

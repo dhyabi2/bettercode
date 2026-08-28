@@ -1,4 +1,4 @@
-import type { HttpRecorder } from "@nanocode-ai/http-recorder"
+import type { HttpRecorder } from "@bettercode-ai/http-recorder"
 import { describe } from "bun:test"
 import { Effect } from "effect"
 import type { Model } from "../src"

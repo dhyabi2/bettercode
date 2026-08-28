@@ -3,7 +3,7 @@ title: Solução de Problemas
 description: Problemas comuns e como resolvê-los.
 ---
 
-Para depurar problemas com o nanocode, comece verificando os logs e os dados locais que ele armazena no disco.
+Para depurar problemas com o bettercode, comece verificando os logs e os dados locais que ele armazena no disco.
 
 ---
 
@@ -11,21 +11,21 @@ Para depurar problemas com o nanocode, comece verificando os logs e os dados loc
 
 Os arquivos de log são gravados em:
 
-- **macOS/Linux**: `~/.local/share/nanocode/log/`
-- **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.local\share\nanocode\log`
+- **macOS/Linux**: `~/.local/share/bettercode/log/`
+- **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.local\share\bettercode\log`
 
 Os arquivos de log são nomeados com timestamps (por exemplo, `2025-01-09T123456.log`) e os 10 arquivos de log mais recentes são mantidos.
 
-Você pode definir o nível de log com a opção de linha de comando `--log-level` para obter informações de depuração mais detalhadas. Por exemplo, `nanocode --log-level DEBUG`.
+Você pode definir o nível de log com a opção de linha de comando `--log-level` para obter informações de depuração mais detalhadas. Por exemplo, `bettercode --log-level DEBUG`.
 
 ---
 
 ## Armazenamento
 
-O nanocode armazena dados de sessão e outros dados do aplicativo no disco em:
+O bettercode armazena dados de sessão e outros dados do aplicativo no disco em:
 
-- **macOS/Linux**: `~/.local/share/nanocode/`
-- **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.local\share\nanocode`
+- **macOS/Linux**: `~/.local/share/bettercode/`
+- **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.local\share\bettercode`
 
 Este diretório contém:
 
@@ -39,13 +39,13 @@ Este diretório contém:
 
 ## Aplicativo de Desktop
 
-O nanocode Desktop executa um servidor nanocode local (o sidecar `nanocode-cli`) em segundo plano. A maioria dos problemas é causada por um plugin com mau funcionamento, um cache corrompido ou uma configuração de servidor incorreta.
+O bettercode Desktop executa um servidor bettercode local (o sidecar `bettercode-cli`) em segundo plano. A maioria dos problemas é causada por um plugin com mau funcionamento, um cache corrompido ou uma configuração de servidor incorreta.
 
 ### Verificações rápidas
 
 - Saia completamente do aplicativo e reinicie-o.
 - Se o aplicativo mostrar uma tela de erro, clique em **Reiniciar** e copie os detalhes do erro.
-- Apenas macOS: menu `NanoCode` -> **Recarregar Webview** (ajuda se a interface estiver em branco/congelada).
+- Apenas macOS: menu `BetterCode` -> **Recarregar Webview** (ajuda se a interface estiver em branco/congelada).
 
 ---
 
@@ -57,28 +57,28 @@ Se o aplicativo de desktop estiver travando ao iniciar, pendurado ou se comporta
 
 Abra seu arquivo de configuração global e procure uma chave `plugin`.
 
-- **macOS/Linux**: `~/.config/nanocode/nanocode.jsonc` (ou `~/.config/nanocode/nanocode.json`)
-- **macOS/Linux** (instalações mais antigas): `~/.local/share/nanocode/nanocode.jsonc`
-- **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.config\nanocode\nanocode.jsonc`
+- **macOS/Linux**: `~/.config/bettercode/bettercode.jsonc` (ou `~/.config/bettercode/bettercode.json`)
+- **macOS/Linux** (instalações mais antigas): `~/.local/share/bettercode/bettercode.jsonc`
+- **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.config\bettercode\bettercode.jsonc`
 
 Se você tiver plugins configurados, desative-os temporariamente removendo a chave ou definindo-a como um array vazio:
 
 ```jsonc
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "plugin": [],
 }
 ```
 
 #### Verificando os diretórios de plugins
 
-O nanocode também pode carregar plugins locais do disco. Mova-os temporariamente para fora do caminho (ou renomeie a pasta) e reinicie o aplicativo de desktop:
+O bettercode também pode carregar plugins locais do disco. Mova-os temporariamente para fora do caminho (ou renomeie a pasta) e reinicie o aplicativo de desktop:
 
 - **Plugins globais**
-  - **macOS/Linux**: `~/.config/nanocode/plugins/`
-  - **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.config\nanocode\plugins`
+  - **macOS/Linux**: `~/.config/bettercode/plugins/`
+  - **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.config\bettercode\plugins`
 - **Plugins de projeto** (apenas se você usar configuração por projeto)
-  - `<your-project>/.nanocode/plugins/`
+  - `<your-project>/.bettercode/plugins/`
 
 Se o aplicativo voltar a funcionar, reative os plugins um por um para descobrir qual está causando o problema.
 
@@ -86,22 +86,22 @@ Se o aplicativo voltar a funcionar, reative os plugins um por um para descobrir 
 
 ### Limpando o cache
 
-Se desativar plugins não ajudar (ou se a instalação de um plugin estiver travada), limpe o cache para que o nanocode possa reconstruí-lo.
+Se desativar plugins não ajudar (ou se a instalação de um plugin estiver travada), limpe o cache para que o bettercode possa reconstruí-lo.
 
-1. Saia completamente do nanocode Desktop.
+1. Saia completamente do bettercode Desktop.
 2. Exclua o diretório de cache:
 
-- **macOS**: Finder -> `Cmd+Shift+G` -> cole `~/.cache/nanocode`
-- **Linux**: exclua `~/.cache/nanocode` (ou execute `rm -rf ~/.cache/nanocode`)
-- **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.cache\nanocode`
+- **macOS**: Finder -> `Cmd+Shift+G` -> cole `~/.cache/bettercode`
+- **Linux**: exclua `~/.cache/bettercode` (ou execute `rm -rf ~/.cache/bettercode`)
+- **Windows**: Pressione `WIN+R` e cole `%USERPROFILE%\.cache\bettercode`
 
-3. Reinicie o nanocode Desktop.
+3. Reinicie o bettercode Desktop.
 
 ---
 
 ### Corrigindo problemas de conexão com o servidor
 
-O nanocode Desktop pode iniciar seu próprio servidor local (padrão) ou conectar-se a uma URL de servidor que você configurou.
+O bettercode Desktop pode iniciar seu próprio servidor local (padrão) ou conectar-se a uma URL de servidor que você configurou.
 
 Se você ver um diálogo **"Conexão Falhou"** (ou o aplicativo nunca passa da tela de inicialização), verifique se há uma URL de servidor personalizada.
 
@@ -111,13 +111,13 @@ Na tela inicial, clique no nome do servidor (com o ponto de status) para abrir o
 
 #### Removendo `server.port` / `server.hostname` da sua configuração
 
-Se seu `nanocode.json(c)` contiver uma seção `server`, remova-a temporariamente e reinicie o aplicativo de desktop.
+Se seu `bettercode.json(c)` contiver uma seção `server`, remova-a temporariamente e reinicie o aplicativo de desktop.
 
 #### Verificando as variáveis de ambiente
 
-Se você tiver `NANOCODE_PORT` definido em seu ambiente, o aplicativo de desktop tentará usar essa porta para o servidor local.
+Se você tiver `BETTERCODE_PORT` definido em seu ambiente, o aplicativo de desktop tentará usar essa porta para o servidor local.
 
-- Desfaça `NANOCODE_PORT` (ou escolha uma porta livre) e reinicie.
+- Desfaça `BETTERCODE_PORT` (ou escolha uma porta livre) e reinicie.
 
 ---
 
@@ -132,21 +132,21 @@ No Linux, algumas configurações do Wayland podem causar janelas em branco ou e
 
 ### Windows: Runtime do WebView2
 
-No Windows, o nanocode Desktop requer o **WebView2 Runtime** do Microsoft Edge. Se o aplicativo abrir em uma janela em branco ou não iniciar, instale/atualize o WebView2 e tente novamente.
+No Windows, o bettercode Desktop requer o **WebView2 Runtime** do Microsoft Edge. Se o aplicativo abrir em uma janela em branco ou não iniciar, instale/atualize o WebView2 e tente novamente.
 
 ---
 
 ### Windows: Problemas gerais de desempenho
 
-Se você estiver enfrentando desempenho lento, problemas de acesso a arquivos ou problemas no terminal no Windows, tente usar [WSL (Windows Subsystem for Linux)](/docs/windows-wsl). O WSL fornece um ambiente Linux que funciona de forma mais integrada com os recursos do nanocode.
+Se você estiver enfrentando desempenho lento, problemas de acesso a arquivos ou problemas no terminal no Windows, tente usar [WSL (Windows Subsystem for Linux)](/docs/windows-wsl). O WSL fornece um ambiente Linux que funciona de forma mais integrada com os recursos do bettercode.
 
 ---
 
 ### Notificações não aparecendo
 
-O nanocode Desktop só mostra notificações do sistema quando:
+O bettercode Desktop só mostra notificações do sistema quando:
 
-- as notificações estão habilitadas para o nanocode nas configurações do seu sistema operacional, e
+- as notificações estão habilitadas para o bettercode nas configurações do seu sistema operacional, e
 - a janela do aplicativo não está focada.
 
 ---
@@ -155,11 +155,11 @@ O nanocode Desktop só mostra notificações do sistema quando:
 
 Se o aplicativo não iniciar e você não conseguir limpar as configurações pela interface, redefina o estado salvo do aplicativo de desktop.
 
-1. Saia do nanocode Desktop.
-2. Encontre e exclua estes arquivos (eles estão no diretório de dados do aplicativo nanocode Desktop):
+1. Saia do bettercode Desktop.
+2. Encontre e exclua estes arquivos (eles estão no diretório de dados do aplicativo bettercode Desktop):
 
-- `nanocode.settings.dat` (URL do servidor padrão do desktop)
-- `nanocode.global.dat` e `nanocode.workspace.*.dat` (estado da interface como servidores/projetos recentes)
+- `bettercode.settings.dat` (URL do servidor padrão do desktop)
+- `bettercode.global.dat` e `bettercode.workspace.*.dat` (estado da interface como servidores/projetos recentes)
 
 Para encontrar o diretório rapidamente:
 
@@ -171,13 +171,13 @@ Para encontrar o diretório rapidamente:
 
 ## Obtendo ajuda
 
-Se você estiver enfrentando problemas com o nanocode:
+Se você estiver enfrentando problemas com o bettercode:
 
 1. **Relatar problemas no GitHub**
 
    A melhor maneira de relatar bugs ou solicitar recursos é através do nosso repositório no GitHub:
 
-   [**github.com/dhyabi2/nanocode/issues**](https://github.com/dhyabi2/nanocode/issues)
+   [**github.com/dhyabi2/bettercode/issues**](https://github.com/dhyabi2/bettercode/issues)
 
    Antes de criar um novo problema, pesquise problemas existentes para ver se seu problema já foi relatado.
 
@@ -185,7 +185,7 @@ Se você estiver enfrentando problemas com o nanocode:
 
    Para ajuda em tempo real e discussão da comunidade, junte-se ao nosso servidor Discord:
 
-   [**nanocode.ai/discord**](https://nanocode.ai/discord)
+   [**bettercode.ai/discord**](https://bettercode.ai/discord)
 
 ---
 
@@ -195,11 +195,11 @@ Aqui estão alguns problemas comuns e como resolvê-los.
 
 ---
 
-### O nanocode não inicia
+### O bettercode não inicia
 
 1. Verifique os logs em busca de mensagens de erro
 2. Tente executar com `--print-logs` para ver a saída no terminal
-3. Certifique-se de que você tem a versão mais recente com `nanocode upgrade`
+3. Certifique-se de que você tem a versão mais recente com `bettercode upgrade`
 
 ---
 
@@ -224,9 +224,9 @@ Exemplos:
 
 - `openai/gpt-4.1`
 - `openrouter/google/gemini-2.5-flash`
-- `nanocode/kimi-k2`
+- `bettercode/kimi-k2`
 
-Para descobrir quais modelos você tem acesso, execute `nanocode models`
+Para descobrir quais modelos você tem acesso, execute `bettercode models`
 
 ---
 
@@ -240,10 +240,10 @@ Para resolver isso:
 2. Se o problema persistir, tente limpar sua configuração armazenada:
 
    ```bash
-   rm -rf ~/.local/share/nanocode
+   rm -rf ~/.local/share/bettercode
    ```
 
-   No Windows, pressione `WIN+R` e exclua: `%USERPROFILE%\.local\share\nanocode`
+   No Windows, pressione `WIN+R` e exclua: `%USERPROFILE%\.local\share\bettercode`
 
 3. Reautentique-se com seu provedor usando o comando `/connect` na TUI.
 
@@ -251,21 +251,21 @@ Para resolver isso:
 
 ### AI_APICallError e problemas com pacotes de provedores
 
-Se você encontrar erros de chamada de API, isso pode ser devido a pacotes de provedores desatualizados. O nanocode instala dinamicamente pacotes de provedores (OpenAI, Anthropic, Google, etc.) conforme necessário e os armazena em cache localmente.
+Se você encontrar erros de chamada de API, isso pode ser devido a pacotes de provedores desatualizados. O bettercode instala dinamicamente pacotes de provedores (OpenAI, Anthropic, Google, etc.) conforme necessário e os armazena em cache localmente.
 
 Para resolver problemas com pacotes de provedores:
 
 1. Limpe o cache do pacote de provedores:
 
    ```bash
-   rm -rf ~/.cache/nanocode
+   rm -rf ~/.cache/bettercode
    ```
 
-   No Windows, pressione `WIN+R` e exclua: `%USERPROFILE%\.cache\nanocode`
+   No Windows, pressione `WIN+R` e exclua: `%USERPROFILE%\.cache\bettercode`
 
-2. Reinicie o nanocode para reinstalar os pacotes de provedores mais recentes
+2. Reinicie o bettercode para reinstalar os pacotes de provedores mais recentes
 
-Isso forçará o nanocode a baixar as versões mais recentes dos pacotes de provedores, o que muitas vezes resolve problemas de compatibilidade com parâmetros de modelo e alterações na API.
+Isso forçará o bettercode a baixar as versões mais recentes dos pacotes de provedores, o que muitas vezes resolve problemas de compatibilidade com parâmetros de modelo e alterações na API.
 
 ---
 
@@ -296,4 +296,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-O nanocode detectará se você está usando Wayland e preferirá `wl-clipboard`, caso contrário, tentará encontrar ferramentas de área de transferência na ordem: `xclip` e `xsel`.
+O bettercode detectará se você está usando Wayland e preferirá `wl-clipboard`, caso contrário, tentará encontrar ferramentas de área de transferência na ordem: `xclip` e `xsel`.

@@ -1,6 +1,6 @@
-# NanoCode Desktop
+# BetterCode Desktop
 
-The NanoCode Desktop app, built with Electron.
+The BetterCode Desktop app, built with Electron.
 
 ## Development
 

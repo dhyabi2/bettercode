@@ -1,5 +1,5 @@
 {
-  "name": "@nanocode-ai/console-function",
+  "name": "@bettercode-ai/console-function",
   "version": "1.18.21",
   "$schema": "https://json.schemastore.org/package.json",
   "private": true,
@@ -20,8 +20,8 @@
     "@ai-sdk/anthropic": "3.0.82",
     "@ai-sdk/openai": "3.0.48",
     "@ai-sdk/openai-compatible": "2.0.37",
-    "@nanocode-ai/console-core": "workspace:*",
-    "@nanocode-ai/console-resource": "workspace:*",
+    "@bettercode-ai/console-core": "workspace:*",
+    "@bettercode-ai/console-resource": "workspace:*",
     "@openauthjs/openauth": "0.0.0-20250322224806",
     "ai": "catalog:",
     "zod": "catalog:"

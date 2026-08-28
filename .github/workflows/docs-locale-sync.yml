@@ -10,7 +10,7 @@ on:
 jobs:
   sync-locales:
     if: false
-    #if: github.actor != 'nanocode-agent[bot]'
+    #if: github.actor != 'bettercode-agent[bot]'
     runs-on: blacksmith-4vcpu-ubuntu-2404
     permissions:
       contents: write
@@ -29,8 +29,8 @@ jobs:
         id: committer
         uses: ./.github/actions/setup-git-committer
         with:
-          nanocode-app-id: ${{ vars.NANOCODE_APP_ID }}
-          nanocode-app-secret: ${{ secrets.NANOCODE_APP_SECRET }}
+          bettercode-app-id: ${{ vars.BETTERCODE_APP_ID }}
+          bettercode-app-secret: ${{ secrets.BETTERCODE_APP_SECRET }}
 
       - name: Compute changed English docs
         id: changes
@@ -48,15 +48,15 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Install NanoCode
+      - name: Install BetterCode
         if: steps.changes.outputs.has_changes == 'true'
-        run: curl -fsSL https://nanocode.ai/install | bash
+        run: curl -fsSL https://bettercode.ai/install | bash
 
-      - name: Sync locale docs with NanoCode
+      - name: Sync locale docs with BetterCode
         if: steps.changes.outputs.has_changes == 'true'
         env:
-          NANOCODE_API_KEY: ${{ secrets.NANOCODE_API_KEY }}
-          NANOCODE_CONFIG_CONTENT: |
+          BETTERCODE_API_KEY: ${{ secrets.BETTERCODE_API_KEY }}
+          BETTERCODE_CONFIG_CONTENT: |
             {
               "permission": {
                 "*": "deny",
@@ -67,7 +67,7 @@ jobs:
               }
             }
         run: |
-          nanocode run --agent docs --model nanocode/gpt-5.3-codex <<'EOF'
+          bettercode run --agent docs --model bettercode/gpt-5.3-codex <<'EOF'
             Update localized docs to match the latest English docs changes.
 
             Changed English doc files:
@@ -77,7 +77,7 @@ jobs:
 
             Requirements:
             1. Update all relevant locale docs under packages/web/src/content/docs/<locale>/ so they reflect these English page changes.
-            2. You MUST use the Task tool for translation work and launch subagents with subagent_type `translator` (defined in .nanocode/agent/translator.md).
+            2. You MUST use the Task tool for translation work and launch subagents with subagent_type `translator` (defined in .bettercode/agent/translator.md).
             3. Do not translate directly in the primary agent. Use translator subagent output as the source for locale text updates.
             4. Run translator subagent Task calls in parallel whenever file/locale translation work is independent.
             5. Use only the minimum tools needed for this task (read/glob, file edits, and translator Task). Do not use shell, web, search, or GitHub tools for translation work.

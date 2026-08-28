@@ -1,10 +1,10 @@
-import { DialogBody, DialogHeader, DialogTitle, DialogV2 } from "@nanocode-ai/ui/v2/dialog-v2"
-import { Icon } from "@nanocode-ai/ui/v2/icon"
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
-import { Tag } from "@nanocode-ai/ui/v2/badge-v2"
-import { TooltipV2 } from "@nanocode-ai/ui/v2/tooltip-v2"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { useTheme } from "@nanocode-ai/ui/theme"
+import { DialogBody, DialogHeader, DialogTitle, DialogV2 } from "@bettercode-ai/ui/v2/dialog-v2"
+import { Icon } from "@bettercode-ai/ui/v2/icon"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
+import { Tag } from "@bettercode-ai/ui/v2/badge-v2"
+import { TooltipV2 } from "@bettercode-ai/ui/v2/tooltip-v2"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { useTheme } from "@bettercode-ai/ui/theme"
 import { createMemo, onCleanup, onMount, type Component, For, Show } from "solid-js"
 import { useLocal } from "@/context/local"
 import { useProviders } from "@/hooks/use-providers"
@@ -13,7 +13,7 @@ import { useLanguage } from "@/context/language"
 import { ModelTooltip } from "./model-tooltip"
 
 type ModelState = ReturnType<typeof useLocal>["model"]
-const featuredProviders = ["nanocode", "nanocode-go", "openai", "anthropic", "google", "github-copilot"]
+const featuredProviders = ["bettercode", "bettercode-go", "openai", "anthropic", "google", "github-copilot"]
 const displayModelName = (name: string) => name.replace(/\s+(?:\(free\)|free)$/i, "")
 
 export const DialogSelectModelUnpaidV2: Component<{ model?: ModelState }> = (props) => {
@@ -30,7 +30,7 @@ export const DialogSelectModelUnpaidV2: Component<{ model?: ModelState }> = (pro
     return c ? `${c.provider.id}:${c.id}` : undefined
   })
   const isFree = (item: ReturnType<ModelState["list"]>[number]) =>
-    item.provider.id === "nanocode" && (!item.cost || item.cost.input === 0)
+    item.provider.id === "bettercode" && (!item.cost || item.cost.input === 0)
   const freeModels = createMemo(() => model.list().filter(isFree))
 
   const openProviders = (provider?: string) => {
@@ -146,12 +146,12 @@ export const DialogSelectModelUnpaidV2: Component<{ model?: ModelState }> = (pro
                       <ProviderIcon id={provider.id} class="mt-0.5 size-4 shrink-0 text-v2-icon-icon-base" />
                       <span class="flex min-w-0 flex-col">
                         <span class="truncate">{provider.name}</span>
-                        <Show when={provider.id === "nanocode" || provider.id === "nanocode-go"}>
+                        <Show when={provider.id === "bettercode" || provider.id === "bettercode-go"}>
                           <span class="truncate font-[440] text-v2-text-text-muted">
                             {language.t(
-                              provider.id === "nanocode"
-                                ? "dialog.provider.nanocode.tagline"
-                                : "dialog.provider.nanocodeGo.tagline",
+                              provider.id === "bettercode"
+                                ? "dialog.provider.bettercode.tagline"
+                                : "dialog.provider.bettercodeGo.tagline",
                             )}
                           </span>
                         </Show>

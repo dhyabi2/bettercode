@@ -1,7 +1,7 @@
 import { createSignal, onCleanup, onMount, Show } from "solid-js"
-import { FileIcon } from "@nanocode-ai/ui/file-icon"
-import { getFilenameTruncated } from "@nanocode-ai/core/util/path"
-import { TooltipV2 } from "@nanocode-ai/ui/v2/tooltip-v2"
+import { FileIcon } from "@bettercode-ai/ui/file-icon"
+import { getFilenameTruncated } from "@bettercode-ai/core/util/path"
+import { TooltipV2 } from "@bettercode-ai/ui/v2/tooltip-v2"
 import { AttachmentCardV2 } from "./attachment-card-v2"
 
 export function CommentCardV2(props: {

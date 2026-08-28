@@ -2,9 +2,9 @@ export * from "./gen/types.gen.js"
 
 import { createClient } from "./gen/client/client.gen.js"
 import { type Config } from "./gen/client/types.gen.js"
-import { NanocodeClient } from "./gen/sdk.gen.js"
+import { BettercodeClient } from "./gen/sdk.gen.js"
 import { wrapClientError } from "./error-interceptor.js"
-export { type Config as NanocodeClientConfig, NanocodeClient }
+export { type Config as BettercodeClientConfig, BettercodeClient }
 
 function pick(value: string | null, fallback?: string) {
   if (!value) return
@@ -17,7 +17,7 @@ function pick(value: string | null, fallback?: string) {
 function rewrite(request: Request, directory?: string) {
   if (request.method !== "GET" && request.method !== "HEAD") return request
 
-  const value = pick(request.headers.get("x-nanocode-directory"), directory)
+  const value = pick(request.headers.get("x-bettercode-directory"), directory)
   if (!value) return request
 
   const url = new URL(request.url)
@@ -26,11 +26,11 @@ function rewrite(request: Request, directory?: string) {
   }
 
   const next = new Request(url, request)
-  next.headers.delete("x-nanocode-directory")
+  next.headers.delete("x-bettercode-directory")
   return next
 }
 
-export function createNanocodeClient(config?: Config & { directory?: string }) {
+export function createBettercodeClient(config?: Config & { directory?: string }) {
   if (!config?.fetch) {
     const customFetch: any = (req: any) => {
       // @ts-ignore
@@ -46,12 +46,12 @@ export function createNanocodeClient(config?: Config & { directory?: string }) {
   if (config?.directory) {
     config.headers = {
       ...config.headers,
-      "x-nanocode-directory": encodeURIComponent(config.directory),
+      "x-bettercode-directory": encodeURIComponent(config.directory),
     }
   }
 
   const client = createClient(config)
   client.interceptors.request.use((request) => rewrite(request, config?.directory))
   client.interceptors.error.use(wrapClientError)
-  return new NanocodeClient({ client })
+  return new BettercodeClient({ client })
 }

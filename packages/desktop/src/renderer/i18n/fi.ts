@@ -9,17 +9,17 @@ export const dict = {
   "desktop.updater.checkFailed.title": "Päivitystarkistus epäonnistui",
   "desktop.updater.checkFailed.message": "Päivitysten tarkistaminen epäonnistui",
   "desktop.updater.none.title": "Päivitystä ei ole saatavilla",
-  "desktop.updater.none.message": "Käytät jo NanoCoden uusinta versiota",
+  "desktop.updater.none.message": "Käytät jo BetterCoden uusinta versiota",
   "desktop.updater.downloadFailed.title": "Päivitys epäonnistui",
   "desktop.updater.downloadFailed.message": "Päivityksen lataaminen epäonnistui",
   "desktop.updater.downloaded.title": "Päivitys ladattu",
   "desktop.updater.downloaded.prompt":
-    "NanoCoden versio {{version}} on ladattu. Haluatko asentaa sen ja käynnistää NanoCoden uudelleen?",
+    "BetterCoden versio {{version}} on ladattu. Haluatko asentaa sen ja käynnistää BetterCoden uudelleen?",
   "desktop.updater.installFailed.title": "Päivitys epäonnistui",
   "desktop.updater.installFailed.message": "Päivityksen asentaminen epäonnistui",
   "desktop.cli.installed.title": "CLI on asennettu",
   "desktop.cli.installed.message":
-    "CLI on asennettu polkuun {{path}}\n\nKäynnistä terminaali uudelleen, jotta voit käyttää 'nanocode'-komentoa.",
+    "CLI on asennettu polkuun {{path}}\n\nKäynnistä terminaali uudelleen, jotta voit käyttää 'bettercode'-komentoa.",
   "desktop.cli.failed.title": "Asennus epäonnistui",
   "desktop.cli.failed.message": "CLI:n asennus epäonnistui: {{error}}",
 

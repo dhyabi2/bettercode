@@ -1,5 +1,5 @@
-import type { SessionApi, SessionInfo, SessionListInput } from "@nanocode-ai/client/promise"
-import type { Session } from "@nanocode-ai/sdk/v2/client"
+import type { SessionApi, SessionInfo, SessionListInput } from "@bettercode-ai/client/promise"
+import type { Session } from "@bettercode-ai/sdk/v2/client"
 import { withTimestampedFallback } from "./session-title"
 
 export function normalizeSessionInfo(input: SessionInfo | Session): Session {

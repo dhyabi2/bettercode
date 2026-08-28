@@ -31,14 +31,14 @@ describe("inference stat normalization", () => {
     expect(modelAuthor("alpha-gpt-next")).toBeUndefined()
   })
 
-  test("uses provider.model to resolve nanocode route providers", () => {
+  test("uses provider.model to resolve bettercode route providers", () => {
     expect(statModel("big-pickle", "claude-sonnet-4-5")).toBe("claude-sonnet-4-5")
     expect(statModel("big-pickle", "gpt-5-free")).toBe("gpt-5")
     expect(statModel("big-pickle", "xiaomi/mimo-v2.5")).toBe("mimo-v2.5")
     expect(statModel("big-pickle", "")).toBe("unknown")
-    expect(statProvider("big-pickle", "claude-sonnet-4-5", "nanocode")).toBe("anthropic")
-    expect(statProvider("big-pickle", "gpt-5", "nanocode")).toBe("openai")
-    expect(statProvider("big-pickle", "", "nanocode")).toBe("unknown")
+    expect(statProvider("big-pickle", "claude-sonnet-4-5", "bettercode")).toBe("anthropic")
+    expect(statProvider("big-pickle", "gpt-5", "bettercode")).toBe("openai")
+    expect(statProvider("big-pickle", "", "bettercode")).toBe("unknown")
     expect(statProvider("unknown", "", "custom-provider")).toBe("custom-provider")
   })
 
@@ -65,7 +65,7 @@ describe("inference stat normalization", () => {
     ])
 
     expect(
-      toModelAggregate({ ...aggregate("big-pickle", "nanocode"), provider_model: "claude-sonnet-4-5" }),
+      toModelAggregate({ ...aggregate("big-pickle", "bettercode"), provider_model: "claude-sonnet-4-5" }),
     ).toMatchObject([
       {
         provider: "anthropic",
@@ -75,18 +75,18 @@ describe("inference stat normalization", () => {
     ])
   })
 
-  test("provider aggregates never keep nanocode as the provider", () => {
-    expect(toProviderAggregate({ ...aggregate("big-pickle", "nanocode"), provider_model: "gpt-5" })).toMatchObject([
+  test("provider aggregates never keep bettercode as the provider", () => {
+    expect(toProviderAggregate({ ...aggregate("big-pickle", "bettercode"), provider_model: "gpt-5" })).toMatchObject([
       { provider: "openai" },
     ])
-    expect(toProviderAggregate(aggregate("big-pickle", "nanocode"))).toMatchObject([{ provider: "unknown" }])
+    expect(toProviderAggregate(aggregate("big-pickle", "bettercode"))).toMatchObject([{ provider: "unknown" }])
     expect(toProviderAggregate(aggregate("muse-spark-1.2-contributor", "unknown"))).toMatchObject([
       { provider: "meta" },
     ])
   })
 
-  test("geo aggregates never keep nanocode or big-pickle dimensions", () => {
-    expect(toGeoAggregate({ ...aggregate("big-pickle", "nanocode"), country: "US" })).toMatchObject([
+  test("geo aggregates never keep bettercode or big-pickle dimensions", () => {
+    expect(toGeoAggregate({ ...aggregate("big-pickle", "bettercode"), country: "US" })).toMatchObject([
       { provider: "unknown", model: "unknown", country: "US" },
     ])
   })

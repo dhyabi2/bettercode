@@ -30,7 +30,7 @@ export interface Interface {
   ) => Effect.Effect<HttpClientResponse.HttpClientResponse, LLMError>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/LLM/RequestExecutor") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/LLM/RequestExecutor") {}
 
 const BODY_LIMIT = 16_384
 const HEADER_TIMEOUT_MS = 30_000

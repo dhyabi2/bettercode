@@ -1,16 +1,16 @@
 export * from "./client.js"
 export * from "./server.js"
 
-import { createNanocodeClient } from "./client.js"
-import { createNanocodeServer } from "./server.js"
+import { createBettercodeClient } from "./client.js"
+import { createBettercodeServer } from "./server.js"
 import type { ServerOptions } from "./server.js"
 
-export async function createNanocode(options?: ServerOptions) {
-  const server = await createNanocodeServer({
+export async function createBettercode(options?: ServerOptions) {
+  const server = await createBettercodeServer({
     ...options,
   })
 
-  const client = createNanocodeClient({
+  const client = createBettercodeClient({
     baseUrl: server.url,
   })
 

@@ -1,4 +1,4 @@
-import type { PermissionRequest, QuestionRequest, Session } from "@nanocode-ai/sdk/v2/client"
+import type { PermissionRequest, QuestionRequest, Session } from "@bettercode-ai/sdk/v2/client"
 
 function sessionTreeRequest<T>(
   session: Session[],

@@ -10,7 +10,7 @@ export default function App() {
       explicitLinks={true}
       root={(props) => (
         <MetaProvider>
-          <Title>nanocode support</Title>
+          <Title>bettercode support</Title>
           <Suspense>{props.children}</Suspense>
         </MetaProvider>
       )}

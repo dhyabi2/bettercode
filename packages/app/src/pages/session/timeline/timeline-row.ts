@@ -1,5 +1,5 @@
-import type { SnapshotFileDiff } from "@nanocode-ai/sdk/v2"
-import type { PartGroup } from "@nanocode-ai/session-ui/message-part"
+import type { SnapshotFileDiff } from "@bettercode-ai/sdk/v2"
+import type { PartGroup } from "@bettercode-ai/session-ui/message-part"
 import { Data, Equal } from "effect"
 
 export type SummaryDiff = SnapshotFileDiff & { file: string }

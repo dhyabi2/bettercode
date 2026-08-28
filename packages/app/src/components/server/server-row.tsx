@@ -1,4 +1,4 @@
-import { Tooltip } from "@nanocode-ai/ui/tooltip"
+import { Tooltip } from "@bettercode-ai/ui/tooltip"
 import { createResizeObserver } from "@solid-primitives/resize-observer"
 import {
   children,

@@ -1,28 +1,28 @@
 ---
 title: Web
-description: Korzystanie z nanocode w przeglądarce.
+description: Korzystanie z bettercode w przeglądarce.
 ---
 
-nanocode może działać jako aplikacja internetowa w przeglądarce, zapewniając takie same możliwości kodowania AI bez konieczności korzystania z terminala.
+bettercode może działać jako aplikacja internetowa w przeglądarce, zapewniając takie same możliwości kodowania AI bez konieczności korzystania z terminala.
 
-![Sieć nanocode - Nowa sesja](../../../assets/web/web-homepage-new-session.png)
+![Sieć bettercode - Nowa sesja](../../../assets/web/web-homepage-new-session.png)
 
 ## Pierwsze kroki
 
 Uruchom interfejs sieciowy, uruchamiając:
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-Spowoduje to uruchomienie lokalnego serwera na `127.0.0.1` z losowo dostępnym portem i automatyczne otwarcie nanocode w domyślnej przeglądarce.
+Spowoduje to uruchomienie lokalnego serwera na `127.0.0.1` z losowo dostępnym portem i automatyczne otwarcie bettercode w domyślnej przeglądarce.
 
 :::caution
-Jeśli `NANOCODE_SERVER_PASSWORD` nie jest ustawione, serwer będzie niezabezpieczony. Jest to dobre rozwiązanie do użytku lokalnego, ale powinno być ustawione na dostęp do sieci.
+Jeśli `BETTERCODE_SERVER_PASSWORD` nie jest ustawione, serwer będzie niezabezpieczony. Jest to dobre rozwiązanie do użytku lokalnego, ale powinno być ustawione na dostęp do sieci.
 :::
 
 :::tip[Windows Users]
-Aby uzyskać najlepsze wyniki, uruchom `nanocode web` z [WSL](/docs/windows-wsl) zamiast programu PowerShell. Zapewnia to prawidłowy dostęp do systemu plików i integrację terminala.
+Aby uzyskać najlepsze wyniki, uruchom `bettercode web` z [WSL](/docs/windows-wsl) zamiast programu PowerShell. Zapewnia to prawidłowy dostęp do systemu plików i integrację terminala.
 :::
 
 ---
@@ -33,21 +33,21 @@ Możesz skonfigurować serwer WWW za pomocą flag wiersza poleceń lub w [pliku 
 
 ### Port
 
-Domyślnie nanocode wybiera dostępny port. Możesz określić port:
+Domyślnie bettercode wybiera dostępny port. Możesz określić port:
 
 ```bash
-nanocode web --port 4096
+bettercode web --port 4096
 ```
 
 ### Nazwa hosta
 
-Domyślnie serwer łączy się z `127.0.0.1` (tylko localhost). Aby udostępnić nanocode w swojej sieci:
+Domyślnie serwer łączy się z `127.0.0.1` (tylko localhost). Aby udostępnić bettercode w swojej sieci:
 
 ```bash
-nanocode web --hostname 0.0.0.0
+bettercode web --hostname 0.0.0.0
 ```
 
-Podczas korzystania z `0.0.0.0` nanocode wyświetli zarówno adresy lokalne, jak i sieciowe:
+Podczas korzystania z `0.0.0.0` bettercode wyświetli zarówno adresy lokalne, jak i sieciowe:
 
 ```
   Local access:       http://localhost:4096
@@ -59,15 +59,15 @@ Podczas korzystania z `0.0.0.0` nanocode wyświetli zarówno adresy lokalne, jak
 Włącz mDNS, aby Twój serwer był wykrywalny w sieci lokalnej:
 
 ```bash
-nanocode web --mdns
+bettercode web --mdns
 ```
 
-To automatycznie ustawia nazwę hosta na `0.0.0.0` i anonsuje serwer jako `nanocode.local`.
+To automatycznie ustawia nazwę hosta na `0.0.0.0` i anonsuje serwer jako `bettercode.local`.
 
 Możesz dostosować nazwę domeny mDNS, aby uruchamiała wiele instancji w tej samej sieci:
 
 ```bash
-nanocode web --mdns --mdns-domain myproject.local
+bettercode web --mdns --mdns-domain myproject.local
 ```
 
 ### CORS
@@ -75,36 +75,36 @@ nanocode web --mdns --mdns-domain myproject.local
 Aby zezwolić na dodatkowe domeny dla CORS (przydatne w przypadku niestandardowych interfejsów):
 
 ```bash
-nanocode web --cors https://example.com
+bettercode web --cors https://example.com
 ```
 
 ### Uwierzytelnianie
 
-Aby chronić dostęp, ustaw hasło za pomocą zmiennej środowiskowej `NANOCODE_SERVER_PASSWORD`:
+Aby chronić dostęp, ustaw hasło za pomocą zmiennej środowiskowej `BETTERCODE_SERVER_PASSWORD`:
 
 ```bash
-NANOCODE_SERVER_PASSWORD=secret nanocode web
+BETTERCODE_SERVER_PASSWORD=secret bettercode web
 ```
 
-Domyślna nazwa użytkownika to `nanocode`, ale można ją zmienić za pomocą `NANOCODE_SERVER_USERNAME`.
+Domyślna nazwa użytkownika to `bettercode`, ale można ją zmienić za pomocą `BETTERCODE_SERVER_USERNAME`.
 
 ---
 
 ## Korzystanie z interfejsu internetowego
 
-Po uruchomieniu interfejs sieciowy zapewnia dostęp do sesji nanocode.
+Po uruchomieniu interfejs sieciowy zapewnia dostęp do sesji bettercode.
 
 ### Sesje
 
 Przeglądaj sesje i zarządzaj nimi ze strony głównej. Możesz zobaczyć aktywne sesje i rozpocząć nowe.
 
-![nanocode Web - Aktywna sesja](../../../assets/web/web-homepage-active-session.png)
+![bettercode Web - Aktywna sesja](../../../assets/web/web-homepage-active-session.png)
 
 ### Stan serwera
 
 Kliknij „Zobacz serwery”, aby wyświetlić podłączone serwery i ich status.
 
-![nanocode Web - See Servers](../../../assets/web/web-homepage-see-servers.png)
+![bettercode Web - See Servers](../../../assets/web/web-homepage-see-servers.png)
 
 ---
 
@@ -114,10 +114,10 @@ Możesz podłączyć terminal TUI do działającego serwera WWW:
 
 ```bash
 # Start the web server
-nanocode web --port 4096
+bettercode web --port 4096
 
 # In another terminal, attach the TUI
-nanocode attach http://localhost:4096
+bettercode attach http://localhost:4096
 ```
 
 Umożliwia to jednoczesne korzystanie z interfejsu sieciowego i terminala, współdzieląc te same sesje i stan.
@@ -126,7 +126,7 @@ Umożliwia to jednoczesne korzystanie z interfejsu sieciowego i terminala, wspó
 
 ## Plik konfiguracyjny
 
-Możesz także skonfigurować ustawienia serwera w pliku konfiguracyjnym `nanocode.json`:
+Możesz także skonfigurować ustawienia serwera w pliku konfiguracyjnym `bettercode.json`:
 
 ```json
 {

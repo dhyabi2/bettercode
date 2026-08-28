@@ -10,14 +10,14 @@
   autoPatchelfHook,
   copyDesktopItems,
   makeDesktopItem,
-  nanocode,
+  bettercode,
 }:
 let
   electron = electron_41;
 in
 stdenv.mkDerivation (finalAttrs: {
-  pname = "nanocode-desktop";
-  inherit (nanocode)
+  pname = "bettercode-desktop";
+  inherit (bettercode)
     version
     src
     node_modules
@@ -44,16 +44,16 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   desktopItems = lib.optional stdenv.hostPlatform.isLinux (makeDesktopItem {
-    name = "ai.nanocode.desktop";
-    desktopName = "NanoCode";
-    exec = "nanocode-desktop %U";
-    icon = "ai.nanocode.desktop";
+    name = "ai.bettercode.desktop";
+    desktopName = "BetterCode";
+    exec = "bettercode-desktop %U";
+    icon = "ai.bettercode.desktop";
     # Electron 41 derives X11 WM_CLASS from app.name.
-    startupWMClass = "NanoCode";
+    startupWMClass = "BetterCode";
     categories = [ "Development" ];
   });
 
-  env = nanocode.env // {
+  env = bettercode.env // {
     ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
   };
 
@@ -71,7 +71,7 @@ stdenv.mkDerivation (finalAttrs: {
       FILES=(src/main/windows.ts)
       for file in "''${FILES[@]}"; do
         substituteInPlace $BASE_PATH/$file \
-          --replace-fail "process.resourcesPath" "'$out/opt/nanocode-desktop/resources'"
+          --replace-fail "process.resourcesPath" "'$out/opt/bettercode-desktop/resources'"
       done
     '';
 
@@ -104,27 +104,27 @@ stdenv.mkDerivation (finalAttrs: {
   + lib.optionalString stdenv.hostPlatform.isDarwin ''
     mkdir -p $out/Applications
     mv dist/mac*/*.app $out/Applications
-    makeWrapper "$out/Applications/NanoCode.app/Contents/MacOS/NanoCode" $out/bin/nanocode-desktop
+    makeWrapper "$out/Applications/BetterCode.app/Contents/MacOS/BetterCode" $out/bin/bettercode-desktop
   ''
   + lib.optionalString stdenv.hostPlatform.isLinux ''
-    mkdir -p $out/opt/nanocode-desktop
-    cp -r dist/linux*-unpacked/{resources,LICENSE*} $out/opt/nanocode-desktop
+    mkdir -p $out/opt/bettercode-desktop
+    cp -r dist/linux*-unpacked/{resources,LICENSE*} $out/opt/bettercode-desktop
     install -Dm644 resources/icons/32x32.png \
-      "$out/share/icons/hicolor/32x32/apps/ai.nanocode.desktop.png"
+      "$out/share/icons/hicolor/32x32/apps/ai.bettercode.desktop.png"
     install -Dm644 resources/icons/64x64.png \
-      "$out/share/icons/hicolor/64x64/apps/ai.nanocode.desktop.png"
+      "$out/share/icons/hicolor/64x64/apps/ai.bettercode.desktop.png"
     install -Dm644 resources/icons/128x128.png \
-      "$out/share/icons/hicolor/128x128/apps/ai.nanocode.desktop.png"
+      "$out/share/icons/hicolor/128x128/apps/ai.bettercode.desktop.png"
     install -Dm644 resources/icons/128x128@2x.png \
-      "$out/share/icons/hicolor/256x256/apps/ai.nanocode.desktop.png"
+      "$out/share/icons/hicolor/256x256/apps/ai.bettercode.desktop.png"
     install -Dm644 resources/icons/icon.png \
-      "$out/share/icons/hicolor/512x512/apps/ai.nanocode.desktop.png"
-    install -Dm644 resources/ai.nanocode.desktop.metainfo.xml \
-      "$out/share/metainfo/ai.nanocode.desktop.metainfo.xml"
-    makeWrapper ${lib.getExe electron} $out/bin/nanocode-desktop \
+      "$out/share/icons/hicolor/512x512/apps/ai.bettercode.desktop.png"
+    install -Dm644 resources/ai.bettercode.desktop.metainfo.xml \
+      "$out/share/metainfo/ai.bettercode.desktop.metainfo.xml"
+    makeWrapper ${lib.getExe electron} $out/bin/bettercode-desktop \
      --inherit-argv0 \
      --set ELECTRON_FORCE_IS_PACKAGED 1 \
-     --add-flags $out/opt/nanocode-desktop/resources/app.asar \
+     --add-flags $out/opt/bettercode-desktop/resources/app.asar \
      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}"
   ''
   + ''
@@ -136,8 +136,8 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   meta = {
-    description = "NanoCode Desktop App";
-    mainProgram = "nanocode-desktop";
-    inherit (nanocode.meta) homepage license platforms;
+    description = "BetterCode Desktop App";
+    mainProgram = "bettercode-desktop";
+    inherit (bettercode.meta) homepage license platforms;
   };
 })

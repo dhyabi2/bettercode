@@ -1,6 +1,6 @@
-import { Location } from "@nanocode-ai/core/location"
-import { Project } from "@nanocode-ai/core/project"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
+import { Location } from "@bettercode-ai/core/location"
+import { Project } from "@bettercode-ai/core/project"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
 import { Effect, Layer } from "effect"
 import { tmpdir } from "./tmpdir"
 

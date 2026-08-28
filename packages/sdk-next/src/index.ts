@@ -1,7 +1,7 @@
-export * as NanoCode from "./nanocode"
+export * as BetterCode from "./bettercode"
 export * as Tool from "./tool"
 
-export { ClientError } from "@nanocode-ai/client/effect"
+export { ClientError } from "@bettercode-ai/client/effect"
 export {
   AbsolutePath,
   Agent,
@@ -13,5 +13,5 @@ export {
   Session,
   SessionInput,
   SessionMessage,
-} from "@nanocode-ai/client/effect"
-export type { NanoCodeEvent } from "@nanocode-ai/client/effect"
+} from "@bettercode-ai/client/effect"
+export type { BetterCodeEvent } from "@bettercode-ai/client/effect"

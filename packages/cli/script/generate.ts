@@ -1,4 +1,4 @@
-const modelsUrl = process.env.NANOCODE_MODELS_URL || "https://models.nanocode.ai"
+const modelsUrl = process.env.BETTERCODE_MODELS_URL || "https://models.bettercode.ai"
 
 export const modelsData = process.env.MODELS_DEV_API_JSON
   ? await Bun.file(process.env.MODELS_DEV_API_JSON).text()

@@ -1,5 +1,5 @@
-import { Message, Model, Part, Session, SnapshotFileDiff } from "@nanocode-ai/sdk/v2"
-import { iife } from "@nanocode-ai/core/util/iife"
+import { Message, Model, Part, Session, SnapshotFileDiff } from "@bettercode-ai/sdk/v2"
+import { iife } from "@bettercode-ai/core/util/iife"
 import z from "zod"
 import { Storage } from "./storage"
 

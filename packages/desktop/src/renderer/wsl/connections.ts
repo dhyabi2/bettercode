@@ -1,4 +1,4 @@
-import type { WslServersState } from "@nanocode-ai/app/wsl/types"
+import type { WslServersState } from "@bettercode-ai/app/wsl/types"
 
 export function readyWslConnections(state?: WslServersState, label = "WSL") {
   return (state?.servers ?? []).flatMap((item) => {

@@ -54,7 +54,7 @@ export async function exportDebugLogs() {
     await netLog.stopLogging().catch((error) => write("network", "failed to stop net log", { error }))
   }
 
-  const output = join(app.getPath("downloads"), `nanocode-debug-${stamp()}.zip`)
+  const output = join(app.getPath("downloads"), `bettercode-debug-${stamp()}.zip`)
   try {
     write("main", "exporting debug logs", { output })
     await writeZip(output, [
@@ -151,7 +151,7 @@ function manifest() {
 
 function serverLogRoots() {
   const xdgData = process.env.XDG_DATA_HOME || join(homedir(), ".local", "share")
-  return [...new Set([join(xdgData, "nanocode", "log"), join(app.getPath("userData"), "nanocode", "log")])]
+  return [...new Set([join(xdgData, "bettercode", "log"), join(app.getPath("userData"), "bettercode", "log")])]
 }
 
 type Entry = { name: string; path?: string; data?: Buffer }

@@ -1,5 +1,5 @@
-import { createSimpleContext } from "@nanocode-ai/ui/context"
-import { base64Encode } from "@nanocode-ai/core/util/encode"
+import { createSimpleContext } from "@bettercode-ai/ui/context"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
 import { useParams } from "@solidjs/router"
 import { batch, createEffect, createMemo, startTransition } from "solid-js"
 import { createStore } from "solid-js/store"

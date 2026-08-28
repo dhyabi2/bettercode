@@ -1,4 +1,4 @@
-import type { Event } from "@nanocode-ai/sdk/v2"
+import type { Event } from "@bettercode-ai/sdk/v2"
 import { useSDK } from "./sdk"
 
 type EventMetadata = {

@@ -20,7 +20,7 @@ export const MODEL_NAME_ALIASES: Record<string, string> = {
   "xiaomi/mimo-v2.5": "mimo-v2.5",
 }
 export const RETIRED_STAT_MODELS = ["big-pickle", ...Object.keys(MODEL_NAME_ALIASES)]
-export const RETIRED_STAT_PROVIDERS = ["nanocode"]
+export const RETIRED_STAT_PROVIDERS = ["bettercode"]
 
 export function normalizeInferenceModel(value: string | undefined) {
   return (value || "unknown").toLowerCase().replace(/(-free|:free|:global)+$/, "") || "unknown"

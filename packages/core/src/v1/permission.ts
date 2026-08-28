@@ -1,8 +1,8 @@
 export * as PermissionV1 from "./permission"
 
 import { Schema } from "effect"
-export * from "@nanocode-ai/schema/permission-v1"
-import { ID } from "@nanocode-ai/schema/permission-v1"
+export * from "@bettercode-ai/schema/permission-v1"
+import { ID } from "@bettercode-ai/schema/permission-v1"
 
 export class RejectedError extends Schema.TaggedErrorClass<RejectedError>()("PermissionRejectedError", {}) {
   override get message() {

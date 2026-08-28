@@ -1,13 +1,13 @@
 ---
 title: مجموعة تطوير البرمجيات (SDK)
-description: عميل JavaScript آمن الأنواع لخادم nanocode.
+description: عميل JavaScript آمن الأنواع لخادم bettercode.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-توفر SDK الخاصة بـ nanocode لـ JS/TS عميلا آمنا للأنواع للتفاعل مع الخادم.
-استخدمها لبناء التكاملات والتحكم في nanocode برمجيا.
+توفر SDK الخاصة بـ bettercode لـ JS/TS عميلا آمنا للأنواع للتفاعل مع الخادم.
+استخدمها لبناء التكاملات والتحكم في bettercode برمجيا.
 
 [اعرف المزيد](/docs/server) حول كيفية عمل الخادم. للاطلاع على أمثلة، تفقد [المشاريع](/docs/ecosystem#projects) التي أنشأها المجتمع.
 
@@ -18,19 +18,19 @@ export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types
 ثبّت SDK من npm:
 
 ```bash
-npm install @nanocode-ai/sdk
+npm install @bettercode-ai/sdk
 ```
 
 ---
 
 ## إنشاء عميل
 
-أنشئ مثيلا من nanocode:
+أنشئ مثيلا من bettercode:
 
 ```javascript
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 
-const { client } = await createNanocode()
+const { client } = await createBettercode()
 ```
 
 هذا يشغّل خادما وعميلا معا.
@@ -49,12 +49,12 @@ const { client } = await createNanocode()
 
 ## الإعدادات
 
-يمكنك تمرير كائن إعدادات لتخصيص السلوك. سيستمر المثيل في التقاط `nanocode.json` لديك، لكن يمكنك تجاوز الإعدادات أو إضافة إعدادات مباشرة:
+يمكنك تمرير كائن إعدادات لتخصيص السلوك. سيستمر المثيل في التقاط `bettercode.json` لديك، لكن يمكنك تجاوز الإعدادات أو إضافة إعدادات مباشرة:
 
 ```javascript
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 
-const nanocode = await createNanocode({
+const bettercode = await createBettercode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,19 +62,19 @@ const nanocode = await createNanocode({
   },
 })
 
-console.log(`Server running at ${nanocode.server.url}`)
+console.log(`Server running at ${bettercode.server.url}`)
 
-nanocode.server.close()
+bettercode.server.close()
 ```
 
 ## العميل فقط
 
-إذا كان لديك مثيل nanocode يعمل بالفعل، يمكنك إنشاء مثيل عميل للاتصال به:
+إذا كان لديك مثيل bettercode يعمل بالفعل، يمكنك إنشاء مثيل عميل للاتصال به:
 
 ```javascript
-import { createNanocodeClient } from "@nanocode-ai/sdk"
+import { createBettercodeClient } from "@bettercode-ai/sdk"
 
-const client = createNanocodeClient({
+const client = createBettercodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createNanocodeClient({
 تتضمن SDK تعريفات TypeScript لجميع أنواع API. استوردها مباشرة:
 
 ```typescript
-import type { Session, Message, Part } from "@nanocode-ai/sdk"
+import type { Session, Message, Part } from "@bettercode-ai/sdk"
 ```
 
 جميع الأنواع مولّدة من مواصفات OpenAPI الخاصة بالخادم ومتاحة في <a href={typesUrl}>ملف الأنواع</a>.
@@ -376,7 +376,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*nanocode" },
+  query: { pattern: "function.*bettercode" },
 })
 
 const files = await client.find.files({

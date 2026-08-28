@@ -3,7 +3,7 @@
 import { $ } from "bun"
 import { rm } from "fs/promises"
 import path from "path"
-import { Script } from "@nanocode-ai/script"
+import { Script } from "@bettercode-ai/script"
 import { createSolidTransformPlugin } from "@opentui/solid/bun-plugin"
 import pkg from "../package.json"
 import { modelsData } from "./generate"
@@ -82,11 +82,11 @@ for (const item of targets) {
       windows: {},
     },
     define: {
-      NANOCODE_VERSION: `'${Script.version}'`,
-      NANOCODE_CLI_NAME: `'${binary}'`,
-      NANOCODE_MODELS_DEV: modelsData,
-      NANOCODE_CHANNEL: `'${Script.channel}'`,
-      NANOCODE_LIBC: item.os === "linux" ? `'${item.abi ?? "glibc"}'` : "undefined",
+      BETTERCODE_VERSION: `'${Script.version}'`,
+      BETTERCODE_CLI_NAME: `'${binary}'`,
+      BETTERCODE_MODELS_DEV: modelsData,
+      BETTERCODE_CHANNEL: `'${Script.channel}'`,
+      BETTERCODE_LIBC: item.os === "linux" ? `'${item.abi ?? "glibc"}'` : "undefined",
       // FFF_LIBC selects the fff native lib variant: "musl" or "gnu".
       FFF_LIBC: item.os === "linux" ? `'${item.abi ?? "gnu"}'` : "undefined",
       ...(item.os === "linux" ? { "process.env.OPENTUI_LIBC": JSON.stringify(item.abi ?? "glibc") } : {}),
@@ -102,10 +102,10 @@ for (const item of targets) {
     `./dist/${name}/package.json`,
     JSON.stringify(
       {
-        name: `@nanocode-ai/${name}`,
+        name: `@bettercode-ai/${name}`,
         version: Script.version,
         license: "MIT",
-        repository: { type: "git", url: "git+https://github.com/dhyabi2/nanocode.git" },
+        repository: { type: "git", url: "git+https://github.com/dhyabi2/bettercode.git" },
         os: [item.os],
         cpu: [item.arch],
       },

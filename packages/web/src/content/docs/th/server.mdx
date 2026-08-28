@@ -1,19 +1,19 @@
 ---
 title: เซิร์ฟเวอร์
-description: โต้ตอบกับเซิร์ฟเวอร์ nanocode ผ่าน HTTP
+description: โต้ตอบกับเซิร์ฟเวอร์ bettercode ผ่าน HTTP
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-คำสั่ง `nanocode serve` รันเซิร์ฟเวอร์ HTTP ที่ไม่มีหัวซึ่งเปิดเผยตำแหน่งข้อมูล OpenAPI ที่ไคลเอนต์ nanocode สามารถใช้ได้
+คำสั่ง `bettercode serve` รันเซิร์ฟเวอร์ HTTP ที่ไม่มีหัวซึ่งเปิดเผยตำแหน่งข้อมูล OpenAPI ที่ไคลเอนต์ bettercode สามารถใช้ได้
 
 ---
 
 ### การใช้งาน
 
 ```bash
-nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
+bettercode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 ```
 
 #### ตัวเลือก
@@ -23,41 +23,41 @@ nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | พอร์ตที่จะฟัง                            | `4096`           |
 | `--hostname`    | ชื่อโฮสต์ที่จะฟัง                        | `127.0.0.1`      |
 | `--mdns`        | เปิดใช้งานการค้นพบ mDNS                  | `false`          |
-| `--mdns-domain` | ชื่อโดเมนที่กำหนดเองสำหรับบริการ mDNS    | `nanocode.local` |
+| `--mdns-domain` | ชื่อโดเมนที่กำหนดเองสำหรับบริการ mDNS    | `bettercode.local` |
 | `--cors`        | ต้นกำเนิดเบราว์เซอร์เพิ่มเติมที่จะอนุญาต | `[]`             |
 
 `--cors` สามารถส่งผ่านได้หลายครั้ง:
 
 ```bash
-nanocode serve --cors http://localhost:5173 --cors https://app.example.com
+bettercode serve --cors http://localhost:5173 --cors https://app.example.com
 ```
 
 ---
 
 ### การรับรองความถูกต้อง
 
-ตั้งค่า `NANOCODE_SERVER_PASSWORD` เพื่อปกป้องเซิร์ฟเวอร์ด้วย HTTP การตรวจสอบสิทธิ์ขั้นพื้นฐาน ชื่อผู้ใช้มีค่าเริ่มต้นเป็น `nanocode` หรือตั้งค่า `NANOCODE_SERVER_USERNAME` เพื่อแทนที่ชื่อผู้ใช้ สิ่งนี้ใช้ได้กับทั้ง `nanocode serve` และ `nanocode web`
+ตั้งค่า `BETTERCODE_SERVER_PASSWORD` เพื่อปกป้องเซิร์ฟเวอร์ด้วย HTTP การตรวจสอบสิทธิ์ขั้นพื้นฐาน ชื่อผู้ใช้มีค่าเริ่มต้นเป็น `bettercode` หรือตั้งค่า `BETTERCODE_SERVER_USERNAME` เพื่อแทนที่ชื่อผู้ใช้ สิ่งนี้ใช้ได้กับทั้ง `bettercode serve` และ `bettercode web`
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve
 ```
 
 ---
 
 ### มันทำงานอย่างไร
 
-เมื่อคุณรัน `nanocode` มันจะเริ่มต้น TUI และเซิร์ฟเวอร์ โดยที่ TUI คือ
+เมื่อคุณรัน `bettercode` มันจะเริ่มต้น TUI และเซิร์ฟเวอร์ โดยที่ TUI คือ
 ลูกค้าที่พูดคุยกับเซิร์ฟเวอร์ เซิร์ฟเวอร์เปิดเผยข้อมูลจำเพาะของ OpenAPI 3.1
 จุดสิ้นสุด ตำแหน่งข้อมูลนี้ยังใช้เพื่อสร้าง [SDK](/docs/sdk)
 
 :::tip
-ใช้เซิร์ฟเวอร์ nanocode เพื่อโต้ตอบกับ nanocode โดยทางโปรแกรม
+ใช้เซิร์ฟเวอร์ bettercode เพื่อโต้ตอบกับ bettercode โดยทางโปรแกรม
 :::
 
-สถาปัตยกรรมนี้ช่วยให้ nanocode รองรับไคลเอนต์หลายตัว และช่วยให้คุณสามารถโต้ตอบกับ nanocode โดยทางโปรแกรมได้
+สถาปัตยกรรมนี้ช่วยให้ bettercode รองรับไคลเอนต์หลายตัว และช่วยให้คุณสามารถโต้ตอบกับ bettercode โดยทางโปรแกรมได้
 
-คุณสามารถเรียกใช้ `nanocode serve` เพื่อเริ่มเซิร์ฟเวอร์แบบสแตนด์อโลน ถ้าคุณมี
-nanocode TUI ทำงาน `nanocode serve` จะเริ่มเซิร์ฟเวอร์ใหม่
+คุณสามารถเรียกใช้ `bettercode serve` เพื่อเริ่มเซิร์ฟเวอร์แบบสแตนด์อโลน ถ้าคุณมี
+bettercode TUI ทำงาน `bettercode serve` จะเริ่มเซิร์ฟเวอร์ใหม่
 
 ---
 
@@ -65,7 +65,7 @@ nanocode TUI ทำงาน `nanocode serve` จะเริ่มเซิร�
 
 เมื่อคุณเริ่ม TUI มันจะสุ่มกำหนดพอร์ตและชื่อโฮสต์ คุณสามารถผ่าน `--hostname` และ `--port` [ธง](/docs/cli) แทนได้ จากนั้นใช้สิ่งนี้เพื่อเชื่อมต่อกับเซิร์ฟเวอร์
 
-ตำแหน่งข้อมูล [`/tui`](#tui) สามารถใช้เพื่อขับเคลื่อน TUI ผ่านเซิร์ฟเวอร์ ตัวอย่างเช่น คุณสามารถกรอกข้อมูลล่วงหน้าหรือเรียกใช้พร้อมท์ได้ การตั้งค่านี้ถูกใช้โดยปลั๊กอิน NanoCode [IDE](/docs/ide)
+ตำแหน่งข้อมูล [`/tui`](#tui) สามารถใช้เพื่อขับเคลื่อน TUI ผ่านเซิร์ฟเวอร์ ตัวอย่างเช่น คุณสามารถกรอกข้อมูลล่วงหน้าหรือเรียกใช้พร้อมท์ได้ การตั้งค่านี้ถูกใช้โดยปลั๊กอิน BetterCode [IDE](/docs/ide)
 
 ---
 
@@ -83,7 +83,7 @@ http://<hostname>:<port>/doc
 
 ## API
 
-เซิร์ฟเวอร์ nanocode เปิดเผย API ต่อไปนี้
+เซิร์ฟเวอร์ bettercode เปิดเผย API ต่อไปนี้
 
 ---
 

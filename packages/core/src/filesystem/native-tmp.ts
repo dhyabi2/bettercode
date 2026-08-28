@@ -4,7 +4,7 @@ import fs from "fs"
 import os from "os"
 import path from "path"
 
-const APP_DIR_NAME = "nanocode"
+const APP_DIR_NAME = "bettercode"
 const SWEEP_INTERVAL_MS = 24 * 60 * 60 * 1000
 const GRACE_PERIOD_MS = 60 * 60 * 1000
 

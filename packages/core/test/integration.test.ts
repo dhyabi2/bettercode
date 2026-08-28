@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Duration, Effect, Exit, Fiber, Scope, Stream } from "effect"
 import * as TestClock from "effect/testing/TestClock"
-import { Credential } from "@nanocode-ai/core/credential"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { EventV2 } from "@nanocode-ai/core/event"
-import { Integration } from "@nanocode-ai/core/integration"
+import { Credential } from "@bettercode-ai/core/credential"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { EventV2 } from "@bettercode-ai/core/event"
+import { Integration } from "@bettercode-ai/core/integration"
 import { testEffect } from "./lib/effect"
 
 const it = testEffect(AppNodeBuilder.build(LayerNode.group([Integration.node, Credential.node, EventV2.node])))

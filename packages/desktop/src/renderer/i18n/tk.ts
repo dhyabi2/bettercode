@@ -9,17 +9,17 @@ export const dict = {
   "desktop.updater.checkFailed.title": "Täzelenme şowsuz",
   "desktop.updater.checkFailed.message": "Täzelenmeleri barlap bilmedi",
   "desktop.updater.none.title": "Täzelenme ýok",
-  "desktop.updater.none.message": "NanoCode-iň iň soňky wersiýasyny eýýäm ulanýarsyňyz",
+  "desktop.updater.none.message": "BetterCode-iň iň soňky wersiýasyny eýýäm ulanýarsyňyz",
   "desktop.updater.downloadFailed.title": "Täzelenme şowsuz",
   "desktop.updater.downloadFailed.message": "Täzelenmäni göçürip alyp bilmedi",
   "desktop.updater.downloaded.title": "Täzelenme ýüklendi",
   "desktop.updater.downloaded.prompt":
-    "NanoCode-iň {{version}} wersiýasy göçürildi, ony gurup täzeden işletmek isleýärsiňizmi?",
+    "BetterCode-iň {{version}} wersiýasy göçürildi, ony gurup täzeden işletmek isleýärsiňizmi?",
   "desktop.updater.installFailed.title": "Täzelenme şowsuz",
   "desktop.updater.installFailed.message": "Täzelenmäni gurup bilmedi",
   "desktop.cli.installed.title": "CLI Guruldy",
   "desktop.cli.installed.message":
-    "CLI {{path}} salgysyna guruldy\n\n'nanocode' buýrugyny ulanmak üçin terminalyňyzy täzeden açyň.",
+    "CLI {{path}} salgysyna guruldy\n\n'bettercode' buýrugyny ulanmak üçin terminalyňyzy täzeden açyň.",
   "desktop.cli.failed.title": "Gurmak şowsuz",
   "desktop.cli.failed.message": "CLI gurup bilmedi: {{error}}",
 

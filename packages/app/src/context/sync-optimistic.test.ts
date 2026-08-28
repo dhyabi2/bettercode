@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { Message, Part } from "@nanocode-ai/sdk/v2/client"
+import type { Message, Part } from "@bettercode-ai/sdk/v2/client"
 import { applyOptimisticAdd, applyOptimisticRemove, mergeOptimisticPage } from "./sync"
 
 type Text = Extract<Part, { type: "text" }>

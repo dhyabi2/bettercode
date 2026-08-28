@@ -1,6 +1,6 @@
-import type { SnapshotFileDiff, VcsFileDiff } from "@nanocode-ai/sdk/v2"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
-import type { Message } from "@nanocode-ai/sdk/v2/client"
+import type { SnapshotFileDiff, VcsFileDiff } from "@bettercode-ai/sdk/v2"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
+import type { Message } from "@bettercode-ai/sdk/v2/client"
 
 type Diff = FileDiffInfo | SnapshotFileDiff | VcsFileDiff
 

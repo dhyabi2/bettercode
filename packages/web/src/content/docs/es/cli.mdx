@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: Opciones y comandos de la CLI de NanoCode.
+description: Opciones y comandos de la CLI de BetterCode.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-La CLI de NanoCode de forma predeterminada inicia el [TUI](/docs/tui) cuando se ejecuta sin ningún argumento.
+La CLI de BetterCode de forma predeterminada inicia el [TUI](/docs/tui) cuando se ejecuta sin ningún argumento.
 
 ```bash
-nanocode
+bettercode
 ```
 
-Pero también acepta comandos como se documenta en esta página. Esto le permite interactuar con NanoCode mediante programación.
+Pero también acepta comandos como se documenta en esta página. Esto le permite interactuar con BetterCode mediante programación.
 
 ```bash
-nanocode run "Explain how closures work in JavaScript"
+bettercode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-Inicie la interfaz de usuario del terminal NanoCode.
+Inicie la interfaz de usuario del terminal BetterCode.
 
 ```bash
-nanocode [project]
+bettercode [project]
 ```
 
 #### Opciones
@@ -44,36 +44,36 @@ nanocode [project]
 
 ## Comandos
 
-La CLI de NanoCode también tiene los siguientes comandos.
+La CLI de BetterCode también tiene los siguientes comandos.
 
 ---
 
 ### agent
 
-Administrar agentes para NanoCode.
+Administrar agentes para BetterCode.
 
 ```bash
-nanocode agent [command]
+bettercode agent [command]
 ```
 
 ---
 
 ### attach
 
-Conecte una terminal a un servidor backend NanoCode que ya se esté ejecutando y iniciado mediante los comandos `serve` o `web`.
+Conecte una terminal a un servidor backend BetterCode que ya se esté ejecutando y iniciado mediante los comandos `serve` o `web`.
 
 ```bash
-nanocode attach [url]
+bettercode attach [url]
 ```
 
-Esto permite usar TUI con un backend remoto NanoCode. Por ejemplo:
+Esto permite usar TUI con un backend remoto BetterCode. Por ejemplo:
 
 ```bash
 # Start the backend server for web/mobile access
-nanocode web --port 4096 --hostname 0.0.0.0
+bettercode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-nanocode attach http://10.20.30.40:4096
+bettercode attach http://10.20.30.40:4096
 ```
 
 #### Opciones
@@ -84,8 +84,8 @@ nanocode attach http://10.20.30.40:4096
 | <nobr><code>{"--continue"}</code></nobr> | `-c`  | Continuar la última sesión                                                                |
 | <nobr><code>{"--session"}</code></nobr>  | `-s`  | ID de sesión para continuar                                                               |
 | <nobr><code>{"--fork"}</code></nobr>     |       | Bifurcar la sesión al continuar (usar con `--continue` o `--session`)                     |
-| <nobr><code>{"--password"}</code></nobr> | `-p`  | Contraseña de autenticación básica (predeterminada: `NANOCODE_SERVER_PASSWORD`)           |
-| <nobr><code>{"--username"}</code></nobr> | `-u`  | Usuario de autenticación básica (predeterminado: `NANOCODE_SERVER_USERNAME` u `nanocode`) |
+| <nobr><code>{"--password"}</code></nobr> | `-p`  | Contraseña de autenticación básica (predeterminada: `BETTERCODE_SERVER_PASSWORD`)           |
+| <nobr><code>{"--username"}</code></nobr> | `-u`  | Usuario de autenticación básica (predeterminado: `BETTERCODE_SERVER_USERNAME` u `bettercode`) |
 
 ---
 
@@ -94,7 +94,7 @@ nanocode attach http://10.20.30.40:4096
 Cree un nuevo agente con configuración personalizada.
 
 ```bash
-nanocode agent create
+bettercode agent create
 ```
 
 Este comando lo guiará en la creación de un nuevo agente con un mensaje del sistema personalizado y una configuración de herramientas.
@@ -106,7 +106,7 @@ Este comando lo guiará en la creación de un nuevo agente con un mensaje del si
 Enumere todos los agentes disponibles.
 
 ```bash
-nanocode agent list
+bettercode agent list
 ```
 
 ---
@@ -116,20 +116,20 @@ nanocode agent list
 Comando para administrar credenciales e iniciar sesión para proveedores.
 
 ```bash
-nanocode auth [command]
+bettercode auth [command]
 ```
 
 ---
 
 #### login
 
-NanoCode funciona con la lista de proveedores en [Models.dev](https://models.dev), por lo que puede usar `nanocode auth login` para configurar las claves API para cualquier proveedor que desee utilizar. Esto se almacena en `~/.local/share/nanocode/auth.json`.
+BetterCode funciona con la lista de proveedores en [Models.dev](https://models.dev), por lo que puede usar `bettercode auth login` para configurar las claves API para cualquier proveedor que desee utilizar. Esto se almacena en `~/.local/share/bettercode/auth.json`.
 
 ```bash
-nanocode auth login
+bettercode auth login
 ```
 
-Cuando se inicia NanoCode, carga los proveedores desde el archivo de credenciales. Y si hay claves definidas en sus entornos o un archivo `.env` en su proyecto.
+Cuando se inicia BetterCode, carga los proveedores desde el archivo de credenciales. Y si hay claves definidas en sus entornos o un archivo `.env` en su proyecto.
 
 ---
 
@@ -138,13 +138,13 @@ Cuando se inicia NanoCode, carga los proveedores desde el archivo de credenciale
 Enumera todos los proveedores autenticados tal como están almacenados en el archivo de credenciales.
 
 ```bash
-nanocode auth list
+bettercode auth list
 ```
 
 O la versión corta.
 
 ```bash
-nanocode auth ls
+bettercode auth ls
 ```
 
 ---
@@ -154,7 +154,7 @@ nanocode auth ls
 Cierra tu sesión de un proveedor eliminándolo del archivo de credenciales.
 
 ```bash
-nanocode auth logout
+bettercode auth logout
 ```
 
 ---
@@ -164,7 +164,7 @@ nanocode auth logout
 Administre el agente GitHub para la automatización del repositorio.
 
 ```bash
-nanocode github [command]
+bettercode github [command]
 ```
 
 ---
@@ -174,7 +174,7 @@ nanocode github [command]
 Instale el agente GitHub en su repositorio.
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 Esto configura el flujo de trabajo de acciones GitHub necesario y lo guía a través del proceso de configuración. [Más información](/docs/github).
@@ -186,7 +186,7 @@ Esto configura el flujo de trabajo de acciones GitHub necesario y lo guía a tra
 Ejecute el agente GitHub. Esto se usa normalmente en acciones GitHub.
 
 ```bash
-nanocode github run
+bettercode github run
 ```
 
 ##### Opciones
@@ -203,7 +203,7 @@ nanocode github run
 Administrar servidores de protocolo de contexto modelo.
 
 ```bash
-nanocode mcp [command]
+bettercode mcp [command]
 ```
 
 ---
@@ -213,7 +213,7 @@ nanocode mcp [command]
 Agregue un servidor MCP a su configuración.
 
 ```bash
-nanocode mcp add
+bettercode mcp add
 ```
 
 Este comando lo guiará para agregar un servidor MCP local o remoto.
@@ -225,13 +225,13 @@ Este comando lo guiará para agregar un servidor MCP local o remoto.
 Enumere todos los servidores MCP configurados y su estado de conexión.
 
 ```bash
-nanocode mcp list
+bettercode mcp list
 ```
 
 O utilice la versión corta.
 
 ```bash
-nanocode mcp ls
+bettercode mcp ls
 ```
 
 ---
@@ -241,7 +241,7 @@ nanocode mcp ls
 Autentíquese con un servidor MCP habilitado para OAuth.
 
 ```bash
-nanocode mcp auth [name]
+bettercode mcp auth [name]
 ```
 
 Si no proporciona un nombre de servidor, se le pedirá que seleccione entre los servidores compatibles con OAuth disponibles.
@@ -249,13 +249,13 @@ Si no proporciona un nombre de servidor, se le pedirá que seleccione entre los 
 También puede enumerar los servidores compatibles con OAuth y su estado de autenticación.
 
 ```bash
-nanocode mcp auth list
+bettercode mcp auth list
 ```
 
 O utilice la versión corta.
 
 ```bash
-nanocode mcp auth ls
+bettercode mcp auth ls
 ```
 
 ---
@@ -265,7 +265,7 @@ nanocode mcp auth ls
 Elimine las credenciales OAuth para un servidor MCP.
 
 ```bash
-nanocode mcp logout [name]
+bettercode mcp logout [name]
 ```
 
 ---
@@ -275,7 +275,7 @@ nanocode mcp logout [name]
 Depurar problemas de conexión OAuth para un servidor MCP.
 
 ```bash
-nanocode mcp debug <name>
+bettercode mcp debug <name>
 ```
 
 ---
@@ -285,7 +285,7 @@ nanocode mcp debug <name>
 Enumere todos los modelos disponibles de los proveedores configurados.
 
 ```bash
-nanocode models [provider]
+bettercode models [provider]
 ```
 
 Este comando muestra todos los modelos disponibles en sus proveedores configurados en el formato `provider/model`.
@@ -295,7 +295,7 @@ Esto es útil para determinar el nombre exacto del modelo que se usará en [su c
 Opcionalmente, puede pasar un ID de proveedor para filtrar modelos por ese proveedor.
 
 ```bash
-nanocode models anthropic
+bettercode models anthropic
 ```
 
 #### Opciones
@@ -305,36 +305,36 @@ nanocode models anthropic
 | <nobr><code>{"--refresh"}</code></nobr> | Actualizar la caché de modelos desde models.dev                             |
 | <nobr><code>{"--verbose"}</code></nobr> | Utilice una salida del modelo más detallada (incluye metadatos como costos) |
 
-Utilice el indicador `--refresh` para actualizar la lista de modelos almacenados en caché. Esto es útil cuando se han agregado nuevos modelos a un proveedor y desea verlos en NanoCode.
+Utilice el indicador `--refresh` para actualizar la lista de modelos almacenados en caché. Esto es útil cuando se han agregado nuevos modelos a un proveedor y desea verlos en BetterCode.
 
 ```bash
-nanocode models --refresh
+bettercode models --refresh
 ```
 
 ---
 
 ### run
 
-Ejecute nanocode en modo no interactivo pasando un mensaje directamente.
+Ejecute bettercode en modo no interactivo pasando un mensaje directamente.
 
 ```bash
-nanocode run [message..]
+bettercode run [message..]
 ```
 
 Esto es útil para secuencias de comandos, automatización o cuando desea una respuesta rápida sin iniciar el TUI completo. Por ejemplo.
 
-```bash "nanocode run"
-nanocode run Explain the use of context in Go
+```bash "bettercode run"
+bettercode run Explain the use of context in Go
 ```
 
-También puede conectarse a una instancia `nanocode serve` en ejecución para evitar tiempos de arranque en frío del servidor MCP en cada ejecución:
+También puede conectarse a una instancia `bettercode serve` en ejecución para evitar tiempos de arranque en frío del servidor MCP en cada ejecución:
 
 ```bash
 # Start a headless server in one terminal
-nanocode serve
+bettercode serve
 
 # In another terminal, run commands that attach to it
-nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+bettercode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### Opciones
@@ -351,9 +351,9 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f`  | Archivo(s) para adjuntar al mensaje                                                       |
 | <nobr><code>{"--format"}</code></nobr>   |       | Formato: predeterminado (formateado) o json (eventos JSON sin formato)                    |
 | <nobr><code>{"--title"}</code></nobr>    |       | Título de la sesión (utiliza un mensaje truncado si no se proporciona ningún valor)       |
-| <nobr><code>{"--attach"}</code></nobr>   |       | Adjuntar a un servidor nanocode en ejecución (por ejemplo, http://localhost:4096)         |
-| <nobr><code>{"--password"}</code></nobr> | `-p`  | Contraseña de autenticación básica (predeterminada: `NANOCODE_SERVER_PASSWORD`)           |
-| <nobr><code>{"--username"}</code></nobr> | `-u`  | Usuario de autenticación básica (predeterminado: `NANOCODE_SERVER_USERNAME` u `nanocode`) |
+| <nobr><code>{"--attach"}</code></nobr>   |       | Adjuntar a un servidor bettercode en ejecución (por ejemplo, http://localhost:4096)         |
+| <nobr><code>{"--password"}</code></nobr> | `-p`  | Contraseña de autenticación básica (predeterminada: `BETTERCODE_SERVER_PASSWORD`)           |
+| <nobr><code>{"--username"}</code></nobr> | `-u`  | Usuario de autenticación básica (predeterminado: `BETTERCODE_SERVER_USERNAME` u `bettercode`) |
 | <nobr><code>{"--dir"}</code></nobr>      |       | Directorio de ejecución, o ruta en el servidor remoto al adjuntar                         |
 | <nobr><code>{"--variant"}</code></nobr>  |       | Variante del modelo (esfuerzo de razonamiento específico del proveedor)                   |
 | <nobr><code>{"--thinking"}</code></nobr> |       | Mostrar bloques de pensamiento                                                            |
@@ -363,13 +363,13 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 
 ### serve
 
-Inicie un servidor NanoCode sin cabeza para acceso API. Consulte los [documentos del servidor](/docs/server) para conocer la interfaz HTTP completa.
+Inicie un servidor BetterCode sin cabeza para acceso API. Consulte los [documentos del servidor](/docs/server) para conocer la interfaz HTTP completa.
 
 ```bash
-nanocode serve
+bettercode serve
 ```
 
-Esto inicia un servidor HTTP que proporciona acceso API a la funcionalidad nanocode sin la interfaz TUI. Configure `NANOCODE_SERVER_PASSWORD` para habilitar la autenticación básica HTTP (el nombre de usuario predeterminado es `nanocode`).
+Esto inicia un servidor HTTP que proporciona acceso API a la funcionalidad bettercode sin la interfaz TUI. Configure `BETTERCODE_SERVER_PASSWORD` para habilitar la autenticación básica HTTP (el nombre de usuario predeterminado es `bettercode`).
 
 #### Opciones
 
@@ -384,20 +384,20 @@ Esto inicia un servidor HTTP que proporciona acceso API a la funcionalidad nanoc
 
 ### session
 
-Administrar NanoCode sesiones.
+Administrar BetterCode sesiones.
 
 ```bash
-nanocode session [command]
+bettercode session [command]
 ```
 
 ---
 
 #### list
 
-Enumere todas las sesiones NanoCode.
+Enumere todas las sesiones BetterCode.
 
 ```bash
-nanocode session list
+bettercode session list
 ```
 
 ##### Opciones
@@ -411,10 +411,10 @@ nanocode session list
 
 ### stats
 
-Muestre el uso de tokens y las estadísticas de costos para sus sesiones NanoCode.
+Muestre el uso de tokens y las estadísticas de costos para sus sesiones BetterCode.
 
 ```bash
-nanocode stats
+bettercode stats
 ```
 
 #### Opciones
@@ -433,7 +433,7 @@ nanocode stats
 Exportar datos de la sesión como JSON.
 
 ```bash
-nanocode export [sessionID]
+bettercode export [sessionID]
 ```
 
 Si no proporciona una ID de sesión, se le pedirá que seleccione entre las sesiones disponibles.
@@ -442,30 +442,30 @@ Si no proporciona una ID de sesión, se le pedirá que seleccione entre las sesi
 
 ### import
 
-Importe datos de sesión desde un archivo JSON o una URL compartida NanoCode.
+Importe datos de sesión desde un archivo JSON o una URL compartida BetterCode.
 
 ```bash
-nanocode import <file>
+bettercode import <file>
 ```
 
-Puede importar desde un archivo local o una URL compartida NanoCode.
+Puede importar desde un archivo local o una URL compartida BetterCode.
 
 ```bash
-nanocode import session.json
-nanocode import https://opncd.ai/s/abc123
+bettercode import session.json
+bettercode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-Inicie un servidor NanoCode sin cabeza con una interfaz web.
+Inicie un servidor BetterCode sin cabeza con una interfaz web.
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-Esto inicia un servidor HTTP y abre un navegador web para acceder a NanoCode a través de una interfaz web. Configure `NANOCODE_SERVER_PASSWORD` para habilitar la autenticación básica HTTP (el nombre de usuario predeterminado es `nanocode`).
+Esto inicia un servidor HTTP y abre un navegador web para acceder a BetterCode a través de una interfaz web. Configure `BETTERCODE_SERVER_PASSWORD` para habilitar la autenticación básica HTTP (el nombre de usuario predeterminado es `bettercode`).
 
 #### Opciones
 
@@ -483,7 +483,7 @@ Esto inicia un servidor HTTP y abre un navegador web para acceder a NanoCode a t
 Inicie un servidor ACP (Agent Client Protocol).
 
 ```bash
-nanocode acp
+bettercode acp
 ```
 
 Este comando inicia un servidor ACP que se comunica a través de stdin/stdout usando nd-JSON.
@@ -500,10 +500,10 @@ Este comando inicia un servidor ACP que se comunica a través de stdin/stdout us
 
 ### uninstall
 
-Desinstale NanoCode y elimine todos los archivos relacionados.
+Desinstale BetterCode y elimine todos los archivos relacionados.
 
 ```bash
-nanocode uninstall
+bettercode uninstall
 ```
 
 #### Opciones
@@ -519,22 +519,22 @@ nanocode uninstall
 
 ### upgrade
 
-Actualiza nanocode a la última versión o a una versión específica.
+Actualiza bettercode a la última versión o a una versión específica.
 
 ```bash
-nanocode upgrade [target]
+bettercode upgrade [target]
 ```
 
 Para actualizar a la última versión.
 
 ```bash
-nanocode upgrade
+bettercode upgrade
 ```
 
 Para actualizar a una versión específica.
 
 ```bash
-nanocode upgrade v0.1.48
+bettercode upgrade v0.1.48
 ```
 
 #### Opciones
@@ -547,7 +547,7 @@ nanocode upgrade v0.1.48
 
 ## Opciones globales
 
-La CLI de NanoCode toma las siguientes banderas globales.
+La CLI de BetterCode toma las siguientes banderas globales.
 
 | Opción                                     | Corta | Descripción                                  |
 | ------------------------------------------ | ----- | -------------------------------------------- |
@@ -560,33 +560,33 @@ La CLI de NanoCode toma las siguientes banderas globales.
 
 ## Variables de entorno
 
-NanoCode se puede configurar mediante variables de entorno.
+BetterCode se puede configurar mediante variables de entorno.
 
 | Variable                              | Type     | Description                                                                     |
 | ------------------------------------- | -------- | ------------------------------------------------------------------------------- |
-| `NANOCODE_AUTO_SHARE`                 | booleano | Compartir sesiones automáticamente                                              |
-| `NANOCODE_GIT_BASH_PATH`              | cadena   | Ruta al ejecutable de Git Bash en Windows                                       |
-| `NANOCODE_CONFIG`                     | cadena   | Ruta al archivo de configuración                                                |
-| `NANOCODE_CONFIG_DIR`                 | cadena   | Ruta al directorio de configuración                                             |
-| `NANOCODE_CONFIG_CONTENT`             | cadena   | Contenido de configuración json en línea                                        |
-| `NANOCODE_DISABLE_AUTOUPDATE`         | booleano | Deshabilitar las comprobaciones automáticas de actualizaciones                  |
-| `NANOCODE_DISABLE_PRUNE`              | booleano | Deshabilitar la poda de datos antiguos                                          |
-| `NANOCODE_DISABLE_TERMINAL_TITLE`     | booleano | Deshabilitar las actualizaciones automáticas de títulos de terminal             |
-| `NANOCODE_PERMISSION`                 | cadena   | Configuración de permisos json incorporados                                     |
-| `NANOCODE_DISABLE_DEFAULT_PLUGINS`    | booleano | Deshabilitar complementos predeterminados                                       |
-| `NANOCODE_DISABLE_LSP_DOWNLOAD`       | booleano | Deshabilitar las descargas automáticas del servidor LSP                         |
-| `NANOCODE_ENABLE_EXPERIMENTAL_MODELS` | booleano | Habilitar modelos experimentales                                                |
-| `NANOCODE_DISABLE_AUTOCOMPACT`        | booleano | Deshabilitar la compactación automática de contexto                             |
-| `NANOCODE_DISABLE_CLAUDE_CODE`        | booleano | Deshabilitar la lectura desde `.claude` (mensaje + habilidades)                 |
-| `NANOCODE_DISABLE_CLAUDE_CODE_PROMPT` | booleano | Desactivar lectura `~/.claude/CLAUDE.md`                                        |
-| `NANOCODE_DISABLE_CLAUDE_CODE_SKILLS` | booleano | Deshabilitar la carga `.claude/skills`                                          |
-| `NANOCODE_DISABLE_MODELS_FETCH`       | booleano | Deshabilitar la recuperación de modelos desde fuentes remotas                   |
-| `NANOCODE_FAKE_VCS`                   | cadena   | Proveedor de VCS falso para fines de prueba                                     |
-| `NANOCODE_CLIENT`                     | cadena   | Identificador de cliente (por defecto `cli`)                                    |
-| `NANOCODE_ENABLE_EXA`                 | booleano | Habilitar las herramientas de búsqueda web de Exa                               |
-| `NANOCODE_SERVER_PASSWORD`            | cadena   | Habilite la autenticación básica para `serve`/`web`                             |
-| `NANOCODE_SERVER_USERNAME`            | cadena   | Anular el nombre de usuario de autenticación básica (predeterminado `nanocode`) |
-| `NANOCODE_MODELS_URL`                 | cadena   | URL personalizada para buscar la configuración de modelos                       |
+| `BETTERCODE_AUTO_SHARE`                 | booleano | Compartir sesiones automáticamente                                              |
+| `BETTERCODE_GIT_BASH_PATH`              | cadena   | Ruta al ejecutable de Git Bash en Windows                                       |
+| `BETTERCODE_CONFIG`                     | cadena   | Ruta al archivo de configuración                                                |
+| `BETTERCODE_CONFIG_DIR`                 | cadena   | Ruta al directorio de configuración                                             |
+| `BETTERCODE_CONFIG_CONTENT`             | cadena   | Contenido de configuración json en línea                                        |
+| `BETTERCODE_DISABLE_AUTOUPDATE`         | booleano | Deshabilitar las comprobaciones automáticas de actualizaciones                  |
+| `BETTERCODE_DISABLE_PRUNE`              | booleano | Deshabilitar la poda de datos antiguos                                          |
+| `BETTERCODE_DISABLE_TERMINAL_TITLE`     | booleano | Deshabilitar las actualizaciones automáticas de títulos de terminal             |
+| `BETTERCODE_PERMISSION`                 | cadena   | Configuración de permisos json incorporados                                     |
+| `BETTERCODE_DISABLE_DEFAULT_PLUGINS`    | booleano | Deshabilitar complementos predeterminados                                       |
+| `BETTERCODE_DISABLE_LSP_DOWNLOAD`       | booleano | Deshabilitar las descargas automáticas del servidor LSP                         |
+| `BETTERCODE_ENABLE_EXPERIMENTAL_MODELS` | booleano | Habilitar modelos experimentales                                                |
+| `BETTERCODE_DISABLE_AUTOCOMPACT`        | booleano | Deshabilitar la compactación automática de contexto                             |
+| `BETTERCODE_DISABLE_CLAUDE_CODE`        | booleano | Deshabilitar la lectura desde `.claude` (mensaje + habilidades)                 |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_PROMPT` | booleano | Desactivar lectura `~/.claude/CLAUDE.md`                                        |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_SKILLS` | booleano | Deshabilitar la carga `.claude/skills`                                          |
+| `BETTERCODE_DISABLE_MODELS_FETCH`       | booleano | Deshabilitar la recuperación de modelos desde fuentes remotas                   |
+| `BETTERCODE_FAKE_VCS`                   | cadena   | Proveedor de VCS falso para fines de prueba                                     |
+| `BETTERCODE_CLIENT`                     | cadena   | Identificador de cliente (por defecto `cli`)                                    |
+| `BETTERCODE_ENABLE_EXA`                 | booleano | Habilitar las herramientas de búsqueda web de Exa                               |
+| `BETTERCODE_SERVER_PASSWORD`            | cadena   | Habilite la autenticación básica para `serve`/`web`                             |
+| `BETTERCODE_SERVER_USERNAME`            | cadena   | Anular el nombre de usuario de autenticación básica (predeterminado `bettercode`) |
+| `BETTERCODE_MODELS_URL`                 | cadena   | URL personalizada para buscar la configuración de modelos                       |
 
 ---
 
@@ -596,21 +596,21 @@ Estas variables de entorno habilitan funciones experimentales que pueden cambiar
 
 | Variable                                        | Type     | Description                                                |
 | ----------------------------------------------- | -------- | ---------------------------------------------------------- |
-| `NANOCODE_EXPERIMENTAL`                         | booleano | Habilitar funciones experimentales de la bandera global    |
-| `NANOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | booleano | Habilitar descubrimiento de íconos                         |
-| `NANOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | booleano | Deshabilitar copia al seleccionar en TUI                   |
-| `NANOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | número   | Tiempo de espera predeterminado para comandos bash en ms   |
-| `NANOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | número   | Tokens de salida máximos para respuestas LLM               |
-| `NANOCODE_EXPERIMENTAL_FILEWATCHER`             | booleano | Habilite el observador de archivos para todo el directorio |
-| `NANOCODE_EXPERIMENTAL_OXFMT`                   | booleano | Habilitar el formateador oxfmt                             |
-| `NANOCODE_EXPERIMENTAL_LSP_TOOL`                | booleano | Habilitar herramienta experimental LSP                     |
-| `NANOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | booleano | Deshabilitar el observador de archivos                     |
-| `NANOCODE_EXPERIMENTAL_EXA`                     | booleano | Habilitar funciones experimentales de Exa                  |
-| `NANOCODE_EXPERIMENTAL_LSP_TY`                  | booleano | Habilitar Habilitar TY LSP para archivos python            |
-| `NANOCODE_EXPERIMENTAL_PLAN_MODE`               | booleano | Habilitar modo de plan                                     |
-| `NANOCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | booleano | Habilitar tareas de subagentes en segundo plano            |
-| `NANOCODE_EXPERIMENTAL_EVENT_SYSTEM`            | booleano | Habilitar sistema de eventos experimental                  |
-| `NANOCODE_EXPERIMENTAL_NATIVE_LLM`              | booleano | Habilitar ruta nativa de solicitud LLM                     |
-| `NANOCODE_EXPERIMENTAL_PARALLEL`                | booleano | Habilitar ejecución paralela de búsqueda web               |
-| `NANOCODE_EXPERIMENTAL_SCOUT`                   | booleano | Habilitar subagente Scout                                  |
-| `NANOCODE_EXPERIMENTAL_WORKSPACES`              | booleano | Habilitar soporte de espacios de trabajo                   |
+| `BETTERCODE_EXPERIMENTAL`                         | booleano | Habilitar funciones experimentales de la bandera global    |
+| `BETTERCODE_EXPERIMENTAL_ICON_DISCOVERY`          | booleano | Habilitar descubrimiento de íconos                         |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | booleano | Deshabilitar copia al seleccionar en TUI                   |
+| `BETTERCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | número   | Tiempo de espera predeterminado para comandos bash en ms   |
+| `BETTERCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | número   | Tokens de salida máximos para respuestas LLM               |
+| `BETTERCODE_EXPERIMENTAL_FILEWATCHER`             | booleano | Habilite el observador de archivos para todo el directorio |
+| `BETTERCODE_EXPERIMENTAL_OXFMT`                   | booleano | Habilitar el formateador oxfmt                             |
+| `BETTERCODE_EXPERIMENTAL_LSP_TOOL`                | booleano | Habilitar herramienta experimental LSP                     |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | booleano | Deshabilitar el observador de archivos                     |
+| `BETTERCODE_EXPERIMENTAL_EXA`                     | booleano | Habilitar funciones experimentales de Exa                  |
+| `BETTERCODE_EXPERIMENTAL_LSP_TY`                  | booleano | Habilitar Habilitar TY LSP para archivos python            |
+| `BETTERCODE_EXPERIMENTAL_PLAN_MODE`               | booleano | Habilitar modo de plan                                     |
+| `BETTERCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | booleano | Habilitar tareas de subagentes en segundo plano            |
+| `BETTERCODE_EXPERIMENTAL_EVENT_SYSTEM`            | booleano | Habilitar sistema de eventos experimental                  |
+| `BETTERCODE_EXPERIMENTAL_NATIVE_LLM`              | booleano | Habilitar ruta nativa de solicitud LLM                     |
+| `BETTERCODE_EXPERIMENTAL_PARALLEL`                | booleano | Habilitar ejecución paralela de búsqueda web               |
+| `BETTERCODE_EXPERIMENTAL_SCOUT`                   | booleano | Habilitar subagente Scout                                  |
+| `BETTERCODE_EXPERIMENTAL_WORKSPACES`              | booleano | Habilitar soporte de espacios de trabajo                   |

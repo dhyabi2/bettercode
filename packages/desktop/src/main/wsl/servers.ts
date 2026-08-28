@@ -3,7 +3,7 @@ import type {
   WslInstalledDistro,
   WslJob,
   WslOnlineDistro,
-  WslNanocodeCheck,
+  WslBettercodeCheck,
   WslRuntimeCheck,
   WslServerConfig,
   WslServerItem,
@@ -13,12 +13,12 @@ import type {
 } from "../../preload/types"
 import { WSL_SERVERS_KEY } from "../store-keys"
 import { getStore } from "../store"
-import { expectNanocodeVersion, pendingRestartAfterWslInstall, wslServerIdsToStartOnInitialize } from "./startup"
+import { expectBettercodeVersion, pendingRestartAfterWslInstall, wslServerIdsToStartOnInitialize } from "./startup"
 import { clearWslDistroState, wslServerIdToRestart } from "./policy"
 import { nativeT } from "../native-translations"
 import {
   installWslDistro,
-  installWslNanocode,
+  installWslBettercode,
   installWslRuntimeElevated,
   listInstalledWslDistros,
   listOnlineWslDistros,
@@ -26,7 +26,7 @@ import {
   probeWslDistro,
   probeWslRuntime,
   readWslCommandVersion,
-  resolveWslNanocode,
+  resolveWslBettercode,
   summarize,
 } from "./runtime"
 
@@ -49,7 +49,7 @@ type WslServersControllerOptions = {
   readServers?: () => WslServerConfig[]
   writeServers?: (servers: WslServerConfig[]) => void
   probeDistro?: typeof probeWslDistro
-  resolveNanocode?: typeof resolveWslNanocode
+  resolveBettercode?: typeof resolveWslBettercode
   readCommandVersion?: typeof readWslCommandVersion
 }
 
@@ -122,25 +122,25 @@ export function createWslServersController(
     updateServer(id, (item) => ({ ...item, runtime }))
   }
 
-  const setNanocodeCheck = (distro: string, check: WslNanocodeCheck) => {
+  const setBettercodeCheck = (distro: string, check: WslBettercodeCheck) => {
     setState({
-      nanocodeChecks: {
-        ...state.nanocodeChecks,
+      bettercodeChecks: {
+        ...state.bettercodeChecks,
         [distro]: check,
       },
     })
   }
 
-  const checkNanocode = async (distro: string, opts?: { signal?: AbortSignal }) => {
-    const resolved = await (options?.resolveNanocode ?? resolveWslNanocode)(distro, opts)
+  const checkBettercode = async (distro: string, opts?: { signal?: AbortSignal }) => {
+    const resolved = await (options?.resolveBettercode ?? resolveWslBettercode)(distro, opts)
     const version = resolved
       ? await (options?.readCommandVersion ?? readWslCommandVersion)(resolved, distro, opts)
       : null
-    return nanocodeCheck(distro, resolved, version, appVersion)
+    return bettercodeCheck(distro, resolved, version, appVersion)
   }
 
-  const refreshNanocodeCheck = async (distro: string, opts?: { signal?: AbortSignal }) => {
-    setNanocodeCheck(distro, await checkNanocode(distro, opts))
+  const refreshBettercodeCheck = async (distro: string, opts?: { signal?: AbortSignal }) => {
+    setBettercodeCheck(distro, await checkBettercode(distro, opts))
   }
 
   const probeAddableDistros = async (distros: string[], opts?: { signal?: AbortSignal }) => {
@@ -154,14 +154,14 @@ export function createWslServersController(
       setState({ distroProbes: { ...state.distroProbes, ...Object.fromEntries(distroProbes) } })
     }
 
-    const nanocodeChecks = await Promise.all(
+    const bettercodeChecks = await Promise.all(
       unique
         .filter((distro) => distroProbeReady(state.distroProbes[distro]))
-        .filter((distro) => !state.nanocodeChecks[distro])
-        .map(async (distro) => [distro, await checkNanocode(distro, opts)] as const),
+        .filter((distro) => !state.bettercodeChecks[distro])
+        .map(async (distro) => [distro, await checkBettercode(distro, opts)] as const),
     )
-    if (nanocodeChecks.length) {
-      setState({ nanocodeChecks: { ...state.nanocodeChecks, ...Object.fromEntries(nanocodeChecks) } })
+    if (bettercodeChecks.length) {
+      setState({ bettercodeChecks: { ...state.bettercodeChecks, ...Object.fromEntries(bettercodeChecks) } })
     }
   }
 
@@ -169,29 +169,29 @@ export function createWslServersController(
     return state.servers.some((item) => item.config.id === id && item.config.distro === distro)
   }
 
-  const refreshNanocodeCheckBackground = (id: string, distro: string) => {
-    void checkNanocode(distro)
+  const refreshBettercodeCheckBackground = (id: string, distro: string) => {
+    void checkBettercode(distro)
       .then((check) => {
         if (!hasServer(id, distro)) return
-        setNanocodeCheck(distro, check)
+        setBettercodeCheck(distro, check)
       })
       .catch((error) => {
         const message = error instanceof Error ? error.message : String(error)
-        logger?.error("wsl nanocode check failed", { id, distro, message })
+        logger?.error("wsl bettercode check failed", { id, distro, message })
       })
   }
 
-  const refreshNanocodeChecks = async () => {
+  const refreshBettercodeChecks = async () => {
     await Promise.all(
       state.servers.map((item) =>
-        checkNanocode(item.config.distro)
+        checkBettercode(item.config.distro)
           .then((check) => {
             if (!hasServer(item.config.id, item.config.distro)) return
-            setNanocodeCheck(item.config.distro, check)
+            setBettercodeCheck(item.config.distro, check)
           })
           .catch((error) => {
             const message = error instanceof Error ? error.message : String(error)
-            logger?.error("wsl nanocode check failed", {
+            logger?.error("wsl bettercode check failed", {
               id: item.config.id,
               distro: item.config.distro,
               message,
@@ -252,7 +252,7 @@ export function createWslServersController(
         setRuntime(id, { kind: "failed", message })
         logger?.error("wsl sidecar exited", { id, distro: item.config.distro, code, signal })
       })
-      refreshNanocodeCheckBackground(id, item.config.distro)
+      refreshBettercodeCheckBackground(id, item.config.distro)
       logger?.log("wsl sidecar ready", { id, distro: item.config.distro, url: sidecar.url })
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
@@ -304,7 +304,7 @@ export function createWslServersController(
 
     async initialize() {
       refreshFromStore()
-      void refreshNanocodeChecks()
+      void refreshBettercodeChecks()
       for (const id of wslServerIdsToStartOnInitialize(state.servers.map((item) => item.config))) void startServer(id)
     },
 
@@ -360,14 +360,14 @@ export function createWslServersController(
       })
     },
 
-    async installNanocode(name: string) {
-      await runJob({ kind: "install-nanocode", distro: name, startedAt: Date.now() }, async (abort) => {
-        const result = await installWslNanocode(appVersion, name, { signal: abort.signal })
+    async installBettercode(name: string) {
+      await runJob({ kind: "install-bettercode", distro: name, startedAt: Date.now() }, async (abort) => {
+        const result = await installWslBettercode(appVersion, name, { signal: abort.signal })
         if (result.code !== 0) {
-          throw new Error(summarize(result.stderr || result.stdout) || nativeT("desktop.wsl.error.installNanocode"))
+          throw new Error(summarize(result.stderr || result.stdout) || nativeT("desktop.wsl.error.installBettercode"))
         }
-        await refreshNanocodeCheck(name, { signal: abort.signal })
-        expectNanocodeVersion(state.nanocodeChecks[name]?.version ?? null, appVersion, name)
+        await refreshBettercodeCheck(name, { signal: abort.signal })
+        expectBettercodeVersion(state.bettercodeChecks[name]?.version ?? null, appVersion, name)
         const id = wslServerIdToRestart(state.servers, name)
         if (id) await startServer(id)
       })
@@ -402,7 +402,7 @@ export function createWslServersController(
       persistServers(remaining)
       setState({
         servers: state.servers.filter((item) => item.config.id !== id),
-        ...(distro ? clearWslDistroState(state.distroProbes, state.nanocodeChecks, distro) : {}),
+        ...(distro ? clearWslDistroState(state.distroProbes, state.bettercodeChecks, distro) : {}),
       })
     },
 
@@ -428,7 +428,7 @@ function initialState(): WslServersState {
     installed: [],
     online: [],
     distroProbes: {},
-    nanocodeChecks: {},
+    bettercodeChecks: {},
     pendingRestart: false,
     servers: [],
     job: null,
@@ -464,12 +464,12 @@ function normalizePersistedServer(value: unknown): WslServerConfig[] {
   ]
 }
 
-function nanocodeCheck(
+function bettercodeCheck(
   distro: string,
   resolvedPath: string | null,
   version: string | null,
   expectedVersion: string,
-): WslNanocodeCheck {
+): WslBettercodeCheck {
   if (!resolvedPath) {
     return {
       distro,
@@ -477,7 +477,7 @@ function nanocodeCheck(
       version: null,
       expectedVersion,
       matchesDesktop: null,
-      error: nativeT("desktop.wsl.error.nanocodeMissing"),
+      error: nativeT("desktop.wsl.error.bettercodeMissing"),
     }
   }
   if (!version) {
@@ -487,7 +487,7 @@ function nanocodeCheck(
       version: null,
       expectedVersion,
       matchesDesktop: null,
-      error: nativeT("desktop.wsl.error.nanocodeCannotRun"),
+      error: nativeT("desktop.wsl.error.bettercodeCannotRun"),
     }
   }
   return {
@@ -514,7 +514,7 @@ export type {
   WslOnlineDistro,
   WslRuntimeCheck,
   WslDistroProbe,
-  WslNanocodeCheck,
+  WslBettercodeCheck,
   WslServerConfig,
   WslServerItem,
   WslServerRuntime,

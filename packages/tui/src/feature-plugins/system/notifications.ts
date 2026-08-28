@@ -1,5 +1,5 @@
-import type { Event } from "@nanocode-ai/sdk/v2"
-import type { TuiAttentionSoundName, TuiPlugin, TuiPluginApi } from "@nanocode-ai/plugin/tui"
+import type { Event } from "@bettercode-ai/sdk/v2"
+import type { TuiAttentionSoundName, TuiPlugin, TuiPluginApi } from "@bettercode-ai/plugin/tui"
 import type { BuiltinTuiPlugin } from "../builtins"
 
 const id = "internal:notifications"

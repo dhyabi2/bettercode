@@ -9,9 +9,9 @@ import path from "path"
 
 import { createClient } from "@hey-api/openapi-ts"
 
-const nanocode = path.resolve(dir, "../../nanocode")
+const bettercode = path.resolve(dir, "../../bettercode")
 
-await $`bun dev generate > ${dir}/openapi.json`.cwd(nanocode)
+await $`bun dev generate > ${dir}/openapi.json`.cwd(bettercode)
 
 const document = (await Bun.file("./openapi.json").json()) as {
   components?: { schemas?: Record<string, unknown> }
@@ -58,7 +58,7 @@ await createClient({
     },
     {
       name: "@hey-api/sdk",
-      instance: "NanocodeClient",
+      instance: "BettercodeClient",
       exportFromIndex: false,
       auth: false,
       paramsStructure: "flat",

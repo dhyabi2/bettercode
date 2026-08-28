@@ -279,19 +279,19 @@ export const DESKTOP_MENU: DesktopMenu[] = [
     id: "help",
     labelKey: "desktop.menu.help",
     items: [
-      { type: "item", labelKey: "desktop.menu.documentation", href: "https://nanocode.ai/docs" },
-      { type: "item", labelKey: "desktop.menu.supportForum", href: "https://discord.com/invite/nanocode" },
+      { type: "item", labelKey: "desktop.menu.documentation", href: "https://bettercode.ai/docs" },
+      { type: "item", labelKey: "desktop.menu.supportForum", href: "https://discord.com/invite/bettercode" },
       { type: "item", labelKey: "desktop.menu.exportLogs", command: "logs.export" },
       { type: "separator" },
       {
         type: "item",
         labelKey: "desktop.menu.shareFeedback",
-        href: "https://github.com/dhyabi2/nanocode/issues/new?template=feature_request.yml",
+        href: "https://github.com/dhyabi2/bettercode/issues/new?template=feature_request.yml",
       },
       {
         type: "item",
         labelKey: "desktop.menu.reportBug",
-        href: "https://github.com/dhyabi2/nanocode/issues/new?template=bug_report.yml",
+        href: "https://github.com/dhyabi2/bettercode/issues/new?template=bug_report.yml",
       },
     ],
   },

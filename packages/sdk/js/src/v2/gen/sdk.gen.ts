@@ -441,7 +441,7 @@ class HeyApiRegistry<T> {
   get(key?: string): T {
     const instance = this.instances.get(key ?? this.defaultKey)
     if (!instance) {
-      throw new Error(`No SDK client found. Create one with "new NanocodeClient()" to fix this error.`)
+      throw new Error(`No SDK client found. Create one with "new BettercodeClient()" to fix this error.`)
     }
     return instance
   }
@@ -556,7 +556,7 @@ export class App extends HeyApiClient {
   /**
    * List agents
    *
-   * Get a list of all available AI agents in the NanoCode system.
+   * Get a list of all available AI agents in the BetterCode system.
    */
   public agents<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -586,7 +586,7 @@ export class App extends HeyApiClient {
   /**
    * List skills
    *
-   * Get a list of all available skills in the NanoCode system.
+   * Get a list of all available skills in the BetterCode system.
    */
   public skills<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -661,7 +661,7 @@ export class Capabilities extends HeyApiClient {
   /**
    * Get experimental capabilities
    *
-   * Get experimental features enabled on the NanoCode server.
+   * Get experimental features enabled on the BetterCode server.
    */
   public get<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -765,7 +765,7 @@ export class Console extends HeyApiClient {
   /**
    * Switch active Console org
    *
-   * Persist a new active Console account/org selection for the current local NanoCode state.
+   * Persist a new active Console account/org selection for the current local BetterCode state.
    */
   public switchOrg<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -806,7 +806,7 @@ export class Session extends HeyApiClient {
   /**
    * List sessions
    *
-   * Get a list of all NanoCode sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.
+   * Get a list of all BetterCode sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.
    */
   public list<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -1281,7 +1281,7 @@ export class Config extends HeyApiClient {
   /**
    * Get global configuration
    *
-   * Retrieve the current global NanoCode configuration settings and preferences.
+   * Retrieve the current global BetterCode configuration settings and preferences.
    */
   public get<ThrowOnError extends boolean = false>(options?: Options<never, ThrowOnError>) {
     return (options?.client ?? this.client).get<GlobalConfigGetResponses, GlobalConfigGetErrors, ThrowOnError>({
@@ -1293,7 +1293,7 @@ export class Config extends HeyApiClient {
   /**
    * Update global configuration
    *
-   * Update global NanoCode configuration settings and preferences.
+   * Update global BetterCode configuration settings and preferences.
    */
   public update<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -1319,7 +1319,7 @@ export class Global extends HeyApiClient {
   /**
    * Get health
    *
-   * Get health information about the NanoCode server.
+   * Get health information about the BetterCode server.
    */
   public health<ThrowOnError extends boolean = false>(options?: Options<never, ThrowOnError>) {
     return (options?.client ?? this.client).get<GlobalHealthResponses, GlobalHealthErrors, ThrowOnError>({
@@ -1331,7 +1331,7 @@ export class Global extends HeyApiClient {
   /**
    * Get global events
    *
-   * Subscribe to global events from the NanoCode system using server-sent events.
+   * Subscribe to global events from the BetterCode system using server-sent events.
    */
   public event<ThrowOnError extends boolean = false>(options?: Options<never, ThrowOnError>) {
     return (options?.client ?? this.client).sse.get<GlobalEventResponses, GlobalEventErrors, ThrowOnError>({
@@ -1343,7 +1343,7 @@ export class Global extends HeyApiClient {
   /**
    * Dispose instance
    *
-   * Clean up and dispose all NanoCode instances, releasing all resources.
+   * Clean up and dispose all BetterCode instances, releasing all resources.
    */
   public dispose<ThrowOnError extends boolean = false>(options?: Options<never, ThrowOnError>) {
     return (options?.client ?? this.client).post<GlobalDisposeResponses, GlobalDisposeErrors, ThrowOnError>({
@@ -1353,9 +1353,9 @@ export class Global extends HeyApiClient {
   }
 
   /**
-   * Upgrade nanocode
+   * Upgrade bettercode
    *
-   * Upgrade nanocode to the specified version or latest if not specified.
+   * Upgrade bettercode to the specified version or latest if not specified.
    */
   public upgrade<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -1418,7 +1418,7 @@ export class Config2 extends HeyApiClient {
   /**
    * Get configuration
    *
-   * Retrieve the current NanoCode configuration settings and preferences.
+   * Retrieve the current BetterCode configuration settings and preferences.
    */
   public get<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -1448,7 +1448,7 @@ export class Config2 extends HeyApiClient {
   /**
    * Update configuration
    *
-   * Update NanoCode configuration settings and preferences.
+   * Update BetterCode configuration settings and preferences.
    */
   public update<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -1926,7 +1926,7 @@ export class Instance extends HeyApiClient {
   /**
    * Dispose instance
    *
-   * Clean up and dispose the current NanoCode instance, releasing all resources.
+   * Clean up and dispose the current BetterCode instance, releasing all resources.
    */
   public dispose<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -1958,7 +1958,7 @@ export class Path extends HeyApiClient {
   /**
    * Get paths
    *
-   * Retrieve the current working directory and related path information for the NanoCode instance.
+   * Retrieve the current working directory and related path information for the BetterCode instance.
    */
   public get<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -2160,7 +2160,7 @@ export class Command extends HeyApiClient {
   /**
    * List commands
    *
-   * Get a list of all available commands in the NanoCode system.
+   * Get a list of all available commands in the BetterCode system.
    */
   public list<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -2531,7 +2531,7 @@ export class Project extends HeyApiClient {
   /**
    * List all projects
    *
-   * Get a list of projects that have been opened with NanoCode.
+   * Get a list of projects that have been opened with BetterCode.
    */
   public list<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -2561,7 +2561,7 @@ export class Project extends HeyApiClient {
   /**
    * Get current project
    *
-   * Retrieve the currently active project that NanoCode is working with.
+   * Retrieve the currently active project that BetterCode is working with.
    */
   public current<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -2728,7 +2728,7 @@ export class Pty extends HeyApiClient {
   /**
    * List PTY sessions
    *
-   * Get a list of all active pseudo-terminal (PTY) sessions managed by NanoCode.
+   * Get a list of all active pseudo-terminal (PTY) sessions managed by BetterCode.
    */
   public list<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -3363,7 +3363,7 @@ export class Session2 extends HeyApiClient {
   /**
    * List sessions
    *
-   * Get a list of all NanoCode sessions, sorted by most recently updated.
+   * Get a list of all BetterCode sessions, sorted by most recently updated.
    */
   public list<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -3405,7 +3405,7 @@ export class Session2 extends HeyApiClient {
   /**
    * Create session
    *
-   * Create a new NanoCode session for interacting with AI assistants and managing conversations.
+   * Create a new BetterCode session for interacting with AI assistants and managing conversations.
    */
   public create<ThrowOnError extends boolean = false>(
     parameters?: {
@@ -3522,7 +3522,7 @@ export class Session2 extends HeyApiClient {
   /**
    * Get session
    *
-   * Retrieve detailed information about a specific NanoCode session.
+   * Retrieve detailed information about a specific BetterCode session.
    */
   public get<ThrowOnError extends boolean = false>(
     parameters: {
@@ -5508,7 +5508,7 @@ export class Session3 extends HeyApiClient {
   /**
    * List active sessions
    *
-   * Retrieve foreground Session drains currently owned by this NanoCode process. Sessions absent from the result are inactive.
+   * Retrieve foreground Session drains currently owned by this BetterCode process. Sessions absent from the result are inactive.
    */
   public active<ThrowOnError extends boolean = false>(options?: Options<never, ThrowOnError>) {
     return (options?.client ?? this.client).get<V2SessionActiveResponses, V2SessionActiveErrors, ThrowOnError>({
@@ -5777,7 +5777,7 @@ export class Session3 extends HeyApiClient {
   /**
    * Interrupt session execution
    *
-   * Interrupt active execution owned by this NanoCode process. Idle interruption is a no-op.
+   * Interrupt active execution owned by this BetterCode process. Idle interruption is a no-op.
    */
   public interrupt<ThrowOnError extends boolean = false>(
     parameters: {
@@ -7074,12 +7074,12 @@ export class V2 extends HeyApiClient {
   }
 }
 
-export class NanocodeClient extends HeyApiClient {
-  public static readonly __registry = new HeyApiRegistry<NanocodeClient>()
+export class BettercodeClient extends HeyApiClient {
+  public static readonly __registry = new HeyApiRegistry<BettercodeClient>()
 
   constructor(args?: { client?: Client; key?: string }) {
     super(args)
-    NanocodeClient.__registry.set(this, args?.key)
+    BettercodeClient.__registry.set(this, args?.key)
   }
 
   private _auth?: Auth

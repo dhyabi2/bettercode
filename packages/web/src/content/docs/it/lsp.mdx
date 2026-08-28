@@ -1,15 +1,15 @@
 ---
 title: Server LSP
-description: NanoCode si integra con i tuoi server LSP.
+description: BetterCode si integra con i tuoi server LSP.
 ---
 
-NanoCode può integrarsi con server Language Server Protocol (LSP) per usare la diagnostica come feedback per l'agente.
+BetterCode può integrarsi con server Language Server Protocol (LSP) per usare la diagnostica come feedback per l'agente.
 
 ---
 
 ## Integrati
 
-NanoCode include diversi server LSP integrati per linguaggi popolari:
+BetterCode include diversi server LSP integrati per linguaggi popolari:
 
 | Server LSP         | Estensioni                                                          | Requisiti                                                                |
 | ------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -50,14 +50,14 @@ NanoCode include diversi server LSP integrati per linguaggi popolari:
 LSP è disabilitato per impostazione predefinita. Quando è abilitato, i server si avviano quando viene rilevata una delle estensioni qui sopra e i requisiti sono soddisfatti.
 
 :::note
-Puoi disabilitare il download automatico dei server LSP impostando la variabile d'ambiente `NANOCODE_DISABLE_LSP_DOWNLOAD` a `true`.
+Puoi disabilitare il download automatico dei server LSP impostando la variabile d'ambiente `BETTERCODE_DISABLE_LSP_DOWNLOAD` a `true`.
 :::
 
 ---
 
 ## Come funziona
 
-Quando LSP è abilitato e nanocode apre un file:
+Quando LSP è abilitato e bettercode apre un file:
 
 1. Controlla l'estensione del file rispetto a tutti i server LSP abilitati.
 2. Avvia il server LSP appropriato se non e gia in esecuzione.
@@ -74,22 +74,22 @@ I server di linguaggio possono andare fuori sincronizzazione, usare molta memori
 
 ## Configura
 
-Puoi abilitare e personalizzare i server LSP tramite la sezione `lsp` nella configurazione di nanocode.
+Puoi abilitare e personalizzare i server LSP tramite la sezione `lsp` nella configurazione di bettercode.
 
 Per abilitare tutti i server LSP integrati, imposta `lsp` a `true`.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "lsp": true
 }
 ```
 
 Usa un oggetto per mantenere abilitati i server integrati mentre configuri override o server personalizzati.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "lsp": {}
 }
 ```
@@ -112,9 +112,9 @@ Vediamo alcuni esempi.
 
 Usa la proprieta `env` per impostare variabili d'ambiente quando avvii il server LSP:
 
-```json title="nanocode.json" {5-7}
+```json title="bettercode.json" {5-7}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "lsp": {
     "rust": {
       "env": {
@@ -131,9 +131,9 @@ Usa la proprieta `env` per impostare variabili d'ambiente quando avvii il server
 
 Usa la proprieta `initialization` per passare opzioni di inizializzazione al server LSP. Sono impostazioni specifiche del server inviate durante la richiesta LSP `initialize`:
 
-```json title="nanocode.json" {5-9}
+```json title="bettercode.json" {5-9}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "lsp": {
     "typescript": {
       "initialization": {
@@ -156,18 +156,18 @@ Le opzioni di inizializzazione variano da server a server. Consulta la documenta
 
 Se `lsp` è omesso, tutti i server LSP sono disabilitati. Per disabilitare tutti i server LSP dopo che un'altra configurazione li ha abilitati, imposta `lsp` a `false`:
 
-```json title="nanocode.json" {3}
+```json title="bettercode.json" {3}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "lsp": false
 }
 ```
 
 Per disabilitare un server LSP **specifico**, imposta `disabled` a `true`:
 
-```json title="nanocode.json" {5}
+```json title="bettercode.json" {5}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "lsp": {
     "typescript": {
       "disabled": true
@@ -182,9 +182,9 @@ Per disabilitare un server LSP **specifico**, imposta `disabled` a `true`:
 
 Puoi aggiungere server LSP personalizzati specificando il comando e le estensioni file:
 
-```json title="nanocode.json" {4-7}
+```json title="bettercode.json" {4-7}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "lsp": {
     "custom-lsp": {
       "command": ["custom-lsp-server", "--stdio"],

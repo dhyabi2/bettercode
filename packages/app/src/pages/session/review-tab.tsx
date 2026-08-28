@@ -1,13 +1,13 @@
 import { createEffect, onCleanup, type JSX } from "solid-js"
 import { makeEventListener } from "@solid-primitives/event-listener"
-import type { SnapshotFileDiff, VcsFileDiff } from "@nanocode-ai/sdk/v2"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
-import { SessionReview } from "@nanocode-ai/session-ui/session-review"
+import type { SnapshotFileDiff, VcsFileDiff } from "@bettercode-ai/sdk/v2"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
+import { SessionReview } from "@bettercode-ai/session-ui/session-review"
 import type {
   SessionReviewCommentActions,
   SessionReviewCommentDelete,
   SessionReviewCommentUpdate,
-} from "@nanocode-ai/session-ui/session-review"
+} from "@bettercode-ai/session-ui/session-review"
 import type { SelectedLineRange } from "@/context/file"
 import { useSDK } from "@/context/sdk"
 import { useLayout } from "@/context/layout"

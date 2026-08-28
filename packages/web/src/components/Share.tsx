@@ -2,12 +2,12 @@ import { For, Show, onMount, Suspense, onCleanup, createMemo, createSignal, Susp
 import { DateTime } from "luxon"
 import { createStore, reconcile } from "solid-js/store"
 import { IconArrowDown } from "./icons"
-import { IconNanocode } from "./icons/custom"
+import { IconBettercode } from "./icons/custom"
 import { ShareI18nProvider, formatCurrency, formatNumber, normalizeLocale } from "./share/common"
 import styles from "./share.module.css"
-import type { MessageV2 } from "nanocode/session/message-v2"
-import type { Message } from "nanocode/session/message"
-import type { Session } from "nanocode/session/index"
+import type { MessageV2 } from "bettercode/session/message-v2"
+import type { Message } from "bettercode/session/message"
+import type { Session } from "bettercode/session/index"
 import { Part, ProviderIcon } from "./share/part"
 
 type MessageWithParts = MessageV2.Info & { parts: MessageV2.Part[] }
@@ -305,9 +305,9 @@ export default function Share(props: {
             <h1 data-component="header-title">{store.info?.title}</h1>
             <div data-component="header-details">
               <ul data-component="header-stats">
-                <li title={props.messages.nanocode_version} data-slot="item">
-                  <div data-slot="icon" title={props.messages.nanocode_name}>
-                    <IconNanocode width={16} height={16} />
+                <li title={props.messages.bettercode_version} data-slot="item">
+                  <div data-slot="icon" title={props.messages.bettercode_name}>
+                    <IconBettercode width={16} height={16} />
                   </div>
                   <Show when={store.info?.version} fallback="v0.0.1">
                     <span>v{store.info?.version}</span>

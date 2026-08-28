@@ -1,9 +1,9 @@
 import { Show, type JSX } from "solid-js"
-import { DropdownMenu } from "@nanocode-ai/ui/dropdown-menu"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { IconButton } from "@nanocode-ai/ui/icon-button"
-import { IconButtonV2 } from "@nanocode-ai/ui/v2/icon-button-v2"
-import { Icon as IconV2 } from "@nanocode-ai/ui/v2/icon"
+import { DropdownMenu } from "@bettercode-ai/ui/dropdown-menu"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { IconButton } from "@bettercode-ai/ui/icon-button"
+import { IconButtonV2 } from "@bettercode-ai/ui/v2/icon-button-v2"
+import { Icon as IconV2 } from "@bettercode-ai/ui/v2/icon"
 
 import { useCommand } from "@/context/command"
 import { DESKTOP_MENU, desktopMenuVisible, type DesktopMenuAction, type DesktopMenuEntry } from "@/desktop-menu"
@@ -79,7 +79,7 @@ export function WindowsAppMenu(props: {
       <DropdownMenu.Portal>
         <DropdownMenu.Content class="desktop-app-menu">
           <DropdownMenu.Group>
-            <DropdownMenu.GroupLabel class="desktop-app-menu-heading">NanoCode</DropdownMenu.GroupLabel>
+            <DropdownMenu.GroupLabel class="desktop-app-menu-heading">BetterCode</DropdownMenu.GroupLabel>
             {DESKTOP_MENU.filter((menu) => desktopMenuVisible(menu, "windows")).map((menu) => (
               <DesktopMenuSubmenu label={language.t(menu.labelKey)}>
                 {menu.items

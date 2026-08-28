@@ -29,7 +29,7 @@ export declare namespace Ingest {
   }
 }
 
-export class Ingest extends Context.Service<Ingest, Ingest.Service>()("@nanocode/stats/Ingest") {
+export class Ingest extends Context.Service<Ingest, Ingest.Service>()("@bettercode/stats/Ingest") {
   static readonly layer: Layer.Layer<Ingest> = Layer.effect(
     Ingest,
     Effect.sync(() => {

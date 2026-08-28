@@ -1,5 +1,5 @@
 import { App } from "@slack/bolt"
-import { createNanocode, type ToolPart } from "@nanocode-ai/sdk"
+import { createBettercode, type ToolPart } from "@bettercode-ai/sdk"
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -13,15 +13,15 @@ console.log("- Bot token present:", !!process.env.SLACK_BOT_TOKEN)
 console.log("- Signing secret present:", !!process.env.SLACK_SIGNING_SECRET)
 console.log("- App token present:", !!process.env.SLACK_APP_TOKEN)
 
-console.log("🚀 Starting nanocode server...")
-const nanocode = await createNanocode({
+console.log("🚀 Starting bettercode server...")
+const bettercode = await createBettercode({
   port: 0,
 })
-console.log("✅ Nanocode server ready")
+console.log("✅ Bettercode server ready")
 
 const sessions = new Map<string, { client: any; server: any; sessionId: string; channel: string; thread: string }>()
 void (async () => {
-  const events = await nanocode.client.event.subscribe()
+  const events = await bettercode.client.event.subscribe()
   for await (const event of events.stream) {
     if (event.type === "message.part.updated") {
       const part = event.properties.part
@@ -72,8 +72,8 @@ app.message(async ({ message, say }) => {
   let session = sessions.get(sessionKey)
 
   if (!session) {
-    console.log("🆕 Creating new nanocode session...")
-    const { client, server } = nanocode
+    console.log("🆕 Creating new bettercode session...")
+    const { client, server } = bettercode
 
     const createResult = await client.session.create({
       body: { title: `Slack thread ${thread}` },
@@ -88,7 +88,7 @@ app.message(async ({ message, say }) => {
       return
     }
 
-    console.log("✅ Created nanocode session:", createResult.data.id)
+    console.log("✅ Created bettercode session:", createResult.data.id)
 
     session = { client, server, sessionId: createResult.data.id, channel, thread }
     sessions.set(sessionKey, session)
@@ -101,13 +101,13 @@ app.message(async ({ message, say }) => {
     }
   }
 
-  console.log("📝 Sending to nanocode:", message.text)
+  console.log("📝 Sending to bettercode:", message.text)
   const result = await session.client.session.prompt({
     path: { id: session.sessionId },
     body: { parts: [{ type: "text", text: message.text }] },
   })
 
-  console.log("📤 Nanocode response:", JSON.stringify(result, null, 2))
+  console.log("📤 Bettercode response:", JSON.stringify(result, null, 2))
 
   if (result.error) {
     console.error("❌ Failed to send message:", result.error)

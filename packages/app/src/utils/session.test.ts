@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { SessionApi, SessionInfo, SessionListInput } from "@nanocode-ai/client/promise"
+import type { SessionApi, SessionInfo, SessionListInput } from "@bettercode-ai/client/promise"
 import { listAllSessions, normalizeSessionInfo } from "./session"
 
 describe("normalizeSessionInfo", () => {

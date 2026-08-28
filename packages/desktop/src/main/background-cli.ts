@@ -9,7 +9,7 @@ import { app } from "electron"
 const execFileAsync = promisify(execFile)
 const root = dirname(fileURLToPath(import.meta.url))
 const stateHome = process.env.XDG_STATE_HOME
-const desktopStateNames = ["ai.nanocode.desktop.dev", "ai.nanocode.desktop.beta", "ai.nanocode.desktop"]
+const desktopStateNames = ["ai.bettercode.desktop.dev", "ai.bettercode.desktop.beta", "ai.bettercode.desktop"]
 
 type Logger = {
   log(message: string, meta?: Record<string, unknown>): void
@@ -47,12 +47,12 @@ export async function startBackgroundCli(logger: Logger, shellStateHome?: string
   })
   logger.log("v2 CLI background service ready", {
     existing: Boolean(found),
-    username: "nanocode",
+    username: "bettercode",
     ...endpoint(url),
   })
   return {
     url,
-    username: "nanocode",
+    username: "bettercode",
     password,
   }
 }
@@ -121,5 +121,5 @@ function endpoint(url: string | undefined) {
 }
 
 function executableName() {
-  return process.platform === "win32" ? "nanocode-cli.exe" : "nanocode-cli"
+  return process.platform === "win32" ? "bettercode-cli.exe" : "bettercode-cli"
 }

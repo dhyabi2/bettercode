@@ -4,7 +4,7 @@ import { createMemo, For, Match, Show, Switch } from "solid-js"
 import { Portal, useRenderer, useTerminalDimensions, type JSX } from "@opentui/solid"
 import type { TextareaRenderable } from "@opentui/core"
 import { useTheme, selectedForeground } from "../../context/theme"
-import type { PermissionRequest } from "@nanocode-ai/sdk/v2"
+import type { PermissionRequest } from "@bettercode-ai/sdk/v2"
 import { useSDK } from "../../context/sdk"
 import { SplitBorder } from "../../ui/border"
 import { useSync } from "../../context/sync"
@@ -14,12 +14,12 @@ import { Locale } from "../../util/locale"
 import { webSearchProviderLabel } from "../../util/tool-display"
 import { getScrollAcceleration } from "../../util/scroll"
 import { useTuiConfig } from "../../config"
-import { NANOCODE_BASE_MODE, useBindings, useCommandShortcut } from "../../keymap"
+import { BETTERCODE_BASE_MODE, useBindings, useCommandShortcut } from "../../keymap"
 import { usePathFormatter } from "../../context/path-format"
 
 type PermissionStage = "permission" | "always" | "reject"
 
-// mirrors MAX_DIFF_OUTPUT_LINES in packages/nanocode/src/tool/edit.ts (server-side source of truth)
+// mirrors MAX_DIFF_OUTPUT_LINES in packages/bettercode/src/tool/edit.ts (server-side source of truth)
 const MAX_DIFF_RENDER_LENGTH = 100_000
 
 type FileMetadata = {
@@ -215,7 +215,7 @@ export function PermissionPrompt(props: { request: PermissionRequest; directory?
                     props.request.permission +
                     (props.request.permission === "doom_loop"
                       ? " for the rest of this session."
-                      : " until NanoCode is restarted.")
+                      : " until BetterCode is restarted.")
                   }
                 />
               </Match>
@@ -225,7 +225,7 @@ export function PermissionPrompt(props: { request: PermissionRequest; directory?
                     This will allow the following patterns{" "}
                     {props.request.permission === "doom_loop"
                       ? "for the rest of this session"
-                      : "until NanoCode is restarted"}
+                      : "until BetterCode is restarted"}
                   </text>
                   <box>
                     <For each={props.request.always}>
@@ -530,7 +530,7 @@ function RejectPrompt(props: { onConfirm: (message: string) => void; onCancel: (
   const dimensions = useTerminalDimensions()
   const narrow = createMemo(() => dimensions().width < 80)
   useBindings(() => ({
-    mode: NANOCODE_BASE_MODE,
+    mode: BETTERCODE_BASE_MODE,
     commands: [
       {
         name: "app.exit",
@@ -566,7 +566,7 @@ function RejectPrompt(props: { onConfirm: (message: string) => void; onCancel: (
           <text fg={theme.text}>Reject permission</text>
         </box>
         <box paddingLeft={1}>
-          <text fg={theme.textMuted}>Tell NanoCode what to do differently</text>
+          <text fg={theme.textMuted}>Tell BetterCode what to do differently</text>
         </box>
       </box>
       <box
@@ -626,7 +626,7 @@ function Prompt<const T extends Record<string, string>>(props: {
   const fullscreenHint = useCommandShortcut("permission.prompt.fullscreen")
 
   useBindings(() => ({
-    mode: NANOCODE_BASE_MODE,
+    mode: BETTERCODE_BASE_MODE,
     commands: [
       {
         name: "app.exit",

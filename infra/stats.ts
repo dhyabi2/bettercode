@@ -105,7 +105,7 @@ export const inferenceEvent = new sst.Linkable("InferenceEvent", {
 ////////////////
 
 const cluster = planetscale.getDatabaseOutput({
-  name: "nanocode-stats",
+  name: "bettercode-stats",
   organization: "dhyabi2",
 })
 

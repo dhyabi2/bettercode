@@ -1,4 +1,4 @@
-import { ServerConnection, useServer, useSettings, useTabs } from "@nanocode-ai/app"
+import { ServerConnection, useServer, useSettings, useTabs } from "@bettercode-ai/app"
 import { onMount } from "solid-js"
 
 export function DesktopFirstLaunchOnboarding(props: { initialUrl: string; onLoaded: () => void }) {

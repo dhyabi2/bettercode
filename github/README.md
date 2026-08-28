@@ -1,30 +1,30 @@
-# nanocode GitHub Action
+# bettercode GitHub Action
 
-A GitHub Action that integrates [nanocode](https://nanocode.ai) directly into your GitHub workflow.
+A GitHub Action that integrates [bettercode](https://bettercode.ai) directly into your GitHub workflow.
 
-Mention `/nanocode` in your comment, and nanocode will execute tasks within your GitHub Actions runner.
+Mention `/bettercode` in your comment, and bettercode will execute tasks within your GitHub Actions runner.
 
 ## Features
 
 #### Explain an issue
 
-Leave the following comment on a GitHub issue. `nanocode` will read the entire thread, including all comments, and reply with a clear explanation.
+Leave the following comment on a GitHub issue. `bettercode` will read the entire thread, including all comments, and reply with a clear explanation.
 
 ```
-/nanocode explain this issue
+/bettercode explain this issue
 ```
 
 #### Fix an issue
 
-Leave the following comment on a GitHub issue. nanocode will create a new branch, implement the changes, and open a PR with the changes.
+Leave the following comment on a GitHub issue. bettercode will create a new branch, implement the changes, and open a PR with the changes.
 
 ```
-/nanocode fix this
+/bettercode fix this
 ```
 
 #### Review PRs and make changes
 
-Leave the following comment on a GitHub PR. nanocode will implement the requested change and commit it to the same PR.
+Leave the following comment on a GitHub PR. bettercode will implement the requested change and commit it to the same PR.
 
 ```
 Delete the attachment from S3 when the note is removed /oc
@@ -32,14 +32,14 @@ Delete the attachment from S3 when the note is removed /oc
 
 #### Review specific code lines
 
-Leave a comment directly on code lines in the PR's "Files" tab. nanocode will automatically detect the file, line numbers, and diff context to provide precise responses.
+Leave a comment directly on code lines in the PR's "Files" tab. bettercode will automatically detect the file, line numbers, and diff context to provide precise responses.
 
 ```
 [Comment on specific lines in Files tab]
 /oc add error handling here
 ```
 
-When commenting on specific lines, nanocode receives:
+When commenting on specific lines, bettercode receives:
 
 - The exact file being reviewed
 - The specific lines of code
@@ -53,18 +53,18 @@ This allows for more targeted requests without needing to specify file paths or 
 Run the following command in the terminal from your GitHub repo:
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 This will walk you through installing the GitHub app, creating the workflow, and setting up secrets.
 
 ### Manual Setup
 
-1. Install the GitHub app https://github.com/apps/nanocode-agent. Make sure it is installed on the target repository.
-2. Add the following workflow file to `.github/workflows/nanocode.yml` in your repo. Set the appropriate `model` and required API keys in `env`.
+1. Install the GitHub app https://github.com/apps/bettercode-agent. Make sure it is installed on the target repository.
+2. Add the following workflow file to `.github/workflows/bettercode.yml` in your repo. Set the appropriate `model` and required API keys in `env`.
 
    ```yml
-   name: nanocode
+   name: bettercode
 
    on:
      issue_comment:
@@ -73,10 +73,10 @@ This will walk you through installing the GitHub app, creating the workflow, and
        types: [created]
 
    jobs:
-     nanocode:
+     bettercode:
        if: |
          contains(github.event.comment.body, '/oc') ||
-         contains(github.event.comment.body, '/nanocode')
+         contains(github.event.comment.body, '/bettercode')
        runs-on: ubuntu-latest
        permissions:
          id-token: write
@@ -87,8 +87,8 @@ This will walk you through installing the GitHub app, creating the workflow, and
               fetch-depth: 1
               persist-credentials: false
 
-          - name: Run nanocode
-           uses: dhyabi2/nanocode/github@latest
+          - name: Run bettercode
+           uses: dhyabi2/bettercode/github@latest
            env:
              ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -101,7 +101,7 @@ This will walk you through installing the GitHub app, creating the workflow, and
 
 ## Support
 
-This is an early release. If you encounter issues or have feedback, please create an issue at https://github.com/dhyabi2/nanocode/issues.
+This is an early release. If you encounter issues or have feedback, please create an issue at https://github.com/dhyabi2/bettercode/issues.
 
 ## Development
 
@@ -121,20 +121,20 @@ To test locally:
      GITHUB_RUN_ID=dummy \
      MOCK_TOKEN=github_pat_1234567890 \
      MOCK_EVENT='{"eventName":"issue_comment",...}' \
-     bun /path/to/nanocode/github/index.ts
+     bun /path/to/bettercode/github/index.ts
    ```
 
-   - `MODEL`: The model used by nanocode. Same as the `MODEL` defined in the GitHub workflow.
+   - `MODEL`: The model used by bettercode. Same as the `MODEL` defined in the GitHub workflow.
    - `ANTHROPIC_API_KEY`: Your model provider API key. Same as the keys defined in the GitHub workflow.
    - `GITHUB_RUN_ID`: Dummy value to emulate GitHub action environment.
    - `MOCK_TOKEN`: A GitHub personal access token. This token is used to verify you have `admin` or `write` access to the test repo. Generate a token [here](https://github.com/settings/personal-access-tokens).
    - `MOCK_EVENT`: Mock GitHub event payload (see templates below).
-   - `/path/to/nanocode`: Path to your cloned nanocode repo. `bun /path/to/nanocode/github/index.ts` runs your local version of `nanocode`.
+   - `/path/to/bettercode`: Path to your cloned bettercode repo. `bun /path/to/bettercode/github/index.ts` runs your local version of `bettercode`.
 
 ### Issue comment event
 
 ```
-MOCK_EVENT='{"eventName":"issue_comment","repo":{"owner":"sst","repo":"hello-world"},"actor":"fwang","payload":{"issue":{"number":4},"comment":{"id":1,"body":"hey nanocode, summarize thread"}}}'
+MOCK_EVENT='{"eventName":"issue_comment","repo":{"owner":"sst","repo":"hello-world"},"actor":"fwang","payload":{"issue":{"number":4},"comment":{"id":1,"body":"hey bettercode, summarize thread"}}}'
 ```
 
 Replace:
@@ -143,12 +143,12 @@ Replace:
 - `"repo":"hello-world"` with repo name
 - `"actor":"fwang"` with the GitHub username of commenter
 - `"number":4` with the GitHub issue id
-- `"body":"hey nanocode, summarize thread"` with comment body
+- `"body":"hey bettercode, summarize thread"` with comment body
 
 ### Issue comment with image attachment.
 
 ```
-MOCK_EVENT='{"eventName":"issue_comment","repo":{"owner":"sst","repo":"hello-world"},"actor":"fwang","payload":{"issue":{"number":4},"comment":{"id":1,"body":"hey nanocode, what is in my image ![Image](https://github.com/user-attachments/assets/xxxxxxxx)"}}}'
+MOCK_EVENT='{"eventName":"issue_comment","repo":{"owner":"sst","repo":"hello-world"},"actor":"fwang","payload":{"issue":{"number":4},"comment":{"id":1,"body":"hey bettercode, what is in my image ![Image](https://github.com/user-attachments/assets/xxxxxxxx)"}}}'
 ```
 
 Replace the image URL `https://github.com/user-attachments/assets/xxxxxxxx` with a valid GitHub attachment (you can generate one by commenting with an image in any issue).
@@ -156,11 +156,11 @@ Replace the image URL `https://github.com/user-attachments/assets/xxxxxxxx` with
 ### PR comment event
 
 ```
-MOCK_EVENT='{"eventName":"issue_comment","repo":{"owner":"sst","repo":"hello-world"},"actor":"fwang","payload":{"issue":{"number":4,"pull_request":{}},"comment":{"id":1,"body":"hey nanocode, summarize thread"}}}'
+MOCK_EVENT='{"eventName":"issue_comment","repo":{"owner":"sst","repo":"hello-world"},"actor":"fwang","payload":{"issue":{"number":4,"pull_request":{}},"comment":{"id":1,"body":"hey bettercode, summarize thread"}}}'
 ```
 
 ### PR review comment event
 
 ```
-MOCK_EVENT='{"eventName":"pull_request_review_comment","repo":{"owner":"sst","repo":"hello-world"},"actor":"fwang","payload":{"pull_request":{"number":7},"comment":{"id":1,"body":"hey nanocode, add error handling","path":"src/components/Button.tsx","diff_hunk":"@@ -45,8 +45,11 @@\n- const handleClick = () => {\n-   console.log('clicked')\n+ const handleClick = useCallback(() => {\n+   console.log('clicked')\n+   doSomething()\n+ }, [doSomething])","line":47,"original_line":45,"position":10,"commit_id":"abc123","original_commit_id":"def456"}}}'
+MOCK_EVENT='{"eventName":"pull_request_review_comment","repo":{"owner":"sst","repo":"hello-world"},"actor":"fwang","payload":{"pull_request":{"number":7},"comment":{"id":1,"body":"hey bettercode, add error handling","path":"src/components/Button.tsx","diff_hunk":"@@ -45,8 +45,11 @@\n- const handleClick = () => {\n-   console.log('clicked')\n+ const handleClick = useCallback(() => {\n+   console.log('clicked')\n+   doSomething()\n+ }, [doSomething])","line":47,"original_line":45,"position":10,"commit_id":"abc123","original_commit_id":"def456"}}}'
 ```

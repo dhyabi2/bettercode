@@ -1,8 +1,8 @@
-import { run } from "@nanocode-ai/tui"
-import { TuiConfig } from "@nanocode-ai/tui/config"
+import { run } from "@bettercode-ai/tui"
+import { TuiConfig } from "@bettercode-ai/tui/config"
 import { Effect } from "effect"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { Global } from "@nanocode-ai/core/global"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { Global } from "@bettercode-ai/core/global"
 
 export function runTui(transport: { url: string; headers: RequestInit["headers"] }) {
   const config = TuiConfig.resolve({}, { terminalSuspend: false })

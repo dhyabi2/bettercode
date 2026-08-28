@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=BetterCode
+Exec=/opt/BetterCode/ai.bettercode.desktop %U
+Terminal=false
+Type=Application
+Icon=ai.bettercode.desktop
+StartupWMClass=ai.bettercode.desktop
+NoDisplay=true
+Comment=Open source AI coding agent
+Categories=Development;

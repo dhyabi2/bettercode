@@ -1,10 +1,10 @@
 import { describe, expect } from "bun:test"
 import { Context, Deferred, Effect, Exit, Fiber, Layer, Scope } from "effect"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { EventV2 } from "@nanocode-ai/core/event"
-import { QuestionV2 } from "@nanocode-ai/core/question"
-import { SessionV2 } from "@nanocode-ai/core/session"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { EventV2 } from "@bettercode-ai/core/event"
+import { QuestionV2 } from "@bettercode-ai/core/question"
+import { SessionV2 } from "@bettercode-ai/core/session"
 import { testEffect } from "./lib/effect"
 
 const questions = AppNodeBuilder.build(LayerNode.group([EventV2.node, QuestionV2.node]))

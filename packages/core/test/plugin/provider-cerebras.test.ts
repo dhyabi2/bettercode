@@ -1,12 +1,12 @@
-import { AISDK } from "@nanocode-ai/core/aisdk"
+import { AISDK } from "@bettercode-ai/core/aisdk"
 import { describe, expect, mock } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@nanocode-ai/core/catalog"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { PluginHost } from "@nanocode-ai/core/plugin/host"
-import { CerebrasPlugin } from "@nanocode-ai/core/plugin/provider/cerebras"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
+import { Catalog } from "@bettercode-ai/core/catalog"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { PluginHost } from "@bettercode-ai/core/plugin/host"
+import { CerebrasPlugin } from "@bettercode-ai/core/plugin/provider/cerebras"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
 
@@ -43,7 +43,7 @@ describe("CerebrasPlugin", () => {
       yield* addPlugin()
       expect((yield* catalog.provider.get(ProviderV2.ID.make("cerebras")))?.request.headers).toEqual({
         Existing: "1",
-        "X-Cerebras-3rd-Party-Integration": "nanocode",
+        "X-Cerebras-3rd-Party-Integration": "bettercode",
       })
     }),
   )

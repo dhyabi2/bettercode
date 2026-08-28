@@ -22,11 +22,11 @@ const dict: Record<string, string> = {
   "prompt.mode.shell": "Shell",
   "prompt.mode.normal": "Prompt",
   "dialog.model.select.title": "Select model",
-  "dialog.model.unpaid.freeModels.title": "Free models provided by NanoCode",
+  "dialog.model.unpaid.freeModels.title": "Free models provided by BetterCode",
   "dialog.model.unpaid.addMore.title": "Add more models from popular providers",
   "dialog.model.unpaid.viewMoreProviders": "See 70+ more providers",
-  "dialog.provider.nanocode.tagline": "Reliable optimized models",
-  "dialog.provider.nanocodeGo.tagline": "Low cost subscription for everyone",
+  "dialog.provider.bettercode.tagline": "Reliable optimized models",
+  "dialog.provider.bettercodeGo.tagline": "Low cost subscription for everyone",
   "dialog.provider.custom.label": "Custom OpenAI-compatible provider",
   "dialog.provider.search.placeholder": "Search providers",
   "dialog.provider.empty": "No providers found",
@@ -39,21 +39,21 @@ const dict: Record<string, string> = {
   "provider.connect.selectMethod": "Select login method for {{provider}}.",
   "provider.connect.method.apiKey": "API key",
   "provider.connect.apiKey.description":
-    "Enter your {{provider}} API key to connect your account and use {{provider}} models in NanoCode.",
+    "Enter your {{provider}} API key to connect your account and use {{provider}} models in BetterCode.",
   "provider.connect.apiKey.label": "{{provider}} API key",
   "provider.connect.apiKey.placeholder": "API key",
   "provider.connect.apiKey.required": "API key is required",
-  "provider.connect.nanocodeZen.line1":
-    "NanoCode Zen gives you access to a curated set of reliable optimized models for coding agents.",
-  "provider.connect.nanocodeZen.line2":
+  "provider.connect.bettercodeZen.line1":
+    "BetterCode Zen gives you access to a curated set of reliable optimized models for coding agents.",
+  "provider.connect.bettercodeZen.line2":
     "With a single API key you'll get access to models such as Claude, GPT, Gemini, GLM and more.",
-  "provider.connect.nanocodeZen.visit.prefix": "Visit ",
-  "provider.connect.nanocodeZen.visit.link": "nanocode.ai/zen",
-  "provider.connect.nanocodeZen.visit.suffix": " to collect your API key.",
+  "provider.connect.bettercodeZen.visit.prefix": "Visit ",
+  "provider.connect.bettercodeZen.visit.link": "bettercode.ai/zen",
+  "provider.connect.bettercodeZen.visit.suffix": " to collect your API key.",
   "provider.connect.oauth.code.visit.prefix": "Visit ",
   "provider.connect.oauth.code.visit.link": "this link",
   "provider.connect.oauth.code.visit.suffix":
-    " to collect your authorization code to connect your account and use {{provider}} models in NanoCode.",
+    " to collect your authorization code to connect your account and use {{provider}} models in BetterCode.",
   "provider.connect.oauth.code.label": "{{method}} authorization code",
   "provider.connect.oauth.code.placeholder": "Authorization code",
   "provider.connect.oauth.code.required": "Authorization code is required",
@@ -61,7 +61,7 @@ const dict: Record<string, string> = {
   "provider.connect.oauth.auto.visit.prefix": "Visit ",
   "provider.connect.oauth.auto.visit.link": "this link",
   "provider.connect.oauth.auto.visit.suffix":
-    " and enter the code below to connect your account and use {{provider}} models in NanoCode.",
+    " and enter the code below to connect your account and use {{provider}} models in BetterCode.",
   "provider.connect.oauth.auto.confirmationCode": "Confirmation code",
   "provider.connect.status.inProgress": "Authorization in progress...",
   "provider.connect.status.waiting": "Waiting for authorization...",

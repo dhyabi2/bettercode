@@ -1,10 +1,10 @@
-import { createNanocodeClient } from "@nanocode-ai/sdk/v2/client"
-import { NanoCode, type NanoCodeClient } from "@nanocode-ai/client/promise"
+import { createBettercodeClient } from "@bettercode-ai/sdk/v2/client"
+import { BetterCode, type BetterCodeClient } from "@bettercode-ai/client/promise"
 import type { ServerConnection } from "@/context/server"
 import { decode64 } from "@/utils/base64"
 
 export function authTokenFromCredentials(input: { username?: string; password: string }) {
-  return btoa(`${input.username ?? "nanocode"}:${input.password}`)
+  return btoa(`${input.username ?? "bettercode"}:${input.password}`)
 }
 
 export function authFromToken(token: string | null) {
@@ -13,7 +13,7 @@ export function authFromToken(token: string | null) {
   const separator = decoded.indexOf(":")
   if (separator === -1) return
   return {
-    username: decoded.slice(0, separator) || "nanocode",
+    username: decoded.slice(0, separator) || "bettercode",
     password: decoded.slice(separator + 1),
   }
 }
@@ -21,7 +21,7 @@ export function authFromToken(token: string | null) {
 export function createSdkForServer({
   server,
   ...config
-}: Omit<NonNullable<Parameters<typeof createNanocodeClient>[0]>, "baseUrl"> & {
+}: Omit<NonNullable<Parameters<typeof createBettercodeClient>[0]>, "baseUrl"> & {
   server: ServerConnection.HttpBase
 }) {
   const auth = (() => {
@@ -31,7 +31,7 @@ export function createSdkForServer({
     }
   })()
 
-  return createNanocodeClient({
+  return createBettercodeClient({
     ...config,
     headers: {
       ...(config.headers instanceof Headers ? Object.fromEntries(config.headers.entries()) : config.headers),
@@ -44,8 +44,8 @@ export function createSdkForServer({
 export function createApiForServer(input: {
   server: ServerConnection.HttpBase
   fetch?: typeof globalThis.fetch
-}): NanoCodeClient {
-  return NanoCode.make({
+}): BetterCodeClient {
+  return BetterCode.make({
     baseUrl: input.server.url,
     fetch: input.fetch,
     headers: input.server.password
@@ -59,4 +59,4 @@ export function createApiForServer(input: {
   })
 }
 
-export type ServerApi = NanoCodeClient
+export type ServerApi = BetterCodeClient

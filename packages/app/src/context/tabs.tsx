@@ -1,5 +1,5 @@
-import type { Session } from "@nanocode-ai/sdk/v2/client"
-import { createSimpleContext } from "@nanocode-ai/ui/context"
+import type { Session } from "@bettercode-ai/sdk/v2/client"
+import { createSimpleContext } from "@bettercode-ai/ui/context"
 import { createStore, produce } from "solid-js/store"
 import { Persist, persisted, removePersisted, draftPersistedKeys } from "@/utils/persist"
 import { ServerConnection, useServer } from "./server"

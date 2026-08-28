@@ -1,5 +1,5 @@
 import { NodeFileSystem } from "@effect/platform-node"
-import { compile, emitEffectImported, emitPromise, write } from "@nanocode-ai/httpapi-codegen"
+import { compile, emitEffectImported, emitPromise, write } from "@bettercode-ai/httpapi-codegen"
 import { ClientApi, endpointNames, groupNames, omitEndpoints } from "../src/contract"
 import { Effect } from "effect"
 import { fileURLToPath } from "url"
@@ -13,8 +13,8 @@ await Effect.runPromise(
         emitPromise(contract, {
           outputTypes: {
             "events.subscribe": {
-              name: "NanoCodeEventEncoded",
-              import: 'import type { NanoCodeEventEncoded } from "@nanocode-ai/protocol/groups/event"',
+              name: "BetterCodeEventEncoded",
+              import: 'import type { BetterCodeEventEncoded } from "@bettercode-ai/protocol/groups/event"',
             },
           },
         }),

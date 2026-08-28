@@ -1,9 +1,9 @@
-import { base64Encode } from "@nanocode-ai/core/util/encode"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
 import { expect, test, type Page } from "@playwright/test"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectSessionTitle } from "../utils/waits"
 
-const directory = "C:/NanoCode/FileBrowserSidebar"
+const directory = "C:/BetterCode/FileBrowserSidebar"
 const projectID = "proj_file_browser_sidebar"
 const sessionID = "ses_file_browser_sidebar"
 const title = "File browser sidebar"
@@ -111,7 +111,7 @@ async function setup(
   page: Page,
   findFiles?: (input: { query: string; dirs?: string; limit?: number }) => unknown | Promise<unknown>,
 ) {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     directory,
     project: {
       id: projectID,
@@ -124,13 +124,13 @@ async function setup(
     provider: {
       all: [
         {
-          id: "nanocode",
-          name: "NanoCode",
+          id: "bettercode",
+          name: "BetterCode",
           models: { test: { id: "test", name: "Test", limit: { context: 200_000 } } },
         },
       ],
-      connected: ["nanocode"],
-      default: { providerID: "nanocode", modelID: "test" },
+      connected: ["bettercode"],
+      default: { providerID: "bettercode", modelID: "test" },
     },
     sessions: [
       {
@@ -163,22 +163,22 @@ async function setup(
     ({ directory, server, sessionID }) => {
       localStorage.setItem("settings.v3", JSON.stringify({ general: { newLayoutDesigns: true } }))
       localStorage.setItem(
-        "nanocode.global.dat:server",
+        "bettercode.global.dat:server",
         JSON.stringify({
           projects: { local: [{ worktree: directory, expanded: true }] },
           lastProject: { local: directory },
         }),
       )
       localStorage.setItem(
-        "nanocode.global.dat:layout",
+        "bettercode.global.dat:layout",
         JSON.stringify({ review: { diffStyle: "split", panelOpened: true } }),
       )
       localStorage.setItem(
-        "nanocode.global.dat:review-panel-v2",
+        "bettercode.global.dat:review-panel-v2",
         JSON.stringify({ sidebarOpened: true, sidebarWidth: 240, expandMode: "collapse" }),
       )
       localStorage.setItem(
-        "nanocode.window.browser.dat:tabs",
+        "bettercode.window.browser.dat:tabs",
         JSON.stringify([{ type: "session", server, sessionId: sessionID }]),
       )
     },

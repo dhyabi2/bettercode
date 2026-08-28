@@ -1,6 +1,6 @@
 // @ts-nocheck
 import * as mod from "./session-review"
-import { create } from "@nanocode-ai/ui/storybook/scaffold"
+import { create } from "@bettercode-ai/ui/storybook/scaffold"
 
 const story = create({ title: "UI/SessionReview", mod })
 export default { title: "UI/SessionReview", id: "components-session-review", component: story.meta.component }

@@ -104,8 +104,8 @@ jobs:
       - name: Setup git committer
         uses: ./.github/actions/setup-git-committer
         with:
-          nanocode-app-id: ${{ vars.NANOCODE_APP_ID }}
-          nanocode-app-secret: ${{ secrets.NANOCODE_APP_SECRET }}
+          bettercode-app-id: ${{ vars.BETTERCODE_APP_ID }}
+          bettercode-app-secret: ${{ secrets.BETTERCODE_APP_SECRET }}
 
       - name: Pull latest changes
         run: |

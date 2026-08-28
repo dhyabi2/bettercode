@@ -3,9 +3,9 @@ title: Thèmes
 description: Sélectionnez un thème intégré ou définissez le vôtre.
 ---
 
-Avec NanoCode, vous pouvez choisir parmi plusieurs thèmes intégrés, utiliser un thème qui s'adapte au thème de votre terminal ou définir votre propre thème personnalisé.
+Avec BetterCode, vous pouvez choisir parmi plusieurs thèmes intégrés, utiliser un thème qui s'adapte au thème de votre terminal ou définir votre propre thème personnalisé.
 
-Par défaut, NanoCode utilise notre propre thème `nanocode`.
+Par défaut, BetterCode utilise notre propre thème `bettercode`.
 
 ---
 
@@ -23,7 +23,7 @@ Sans la prise en charge de TrueColor, les thèmes peuvent apparaître avec une p
 
 ## Thèmes intégrés
 
-NanoCode est livré avec plusieurs thèmes intégrés.
+BetterCode est livré avec plusieurs thèmes intégrés.
 
 | Nom                    | Descriptif                                                                  |
 | ---------------------- | --------------------------------------------------------------------------- |
@@ -53,7 +53,7 @@ Le thème `system` est conçu pour s'adapter automatiquement à la palette de co
 
 Le thème système est destiné aux utilisateurs qui :
 
-- Vous souhaitez que NanoCode corresponde à l'apparence de leur terminal
+- Vous souhaitez que BetterCode corresponde à l'apparence de leur terminal
 - Utiliser des schémas de couleurs de terminal personnalisés
 - Préférez une apparence cohérente sur toutes les applications de terminal
 
@@ -65,7 +65,7 @@ Vous pouvez sélectionner un thème en affichant la sélection de thème avec la
 
 ```json title="tui.json" {3}
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "theme": "tokyonight"
 }
 ```
@@ -74,7 +74,7 @@ Vous pouvez sélectionner un thème en affichant la sélection de thème avec la
 
 ## Thèmes personnalisés
 
-NanoCode prend en charge un système de thèmes flexible basé sur JSON qui permet aux utilisateurs de créer et de personnaliser facilement des thèmes.
+BetterCode prend en charge un système de thèmes flexible basé sur JSON qui permet aux utilisateurs de créer et de personnaliser facilement des thèmes.
 
 ---
 
@@ -83,9 +83,9 @@ NanoCode prend en charge un système de thèmes flexible basé sur JSON qui perm
 Les thèmes sont chargés à partir de plusieurs répertoires dans l'ordre suivant, les répertoires ultérieurs remplaçant les précédents :
 
 1. **Thèmes intégrés** - Ceux-ci sont intégrés au binaire
-2. **Répertoire de configuration utilisateur** - Défini dans `~/.config/nanocode/themes/*.json` ou `$XDG_CONFIG_HOME/nanocode/themes/*.json`
-3. **Répertoire racine du projet** - Défini dans `<project-root>/.nanocode/themes/*.json`
-4. **Répertoire de travail actuel** - Défini dans `./.nanocode/themes/*.json`
+2. **Répertoire de configuration utilisateur** - Défini dans `~/.config/bettercode/themes/*.json` ou `$XDG_CONFIG_HOME/bettercode/themes/*.json`
+3. **Répertoire racine du projet** - Défini dans `<project-root>/.bettercode/themes/*.json`
+4. **Répertoire de travail actuel** - Défini dans `./.bettercode/themes/*.json`
 
 Si plusieurs répertoires contiennent un thème portant le même nom, le thème du répertoire ayant la priorité la plus élevée sera utilisé.
 
@@ -98,15 +98,15 @@ Pour créer un thème personnalisé, créez un fichier JSON dans l'un des réper
 Pour les thèmes à l’échelle de l’utilisateur :
 
 ```bash no-frame
-mkdir -p ~/.config/nanocode/themes
-vim ~/.config/nanocode/themes/my-theme.json
+mkdir -p ~/.config/bettercode/themes
+vim ~/.config/bettercode/themes/my-theme.json
 ```
 
 Et pour des thèmes spécifiques au projet.
 
 ```bash no-frame
-mkdir -p .nanocode/themes
-vim .nanocode/themes/my-theme.json
+mkdir -p .bettercode/themes
+vim .bettercode/themes/my-theme.json
 ```
 
 ---
@@ -144,7 +144,7 @@ Voici un exemple de thème personnalisé :
 
 ```json title="my-theme.json"
 {
-  "$schema": "https://nanocode.ai/theme.json",
+  "$schema": "https://bettercode.ai/theme.json",
   "defs": {
     "nord0": "#2E3440",
     "nord1": "#3B4252",

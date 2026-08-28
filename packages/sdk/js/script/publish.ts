@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 
-import { Script } from "@nanocode-ai/script"
+import { Script } from "@bettercode-ai/script"
 import { $ } from "bun"
 import { fileURLToPath } from "url"
 

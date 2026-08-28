@@ -3,15 +3,15 @@ export function deactivate() {}
 
 import * as vscode from "vscode"
 
-const TERMINAL_NAME = "nanocode"
+const TERMINAL_NAME = "bettercode"
 
 export function activate(context: vscode.ExtensionContext) {
-  const openNewTerminalDisposable = vscode.commands.registerCommand("nanocode.openNewTerminal", async () => {
+  const openNewTerminalDisposable = vscode.commands.registerCommand("bettercode.openNewTerminal", async () => {
     await openTerminal()
   })
 
-  const openTerminalDisposable = vscode.commands.registerCommand("nanocode.openTerminal", async () => {
-    // An nanocode terminal already exists => focus it
+  const openTerminalDisposable = vscode.commands.registerCommand("bettercode.openTerminal", async () => {
+    // An bettercode terminal already exists => focus it
     const existingTerminal = vscode.window.terminals.find((t) => t.name === TERMINAL_NAME)
     if (existingTerminal) {
       existingTerminal.show()
@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     await openTerminal()
   })
 
-  let addFilepathDisposable = vscode.commands.registerCommand("nanocode.addFilepathToTerminal", async () => {
+  let addFilepathDisposable = vscode.commands.registerCommand("bettercode.addFilepathToTerminal", async () => {
     const fileRef = getActiveFile()
     if (!fileRef) {
       return
@@ -34,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     if (terminal.name === TERMINAL_NAME) {
       // @ts-ignore
-      const port = terminal.creationOptions.env?.["_EXTENSION_NANOCODE_PORT"]
+      const port = terminal.creationOptions.env?.["_EXTENSION_BETTERCODE_PORT"]
       port ? await appendPrompt(parseInt(port), fileRef) : terminal.sendText(fileRef, false)
       terminal.show()
     }
@@ -56,13 +56,13 @@ export function activate(context: vscode.ExtensionContext) {
         preserveFocus: false,
       },
       env: {
-        _EXTENSION_NANOCODE_PORT: port.toString(),
-        NANOCODE_CALLER: "vscode",
+        _EXTENSION_BETTERCODE_PORT: port.toString(),
+        BETTERCODE_CALLER: "vscode",
       },
     })
 
     terminal.show()
-    terminal.sendText(`nanocode --port ${port}`)
+    terminal.sendText(`bettercode --port ${port}`)
 
     const fileRef = getActiveFile()
     if (!fileRef) {

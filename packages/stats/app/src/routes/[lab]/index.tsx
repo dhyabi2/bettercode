@@ -1,5 +1,5 @@
 import { Meta, Title } from "@solidjs/meta"
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
 import {
   getStatsLabData,
   getStatsHomeData,
@@ -7,7 +7,7 @@ import {
   type MarketDay,
   type ModelUsagePoint,
   type StatsLabData,
-} from "@nanocode-ai/stats-core/domain/home"
+} from "@bettercode-ai/stats-core/domain/home"
 import { createAsync, query, useParams } from "@solidjs/router"
 import { createMemo, createSignal, createUniqueId, For, onMount, Show, type JSX } from "solid-js"
 import { getRequestEvent } from "solid-js/web"
@@ -128,7 +128,7 @@ export default function StatsLab() {
       <Meta name="description" content={labDescription()} />
       <LocaleLinks path={labPath()} />
       <Meta property="og:type" content="website" />
-      <Meta property="og:site_name" content="NanoCode" />
+      <Meta property="og:site_name" content="BetterCode" />
       <Meta property="og:title" content={labTitle()} />
       <Meta property="og:description" content={labDescription()} />
       <Meta property="og:url" content={labUrl()} />
@@ -653,7 +653,7 @@ function LabModelTooltip(props: { state: LabModelTooltipState }) {
           </span>
           <strong>{props.state.model.name}</strong>
         </div>
-        <p>{props.state.model.description ?? "Recent NanoCode usage, share, context, and output limits."}</p>
+        <p>{props.state.model.description ?? "Recent BetterCode usage, share, context, and output limits."}</p>
       </div>
       <div data-slot="tooltip-divider" />
       <div data-slot="lab-model-tooltip-metrics">

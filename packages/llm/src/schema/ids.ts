@@ -1,5 +1,5 @@
 import { Schema } from "effect"
-import { ProviderMetadata } from "@nanocode-ai/schema/llm"
+import { ProviderMetadata } from "@bettercode-ai/schema/llm"
 
 export { ProviderMetadata }
 

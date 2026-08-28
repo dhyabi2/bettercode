@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
-import type { retry } from "@nanocode-ai/core/util/retry"
-import type { NanoCodeEvent, SessionApi } from "@nanocode-ai/client/promise"
-import type { Message, NanocodeClient, Part, Session } from "@nanocode-ai/sdk/v2/client"
+import type { retry } from "@bettercode-ai/core/util/retry"
+import type { BetterCodeEvent, SessionApi } from "@bettercode-ai/client/promise"
+import type { Message, BettercodeClient, Part, Session } from "@bettercode-ai/sdk/v2/client"
 import { createServerSession } from "./server-session"
 import type { ServerApi } from "@/utils/server"
 
@@ -85,7 +85,7 @@ function messageClient(...responses: Array<MessageResponse | Promise<MessageResp
         return responses[index++]
       },
     },
-  } as unknown as NanocodeClient
+  } as unknown as BettercodeClient
   return Object.assign(client, {
     requests,
     requested(count: number) {
@@ -118,7 +118,7 @@ function rootMessageClient(
         return roots[rootIndex++]
       },
     },
-  } as unknown as NanocodeClient
+  } as unknown as BettercodeClient
   return Object.assign(client, {
     requests,
     rootRequests,
@@ -157,7 +157,7 @@ function setup(sessions: Record<string, Session>) {
       diff: async () => ({ data: [] }),
       todo: async () => ({ data: [] }),
     },
-  } as unknown as NanocodeClient
+  } as unknown as BettercodeClient
   return { get, messages, store: createServerSession(client) }
 }
 
@@ -173,7 +173,7 @@ describe("server session", () => {
         time: { created: 1 },
       },
     ])
-    const apply = (input: object) => ctx.store.applyV2(input as NanoCodeEvent)
+    const apply = (input: object) => ctx.store.applyV2(input as BetterCodeEvent)
 
     apply({
       id: "evt_step",
@@ -250,7 +250,7 @@ describe("server session", () => {
           throw new Error("legacy message endpoint called")
         },
       },
-    } as unknown as NanocodeClient
+    } as unknown as BettercodeClient
     const messageApi = {
       list: async (input: unknown) => {
         requests.push(input)
@@ -293,7 +293,7 @@ describe("server session", () => {
         return pages.shift()!
       },
     } as unknown as MessageApi
-    const store = createServerSession({} as NanocodeClient, {} as SessionApi, messageApi)
+    const store = createServerSession({} as BettercodeClient, {} as SessionApi, messageApi)
     store.remember(session("root"))
 
     await store.sync("root")

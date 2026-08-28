@@ -45,7 +45,7 @@ function providerIconsPlugin() {
 }
 
 async function fetchProviderIcons() {
-  const url = process.env.NANOCODE_MODELS_URL || "https://models.nanocode.ai"
+  const url = process.env.BETTERCODE_MODELS_URL || "https://models.bettercode.ai"
   const providers = await fetch(`${url}/api.json`)
     .then((res) => res.json())
     .then((json) => Object.keys(json))

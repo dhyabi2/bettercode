@@ -47,7 +47,7 @@ function format(input: unknown) {
   return /^[^\s="\\]+$/.test(value) ? value : JSON.stringify(value)
 }
 
-export function fileLogger(file = path.join(Global.Path.log, "nanocode.log"), id: string = runID) {
+export function fileLogger(file = path.join(Global.Path.log, "bettercode.log"), id: string = runID) {
   // Do not set batchWindow to 0; it causes high idle CPU usage.
   return Logger.toFile(formatter(id), file, { flag: "a" })
 }
@@ -55,11 +55,11 @@ export function fileLogger(file = path.join(Global.Path.log, "nanocode.log"), id
 const stderrLogger = Logger.make((options) => process.stderr.write(formatter().log(options) + "\n"))
 
 function unsafeLogging() {
-  return minimumLogLevel() === "Debug" && process.env.NANOCODE_LOG_UNSAFE === "1"
+  return minimumLogLevel() === "Debug" && process.env.BETTERCODE_LOG_UNSAFE === "1"
 }
 
 export function minimumLogLevel() {
-  const value = process.env.NANOCODE_LOG_LEVEL?.toUpperCase()
+  const value = process.env.BETTERCODE_LOG_LEVEL?.toUpperCase()
   const levels = {
     DEBUG: "Debug",
     INFO: "Info",
@@ -70,7 +70,7 @@ export function minimumLogLevel() {
 }
 
 export function loggers() {
-  return process.env.NANOCODE_PRINT_LOGS === "1" ? [fileLogger(), stderrLogger] : [fileLogger()]
+  return process.env.BETTERCODE_PRINT_LOGS === "1" ? [fileLogger(), stderrLogger] : [fileLogger()]
 }
 
 export * as Logging from "./logging"

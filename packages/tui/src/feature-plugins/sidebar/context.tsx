@@ -1,5 +1,5 @@
-import type { AssistantMessage } from "@nanocode-ai/sdk/v2"
-import type { TuiPlugin, TuiPluginApi } from "@nanocode-ai/plugin/tui"
+import type { AssistantMessage } from "@bettercode-ai/sdk/v2"
+import type { TuiPlugin, TuiPluginApi } from "@bettercode-ai/plugin/tui"
 import type { BuiltinTuiPlugin } from "../builtins"
 import { createMemo } from "solid-js"
 

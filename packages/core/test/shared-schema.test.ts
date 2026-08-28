@@ -1,35 +1,35 @@
 import { expect, test } from "bun:test"
 import { Schema } from "effect"
-import { AgentV2 } from "@nanocode-ai/core/agent"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { SessionV2 } from "@nanocode-ai/core/session"
-import { Agent } from "@nanocode-ai/schema/agent"
-import { Location } from "@nanocode-ai/schema/location"
-import { Model } from "@nanocode-ai/schema/model"
-import { AgentAttachment, FileAttachment, Prompt, Source } from "@nanocode-ai/schema/prompt"
-import { Provider } from "@nanocode-ai/schema/provider"
-import { Project } from "@nanocode-ai/schema/project"
-import { ProjectDirectories } from "@nanocode-ai/schema/project-directories"
-import { PermissionV1 } from "@nanocode-ai/schema/permission-v1"
-import { Session } from "@nanocode-ai/schema/session"
-import { SessionInput } from "@nanocode-ai/schema/session-input"
-import { SessionMessage } from "@nanocode-ai/schema/session-message"
-import { Workspace } from "@nanocode-ai/schema/workspace"
-import { Command } from "@nanocode-ai/schema/command"
-import { Connection } from "@nanocode-ai/schema/connection"
-import { Credential } from "@nanocode-ai/schema/credential"
-import { FileSystem } from "@nanocode-ai/schema/filesystem"
-import { Integration } from "@nanocode-ai/schema/integration"
-import { LLM } from "@nanocode-ai/schema/llm"
-import { Permission } from "@nanocode-ai/schema/permission"
-import { Plugin } from "@nanocode-ai/schema/plugin"
-import { Pty } from "@nanocode-ai/schema/pty"
-import { Reference } from "@nanocode-ai/schema/reference"
-import { SessionTodo } from "@nanocode-ai/schema/session-todo"
-import { Skill } from "@nanocode-ai/schema/skill"
-import { AbsolutePath, DateTimeUtcFromMillis, optional, statics } from "@nanocode-ai/schema/schema"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
+import { AgentV2 } from "@bettercode-ai/core/agent"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { SessionV2 } from "@bettercode-ai/core/session"
+import { Agent } from "@bettercode-ai/schema/agent"
+import { Location } from "@bettercode-ai/schema/location"
+import { Model } from "@bettercode-ai/schema/model"
+import { AgentAttachment, FileAttachment, Prompt, Source } from "@bettercode-ai/schema/prompt"
+import { Provider } from "@bettercode-ai/schema/provider"
+import { Project } from "@bettercode-ai/schema/project"
+import { ProjectDirectories } from "@bettercode-ai/schema/project-directories"
+import { PermissionV1 } from "@bettercode-ai/schema/permission-v1"
+import { Session } from "@bettercode-ai/schema/session"
+import { SessionInput } from "@bettercode-ai/schema/session-input"
+import { SessionMessage } from "@bettercode-ai/schema/session-message"
+import { Workspace } from "@bettercode-ai/schema/workspace"
+import { Command } from "@bettercode-ai/schema/command"
+import { Connection } from "@bettercode-ai/schema/connection"
+import { Credential } from "@bettercode-ai/schema/credential"
+import { FileSystem } from "@bettercode-ai/schema/filesystem"
+import { Integration } from "@bettercode-ai/schema/integration"
+import { LLM } from "@bettercode-ai/schema/llm"
+import { Permission } from "@bettercode-ai/schema/permission"
+import { Plugin } from "@bettercode-ai/schema/plugin"
+import { Pty } from "@bettercode-ai/schema/pty"
+import { Reference } from "@bettercode-ai/schema/reference"
+import { SessionTodo } from "@bettercode-ai/schema/session-todo"
+import { Skill } from "@bettercode-ai/schema/skill"
+import { AbsolutePath, DateTimeUtcFromMillis, optional, statics } from "@bettercode-ai/schema/schema"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
 
 test("Core reuses the canonical shared schemas", async () => {
   const [
@@ -55,27 +55,27 @@ test("Core reuses the canonical shared schemas", async () => {
     coreSchema,
     coreWorkspace,
   ] = await Promise.all([
-    import("@nanocode-ai/core/command"),
-    import("@nanocode-ai/core/integration/connection"),
-    import("@nanocode-ai/core/credential"),
-    import("@nanocode-ai/core/filesystem"),
-    import("@nanocode-ai/core/integration"),
-    import("@nanocode-ai/core/location"),
-    import("@nanocode-ai/llm"),
-    import("@nanocode-ai/core/permission"),
-    import("@nanocode-ai/core/v1/permission"),
-    import("@nanocode-ai/core/project/copy"),
-    import("@nanocode-ai/core/pty"),
-    import("@nanocode-ai/core/project/schema"),
-    import("@nanocode-ai/core/reference"),
-    import("@nanocode-ai/core/session/input"),
-    import("@nanocode-ai/core/session/message"),
-    import("@nanocode-ai/core/session/todo"),
-    import("@nanocode-ai/core/session/prompt"),
-    import("@nanocode-ai/core/skill"),
-    import("@nanocode-ai/core/v2-schema"),
-    import("@nanocode-ai/core/schema"),
-    import("@nanocode-ai/core/workspace"),
+    import("@bettercode-ai/core/command"),
+    import("@bettercode-ai/core/integration/connection"),
+    import("@bettercode-ai/core/credential"),
+    import("@bettercode-ai/core/filesystem"),
+    import("@bettercode-ai/core/integration"),
+    import("@bettercode-ai/core/location"),
+    import("@bettercode-ai/llm"),
+    import("@bettercode-ai/core/permission"),
+    import("@bettercode-ai/core/v1/permission"),
+    import("@bettercode-ai/core/project/copy"),
+    import("@bettercode-ai/core/pty"),
+    import("@bettercode-ai/core/project/schema"),
+    import("@bettercode-ai/core/reference"),
+    import("@bettercode-ai/core/session/input"),
+    import("@bettercode-ai/core/session/message"),
+    import("@bettercode-ai/core/session/todo"),
+    import("@bettercode-ai/core/session/prompt"),
+    import("@bettercode-ai/core/skill"),
+    import("@bettercode-ai/core/v2-schema"),
+    import("@bettercode-ai/core/schema"),
+    import("@bettercode-ai/core/workspace"),
   ])
 
   const schemas = [

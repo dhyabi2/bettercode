@@ -1,7 +1,7 @@
-import { Event } from "@nanocode-ai/schema/event"
-import { EventManifest } from "@nanocode-ai/schema/event-manifest"
-import { Location } from "@nanocode-ai/schema/location"
-import type { Definition } from "@nanocode-ai/schema/event"
+import { Event } from "@bettercode-ai/schema/event"
+import { EventManifest } from "@bettercode-ai/schema/event-manifest"
+import { Location } from "@bettercode-ai/schema/location"
+import type { Definition } from "@bettercode-ai/schema/event"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 
@@ -51,6 +51,6 @@ export const makeEventGroup = <const Definitions extends ReadonlyArray<Definitio
 
 const event = make(EventManifest.ServerDefinitions)
 export const EventGroup = event.group
-export const NanoCodeEvent = event.schema
-export type NanoCodeEvent = typeof NanoCodeEvent.Type
-export type NanoCodeEventEncoded = typeof NanoCodeEvent.Encoded
+export const BetterCodeEvent = event.schema
+export type BetterCodeEvent = typeof BetterCodeEvent.Type
+export type BetterCodeEventEncoded = typeof BetterCodeEvent.Encoded

@@ -1,13 +1,13 @@
 ---
 title: SDK
-description: Cliente JS seguro em tipos para o servidor nanocode.
+description: Cliente JS seguro em tipos para o servidor bettercode.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-O SDK JS/TS do nanocode fornece um cliente seguro em tipos para interagir com o servidor.
-Use-o para construir integrações e controlar o nanocode programaticamente.
+O SDK JS/TS do bettercode fornece um cliente seguro em tipos para interagir com o servidor.
+Use-o para construir integrações e controlar o bettercode programaticamente.
 
 [Saiba mais](/docs/server) sobre como o servidor funciona. Para exemplos, confira os [projetos](/docs/ecosystem#projects) construídos pela comunidade.
 
@@ -18,19 +18,19 @@ Use-o para construir integrações e controlar o nanocode programaticamente.
 Instale o SDK a partir do npm:
 
 ```bash
-npm install @nanocode-ai/sdk
+npm install @bettercode-ai/sdk
 ```
 
 ---
 
 ## Criar cliente
 
-Crie uma instância do nanocode:
+Crie uma instância do bettercode:
 
 ```javascript
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 
-const { client } = await createNanocode()
+const { client } = await createBettercode()
 ```
 
 Isso inicia tanto um servidor quanto um cliente.
@@ -49,12 +49,12 @@ Isso inicia tanto um servidor quanto um cliente.
 
 ## Configuração
 
-Você pode passar um objeto de configuração para personalizar o comportamento. A instância ainda pega seu `nanocode.json`, mas você pode substituir ou adicionar configuração inline:
+Você pode passar um objeto de configuração para personalizar o comportamento. A instância ainda pega seu `bettercode.json`, mas você pode substituir ou adicionar configuração inline:
 
 ```javascript
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 
-const nanocode = await createNanocode({
+const bettercode = await createBettercode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,19 +62,19 @@ const nanocode = await createNanocode({
   },
 })
 
-console.log(`Server running at ${nanocode.server.url}`)
+console.log(`Server running at ${bettercode.server.url}`)
 
-nanocode.server.close()
+bettercode.server.close()
 ```
 
 ## Apenas cliente
 
-Se você já tem uma instância do nanocode em execução, pode criar uma instância de cliente para se conectar a ela:
+Se você já tem uma instância do bettercode em execução, pode criar uma instância de cliente para se conectar a ela:
 
 ```javascript
-import { createNanocodeClient } from "@nanocode-ai/sdk"
+import { createBettercodeClient } from "@bettercode-ai/sdk"
 
-const client = createNanocodeClient({
+const client = createBettercodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createNanocodeClient({
 O SDK inclui definições TypeScript para todos os tipos da API. Importe-os diretamente:
 
 ```typescript
-import type { Session, Message, Part } from "@nanocode-ai/sdk"
+import type { Session, Message, Part } from "@bettercode-ai/sdk"
 ```
 
 Todos os tipos são gerados a partir da especificação OpenAPI do servidor e estão disponíveis no <a href={typesUrl}>arquivo de tipos</a>.
@@ -376,7 +376,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*nanocode" },
+  query: { pattern: "function.*bettercode" },
 })
 
 const files = await client.find.files({

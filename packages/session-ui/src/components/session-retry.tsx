@@ -1,9 +1,9 @@
 import { createEffect, createMemo, createSignal, on, onCleanup, Show } from "solid-js"
-import type { SessionStatus } from "@nanocode-ai/sdk/v2/client"
-import { useI18n } from "@nanocode-ai/ui/context/i18n"
-import { Card } from "@nanocode-ai/ui/card"
-import { Tooltip } from "@nanocode-ai/ui/tooltip"
-import { Spinner } from "@nanocode-ai/ui/spinner"
+import type { SessionStatus } from "@bettercode-ai/sdk/v2/client"
+import { useI18n } from "@bettercode-ai/ui/context/i18n"
+import { Card } from "@bettercode-ai/ui/card"
+import { Tooltip } from "@bettercode-ai/ui/tooltip"
+import { Spinner } from "@bettercode-ai/ui/spinner"
 
 export function SessionRetry(props: { status: SessionStatus; show?: boolean }) {
   const i18n = useI18n()

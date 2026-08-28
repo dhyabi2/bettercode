@@ -3,11 +3,11 @@ title: Tastebindinger
 description: Tilpass tastebindingene dine.
 ---
 
-NanoCode har en liste over tastebindinger som du kan tilpasse gjennom `tui.json`.
+BetterCode har en liste over tastebindinger som du kan tilpasse gjennom `tui.json`.
 
 ```json title="tui.json"
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "keybinds": {
     "leader": "ctrl+x",
     "app_exit": "ctrl+c,ctrl+d,<leader>q",
@@ -109,7 +109,7 @@ NanoCode har en liste over tastebindinger som du kan tilpasse gjennom `tui.json`
 
 ## Leader-tast
 
-NanoCode bruker en `leader`-tast for de fleste tastebindinger. Dette unngår konflikter i terminalen din.
+BetterCode bruker en `leader`-tast for de fleste tastebindinger. Dette unngår konflikter i terminalen din.
 
 Som standard er `ctrl+x` ledertasten, og de fleste handlinger krever at du først trykker på ledertasten og deretter snarveien. For å starte en ny økt, trykker du for eksempel først `ctrl+x` og deretter `n`.
 
@@ -123,7 +123,7 @@ Du kan deaktivere en tastebinding ved å legge til tasten til `tui.json` med en 
 
 ```json title="tui.json"
 {
-  "$schema": "https://nanocode.ai/tui.json",
+  "$schema": "https://bettercode.ai/tui.json",
   "keybinds": {
     "session_compact": "none"
   }
@@ -134,7 +134,7 @@ Du kan deaktivere en tastebinding ved å legge til tasten til `tui.json` med en 
 
 ## Snarveier i skrivebordsappen
 
-Prompt-feltet for NanoCode-skrivebordsappen støtter vanlige snarveier i Readline/Emacs-stil for redigering av tekst. Disse er innebygd og foreløpig ikke konfigurerbare via `nanocode.json`.
+Prompt-feltet for BetterCode-skrivebordsappen støtter vanlige snarveier i Readline/Emacs-stil for redigering av tekst. Disse er innebygd og foreløpig ikke konfigurerbare via `bettercode.json`.
 
 | Snarvei  | Handling                                 |
 | -------- | ---------------------------------------- |

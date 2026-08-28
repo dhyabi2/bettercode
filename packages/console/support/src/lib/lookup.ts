@@ -1,8 +1,8 @@
 "use server"
 
-import { Database, and, eq, isNull, sql } from "@nanocode-ai/console-core/drizzle/index.js"
-import { AuthTable } from "@nanocode-ai/console-core/schema/auth.sql.js"
-import { UserTable } from "@nanocode-ai/console-core/schema/user.sql.js"
+import { Database, and, eq, isNull, sql } from "@bettercode-ai/console-core/drizzle/index.js"
+import { AuthTable } from "@bettercode-ai/console-core/schema/auth.sql.js"
+import { UserTable } from "@bettercode-ai/console-core/schema/user.sql.js"
 import {
   BillingTable,
   PaymentTable,
@@ -10,15 +10,15 @@ import {
   BlackPlans,
   UsageTable,
   LiteTable,
-} from "@nanocode-ai/console-core/schema/billing.sql.js"
-import { WorkspaceTable } from "@nanocode-ai/console-core/schema/workspace.sql.js"
-import { KeyTable } from "@nanocode-ai/console-core/schema/key.sql.js"
-import { ModelTable } from "@nanocode-ai/console-core/schema/model.sql.js"
-import { BlackData } from "@nanocode-ai/console-core/black.js"
-import { LiteData } from "@nanocode-ai/console-core/lite.js"
-import { Subscription } from "@nanocode-ai/console-core/subscription.js"
-import { centsToMicroCents } from "@nanocode-ai/console-core/util/price.js"
-import { getWeekBounds } from "@nanocode-ai/console-core/util/date.js"
+} from "@bettercode-ai/console-core/schema/billing.sql.js"
+import { WorkspaceTable } from "@bettercode-ai/console-core/schema/workspace.sql.js"
+import { KeyTable } from "@bettercode-ai/console-core/schema/key.sql.js"
+import { ModelTable } from "@bettercode-ai/console-core/schema/model.sql.js"
+import { BlackData } from "@bettercode-ai/console-core/black.js"
+import { LiteData } from "@bettercode-ai/console-core/lite.js"
+import { Subscription } from "@bettercode-ai/console-core/subscription.js"
+import { centsToMicroCents } from "@bettercode-ai/console-core/util/price.js"
+import { getWeekBounds } from "@bettercode-ai/console-core/util/date.js"
 
 export type LookupResult = {
   identifier: string

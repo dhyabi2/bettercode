@@ -1,4 +1,4 @@
-import { Resource } from "@nanocode-ai/console-resource"
+import { Resource } from "@bettercode-ai/console-resource"
 import { Redis } from "@upstash/redis/cloudflare"
 
 let redis: Redis | undefined

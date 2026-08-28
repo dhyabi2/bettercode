@@ -1,9 +1,9 @@
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { Tag } from "@nanocode-ai/ui/v2/badge-v2"
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
-import { Icon as IconV2 } from "@nanocode-ai/ui/v2/icon"
-import { IconButtonV2 } from "@nanocode-ai/ui/v2/icon-button-v2"
-import { MenuV2 } from "@nanocode-ai/ui/v2/menu-v2"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { Tag } from "@bettercode-ai/ui/v2/badge-v2"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
+import { Icon as IconV2 } from "@bettercode-ai/ui/v2/icon"
+import { IconButtonV2 } from "@bettercode-ai/ui/v2/icon-button-v2"
+import { MenuV2 } from "@bettercode-ai/ui/v2/menu-v2"
 import { useMutation } from "@tanstack/solid-query"
 import fuzzysort from "fuzzysort"
 import { type Accessor, For, Show, createMemo } from "solid-js"
@@ -15,7 +15,7 @@ import { ServerConnection } from "@/context/server"
 import { showToast } from "@/utils/toast"
 import { DialogAddWslServer } from "./dialog-add-server"
 import { useWslServers } from "./context"
-import { wslNanocodeAction, wslRuntimeRetryable } from "./settings-model"
+import { wslBettercodeAction, wslRuntimeRetryable } from "./settings-model"
 
 type Controller = ReturnType<typeof useServerManagementController>
 
@@ -94,9 +94,9 @@ export function WslServerSettings(props: {
       <For each={props.servers()}>
         {(item) => {
           const key = ServerConnection.Key.make(item.config.id)
-          const check = () => wsl.data?.nanocodeChecks[item.config.distro]
-          const nanocodeAction = () => wslNanocodeAction(check())
-          const busy = () => wsl.data?.job?.kind === "install-nanocode" && wsl.data.job.distro === item.config.distro
+          const check = () => wsl.data?.bettercodeChecks[item.config.distro]
+          const bettercodeAction = () => wslBettercodeAction(check())
+          const busy = () => wsl.data?.job?.kind === "install-bettercode" && wsl.data.job.distro === item.config.distro
           return (
             <div class="settings-v2-servers-row">
               <div class="settings-v2-servers-lead">
@@ -117,12 +117,12 @@ export function WslServerSettings(props: {
                 <Show when={props.controller.canDefault() && props.controller.defaultKey() === key}>
                   <Tag>{language.t("dialog.server.status.default")}</Tag>
                 </Show>
-                <Show when={nanocodeAction()}>
+                <Show when={bettercodeAction()}>
                   {(label) => (
                     <ButtonV2
                       size="small"
                       disabled={busy() || request.isPending}
-                      onClick={() => api && request.mutate(() => api.installNanocode(item.config.distro))}
+                      onClick={() => api && request.mutate(() => api.installBettercode(item.config.distro))}
                     >
                       {busy() ? language.t("wsl.server.updating") : language.t(label())}
                     </ButtonV2>

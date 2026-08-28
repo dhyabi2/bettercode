@@ -1,5 +1,5 @@
-import { Database, eq } from "@nanocode-ai/console-core/drizzle/index.js"
-import { ModelStickyProviderTable } from "@nanocode-ai/console-core/schema/ip.sql.js"
+import { Database, eq } from "@bettercode-ai/console-core/drizzle/index.js"
+import { ModelStickyProviderTable } from "@bettercode-ai/console-core/schema/ip.sql.js"
 
 export function createStickyTracker(
   modelId: string,

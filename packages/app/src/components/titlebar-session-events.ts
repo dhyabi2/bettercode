@@ -1,6 +1,6 @@
 import type { ServerConnection } from "@/context/server"
 
-export const SESSION_TABS_REMOVED_EVENT = "nanocode:session-tabs-removed"
+export const SESSION_TABS_REMOVED_EVENT = "bettercode:session-tabs-removed"
 
 export type SessionTabsRemovedDetail = {
   server?: ServerConnection.Key

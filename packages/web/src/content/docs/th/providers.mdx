@@ -1,30 +1,30 @@
 ---
 title: ผู้ให้บริการ
-description: ใช้ผู้ให้บริการ LLM ใน NanoCode
+description: ใช้ผู้ให้บริการ LLM ใน BetterCode
 ---
 
 import config from "../../../../config.mjs"
 export const console = config.console
 
-NanoCode ใช้ [AI SDK](https://ai-sdk.dev/) และ [Models.dev](https://models.dev) เพื่อรองรับผู้ให้บริการ **75+ LLM** และรองรับการใช้งานโมเดลท้องถิ่น
+BetterCode ใช้ [AI SDK](https://ai-sdk.dev/) และ [Models.dev](https://models.dev) เพื่อรองรับผู้ให้บริการ **75+ LLM** และรองรับการใช้งานโมเดลท้องถิ่น
 
 หากต้องการเพิ่มผู้ให้บริการ คุณต้อง:
 
 1. เพิ่มคีย์ API สำหรับผู้ให้บริการโดยใช้คำสั่ง `/connect`
-2. กำหนดค่าผู้ให้บริการในการกำหนดค่า NanoCode ของคุณ
+2. กำหนดค่าผู้ให้บริการในการกำหนดค่า BetterCode ของคุณ
 
 ---
 
 ### ข้อมูลรับรอง
 
 เมื่อคุณเพิ่มคีย์ API ของผู้ให้บริการด้วยคำสั่ง `/connect` คีย์เหล่านั้นจะถูกเก็บไว้
-ใน `~/.local/share/nanocode/auth.json`.
+ใน `~/.local/share/bettercode/auth.json`.
 
 ---
 
 ### การกำหนดค่า
 
-คุณสามารถปรับแต่งผู้ให้บริการได้ผ่านทางส่วน `provider` ใน NanoCode ของคุณ
+คุณสามารถปรับแต่งผู้ให้บริการได้ผ่านทางส่วน `provider` ใน BetterCode ของคุณ
 กำหนดค่า
 
 ---
@@ -33,9 +33,9 @@ NanoCode ใช้ [AI SDK](https://ai-sdk.dev/) และ [Models.dev](https://
 
 คุณสามารถปรับแต่งฐาน URL สำหรับผู้ให้บริการรายใดก็ได้โดยตั้งค่าตัวเลือก `baseURL` สิ่งนี้มีประโยชน์เมื่อใช้บริการพร็อกซีหรือจุดสิ้นสุดแบบกำหนดเอง
 
-```json title="nanocode.json" {6}
+```json title="bettercode.json" {6}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -48,16 +48,16 @@ NanoCode ใช้ [AI SDK](https://ai-sdk.dev/) และ [Models.dev](https://
 
 ---
 
-## NanoCode Zen
+## BetterCode Zen
 
-NanoCode Zen คือรายชื่อโมเดลที่จัดทำโดยทีมงาน NanoCode ที่ได้รับ
-ทดสอบและตรวจสอบแล้วว่าทำงานได้ดีกับ NanoCode [เรียนรู้เพิ่มเติม](/docs/zen)
+BetterCode Zen คือรายชื่อโมเดลที่จัดทำโดยทีมงาน BetterCode ที่ได้รับ
+ทดสอบและตรวจสอบแล้วว่าทำงานได้ดีกับ BetterCode [เรียนรู้เพิ่มเติม](/docs/zen)
 
 :::tip
-หากคุณยังใหม่ เราขอแนะนำให้เริ่มต้นด้วย NanoCode Zen
+หากคุณยังใหม่ เราขอแนะนำให้เริ่มต้นด้วย BetterCode Zen
 :::
 
-1. เรียกใช้คำสั่ง `/connect` ใน TUI เลือก nanocode และไปที่ [nanocode.ai/auth](https://nanocode.ai/auth)
+1. เรียกใช้คำสั่ง `/connect` ใน TUI เลือก bettercode และไปที่ [bettercode.ai/auth](https://bettercode.ai/auth)
 
    ```txt
    /connect
@@ -80,15 +80,15 @@ NanoCode Zen คือรายชื่อโมเดลที่จัดท�
    /models
    ```
 
-มันทำงานเหมือนกับผู้ให้บริการรายอื่นใน NanoCode และเป็นทางเลือกในการใช้งานโดยสมบูรณ์
+มันทำงานเหมือนกับผู้ให้บริการรายอื่นใน BetterCode และเป็นทางเลือกในการใช้งานโดยสมบูรณ์
 
 ---
 
-## NanoCode Go
+## BetterCode Go
 
-NanoCode Go คือแผนการสมัครสมาชิกราคาประหยัดที่ให้การเข้าถึงโมเดลการเขียนโค้ดแบบเปิดยอดนิยมที่เชื่อถือได้ ซึ่งจัดเตรียมโดยทีมงาน NanoCode ที่ได้รับการทดสอบและตรวจสอบแล้วว่าทำงานได้ดีกับ NanoCode
+BetterCode Go คือแผนการสมัครสมาชิกราคาประหยัดที่ให้การเข้าถึงโมเดลการเขียนโค้ดแบบเปิดยอดนิยมที่เชื่อถือได้ ซึ่งจัดเตรียมโดยทีมงาน BetterCode ที่ได้รับการทดสอบและตรวจสอบแล้วว่าทำงานได้ดีกับ BetterCode
 
-1. เรียกใช้คำสั่ง `/connect` ใน TUI เลือก `NanoCode Go` และไปที่ [nanocode.ai/auth](https://nanocode.ai/zen)
+1. เรียกใช้คำสั่ง `/connect` ใน TUI เลือก `BetterCode Go` และไปที่ [bettercode.ai/auth](https://bettercode.ai/zen)
 
    ```txt
    /connect
@@ -111,7 +111,7 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
    /models
    ```
 
-มันทำงานเหมือนกับผู้ให้บริการรายอื่นใน NanoCode และเป็นทางเลือกในการใช้งานโดยสมบูรณ์
+มันทำงานเหมือนกับผู้ให้บริการรายอื่นใน BetterCode และเป็นทางเลือกในการใช้งานโดยสมบูรณ์
 
 ---
 
@@ -155,7 +155,7 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 
 ### Amazon Bedrock
 
-วิธีใช้ Amazon Bedrock กับ NanoCode:
+วิธีใช้ Amazon Bedrock กับ BetterCode:
 
 1. ไปที่ **แค็ตตาล็อกโมเดล** ในคอนโซล Amazon Bedrock และขอ
    เข้าถึงโมเดลที่คุณต้องการ
@@ -168,17 +168,17 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 
    #### ตัวแปรสภาพแวดล้อม (เริ่มต้นอย่างรวดเร็ว)
 
-   ตั้งค่าหนึ่งในตัวแปรสภาพแวดล้อมเหล่านี้ขณะเรียกใช้ nanocode:
+   ตั้งค่าหนึ่งในตัวแปรสภาพแวดล้อมเหล่านี้ขณะเรียกใช้ bettercode:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY nanocode
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY bettercode
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile nanocode
+   AWS_PROFILE=my-profile bettercode
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX nanocode
+   AWS_BEARER_TOKEN_BEDROCK=XXX bettercode
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -190,11 +190,11 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 
    #### ไฟล์การกำหนดค่า (แนะนำ)
 
-   สำหรับการกำหนดค่าเฉพาะโครงการหรือแบบถาวร ให้ใช้ `nanocode.json`:
+   สำหรับการกำหนดค่าเฉพาะโครงการหรือแบบถาวร ให้ใช้ `bettercode.json`:
 
-   ```json title="nanocode.json"
+   ```json title="bettercode.json"
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -219,9 +219,9 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 
    หากคุณใช้จุดสิ้นสุด VPC สำหรับ Bedrock:
 
-   ```json title="nanocode.json"
+   ```json title="bettercode.json"
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -263,9 +263,9 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 :::note
 สำหรับโปรไฟล์การอนุมานแบบกำหนดเอง ให้ใช้ชื่อรุ่นและผู้ให้บริการในคีย์และตั้งค่าคุณสมบัติ `id` เป็น arn สิ่งนี้ทำให้มั่นใจได้ว่าแคชถูกต้อง:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "amazon-bedrock": {
       // ...
@@ -310,7 +310,7 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
    ```
 
 :::info
-การใช้การสมัครสมาชิก Claude Pro/Max ใน NanoCode ไม่ได้รับการสนับสนุนอย่างเป็นทางการจาก [Anthropic](https://anthropic.com)
+การใช้การสมัครสมาชิก Claude Pro/Max ใน BetterCode ไม่ได้รับการสนับสนุนอย่างเป็นทางการจาก [Anthropic](https://anthropic.com)
 :::
 
 ##### การใช้ API Key
@@ -323,11 +323,11 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 
 ### Atomic Chat
 
-คุณสามารถกำหนดค่า nanocode ให้ใช้โมเดลท้องถิ่นผ่าน [Atomic Chat](https://atomic.chat) ซึ่งเป็นแอปพลิเคชันเดสก์ท็อปที่เรียกใช้ LLM ในเครื่องภายใต้เซิร์ฟเวอร์ API ที่เข้ากันได้กับ OpenAI (ปลายทางเริ่มต้น `http://127.0.0.1:1337/v1`)
+คุณสามารถกำหนดค่า bettercode ให้ใช้โมเดลท้องถิ่นผ่าน [Atomic Chat](https://atomic.chat) ซึ่งเป็นแอปพลิเคชันเดสก์ท็อปที่เรียกใช้ LLM ในเครื่องภายใต้เซิร์ฟเวอร์ API ที่เข้ากันได้กับ OpenAI (ปลายทางเริ่มต้น `http://127.0.0.1:1337/v1`)
 
-```json title="nanocode.json" "atomic-chat" {5, 6, 8, 10-14}
+```json title="bettercode.json" "atomic-chat" {5, 6, 8, 10-14}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "atomic-chat": {
       "npm": "@ai-sdk/openai-compatible",
@@ -372,7 +372,7 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 2. ไปที่ [Azure AI Foundry](https://ai.azure.com/) และปรับใช้โมเดล
 
    :::note
-   ชื่อการปรับใช้จะต้องตรงกับชื่อรุ่นเพื่อให้ nanocode ทำงานได้อย่างถูกต้อง
+   ชื่อการปรับใช้จะต้องตรงกับชื่อรุ่นเพื่อให้ bettercode ทำงานได้อย่างถูกต้อง
    :::
 
 3. เรียกใช้คำสั่ง `/connect` และค้นหา **Azure**
@@ -393,7 +393,7 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 5. ตั้งชื่อทรัพยากรของคุณเป็นตัวแปรสภาพแวดล้อม:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX nanocode
+   AZURE_RESOURCE_NAME=XXX bettercode
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -419,7 +419,7 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 2. ไปที่ [Azure AI Foundry](https://ai.azure.com/) และปรับใช้โมเดล
 
    :::note
-   ชื่อการปรับใช้จะต้องตรงกับชื่อรุ่นเพื่อให้ nanocode ทำงานได้อย่างถูกต้อง
+   ชื่อการปรับใช้จะต้องตรงกับชื่อรุ่นเพื่อให้ bettercode ทำงานได้อย่างถูกต้อง
    :::
 
 3. เรียกใช้คำสั่ง `/connect` และค้นหา **Azure Cognitive Services**
@@ -440,7 +440,7 @@ NanoCode Go คือแผนการสมัครสมาชิกรา�
 5. ตั้งชื่อทรัพยากรของคุณเป็นตัวแปรสภาพแวดล้อม:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX nanocode
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX bettercode
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -551,11 +551,11 @@ Cloudflare AI Gateway ช่วยให้คุณเข้าถึงโม�
    /models
    ```
 
-   คุณยังสามารถเพิ่มโมเดลผ่านการกำหนดค่า nanocode ของคุณได้
+   คุณยังสามารถเพิ่มโมเดลผ่านการกำหนดค่า bettercode ของคุณได้
 
-   ```json title="nanocode.json"
+   ```json title="bettercode.json"
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "cloudflare-ai-gateway": {
          "models": {
@@ -732,7 +732,7 @@ GitLab Duo ให้การแชทแบบเอเจนต์ที่ข
 
 1.  ไปที่ [GitLab User Settings > Access Tokens](https://gitlab.com/-/user_settings/personal_access_tokens)
 2.  คลิก **เพิ่มโทเค็นใหม่**
-3.  ชื่อ: `NanoCode`, ขอบเขต: `api`
+3.  ชื่อ: `BetterCode`, ขอบเขต: `api`
 4.  คัดลอกโทเค็น (เริ่มต้นด้วย `glpat-`)
 5.  ป้อนลงใน terminal
 
@@ -749,20 +749,20 @@ GitLab Duo ให้การแชทแบบเอเจนต์ที่ข
 
 :::note
 คุณยังสามารถระบุตัวแปรสภาพแวดล้อม 'GITLAB_TOKEN' ได้หากคุณไม่ต้องการ
-เพื่อจัดเก็บโทเค็นในที่เก็บข้อมูลการรับรองความถูกต้องของ nanocode
+เพื่อจัดเก็บโทเค็นในที่เก็บข้อมูลการรับรองความถูกต้องของ bettercode
 :::
 
 ##### GitLab ที่โฮสต์เอง
 
 :::note[บันทึกการปฏิบัติตาม]
-NanoCode ใช้โมเดลขนาดเล็กสำหรับงาน AI บางอย่าง เช่น การสร้างชื่อเซสชัน
-มีการกำหนดค่าให้ใช้ gpt-5-nano ตามค่าเริ่มต้น ซึ่งโฮสต์โดย Zen เพื่อล็อค NanoCode
+BetterCode ใช้โมเดลขนาดเล็กสำหรับงาน AI บางอย่าง เช่น การสร้างชื่อเซสชัน
+มีการกำหนดค่าให้ใช้ gpt-5-nano ตามค่าเริ่มต้น ซึ่งโฮสต์โดย Zen เพื่อล็อค BetterCode
 หากต้องการใช้เฉพาะอินสแตนซ์ที่โฮสต์บน GitLab ของคุณเอง ให้เพิ่มสิ่งต่อไปนี้ในของคุณ
-`nanocode.json` ไฟล์. ขอแนะนำให้ปิดใช้งานการแชร์เซสชันด้วย
+`bettercode.json` ไฟล์. ขอแนะนำให้ปิดใช้งานการแชร์เซสชันด้วย
 
 ```json
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "small_model": "gitlab/duo-chat-haiku-4-5",
   "share": "disabled"
 }
@@ -820,11 +820,11 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 ##### การกำหนดค่า
 
-ปรับแต่งผ่าน `nanocode.json`:
+ปรับแต่งผ่าน `bettercode.json`:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "gitlab": {
       "options": {
@@ -839,10 +839,10 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 วิธีเข้าถึงเครื่องมือ GitLab (รวมคำขอ ปัญหา ไปป์ไลน์ CI/CD ฯลฯ):
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
-  "plugin": ["nanocode-gitlab-plugin"]
+  "$schema": "https://bettercode.ai/config.json",
+  "plugin": ["bettercode-gitlab-plugin"]
 }
 ```
 
@@ -852,7 +852,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 ### GitHub Copilot
 
-วิธีใช้การสมัครสมาชิก GitHub Copilot ด้วย nanocode:
+วิธีใช้การสมัครสมาชิก GitHub Copilot ด้วย bettercode:
 
 :::note
 บางรุ่นอาจต้องมี [Pro+
@@ -889,7 +889,7 @@ subscription](https://github.com/features/copilot/plans) เพื่อใช�
 
 ### Google Vertex AI
 
-วิธีใช้ Google Vertex AI กับ NanoCode:
+วิธีใช้ Google Vertex AI กับ BetterCode:
 
 1. ไปที่ **Model Garden** ใน Google Cloud Console แล้วตรวจสอบ
    รุ่นที่มีในภูมิภาคของคุณ
@@ -905,10 +905,10 @@ subscription](https://github.com/features/copilot/plans) เพื่อใช�
      - `GOOGLE_APPLICATION_CREDENTIALS`: เส้นทางไปยังบัญชีบริการของคุณ JSON ไฟล์คีย์
      - ตรวจสอบสิทธิ์โดยใช้ gcloud CLI: `gcloud auth application-default login`
 
-   ตั้งค่าในขณะที่เรียกใช้ nanocode
+   ตั้งค่าในขณะที่เรียกใช้ bettercode
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id nanocode
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id bettercode
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ
@@ -1018,13 +1018,13 @@ subscription](https://github.com/features/copilot/plans) เพื่อใช�
 
 #### การกำหนดค่าเพิ่มเติม
 
-ในกรณีที่คุณเห็นคุณสมบัติหรือรุ่นจาก Helicone ที่ไม่ได้กำหนดค่าโดยอัตโนมัติผ่าน nanocode คุณสามารถกำหนดค่าด้วยตนเองได้ตลอดเวลา
+ในกรณีที่คุณเห็นคุณสมบัติหรือรุ่นจาก Helicone ที่ไม่ได้กำหนดค่าโดยอัตโนมัติผ่าน bettercode คุณสามารถกำหนดค่าด้วยตนเองได้ตลอดเวลา
 
 นี่คือ [Helicone's Model Directory](https://helicone.ai/models) คุณจะต้องใช้สิ่งนี้เพื่อรับ ID ของโมเดลที่คุณต้องการเพิ่ม
 
-```jsonc title="~/.config/nanocode/nanocode.jsonc"
+```jsonc title="~/.config/bettercode/bettercode.jsonc"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1050,9 +1050,9 @@ subscription](https://github.com/features/copilot/plans) เพื่อใช�
 
 Helicone รองรับส่วนหัวแบบกำหนดเองสำหรับฟีเจอร์ต่างๆ เช่น การแคช การติดตามผู้ใช้ และการจัดการเซสชัน เพิ่มลงในการกำหนดค่าผู้ให้บริการของคุณโดยใช้ `options.headers`:
 
-```jsonc title="~/.config/nanocode/nanocode.jsonc"
+```jsonc title="~/.config/bettercode/bettercode.jsonc"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1061,7 +1061,7 @@ Helicone รองรับส่วนหัวแบบกำหนดเอ�
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "nanocode",
+          "Helicone-User-Id": "bettercode",
         },
       },
     },
@@ -1071,21 +1071,21 @@ Helicone รองรับส่วนหัวแบบกำหนดเอ�
 
 ##### การติดตามเซสชัน
 
-คุณลักษณะ [เซสชัน](https://docs.helicone.ai/features/sessions) ของ Helicone ช่วยให้คุณสามารถจัดกลุ่มคำขอ LLM ที่เกี่ยวข้องเข้าด้วยกันได้ ใช้ปลั๊กอิน [nanocode-helicone-session](https://github.com/H2Shami/nanocode-helicone-session) เพื่อบันทึกการสนทนา NanoCode แต่ละรายการเป็นเซสชันใน Helicone โดยอัตโนมัติ
+คุณลักษณะ [เซสชัน](https://docs.helicone.ai/features/sessions) ของ Helicone ช่วยให้คุณสามารถจัดกลุ่มคำขอ LLM ที่เกี่ยวข้องเข้าด้วยกันได้ ใช้ปลั๊กอิน [bettercode-helicone-session](https://github.com/H2Shami/bettercode-helicone-session) เพื่อบันทึกการสนทนา BetterCode แต่ละรายการเป็นเซสชันใน Helicone โดยอัตโนมัติ
 
 ```bash
-npm install -g nanocode-helicone-session
+npm install -g bettercode-helicone-session
 ```
 
 เพิ่มลงในการกำหนดค่าของคุณ
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "plugin": ["nanocode-helicone-session"]
+  "plugin": ["bettercode-helicone-session"]
 }
 ```
 
-ปลั๊กอินจะแทรกส่วนหัว `Helicone-Session-Id` และ `Helicone-Session-Name` ลงในคำขอของคุณ ในหน้าเซสชันของ Helicone คุณจะเห็นการสนทนา NanoCode แต่ละรายการแยกเป็นเซสชันแยกกัน
+ปลั๊กอินจะแทรกส่วนหัว `Helicone-Session-Id` และ `Helicone-Session-Name` ลงในคำขอของคุณ ในหน้าเซสชันของ Helicone คุณจะเห็นการสนทนา BetterCode แต่ละรายการแยกเป็นเซสชันแยกกัน
 
 ##### ส่วนหัวของ Helicone ทั่วไป
 
@@ -1102,11 +1102,11 @@ npm install -g nanocode-helicone-session
 
 ### llama.cpp
 
-คุณสามารถกำหนดค่า nanocode เพื่อใช้โมเดลท้องถิ่นผ่านยูทิลิตี้ [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server
+คุณสามารถกำหนดค่า bettercode เพื่อใช้โมเดลท้องถิ่นผ่านยูทิลิตี้ [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server
 
-```json title="nanocode.json" "llama.cpp" {5, 6, 8, 10-15}
+```json title="bettercode.json" "llama.cpp" {5, 6, 8, 10-15}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1169,11 +1169,11 @@ IO.NET มี 17 โมเดลที่ได้รับการปรับ
 
 ### LM Studio
 
-คุณสามารถกำหนดค่า nanocode เพื่อใช้โมเดลท้องถิ่นผ่าน LM Studio
+คุณสามารถกำหนดค่า bettercode เพื่อใช้โมเดลท้องถิ่นผ่าน LM Studio
 
-```json title="nanocode.json" "lmstudio" {5, 6, 8, 10-14}
+```json title="bettercode.json" "lmstudio" {5, 6, 8, 10-14}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1286,15 +1286,15 @@ IO.NET มี 17 โมเดลที่ได้รับการปรับ
 
 ### Ollama
 
-คุณสามารถกำหนดค่า nanocode เพื่อใช้โมเดลท้องถิ่นผ่าน Ollama
+คุณสามารถกำหนดค่า bettercode เพื่อใช้โมเดลท้องถิ่นผ่าน Ollama
 
 :::tip
-Ollama สามารถกำหนดค่าตัวเองสำหรับ NanoCode ได้โดยอัตโนมัติ ดู [เอกสารการบูรณาการ Ollama](https://docs.ollama.com/integrations/nanocode) เพื่อดูรายละเอียด
+Ollama สามารถกำหนดค่าตัวเองสำหรับ BetterCode ได้โดยอัตโนมัติ ดู [เอกสารการบูรณาการ Ollama](https://docs.ollama.com/integrations/bettercode) เพื่อดูรายละเอียด
 :::
 
-```json title="nanocode.json" "ollama" {5, 6, 8, 10-14}
+```json title="bettercode.json" "ollama" {5, 6, 8, 10-14}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1328,13 +1328,13 @@ Ollama สามารถกำหนดค่าตัวเองสำหร�
 
 ### Ollama Cloud
 
-วิธีใช้ Ollama Cloud กับ NanoCode:
+วิธีใช้ Ollama Cloud กับ BetterCode:
 
 1. ไปที่ [https://ollama.com/](https://ollama.com/) แล้วลงชื่อเข้าใช้หรือสร้างบัญชี
 
 2. ไปที่ **Settings** > **Keys** แล้วคลิก **Add API Key** เพื่อสร้างคีย์ API ใหม่
 
-3. คัดลอกคีย์ API เพื่อใช้ใน NanoCode
+3. คัดลอกคีย์ API เพื่อใช้ใน BetterCode
 
 4. เรียกใช้คำสั่ง `/connect` และค้นหา **Ollama Cloud**
 
@@ -1351,7 +1351,7 @@ Ollama สามารถกำหนดค่าตัวเองสำหร�
    └ enter
    ```
 
-6. **สำคัญ**: ก่อนที่จะใช้โมเดลคลาวด์ใน NanoCode คุณต้องดึงข้อมูลโมเดลในเครื่อง:
+6. **สำคัญ**: ก่อนที่จะใช้โมเดลคลาวด์ใน BetterCode คุณต้องดึงข้อมูลโมเดลในเครื่อง:
 
    ```bash
    ollama pull gpt-oss:20b-cloud
@@ -1398,19 +1398,19 @@ Ollama สามารถกำหนดค่าตัวเองสำหร�
 
 ---
 
-### NanoCode Zen
+### BetterCode Zen
 
-NanoCode Zen คือรายการโมเดลที่ได้รับการทดสอบและตรวจสอบแล้วโดยทีมงาน NanoCode [เรียนรู้เพิ่มเติม](/docs/zen)
+BetterCode Zen คือรายการโมเดลที่ได้รับการทดสอบและตรวจสอบแล้วโดยทีมงาน BetterCode [เรียนรู้เพิ่มเติม](/docs/zen)
 
-1. ลงชื่อเข้าใช้ **<a href={console}>NanoCode Zen</a>** และคลิก **สร้าง API คีย์**
+1. ลงชื่อเข้าใช้ **<a href={console}>BetterCode Zen</a>** และคลิก **สร้าง API คีย์**
 
-2. เรียกใช้คำสั่ง `/connect` และค้นหา **NanoCode Zen**
+2. เรียกใช้คำสั่ง `/connect` และค้นหา **BetterCode Zen**
 
    ```txt
    /connect
    ```
 
-3. ป้อนคีย์ NanoCode API ของคุณ
+3. ป้อนคีย์ BetterCode API ของคุณ
 
    ```txt
    ┌ API key
@@ -1452,11 +1452,11 @@ NanoCode Zen คือรายการโมเดลที่ได้รั�
    /models
    ```
 
-   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า nanocode ของคุณได้
+   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า bettercode ของคุณได้
 
-   ```json title="nanocode.json" {6}
+   ```json title="bettercode.json" {6}
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1467,11 +1467,11 @@ NanoCode Zen คือรายการโมเดลที่ได้รั�
    }
    ```
 
-5. คุณยังสามารถปรับแต่งได้ผ่านการกำหนดค่า nanocode ของคุณ นี่คือตัวอย่างการระบุผู้ให้บริการ
+5. คุณยังสามารถปรับแต่งได้ผ่านการกำหนดค่า bettercode ของคุณ นี่คือตัวอย่างการระบุผู้ให้บริการ
 
-   ```json title="nanocode.json"
+   ```json title="bettercode.json"
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1519,7 +1519,7 @@ SAP AI Core ให้การเข้าถึงโมเดลมากก�
    หรือตั้งค่าตัวแปรสภาพแวดล้อม `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' nanocode
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' bettercode
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -1531,7 +1531,7 @@ SAP AI Core ให้การเข้าถึงโมเดลมากก�
 4. เลือกตั้งค่ารหัสการปรับใช้และกลุ่มทรัพยากร:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group nanocode
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group bettercode
    ```
 
    :::note
@@ -1608,7 +1608,7 @@ STACKIT AI Model Serving มอบสภาพแวดล้อมการโ�
 
 ### Scaleway
 
-วิธีใช้ [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) กับ Nanocode:
+วิธีใช้ [Scaleway Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) กับ Bettercode:
 
 1. ไปที่ [Scaleway Console IAM settings](https://console.scaleway.com/iam/api-keys) เพื่อสร้างคีย์ API ใหม่
 
@@ -1716,11 +1716,11 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
    /models
    ```
 
-คุณยังสามารถปรับแต่งโมเดลผ่านการกำหนดค่า nanocode ของคุณได้ นี่คือตัวอย่างการระบุลำดับการกำหนดเส้นทางผู้ให้บริการ
+คุณยังสามารถปรับแต่งโมเดลผ่านการกำหนดค่า bettercode ของคุณได้ นี่คือตัวอย่างการระบุลำดับการกำหนดเส้นทางผู้ให้บริการ
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -1826,11 +1826,11 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
    /models
    ```
 
-   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า nanocode ของคุณได้
+   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า bettercode ของคุณได้
 
-   ```json title="nanocode.json" {6}
+   ```json title="bettercode.json" {6}
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "zenmux": {
          "models": {
@@ -1848,7 +1848,7 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 หากต้องการเพิ่มผู้ให้บริการที่ **เข้ากันได้กับ OpenAI** ใดๆ ที่ไม่มีรายชื่ออยู่ในคำสั่ง `/connect`:
 
 :::tip
-คุณสามารถใช้ผู้ให้บริการที่เข้ากันได้กับ OpenAI กับ nanocode ได้ ผู้ให้บริการ AI สมัยใหม่ส่วนใหญ่เสนอ API ที่เข้ากันได้กับ OpenAI
+คุณสามารถใช้ผู้ให้บริการที่เข้ากันได้กับ OpenAI กับ bettercode ได้ ผู้ให้บริการ AI สมัยใหม่ส่วนใหญ่เสนอ API ที่เข้ากันได้กับ OpenAI
 :::
 
 1. เรียกใช้คำสั่ง `/connect` และเลื่อนลงไปที่ **Other**
@@ -1887,18 +1887,18 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 
    ┌  Add credential
    │
-   ▲  This only stores a credential for myprovider - you will need to configure it in nanocode.json, check the docs for examples.
+   ▲  This only stores a credential for myprovider - you will need to configure it in bettercode.json, check the docs for examples.
    │
    ◇  Enter your API key
    │  sk-...
    └
    ```
 
-4. สร้างหรืออัปเดตไฟล์ `nanocode.json` ของคุณในไดเร็กทอรีโครงการของคุณ:
+4. สร้างหรืออัปเดตไฟล์ `bettercode.json` ของคุณในไดเร็กทอรีโครงการของคุณ:
 
-   ```json title="nanocode.json" ""myprovider"" {5-15}
+   ```json title="bettercode.json" ""myprovider"" {5-15}
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "myprovider": {
          "npm": "@ai-sdk/openai-compatible",
@@ -1934,9 +1934,9 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 
 นี่คือตัวอย่างการตั้งค่าตัวเลือก `apiKey`, `headers` และรุ่น `limit`
 
-```json title="nanocode.json" {9,11,17-20}
+```json title="bettercode.json" {9,11,17-20}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1969,7 +1969,7 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 - **limit.context**: โทเค็นอินพุตสูงสุดที่โมเดลยอมรับ
 - **limit.output**: โทเค็นสูงสุดที่โมเดลสามารถสร้างได้
 
-ฟิลด์ `limit` ช่วยให้ NanoCode เข้าใจว่าคุณมีบริบทเหลืออยู่เท่าใด ผู้ให้บริการมาตรฐานจะดึงข้อมูลเหล่านี้จาก models.dev โดยอัตโนมัติ
+ฟิลด์ `limit` ช่วยให้ BetterCode เข้าใจว่าคุณมีบริบทเหลืออยู่เท่าใด ผู้ให้บริการมาตรฐานจะดึงข้อมูลเหล่านี้จาก models.dev โดยอัตโนมัติ
 
 ---
 
@@ -1977,17 +1977,17 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 
 หากคุณประสบปัญหาในการกำหนดค่าผู้ให้บริการ ให้ตรวจสอบสิ่งต่อไปนี้:
 
-1. **ตรวจสอบการตั้งค่าการรับรองความถูกต้อง**: รัน `nanocode auth list` เพื่อดูว่ามีการเพิ่มข้อมูลรับรอง
+1. **ตรวจสอบการตั้งค่าการรับรองความถูกต้อง**: รัน `bettercode auth list` เพื่อดูว่ามีการเพิ่มข้อมูลรับรอง
    สำหรับผู้ให้บริการในการกำหนดค่าของคุณหรือไม่
 
    สิ่งนี้ใช้ไม่ได้กับผู้ให้บริการเช่น Amazon Bedrock ซึ่งอาศัยตัวแปรสภาพแวดล้อมสำหรับการตรวจสอบสิทธิ์
 
-2. สำหรับผู้ให้บริการที่กำหนดเอง ให้ตรวจสอบการกำหนดค่า nanocode และ:
-   - ตรวจสอบให้แน่ใจว่า ID ผู้ให้บริการที่ใช้ในคำสั่ง `/connect` ตรงกับ ID ในการกำหนดค่า nanocode ของคุณ
+2. สำหรับผู้ให้บริการที่กำหนดเอง ให้ตรวจสอบการกำหนดค่า bettercode และ:
+   - ตรวจสอบให้แน่ใจว่า ID ผู้ให้บริการที่ใช้ในคำสั่ง `/connect` ตรงกับ ID ในการกำหนดค่า bettercode ของคุณ
    - ใช้แพ็คเกจ npm ที่ถูกต้องสำหรับผู้ให้บริการ ตัวอย่างเช่น ใช้ `@ai-sdk/cerebras` สำหรับ Cerebras และสำหรับผู้ให้บริการอื่นๆ ที่เข้ากันได้กับ OpenAI ให้ใช้ `@ai-sdk/openai-compatible`
    - ตรวจสอบว่าใช้จุดสิ้นสุด API ที่ถูกต้องในฟิลด์ `options.baseURL`
 
-3. ป้อนคีย์ NanoCode API ของคุณ
+3. ป้อนคีย์ BetterCode API ของคุณ
 
    ```txt
    ┌ API key
@@ -2029,11 +2029,11 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
    /models
    ```
 
-   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า nanocode ของคุณ
+   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า bettercode ของคุณ
 
-   ```json title="nanocode.json" {6}
+   ```json title="bettercode.json" {6}
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -2044,11 +2044,11 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
    }
    ```
 
-5. คุณยังสามารถปรับแต่งได้ผ่านการกำหนดค่า nanocode ของคุณ นี่คือตัวอย่างการระบุผู้ให้บริการ
+5. คุณยังสามารถปรับแต่งได้ผ่านการกำหนดค่า bettercode ของคุณ นี่คือตัวอย่างการระบุผู้ให้บริการ
 
-   ```json title="nanocode.json"
+   ```json title="bettercode.json"
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -2096,7 +2096,7 @@ SAP AI Core ให้การเข้าถึงโมเดลมากก�
    หรือตั้งค่าตัวแปรสภาพแวดล้อม `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' nanocode
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' bettercode
    ```
 
    หรือเพิ่มลงในโปรไฟล์ทุบตีของคุณ:
@@ -2108,7 +2108,7 @@ SAP AI Core ให้การเข้าถึงโมเดลมากก�
 4. ตั้งค่า ID การนำไปใช้งานและกลุ่มทรัพยากรเพิ่มเติม:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group nanocode
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group bettercode
    ```
 
    :::note
@@ -2152,7 +2152,7 @@ SAP AI Core ให้การเข้าถึงโมเดลมากก�
 
 ### สเกลเวย์
 
-วิธีใช้ [Scaleway Generative API](https://www.scaleway.com/en/docs/generative-apis/) กับ Nanocode:
+วิธีใช้ [Scaleway Generative API](https://www.scaleway.com/en/docs/generative-apis/) กับ Bettercode:
 
 1. ไปที่ [การตั้งค่า Scaleway Console IAM](https://console.scaleway.com/iam/api-keys) เพื่อสร้างคีย์ API ใหม่
 
@@ -2260,11 +2260,11 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
    /models
    ```
 
-คุณยังสามารถปรับแต่งโมเดลผ่านการกำหนดค่า nanocode ของคุณได้อีกด้วย นี่คือตัวอย่างการระบุลำดับการกำหนดเส้นทางของผู้ให้บริการ
+คุณยังสามารถปรับแต่งโมเดลผ่านการกำหนดค่า bettercode ของคุณได้อีกด้วย นี่คือตัวอย่างการระบุลำดับการกำหนดเส้นทางของผู้ให้บริการ
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -2370,11 +2370,11 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
    /models
    ```
 
-   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า nanocode ของคุณ
+   คุณยังสามารถเพิ่มโมเดลเพิ่มเติมผ่านการกำหนดค่า bettercode ของคุณ
 
-   ```json title="nanocode.json" {6}
+   ```json title="bettercode.json" {6}
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "zenmux": {
          "models": {
@@ -2392,7 +2392,7 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 หากต้องการเพิ่มผู้ให้บริการ **รองรับ OpenAI** ที่ไม่อยู่ในคำสั่ง `/connect`:
 
 :::tip
-คุณสามารถใช้ผู้ให้บริการที่เข้ากันได้กับ OpenAI ด้วย nanocode ผู้ให้บริการ AI สมัยใหม่ส่วนใหญ่เสนอ API ที่เข้ากันได้กับ OpenAI
+คุณสามารถใช้ผู้ให้บริการที่เข้ากันได้กับ OpenAI ด้วย bettercode ผู้ให้บริการ AI สมัยใหม่ส่วนใหญ่เสนอ API ที่เข้ากันได้กับ OpenAI
 :::
 
 1. เรียกใช้คำสั่ง `/connect` และเลื่อนลงไปที่ **อื่นๆ**
@@ -2431,18 +2431,18 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 
    ┌  Add credential
    │
-   ▲  This only stores a credential for myprovider - you will need to configure it in nanocode.json, check the docs for examples.
+   ▲  This only stores a credential for myprovider - you will need to configure it in bettercode.json, check the docs for examples.
    │
    ◇  Enter your API key
    │  sk-...
    └
    ```
 
-4. สร้างหรืออัปเดตไฟล์ `nanocode.json` ในไดเรกทอรีโครงการของคุณ:
+4. สร้างหรืออัปเดตไฟล์ `bettercode.json` ในไดเรกทอรีโครงการของคุณ:
 
-   ```json title="nanocode.json" ""myprovider"" {5-15}
+   ```json title="bettercode.json" ""myprovider"" {5-15}
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "provider": {
        "myprovider": {
          "npm": "@ai-sdk/openai-compatible",
@@ -2478,9 +2478,9 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 
 นี่คือตัวอย่างการตั้งค่าตัวเลือก `apiKey`, `headers` และโมเดล `limit`
 
-```json title="nanocode.json" {9,11,17-20}
+```json title="bettercode.json" {9,11,17-20}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",
@@ -2513,7 +2513,7 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 - **limit.context**: Input Tokens สูงสุดที่โมเดลยอมรับ
 - **limit.output**: Output Tokens สูงสุดที่โมเดลสามารถสร้างได้
 
-ช่อง `limit` ช่วยให้ NanoCode เข้าใจบริบทที่คุณเหลืออยู่ ผู้ให้บริการมาตรฐานจะดึงข้อมูลเหล่านี้จาก models.dev โดยอัตโนมัติ
+ช่อง `limit` ช่วยให้ BetterCode เข้าใจบริบทที่คุณเหลืออยู่ ผู้ให้บริการมาตรฐานจะดึงข้อมูลเหล่านี้จาก models.dev โดยอัตโนมัติ
 
 ---
 
@@ -2521,12 +2521,12 @@ Vercel AI Gateway ช่วยให้คุณเข้าถึงโมเ�
 
 หากคุณประสบปัญหาในการกำหนดค่าผู้ให้บริการ ให้ตรวจสอบสิ่งต่อไปนี้:
 
-1. **ตรวจสอบการตั้งค่าการรับรองความถูกต้อง**: เรียกใช้ `nanocode auth list` เพื่อดูว่ามีข้อมูลรับรองหรือไม่
+1. **ตรวจสอบการตั้งค่าการรับรองความถูกต้อง**: เรียกใช้ `bettercode auth list` เพื่อดูว่ามีข้อมูลรับรองหรือไม่
    สำหรับผู้ให้บริการจะถูกเพิ่มในการกำหนดค่าของคุณ
 
    สิ่งนี้ใช้ไม่ได้กับผู้ให้บริการอย่าง Amazon Bedrock ที่ต้องอาศัยตัวแปรสภาพแวดล้อมสำหรับการตรวจสอบสิทธิ์
 
-2. สำหรับผู้ให้บริการแบบกำหนดเอง ให้ตรวจสอบการกำหนดค่า nanocode และ:
-   - ตรวจสอบให้แน่ใจว่า ID ผู้ให้บริการที่ใช้ในคำสั่ง `/connect` ตรงกับ ID ในการกำหนดค่า nanocode ของคุณ
+2. สำหรับผู้ให้บริการแบบกำหนดเอง ให้ตรวจสอบการกำหนดค่า bettercode และ:
+   - ตรวจสอบให้แน่ใจว่า ID ผู้ให้บริการที่ใช้ในคำสั่ง `/connect` ตรงกับ ID ในการกำหนดค่า bettercode ของคุณ
    - มีการใช้แพ็คเกจ npm ที่ถูกต้องสำหรับผู้ให้บริการ ตัวอย่างเช่น ใช้ `@ai-sdk/cerebras` สำหรับ Cerebras และสำหรับผู้ให้บริการรายอื่นที่เข้ากันได้กับ OpenAI ให้ใช้ `@ai-sdk/openai-compatible`
    - ตรวจสอบว่ามีการใช้จุดสิ้นสุด API ที่ถูกต้องในช่อง `options.baseURL`

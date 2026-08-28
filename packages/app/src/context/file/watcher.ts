@@ -1,4 +1,4 @@
-import type { FileNode } from "@nanocode-ai/sdk/v2"
+import type { FileNode } from "@bettercode-ai/sdk/v2"
 
 type WatcherEvent = {
   type: string

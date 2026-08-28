@@ -1,4 +1,4 @@
-import nanocodeWordmarkDark from "../asset/logo-ornate-dark.svg"
+import bettercodeWordmarkDark from "../asset/logo-ornate-dark.svg"
 import { query } from "@solidjs/router"
 import { createEffect, createMemo, createSignal, For, onCleanup, onMount, Show } from "solid-js"
 import { useI18n } from "../context/i18n"
@@ -8,12 +8,12 @@ import { route, type Locale } from "../lib/language"
 export type HeaderLink = { href: string; label: string }
 
 export const githubLink = {
-  href: "https://github.com/dhyabi2/nanocode",
-  apiHref: "https://api.github.com/repos/dhyabi2/nanocode",
+  href: "https://github.com/dhyabi2/bettercode",
+  apiHref: "https://api.github.com/repos/dhyabi2/bettercode",
   fallbackStars: "195K",
 }
 export const themePreferences = ["dark", "light", "system"] as const
-export const themeStorageKey = "nanocode:stats-theme"
+export const themeStorageKey = "bettercode:stats-theme"
 export type ThemePreference = (typeof themePreferences)[number]
 
 const compactNumberFormatter = new Intl.NumberFormat("en", {
@@ -133,8 +133,8 @@ export function Header(props: { githubStars: string; links?: readonly HeaderLink
             <strong>{i18n.t("header.github")}</strong>
             <span>[{props.githubStars}]</span>
           </a>
-          <a data-slot="header-button" data-variant="contrast" href="https://nanocode.ai/">
-            <strong>{i18n.t("header.tryNanoCode")}</strong>
+          <a data-slot="header-button" data-variant="contrast" href="https://bettercode.ai/">
+            <strong>{i18n.t("header.tryBetterCode")}</strong>
           </a>
           <button
             data-slot="menu-button"
@@ -203,9 +203,9 @@ function DataWordmark() {
   )
 }
 
-function NanoCodeMark() {
+function BetterCodeMark() {
   return (
-    <svg data-slot="nanocode-mark" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+    <svg data-slot="bettercode-mark" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
       <path d="M40 40H0V0H40V40Z" fill="var(--stats-logo-bg)" />
       <path d="M26 29H14V17H26V29Z" fill="var(--stats-logo-fill)" />
       <path d="M26 11H14V29H26V11ZM32 35H8V5H32V35Z" fill="var(--stats-logo-stroke)" />
@@ -233,13 +233,13 @@ export function Footer(props: {
     { href: "#geo-breakdown", label: i18n.t("nav.geoBreakdown") },
   ]
   const legal = [
-    { href: "https://nanocode.ai/legal/terms-of-service", label: i18n.t("footer.terms") },
-    { href: "https://nanocode.ai/legal/privacy-policy", label: i18n.t("footer.privacy") },
+    { href: "https://bettercode.ai/legal/terms-of-service", label: i18n.t("footer.terms") },
+    { href: "https://bettercode.ai/legal/privacy-policy", label: i18n.t("footer.privacy") },
   ]
   const connect = [
-    { href: "mailto:hello@nanocode.ai", label: i18n.t("footer.contact") },
-    { href: "https://nanocode.ai/discord", label: i18n.t("footer.community") },
-    { href: "https://x.com/nanocode", label: "X" },
+    { href: "mailto:hello@bettercode.ai", label: i18n.t("footer.contact") },
+    { href: "https://bettercode.ai/discord", label: i18n.t("footer.community") },
+    { href: "https://x.com/bettercode", label: "X" },
     { href: githubLink.href, label: i18n.t("header.github") },
     { href: "https://www.youtube.com/@dhyabi2", label: i18n.t("footer.youtube") },
   ]
@@ -252,8 +252,8 @@ export function Footer(props: {
     <footer data-component="footer">
       <Show when={bridge()}>{(link) => <SectionBridge label={link().label} href={link().href} />}</Show>
       <div data-slot="footer-grid">
-        <a data-slot="footer-mark" href="https://nanocode.ai" aria-label={i18n.t("footer.homeAria")}>
-          <NanoCodeMark />
+        <a data-slot="footer-mark" href="https://bettercode.ai" aria-label={i18n.t("footer.homeAria")}>
+          <BetterCodeMark />
         </a>
         <FooterColumn title={i18n.t("footer.modelData")} links={modelStats} localHref={localHref} />
         <FooterColumn title={i18n.t("footer.legal")} links={legal} localHref={localHref} />
@@ -434,7 +434,7 @@ function SubscribeModal(props: { onClose: () => void }) {
       <div data-slot="modal-scrim" aria-hidden="true" onClick={props.onClose} />
       <div data-slot="modal-panel">
         <div data-slot="modal-brand">
-          <img data-slot="modal-logo" src={nanocodeWordmarkDark} alt="NanoCode" />
+          <img data-slot="modal-logo" src={bettercodeWordmarkDark} alt="BetterCode" />
           <button
             data-slot="modal-close"
             type="button"

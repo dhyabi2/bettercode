@@ -7,9 +7,9 @@ import config from "../../../../config.mjs"
 export const console = config.console
 export const email = `mailto:${config.email}`
 
-NanoCode Go هو اشتراك منخفض التكلفة بقيمة **$10/شهريًا** يمنحك وصولًا موثوقًا إلى نماذج البرمجة المفتوحة الشائعة.
+BetterCode Go هو اشتراك منخفض التكلفة بقيمة **$10/شهريًا** يمنحك وصولًا موثوقًا إلى نماذج البرمجة المفتوحة الشائعة.
 
-يعمل Go مثل أي مزود آخر في NanoCode. تشترك في NanoCode Go وتحصل على مفتاح API الخاص بك. وهو **اختياري تمامًا**، ولا تحتاج إلى استخدامه لاستخدام NanoCode.
+يعمل Go مثل أي مزود آخر في BetterCode. تشترك في BetterCode Go وتحصل على مفتاح API الخاص بك. وهو **اختياري تمامًا**، ولا تحتاج إلى استخدامه لاستخدام BetterCode.
 
 صُمّم أساسًا للمستخدمين الدوليين، ويوفّر وصولًا عالميًا مستقرًا.
 
@@ -22,7 +22,7 @@ NanoCode Go هو اشتراك منخفض التكلفة بقيمة **$10/شهر�
 ومع ذلك، قد يكون الحصول على وصول موثوق إليها بزمن استجابة منخفض أمرًا صعبًا. إذ يختلف المزودون في الجودة والتوافر.
 
 :::tip
-اختبرنا مجموعة مختارة من النماذج والمزودين الذين يعملون جيدًا مع NanoCode.
+اختبرنا مجموعة مختارة من النماذج والمزودين الذين يعملون جيدًا مع BetterCode.
 :::
 
 لمعالجة ذلك، قمنا بعدة أمور:
@@ -31,20 +31,20 @@ NanoCode Go هو اشتراك منخفض التكلفة بقيمة **$10/شهر�
 2. ثم عملنا مع عدد قليل من المزودين للتأكد من تقديم هذه النماذج بالشكل الصحيح.
 3. وأخيرًا، أجرينا مقارنات معيارية لمزيج النموذج/المزود، وتوصلنا إلى قائمة نشعر بالثقة في التوصية بها.
 
-يمنحك NanoCode Go الوصول إلى هذه النماذج مقابل **$10/شهريًا**.
+يمنحك BetterCode Go الوصول إلى هذه النماذج مقابل **$10/شهريًا**.
 
 ---
 
 ## كيف يعمل
 
-يعمل NanoCode Go مثل أي مزود آخر في NanoCode.
+يعمل BetterCode Go مثل أي مزود آخر في BetterCode.
 
-1. تسجّل الدخول إلى **<a href={console}>NanoCode Zen</a>**، وتشترك في Go، ثم تنسخ مفتاح API الخاص بك.
-2. تشغّل الأمر `/connect` في TUI، وتختار `NanoCode Go`، ثم تلصق مفتاح API الخاص بك.
+1. تسجّل الدخول إلى **<a href={console}>BetterCode Zen</a>**، وتشترك في Go، ثم تنسخ مفتاح API الخاص بك.
+2. تشغّل الأمر `/connect` في TUI، وتختار `BetterCode Go`، ثم تلصق مفتاح API الخاص بك.
 3. شغّل `/models` في TUI لرؤية قائمة النماذج المتاحة عبر Go.
 
 :::note
-يمكن لعضو واحد فقط في كل workspace الاشتراك في NanoCode Go.
+يمكن لعضو واحد فقط في كل workspace الاشتراك في BetterCode Go.
 :::
 
 تشمل قائمة النماذج الحالية:
@@ -78,7 +78,7 @@ NanoCode Go هو اشتراك منخفض التكلفة بقيمة **$10/شهر�
 
 ## حدود الاستخدام
 
-يتضمن NanoCode Go الحدود التالية:
+يتضمن BetterCode Go الحدود التالية:
 
 - **حد 5 ساعات** — استخدام بقيمة $12
 - **الحد الأسبوعي** — استخدام بقيمة $30
@@ -208,31 +208,31 @@ NanoCode Go هو اشتراك منخفض التكلفة بقيمة **$10/شهر�
 
 | Model                        | Model ID                     | Endpoint                                         | AI SDK Package              |
 | ---------------------------- | ---------------------------- | ------------------------------------------------ | --------------------------- |
-| Grok 4.5                     | grok-4.5                     | `https://nanocode.ai/zen/go/v1/responses`        | `@ai-sdk/openai`            |
-| GPT 5.6 Luna                 | gpt-5.6-luna                 | `https://nanocode.ai/zen/go/v1/responses`        | `@ai-sdk/openai`            |
-| GLM-5.3                      | glm-5.3                      | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| GLM-5.2                      | glm-5.2                      | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| GLM-5.1                      | glm-5.1                      | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| Kimi K3                      | kimi-k3                      | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| Kimi K2.7 Code               | kimi-k2.7-code               | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| Kimi K2.6                    | kimi-k2.6                    | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| DeepSeek V4 Pro              | deepseek-v4-pro              | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| DeepSeek V4 Flash            | deepseek-v4-flash            | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| DeepSeek V4 Flash Vision Exp | deepseek-v4-flash-vision-exp | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| MiMo-V2.5                    | mimo-v2.5                    | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| MiMo-V2.5-Pro                | mimo-v2.5-pro                | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| MiniMax M3                   | minimax-m3                   | `https://nanocode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
-| MiniMax M2.7                 | minimax-m2.7                 | `https://nanocode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
-| MiniMax M2.5                 | minimax-m2.5                 | `https://nanocode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
-| Muse Spark 1.2 Contributor   | muse-spark-1.2-contributor   | `https://nanocode.ai/zen/go/v1/responses`        | `@ai-sdk/openai`            |
-| Qwen3.8 Max                  | qwen3.8-max                  | `https://nanocode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
-| Qwen3.7 Max                  | qwen3.7-max                  | `https://nanocode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
-| Qwen3.7 Plus                 | qwen3.7-plus                 | `https://nanocode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
-| Qwen3.6 Plus                 | qwen3.6-plus                 | `https://nanocode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
-| Hy3                          | hy3                          | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
-| Ox Alpha Free                | ox-alpha-free                | `https://nanocode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| Grok 4.5                     | grok-4.5                     | `https://bettercode.ai/zen/go/v1/responses`        | `@ai-sdk/openai`            |
+| GPT 5.6 Luna                 | gpt-5.6-luna                 | `https://bettercode.ai/zen/go/v1/responses`        | `@ai-sdk/openai`            |
+| GLM-5.3                      | glm-5.3                      | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| GLM-5.2                      | glm-5.2                      | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| GLM-5.1                      | glm-5.1                      | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| Kimi K3                      | kimi-k3                      | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| Kimi K2.7 Code               | kimi-k2.7-code               | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| Kimi K2.6                    | kimi-k2.6                    | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| DeepSeek V4 Pro              | deepseek-v4-pro              | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| DeepSeek V4 Flash            | deepseek-v4-flash            | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| DeepSeek V4 Flash Vision Exp | deepseek-v4-flash-vision-exp | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| MiMo-V2.5                    | mimo-v2.5                    | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| MiMo-V2.5-Pro                | mimo-v2.5-pro                | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| MiniMax M3                   | minimax-m3                   | `https://bettercode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
+| MiniMax M2.7                 | minimax-m2.7                 | `https://bettercode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
+| MiniMax M2.5                 | minimax-m2.5                 | `https://bettercode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
+| Muse Spark 1.2 Contributor   | muse-spark-1.2-contributor   | `https://bettercode.ai/zen/go/v1/responses`        | `@ai-sdk/openai`            |
+| Qwen3.8 Max                  | qwen3.8-max                  | `https://bettercode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
+| Qwen3.7 Max                  | qwen3.7-max                  | `https://bettercode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
+| Qwen3.7 Plus                 | qwen3.7-plus                 | `https://bettercode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
+| Qwen3.6 Plus                 | qwen3.6-plus                 | `https://bettercode.ai/zen/go/v1/messages`         | `@ai-sdk/anthropic`         |
+| Hy3                          | hy3                          | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
+| Ox Alpha Free                | ox-alpha-free                | `https://bettercode.ai/zen/go/v1/chat/completions` | `@ai-sdk/openai-compatible` |
 
-يستخدم [model id](/docs/config/#models) في إعدادات NanoCode لديك التنسيق `nanocode-go/<model-id>`. على سبيل المثال، بالنسبة إلى Kimi K3، ستستخدم `nanocode-go/kimi-k3` في إعداداتك.
+يستخدم [model id](/docs/config/#models) في إعدادات BetterCode لديك التنسيق `bettercode-go/<model-id>`. على سبيل المثال، بالنسبة إلى Kimi K3، ستستخدم `bettercode-go/kimi-k3` في إعداداتك.
 
 ---
 
@@ -241,7 +241,7 @@ NanoCode Go هو اشتراك منخفض التكلفة بقيمة **$10/شهر�
 يمكنك جلب القائمة الكاملة بالنماذج المتاحة وبياناتها الوصفية من:
 
 ```
-https://nanocode.ai/zen/go/v1/models
+https://bettercode.ai/zen/go/v1/models
 ```
 
 ---
@@ -282,9 +282,9 @@ https://nanocode.ai/zen/go/v1/models
 
 ## الأهداف
 
-أنشأنا NanoCode Go من أجل:
+أنشأنا BetterCode Go من أجل:
 
 1. جعل البرمجة بالذكاء الاصطناعي **متاحة** لعدد أكبر من الأشخاص عبر اشتراك منخفض التكلفة.
 2. توفير وصول **موثوق** إلى أفضل نماذج البرمجة المفتوحة.
 3. تنسيق نماذج **مختبرة وخضعت لمقارنات معيارية** لاستخدامها مع وكلاء البرمجة.
-4. **عدم فرض قيود ارتباط** من خلال السماح لك أيضًا باستخدام أي مزود آخر مع NanoCode.
+4. **عدم فرض قيود ارتباط** من خلال السماح لك أيضًا باستخدام أي مزود آخر مع BetterCode.

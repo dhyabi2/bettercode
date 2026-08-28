@@ -21,7 +21,7 @@ import { NvidiaPlugin } from "./provider/nvidia"
 import { OpenAIPlugin } from "./provider/openai"
 import { SnowflakeCortexPlugin } from "./provider/snowflake-cortex"
 import { OpenAICompatiblePlugin } from "./provider/openai-compatible"
-import { NanocodePlugin } from "./provider/nanocode"
+import { BettercodePlugin } from "./provider/bettercode"
 import { OpenRouterPlugin } from "./provider/openrouter"
 import { PerplexityPlugin } from "./provider/perplexity"
 import { SapAICorePlugin } from "./provider/sap-ai-core"
@@ -55,7 +55,7 @@ export const ProviderPlugins: PluginInternal.Plugin<PluginInternal.Requirements 
   LLMGatewayPlugin,
   MistralPlugin,
   NvidiaPlugin,
-  NanocodePlugin,
+  BettercodePlugin,
   SnowflakeCortexPlugin,
   OpenAICompatiblePlugin,
   OpenAIPlugin,

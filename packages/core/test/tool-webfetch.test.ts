@@ -2,14 +2,14 @@ import { describe, expect, test } from "bun:test"
 import { Duration, Effect, Fiber, Layer, Schema } from "effect"
 import * as TestClock from "effect/testing/TestClock"
 import { HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { LayerNodePlatform } from "@nanocode-ai/core/effect/app-node-platform"
-import { PermissionV2 } from "@nanocode-ai/core/permission"
-import { SessionV2 } from "@nanocode-ai/core/session"
-import { ToolRegistry } from "@nanocode-ai/core/tool/registry"
-import { WebFetchTool } from "@nanocode-ai/core/tool/webfetch"
-import { ToolOutputStore } from "@nanocode-ai/core/tool-output-store"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { LayerNodePlatform } from "@bettercode-ai/core/effect/app-node-platform"
+import { PermissionV2 } from "@bettercode-ai/core/permission"
+import { SessionV2 } from "@bettercode-ai/core/session"
+import { ToolRegistry } from "@bettercode-ai/core/tool/registry"
+import { WebFetchTool } from "@bettercode-ai/core/tool/webfetch"
+import { ToolOutputStore } from "@bettercode-ai/core/tool-output-store"
 import { testEffect } from "./lib/effect"
 import { toolIdentity, executeTool, settleTool, toolDefinitions } from "./lib/tool"
 
@@ -260,7 +260,7 @@ describe("WebFetchTool registration", () => {
       })
       expect(requests).toHaveLength(2)
       expect(requests[0]?.headers["user-agent"]).toContain("Mozilla/5.0")
-      expect(requests[1]?.headers["user-agent"]).toBe("nanocode")
+      expect(requests[1]?.headers["user-agent"]).toBe("bettercode")
     }),
   )
 

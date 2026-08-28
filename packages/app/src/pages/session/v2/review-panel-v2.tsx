@@ -1,14 +1,14 @@
 import { createMemo, createResource, createSignal, Show, type JSX } from "solid-js"
-import type { SnapshotFileDiff, VcsFileDiff } from "@nanocode-ai/sdk/v2"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
+import type { SnapshotFileDiff, VcsFileDiff } from "@bettercode-ai/sdk/v2"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
 import {
   SESSION_REVIEW_V2_SIDEBAR_WIDTH_MAX,
   SESSION_REVIEW_V2_SIDEBAR_WIDTH_MIN,
   SessionReviewV2,
   SessionReviewV2Sidebar,
-} from "@nanocode-ai/session-ui/v2/session-review-v2"
-import { SessionReviewFilePreviewV2 } from "@nanocode-ai/session-ui/v2/session-review-file-preview-v2"
-import { DiffChanges } from "@nanocode-ai/ui/v2/diff-changes-v2"
+} from "@bettercode-ai/session-ui/v2/session-review-v2"
+import { SessionReviewFilePreviewV2 } from "@bettercode-ai/session-ui/v2/session-review-file-preview-v2"
+import { DiffChanges } from "@bettercode-ai/ui/v2/diff-changes-v2"
 import type {
   SessionReviewComment,
   SessionReviewCommentActions,
@@ -17,7 +17,7 @@ import type {
   SessionReviewDiffStyle,
   SessionReviewFocus,
   SessionReviewLineComment,
-} from "@nanocode-ai/session-ui/session-review"
+} from "@bettercode-ai/session-ui/session-review"
 import FileTreeV2 from "@/components/file-tree-v2"
 import { useLanguage } from "@/context/language"
 import { useSDK } from "@/context/sdk"

@@ -1154,7 +1154,7 @@ class Event extends _HeyApiClient {
   }
 }
 
-export class NanocodeClient extends _HeyApiClient {
+export class BettercodeClient extends _HeyApiClient {
   /**
    * Respond to a permission request
    */

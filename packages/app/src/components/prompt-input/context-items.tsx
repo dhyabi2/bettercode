@@ -1,10 +1,10 @@
 import { Component, For, Show } from "solid-js"
 import { Dynamic } from "solid-js/web"
-import { FileIcon } from "@nanocode-ai/ui/file-icon"
-import { IconButton } from "@nanocode-ai/ui/icon-button"
-import { Tooltip } from "@nanocode-ai/ui/tooltip"
-import { TooltipV2 } from "@nanocode-ai/ui/v2/tooltip-v2"
-import { getDirectory, getFilename, getFilenameTruncated } from "@nanocode-ai/core/util/path"
+import { FileIcon } from "@bettercode-ai/ui/file-icon"
+import { IconButton } from "@bettercode-ai/ui/icon-button"
+import { Tooltip } from "@bettercode-ai/ui/tooltip"
+import { TooltipV2 } from "@bettercode-ai/ui/v2/tooltip-v2"
+import { getDirectory, getFilename, getFilenameTruncated } from "@bettercode-ai/core/util/path"
 import type { ContextItem } from "@/context/prompt"
 
 type PromptContextItem = ContextItem & { key: string }

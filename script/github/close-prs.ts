@@ -2,7 +2,7 @@
 
 import { parseArgs } from "util"
 
-const defaultRepo = "dhyabi2/nanocode"
+const defaultRepo = "dhyabi2/bettercode"
 const defaultAgeMonths = 1
 const defaultThreshold = 2
 const defaultSleepMs = 20_000
@@ -123,7 +123,7 @@ type CleanupCandidate = PullRequest & {
 
 const message = `Automated PR Cleanup
 
-Thank you for contributing to nanocode.
+Thank you for contributing to bettercode.
 
 Due to the high volume of PRs from users and AI agents, we periodically close older PRs using automated criteria so maintainers can focus review time on the most active and community-supported contributions.
 

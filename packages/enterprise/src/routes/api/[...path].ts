@@ -18,9 +18,9 @@ app
     openAPIRouteHandler(app, {
       documentation: {
         info: {
-          title: "Nanocode Enterprise API",
+          title: "Bettercode Enterprise API",
           version: "1.0.0",
-          description: "Nanocode Enterprise API endpoints",
+          description: "Bettercode Enterprise API endpoints",
         },
         openapi: "3.1.1",
       },

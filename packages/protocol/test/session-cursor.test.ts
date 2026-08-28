@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
 import { Effect, Schema } from "effect"
 import { SessionHistoryQuery, SessionsCursor } from "../src/groups/session"
-import { Session } from "@nanocode-ai/schema/session"
+import { Session } from "@bettercode-ai/schema/session"
 
 describe("SessionsCursor", () => {
   test("round trips without Node globals", async () => {

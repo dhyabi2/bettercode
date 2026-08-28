@@ -1,4 +1,4 @@
-import { define } from "@nanocode-ai/plugin/v2/effect"
+import { define } from "@bettercode-ai/plugin/v2/effect"
 import { Effect } from "effect"
 
 export default define({

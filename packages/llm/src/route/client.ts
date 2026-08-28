@@ -163,7 +163,7 @@ export interface GenerateMethod {
   (request: LLMRequest): Effect.Effect<LLMResponse, LLMError>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/LLMClient") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/LLMClient") {}
 
 const resolveRequestOptions = (request: LLMRequest) => {
   const routeDefaults = request.model.route.defaults

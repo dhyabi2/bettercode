@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "version": "1.18.21",
-  "name": "@nanocode-ai/core",
+  "name": "@bettercode-ai/core",
   "type": "module",
   "license": "MIT",
   "private": true,
@@ -13,7 +13,7 @@
     "typecheck": "tsgo --noEmit"
   },
   "bin": {
-    "nanocode": "./bin/nanocode"
+    "bettercode": "./bin/bettercode"
   },
   "exports": {
     "./effect/layer-node": "./src/effect/layer-node.ts",
@@ -57,7 +57,7 @@
     "@parcel/watcher-linux-x64-musl": "2.5.1",
     "@parcel/watcher-win32-arm64": "2.5.1",
     "@parcel/watcher-win32-x64": "2.5.1",
-    "@nanocode-ai/http-recorder": "workspace:*",
+    "@bettercode-ai/http-recorder": "workspace:*",
     "drizzle-kit": "catalog:"
   },
   "dependencies": {
@@ -89,11 +89,11 @@
     "@ff-labs/fff-bun": "0.9.4",
     "@npmcli/arborist": "9.4.0",
     "@npmcli/config": "10.8.1",
-    "@nanocode-ai/effect-drizzle-sqlite": "workspace:*",
-    "@nanocode-ai/effect-sqlite-node": "workspace:*",
-    "@nanocode-ai/llm": "workspace:*",
-    "@nanocode-ai/schema": "workspace:*",
-    "@nanocode-ai/plugin": "workspace:*",
+    "@bettercode-ai/effect-drizzle-sqlite": "workspace:*",
+    "@bettercode-ai/effect-sqlite-node": "workspace:*",
+    "@bettercode-ai/llm": "workspace:*",
+    "@bettercode-ai/schema": "workspace:*",
+    "@bettercode-ai/plugin": "workspace:*",
     "@opentelemetry/api": "1.9.0",
     "@opentelemetry/context-async-hooks": "2.6.1",
     "@opentelemetry/exporter-trace-otlp-http": "0.214.0",

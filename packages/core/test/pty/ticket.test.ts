@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { PtyID } from "@nanocode-ai/core/pty/schema"
-import { PtyTicket } from "@nanocode-ai/core/pty/ticket"
-import { WorkspaceV2 } from "@nanocode-ai/core/workspace"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { PtyID } from "@bettercode-ai/core/pty/schema"
+import { PtyTicket } from "@bettercode-ai/core/pty/ticket"
+import { WorkspaceV2 } from "@bettercode-ai/core/workspace"
 import { testEffect } from "../lib/effect"
 
 const it = testEffect(LayerNode.compile(PtyTicket.node))

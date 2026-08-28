@@ -1,5 +1,5 @@
 {
-  "$schema": "https://nanocode.ai/theme.json",
+  "$schema": "https://bettercode.ai/theme.json",
   "defs": {
     "nightOwlBg": "#011627",
     "nightOwlFg": "#d6deeb",

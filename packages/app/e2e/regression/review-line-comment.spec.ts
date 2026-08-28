@@ -1,9 +1,9 @@
 import { expect, test, type Page } from "@playwright/test"
-import { base64Encode } from "@nanocode-ai/core/util/encode"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectAppVisible, expectSessionTitle } from "../utils/waits"
 
-const directory = "C:/NanoCode/ReviewLineCommentRegression"
+const directory = "C:/BetterCode/ReviewLineCommentRegression"
 const sessionID = "ses_review_line_comment_regression"
 const title = "Review line comment regression"
 
@@ -87,7 +87,7 @@ test("stages a submitted line comment in the prompt context", async ({ page }) =
 
 async function openReview(page: Page) {
   await page.setViewportSize({ width: 700, height: 900 })
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     protocol: "v2",
     directory,
     project: {
@@ -130,7 +130,7 @@ async function openReview(page: Page) {
             time: { created: 1700000000000 },
             summary: { diffs: [] },
             agent: "build",
-            model: { providerID: "nanocode", modelID: "test" },
+            model: { providerID: "bettercode", modelID: "test" },
           },
           parts: [
             {

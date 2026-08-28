@@ -4,10 +4,10 @@ import type {
   ModelListOutput,
   PermissionV2Request,
   ProviderListOutput,
-} from "@nanocode-ai/client/promise"
-import type { Agent, PermissionRequest, Project, Provider, ProviderListResponse } from "@nanocode-ai/sdk/v2/client"
-import type { Project as CurrentProject } from "@nanocode-ai/client/promise"
-import { NormalizedProviderListResponse } from "@nanocode-ai/session-ui/context"
+} from "@bettercode-ai/client/promise"
+import type { Agent, PermissionRequest, Project, Provider, ProviderListResponse } from "@bettercode-ai/sdk/v2/client"
+import type { Project as CurrentProject } from "@bettercode-ai/client/promise"
+import { NormalizedProviderListResponse } from "@bettercode-ai/session-ui/context"
 export { pathKey as directoryKey, type PathKey as DirectoryKey } from "@/utils/path-key"
 
 export const cmp = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0)

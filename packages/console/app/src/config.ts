@@ -3,11 +3,11 @@
  */
 export const config = {
   // Base URL
-  baseUrl: "https://nanocode.ai",
+  baseUrl: "https://bettercode.ai",
 
   // GitHub
   github: {
-    repoUrl: "https://github.com/dhyabi2/nanocode",
+    repoUrl: "https://github.com/dhyabi2/bettercode",
     starsFormatted: {
       compact: "195K",
       full: "195,000",
@@ -16,8 +16,8 @@ export const config = {
 
   // Social links
   social: {
-    twitter: "https://x.com/nanocode",
-    discord: "https://discord.gg/nanocode",
+    twitter: "https://x.com/bettercode",
+    discord: "https://discord.gg/bettercode",
   },
 
   // Static stats (used on landing page)

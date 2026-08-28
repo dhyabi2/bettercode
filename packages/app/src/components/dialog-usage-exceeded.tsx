@@ -1,8 +1,8 @@
 import { usePlatform } from "@/context/platform"
 import { useLanguage } from "@/context/language"
-import { Button } from "@nanocode-ai/ui/button"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { Dialog } from "@nanocode-ai/ui/dialog"
+import { Button } from "@bettercode-ai/ui/button"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { Dialog } from "@bettercode-ai/ui/dialog"
 import { JSX } from "solid-js"
 
 export type DialogGoUpsellProps = {

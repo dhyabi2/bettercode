@@ -1,5 +1,5 @@
 import { describe, expect } from "bun:test"
-import { State } from "@nanocode-ai/core/state"
+import { State } from "@bettercode-ai/core/state"
 import { Deferred, Effect, Exit, Fiber, Layer, Scope } from "effect"
 import { testEffect } from "./lib/effect"
 

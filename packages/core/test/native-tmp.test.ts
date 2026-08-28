@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { NativeTmp } from "@nanocode-ai/core/filesystem/native-tmp"
+import { NativeTmp } from "@bettercode-ai/core/filesystem/native-tmp"
 
 describe("native tmp sweep", () => {
   test("matches historical Bun extraction filenames", () => {

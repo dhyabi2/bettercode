@@ -1,6 +1,6 @@
 import { bundledLanguagesInfo } from "shiki"
-import { getFilename } from "@nanocode-ai/core/util/path"
-import type { FilePart } from "@nanocode-ai/sdk/v2"
+import { getFilename } from "@bettercode-ai/core/util/path"
+import type { FilePart } from "@bettercode-ai/sdk/v2"
 
 export function attached(part: FilePart) {
   return part.url.startsWith("data:") && !inline(part)

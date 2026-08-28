@@ -1,8 +1,8 @@
-import { createNanocodeClient, createNanocodeServer } from "@nanocode-ai/sdk"
+import { createBettercodeClient, createBettercodeServer } from "@bettercode-ai/sdk"
 import { pathToFileURL } from "bun"
 
-const server = await createNanocodeServer()
-const client = createNanocodeClient({ baseUrl: server.url })
+const server = await createBettercodeServer()
+const client = createBettercodeClient({ baseUrl: server.url })
 
 const input = await Array.fromAsync(new Bun.Glob("packages/core/*.ts").scan())
 

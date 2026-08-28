@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test"
 import path from "path"
-import { Shell } from "@nanocode-ai/core/shell"
-import { FSUtil } from "@nanocode-ai/core/fs-util"
-import { which } from "@nanocode-ai/core/util/which"
+import { Shell } from "@bettercode-ai/core/shell"
+import { FSUtil } from "@bettercode-ai/core/fs-util"
+import { which } from "@bettercode-ai/core/util/which"
 
 const withShell = async (shell: string | undefined, fn: () => void | Promise<void>) => {
   const prev = process.env.SHELL
@@ -44,8 +44,8 @@ describe("shell", () => {
     await withShell(undefined, async () => {
       const preferred = Shell.preferred()
       const acceptable = Shell.acceptable()
-      expect(Shell.preferred("nanocode-missing-shell")).toBe(preferred)
-      expect(Shell.acceptable("nanocode-missing-shell")).toBe(acceptable)
+      expect(Shell.preferred("bettercode-missing-shell")).toBe(preferred)
+      expect(Shell.acceptable("bettercode-missing-shell")).toBe(acceptable)
     })
   })
 

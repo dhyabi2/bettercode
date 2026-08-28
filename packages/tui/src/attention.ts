@@ -9,17 +9,17 @@ import type {
   TuiAttentionSoundName,
   TuiAttentionSoundPack,
   TuiAttentionSoundPackInfo,
-} from "@nanocode-ai/plugin/tui"
+} from "@bettercode-ai/plugin/tui"
 import { AttentionSoundName, type TuiConfig } from "./config"
 import { Schema } from "effect"
 import stripAnsi from "strip-ansi"
 import * as TuiAudio from "./audio"
-import defaultSoundPath from "@nanocode-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
-import questionSoundPath from "@nanocode-ai/ui/audio/bip-bop-03.mp3" with { type: "file" }
-import permissionSoundPath from "@nanocode-ai/ui/audio/staplebops-06.mp3" with { type: "file" }
-import errorSoundPath from "@nanocode-ai/ui/audio/nope-03.mp3" with { type: "file" }
-import doneSoundPath from "@nanocode-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
-import subagentDoneSoundPath from "@nanocode-ai/ui/audio/yup-01.mp3" with { type: "file" }
+import defaultSoundPath from "@bettercode-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
+import questionSoundPath from "@bettercode-ai/ui/audio/bip-bop-03.mp3" with { type: "file" }
+import permissionSoundPath from "@bettercode-ai/ui/audio/staplebops-06.mp3" with { type: "file" }
+import errorSoundPath from "@bettercode-ai/ui/audio/nope-03.mp3" with { type: "file" }
+import doneSoundPath from "@bettercode-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
+import subagentDoneSoundPath from "@bettercode-ai/ui/audio/yup-01.mp3" with { type: "file" }
 
 type FocusState = "unknown" | "focused" | "blurred"
 
@@ -38,14 +38,14 @@ type TuiAttentionHost = TuiAttention & {
   dispose(): void
 }
 
-const DEFAULT_TITLE = "nanocode"
-const DEFAULT_PACK_ID = "nanocode.default"
+const DEFAULT_TITLE = "bettercode"
+const DEFAULT_PACK_ID = "bettercode.default"
 const KV_SOUND_PACK = "attention_sound_pack"
 const TITLE_LIMIT = 80
 const MESSAGE_LIMIT = 240
 const BUILTIN_PACK: RegisteredSoundPack = {
   id: DEFAULT_PACK_ID,
-  name: "NanoCode Default",
+  name: "BetterCode Default",
   builtin: true,
   sounds: {
     default: defaultSoundPath,

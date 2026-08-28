@@ -1,4 +1,4 @@
-import { create as createIdentifier } from "@nanocode-ai/schema/identifier"
+import { create as createIdentifier } from "@bettercode-ai/schema/identifier"
 
 const prefixes = {
   job: "job",

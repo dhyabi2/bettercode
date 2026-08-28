@@ -1,9 +1,9 @@
-import { base64Encode } from "@nanocode-ai/core/util/encode"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
 import { expect, test, type Page } from "@playwright/test"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectSessionTitle } from "../utils/waits"
 
-const directory = "C:/NanoCode/TerminalTabSwitch"
+const directory = "C:/BetterCode/TerminalTabSwitch"
 const projectID = "proj_terminal_tab_switch"
 const sessionA = "ses_terminal_tab_a"
 const sessionB = "ses_terminal_tab_b"
@@ -65,7 +65,7 @@ async function readProbe(page: Page) {
 }
 
 async function setup(page: Page) {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     protocol: "v2",
     directory,
     project: {
@@ -79,13 +79,13 @@ async function setup(page: Page) {
     provider: {
       all: [
         {
-          id: "nanocode",
-          name: "NanoCode",
+          id: "bettercode",
+          name: "BetterCode",
           models: { test: { id: "test", name: "Test", limit: { context: 200_000 } } },
         },
       ],
-      connected: ["nanocode"],
-      default: { providerID: "nanocode", modelID: "test" },
+      connected: ["bettercode"],
+      default: { providerID: "bettercode", modelID: "test" },
     },
     sessions: [session(sessionA, titleA, 1700000000000), session(sessionB, titleB, 1700000001000)],
     pageMessages: () => ({ items: [] }),
@@ -105,7 +105,7 @@ async function setup(page: Page) {
     }),
   )
   await page.route(`**/api/pty/${ptyID}/connect-token*`, (route) => {
-    expect(route.request().headers()["x-nanocode-ticket"]).toBe("1")
+    expect(route.request().headers()["x-bettercode-ticket"]).toBe("1")
     const url = new URL(route.request().url())
     expect(url.searchParams.get("location[directory]")).toBe(directory)
     return route.fulfill({
@@ -124,14 +124,14 @@ async function setup(page: Page) {
     ({ directory, server, sessions }) => {
       localStorage.setItem("settings.v3", JSON.stringify({ general: { newLayoutDesigns: true } }))
       localStorage.setItem(
-        "nanocode.global.dat:server",
+        "bettercode.global.dat:server",
         JSON.stringify({
           projects: { local: [{ worktree: directory, expanded: true }] },
           lastProject: { local: directory },
         }),
       )
       localStorage.setItem(
-        "nanocode.window.browser.dat:tabs",
+        "bettercode.window.browser.dat:tabs",
         JSON.stringify(sessions.map((sessionId: string) => ({ type: "session", server, sessionId }))),
       )
     },

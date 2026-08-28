@@ -1,8 +1,8 @@
 /// <reference lib="webworker" />
 
 import { ShikiStreamTokenizer } from "@shikijs/stream"
-import { createMarkdownParser } from "@nanocode-ai/ui/context/marked-parser"
-import { NanoCodeTheme } from "@nanocode-ai/ui/context/marked-theme"
+import { createMarkdownParser } from "@bettercode-ai/ui/context/marked-parser"
+import { BetterCodeTheme } from "@bettercode-ai/ui/context/marked-theme"
 import {
   bundledLanguages,
   createHighlighter,
@@ -39,7 +39,7 @@ const parser = createMarkdownParser(async (code, language) => {
   const name = language in bundledLanguages ? language : "text"
   if (!instance.getLoadedLanguages().includes(name))
     await instance.loadLanguage(bundledLanguages[name as BundledLanguage])
-  return instance.codeToHtml(code, { lang: name as BundledLanguage, theme: "NanoCode", tabindex: false })
+  return instance.codeToHtml(code, { lang: name as BundledLanguage, theme: "BetterCode", tabindex: false })
 })
 
 self.onmessage = (event: MessageEvent<MarkdownWorkerRequest>) => {
@@ -91,7 +91,7 @@ async function highlight(request: Extract<MarkdownWorkerRequest, { type: "highli
       await instance.loadLanguage(bundledLanguages[language as BundledLanguage])
 
     if (request.complete) {
-      const result = instance.codeToTokens(request.text, { lang: language as BundledLanguage, theme: "NanoCode" })
+      const result = instance.codeToTokens(request.text, { lang: language as BundledLanguage, theme: "BetterCode" })
       streams.delete(request.key)
       post({
         type: "highlight",
@@ -115,7 +115,7 @@ async function highlight(request: Extract<MarkdownWorkerRequest, { type: "highli
       ? {
           language,
           source: "",
-          tokenizer: new ShikiStreamTokenizer({ highlighter: instance, lang: language, theme: "NanoCode" }),
+          tokenizer: new ShikiStreamTokenizer({ highlighter: instance, lang: language, theme: "BetterCode" }),
         }
       : previous
     const result = await stream.tokenizer.enqueue(request.text.slice(stream.source.length))
@@ -141,7 +141,7 @@ async function highlight(request: Extract<MarkdownWorkerRequest, { type: "highli
 }
 
 function getHighlighter() {
-  return (highlighter ??= createHighlighter({ themes: [NanoCodeTheme], langs: [] }))
+  return (highlighter ??= createHighlighter({ themes: [BetterCodeTheme], langs: [] }))
 }
 
 function post(response: MarkdownWorkerResponse) {

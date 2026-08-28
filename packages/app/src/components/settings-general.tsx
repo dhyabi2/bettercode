@@ -1,13 +1,13 @@
 import { Component, Show, createMemo, createResource, onMount, type JSX } from "solid-js"
-import { Button } from "@nanocode-ai/ui/button"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { Select } from "@nanocode-ai/ui/select"
-import { Switch } from "@nanocode-ai/ui/switch"
-import { TextField } from "@nanocode-ai/ui/text-field"
-import { Tooltip } from "@nanocode-ai/ui/tooltip"
-import { Tag } from "@nanocode-ai/ui/v2/badge-v2"
-import { useTheme, type ColorScheme } from "@nanocode-ai/ui/theme/context"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
+import { Button } from "@bettercode-ai/ui/button"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { Select } from "@bettercode-ai/ui/select"
+import { Switch } from "@bettercode-ai/ui/switch"
+import { TextField } from "@bettercode-ai/ui/text-field"
+import { Tooltip } from "@bettercode-ai/ui/tooltip"
+import { Tag } from "@bettercode-ai/ui/v2/badge-v2"
+import { useTheme, type ColorScheme } from "@bettercode-ai/ui/theme/context"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
 import { useParams } from "@solidjs/router"
 import { useLanguage } from "@/context/language"
 import { usePermission } from "@/context/permission"
@@ -482,7 +482,7 @@ export const SettingsGeneral: Component = () => {
           description={
             <>
               {language.t("settings.general.row.theme.description")}{" "}
-              <ExternalLink href="https://nanocode.ai/docs/themes/">{language.t("common.learnMore")}</ExternalLink>
+              <ExternalLink href="https://bettercode.ai/docs/themes/">{language.t("common.learnMore")}</ExternalLink>
             </>
           }
         >

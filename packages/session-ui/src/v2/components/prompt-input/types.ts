@@ -1,4 +1,4 @@
-import type { FilePartSource } from "@nanocode-ai/sdk/v2/client"
+import type { FilePartSource } from "@bettercode-ai/sdk/v2/client"
 
 type PromptInputV2PartBase = {
   content: string

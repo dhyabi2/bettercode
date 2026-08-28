@@ -1,4 +1,4 @@
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
 import { For, Show } from "solid-js"
 import { catalogSlug, formatCatalogLabName, type ModelCatalogEntry } from "./model-catalog"
 

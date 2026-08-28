@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://nanocode.ai">
+  <a href="https://bettercode.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="NanoCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="BetterCode logo">
     </picture>
   </a>
 </p>
 <p align="center">AI-агент для програмування з відкритим кодом.</p>
 <p align="center">
-  <a href="https://nanocode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/nanocode-ai"><img alt="npm" src="https://img.shields.io/npm/v/nanocode-ai?style=flat-square" /></a>
-  <a href="https://github.com/dhyabi2/nanocode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/nanocode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://bettercode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/bettercode-ai"><img alt="npm" src="https://img.shields.io/npm/v/bettercode-ai?style=flat-square" /></a>
+  <a href="https://github.com/dhyabi2/bettercode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/bettercode/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -39,7 +39,7 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![NanoCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://nanocode.ai)
+[![BetterCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://bettercode.ai)
 
 ---
 
@@ -47,18 +47,18 @@
 
 ```bash
 # YOLO
-curl -fsSL https://nanocode.ai/install | bash
+curl -fsSL https://bettercode.ai/install | bash
 
 # Менеджери пакетів
-npm i -g nanocode-ai@latest        # або bun/pnpm/yarn
-scoop install nanocode             # Windows
-choco install nanocode             # Windows
-brew install dhyabi2/tap/nanocode # macOS і Linux (рекомендовано, завжди актуально)
-brew install nanocode              # macOS і Linux (офіційна формула Homebrew, оновлюється рідше)
-sudo pacman -S nanocode            # Arch Linux (Stable)
-paru -S nanocode-bin               # Arch Linux (Latest from AUR)
-mise use -g nanocode               # Будь-яка ОС
-nix run nixpkgs#nanocode           # або github:dhyabi2/nanocode для найновішої dev-гілки
+npm i -g bettercode-ai@latest        # або bun/pnpm/yarn
+scoop install bettercode             # Windows
+choco install bettercode             # Windows
+brew install dhyabi2/tap/bettercode # macOS і Linux (рекомендовано, завжди актуально)
+brew install bettercode              # macOS і Linux (офіційна формула Homebrew, оновлюється рідше)
+sudo pacman -S bettercode            # Arch Linux (Stable)
+paru -S bettercode-bin               # Arch Linux (Latest from AUR)
+mise use -g bettercode               # Будь-яка ОС
+nix run nixpkgs#bettercode           # або github:dhyabi2/bettercode для найновішої dev-гілки
 ```
 
 > [!TIP]
@@ -66,40 +66,40 @@ nix run nixpkgs#nanocode           # або github:dhyabi2/nanocode для на�
 
 ### Десктопний застосунок (BETA)
 
-NanoCode також доступний як десктопний застосунок. Завантажуйте напряму зі [сторінки релізів](https://github.com/dhyabi2/nanocode/releases) або [nanocode.ai/download](https://nanocode.ai/download).
+BetterCode також доступний як десктопний застосунок. Завантажуйте напряму зі [сторінки релізів](https://github.com/dhyabi2/bettercode/releases) або [bettercode.ai/download](https://bettercode.ai/download).
 
 | Платформа             | Завантаження                       |
 | --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `nanocode-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `nanocode-desktop-mac-x64.dmg`     |
-| Windows               | `nanocode-desktop-windows-x64.exe` |
+| macOS (Apple Silicon) | `bettercode-desktop-mac-arm64.dmg`   |
+| macOS (Intel)         | `bettercode-desktop-mac-x64.dmg`     |
+| Windows               | `bettercode-desktop-windows-x64.exe` |
 | Linux                 | `.deb`, `.rpm` або AppImage        |
 
 ```bash
 # macOS (Homebrew)
-brew install --cask nanocode-desktop
+brew install --cask bettercode-desktop
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/nanocode-desktop
+scoop bucket add extras; scoop install extras/bettercode-desktop
 ```
 
 #### Каталог встановлення
 
 Скрипт встановлення дотримується такого порядку пріоритету для шляху встановлення:
 
-1. `$NANOCODE_INSTALL_DIR` - Користувацький каталог встановлення
+1. `$BETTERCODE_INSTALL_DIR` - Користувацький каталог встановлення
 2. `$XDG_BIN_DIR` - Шлях, сумісний зі специфікацією XDG Base Directory
 3. `$HOME/bin` - Стандартний каталог користувацьких бінарників (якщо існує або його можна створити)
-4. `$HOME/.nanocode/bin` - Резервний варіант за замовчуванням
+4. `$HOME/.bettercode/bin` - Резервний варіант за замовчуванням
 
 ```bash
 # Приклади
-NANOCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://nanocode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://nanocode.ai/install | bash
+BETTERCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://bettercode.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://bettercode.ai/install | bash
 ```
 
 ### Агенти
 
-NanoCode містить два вбудовані агенти, між якими можна перемикатися клавішею `Tab`.
+BetterCode містить два вбудовані агенти, між якими можна перемикатися клавішею `Tab`.
 
 - **build** - Агент за замовчуванням із повним доступом для завдань розробки
 - **plan** - Агент лише для читання для аналізу та дослідження коду
@@ -110,21 +110,21 @@ NanoCode містить два вбудовані агенти, між яким�
 Також доступний допоміжний агент **general** для складного пошуку та багатокрокових завдань.
 Він використовується всередині системи й може бути викликаний у повідомленнях через `@general`.
 
-Дізнайтеся більше про [agents](https://nanocode.ai/docs/agents).
+Дізнайтеся більше про [agents](https://bettercode.ai/docs/agents).
 
 ### Документація
 
-Щоб дізнатися більше про налаштування NanoCode, [**перейдіть до нашої документації**](https://nanocode.ai/docs).
+Щоб дізнатися більше про налаштування BetterCode, [**перейдіть до нашої документації**](https://bettercode.ai/docs).
 
 ### Внесок
 
-Якщо ви хочете зробити внесок в NanoCode, будь ласка, прочитайте нашу [документацію для контриб'юторів](./CONTRIBUTING.md) перед надсиланням pull request.
+Якщо ви хочете зробити внесок в BetterCode, будь ласка, прочитайте нашу [документацію для контриб'юторів](./CONTRIBUTING.md) перед надсиланням pull request.
 
-### Проєкти на базі NanoCode
+### Проєкти на базі BetterCode
 
-Якщо ви працюєте над проєктом, пов'язаним з NanoCode, і використовуєте "nanocode" у назві, наприклад "nanocode-dashboard" або "nanocode-mobile", додайте примітку до свого README.
-Уточніть, що цей проєкт не створений командою NanoCode і жодним чином не афілійований із нами.
+Якщо ви працюєте над проєктом, пов'язаним з BetterCode, і використовуєте "bettercode" у назві, наприклад "bettercode-dashboard" або "bettercode-mobile", додайте примітку до свого README.
+Уточніть, що цей проєкт не створений командою BetterCode і жодним чином не афілійований із нами.
 
 ---
 
-**Приєднуйтеся до нашої спільноти** [Discord](https://discord.gg/nanocode) | [X.com](https://x.com/nanocode)
+**Приєднуйтеся до нашої спільноти** [Discord](https://discord.gg/bettercode) | [X.com](https://x.com/bettercode)

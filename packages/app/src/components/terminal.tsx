@@ -1,8 +1,8 @@
-import { withAlpha } from "@nanocode-ai/ui/theme/color"
-import { useTheme } from "@nanocode-ai/ui/theme/context"
-import { resolveThemeVariant } from "@nanocode-ai/ui/theme/resolve"
-import { resolveThemeVariantV2 } from "@nanocode-ai/ui/theme/v2/resolve"
-import type { HexColor, ResolvedV2Theme } from "@nanocode-ai/ui/theme/types"
+import { withAlpha } from "@bettercode-ai/ui/theme/color"
+import { useTheme } from "@bettercode-ai/ui/theme/context"
+import { resolveThemeVariant } from "@bettercode-ai/ui/theme/resolve"
+import { resolveThemeVariantV2 } from "@bettercode-ai/ui/theme/v2/resolve"
+import type { HexColor, ResolvedV2Theme } from "@bettercode-ai/ui/theme/types"
 import { showToast } from "@/utils/toast"
 import type { FitAddon, Ghostty, Terminal as Term } from "ghostty-web"
 import { type ComponentProps, createEffect, createMemo, onCleanup, onMount, splitProps } from "solid-js"
@@ -180,7 +180,7 @@ export const Terminal = (props: TerminalProps) => {
   const directory = sdk().directory
   const url = sdk().url
   const auth = connection.http
-  const username = auth?.username ?? "nanocode"
+  const username = auth?.username ?? "bettercode"
   const password = auth?.password ?? ""
   const authToken = connection.type === "http" ? connection.authToken : false
   const sameOrigin = new URL(url, location.href).origin === location.origin
@@ -563,7 +563,7 @@ export const Terminal = (props: TerminalProps) => {
               { ptyID: id, directory },
               {
                 throwOnError: false,
-                headers: { "x-nanocode-ticket": "1" },
+                headers: { "x-bettercode-ticket": "1" },
               },
             )
             .catch((err: unknown) => {
@@ -580,7 +580,7 @@ export const Terminal = (props: TerminalProps) => {
         //   .api.pty.connectToken({
         //     ptyID: id,
         //     location: { directory },
-        //     "x-nanocode-ticket": "1",
+        //     "x-bettercode-ticket": "1",
         //   })
         //   .then((result) => result.data.ticket)
       }

@@ -12,14 +12,14 @@ import {
 } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useLocation, useNavigate, useParams } from "@solidjs/router"
-import { IconButton } from "@nanocode-ai/ui/icon-button"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { Button } from "@nanocode-ai/ui/button"
-import { Tooltip, TooltipKeybind } from "@nanocode-ai/ui/tooltip"
-import { IconButtonV2 } from "@nanocode-ai/ui/v2/icon-button-v2"
-import { Icon as IconV2 } from "@nanocode-ai/ui/v2/icon"
-import { KeybindV2 } from "@nanocode-ai/ui/v2/keybind-v2"
-import { TooltipV2 } from "@nanocode-ai/ui/v2/tooltip-v2"
+import { IconButton } from "@bettercode-ai/ui/icon-button"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { Button } from "@bettercode-ai/ui/button"
+import { Tooltip, TooltipKeybind } from "@bettercode-ai/ui/tooltip"
+import { IconButtonV2 } from "@bettercode-ai/ui/v2/icon-button-v2"
+import { Icon as IconV2 } from "@bettercode-ai/ui/v2/icon"
+import { KeybindV2 } from "@bettercode-ai/ui/v2/keybind-v2"
+import { TooltipV2 } from "@bettercode-ai/ui/v2/tooltip-v2"
 
 import { LayoutRoute, useLayout } from "@/context/layout"
 import { usePlatform } from "@/context/platform"
@@ -55,7 +55,7 @@ export type TitlebarUpdate = {
 export function useTitlebarRightMount() {
   const language = useLanguage()
   const [mount, setMount] = createSignal<HTMLElement | null>(null)
-  const sync = () => setMount(document.getElementById("nanocode-titlebar-right"))
+  const sync = () => setMount(document.getElementById("bettercode-titlebar-right"))
   onMount(sync)
   createEffect(on(language.direction, sync, { defer: true }))
   return mount
@@ -559,7 +559,7 @@ export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visibl
                         </Tooltip>
                       </div>
                     </Show>
-                    <div id="nanocode-titlebar-left" class="flex items-center gap-3 min-w-0 px-2" />
+                    <div id="bettercode-titlebar-left" class="flex items-center gap-3 min-w-0 px-2" />
                   </div>
                 </div>
                 <ChannelIndicator debugTools={props.debugTools} />
@@ -568,7 +568,7 @@ export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visibl
 
             <div class="min-w-0 flex items-center justify-center pointer-events-none">
               <div
-                id="nanocode-titlebar-center"
+                id="bettercode-titlebar-center"
                 class="pointer-events-auto min-w-0 flex justify-center w-fit max-w-full"
               />
             </div>
@@ -580,7 +580,7 @@ export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visibl
               }}
               data-tauri-drag-region
             >
-              <div id="nanocode-titlebar-right" class="flex items-center gap-1 shrink-0 justify-end" />
+              <div id="bettercode-titlebar-right" class="flex items-center gap-1 shrink-0 justify-end" />
               <Show when={windows()}>
                 <div class="shrink-0" style={{ width: windowsControlsWidth() }} />
               </Show>
@@ -611,7 +611,7 @@ function TitlebarV2Right(props: { state: TitlebarV2RightState }) {
       <Show when={props.state.update.visible}>
         <TitlebarUpdateIconButton state={props.state.update} />
       </Show>
-      <div id="nanocode-titlebar-right" class="flex shrink-0 items-center justify-end gap-0" />
+      <div id="bettercode-titlebar-right" class="flex shrink-0 items-center justify-end gap-0" />
     </div>
   )
 }
@@ -646,7 +646,7 @@ function TitlebarUpdateIconButton(props: { state: TitlebarUpdatePillState }) {
 }
 
 function ChannelIndicator(props: { debugTools?: { visible: boolean; toggle: () => void } }) {
-  const channel = import.meta.env.VITE_NANOCODE_CHANNEL
+  const channel = import.meta.env.VITE_BETTERCODE_CHANNEL
   if (channel === "dev" && props.debugTools) {
     return (
       <button

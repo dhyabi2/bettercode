@@ -1,4 +1,4 @@
-import type { ReferenceGitSource, ReferenceLocalSource } from "@nanocode-ai/sdk/v2/types"
+import type { ReferenceGitSource, ReferenceLocalSource } from "@bettercode-ai/sdk/v2/types"
 import type { Hooks } from "./registration.js"
 
 export interface ReferenceDraft {

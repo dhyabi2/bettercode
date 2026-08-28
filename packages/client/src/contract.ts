@@ -1,13 +1,13 @@
-import { makeDefaultApi } from "@nanocode-ai/protocol/api"
-import { InvalidRequestError, SessionNotFoundError } from "@nanocode-ai/protocol/errors"
+import { makeDefaultApi } from "@bettercode-ai/protocol/api"
+import { InvalidRequestError, SessionNotFoundError } from "@bettercode-ai/protocol/errors"
 import { HttpApiMiddleware } from "effect/unstable/httpapi"
 
 class LocationMiddleware extends HttpApiMiddleware.Service<LocationMiddleware>()(
-  "@nanocode-ai/client/LocationMiddleware",
+  "@bettercode-ai/client/LocationMiddleware",
 ) {}
 
 class SessionLocationMiddleware extends HttpApiMiddleware.Service<SessionLocationMiddleware>()(
-  "@nanocode-ai/client/SessionLocationMiddleware",
+  "@bettercode-ai/client/SessionLocationMiddleware",
   { error: [InvalidRequestError, SessionNotFoundError] },
 ) {}
 

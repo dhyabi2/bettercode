@@ -1,7 +1,7 @@
 import type { ThemeRegistrationResolved } from "@pierre/diffs"
 
-export const NanoCodeTheme = {
-  name: "NanoCode",
+export const BetterCodeTheme = {
+  name: "BetterCode",
   bg: "var(--color-background-stronger)",
   fg: "var(--text-base)",
   colors: {

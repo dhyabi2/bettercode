@@ -1,4 +1,4 @@
-import { type FilteredListProps, useFilteredList } from "@nanocode-ai/ui/hooks"
+import { type FilteredListProps, useFilteredList } from "@bettercode-ai/ui/hooks"
 import { createEffect, For, type JSX, on, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { makeEventListener } from "@solid-primitives/event-listener"

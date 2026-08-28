@@ -3,7 +3,7 @@ title: "Agentferdigheter"
 description: "Definer gjenbrukbar oppførsel via SKILL.md-definisjoner"
 ---
 
-Agentferdigheter lar NanoCode oppdage gjenbrukbare instruksjoner fra repo- eller hjemmekatalogen din.
+Agentferdigheter lar BetterCode oppdage gjenbrukbare instruksjoner fra repo- eller hjemmekatalogen din.
 Ferdigheter lastes inn på forespørsel via det innebygde `skill`-verktøyet – agenter ser tilgjengelige ferdigheter og kan laste inn hele innholdet når det er nødvendig.
 
 ---
@@ -11,10 +11,10 @@ Ferdigheter lastes inn på forespørsel via det innebygde `skill`-verktøyet –
 ## Plasser filer
 
 Opprett én mappe per ferdighetsnavn og legg inn en `SKILL.md` i den.
-nanocode søker etter disse stedene:
+bettercode søker etter disse stedene:
 
-- Prosjektkonfigurasjon: `.nanocode/skills/<name>/SKILL.md`
-- Global konfigurasjon: `~/.config/nanocode/skills/<name>/SKILL.md`
+- Prosjektkonfigurasjon: `.bettercode/skills/<name>/SKILL.md`
+- Global konfigurasjon: `~/.config/bettercode/skills/<name>/SKILL.md`
 - Prosjekt Claude-kompatibel: `.claude/skills/<name>/SKILL.md`
 - Global Claude-kompatibel: `~/.claude/skills/<name>/SKILL.md`
 - Prosjektagent-kompatibel: `.agents/skills/<name>/SKILL.md`
@@ -24,10 +24,10 @@ nanocode søker etter disse stedene:
 
 ## Forstå oppdagelsen
 
-For prosjektlokale stier går nanocode opp fra din nåværende arbeidskatalog til den når git-arbeidstreet.
-Den laster alle matchende `skills/*/SKILL.md` i `.nanocode/` og alle matchende `.claude/skills/*/SKILL.md` eller `.agents/skills/*/SKILL.md` underveis.
+For prosjektlokale stier går bettercode opp fra din nåværende arbeidskatalog til den når git-arbeidstreet.
+Den laster alle matchende `skills/*/SKILL.md` i `.bettercode/` og alle matchende `.claude/skills/*/SKILL.md` eller `.agents/skills/*/SKILL.md` underveis.
 
-Globale definisjoner lastes også inn fra `~/.config/nanocode/skills/*/SKILL.md`, `~/.claude/skills/*/SKILL.md` og `~/.agents/skills/*/SKILL.md`.
+Globale definisjoner lastes også inn fra `~/.config/bettercode/skills/*/SKILL.md`, `~/.claude/skills/*/SKILL.md` og `~/.agents/skills/*/SKILL.md`.
 
 ---
 
@@ -73,14 +73,14 @@ Hold det spesifikt nok til at agenten kan velge riktig.
 
 ## Bruk et eksempel
 
-Lag `.nanocode/skills/git-release/SKILL.md` slik:
+Lag `.bettercode/skills/git-release/SKILL.md` slik:
 
 ```markdown
 ---
 name: git-release
 description: Create consistent releases and changelogs
 license: MIT
-compatibility: nanocode
+compatibility: bettercode
 metadata:
   audience: maintainers
   workflow: github
@@ -102,7 +102,7 @@ Ask clarifying questions if the target versioning scheme is unclear.
 
 ## Forstå verktøybeskrivelsen
 
-nanocode viser tilgjengelige ferdigheter i `skill`-verktøybeskrivelsen.
+bettercode viser tilgjengelige ferdigheter i `skill`-verktøybeskrivelsen.
 Hver oppføring inneholder ferdighetsnavnet og beskrivelsen:
 
 ```xml
@@ -124,7 +124,7 @@ skill({ name: "git-release" })
 
 ## Konfigurer tillatelser
 
-Kontroller hvilke ferdigheter agenter har tilgang til ved å bruke mønsterbaserte tillatelser i `nanocode.json`:
+Kontroller hvilke ferdigheter agenter har tilgang til ved å bruke mønsterbaserte tillatelser i `bettercode.json`:
 
 ```json
 {
@@ -163,7 +163,7 @@ permission:
 ---
 ```
 
-**For innebygde agenter** (i `nanocode.json`):
+**For innebygde agenter** (i `bettercode.json`):
 
 ```json
 {

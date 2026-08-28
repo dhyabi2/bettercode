@@ -1,4 +1,4 @@
-import { Location } from "@nanocode-ai/schema/location"
+import { Location } from "@bettercode-ai/schema/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 

@@ -1,7 +1,7 @@
 import { type ChildProcess, spawnSync } from "node:child_process"
 
-// Duplicated from `packages/nanocode/src/util/process.ts` because the SDK cannot
-// import `nanocode` without creating a cycle (`nanocode` depends on `@nanocode-ai/sdk`).
+// Duplicated from `packages/bettercode/src/util/process.ts` because the SDK cannot
+// import `bettercode` without creating a cycle (`bettercode` depends on `@bettercode-ai/sdk`).
 export function stop(proc: ChildProcess) {
   if (proc.exitCode !== null || proc.signalCode !== null) return
   if (process.platform === "win32" && proc.pid) {

@@ -99,7 +99,7 @@ export interface Interface {
   readonly cancelChain: (sessionID: string) => Effect.Effect<Info[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/BackgroundJob") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/BackgroundJob") {}
 
 function snapshot(job: Active): Info {
   return {

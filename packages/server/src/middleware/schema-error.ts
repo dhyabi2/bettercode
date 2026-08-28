@@ -1,8 +1,8 @@
 import { Effect } from "effect"
 import { HttpApiMiddleware } from "effect/unstable/httpapi"
-import { InvalidRequestError } from "@nanocode-ai/protocol/errors"
-import { SchemaErrorMiddleware } from "@nanocode-ai/protocol/middleware/schema-error"
-export { SchemaErrorMiddleware } from "@nanocode-ai/protocol/middleware/schema-error"
+import { InvalidRequestError } from "@bettercode-ai/protocol/errors"
+import { SchemaErrorMiddleware } from "@bettercode-ai/protocol/middleware/schema-error"
+export { SchemaErrorMiddleware } from "@bettercode-ai/protocol/middleware/schema-error"
 
 const REASON_LIMIT = 1024
 

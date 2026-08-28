@@ -1,4 +1,4 @@
-import type { ProviderAuthMethod } from "@nanocode-ai/sdk/v2/client"
+import type { ProviderAuthMethod } from "@bettercode-ai/sdk/v2/client"
 
 const data = {
   provider: {

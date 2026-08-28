@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test"
-import type { NormalizedProviderListResponse } from "@nanocode-ai/session-ui/context"
+import type { NormalizedProviderListResponse } from "@bettercode-ai/session-ui/context"
 import { resolveDefaultModel, selectProviderCatalog } from "./provider-catalog"
 
 const catalog = (id: string): NormalizedProviderListResponse => ({

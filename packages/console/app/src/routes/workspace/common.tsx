@@ -1,11 +1,11 @@
-import { Resource } from "@nanocode-ai/console-resource"
-import { Actor } from "@nanocode-ai/console-core/actor.js"
+import { Resource } from "@bettercode-ai/console-resource"
+import { Actor } from "@bettercode-ai/console-core/actor.js"
 import { action, json, query } from "@solidjs/router"
 import { withActor } from "~/context/auth.withActor"
-import { Billing } from "@nanocode-ai/console-core/billing.js"
-import { and, Database, desc, eq, isNull } from "@nanocode-ai/console-core/drizzle/index.js"
-import { WorkspaceTable } from "@nanocode-ai/console-core/schema/workspace.sql.js"
-import { UserTable } from "@nanocode-ai/console-core/schema/user.sql.js"
+import { Billing } from "@bettercode-ai/console-core/billing.js"
+import { and, Database, desc, eq, isNull } from "@bettercode-ai/console-core/drizzle/index.js"
+import { WorkspaceTable } from "@bettercode-ai/console-core/schema/workspace.sql.js"
+import { UserTable } from "@bettercode-ai/console-core/schema/user.sql.js"
 
 export function formatDateForTable(date: Date) {
   const options: Intl.DateTimeFormatOptions = {

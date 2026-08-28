@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test"
-import { SessionCompaction } from "@nanocode-ai/core/session/compaction"
+import { SessionCompaction } from "@bettercode-ai/core/session/compaction"
 
 test("compaction user prompt preserves conversation and prior summary framing", () => {
   const user = SessionCompaction.buildCompactionUser({ context: ["conversation history"] })

@@ -3,14 +3,14 @@ import { describe, expect } from "bun:test"
 import fs from "fs/promises"
 import path from "path"
 import { ConfigProvider, Deferred, Duration, Effect, Fiber, Layer, Option, Stream } from "effect"
-import { Config } from "@nanocode-ai/core/config"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { EventV2 } from "@nanocode-ai/core/event"
-import { FSUtil } from "@nanocode-ai/core/fs-util"
-import { Watcher } from "@nanocode-ai/core/filesystem/watcher"
-import { Location } from "@nanocode-ai/core/location"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
+import { Config } from "@bettercode-ai/core/config"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { EventV2 } from "@bettercode-ai/core/event"
+import { FSUtil } from "@bettercode-ai/core/fs-util"
+import { Watcher } from "@bettercode-ai/core/filesystem/watcher"
+import { Location } from "@bettercode-ai/core/location"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
 import { location } from "../fixture/location"
 import { tmpdir } from "../fixture/tmpdir"
 import { testEffect } from "../lib/effect"
@@ -30,8 +30,8 @@ const configLayer = Layer.succeed(
 
 const flagsLayer = ConfigProvider.layer(
   ConfigProvider.fromUnknown({
-    NANOCODE_EXPERIMENTAL_FILEWATCHER: "true",
-    NANOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER: "false",
+    BETTERCODE_EXPERIMENTAL_FILEWATCHER: "true",
+    BETTERCODE_EXPERIMENTAL_DISABLE_FILEWATCHER: "false",
   }),
 )
 
@@ -59,7 +59,7 @@ function withTmp<A, E, R>(
       await $`git init`.cwd(tmp.path).quiet()
       await $`git config core.fsmonitor false`.cwd(tmp.path).quiet()
       await $`git config commit.gpgsign false`.cwd(tmp.path).quiet()
-      await $`git config user.email test@nanocode.test`.cwd(tmp.path).quiet()
+      await $`git config user.email test@bettercode.test`.cwd(tmp.path).quiet()
       await $`git config user.name Test`.cwd(tmp.path).quiet()
       await $`git commit --allow-empty -m root`.cwd(tmp.path).quiet()
       await options.init?.(tmp.path)

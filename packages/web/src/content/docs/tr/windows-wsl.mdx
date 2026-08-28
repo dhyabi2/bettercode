@@ -1,14 +1,14 @@
 ---
 title: Windows (WSL)
-description: En iyi deneyim icin nanocode'u WSL'de calistirin.
+description: En iyi deneyim icin bettercode'u WSL'de calistirin.
 ---
 
 import { Steps } from "@astrojs/starlight/components"
 
-nanocode Windows'ta dogrudan calisabilir, ancak en iyi deneyim icin [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) kullanmanizi oneriyoruz. WSL, nanocode ozellikleriyle sorunsuz calisan bir Linux ortami saglar.
+bettercode Windows'ta dogrudan calisabilir, ancak en iyi deneyim icin [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) kullanmanizi oneriyoruz. WSL, bettercode ozellikleriyle sorunsuz calisan bir Linux ortami saglar.
 
 :::tip[Neden WSL?]
-WSL, daha iyi dosya sistemi performansi, tam terminal destegi ve nanocode'un dayandigi gelistirme araclariyla uyumluluk sunar.
+WSL, daha iyi dosya sistemi performansi, tam terminal destegi ve bettercode'un dayandigi gelistirme araclariyla uyumluluk sunar.
 :::
 
 ---
@@ -21,21 +21,21 @@ WSL, daha iyi dosya sistemi performansi, tam terminal destegi ve nanocode'un day
 
    Henuz yuklemediyseniz resmi Microsoft rehberini kullanarak [WSL kurulumunu](https://learn.microsoft.com/en-us/windows/wsl/install) yapin.
 
-2. **nanocode'u WSL icine yukleyin**
+2. **bettercode'u WSL icine yukleyin**
 
-   WSL hazir olduktan sonra WSL terminalini acin ve nanocode'u [kurulum yontemlerinden](/docs/) biriyle yukleyin.
+   WSL hazir olduktan sonra WSL terminalini acin ve bettercode'u [kurulum yontemlerinden](/docs/) biriyle yukleyin.
 
    ```bash
-   curl -fsSL https://nanocode.ai/install | bash
+   curl -fsSL https://bettercode.ai/install | bash
    ```
 
-3. **nanocode'u WSL icinden kullanin**
+3. **bettercode'u WSL icinden kullanin**
 
-   Proje dizininize gidin (`/mnt/c/`, `/mnt/d/` vb. ile Windows dosyalarina erisebilirsiniz) ve nanocode'u calistirin.
+   Proje dizininize gidin (`/mnt/c/`, `/mnt/d/` vb. ile Windows dosyalarina erisebilirsiniz) ve bettercode'u calistirin.
 
    ```bash
    cd /mnt/c/Users/YourName/project
-   nanocode
+   bettercode
    ```
 
 </Steps>
@@ -44,12 +44,12 @@ WSL, daha iyi dosya sistemi performansi, tam terminal destegi ve nanocode'un day
 
 ## Masaüstü uygulaması + WSL sunucusu
 
-nanocode Desktop kullanmak isteyip sunucuyu WSL'de calistirmak istiyorsaniz:
+bettercode Desktop kullanmak isteyip sunucuyu WSL'de calistirmak istiyorsaniz:
 
 1. **Sunucuyu WSL'de baslatin** ve dis baglantilara izin vermek icin `--hostname 0.0.0.0` kullanin:
 
    ```bash
-   nanocode serve --hostname 0.0.0.0 --port 4096
+   bettercode serve --hostname 0.0.0.0 --port 4096
    ```
 
 2. **Desktop uygulamasini** `http://localhost:4096` adresine baglayin
@@ -59,10 +59,10 @@ Kurulumunuzda `localhost` calismiyorsa bunun yerine WSL IP adresini kullanin (WS
 :::
 
 :::caution
-`--hostname 0.0.0.0` kullaniyorsaniz sunucuyu guvene almak icin `NANOCODE_SERVER_PASSWORD` ayarlayin.
+`--hostname 0.0.0.0` kullaniyorsaniz sunucuyu guvene almak icin `BETTERCODE_SERVER_PASSWORD` ayarlayin.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve --hostname 0.0.0.0
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve --hostname 0.0.0.0
 ```
 
 :::
@@ -73,15 +73,15 @@ NANOCODE_SERVER_PASSWORD=your-password nanocode serve --hostname 0.0.0.0
 
 Windows'ta en iyi web deneyimi icin:
 
-1. **`nanocode web` komutunu PowerShell yerine WSL terminalinde calistirin**:
+1. **`bettercode web` komutunu PowerShell yerine WSL terminalinde calistirin**:
 
    ```bash
-   nanocode web --hostname 0.0.0.0
+   bettercode web --hostname 0.0.0.0
    ```
 
-2. **Windows tarayicinizdan** `http://localhost:<port>` adresini acin (nanocode URL'yi yazdirir)
+2. **Windows tarayicinizdan** `http://localhost:<port>` adresini acin (bettercode URL'yi yazdirir)
 
-`nanocode web` komutunu WSL'den calistirmak, dosya sistemi erisimi ve terminal entegrasyonunu daha tutarli hale getirirken tarayicidan erisimi korur.
+`bettercode web` komutunu WSL'den calistirmak, dosya sistemi erisimi ve terminal entegrasyonunu daha tutarli hale getirirken tarayicidan erisimi korur.
 
 ---
 
@@ -97,17 +97,17 @@ Ornek:
 
 ```bash
 cd /mnt/c/Users/YourName/Documents/project
-nanocode
+bettercode
 ```
 
 :::tip
-En sorunsuz deneyim icin deponuzu WSL dosya sistemine (ornegin `~/code/` altina) klonlayip nanocode'u orada calistirmayi dusunun.
+En sorunsuz deneyim icin deponuzu WSL dosya sistemine (ornegin `~/code/` altina) klonlayip bettercode'u orada calistirmayi dusunun.
 :::
 
 ---
 
 ## İpuçları
 
-- Windows suruculerinde duran projelerde nanocode'u WSL icinde calistirin - dosya erisimi daha sorunsuz olur
-- Butunlesik bir gelistirme akisi icin nanocode ile birlikte VS Code [WSL eklentisini](https://code.visualstudio.com/docs/remote/wsl) kullanin
-- nanocode konfigurasyonunuz ve oturumlariniz WSL ortaminda `~/.local/share/nanocode/` konumunda saklanir
+- Windows suruculerinde duran projelerde bettercode'u WSL icinde calistirin - dosya erisimi daha sorunsuz olur
+- Butunlesik bir gelistirme akisi icin bettercode ile birlikte VS Code [WSL eklentisini](https://code.visualstudio.com/docs/remote/wsl) kullanin
+- bettercode konfigurasyonunuz ve oturumlariniz WSL ortaminda `~/.local/share/bettercode/` konumunda saklanir

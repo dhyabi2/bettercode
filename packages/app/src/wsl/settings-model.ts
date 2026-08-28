@@ -2,7 +2,7 @@ import fuzzysort from "fuzzysort"
 import type {
   WslInstalledDistro,
   WslOnlineDistro,
-  WslNanocodeCheck,
+  WslBettercodeCheck,
   WslServersPlatform,
   WslServerRuntime,
   WslServersState,
@@ -24,7 +24,7 @@ export type AddServerPrimaryButton = {
   variant: "neutral" | "contrast"
   label: AddServerText
   disabled: boolean
-  action: "install-nanocode" | "add" | null
+  action: "install-bettercode" | "add" | null
   loading: boolean
   width: string | null
 }
@@ -51,10 +51,10 @@ function isHiddenDistro(name: string) {
 export const wslRuntimeRetryable = (runtime: WslServerRuntime) =>
   runtime.kind === "failed" || runtime.kind === "stopped"
 
-export function wslNanocodeAction(check?: WslNanocodeCheck) {
+export function wslBettercodeAction(check?: WslBettercodeCheck) {
   if (!check) return
-  if (!check.resolvedPath) return "wsl.onboarding.installNanocode"
-  if (check.matchesDesktop === false) return "wsl.onboarding.updateNanocode"
+  if (!check.resolvedPath) return "wsl.onboarding.installBettercode"
+  if (check.matchesDesktop === false) return "wsl.onboarding.updateBettercode"
 }
 
 export function wslDistroReady(state: WslServersState | undefined, name: string) {
@@ -80,7 +80,7 @@ export function addServerViewModel(input: {
   const existingServerDistros = new Set((state?.servers ?? []).map((item) => item.config.distro))
   const addableInstalledDistros = visibleInstalledDistros.filter((item) => !existingServerDistros.has(item.name))
   const selectedDistro = addServerSelectedDistro(input.selectedDistro, visibleInstalledDistros, addableInstalledDistros)
-  const nanocodeCheck = selectedDistro ? (state?.nanocodeChecks[selectedDistro] ?? null) : null
+  const bettercodeCheck = selectedDistro ? (state?.bettercodeChecks[selectedDistro] ?? null) : null
   const installableDistros = addServerInstallableDistros(visibleInstalledDistros, visibleOnlineDistros)
   const filteredInstallableDistros = addServerFilteredInstallableDistros(installableDistros, input.catalogSearch)
   const catalogTarget = addServerCatalogTarget(input.catalogTarget, filteredInstallableDistros)
@@ -93,7 +93,7 @@ export function addServerViewModel(input: {
     visibleOnlineDistros,
     addableInstalledDistros,
     selectedDistro,
-    nanocodeCheck,
+    bettercodeCheck,
     wslReady: !!state?.runtime?.available && !state?.pendingRestart,
     distroStatuses: Object.fromEntries(
       addableInstalledDistros.flatMap((item) => {
@@ -105,7 +105,7 @@ export function addServerViewModel(input: {
     primaryButton: addServerPrimaryButton({
       state,
       selectedDistro,
-      nanocodeCheck,
+      bettercodeCheck,
       adding: input.adding,
       probingAddable: input.probingAddable,
     }),
@@ -165,16 +165,16 @@ function addServerDistroStatus(input: {
   if (!probe.hasBash || !probe.hasCurl) {
     return { label: { key: "wsl.onboarding.distroStatus.missingTools" }, tone: "warning" }
   }
-  const check = input.state?.nanocodeChecks[input.name]
+  const check = input.state?.bettercodeChecks[input.name]
   if (!check) {
     if (input.probingAddable || (job?.kind === "probe-addable" && job.distros.includes(input.name))) {
       return checkingStatus()
     }
     return
   }
-  if (check.matchesDesktop === false) return { label: { key: "wsl.onboarding.updateNanocode" }, tone: "warning" }
-  if (!check.resolvedPath) return { label: { key: "wsl.onboarding.distroStatus.nanocodeMissing" }, tone: "warning" }
-  if (check.error) return { label: { key: "wsl.onboarding.installNanocode" }, tone: "warning" }
+  if (check.matchesDesktop === false) return { label: { key: "wsl.onboarding.updateBettercode" }, tone: "warning" }
+  if (!check.resolvedPath) return { label: { key: "wsl.onboarding.distroStatus.bettercodeMissing" }, tone: "warning" }
+  if (check.error) return { label: { key: "wsl.onboarding.installBettercode" }, tone: "warning" }
   return { label: { key: "wsl.onboarding.distroStatus.ready" }, tone: "success" }
 }
 
@@ -185,22 +185,22 @@ function checkingStatus(): DistroStatus {
 function addServerPrimaryButton(input: {
   state: WslServersState | undefined
   selectedDistro: string | null
-  nanocodeCheck: WslNanocodeCheck | null
+  bettercodeCheck: WslBettercodeCheck | null
   adding: boolean
   probingAddable: boolean
 }): AddServerPrimaryButton {
   const ready = !!input.selectedDistro && wslDistroReady(input.state, input.selectedDistro)
   const probingSelected = input.probingAddable && !addServerSelectedDistroSettled(input.state, input.selectedDistro)
-  const probingNanocode =
+  const probingBettercode =
     probingSelected ||
     (ready &&
-      (!input.nanocodeCheck ||
+      (!input.bettercodeCheck ||
         (!!input.selectedDistro &&
           input.state?.job?.kind === "probe-addable" &&
           input.state.job.distros.includes(input.selectedDistro))))
-  const installingNanocode =
-    input.state?.job?.kind === "install-nanocode" && input.state.job.distro === input.selectedDistro
-  if (!ready || probingNanocode) {
+  const installingBettercode =
+    input.state?.job?.kind === "install-bettercode" && input.state.job.distro === input.selectedDistro
+  if (!ready || probingBettercode) {
     return {
       variant: "contrast",
       label: probingSelected ? { key: "wsl.onboarding.distroStatus.checking" } : { key: "wsl.server.add" },
@@ -210,18 +210,18 @@ function addServerPrimaryButton(input: {
       width: null,
     }
   }
-  if (!addServerNanocodeReady(input.nanocodeCheck)) {
-    const update = !!input.nanocodeCheck?.resolvedPath && input.nanocodeCheck.matchesDesktop === false
+  if (!addServerBettercodeReady(input.bettercodeCheck)) {
+    const update = !!input.bettercodeCheck?.resolvedPath && input.bettercodeCheck.matchesDesktop === false
     return {
       variant: "neutral",
-      label: installingNanocode
-        ? { key: "wsl.onboarding.updatingNanocode" }
+      label: installingBettercode
+        ? { key: "wsl.onboarding.updatingBettercode" }
         : update
-          ? { key: "wsl.onboarding.updateNanocode" }
-          : { key: "wsl.onboarding.installNanocode" },
+          ? { key: "wsl.onboarding.updateBettercode" }
+          : { key: "wsl.onboarding.installBettercode" },
       disabled: !!input.state?.job || input.adding,
-      action: "install-nanocode",
-      loading: installingNanocode,
+      action: "install-bettercode",
+      loading: installingBettercode,
       width: update ? "138px" : "129px",
     }
   }
@@ -235,7 +235,7 @@ function addServerPrimaryButton(input: {
   }
 }
 
-function addServerNanocodeReady(check: WslNanocodeCheck | null) {
+function addServerBettercodeReady(check: WslBettercodeCheck | null) {
   return !!check?.resolvedPath && check.matchesDesktop !== false && !check.error
 }
 
@@ -245,7 +245,7 @@ function addServerSelectedDistroSettled(state: WslServersState | undefined, sele
   if (installed?.version === 1) return false
   if (!state?.distroProbes[selectedDistro]) return false
   if (!wslDistroReady(state, selectedDistro)) return true
-  return !!state.nanocodeChecks[selectedDistro]
+  return !!state.bettercodeChecks[selectedDistro]
 }
 
 function addServerInstallableDistros(installedDistros: WslInstalledDistro[], onlineDistros: WslOnlineDistro[]) {
@@ -286,7 +286,7 @@ export function addableProbePlan(input: {
   const pending = ordered.flatMap((item) => {
     if (item.version === 1) return []
     if (!state.distroProbes[item.name]) return [`distro:${item.name}`]
-    if (wslDistroReady(state, item.name) && !state.nanocodeChecks[item.name]) return [`nanocode:${item.name}`]
+    if (wslDistroReady(state, item.name) && !state.bettercodeChecks[item.name]) return [`bettercode:${item.name}`]
     return []
   })
   if (!pending.length) return

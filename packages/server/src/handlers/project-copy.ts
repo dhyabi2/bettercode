@@ -1,10 +1,10 @@
-import { Location } from "@nanocode-ai/core/location"
-import { ProjectCopy } from "@nanocode-ai/core/project/copy"
-import { Git } from "@nanocode-ai/core/git"
+import { Location } from "@bettercode-ai/core/location"
+import { ProjectCopy } from "@bettercode-ai/core/project/copy"
+import { Git } from "@bettercode-ai/core/git"
 import { Effect } from "effect"
 import { HttpApiBuilder, HttpApiSchema } from "effect/unstable/httpapi"
 import { Api } from "../api"
-import { ProjectCopyError } from "@nanocode-ai/protocol/groups/project-copy"
+import { ProjectCopyError } from "@bettercode-ai/protocol/groups/project-copy"
 
 export const ProjectCopyHandler = HttpApiBuilder.group(Api, "server.projectCopy", (handlers) =>
   Effect.succeed(

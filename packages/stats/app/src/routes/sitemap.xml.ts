@@ -1,5 +1,5 @@
-import { getStatsHomeData } from "@nanocode-ai/stats-core/domain/home"
-import { runtime } from "@nanocode-ai/stats-core/runtime"
+import { getStatsHomeData } from "@bettercode-ai/stats-core/domain/home"
+import { runtime } from "@bettercode-ai/stats-core/runtime"
 import {
   canonicalFamilyComparisonPath,
   canonicalModelComparisonPath,

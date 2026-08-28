@@ -23,7 +23,7 @@ export interface Interface {
   ) => Effect.Effect<{ readonly sessionID: SessionSchema.ID; readonly message: SessionMessage.Message } | undefined>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/v2/SessionStore") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/v2/SessionStore") {}
 
 const layer = Layer.effect(
   Service,

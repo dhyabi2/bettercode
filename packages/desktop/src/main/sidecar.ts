@@ -54,12 +54,12 @@ async function start(command: StartCommand) {
     ensureLoopbackNoProxy()
     useSystemCertificates()
     useEnvProxy()
-    const { Server } = await import("virtual:nanocode-server")
+    const { Server } = await import("virtual:bettercode-server")
 
     listener = await Server.listen({
       port: command.port,
       hostname: command.hostname,
-      username: "nanocode",
+      username: "bettercode",
       password: command.password,
       cors: ["oc://renderer"],
     })
@@ -82,8 +82,8 @@ async function stop() {
 
 function prepareSidecarEnv(password: string, userDataPath: string) {
   Object.assign(process.env, {
-    NANOCODE_SERVER_USERNAME: "nanocode",
-    NANOCODE_SERVER_PASSWORD: password,
+    BETTERCODE_SERVER_USERNAME: "bettercode",
+    BETTERCODE_SERVER_PASSWORD: password,
     XDG_STATE_HOME: process.env.XDG_STATE_HOME ?? userDataPath,
   })
 }

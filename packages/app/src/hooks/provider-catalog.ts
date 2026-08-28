@@ -1,4 +1,4 @@
-import type { NormalizedProviderListResponse } from "@nanocode-ai/session-ui/context"
+import type { NormalizedProviderListResponse } from "@bettercode-ai/session-ui/context"
 
 const emptyProviderCatalog: NormalizedProviderListResponse = { all: new Map(), connected: [], default: {} }
 

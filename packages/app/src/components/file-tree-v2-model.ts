@@ -1,4 +1,4 @@
-import type { FileNode } from "@nanocode-ai/sdk/v2"
+import type { FileNode } from "@bettercode-ai/sdk/v2"
 
 export type FileTreeV2Model = {
   children: ReadonlyMap<string, readonly FileTreeV2Node[]>

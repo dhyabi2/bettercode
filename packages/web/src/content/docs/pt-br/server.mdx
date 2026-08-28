@@ -1,19 +1,19 @@
 ---
 title: Servidor
-description: Interaja com o servidor nanocode via HTTP.
+description: Interaja com o servidor bettercode via HTTP.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-O comando `nanocode serve` executa um servidor HTTP sem cabeça que expõe um endpoint OpenAPI que um cliente nanocode pode usar.
+O comando `bettercode serve` executa um servidor HTTP sem cabeça que expõe um endpoint OpenAPI que um cliente bettercode pode usar.
 
 ---
 
 ### Uso
 
 ```bash
-nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
+bettercode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 ```
 
 #### Opções
@@ -23,38 +23,38 @@ nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | Porta para escutar                                | `4096`           |
 | `--hostname`    | Nome do host para escutar                         | `127.0.0.1`      |
 | `--mdns`        | Habilitar descoberta mDNS                         | `false`          |
-| `--mdns-domain` | Nome de domínio personalizado para o serviço mDNS | `nanocode.local` |
+| `--mdns-domain` | Nome de domínio personalizado para o serviço mDNS | `bettercode.local` |
 | `--cors`        | Origens adicionais de navegador a permitir        | `[]`             |
 
 `--cors` pode ser passado várias vezes:
 
 ```bash
-nanocode serve --cors http://localhost:5173 --cors https://app.example.com
+bettercode serve --cors http://localhost:5173 --cors https://app.example.com
 ```
 
 ---
 
 ### Autenticação
 
-Defina `NANOCODE_SERVER_PASSWORD` para proteger o servidor com autenticação básica HTTP. O nome de usuário padrão é `nanocode`, ou defina `NANOCODE_SERVER_USERNAME` para substituí-lo. Isso se aplica tanto ao `nanocode serve` quanto ao `nanocode web`.
+Defina `BETTERCODE_SERVER_PASSWORD` para proteger o servidor com autenticação básica HTTP. O nome de usuário padrão é `bettercode`, ou defina `BETTERCODE_SERVER_USERNAME` para substituí-lo. Isso se aplica tanto ao `bettercode serve` quanto ao `bettercode web`.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve
 ```
 
 ---
 
 ### Como funciona
 
-Quando você executa `nanocode`, ele inicia um TUI e um servidor. Onde o TUI é o cliente que se comunica com o servidor. O servidor expõe um endpoint de especificação OpenAPI 3.1. Este endpoint também é usado para gerar um [SDK](/docs/sdk).
+Quando você executa `bettercode`, ele inicia um TUI e um servidor. Onde o TUI é o cliente que se comunica com o servidor. O servidor expõe um endpoint de especificação OpenAPI 3.1. Este endpoint também é usado para gerar um [SDK](/docs/sdk).
 
 :::tip
-Use o servidor nanocode para interagir com o nanocode programaticamente.
+Use o servidor bettercode para interagir com o bettercode programaticamente.
 :::
 
-Essa arquitetura permite que o nanocode suporte múltiplos clientes e permite que você interaja com o nanocode programaticamente.
+Essa arquitetura permite que o bettercode suporte múltiplos clientes e permite que você interaja com o bettercode programaticamente.
 
-Você pode executar `nanocode serve` para iniciar um servidor autônomo. Se você tiver o TUI do nanocode em execução, `nanocode serve` iniciará um novo servidor.
+Você pode executar `bettercode serve` para iniciar um servidor autônomo. Se você tiver o TUI do bettercode em execução, `bettercode serve` iniciará um novo servidor.
 
 ---
 
@@ -62,7 +62,7 @@ Você pode executar `nanocode serve` para iniciar um servidor autônomo. Se voc�
 
 Quando você inicia o TUI, ele atribui aleatoriamente uma porta e um nome de host. Você pode passar os [flags](/docs/cli) `--hostname` e `--port`. Em seguida, use isso para se conectar ao seu servidor.
 
-O endpoint [`/tui`](#tui) pode ser usado para controlar o TUI através do servidor. Por exemplo, você pode preencher ou executar um prompt. Essa configuração é usada pelos plugins do nanocode [IDE](/docs/ide).
+O endpoint [`/tui`](#tui) pode ser usado para controlar o TUI através do servidor. Por exemplo, você pode preencher ou executar um prompt. Essa configuração é usada pelos plugins do bettercode [IDE](/docs/ide).
 
 ---
 
@@ -80,7 +80,7 @@ Por exemplo, `http://localhost:4096/doc`. Use a especificação para gerar clien
 
 ## APIs
 
-O servidor nanocode expõe as seguintes APIs.
+O servidor bettercode expõe as seguintes APIs.
 
 ---
 

@@ -57,7 +57,7 @@ test("resolves host-neutral defaults", () => {
     notifications: true,
     sound: true,
     volume: 0.4,
-    sound_pack: "nanocode.default",
+    sound_pack: "bettercode.default",
     sounds: {},
   })
   expect(config.leader_timeout).toBe(LeaderTimeoutDefault)

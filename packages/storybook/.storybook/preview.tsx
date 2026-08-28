@@ -1,6 +1,6 @@
-import "@nanocode-ai/ui/styles/tailwind"
-import "@nanocode-ai/session-ui/styles"
-import "@nanocode-ai/ui/v2/styles/tailwind.css"
+import "@bettercode-ai/ui/styles/tailwind"
+import "@bettercode-ai/session-ui/styles"
+import "@bettercode-ai/ui/v2/styles/tailwind.css"
 
 import { createEffect, onCleanup, onMount } from "solid-js"
 import addonA11y from "@storybook/addon-a11y"
@@ -9,10 +9,10 @@ import { MetaProvider } from "@solidjs/meta"
 import { addons } from "storybook/preview-api"
 import { GLOBALS_UPDATED } from "storybook/internal/core-events"
 import { createJSXDecorator, definePreview } from "storybook-solidjs-vite"
-import { DialogProvider } from "@nanocode-ai/ui/context/dialog"
-import { MarkedProvider } from "@nanocode-ai/ui/context/marked"
-import { ThemeProvider, useTheme, type ColorScheme } from "@nanocode-ai/ui/theme"
-import { Font } from "@nanocode-ai/ui/font"
+import { DialogProvider } from "@bettercode-ai/ui/context/dialog"
+import { MarkedProvider } from "@bettercode-ai/ui/context/marked"
+import { ThemeProvider, useTheme, type ColorScheme } from "@bettercode-ai/ui/theme"
+import { Font } from "@bettercode-ai/ui/font"
 
 function resolveScheme(value: unknown): ColorScheme {
   if (value === "light" || value === "dark" || value === "system") return value

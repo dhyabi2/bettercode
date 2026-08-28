@@ -1,5 +1,5 @@
 {
-  "name": "@nanocode-ai/console-support",
+  "name": "@bettercode-ai/console-support",
   "version": "1.18.21",
   "type": "module",
   "license": "MIT",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "1.15.2",
-    "@nanocode-ai/console-core": "workspace:*",
+    "@bettercode-ai/console-core": "workspace:*",
     "@solidjs/meta": "catalog:",
     "@solidjs/router": "catalog:",
     "@solidjs/start": "catalog:",

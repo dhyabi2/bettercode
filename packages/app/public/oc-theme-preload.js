@@ -1,15 +1,15 @@
 ;(function () {
-  var key = "nanocode-theme-id"
+  var key = "bettercode-theme-id"
   var themeId = localStorage.getItem(key) || "oc-2"
 
   if (themeId === "oc-1") {
     themeId = "oc-2"
     localStorage.setItem(key, themeId)
-    localStorage.removeItem("nanocode-theme-css-light")
-    localStorage.removeItem("nanocode-theme-css-dark")
+    localStorage.removeItem("bettercode-theme-css-light")
+    localStorage.removeItem("bettercode-theme-css-dark")
   }
 
-  var scheme = localStorage.getItem("nanocode-color-scheme") || "system"
+  var scheme = localStorage.getItem("bettercode-color-scheme") || "system"
   var isDark = scheme === "dark" || (scheme === "system" && matchMedia("(prefers-color-scheme: dark)").matches)
   var mode = isDark ? "dark" : "light"
 
@@ -23,7 +23,7 @@
 
   if (themeId === "oc-2") return
 
-  var css = localStorage.getItem("nanocode-theme-css-" + mode)
+  var css = localStorage.getItem("bettercode-theme-css-" + mode)
   if (css) {
     var style = document.createElement("style")
     style.id = "oc-theme-preload"

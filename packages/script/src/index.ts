@@ -18,36 +18,36 @@ if (!semver.satisfies(process.versions.bun, expectedBunVersionRange)) {
 }
 
 const env = {
-  NANOCODE_CHANNEL: process.env["NANOCODE_CHANNEL"],
-  NANOCODE_BUMP: process.env["NANOCODE_BUMP"],
-  NANOCODE_VERSION: process.env["NANOCODE_VERSION"],
-  NANOCODE_RELEASE: process.env["NANOCODE_RELEASE"],
+  BETTERCODE_CHANNEL: process.env["BETTERCODE_CHANNEL"],
+  BETTERCODE_BUMP: process.env["BETTERCODE_BUMP"],
+  BETTERCODE_VERSION: process.env["BETTERCODE_VERSION"],
+  BETTERCODE_RELEASE: process.env["BETTERCODE_RELEASE"],
 }
 const CHANNEL = await (async () => {
-  if (env.NANOCODE_CHANNEL) return env.NANOCODE_CHANNEL
-  if (env.NANOCODE_BUMP) return "latest"
-  if (env.NANOCODE_VERSION && !env.NANOCODE_VERSION.startsWith("0.0.0-")) return "latest"
+  if (env.BETTERCODE_CHANNEL) return env.BETTERCODE_CHANNEL
+  if (env.BETTERCODE_BUMP) return "latest"
+  if (env.BETTERCODE_VERSION && !env.BETTERCODE_VERSION.startsWith("0.0.0-")) return "latest"
   return await $`git branch --show-current`.text().then((x) => x.trim())
 })()
 const IS_PREVIEW = CHANNEL !== "latest"
 
 const VERSION = await (async () => {
-  if (env.NANOCODE_VERSION) return env.NANOCODE_VERSION
+  if (env.BETTERCODE_VERSION) return env.BETTERCODE_VERSION
   if (IS_PREVIEW) return `0.0.0-${CHANNEL}-${new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "")}`
-  const version = await fetch("https://registry.npmjs.org/nanocode-ai/latest")
+  const version = await fetch("https://registry.npmjs.org/bettercode-ai/latest")
     .then((res) => {
       if (!res.ok) throw new Error(res.statusText)
       return res.json()
     })
     .then((data: any) => data.version)
   const [major, minor, patch] = version.split(".").map((x: string) => Number(x) || 0)
-  const t = env.NANOCODE_BUMP?.toLowerCase()
+  const t = env.BETTERCODE_BUMP?.toLowerCase()
   if (t === "major") return `${major + 1}.0.0`
   if (t === "minor") return `${major}.${minor + 1}.0`
   return `${major}.${minor}.${patch + 1}`
 })()
 
-const bot = ["actions-user", "nanocode", "nanocode-agent[bot]"]
+const bot = ["actions-user", "bettercode", "bettercode-agent[bot]"]
 const teamPath = path.resolve(import.meta.dir, "../../../.github/TEAM_MEMBERS")
 const team = [
   ...(await Bun.file(teamPath)
@@ -68,10 +68,10 @@ export const Script = {
     return IS_PREVIEW
   },
   get release(): boolean {
-    return !!env.NANOCODE_RELEASE
+    return !!env.BETTERCODE_RELEASE
   },
   get team() {
     return team
   },
 }
-console.log(`nanocode script`, JSON.stringify(Script, null, 2))
+console.log(`bettercode script`, JSON.stringify(Script, null, 2))

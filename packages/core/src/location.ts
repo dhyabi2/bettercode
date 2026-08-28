@@ -1,5 +1,5 @@
 import { Context, Effect, Layer } from "effect"
-import { Info, Ref, response } from "@nanocode-ai/schema/location"
+import { Info, Ref, response } from "@bettercode-ai/schema/location"
 import { Project } from "./project"
 import { LayerNode } from "./effect/layer-node"
 import { makeLocationNode, tags } from "./effect/app-node"
@@ -12,7 +12,7 @@ export interface Interface extends Info {
   readonly vcs?: Project.Vcs
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/Location") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/Location") {}
 
 export const node = LayerNode.unbound(Service, tags.values.location)
 

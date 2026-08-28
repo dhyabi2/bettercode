@@ -24,8 +24,8 @@ export function cliErrorMessage(input: unknown): string | undefined {
     return [
       `Model not found: ${field(model, "providerID")}/${field(model, "modelID")}`,
       ...(suggestions.length ? ["Did you mean: " + suggestions.join(", ")] : []),
-      "Try: `nanocode models` to list available models",
-      "Or check your config (nanocode.json) provider/model names",
+      "Try: `bettercode models` to list available models",
+      "Or check your config (bettercode.json) provider/model names",
     ].join("\n")
   }
 
@@ -70,7 +70,7 @@ export function cliErrorMessage(input: unknown): string | undefined {
   if (tagged(input, "UICancelledError") || named(input, "UICancelledError")) return ""
   if (isRecord(input) && named(input, "MCPFailed")) {
     const name = isRecord(input.data) ? field(input.data, "name") : undefined
-    return `MCP server "${name}" failed. Note, nanocode does not support MCP authentication yet.`
+    return `MCP server "${name}" failed. Note, bettercode does not support MCP authentication yet.`
   }
   return undefined
 }

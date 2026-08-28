@@ -1,5 +1,5 @@
-import { Integration } from "@nanocode-ai/schema/integration"
-import { Location } from "@nanocode-ai/schema/location"
+import { Integration } from "@bettercode-ai/schema/integration"
+import { Location } from "@bettercode-ai/schema/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import { InvalidRequestError } from "../errors"

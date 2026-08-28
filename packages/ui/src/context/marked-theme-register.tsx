@@ -1,10 +1,10 @@
 import { registerCustomTheme } from "@pierre/diffs"
-import { NanoCodeTheme } from "./marked-theme"
+import { BetterCodeTheme } from "./marked-theme"
 
 let registered = false
 
-export function registerNanoCodeTheme() {
+export function registerBetterCodeTheme() {
   if (registered) return
   registered = true
-  registerCustomTheme("NanoCode", () => Promise.resolve(NanoCodeTheme))
+  registerCustomTheme("BetterCode", () => Promise.resolve(BetterCodeTheme))
 }

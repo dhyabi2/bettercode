@@ -1,15 +1,15 @@
 ---
 title: Formattatori
-description: NanoCode usa formattatori specifici per linguaggio.
+description: BetterCode usa formattatori specifici per linguaggio.
 ---
 
-NanoCode formatta automaticamente i file dopo che vengono scritti o modificati usando formattatori specifici per linguaggio. Questo assicura che il codice generato segua lo stile del tuo progetto.
+BetterCode formatta automaticamente i file dopo che vengono scritti o modificati usando formattatori specifici per linguaggio. Questo assicura che il codice generato segua lo stile del tuo progetto.
 
 ---
 
 ## Integrati
 
-NanoCode include diversi formattatori integrati per linguaggi e framework popolari. Qui sotto trovi la lista dei formattatori, delle estensioni supportate e dei comandi o opzioni di config richiesti.
+BetterCode include diversi formattatori integrati per linguaggi e framework popolari. Qui sotto trovi la lista dei formattatori, delle estensioni supportate e dei comandi o opzioni di config richiesti.
 
 | Formattatore         | Estensioni                                                                                               | Requisiti                                                                                                    |
 | -------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -40,13 +40,13 @@ NanoCode include diversi formattatori integrati per linguaggi e framework popola
 | uv                   | .py, .pyi                                                                                                | comando `uv` disponibile                                                                                     |
 | zig                  | .zig, .zon                                                                                               | comando `zig` disponibile                                                                                    |
 
-Quindi, se il progetto ha `prettier` in `package.json`, NanoCode lo usera automaticamente.
+Quindi, se il progetto ha `prettier` in `package.json`, BetterCode lo usera automaticamente.
 
 ---
 
 ## Come funziona
 
-Quando NanoCode scrive o modifica un file:
+Quando BetterCode scrive o modifica un file:
 
 1. Controlla l'estensione del file rispetto a tutti i formattatori abilitati.
 2. Esegue il comando del formattatore appropriato sul file.
@@ -58,11 +58,11 @@ Questo processo avviene in background, mantenendo lo stile del codice senza pass
 
 ## Configurazione
 
-Puoi personalizzare i formattatori nella sezione `formatter` della config di NanoCode.
+Puoi personalizzare i formattatori nella sezione `formatter` della config di BetterCode.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {}
 }
 ```
@@ -84,18 +84,18 @@ Vediamo alcuni esempi.
 
 Per disabilitare **tutti** i formattatori globalmente, imposta `formatter` a `false`:
 
-```json title="nanocode.json" {3}
+```json title="bettercode.json" {3}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": false
 }
 ```
 
 Per disabilitare un formattatore **specifico**, imposta `disabled` a `true`:
 
-```json title="nanocode.json" {5}
+```json title="bettercode.json" {5}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -110,9 +110,9 @@ Per disabilitare un formattatore **specifico**, imposta `disabled` a `true`:
 
 Puoi sovrascrivere i formattatori integrati o aggiungerne di nuovi specificando comando, variabili d'ambiente ed estensioni file:
 
-```json title="nanocode.json" {4-14}
+```json title="bettercode.json" {4-14}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

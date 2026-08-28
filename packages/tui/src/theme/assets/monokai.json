@@ -1,5 +1,5 @@
 {
-  "$schema": "https://nanocode.ai/theme.json",
+  "$schema": "https://bettercode.ai/theme.json",
   "defs": {
     "background": "#272822",
     "backgroundAlt": "#1e1f1c",

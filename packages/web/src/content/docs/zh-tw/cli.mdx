@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: NanoCode CLI 選項和指令。
+description: BetterCode CLI 選項和指令。
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-NanoCode CLI 在不帶任何參數執行時，預設啟動 [TUI](/docs/tui)。
+BetterCode CLI 在不帶任何參數執行時，預設啟動 [TUI](/docs/tui)。
 
 ```bash
-nanocode
+bettercode
 ```
 
-但它也接受本頁面中記錄的指令，使您可以透過程式方式與 NanoCode 進行互動。
+但它也接受本頁面中記錄的指令，使您可以透過程式方式與 BetterCode 進行互動。
 
 ```bash
-nanocode run "Explain how closures work in JavaScript"
+bettercode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-啟動 NanoCode 終端機使用者介面。
+啟動 BetterCode 終端機使用者介面。
 
 ```bash
-nanocode [project]
+bettercode [project]
 ```
 
 #### 旗標
@@ -44,36 +44,36 @@ nanocode [project]
 
 ## 指令
 
-NanoCode CLI 還提供以下指令。
+BetterCode CLI 還提供以下指令。
 
 ---
 
 ### agent
 
-管理 NanoCode 的代理。
+管理 BetterCode 的代理。
 
 ```bash
-nanocode agent [command]
+bettercode agent [command]
 ```
 
 ---
 
 ### attach
 
-將終端機連接到已透過 `serve` 或 `web` 指令啟動的 NanoCode 後端伺服器。
+將終端機連接到已透過 `serve` 或 `web` 指令啟動的 BetterCode 後端伺服器。
 
 ```bash
-nanocode attach [url]
+bettercode attach [url]
 ```
 
-這允許將 TUI 與遠端 NanoCode 後端搭配使用。例如：
+這允許將 TUI 與遠端 BetterCode 後端搭配使用。例如：
 
 ```bash
 # Start the backend server for web/mobile access
-nanocode web --port 4096 --hostname 0.0.0.0
+bettercode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-nanocode attach http://10.20.30.40:4096
+bettercode attach http://10.20.30.40:4096
 ```
 
 #### 旗標
@@ -84,8 +84,8 @@ nanocode attach http://10.20.30.40:4096
 | <nobr><code>{"--continue"}</code></nobr> | `-c` | 繼續上一個工作階段                                                      |
 | <nobr><code>{"--session"}</code></nobr>  | `-s` | 要繼續的工作階段 ID                                                     |
 | <nobr><code>{"--fork"}</code></nobr>     |      | 繼續時分支工作階段（與 `--continue` 或 `--session` 一起使用）           |
-| <nobr><code>{"--password"}</code></nobr> | `-p` | 基本驗證密碼（預設使用 `NANOCODE_SERVER_PASSWORD`）                     |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本驗證使用者名稱（預設使用 `NANOCODE_SERVER_USERNAME` 或 `nanocode`） |
+| <nobr><code>{"--password"}</code></nobr> | `-p` | 基本驗證密碼（預設使用 `BETTERCODE_SERVER_PASSWORD`）                     |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本驗證使用者名稱（預設使用 `BETTERCODE_SERVER_USERNAME` 或 `bettercode`） |
 
 ---
 
@@ -94,7 +94,7 @@ nanocode attach http://10.20.30.40:4096
 使用自訂設定建立新的代理。
 
 ```bash
-nanocode agent create
+bettercode agent create
 ```
 
 此指令將引導您使用自訂系統提示詞和工具設定來建立新的代理。
@@ -106,7 +106,7 @@ nanocode agent create
 列出所有可用的代理。
 
 ```bash
-nanocode agent list
+bettercode agent list
 ```
 
 ---
@@ -116,20 +116,20 @@ nanocode agent list
 管理供應商的憑證和登入資訊的指令。
 
 ```bash
-nanocode auth [command]
+bettercode auth [command]
 ```
 
 ---
 
 #### login
 
-NanoCode 基於 [Models.dev](https://models.dev) 的供應商列表運作，因此您可以使用 `nanocode auth login` 為任何想要使用的供應商設定 API 金鑰。金鑰儲存在 `~/.local/share/nanocode/auth.json` 中。
+BetterCode 基於 [Models.dev](https://models.dev) 的供應商列表運作，因此您可以使用 `bettercode auth login` 為任何想要使用的供應商設定 API 金鑰。金鑰儲存在 `~/.local/share/bettercode/auth.json` 中。
 
 ```bash
-nanocode auth login
+bettercode auth login
 ```
 
-NanoCode 啟動時會從憑證檔案載入供應商資訊，同時也會載入環境變數或專案中 `.env` 檔案中定義的金鑰。
+BetterCode 啟動時會從憑證檔案載入供應商資訊，同時也會載入環境變數或專案中 `.env` 檔案中定義的金鑰。
 
 ---
 
@@ -138,13 +138,13 @@ NanoCode 啟動時會從憑證檔案載入供應商資訊，同時也會載入�
 列出憑證檔案中儲存的所有已認證供應商。
 
 ```bash
-nanocode auth list
+bettercode auth list
 ```
 
 或使用簡寫版本。
 
 ```bash
-nanocode auth ls
+bettercode auth ls
 ```
 
 ---
@@ -154,7 +154,7 @@ nanocode auth ls
 從憑證檔案中清除供應商資訊以完成登出。
 
 ```bash
-nanocode auth logout
+bettercode auth logout
 ```
 
 ---
@@ -164,7 +164,7 @@ nanocode auth logout
 管理用於儲存庫自動化的 GitHub 代理。
 
 ```bash
-nanocode github [command]
+bettercode github [command]
 ```
 
 ---
@@ -174,7 +174,7 @@ nanocode github [command]
 在您的儲存庫中安裝 GitHub 代理。
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 此指令會設定必要的 GitHub Actions 工作流程並引導您完成設定過程。[了解更多](/docs/github)。
@@ -186,7 +186,7 @@ nanocode github install
 執行 GitHub 代理。通常在 GitHub Actions 中使用。
 
 ```bash
-nanocode github run
+bettercode github run
 ```
 
 ##### 旗標
@@ -203,7 +203,7 @@ nanocode github run
 管理 Model Context Protocol 伺服器。
 
 ```bash
-nanocode mcp [command]
+bettercode mcp [command]
 ```
 
 ---
@@ -213,7 +213,7 @@ nanocode mcp [command]
 將 MCP 伺服器新增到您的設定中。
 
 ```bash
-nanocode mcp add
+bettercode mcp add
 ```
 
 此指令將引導您新增本地或遠端 MCP 伺服器。
@@ -225,13 +225,13 @@ nanocode mcp add
 列出所有已設定的 MCP 伺服器及其連線狀態。
 
 ```bash
-nanocode mcp list
+bettercode mcp list
 ```
 
 或使用簡寫版本。
 
 ```bash
-nanocode mcp ls
+bettercode mcp ls
 ```
 
 ---
@@ -241,7 +241,7 @@ nanocode mcp ls
 對支援 OAuth 的 MCP 伺服器進行認證。
 
 ```bash
-nanocode mcp auth [name]
+bettercode mcp auth [name]
 ```
 
 如果您不提供伺服器名稱，系統將提示您從可用的支援 OAuth 的伺服器中進行選擇。
@@ -249,13 +249,13 @@ nanocode mcp auth [name]
 您還可以列出支援 OAuth 的伺服器及其認證狀態。
 
 ```bash
-nanocode mcp auth list
+bettercode mcp auth list
 ```
 
 或使用簡寫版本。
 
 ```bash
-nanocode mcp auth ls
+bettercode mcp auth ls
 ```
 
 ---
@@ -265,7 +265,7 @@ nanocode mcp auth ls
 移除 MCP 伺服器的 OAuth 憑證。
 
 ```bash
-nanocode mcp logout [name]
+bettercode mcp logout [name]
 ```
 
 ---
@@ -275,7 +275,7 @@ nanocode mcp logout [name]
 偵錯 MCP 伺服器的 OAuth 連線問題。
 
 ```bash
-nanocode mcp debug <name>
+bettercode mcp debug <name>
 ```
 
 ---
@@ -285,7 +285,7 @@ nanocode mcp debug <name>
 列出已設定供應商的所有可用模型。
 
 ```bash
-nanocode models [provider]
+bettercode models [provider]
 ```
 
 此指令以 `provider/model` 的格式顯示所有已設定供應商中可用的模型。
@@ -295,7 +295,7 @@ nanocode models [provider]
 您可以選擇傳入供應商 ID 來按供應商篩選模型。
 
 ```bash
-nanocode models anthropic
+bettercode models anthropic
 ```
 
 #### 旗標
@@ -305,36 +305,36 @@ nanocode models anthropic
 | <nobr><code>{"--refresh"}</code></nobr> | 從 models.dev 重新整理模型快取             |
 | <nobr><code>{"--verbose"}</code></nobr> | 使用更詳細的模型輸出（包含費用等中繼資料） |
 
-使用 `--refresh` 旗標可以更新快取的模型列表。當供應商新增了模型並且您希望在 NanoCode 中看到它們時，此功能非常有用。
+使用 `--refresh` 旗標可以更新快取的模型列表。當供應商新增了模型並且您希望在 BetterCode 中看到它們時，此功能非常有用。
 
 ```bash
-nanocode models --refresh
+bettercode models --refresh
 ```
 
 ---
 
 ### run
 
-以非互動模式執行 NanoCode，直接傳入提示詞。
+以非互動模式執行 BetterCode，直接傳入提示詞。
 
 ```bash
-nanocode run [message..]
+bettercode run [message..]
 ```
 
 這對於指令碼編寫、自動化或無需啟動完整 TUI 即可快速取得答案的情境非常有用。例如：
 
-```bash "nanocode run"
-nanocode run Explain the use of context in Go
+```bash "bettercode run"
+bettercode run Explain the use of context in Go
 ```
 
-您還可以連接到正在執行的 `nanocode serve` 實例，以避免每次執行時 MCP 伺服器的冷啟動時間：
+您還可以連接到正在執行的 `bettercode serve` 實例，以避免每次執行時 MCP 伺服器的冷啟動時間：
 
 ```bash
 # Start a headless server in one terminal
-nanocode serve
+bettercode serve
 
 # In another terminal, run commands that attach to it
-nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+bettercode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### 旗標
@@ -351,9 +351,9 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f` | 附加到訊息的檔案                                                        |
 | <nobr><code>{"--format"}</code></nobr>   |      | 格式：default（格式化輸出）或 json（原始 JSON 事件）                    |
 | <nobr><code>{"--title"}</code></nobr>    |      | 工作階段標題（未提供值時使用截斷的提示詞）                              |
-| <nobr><code>{"--attach"}</code></nobr>   |      | 連接到正在執行的 nanocode 伺服器（例如 http://localhost:4096）          |
-| <nobr><code>{"--password"}</code></nobr> | `-p` | 基本驗證密碼（預設使用 `NANOCODE_SERVER_PASSWORD`）                     |
-| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本驗證使用者名稱（預設使用 `NANOCODE_SERVER_USERNAME` 或 `nanocode`） |
+| <nobr><code>{"--attach"}</code></nobr>   |      | 連接到正在執行的 bettercode 伺服器（例如 http://localhost:4096）          |
+| <nobr><code>{"--password"}</code></nobr> | `-p` | 基本驗證密碼（預設使用 `BETTERCODE_SERVER_PASSWORD`）                     |
+| <nobr><code>{"--username"}</code></nobr> | `-u` | 基本驗證使用者名稱（預設使用 `BETTERCODE_SERVER_USERNAME` 或 `bettercode`） |
 | <nobr><code>{"--dir"}</code></nobr>      |      | 執行目錄，或附加時遠端伺服器上的路徑                                    |
 | <nobr><code>{"--variant"}</code></nobr>  |      | 模型變體（特定於提供者的推理級別）                                      |
 | <nobr><code>{"--thinking"}</code></nobr> |      | 顯示思考區塊                                                            |
@@ -363,13 +363,13 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 
 ### serve
 
-啟動無介面的 NanoCode 伺服器以提供 API 存取。查看[伺服器文件](/docs/server)了解完整的 HTTP 介面。
+啟動無介面的 BetterCode 伺服器以提供 API 存取。查看[伺服器文件](/docs/server)了解完整的 HTTP 介面。
 
 ```bash
-nanocode serve
+bettercode serve
 ```
 
-此指令啟動一個 HTTP 伺服器，提供對 NanoCode 功能的 API 存取，無需 TUI 介面。設定 `NANOCODE_SERVER_PASSWORD` 可啟用 HTTP 基本認證（使用者名稱預設為 `nanocode`）。
+此指令啟動一個 HTTP 伺服器，提供對 BetterCode 功能的 API 存取，無需 TUI 介面。設定 `BETTERCODE_SERVER_PASSWORD` 可啟用 HTTP 基本認證（使用者名稱預設為 `bettercode`）。
 
 #### 旗標
 
@@ -384,20 +384,20 @@ nanocode serve
 
 ### session
 
-管理 NanoCode 工作階段。
+管理 BetterCode 工作階段。
 
 ```bash
-nanocode session [command]
+bettercode session [command]
 ```
 
 ---
 
 #### list
 
-列出所有 NanoCode 工作階段。
+列出所有 BetterCode 工作階段。
 
 ```bash
-nanocode session list
+bettercode session list
 ```
 
 ##### 旗標
@@ -411,10 +411,10 @@ nanocode session list
 
 ### stats
 
-顯示 NanoCode 工作階段的 Token 用量和費用統計資訊。
+顯示 BetterCode 工作階段的 Token 用量和費用統計資訊。
 
 ```bash
-nanocode stats
+bettercode stats
 ```
 
 #### 旗標
@@ -433,7 +433,7 @@ nanocode stats
 將工作階段資料匯出為 JSON。
 
 ```bash
-nanocode export [sessionID]
+bettercode export [sessionID]
 ```
 
 如果您不提供工作階段 ID，系統將提示您從可用的工作階段中進行選擇。
@@ -442,30 +442,30 @@ nanocode export [sessionID]
 
 ### import
 
-從 JSON 檔案或 NanoCode 分享連結匯入工作階段資料。
+從 JSON 檔案或 BetterCode 分享連結匯入工作階段資料。
 
 ```bash
-nanocode import <file>
+bettercode import <file>
 ```
 
-您可以從本地檔案或 NanoCode 分享連結匯入。
+您可以從本地檔案或 BetterCode 分享連結匯入。
 
 ```bash
-nanocode import session.json
-nanocode import https://opncd.ai/s/abc123
+bettercode import session.json
+bettercode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-啟動帶有 Web 介面的無介面 NanoCode 伺服器。
+啟動帶有 Web 介面的無介面 BetterCode 伺服器。
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-此指令啟動一個 HTTP 伺服器並開啟瀏覽器，透過 Web 介面存取 NanoCode。設定 `NANOCODE_SERVER_PASSWORD` 可啟用 HTTP 基本認證（使用者名稱預設為 `nanocode`）。
+此指令啟動一個 HTTP 伺服器並開啟瀏覽器，透過 Web 介面存取 BetterCode。設定 `BETTERCODE_SERVER_PASSWORD` 可啟用 HTTP 基本認證（使用者名稱預設為 `bettercode`）。
 
 #### 旗標
 
@@ -483,7 +483,7 @@ nanocode web
 啟動 ACP（Agent Client Protocol）伺服器。
 
 ```bash
-nanocode acp
+bettercode acp
 ```
 
 此指令啟動一個透過 stdin/stdout 使用 nd-JSON 進行通訊的 ACP 伺服器。
@@ -500,10 +500,10 @@ nanocode acp
 
 ### uninstall
 
-解除安裝 NanoCode 並刪除所有相關檔案。
+解除安裝 BetterCode 並刪除所有相關檔案。
 
 ```bash
-nanocode uninstall
+bettercode uninstall
 ```
 
 #### 旗標
@@ -519,22 +519,22 @@ nanocode uninstall
 
 ### upgrade
 
-將 NanoCode 更新到最新版本或指定版本。
+將 BetterCode 更新到最新版本或指定版本。
 
 ```bash
-nanocode upgrade [target]
+bettercode upgrade [target]
 ```
 
 更新到最新版本。
 
 ```bash
-nanocode upgrade
+bettercode upgrade
 ```
 
 更新到指定版本。
 
 ```bash
-nanocode upgrade v0.1.48
+bettercode upgrade v0.1.48
 ```
 
 #### 旗標
@@ -547,7 +547,7 @@ nanocode upgrade v0.1.48
 
 ## 全域旗標
 
-NanoCode CLI 接受以下全域旗標。
+BetterCode CLI 接受以下全域旗標。
 
 | 旗標                                       | 簡寫 | 說明                                 |
 | ------------------------------------------ | ---- | ------------------------------------ |
@@ -560,34 +560,34 @@ NanoCode CLI 接受以下全域旗標。
 
 ## 環境變數
 
-NanoCode 可以透過環境變數進行設定。
+BetterCode 可以透過環境變數進行設定。
 
 | 變數                                  | 類型    | 說明                                        |
 | ------------------------------------- | ------- | ------------------------------------------- |
-| `NANOCODE_AUTO_SHARE`                 | boolean | 自動分享工作階段                            |
-| `NANOCODE_GIT_BASH_PATH`              | string  | Windows 上 Git Bash 可執行檔的路徑          |
-| `NANOCODE_CONFIG`                     | string  | 設定檔路徑                                  |
-| `NANOCODE_TUI_CONFIG`                 | string  | TUI 設定檔路徑                              |
-| `NANOCODE_CONFIG_DIR`                 | string  | 設定目錄路徑                                |
-| `NANOCODE_CONFIG_CONTENT`             | string  | 內嵌 JSON 設定內容                          |
-| `NANOCODE_DISABLE_AUTOUPDATE`         | boolean | 停用自動更新檢查                            |
-| `NANOCODE_DISABLE_PRUNE`              | boolean | 停用舊資料清理                              |
-| `NANOCODE_DISABLE_TERMINAL_TITLE`     | boolean | 停用自動終端機標題更新                      |
-| `NANOCODE_PERMISSION`                 | string  | 內嵌 JSON 權限設定                          |
-| `NANOCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | 停用預設外掛程式                            |
-| `NANOCODE_DISABLE_LSP_DOWNLOAD`       | boolean | 停用 LSP 伺服器自動下載                     |
-| `NANOCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | 啟用實驗性模型                              |
-| `NANOCODE_DISABLE_AUTOCOMPACT`        | boolean | 停用自動上下文壓縮                          |
-| `NANOCODE_DISABLE_CLAUDE_CODE`        | boolean | 停用讀取 `.claude`（提示詞 + 技能）         |
-| `NANOCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | 停用讀取 `~/.claude/CLAUDE.md`              |
-| `NANOCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | 停用載入 `.claude/skills`                   |
-| `NANOCODE_DISABLE_MODELS_FETCH`       | boolean | 停用從遠端來源擷取模型                      |
-| `NANOCODE_FAKE_VCS`                   | string  | 用於測試目的的模擬 VCS 供應商               |
-| `NANOCODE_CLIENT`                     | string  | 用戶端識別碼（預設為 `cli`）                |
-| `NANOCODE_ENABLE_EXA`                 | boolean | 啟用 Exa 網路搜尋工具                       |
-| `NANOCODE_SERVER_PASSWORD`            | string  | 為 `serve`/`web` 啟用基本認證               |
-| `NANOCODE_SERVER_USERNAME`            | string  | 覆寫基本認證使用者名稱（預設為 `nanocode`） |
-| `NANOCODE_MODELS_URL`                 | string  | 自訂模型設定擷取 URL                        |
+| `BETTERCODE_AUTO_SHARE`                 | boolean | 自動分享工作階段                            |
+| `BETTERCODE_GIT_BASH_PATH`              | string  | Windows 上 Git Bash 可執行檔的路徑          |
+| `BETTERCODE_CONFIG`                     | string  | 設定檔路徑                                  |
+| `BETTERCODE_TUI_CONFIG`                 | string  | TUI 設定檔路徑                              |
+| `BETTERCODE_CONFIG_DIR`                 | string  | 設定目錄路徑                                |
+| `BETTERCODE_CONFIG_CONTENT`             | string  | 內嵌 JSON 設定內容                          |
+| `BETTERCODE_DISABLE_AUTOUPDATE`         | boolean | 停用自動更新檢查                            |
+| `BETTERCODE_DISABLE_PRUNE`              | boolean | 停用舊資料清理                              |
+| `BETTERCODE_DISABLE_TERMINAL_TITLE`     | boolean | 停用自動終端機標題更新                      |
+| `BETTERCODE_PERMISSION`                 | string  | 內嵌 JSON 權限設定                          |
+| `BETTERCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | 停用預設外掛程式                            |
+| `BETTERCODE_DISABLE_LSP_DOWNLOAD`       | boolean | 停用 LSP 伺服器自動下載                     |
+| `BETTERCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | 啟用實驗性模型                              |
+| `BETTERCODE_DISABLE_AUTOCOMPACT`        | boolean | 停用自動上下文壓縮                          |
+| `BETTERCODE_DISABLE_CLAUDE_CODE`        | boolean | 停用讀取 `.claude`（提示詞 + 技能）         |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | 停用讀取 `~/.claude/CLAUDE.md`              |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | 停用載入 `.claude/skills`                   |
+| `BETTERCODE_DISABLE_MODELS_FETCH`       | boolean | 停用從遠端來源擷取模型                      |
+| `BETTERCODE_FAKE_VCS`                   | string  | 用於測試目的的模擬 VCS 供應商               |
+| `BETTERCODE_CLIENT`                     | string  | 用戶端識別碼（預設為 `cli`）                |
+| `BETTERCODE_ENABLE_EXA`                 | boolean | 啟用 Exa 網路搜尋工具                       |
+| `BETTERCODE_SERVER_PASSWORD`            | string  | 為 `serve`/`web` 啟用基本認證               |
+| `BETTERCODE_SERVER_USERNAME`            | string  | 覆寫基本認證使用者名稱（預設為 `bettercode`） |
+| `BETTERCODE_MODELS_URL`                 | string  | 自訂模型設定擷取 URL                        |
 
 ---
 
@@ -597,21 +597,21 @@ NanoCode 可以透過環境變數進行設定。
 
 | 變數                                            | 類型    | 說明                            |
 | ----------------------------------------------- | ------- | ------------------------------- |
-| `NANOCODE_EXPERIMENTAL`                         | boolean | 啟用受總開關控制的實驗性功能    |
-| `NANOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | 啟用圖示探索                    |
-| `NANOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | 停用 TUI 中的選取即複製         |
-| `NANOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | bash 指令的預設逾時時間（毫秒） |
-| `NANOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | LLM 回應的最大輸出 Token 數     |
-| `NANOCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | 啟用整個目錄的檔案監看器        |
-| `NANOCODE_EXPERIMENTAL_OXFMT`                   | boolean | 啟用 oxfmt 格式化器             |
-| `NANOCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | 啟用實驗性 LSP 工具             |
-| `NANOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | 停用檔案監看器                  |
-| `NANOCODE_EXPERIMENTAL_EXA`                     | boolean | 啟用實驗性 Exa 功能             |
-| `NANOCODE_EXPERIMENTAL_LSP_TY`                  | boolean | 為 python 檔案啟用 TY LSP       |
-| `NANOCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | 啟用計畫模式                    |
-| `NANOCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | boolean | 啟用背景子代理任務              |
-| `NANOCODE_EXPERIMENTAL_EVENT_SYSTEM`            | boolean | 啟用實驗性事件系統              |
-| `NANOCODE_EXPERIMENTAL_NATIVE_LLM`              | boolean | 啟用原生 LLM 請求路徑           |
-| `NANOCODE_EXPERIMENTAL_PARALLEL`                | boolean | 啟用平行 Web 搜尋執行           |
-| `NANOCODE_EXPERIMENTAL_SCOUT`                   | boolean | 啟用 Scout 子代理               |
-| `NANOCODE_EXPERIMENTAL_WORKSPACES`              | boolean | 啟用工作區支援                  |
+| `BETTERCODE_EXPERIMENTAL`                         | boolean | 啟用受總開關控制的實驗性功能    |
+| `BETTERCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | 啟用圖示探索                    |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | 停用 TUI 中的選取即複製         |
+| `BETTERCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | bash 指令的預設逾時時間（毫秒） |
+| `BETTERCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | LLM 回應的最大輸出 Token 數     |
+| `BETTERCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | 啟用整個目錄的檔案監看器        |
+| `BETTERCODE_EXPERIMENTAL_OXFMT`                   | boolean | 啟用 oxfmt 格式化器             |
+| `BETTERCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | 啟用實驗性 LSP 工具             |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | 停用檔案監看器                  |
+| `BETTERCODE_EXPERIMENTAL_EXA`                     | boolean | 啟用實驗性 Exa 功能             |
+| `BETTERCODE_EXPERIMENTAL_LSP_TY`                  | boolean | 為 python 檔案啟用 TY LSP       |
+| `BETTERCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | 啟用計畫模式                    |
+| `BETTERCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | boolean | 啟用背景子代理任務              |
+| `BETTERCODE_EXPERIMENTAL_EVENT_SYSTEM`            | boolean | 啟用實驗性事件系統              |
+| `BETTERCODE_EXPERIMENTAL_NATIVE_LLM`              | boolean | 啟用原生 LLM 請求路徑           |
+| `BETTERCODE_EXPERIMENTAL_PARALLEL`                | boolean | 啟用平行 Web 搜尋執行           |
+| `BETTERCODE_EXPERIMENTAL_SCOUT`                   | boolean | 啟用 Scout 子代理               |
+| `BETTERCODE_EXPERIMENTAL_WORKSPACES`              | boolean | 啟用工作區支援                  |

@@ -1,5 +1,5 @@
-import { Agent } from "@nanocode-ai/schema/agent"
-import { Location } from "@nanocode-ai/schema/location"
+import { Agent } from "@bettercode-ai/schema/agent"
+import { Location } from "@bettercode-ai/schema/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { LocationQuery, locationQueryOpenApi } from "./location"

@@ -3,7 +3,7 @@ export * as SkillV2 from "./skill"
 import { makeLocationNode } from "./effect/app-node"
 import path from "path"
 import { Context, Effect, Layer, Schema, Types } from "effect"
-import { Skill } from "@nanocode-ai/schema/skill"
+import { Skill } from "@bettercode-ai/schema/skill"
 import { AgentV2 } from "./agent"
 import { ConfigMarkdown } from "./config/markdown"
 import { FSUtil } from "./fs-util"
@@ -51,7 +51,7 @@ export interface Interface extends State.Transformable<Draft> {
   readonly list: () => Effect.Effect<Info[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/v2/Skill") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/v2/Skill") {}
 
 const layer = Layer.effect(
   Service,

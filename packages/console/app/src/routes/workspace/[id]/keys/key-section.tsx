@@ -1,11 +1,11 @@
 import { json, query, action, useParams, createAsync, useSubmission } from "@solidjs/router"
 import { createEffect, createSignal, For, Show } from "solid-js"
 import { IconCopy, IconCheck } from "~/component/icon"
-import { Key } from "@nanocode-ai/console-core/key.js"
+import { Key } from "@bettercode-ai/console-core/key.js"
 import { withActor } from "~/context/auth.withActor"
 import { createStore } from "solid-js/store"
 import styles from "./key-section.module.css"
-import { Actor } from "@nanocode-ai/console-core/actor.js"
+import { Actor } from "@bettercode-ai/console-core/actor.js"
 import { useI18n } from "~/context/i18n"
 import { formError, localizeError } from "~/lib/form-error"
 

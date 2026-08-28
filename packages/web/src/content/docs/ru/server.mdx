@@ -1,19 +1,19 @@
 ---
 title: Сервер
-description: Взаимодействуйте с сервером nanocode через HTTP.
+description: Взаимодействуйте с сервером bettercode через HTTP.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-Команда `nanocode serve` запускает автономный HTTP-сервер, который предоставляет конечную точку OpenAPI, которую может использовать клиент с открытым кодом.
+Команда `bettercode serve` запускает автономный HTTP-сервер, который предоставляет конечную точку OpenAPI, которую может использовать клиент с открытым кодом.
 
 ---
 
 ### Использование
 
 ```bash
-nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
+bettercode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 ```
 
 #### Параметры
@@ -23,41 +23,41 @@ nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | Порт для прослушивания                      | `4096`           |
 | `--hostname`    | Имя хоста для прослушивания                 | `127.0.0.1`      |
 | `--mdns`        | Включить обнаружение mDNS                   | `false`          |
-| `--mdns-domain` | Пользовательское доменное имя для mDNS      | `nanocode.local` |
+| `--mdns-domain` | Пользовательское доменное имя для mDNS      | `bettercode.local` |
 | `--cors`        | Разрешенные дополнительные источники (CORS) | `[]`             |
 
 `--cors` можно передать несколько раз:
 
 ```bash
-nanocode serve --cors http://localhost:5173 --cors https://app.example.com
+bettercode serve --cors http://localhost:5173 --cors https://app.example.com
 ```
 
 ---
 
 ### Аутентификация
 
-Установите `NANOCODE_SERVER_PASSWORD`, чтобы защитить сервер с помощью базовой аутентификации HTTP. Имя пользователя по умолчанию — `nanocode` или установите `NANOCODE_SERVER_USERNAME`, чтобы переопределить его. Это относится как к `nanocode serve`, так и к `nanocode web`.
+Установите `BETTERCODE_SERVER_PASSWORD`, чтобы защитить сервер с помощью базовой аутентификации HTTP. Имя пользователя по умолчанию — `bettercode` или установите `BETTERCODE_SERVER_USERNAME`, чтобы переопределить его. Это относится как к `bettercode serve`, так и к `bettercode web`.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve
 ```
 
 ---
 
 ### Как это работает
 
-Когда вы запускаете `nanocode`, он запускает TUI и сервер. Где находится TUI
+Когда вы запускаете `bettercode`, он запускает TUI и сервер. Где находится TUI
 клиент, который общается с сервером. Сервер предоставляет спецификацию OpenAPI 3.1.
 конечная точка. Эта конечная точка также используется для создания файла [SDK](/docs/sdk).
 
 :::tip
-Используйте сервер nanocode для программного взаимодействия с открытым кодом.
+Используйте сервер bettercode для программного взаимодействия с открытым кодом.
 :::
 
 Эта архитектура позволяет открытому коду поддерживать несколько клиентов и позволяет программно взаимодействовать с открытым кодом.
 
-Вы можете запустить `nanocode serve`, чтобы запустить автономный сервер. Если у вас есть
-TUI с открытым кодом запущен, `nanocode serve` запустит новый сервер.
+Вы можете запустить `bettercode serve`, чтобы запустить автономный сервер. Если у вас есть
+TUI с открытым кодом запущен, `bettercode serve` запустит новый сервер.
 
 ---
 
@@ -65,7 +65,7 @@ TUI с открытым кодом запущен, `nanocode serve` запуст
 
 Когда вы запускаете TUI, он случайным образом назначает порт и имя хоста. Вместо этого вы можете передать `--hostname` и `--port` [flags](/docs/cli). Затем используйте это для подключения к его серверу.
 
-Конечную точку [`/tui`](#tui) можно использовать для управления TUI через сервер. Например, вы можете предварительно заполнить или запустить подсказку. Эта настройка используется плагинами nanocode [IDE](/docs/ide).
+Конечную точку [`/tui`](#tui) можно использовать для управления TUI через сервер. Например, вы можете предварительно заполнить или запустить подсказку. Эта настройка используется плагинами bettercode [IDE](/docs/ide).
 
 ---
 
@@ -83,7 +83,7 @@ For example, `http://localhost:4096/doc`. Use the spec to generate clients or in
 
 ## API
 
-Сервер nanocode предоставляет следующие API.
+Сервер bettercode предоставляет следующие API.
 
 ---
 

@@ -1,4 +1,4 @@
-import type { Plugin } from "@nanocode-ai/plugin"
+import type { Plugin } from "@bettercode-ai/plugin"
 import { mkdir, rm } from "node:fs/promises"
 
 export const FolderWorkspacePlugin: Plugin = async ({ experimental_workspace }) => {

@@ -1,5 +1,5 @@
 {
-  description = "NanoCode development flake";
+  description = "BetterCode development flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -39,11 +39,11 @@
             };
           in
           rec {
-            nanocode = final.callPackage ./nix/nanocode.nix {
+            bettercode = final.callPackage ./nix/bettercode.nix {
               inherit node_modules;
             };
-            nanocode-desktop = final.callPackage ./nix/desktop.nix {
-              inherit nanocode;
+            bettercode-desktop = final.callPackage ./nix/desktop.nix {
+              inherit bettercode;
             };
           };
       };
@@ -56,12 +56,12 @@
           };
         in
         rec {
-          default = nanocode;
-          nanocode = pkgs.callPackage ./nix/nanocode.nix {
+          default = bettercode;
+          bettercode = pkgs.callPackage ./nix/bettercode.nix {
             inherit node_modules;
           };
-          nanocode-desktop = pkgs.callPackage ./nix/desktop.nix {
-            inherit nanocode;
+          bettercode-desktop = pkgs.callPackage ./nix/desktop.nix {
+            inherit bettercode;
           };
           # Updater derivation with fakeHash - build fails and reveals correct hash
           node_modules_updater = node_modules.override {

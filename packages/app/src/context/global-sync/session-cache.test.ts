@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import type { Message, Part, PermissionRequest, QuestionRequest, SessionStatus, Todo } from "@nanocode-ai/sdk/v2/client"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
+import type { Message, Part, PermissionRequest, QuestionRequest, SessionStatus, Todo } from "@bettercode-ai/sdk/v2/client"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
 import { dropSessionCaches, pickSessionCacheEvictions } from "./session-cache"
 
 const msg = (id: string, sessionID: string) =>

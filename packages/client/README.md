@@ -1,24 +1,24 @@
-# @nanocode-ai/client
+# @bettercode-ai/client
 
-Private generation target for clients derived directly from NanoCode's authoritative Effect `HttpApi`.
+Private generation target for clients derived directly from BetterCode's authoritative Effect `HttpApi`.
 
 ## Entrypoints
 
-- `@nanocode-ai/client`: zero-Effect Promise client using `fetch`.
-- `@nanocode-ai/client/effect`: rich Effect network client using an environment-provided `HttpClient`.
+- `@bettercode-ai/client`: zero-Effect Promise client using `fetch`.
+- `@bettercode-ai/client/effect`: rich Effect network client using an environment-provided `HttpClient`.
 
-The generated surface includes every standard HTTP group from Server's concrete API. The build compiler reads `@nanocode-ai/server/api`; the generated Effect runtime imports a client-local projection built from Protocol, with a generation-equivalence test preventing transport drift. Custom transports such as the PTY WebSocket connection remain outside the generic HTTP client. Run `bun run generate` after changing the contract and `bun run check:generated` to detect committed-output drift.
+The generated surface includes every standard HTTP group from Server's concrete API. The build compiler reads `@bettercode-ai/server/api`; the generated Effect runtime imports a client-local projection built from Protocol, with a generation-equivalence test preventing transport drift. Custom transports such as the PTY WebSocket connection remain outside the generic HTTP client. Run `bun run generate` after changing the contract and `bun run check:generated` to detect committed-output drift.
 
-The Effect entrypoint uses canonical decoded values such as `Session.ID`, `Location.Ref`, and `Prompt`. These datatypes come from the lightweight `@nanocode-ai/schema` package and are re-exported so callers depend only on the client surface. Protocol owns endpoint construction and middleware placement; Server supplies the concrete middleware keys used by the build-time API.
+The Effect entrypoint uses canonical decoded values such as `Session.ID`, `Location.Ref`, and `Prompt`. These datatypes come from the lightweight `@bettercode-ai/schema` package and are re-exported so callers depend only on the client surface. Protocol owns endpoint construction and middleware placement; Server supplies the concrete middleware keys used by the build-time API.
 
 The Promise root remains structural and has no Core or Effect runtime dependency. `/effect` depends only on Effect, Schema, and Protocol and is browser-bundle safe. Bundle-boundary tests enforce both import graphs.
 
 Effect consumers construct canonical decoded inputs:
 
 ```ts
-import { AbsolutePath, Location, NanoCode, Prompt } from "@nanocode-ai/client/effect"
+import { AbsolutePath, Location, BetterCode, Prompt } from "@bettercode-ai/client/effect"
 
-const client = yield * NanoCode.make({ baseUrl: "https://nanocode.example" })
+const client = yield * BetterCode.make({ baseUrl: "https://bettercode.example" })
 yield *
   client.sessions.create({
     location: Location.Ref.make({ directory: AbsolutePath.make("/workspace") }),

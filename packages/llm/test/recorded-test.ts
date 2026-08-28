@@ -1,6 +1,6 @@
 import { NodeFileSystem } from "@effect/platform-node"
-import { HttpRecorder } from "@nanocode-ai/http-recorder"
-import { HttpRecorderInternal } from "@nanocode-ai/http-recorder/internal"
+import { HttpRecorder } from "@bettercode-ai/http-recorder"
+import { HttpRecorderInternal } from "@bettercode-ai/http-recorder/internal"
 import { Layer } from "effect"
 import { FetchHttpClient } from "effect/unstable/http"
 import * as path from "node:path"

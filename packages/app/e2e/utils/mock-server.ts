@@ -30,7 +30,7 @@ export interface MockServerConfig {
   sessionStatus?: Record<string, unknown> | (() => Record<string, unknown>)
 }
 
-export async function mockNanoCodeServer(page: Page, config: MockServerConfig) {
+export async function mockBetterCodeServer(page: Page, config: MockServerConfig) {
   const cursors = new Map<string, string>()
   let nextCursor = 0
   const staticRoutes: Record<string, unknown> = {
@@ -39,7 +39,7 @@ export async function mockNanoCodeServer(page: Page, config: MockServerConfig) {
       config: config.directory,
       worktree: config.directory,
       directory: config.directory,
-      home: "C:/NanoCode",
+      home: "C:/BetterCode",
     },
     "/project": [config.project],
     "/project/current": config.project,
@@ -159,7 +159,7 @@ export async function mockNanoCodeServer(page: Page, config: MockServerConfig) {
         config: config.directory,
         worktree: config.directory,
         directory: config.directory,
-        home: "C:/NanoCode",
+        home: "C:/BetterCode",
       })
     if (path === "/api/permission/request")
       return json(route, {

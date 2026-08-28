@@ -1,19 +1,19 @@
 ---
 title: Tjener
-description: Samhandle med NanoCode-tjener over HTTP.
+description: Samhandle med BetterCode-tjener over HTTP.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-Kommandoen `nanocode serve` kjører en hodeløs HTTP-server som eksponerer et OpenAPI-endepunkt som en NanoCode-klient kan bruke.
+Kommandoen `bettercode serve` kjører en hodeløs HTTP-server som eksponerer et OpenAPI-endepunkt som en BetterCode-klient kan bruke.
 
 ---
 
 ### Bruk
 
 ```bash
-nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
+bettercode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 ```
 
 #### Alternativer
@@ -23,41 +23,41 @@ nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | Port å lytte på                               | `4096`           |
 | `--hostname`    | Vertsnavn å lytte på                          | `127.0.0.1`      |
 | `--mdns`        | Aktiver mDNS-oppdagelse                       | `false`          |
-| `--mdns-domain` | Egendefinert domenenavn for mDNS-tjeneste     | `nanocode.local` |
+| `--mdns-domain` | Egendefinert domenenavn for mDNS-tjeneste     | `bettercode.local` |
 | `--cors`        | Ytterligere nettleseropprinnelse som tillates | `[]`             |
 
 `--cors` kan angis flere ganger:
 
 ```bash
-nanocode serve --cors http://localhost:5173 --cors https://app.example.com
+bettercode serve --cors http://localhost:5173 --cors https://app.example.com
 ```
 
 ---
 
 ### Autentisering
 
-Sett `NANOCODE_SERVER_PASSWORD` for å beskytte serveren med HTTP grunnleggende autentisering. Brukernavnet er satt til `nanocode` som standard, eller sett `NANOCODE_SERVER_USERNAME` for å overstyre det. Dette gjelder både `nanocode serve` og `nanocode web`.
+Sett `BETTERCODE_SERVER_PASSWORD` for å beskytte serveren med HTTP grunnleggende autentisering. Brukernavnet er satt til `bettercode` som standard, eller sett `BETTERCODE_SERVER_USERNAME` for å overstyre det. Dette gjelder både `bettercode serve` og `bettercode web`.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve
 ```
 
 ---
 
 ### Slik fungerer det
 
-Når du kjører `nanocode` starter den en TUI og en server. Der TUI er
+Når du kjører `bettercode` starter den en TUI og en server. Der TUI er
 klient som snakker med serveren. Serveren viser en OpenAPI 3.1-spesifikasjon
 endepunkt. Dette endepunktet brukes også til å generere en [SDK](/docs/sdk).
 
 :::tip
-Bruk NanoCode-serveren til å samhandle med NanoCode programmatisk.
+Bruk BetterCode-serveren til å samhandle med BetterCode programmatisk.
 :::
 
-Denne arkitekturen lar NanoCode støtte flere klienter og lar deg samhandle med NanoCode programmatisk.
+Denne arkitekturen lar BetterCode støtte flere klienter og lar deg samhandle med BetterCode programmatisk.
 
-Du kan kjøre `nanocode serve` for å starte en frittstående server. Hvis du har
-NanoCode TUI kjører, vil `nanocode serve` starte en ny server.
+Du kan kjøre `bettercode serve` for å starte en frittstående server. Hvis du har
+BetterCode TUI kjører, vil `bettercode serve` starte en ny server.
 
 ---
 
@@ -65,7 +65,7 @@ NanoCode TUI kjører, vil `nanocode serve` starte en ny server.
 
 Når du starter TUI, tildeler den tilfeldig en port og vertsnavn. Du kan i stedet sende inn `--hostname` og `--port` [flagg](/docs/cli). Bruk deretter denne til å koble til serveren.
 
-[`/tui`](#tui) endepunktet kan brukes til å kjøre TUI gjennom serveren. Du kan for eksempel forhåndsutfylle eller kjøre en forespørsel. Dette oppsettet brukes av NanoCode [IDE](/docs/ide) plugins.
+[`/tui`](#tui) endepunktet kan brukes til å kjøre TUI gjennom serveren. Du kan for eksempel forhåndsutfylle eller kjøre en forespørsel. Dette oppsettet brukes av BetterCode [IDE](/docs/ide) plugins.
 
 ---
 
@@ -83,7 +83,7 @@ For eksempel `http://localhost:4096/doc`. Bruk spesifikasjonen til å generere k
 
 ## APIer
 
-nanocode-serveren viser følgende APIer.
+bettercode-serveren viser følgende APIer.
 
 ---
 

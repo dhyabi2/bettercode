@@ -1,7 +1,7 @@
-import { Database, eq, sql } from "@nanocode-ai/console-core/drizzle/index.js"
-import { IpTable } from "@nanocode-ai/console-core/schema/ip.sql.js"
+import { Database, eq, sql } from "@bettercode-ai/console-core/drizzle/index.js"
+import { IpTable } from "@bettercode-ai/console-core/schema/ip.sql.js"
 import { UsageInfo } from "./provider/provider"
-import { Subscription } from "@nanocode-ai/console-core/subscription.js"
+import { Subscription } from "@bettercode-ai/console-core/subscription.js"
 
 export function createTrialLimiter(trialProviders: string[] | undefined, ip: string) {
   if (!trialProviders) return

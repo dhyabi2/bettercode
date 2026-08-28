@@ -1,12 +1,12 @@
-import { Icon, type IconProps } from "@nanocode-ai/ui/icon"
+import { Icon, type IconProps } from "@bettercode-ai/ui/icon"
 import {
   Toast,
   showToast as showLegacyToast,
   toaster as legacyToaster,
   type ToastOptions,
   type ToastVariant,
-} from "@nanocode-ai/ui/toast"
-import { ToastV2, showToastV2, toasterV2 } from "@nanocode-ai/ui/v2/toast-v2"
+} from "@bettercode-ai/ui/toast"
+import { ToastV2, showToastV2, toasterV2 } from "@bettercode-ai/ui/v2/toast-v2"
 
 let v2 = false
 

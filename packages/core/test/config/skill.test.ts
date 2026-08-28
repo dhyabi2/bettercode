@@ -1,12 +1,12 @@
 import path from "path"
 import { describe, expect } from "bun:test"
 import { Effect, Layer, Schema } from "effect"
-import { Config } from "@nanocode-ai/core/config"
-import { ConfigSkillPlugin } from "@nanocode-ai/core/config/plugin/skill"
-import { Global } from "@nanocode-ai/core/global"
-import { Location } from "@nanocode-ai/core/location"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { SkillV2 } from "@nanocode-ai/core/skill"
+import { Config } from "@bettercode-ai/core/config"
+import { ConfigSkillPlugin } from "@bettercode-ai/core/config/plugin/skill"
+import { Global } from "@bettercode-ai/core/global"
+import { Location } from "@bettercode-ai/core/location"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { SkillV2 } from "@bettercode-ai/core/skill"
 import { location } from "../fixture/location"
 import { testEffect } from "../lib/effect"
 import { host } from "../plugin/host"
@@ -46,7 +46,7 @@ describe("ConfigSkillPlugin.Plugin", () => {
           Config.Service.of({
             entries: () =>
               Effect.succeed([
-                new Config.Directory({ type: "directory", path: AbsolutePath.make("/repo/.nanocode") }),
+                new Config.Directory({ type: "directory", path: AbsolutePath.make("/repo/.bettercode") }),
                 new Config.Document({
                   type: "document",
                   info: decode({
@@ -61,11 +61,11 @@ describe("ConfigSkillPlugin.Plugin", () => {
       expect(sources).toEqual([
         SkillV2.DirectorySource.make({
           type: "directory",
-          path: AbsolutePath.make(path.join("/repo/.nanocode", "skill")),
+          path: AbsolutePath.make(path.join("/repo/.bettercode", "skill")),
         }),
         SkillV2.DirectorySource.make({
           type: "directory",
-          path: AbsolutePath.make(path.join("/repo/.nanocode", "skills")),
+          path: AbsolutePath.make(path.join("/repo/.bettercode", "skills")),
         }),
         SkillV2.DirectorySource.make({ type: "directory", path: AbsolutePath.make(path.join(directory, "skills")) }),
         SkillV2.DirectorySource.make({

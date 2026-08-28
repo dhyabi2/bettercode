@@ -4,19 +4,19 @@ import fs from "fs/promises"
 import path from "path"
 import { eq } from "drizzle-orm"
 import { Effect } from "effect"
-import { MoveSession } from "@nanocode-ai/core/control-plane/move-session"
-import { Database } from "@nanocode-ai/core/database/database"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { EventV2 } from "@nanocode-ai/core/event"
-import { Project } from "@nanocode-ai/core/project"
-import { ProjectTable } from "@nanocode-ai/core/project/sql"
-import { ProjectDirectories } from "@nanocode-ai/core/project/directories"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { SessionV2 } from "@nanocode-ai/core/session"
-import { SessionProjector } from "@nanocode-ai/core/session/projector"
-import { SessionTable } from "@nanocode-ai/core/session/sql"
-import { SessionStore } from "@nanocode-ai/core/session/store"
+import { MoveSession } from "@bettercode-ai/core/control-plane/move-session"
+import { Database } from "@bettercode-ai/core/database/database"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { EventV2 } from "@bettercode-ai/core/event"
+import { Project } from "@bettercode-ai/core/project"
+import { ProjectTable } from "@bettercode-ai/core/project/sql"
+import { ProjectDirectories } from "@bettercode-ai/core/project/directories"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { SessionV2 } from "@bettercode-ai/core/session"
+import { SessionProjector } from "@bettercode-ai/core/session/projector"
+import { SessionTable } from "@bettercode-ai/core/session/sql"
+import { SessionStore } from "@bettercode-ai/core/session/store"
 import { tmpdir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
 
@@ -43,7 +43,7 @@ async function initRepo(directory: string) {
   await $`git config core.autocrlf false`.cwd(directory).quiet()
   await $`git config core.fsmonitor false`.cwd(directory).quiet()
   await $`git config commit.gpgsign false`.cwd(directory).quiet()
-  await $`git config user.email test@nanocode.test`.cwd(directory).quiet()
+  await $`git config user.email test@bettercode.test`.cwd(directory).quiet()
   await $`git config user.name Test`.cwd(directory).quiet()
   await fs.writeFile(path.join(directory, "tracked.txt"), "initial\n")
   await $`git add tracked.txt`.cwd(directory).quiet()

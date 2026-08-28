@@ -1,6 +1,6 @@
 import type {
   Config,
-  NanocodeClient,
+  BettercodeClient,
   Path,
   PermissionRequest,
   Project,
@@ -8,7 +8,7 @@ import type {
   QuestionRequest,
   ReferenceInfo,
   Session,
-} from "@nanocode-ai/sdk/v2/client"
+} from "@bettercode-ai/sdk/v2/client"
 import type {
   AgentListInput,
   AgentListOutput,
@@ -22,10 +22,10 @@ import type {
   ReferenceListInput,
   ReferenceListOutput,
   SessionApi,
-} from "@nanocode-ai/client/promise"
+} from "@bettercode-ai/client/promise"
 import { showToast } from "@/utils/toast"
-import { getFilename } from "@nanocode-ai/core/util/path"
-import { retry } from "@nanocode-ai/core/util/retry"
+import { getFilename } from "@bettercode-ai/core/util/path"
+import { retry } from "@bettercode-ai/core/util/retry"
 import { batch } from "solid-js"
 import { produce, reconcile, type SetStoreFunction, type Store } from "solid-js/store"
 import type { State, VcsCache } from "./types"
@@ -40,7 +40,7 @@ import {
 import { formatServerError } from "@/utils/server-errors"
 import { QueryClient, queryOptions } from "@tanstack/solid-query"
 import { loadMcpQuery, loadMcpResourcesQuery } from "../server-sync"
-import { NormalizedProviderListResponse } from "@nanocode-ai/session-ui/context"
+import { NormalizedProviderListResponse } from "@bettercode-ai/session-ui/context"
 import { ScopedKey, type ServerScope } from "@/utils/server-scope"
 import { normalizeSessionInfo } from "@/utils/session"
 import type { ServerProtocol } from "@/utils/server-protocol"
@@ -105,7 +105,7 @@ function showErrors(input: {
   })
 }
 
-export const loadGlobalConfigQuery = (scope: ServerScope, sdk: NanocodeClient, protocol?: Promise<ServerProtocol>) =>
+export const loadGlobalConfigQuery = (scope: ServerScope, sdk: BettercodeClient, protocol?: Promise<ServerProtocol>) =>
   queryOptions({
     queryKey: [scope, "config"],
     queryFn: async () => {
@@ -132,7 +132,7 @@ export const loadProjectsQuery = (scope: ServerScope, api: ProjectApi) =>
         api.list().then((projects) => {
           return projects
             .filter((p) => !!p?.id)
-            .filter((p) => !!p.worktree && !p.worktree.includes("nanocode-test"))
+            .filter((p) => !!p.worktree && !p.worktree.includes("bettercode-test"))
             .map(normalizeProjectInfo)
             .slice()
             .sort((a, b) => cmp(a.id, b.id))
@@ -141,7 +141,7 @@ export const loadProjectsQuery = (scope: ServerScope, api: ProjectApi) =>
   })
 
 export async function bootstrapGlobal(input: {
-  serverSDK: NanocodeClient
+  serverSDK: BettercodeClient
   serverAPI: CatalogApi & { readonly project: ProjectApi }
   protocol?: Promise<ServerProtocol>
   scope: ServerScope
@@ -222,7 +222,7 @@ export const loadProvidersQuery = (
   scope: ServerScope,
   directory: string | null,
   sdk: CatalogApi,
-  legacy?: NanocodeClient,
+  legacy?: BettercodeClient,
   protocol?: Promise<ServerProtocol>,
 ) =>
   queryOptions({
@@ -259,7 +259,7 @@ export const loadAgentsQuery = (
   scope: ServerScope,
   directory: string,
   sdk: AgentListApi,
-  legacy?: NanocodeClient,
+  legacy?: BettercodeClient,
   protocol?: Promise<ServerProtocol>,
 ) =>
   queryOptions({
@@ -274,7 +274,7 @@ export const loadAgentsQuery = (
 export const loadCommands = (
   directory: string,
   api: CommandListApi,
-  legacy?: NanocodeClient,
+  legacy?: BettercodeClient,
   protocol?: Promise<ServerProtocol>,
 ): Promise<CommandInfo[]> =>
   retry(async () => {
@@ -298,7 +298,7 @@ export const loadCommands = (
 export const loadPathQuery = (
   scope: ServerScope,
   directory: string | null,
-  sdk: NanocodeClient,
+  sdk: BettercodeClient,
   protocol?: Promise<ServerProtocol>,
 ) =>
   queryOptions<Path>({
@@ -314,7 +314,7 @@ export const loadReferencesQuery = (
   scope: ServerScope,
   directory: string,
   api: ReferenceListApi,
-  legacy?: NanocodeClient,
+  legacy?: BettercodeClient,
   protocol?: Promise<ServerProtocol>,
 ) =>
   queryOptions<ReferenceInfo[]>({
@@ -331,7 +331,7 @@ export async function bootstrapDirectory(input: {
   directory: string
   scope: ServerScope
   mcp: boolean
-  sdk: NanocodeClient
+  sdk: BettercodeClient
   api: CatalogApi & {
     readonly agent: AgentListApi
     readonly command: CommandListApi

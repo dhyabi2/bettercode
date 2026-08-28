@@ -1,6 +1,6 @@
 import { createServer } from "node:http"
-import type { IntegrationOAuthMethodRegistration } from "@nanocode-ai/plugin/v2/effect/integration"
-import { define } from "@nanocode-ai/plugin/v2/effect/plugin"
+import type { IntegrationOAuthMethodRegistration } from "@bettercode-ai/plugin/v2/effect/integration"
+import { define } from "@bettercode-ai/plugin/v2/effect/plugin"
 import { Deferred, Effect } from "effect"
 import type { Scope } from "effect"
 import { Credential } from "../../credential"
@@ -189,7 +189,7 @@ export const OpenAIPlugin = define({
 } satisfies PluginInternal.Plugin<PluginInternal.Requirements | Scope.Scope>)
 
 function headers(contentType: string) {
-  return { "Content-Type": contentType, "User-Agent": `nanocode/${InstallationVersion}` }
+  return { "Content-Type": contentType, "User-Agent": `bettercode/${InstallationVersion}` }
 }
 
 function exchange(code: string, redirect: string, pkce: Pkce) {
@@ -268,7 +268,7 @@ function authorizeURL(redirect: string, pkce: Pkce, state: string) {
     id_token_add_organizations: "true",
     codex_cli_simplified_flow: "true",
     state,
-    originator: "nanocode",
+    originator: "bettercode",
   })}`
 }
 

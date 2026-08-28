@@ -2,14 +2,14 @@ import { action, useParams, useAction, useSubmission, json, query, createAsync }
 import { createStore } from "solid-js/store"
 import { createMemo, For, Show } from "solid-js"
 import { Modal } from "~/component/modal"
-import { Billing } from "@nanocode-ai/console-core/billing.js"
-import { Database, eq, and, isNull } from "@nanocode-ai/console-core/drizzle/index.js"
-import { BillingTable, LiteTable } from "@nanocode-ai/console-core/schema/billing.sql.js"
-import { WorkspaceTable } from "@nanocode-ai/console-core/schema/workspace.sql.js"
-import { Actor } from "@nanocode-ai/console-core/actor.js"
-import { Workspace } from "@nanocode-ai/console-core/workspace.js"
-import { Subscription } from "@nanocode-ai/console-core/subscription.js"
-import { LiteData } from "@nanocode-ai/console-core/lite.js"
+import { Billing } from "@bettercode-ai/console-core/billing.js"
+import { Database, eq, and, isNull } from "@bettercode-ai/console-core/drizzle/index.js"
+import { BillingTable, LiteTable } from "@bettercode-ai/console-core/schema/billing.sql.js"
+import { WorkspaceTable } from "@bettercode-ai/console-core/schema/workspace.sql.js"
+import { Actor } from "@bettercode-ai/console-core/actor.js"
+import { Workspace } from "@bettercode-ai/console-core/workspace.js"
+import { Subscription } from "@bettercode-ai/console-core/subscription.js"
+import { LiteData } from "@bettercode-ai/console-core/lite.js"
 import { withActor } from "~/context/auth.withActor"
 import { queryBillingInfo } from "../../common"
 import styles from "./lite-section.module.css"
@@ -256,7 +256,7 @@ export function LiteSection(props: { lite: LiteSubscription | undefined }) {
             </div>
             <div data-slot="beta-notice">
               {i18n.t("workspace.lite.subscription.selectProvider")}{" "}
-              <a href={language.route("/docs/providers/#nanocode-go")} target="_blank" rel="noopener noreferrer">
+              <a href={language.route("/docs/providers/#bettercode-go")} target="_blank" rel="noopener noreferrer">
                 {i18n.t("common.learnMore")}
               </a>
               .

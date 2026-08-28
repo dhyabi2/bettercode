@@ -2,7 +2,7 @@ import { useParams } from "@solidjs/router"
 import { onCleanup } from "solid-js"
 import { useCommand } from "@/context/command"
 import { useLanguage } from "@/context/language"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
 
 export function useSettingsDialog(defaultValue?: string) {
   const dialog = useDialog()

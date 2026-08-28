@@ -1,13 +1,13 @@
 ---
 title: SDK
-description: nanocode sunucusu için type-safe JS istemcisi.
+description: bettercode sunucusu için type-safe JS istemcisi.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-nanocode JS/TS SDK, sunucu ile etkileşmek için type-safe bir istemci sağlar.
-nanocode'u programatik olarak kontrol etmek ve entegrasyonlar oluşturmak için kullanabilirsiniz.
+bettercode JS/TS SDK, sunucu ile etkileşmek için type-safe bir istemci sağlar.
+bettercode'u programatik olarak kontrol etmek ve entegrasyonlar oluşturmak için kullanabilirsiniz.
 
 [Sunucu](/docs/server) sayfasında nasıl çalıştığını görebilir, örnekler için topluluğun oluşturduğu [projeler](/docs/ecosystem#projects) bölümüne bakabilirsiniz.
 
@@ -18,19 +18,19 @@ nanocode'u programatik olarak kontrol etmek ve entegrasyonlar oluşturmak için 
 SDK'yı npm'den yükleyin:
 
 ```bash
-npm install @nanocode-ai/sdk
+npm install @bettercode-ai/sdk
 ```
 
 ---
 
 ## İstemci Oluşturma
 
-Bir nanocode örneği oluşturun:
+Bir bettercode örneği oluşturun:
 
 ```javascript
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 
-const { client } = await createNanocode()
+const { client } = await createBettercode()
 ```
 
 Bu, hem bir sunucu hem de bir istemci başlatır
@@ -49,12 +49,12 @@ Bu, hem bir sunucu hem de bir istemci başlatır
 
 ## Yapılandırma
 
-Davranışı özelleştirmek için bir yapılandırma nesnesi iletebilirsiniz. Örnek yine de `nanocode.json` dosyanızı alır, ancak yapılandırmayı satır içi olarak geçersiz kılabilir veya ekleyebilirsiniz:
+Davranışı özelleştirmek için bir yapılandırma nesnesi iletebilirsiniz. Örnek yine de `bettercode.json` dosyanızı alır, ancak yapılandırmayı satır içi olarak geçersiz kılabilir veya ekleyebilirsiniz:
 
 ```javascript
-import { createNanocode } from "@nanocode-ai/sdk"
+import { createBettercode } from "@bettercode-ai/sdk"
 
-const nanocode = await createNanocode({
+const bettercode = await createBettercode({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,19 +62,19 @@ const nanocode = await createNanocode({
   },
 })
 
-console.log(`Server running at ${nanocode.server.url}`)
+console.log(`Server running at ${bettercode.server.url}`)
 
-nanocode.server.close()
+bettercode.server.close()
 ```
 
 ## Yalnızca istemci
 
-Halihazırda çalışan bir nanocode örneğiniz varsa, ona bağlanmak için bir istemci örneği oluşturabilirsiniz:
+Halihazırda çalışan bir bettercode örneğiniz varsa, ona bağlanmak için bir istemci örneği oluşturabilirsiniz:
 
 ```javascript
-import { createNanocodeClient } from "@nanocode-ai/sdk"
+import { createBettercodeClient } from "@bettercode-ai/sdk"
 
-const client = createNanocodeClient({
+const client = createBettercodeClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createNanocodeClient({
 SDK, tüm API türleri için TypeScript tanımlarını içerir. Bunları doğrudan içe aktarın:
 
 ```typescript
-import type { Session, Message, Part } from "@nanocode-ai/sdk"
+import type { Session, Message, Part } from "@bettercode-ai/sdk"
 ```
 
 Tüm tipler, sunucunun OpenAPI spesifikasyonundan oluşturulur ve <a href={typesUrl}>tipler dosyasında</a> mevcuttur.
@@ -376,7 +376,7 @@ await client.session.prompt({
 ```javascript
 // Search and read files
 const textResults = await client.find.text({
-  query: { pattern: "function.*nanocode" },
+  query: { pattern: "function.*bettercode" },
 })
 
 const files = await client.find.files({

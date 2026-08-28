@@ -1,7 +1,7 @@
 import type { APIEvent } from "@solidjs/start/server"
-import { Database } from "@nanocode-ai/console-core/drizzle/index.js"
-import { BenchmarkTable } from "@nanocode-ai/console-core/schema/benchmark.sql.js"
-import { Identifier } from "@nanocode-ai/console-core/identifier.js"
+import { Database } from "@bettercode-ai/console-core/drizzle/index.js"
+import { BenchmarkTable } from "@bettercode-ai/console-core/schema/benchmark.sql.js"
+import { Identifier } from "@bettercode-ai/console-core/identifier.js"
 import { i18n } from "~/i18n"
 import { localeFromRequest } from "~/lib/language"
 

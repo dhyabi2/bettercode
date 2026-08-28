@@ -67,7 +67,7 @@ export default function Home() {
               <span>
                 <span>curl -fsSL </span>
                 <span data-slot="protocol">https://</span>
-                <span data-slot="highlight">nanocode.ai/install</span>
+                <span data-slot="highlight">bettercode.ai/install</span>
                 <span> | bash</span>
               </span>
               <CopyStatus />
@@ -113,7 +113,7 @@ export default function Home() {
             <h3 data-component="title">npm</h3>
             <button data-copy data-slot="button">
               <span>
-                npm install -g <strong>nanocode-ai</strong>
+                npm install -g <strong>bettercode-ai</strong>
               </span>
               <CopyStatus />
             </button>
@@ -122,7 +122,7 @@ export default function Home() {
             <h3 data-component="title">bun</h3>
             <button data-copy data-slot="button">
               <span>
-                bun install -g <strong>nanocode-ai</strong>
+                bun install -g <strong>bettercode-ai</strong>
               </span>
               <CopyStatus />
             </button>
@@ -131,7 +131,7 @@ export default function Home() {
             <h3 data-component="title">homebrew</h3>
             <button data-copy data-slot="button">
               <span>
-                brew install <strong>nanocode</strong>
+                brew install <strong>bettercode</strong>
               </span>
               <CopyStatus />
             </button>
@@ -140,7 +140,7 @@ export default function Home() {
             <h3 data-component="title">paru</h3>
             <button data-copy data-slot="button">
               <span>
-                paru -S <strong>nanocode-bin</strong>
+                paru -S <strong>bettercode-bin</strong>
               </span>
               <CopyStatus />
             </button>
@@ -158,13 +158,13 @@ export default function Home() {
 
         <footer data-component="footer">
           <div data-slot="cell">
-            <a href="https://x.com/nanocode">{i18n.t("footer.x")}</a>
+            <a href="https://x.com/bettercode">{i18n.t("footer.x")}</a>
           </div>
           <div data-slot="cell">
-            <a href="https://github.com/dhyabi2/nanocode">{i18n.t("footer.github")}</a>
+            <a href="https://github.com/dhyabi2/bettercode">{i18n.t("footer.github")}</a>
           </div>
           <div data-slot="cell">
-            <a href="https://nanocode.ai/discord">{i18n.t("footer.discord")}</a>
+            <a href="https://bettercode.ai/discord">{i18n.t("footer.discord")}</a>
           </div>
         </footer>
       </div>

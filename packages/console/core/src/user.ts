@@ -139,15 +139,15 @@ export namespace User {
             .then((rows) => rows[0]),
         )
 
-        const { InviteEmail } = await import("@nanocode-ai/console-mail/InviteEmail.jsx")
+        const { InviteEmail } = await import("@bettercode-ai/console-mail/InviteEmail.jsx")
         await AWS.sendEmail({
           to: email,
-          subject: `You've been invited to join the ${emailInfo.workspaceName} workspace on NanoCode`,
+          subject: `You've been invited to join the ${emailInfo.workspaceName} workspace on BetterCode`,
           body: render(
             // @ts-ignore
             InviteEmail({
               inviter: emailInfo.inviterEmail,
-              assetsUrl: `https://nanocode.ai/email`,
+              assetsUrl: `https://bettercode.ai/email`,
               workspaceID: workspaceID,
               workspaceName: emailInfo.workspaceName,
             }),

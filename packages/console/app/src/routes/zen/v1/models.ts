@@ -1,9 +1,9 @@
 import type { APIEvent } from "@solidjs/start/server"
-import { ZenData } from "@nanocode-ai/console-core/model.js"
-import { and, Database, eq, isNull } from "@nanocode-ai/console-core/drizzle/index.js"
-import { KeyTable } from "@nanocode-ai/console-core/schema/key.sql.js"
-import { WorkspaceTable } from "@nanocode-ai/console-core/schema/workspace.sql.js"
-import { ModelTable } from "@nanocode-ai/console-core/schema/model.sql.js"
+import { ZenData } from "@bettercode-ai/console-core/model.js"
+import { and, Database, eq, isNull } from "@bettercode-ai/console-core/drizzle/index.js"
+import { KeyTable } from "@bettercode-ai/console-core/schema/key.sql.js"
+import { WorkspaceTable } from "@bettercode-ai/console-core/schema/workspace.sql.js"
+import { ModelTable } from "@bettercode-ai/console-core/schema/model.sql.js"
 import { buildOptionsResponse, buildModelsResponse } from "~/routes/zen/util/modelsHandler"
 
 export async function OPTIONS(_input: APIEvent) {

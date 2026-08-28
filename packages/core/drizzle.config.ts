@@ -5,6 +5,6 @@ export default defineConfig({
   schema: ["./src/**/*.sql.ts", "./src/**/sql.ts"],
   out: "./migration",
   dbCredentials: {
-    url: "/home/thdxr/.local/share/nanocode/nanocode.db",
+    url: "/home/thdxr/.local/share/bettercode/bettercode.db",
   },
 })

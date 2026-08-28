@@ -1,11 +1,11 @@
 {
-  "name": "@nanocode-ai/ui",
+  "name": "@bettercode-ai/ui",
   "version": "1.18.21",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dhyabi2/nanocode.git",
+    "url": "git+https://github.com/dhyabi2/bettercode.git",
     "directory": "packages/ui"
   },
   "publishConfig": {

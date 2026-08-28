@@ -11,7 +11,7 @@ afterEach(() => {
 
 test("rejects when the external editor cannot start", async () => {
   delete process.env.VISUAL
-  process.env.EDITOR = "nanocode-editor-that-does-not-exist"
+  process.env.EDITOR = "bettercode-editor-that-does-not-exist"
   const renderer = {
     suspend() {},
     resume() {},

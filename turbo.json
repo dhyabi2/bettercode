@@ -1,31 +1,31 @@
 {
   "$schema": "https://v2-8-13.turborepo.dev/schema.json",
-  "globalEnv": ["CI", "NANOCODE_DISABLE_SHARE"],
-  "globalPassThroughEnv": ["CI", "NANOCODE_DISABLE_SHARE"],
+  "globalEnv": ["CI", "BETTERCODE_DISABLE_SHARE"],
+  "globalPassThroughEnv": ["CI", "BETTERCODE_DISABLE_SHARE"],
   "tasks": {
     "typecheck": {},
     "build": {
       "dependsOn": [],
       "outputs": ["dist/**"]
     },
-    "nanocode#test": {
+    "bettercode#test": {
       "dependsOn": ["^build"],
       "outputs": [],
       "passThroughEnv": ["*"]
     },
-    "@nanocode-ai/core#test": {
+    "@bettercode-ai/core#test": {
       "dependsOn": ["^build"],
       "outputs": []
     },
-    "@nanocode-ai/app#test": {
+    "@bettercode-ai/app#test": {
       "dependsOn": ["^build"],
       "outputs": []
     },
-    "@nanocode-ai/ui#test": {
+    "@bettercode-ai/ui#test": {
       "dependsOn": ["^build"],
       "outputs": []
     },
-    "@nanocode-ai/session-ui#test": {
+    "@bettercode-ai/session-ui#test": {
       "dependsOn": ["^build"],
       "outputs": []
     }

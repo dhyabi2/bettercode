@@ -1,7 +1,7 @@
 export * as ProviderV2 from "./provider"
 
 import { Types } from "effect"
-import { Provider } from "@nanocode-ai/schema/provider"
+import { Provider } from "@bettercode-ai/schema/provider"
 
 export const ID = Provider.ID
 export type ID = typeof ID.Type

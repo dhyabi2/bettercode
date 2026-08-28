@@ -12,10 +12,10 @@ import type { DesktopTheme } from "./types"
 export type ColorScheme = "light" | "dark" | "system"
 
 const STORAGE_KEYS = {
-  THEME_ID: "nanocode-theme-id",
-  COLOR_SCHEME: "nanocode-color-scheme",
-  THEME_CSS_LIGHT: "nanocode-theme-css-light",
-  THEME_CSS_DARK: "nanocode-theme-css-dark",
+  THEME_ID: "bettercode-theme-id",
+  COLOR_SCHEME: "bettercode-color-scheme",
+  THEME_CSS_LIGHT: "bettercode-theme-css-light",
+  THEME_CSS_DARK: "bettercode-theme-css-dark",
 } as const
 
 const THEME_STYLE_ID = "oc-theme"
@@ -69,7 +69,7 @@ const names: Record<string, string> = {
   nord: "Nord",
   "one-dark": "One Dark",
   onedarkpro: "One Dark Pro",
-  nanocode: "NanoCode",
+  bettercode: "BetterCode",
   orng: "Orng",
   "osaka-jade": "Osaka Jade",
   palenight: "Palenight",

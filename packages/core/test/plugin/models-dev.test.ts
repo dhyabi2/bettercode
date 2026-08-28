@@ -1,18 +1,18 @@
 import path from "path"
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { Catalog } from "@nanocode-ai/core/catalog"
-import { Integration } from "@nanocode-ai/core/integration"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { EventV2 } from "@nanocode-ai/core/event"
-import { Flag } from "@nanocode-ai/core/flag/flag"
-import { Location } from "@nanocode-ai/core/location"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { ModelsDev } from "@nanocode-ai/core/models-dev"
-import { ModelsDevPlugin } from "@nanocode-ai/core/plugin/models-dev"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
+import { Catalog } from "@bettercode-ai/core/catalog"
+import { Integration } from "@bettercode-ai/core/integration"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { EventV2 } from "@bettercode-ai/core/event"
+import { Flag } from "@bettercode-ai/core/flag/flag"
+import { Location } from "@bettercode-ai/core/location"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { ModelsDev } from "@bettercode-ai/core/models-dev"
+import { ModelsDevPlugin } from "@bettercode-ai/core/plugin/models-dev"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
 import { location } from "../fixture/location"
 import { testEffect } from "../lib/effect"
 import { catalogHost, host, integrationHost } from "./host"
@@ -128,11 +128,11 @@ describe("ModelsDevPlugin", () => {
     Effect.acquireUseRelease(
       Effect.sync(() => {
         const previous = {
-          path: Flag.NANOCODE_MODELS_PATH,
-          disabled: Flag.NANOCODE_DISABLE_MODELS_FETCH,
+          path: Flag.BETTERCODE_MODELS_PATH,
+          disabled: Flag.BETTERCODE_DISABLE_MODELS_FETCH,
         }
-        Flag.NANOCODE_MODELS_PATH = path.join(import.meta.dir, "fixtures", "models-dev.json")
-        Flag.NANOCODE_DISABLE_MODELS_FETCH = true
+        Flag.BETTERCODE_MODELS_PATH = path.join(import.meta.dir, "fixtures", "models-dev.json")
+        Flag.BETTERCODE_DISABLE_MODELS_FETCH = true
         return previous
       }),
       () =>
@@ -162,8 +162,8 @@ describe("ModelsDevPlugin", () => {
         }).pipe(Effect.provide(AppNodeBuilder.build(ModelsDev.node))),
       (previous) =>
         Effect.sync(() => {
-          Flag.NANOCODE_MODELS_PATH = previous.path
-          Flag.NANOCODE_DISABLE_MODELS_FETCH = previous.disabled
+          Flag.BETTERCODE_MODELS_PATH = previous.path
+          Flag.BETTERCODE_DISABLE_MODELS_FETCH = previous.disabled
         }),
     ),
   )

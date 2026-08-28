@@ -1,14 +1,14 @@
 ---
 title: Windows (WSL)
-description: Kjør NanoCode på Windows med WSL for best opplevelse.
+description: Kjør BetterCode på Windows med WSL for best opplevelse.
 ---
 
 import { Steps } from "@astrojs/starlight/components"
 
-Selv om NanoCode kan kjøre direkte på Windows, anbefaler vi å bruke [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) for best mulig opplevelse. WSL gir et Linux-miljø som fungerer godt med funksjonene i NanoCode.
+Selv om BetterCode kan kjøre direkte på Windows, anbefaler vi å bruke [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) for best mulig opplevelse. WSL gir et Linux-miljø som fungerer godt med funksjonene i BetterCode.
 
 :::tip[Hvorfor WSL?]
-WSL gir bedre filsystemytelse, full terminalstøtte og kompatibilitet med utviklingsverktøyene NanoCode er avhengig av.
+WSL gir bedre filsystemytelse, full terminalstøtte og kompatibilitet med utviklingsverktøyene BetterCode er avhengig av.
 :::
 
 ---
@@ -21,21 +21,21 @@ WSL gir bedre filsystemytelse, full terminalstøtte og kompatibilitet med utvikl
 
    Hvis du ikke har gjort det ennå, [installer WSL](https://learn.microsoft.com/en-us/windows/wsl/install) med den offisielle guiden fra Microsoft.
 
-2. **Installer NanoCode i WSL**
+2. **Installer BetterCode i WSL**
 
-   Når WSL er satt opp, åpner du WSL-terminalen og installerer NanoCode med en av [installasjonsmetodene](/docs/).
+   Når WSL er satt opp, åpner du WSL-terminalen og installerer BetterCode med en av [installasjonsmetodene](/docs/).
 
    ```bash
-   curl -fsSL https://nanocode.ai/install | bash
+   curl -fsSL https://bettercode.ai/install | bash
    ```
 
-3. **Bruk NanoCode fra WSL**
+3. **Bruk BetterCode fra WSL**
 
-   Gå til prosjektmappen din (Windows-filer er tilgjengelige via `/mnt/c/`, `/mnt/d/` osv.) og kjør NanoCode.
+   Gå til prosjektmappen din (Windows-filer er tilgjengelige via `/mnt/c/`, `/mnt/d/` osv.) og kjør BetterCode.
 
    ```bash
    cd /mnt/c/Users/YourName/project
-   nanocode
+   bettercode
    ```
 
 </Steps>
@@ -44,12 +44,12 @@ WSL gir bedre filsystemytelse, full terminalstøtte og kompatibilitet med utvikl
 
 ## Skrivebordsapp + WSL-server
 
-Hvis du foretrekker NanoCode-skrivebordsappen, men vil kjøre serveren i WSL:
+Hvis du foretrekker BetterCode-skrivebordsappen, men vil kjøre serveren i WSL:
 
 1. **Start serveren i WSL** med `--hostname 0.0.0.0` for å tillate eksterne tilkoblinger:
 
    ```bash
-   nanocode serve --hostname 0.0.0.0 --port 4096
+   bettercode serve --hostname 0.0.0.0 --port 4096
    ```
 
 2. **Koble skrivebordsappen** til `http://localhost:4096`
@@ -59,10 +59,10 @@ Hvis `localhost` ikke fungerer i oppsettet ditt, bruk WSL-IP-adressen i stedet (
 :::
 
 :::caution
-Når du bruker `--hostname 0.0.0.0`, sett `NANOCODE_SERVER_PASSWORD` for å sikre serveren.
+Når du bruker `--hostname 0.0.0.0`, sett `BETTERCODE_SERVER_PASSWORD` for å sikre serveren.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve --hostname 0.0.0.0
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve --hostname 0.0.0.0
 ```
 
 :::
@@ -73,15 +73,15 @@ NANOCODE_SERVER_PASSWORD=your-password nanocode serve --hostname 0.0.0.0
 
 For best web-opplevelse på Windows:
 
-1. **Kjør `nanocode web` i WSL-terminalen** i stedet for PowerShell:
+1. **Kjør `bettercode web` i WSL-terminalen** i stedet for PowerShell:
 
    ```bash
-   nanocode web --hostname 0.0.0.0
+   bettercode web --hostname 0.0.0.0
    ```
 
-2. **Åpne i Windows-nettleseren** på `http://localhost:<port>` (NanoCode skriver ut URL-en)
+2. **Åpne i Windows-nettleseren** på `http://localhost:<port>` (BetterCode skriver ut URL-en)
 
-Når du kjører `nanocode web` fra WSL, får du riktig filsystemtilgang og terminalintegrasjon, samtidig som det er tilgjengelig fra Windows-nettleseren din.
+Når du kjører `bettercode web` fra WSL, får du riktig filsystemtilgang og terminalintegrasjon, samtidig som det er tilgjengelig fra Windows-nettleseren din.
 
 ---
 
@@ -97,17 +97,17 @@ Eksempel:
 
 ```bash
 cd /mnt/c/Users/YourName/Documents/project
-nanocode
+bettercode
 ```
 
 :::tip
-For en jevnere opplevelse kan du klone/kopiere repoet ditt inn i WSL-filsystemet (for eksempel under `~/code/`) og kjøre NanoCode der.
+For en jevnere opplevelse kan du klone/kopiere repoet ditt inn i WSL-filsystemet (for eksempel under `~/code/`) og kjøre BetterCode der.
 :::
 
 ---
 
 ## Tips
 
-- Kjør NanoCode i WSL for prosjekter lagret på Windows-stasjoner: filtilgang fungerer smidig
-- Bruk [WSL-utvidelsen i VS Code](https://code.visualstudio.com/docs/remote/wsl) sammen med NanoCode for en integrert utviklingsflyt
-- NanoCode-konfigurasjon og sesjoner lagres i WSL-miljøet på `~/.local/share/nanocode/`
+- Kjør BetterCode i WSL for prosjekter lagret på Windows-stasjoner: filtilgang fungerer smidig
+- Bruk [WSL-utvidelsen i VS Code](https://code.visualstudio.com/docs/remote/wsl) sammen med BetterCode for en integrert utviklingsflyt
+- BetterCode-konfigurasjon og sesjoner lagres i WSL-miljøet på `~/.local/share/bettercode/`

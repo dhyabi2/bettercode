@@ -5,8 +5,8 @@ import { tmpdir } from "node:os"
 import path from "node:path"
 import { Effect, Exit, Fiber, Stream } from "effect"
 import { ChildProcess } from "effect/unstable/process"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { AppProcess } from "@nanocode-ai/core/process"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { AppProcess } from "@bettercode-ai/core/process"
 import { testEffect } from "../lib/effect"
 
 const it = testEffect(LayerNode.compile(AppProcess.node))
@@ -155,7 +155,7 @@ describe("AppProcess", () => {
       it.live(
         "timeout cleans up the scoped child process",
         Effect.acquireUseRelease(
-          Effect.promise(() => fs.mkdtemp(path.join(tmpdir(), "nanocode-process-timeout-"))),
+          Effect.promise(() => fs.mkdtemp(path.join(tmpdir(), "bettercode-process-timeout-"))),
           (directory) => {
             const ready = path.join(directory, "ready")
             const settled = path.join(directory, "settled")
@@ -176,7 +176,7 @@ describe("AppProcess", () => {
       it.live(
         "fiber interruption cleans up the scoped child process after readiness",
         Effect.acquireUseRelease(
-          Effect.promise(() => fs.mkdtemp(path.join(tmpdir(), "nanocode-process-interrupt-"))),
+          Effect.promise(() => fs.mkdtemp(path.join(tmpdir(), "bettercode-process-interrupt-"))),
           (directory) => {
             const ready = path.join(directory, "ready")
             const settled = path.join(directory, "settled")

@@ -1,8 +1,8 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Credential } from "@nanocode-ai/core/credential"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { Integration } from "@nanocode-ai/core/integration"
+import { Credential } from "@bettercode-ai/core/credential"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { Integration } from "@bettercode-ai/core/integration"
 import { testEffect } from "./lib/effect"
 
 const it = testEffect(LayerNode.compile(Credential.node))

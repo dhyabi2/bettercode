@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { PartGroup } from "@nanocode-ai/session-ui/message-part"
+import type { PartGroup } from "@bettercode-ai/session-ui/message-part"
 import { reuseTimelineRows } from "./row-reconciliation"
 import { TimelineRow } from "./timeline-row"
 

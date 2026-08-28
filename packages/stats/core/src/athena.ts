@@ -42,7 +42,7 @@ export declare namespace Athena {
   }
 }
 
-export class Athena extends Context.Service<Athena, Athena.Service>()("@nanocode/stats/Athena") {
+export class Athena extends Context.Service<Athena, Athena.Service>()("@bettercode/stats/Athena") {
   static readonly layer: Layer.Layer<Athena> = Layer.effect(
     Athena,
     Effect.sync(() => {

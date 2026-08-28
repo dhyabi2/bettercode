@@ -22,7 +22,7 @@ jobs:
           LOGIN="${{ github.event.issue.user.login }}"
           ASSOCIATION="${{ github.event.issue.author_association }}"
 
-          if [ "$LOGIN" = "nanocode-agent[bot]" ] ||
+          if [ "$LOGIN" = "bettercode-agent[bot]" ] ||
              [ "$ASSOCIATION" = "OWNER" ] ||
              [ "$ASSOCIATION" = "MEMBER" ] ||
              grep -qxiF "$LOGIN" .github/TEAM_MEMBERS; then
@@ -36,20 +36,20 @@ jobs:
         if: steps.author.outputs.skip != 'true'
         uses: ./.github/actions/setup-bun
 
-      - name: Install nanocode
+      - name: Install bettercode
         if: steps.author.outputs.skip != 'true'
-        run: curl -fsSL https://nanocode.ai/install | bash
+        run: curl -fsSL https://bettercode.ai/install | bash
 
       - name: Triage issue
         if: steps.author.outputs.skip != 'true'
         env:
-          NANOCODE_API_KEY: ${{ secrets.NANOCODE_API_KEY }}
+          BETTERCODE_API_KEY: ${{ secrets.BETTERCODE_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
-          nanocode run --agent triage "The following issue was just opened, triage it:
+          bettercode run --agent triage "The following issue was just opened, triage it:
 
           Title: $ISSUE_TITLE
 

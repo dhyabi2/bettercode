@@ -1,28 +1,28 @@
 ---
 title: Web
-description: Usa NanoCode nel browser.
+description: Usa BetterCode nel browser.
 ---
 
-NanoCode puo funzionare come applicazione web nel browser, offrendo la stessa potente esperienza di coding AI senza bisogno di un terminale.
+BetterCode puo funzionare come applicazione web nel browser, offrendo la stessa potente esperienza di coding AI senza bisogno di un terminale.
 
-![NanoCode Web - Nuova sessione](../../../assets/web/web-homepage-new-session.png)
+![BetterCode Web - Nuova sessione](../../../assets/web/web-homepage-new-session.png)
 
 ## Per iniziare
 
 Avvia l'interfaccia web eseguendo:
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-Questo avvia un server locale su `127.0.0.1` con una porta disponibile scelta a caso e apre automaticamente NanoCode nel browser predefinito.
+Questo avvia un server locale su `127.0.0.1` con una porta disponibile scelta a caso e apre automaticamente BetterCode nel browser predefinito.
 
 :::caution
-Se `NANOCODE_SERVER_PASSWORD` non e impostata, il server non sara protetto. Va bene per l'uso locale, ma va impostata per l'accesso in rete.
+Se `BETTERCODE_SERVER_PASSWORD` non e impostata, il server non sara protetto. Va bene per l'uso locale, ma va impostata per l'accesso in rete.
 :::
 
 :::tip[Utenti Windows]
-Per la migliore esperienza, esegui `nanocode web` da [WSL](/docs/windows-wsl) invece che da PowerShell. Questo garantisce accesso corretto al file system e integrazione col terminale.
+Per la migliore esperienza, esegui `bettercode web` da [WSL](/docs/windows-wsl) invece che da PowerShell. Questo garantisce accesso corretto al file system e integrazione col terminale.
 :::
 
 ---
@@ -33,21 +33,21 @@ Puoi configurare il server web con i flag della riga di comando o nel tuo [file 
 
 ### Porta
 
-Per impostazione predefinita, NanoCode sceglie una porta disponibile. Puoi specificare una porta:
+Per impostazione predefinita, BetterCode sceglie una porta disponibile. Puoi specificare una porta:
 
 ```bash
-nanocode web --port 4096
+bettercode web --port 4096
 ```
 
 ### Nome host
 
-Per impostazione predefinita, il server si lega a `127.0.0.1` (solo localhost). Per rendere NanoCode accessibile sulla rete:
+Per impostazione predefinita, il server si lega a `127.0.0.1` (solo localhost). Per rendere BetterCode accessibile sulla rete:
 
 ```bash
-nanocode web --hostname 0.0.0.0
+bettercode web --hostname 0.0.0.0
 ```
 
-Usando `0.0.0.0`, NanoCode mostrera sia l'indirizzo locale sia quello di rete:
+Usando `0.0.0.0`, BetterCode mostrera sia l'indirizzo locale sia quello di rete:
 
 ```
   Local access:       http://localhost:4096
@@ -59,15 +59,15 @@ Usando `0.0.0.0`, NanoCode mostrera sia l'indirizzo locale sia quello di rete:
 Abilita mDNS per rendere il server individuabile sulla rete locale:
 
 ```bash
-nanocode web --mdns
+bettercode web --mdns
 ```
 
-Questo imposta automaticamente l'hostname a `0.0.0.0` e pubblicizza il server come `nanocode.local`.
+Questo imposta automaticamente l'hostname a `0.0.0.0` e pubblicizza il server come `bettercode.local`.
 
 Puoi personalizzare il nome di dominio mDNS per eseguire piu istanze sulla stessa rete:
 
 ```bash
-nanocode web --mdns --mdns-domain myproject.local
+bettercode web --mdns --mdns-domain myproject.local
 ```
 
 ### CORS
@@ -75,36 +75,36 @@ nanocode web --mdns --mdns-domain myproject.local
 Per consentire domini aggiuntivi per CORS (utile per frontend personalizzati):
 
 ```bash
-nanocode web --cors https://example.com
+bettercode web --cors https://example.com
 ```
 
 ### Autenticazione
 
-Per proteggere l'accesso, imposta una password usando la variabile d'ambiente `NANOCODE_SERVER_PASSWORD`:
+Per proteggere l'accesso, imposta una password usando la variabile d'ambiente `BETTERCODE_SERVER_PASSWORD`:
 
 ```bash
-NANOCODE_SERVER_PASSWORD=secret nanocode web
+BETTERCODE_SERVER_PASSWORD=secret bettercode web
 ```
 
-Lo username predefinito e `nanocode`, ma puo essere cambiato con `NANOCODE_SERVER_USERNAME`.
+Lo username predefinito e `bettercode`, ma puo essere cambiato con `BETTERCODE_SERVER_USERNAME`.
 
 ---
 
 ## Usa l'interfaccia web
 
-Una volta avviata, l'interfaccia web ti da accesso alle tue sessioni NanoCode.
+Una volta avviata, l'interfaccia web ti da accesso alle tue sessioni BetterCode.
 
 ### Sessioni
 
 Visualizza e gestisci le sessioni dalla homepage. Puoi vedere le sessioni attive e avviarne di nuove.
 
-![NanoCode Web - Sessione attiva](../../../assets/web/web-homepage-active-session.png)
+![BetterCode Web - Sessione attiva](../../../assets/web/web-homepage-active-session.png)
 
 ### Stato del server
 
 Fai clic su "See Servers" per vedere i server connessi e il loro stato.
 
-![NanoCode Web - See Servers](../../../assets/web/web-homepage-see-servers.png)
+![BetterCode Web - See Servers](../../../assets/web/web-homepage-see-servers.png)
 
 ---
 
@@ -114,10 +114,10 @@ Puoi collegare una TUI da terminale a un server web gia in esecuzione:
 
 ```bash
 # Avvia il web server
-nanocode web --port 4096
+bettercode web --port 4096
 
 # In un altro terminale, collega la TUI
-nanocode attach http://localhost:4096
+bettercode attach http://localhost:4096
 ```
 
 Questo ti permette di usare contemporaneamente interfaccia web e terminale, condividendo le stesse sessioni e lo stesso stato.
@@ -126,7 +126,7 @@ Questo ti permette di usare contemporaneamente interfaccia web e terminale, cond
 
 ## File di configurazione
 
-Puoi anche configurare le impostazioni del server nel file di config `nanocode.json`:
+Puoi anche configurare le impostazioni del server nel file di config `bettercode.json`:
 
 ```json
 {

@@ -1,11 +1,11 @@
-import { ImagePreview } from "@nanocode-ai/ui/image-preview"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
-import { Icon } from "@nanocode-ai/ui/v2/icon"
-import { KeybindV2 } from "@nanocode-ai/ui/v2/keybind-v2"
-import { TooltipV2 } from "@nanocode-ai/ui/v2/tooltip-v2"
-import type { ReferenceInfo } from "@nanocode-ai/sdk/v2/client"
+import { ImagePreview } from "@bettercode-ai/ui/image-preview"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
+import { Icon } from "@bettercode-ai/ui/v2/icon"
+import { KeybindV2 } from "@bettercode-ai/ui/v2/keybind-v2"
+import { TooltipV2 } from "@bettercode-ai/ui/v2/tooltip-v2"
+import type { ReferenceInfo } from "@bettercode-ai/sdk/v2/client"
 import { createEffect, createMemo, on, Show } from "solid-js"
 import { ModelSelectorPopoverV2 } from "@/components/dialog-select-model"
 import { DialogSelectModelUnpaidV2 } from "@/components/dialog-select-model-unpaid-v2"
@@ -26,12 +26,12 @@ import { useSDK } from "@/context/sdk"
 import { useSync } from "@/context/sync"
 import { createSessionTabs } from "@/pages/session/helpers"
 import { showToast } from "@/utils/toast"
-import { PromptInputV2, type PromptInputV2Suggestion } from "@nanocode-ai/session-ui/v2/prompt-input"
+import { PromptInputV2, type PromptInputV2Suggestion } from "@bettercode-ai/session-ui/v2/prompt-input"
 import {
   createPromptInputV2Controller,
   createPromptInputV2State,
   type PromptInputV2Interaction,
-} from "@nanocode-ai/session-ui/v2/prompt-input/interaction"
+} from "@bettercode-ai/session-ui/v2/prompt-input/interaction"
 
 export type PromptInputV2ComposerProps = {
   class?: string

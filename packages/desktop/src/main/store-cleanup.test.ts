@@ -7,7 +7,7 @@ import { cleanupStoreFiles, deleteStoreFileIfEmpty } from "./store-cleanup"
 const roots: string[] = []
 
 async function tempRoot() {
-  const root = await mkdtemp(join(tmpdir(), "nanocode-store-cleanup-"))
+  const root = await mkdtemp(join(tmpdir(), "bettercode-store-cleanup-"))
   roots.push(root)
   return root
 }
@@ -25,37 +25,37 @@ describe("store cleanup", () => {
   test("removes empty scoped stores and leaves global stores alone", async () => {
     const root = await tempRoot()
     const now = new Date("2026-07-01T00:00:00.000Z")
-    await writeStore(root, "nanocode.draft.empty.dat", "{}", now)
-    await writeStore(root, "nanocode.workspace.empty.dat", "{\n}", now)
-    await writeStore(root, "nanocode.global.dat", "{}", now)
-    await writeStore(root, "nanocode.workspace.empty.dat.json", "{}", now)
+    await writeStore(root, "bettercode.draft.empty.dat", "{}", now)
+    await writeStore(root, "bettercode.workspace.empty.dat", "{\n}", now)
+    await writeStore(root, "bettercode.global.dat", "{}", now)
+    await writeStore(root, "bettercode.workspace.empty.dat.json", "{}", now)
 
     const result = await cleanupStoreFiles(root, now.getTime())
 
-    expect(result.deleted.sort()).toEqual(["nanocode.draft.empty.dat", "nanocode.workspace.empty.dat"])
-    expect((await readdir(root)).sort()).toEqual(["nanocode.global.dat", "nanocode.workspace.empty.dat.json"])
+    expect(result.deleted.sort()).toEqual(["bettercode.draft.empty.dat", "bettercode.workspace.empty.dat"])
+    expect((await readdir(root)).sort()).toEqual(["bettercode.global.dat", "bettercode.workspace.empty.dat.json"])
   })
 
   test("removes stale drafts by age without removing non-empty workspace stores", async () => {
     const root = await tempRoot()
     const now = new Date("2026-07-01T00:00:00.000Z")
-    await writeStore(root, "nanocode.draft.old.dat", '{"draft:prompt":"hello"}', new Date("2026-05-01T00:00:00.000Z"))
-    await writeStore(root, "nanocode.draft.recent.dat", '{"draft:prompt":"hello"}', now)
+    await writeStore(root, "bettercode.draft.old.dat", '{"draft:prompt":"hello"}', new Date("2026-05-01T00:00:00.000Z"))
+    await writeStore(root, "bettercode.draft.recent.dat", '{"draft:prompt":"hello"}', now)
     await writeStore(
       root,
-      "nanocode.workspace.old.dat",
+      "bettercode.workspace.old.dat",
       '{"workspace:layout":"wide"}',
       new Date("2025-01-01T00:00:00.000Z"),
     )
-    await writeStore(root, "nanocode.workspace.recent.dat", '{"workspace:layout":"wide"}', now)
+    await writeStore(root, "bettercode.workspace.recent.dat", '{"workspace:layout":"wide"}', now)
 
     const result = await cleanupStoreFiles(root, now.getTime())
 
-    expect(result.deleted).toEqual(["nanocode.draft.old.dat"])
+    expect(result.deleted).toEqual(["bettercode.draft.old.dat"])
     expect((await readdir(root)).sort()).toEqual([
-      "nanocode.draft.recent.dat",
-      "nanocode.workspace.old.dat",
-      "nanocode.workspace.recent.dat",
+      "bettercode.draft.recent.dat",
+      "bettercode.workspace.old.dat",
+      "bettercode.workspace.recent.dat",
     ])
   })
 
@@ -66,7 +66,7 @@ describe("store cleanup", () => {
       Array.from({ length: 102 }, (_, index) =>
         writeStore(
           root,
-          `nanocode.draft.${index}.dat`,
+          `bettercode.draft.${index}.dat`,
           '{"draft:prompt":"hello"}',
           new Date(now.getTime() - index * 1000),
         ),
@@ -77,17 +77,17 @@ describe("store cleanup", () => {
 
     const remaining = await readdir(root)
 
-    expect(result.deleted.sort()).toEqual(["nanocode.draft.100.dat", "nanocode.draft.101.dat"])
+    expect(result.deleted.sort()).toEqual(["bettercode.draft.100.dat", "bettercode.draft.101.dat"])
     expect(remaining).toHaveLength(100)
   })
 
   test("removes a scoped store immediately when it becomes empty", async () => {
     const root = await tempRoot()
-    await writeStore(root, "nanocode.draft.empty.dat", "{}", new Date("2026-07-01T00:00:00.000Z"))
-    await writeStore(root, "nanocode.global.dat", "{}", new Date("2026-07-01T00:00:00.000Z"))
+    await writeStore(root, "bettercode.draft.empty.dat", "{}", new Date("2026-07-01T00:00:00.000Z"))
+    await writeStore(root, "bettercode.global.dat", "{}", new Date("2026-07-01T00:00:00.000Z"))
 
-    expect(await deleteStoreFileIfEmpty(root, "nanocode.draft.empty.dat")).toBe(true)
-    expect(await deleteStoreFileIfEmpty(root, "nanocode.global.dat")).toBe(false)
-    expect(await readdir(root)).toEqual(["nanocode.global.dat"])
+    expect(await deleteStoreFileIfEmpty(root, "bettercode.draft.empty.dat")).toBe(true)
+    expect(await deleteStoreFileIfEmpty(root, "bettercode.global.dat")).toBe(false)
+    expect(await readdir(root)).toEqual(["bettercode.global.dat"])
   })
 })

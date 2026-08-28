@@ -26,7 +26,7 @@ export interface Transformable<DraftApi> {
   readonly reload: Reload
 }
 
-const CurrentBatch = Context.Reference<Set<Reload> | undefined>("@nanocode/State/CurrentBatch", {
+const CurrentBatch = Context.Reference<Set<Reload> | undefined>("@bettercode/State/CurrentBatch", {
   defaultValue: () => undefined,
 })
 

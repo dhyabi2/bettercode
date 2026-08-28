@@ -1,28 +1,28 @@
 ---
 title: الويب
-description: استخدام NanoCode في متصفحك.
+description: استخدام BetterCode في متصفحك.
 ---
 
-يمكن تشغيل NanoCode كتطبيق ويب داخل متصفحك، ليمنحك تجربة البرمجة القوية بالذكاء الاصطناعي نفسها دون الحاجة إلى terminal.
+يمكن تشغيل BetterCode كتطبيق ويب داخل متصفحك، ليمنحك تجربة البرمجة القوية بالذكاء الاصطناعي نفسها دون الحاجة إلى terminal.
 
-![NanoCode Web - جلسة جديدة](../../../assets/web/web-homepage-new-session.png)
+![BetterCode Web - جلسة جديدة](../../../assets/web/web-homepage-new-session.png)
 
 ## البدء
 
 ابدأ تشغيل واجهة الويب عبر تنفيذ:
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-يؤدي ذلك إلى تشغيل خادم محلي على `127.0.0.1` بمنفذ عشوائي متاح، ويفتح NanoCode تلقائيا في المتصفح الافتراضي لديك.
+يؤدي ذلك إلى تشغيل خادم محلي على `127.0.0.1` بمنفذ عشوائي متاح، ويفتح BetterCode تلقائيا في المتصفح الافتراضي لديك.
 
 :::caution
-إذا لم يتم تعيين `NANOCODE_SERVER_PASSWORD` فسيكون الخادم دون حماية. هذا مناسب للاستخدام المحلي، لكنه يجب أن يكون مُعينا عند إتاحة الوصول عبر الشبكة.
+إذا لم يتم تعيين `BETTERCODE_SERVER_PASSWORD` فسيكون الخادم دون حماية. هذا مناسب للاستخدام المحلي، لكنه يجب أن يكون مُعينا عند إتاحة الوصول عبر الشبكة.
 :::
 
 :::tip[مستخدمو Windows]
-لأفضل تجربة، شغّل `nanocode web` من [WSL](/docs/windows-wsl) بدلا من PowerShell. يضمن ذلك وصولا صحيحا إلى نظام الملفات وتكاملا أفضل مع terminal.
+لأفضل تجربة، شغّل `bettercode web` من [WSL](/docs/windows-wsl) بدلا من PowerShell. يضمن ذلك وصولا صحيحا إلى نظام الملفات وتكاملا أفضل مع terminal.
 :::
 
 ---
@@ -33,21 +33,21 @@ nanocode web
 
 ### المنفذ
 
-افتراضيا، يختار NanoCode منفذا متاحا. يمكنك تحديد منفذ:
+افتراضيا، يختار BetterCode منفذا متاحا. يمكنك تحديد منفذ:
 
 ```bash
-nanocode web --port 4096
+bettercode web --port 4096
 ```
 
 ### اسم المضيف
 
-افتراضيا، يرتبط الخادم بـ `127.0.0.1` (للاستخدام المحلي فقط). لجعل NanoCode متاحا على شبكتك:
+افتراضيا، يرتبط الخادم بـ `127.0.0.1` (للاستخدام المحلي فقط). لجعل BetterCode متاحا على شبكتك:
 
 ```bash
-nanocode web --hostname 0.0.0.0
+bettercode web --hostname 0.0.0.0
 ```
 
-عند استخدام `0.0.0.0` سيعرض NanoCode كلا من عناوين الوصول المحلي وعناوين الشبكة:
+عند استخدام `0.0.0.0` سيعرض BetterCode كلا من عناوين الوصول المحلي وعناوين الشبكة:
 
 ```
   Local access:       http://localhost:4096
@@ -59,15 +59,15 @@ nanocode web --hostname 0.0.0.0
 فعّل mDNS لجعل خادمك قابلا للاكتشاف على الشبكة المحلية:
 
 ```bash
-nanocode web --mdns
+bettercode web --mdns
 ```
 
-يضبط ذلك تلقائيا اسم المضيف إلى `0.0.0.0` ويعلن عن الخادم باسم `nanocode.local`.
+يضبط ذلك تلقائيا اسم المضيف إلى `0.0.0.0` ويعلن عن الخادم باسم `bettercode.local`.
 
 يمكنك تخصيص اسم نطاق mDNS لتشغيل عدة نسخ على الشبكة نفسها:
 
 ```bash
-nanocode web --mdns --mdns-domain myproject.local
+bettercode web --mdns --mdns-domain myproject.local
 ```
 
 ### CORS
@@ -75,36 +75,36 @@ nanocode web --mdns --mdns-domain myproject.local
 للسماح بنطاقات إضافية عبر CORS (مفيد للواجهات الأمامية المخصصة):
 
 ```bash
-nanocode web --cors https://example.com
+bettercode web --cors https://example.com
 ```
 
 ### المصادقة
 
-لحماية الوصول، عيّن كلمة مرور عبر متغير البيئة `NANOCODE_SERVER_PASSWORD`:
+لحماية الوصول، عيّن كلمة مرور عبر متغير البيئة `BETTERCODE_SERVER_PASSWORD`:
 
 ```bash
-NANOCODE_SERVER_PASSWORD=secret nanocode web
+BETTERCODE_SERVER_PASSWORD=secret bettercode web
 ```
 
-اسم المستخدم الافتراضي هو `nanocode`، ويمكن تغييره عبر `NANOCODE_SERVER_USERNAME`.
+اسم المستخدم الافتراضي هو `bettercode`، ويمكن تغييره عبر `BETTERCODE_SERVER_USERNAME`.
 
 ---
 
 ## استخدام واجهة الويب
 
-بعد التشغيل، تتيح لك واجهة الويب الوصول إلى جلسات NanoCode الخاصة بك.
+بعد التشغيل، تتيح لك واجهة الويب الوصول إلى جلسات BetterCode الخاصة بك.
 
 ### الجلسات
 
 اعرض جلساتك وأدرها من الصفحة الرئيسية. يمكنك رؤية الجلسات النشطة وبدء جلسات جديدة.
 
-![NanoCode Web - جلسة نشطة](../../../assets/web/web-homepage-active-session.png)
+![BetterCode Web - جلسة نشطة](../../../assets/web/web-homepage-active-session.png)
 
 ### حالة الخادم
 
 انقر على "See Servers" لعرض الخوادم المتصلة وحالتها.
 
-![NanoCode Web - See Servers (عرض الخوادم)](../../../assets/web/web-homepage-see-servers.png)
+![BetterCode Web - See Servers (عرض الخوادم)](../../../assets/web/web-homepage-see-servers.png)
 
 ---
 
@@ -114,10 +114,10 @@ NANOCODE_SERVER_PASSWORD=secret nanocode web
 
 ```bash
 # ابدأ خادم الويب
-nanocode web --port 4096
+bettercode web --port 4096
 
 # في محطة طرفية أخرى، اربط TUI
-nanocode attach http://localhost:4096
+bettercode attach http://localhost:4096
 ```
 
 يتيح لك ذلك استخدام واجهة الويب وterminal في الوقت نفسه، مع مشاركة الجلسات والحالة نفسها.
@@ -126,7 +126,7 @@ nanocode attach http://localhost:4096
 
 ## ملف الإعدادات
 
-يمكنك أيضا ضبط إعدادات الخادم داخل ملف الإعدادات `nanocode.json`:
+يمكنك أيضا ضبط إعدادات الخادم داخل ملف الإعدادات `bettercode.json`:
 
 ```json
 {

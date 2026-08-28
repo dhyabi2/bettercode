@@ -1,12 +1,12 @@
 import { Link, Meta, Title } from "@solidjs/meta"
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
 import {
   getStatsModelsComparisonData,
   type ModelUsagePoint,
   type StatsModelComparisonInput,
   type StatsModelComparisonEntry,
-} from "@nanocode-ai/stats-core/domain/home"
-import { runtime } from "@nanocode-ai/stats-core/runtime"
+} from "@bettercode-ai/stats-core/domain/home"
+import { runtime } from "@bettercode-ai/stats-core/runtime"
 import { createAsync, query, useParams, useSearchParams } from "@solidjs/router"
 import { createEffect, createMemo, createSignal, For, onMount, Show } from "solid-js"
 import { getRequestEvent } from "solid-js/web"
@@ -232,7 +232,7 @@ export default function ModelCompareDetailPage(props: ModelCompareDetailPageProp
         <Meta name="robots" content={models().length > 2 ? "noindex,follow" : "index,follow"} />
         <Link rel="canonical" href={canonicalUrl()} />
         <Meta property="og:type" content="website" />
-        <Meta property="og:site_name" content="NanoCode" />
+        <Meta property="og:site_name" content="BetterCode" />
         <Meta property="og:title" content={title()} />
         <Meta property="og:description" content={description()} />
         <Meta property="og:url" content={canonicalUrl()} />

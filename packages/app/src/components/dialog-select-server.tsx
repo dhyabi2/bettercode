@@ -1,11 +1,11 @@
-import { Button } from "@nanocode-ai/ui/button"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { Dialog } from "@nanocode-ai/ui/dialog"
-import { DropdownMenu } from "@nanocode-ai/ui/dropdown-menu"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { IconButton } from "@nanocode-ai/ui/icon-button"
-import { List } from "@nanocode-ai/ui/list"
-import { TextField } from "@nanocode-ai/ui/text-field"
+import { Button } from "@bettercode-ai/ui/button"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { Dialog } from "@bettercode-ai/ui/dialog"
+import { DropdownMenu } from "@bettercode-ai/ui/dropdown-menu"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { IconButton } from "@bettercode-ai/ui/icon-button"
+import { List } from "@bettercode-ai/ui/list"
+import { TextField } from "@bettercode-ai/ui/text-field"
 import { useMutation } from "@tanstack/solid-query"
 import { showToast } from "@/utils/toast"
 import { useNavigate } from "@solidjs/router"
@@ -21,7 +21,7 @@ import { type ServerHealth, useCheckServerHealth } from "@/utils/server-health"
 import { useSettings } from "@/context/settings"
 import { useTabs } from "@/context/tabs"
 
-const DEFAULT_USERNAME = "nanocode"
+const DEFAULT_USERNAME = "bettercode"
 
 interface ServerFormProps {
   value: string

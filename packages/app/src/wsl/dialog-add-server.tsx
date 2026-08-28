@@ -1,11 +1,11 @@
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { showToast } from "@nanocode-ai/ui/toast"
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
-import { Dialog, DialogBody, DialogFooter, DialogHeader, DialogTitle } from "@nanocode-ai/ui/v2/dialog-v2"
-import { DividerV2 } from "@nanocode-ai/ui/v2/divider-v2"
-import { LoaderV2 } from "@nanocode-ai/ui/v2/loader-v2"
-import { RadioGroupV2, RadioItemV2 } from "@nanocode-ai/ui/v2/radio-v2"
-import { TextInputV2 } from "@nanocode-ai/ui/v2/text-input-v2"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { showToast } from "@bettercode-ai/ui/toast"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
+import { Dialog, DialogBody, DialogFooter, DialogHeader, DialogTitle } from "@bettercode-ai/ui/v2/dialog-v2"
+import { DividerV2 } from "@bettercode-ai/ui/v2/divider-v2"
+import { LoaderV2 } from "@bettercode-ai/ui/v2/loader-v2"
+import { RadioGroupV2, RadioItemV2 } from "@bettercode-ai/ui/v2/radio-v2"
+import { TextInputV2 } from "@bettercode-ai/ui/v2/text-input-v2"
 import { createMemo, For, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useLanguage } from "@/context/language"
@@ -338,8 +338,8 @@ function useWslAddServerController(props: DialogWslServerProps) {
     const distro = model().selectedDistro
     const action = button.action
     if (!distro || !action) return
-    if (action === "install-nanocode") {
-      await run(() => api.installNanocode(distro))
+    if (action === "install-bettercode") {
+      await run(() => api.installBettercode(distro))
       return
     }
     setStore("adding", true)

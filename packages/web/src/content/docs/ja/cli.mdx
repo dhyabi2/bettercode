@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: NanoCode CLI のオプションとコマンド。
+description: BetterCode CLI のオプションとコマンド。
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-NanoCode CLI は、引数なしで実行すると、デフォルトで [TUI](/docs/tui) を開始します。
+BetterCode CLI は、引数なしで実行すると、デフォルトで [TUI](/docs/tui) を開始します。
 
 ```bash
-nanocode
+bettercode
 ```
 
-ただし、このページに記載されているようにコマンドも受け入れます。これにより、NanoCode をプログラム的に操作できるようになります。
+ただし、このページに記載されているようにコマンドも受け入れます。これにより、BetterCode をプログラム的に操作できるようになります。
 
 ```bash
-nanocode run "Explain how closures work in JavaScript"
+bettercode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-NanoCode ターミナルユーザーインターフェイスを開始します。
+BetterCode ターミナルユーザーインターフェイスを開始します。
 
 ```bash
-nanocode [project]
+bettercode [project]
 ```
 
 #### フラグ
@@ -44,36 +44,36 @@ nanocode [project]
 
 ## コマンド
 
-NanoCode CLI には次のコマンドもあります。
+BetterCode CLI には次のコマンドもあります。
 
 ---
 
 ### agent
 
-NanoCode のエージェントを管理します。
+BetterCode のエージェントを管理します。
 
 ```bash
-nanocode agent [command]
+bettercode agent [command]
 ```
 
 ---
 
 ### attach
 
-`serve` または `web` コマンドを使用して起動された、すでに実行中の NanoCode バックエンドサーバーにターミナルを接続します。
+`serve` または `web` コマンドを使用して起動された、すでに実行中の BetterCode バックエンドサーバーにターミナルを接続します。
 
 ```bash
-nanocode attach [url]
+bettercode attach [url]
 ```
 
-これにより、リモート NanoCode バックエンドで TUI を使用できるようになります。例えば：
+これにより、リモート BetterCode バックエンドで TUI を使用できるようになります。例えば：
 
 ```bash
 # Start the backend server for web/mobile access
-nanocode web --port 4096 --hostname 0.0.0.0
+bettercode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-nanocode attach http://10.20.30.40:4096
+bettercode attach http://10.20.30.40:4096
 ```
 
 #### フラグ
@@ -84,8 +84,8 @@ nanocode attach http://10.20.30.40:4096
 | <nobr><code>{"--continue"}</code></nobr> | `-c`     | 最後のセッションを続行                                                            |
 | <nobr><code>{"--session"}</code></nobr>  | `-s`     | 続行するセッション ID                                                             |
 | <nobr><code>{"--fork"}</code></nobr>     |          | 続行時にセッションをフォーク（`--continue` または `--session` と使用）            |
-| <nobr><code>{"--password"}</code></nobr> | `-p`     | Basic 認証パスワード（デフォルトは `NANOCODE_SERVER_PASSWORD`）                   |
-| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `NANOCODE_SERVER_USERNAME` または `nanocode`） |
+| <nobr><code>{"--password"}</code></nobr> | `-p`     | Basic 認証パスワード（デフォルトは `BETTERCODE_SERVER_PASSWORD`）                   |
+| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `BETTERCODE_SERVER_USERNAME` または `bettercode`） |
 
 ---
 
@@ -94,7 +94,7 @@ nanocode attach http://10.20.30.40:4096
 カスタム構成で新しいエージェントを作成します。
 
 ```bash
-nanocode agent create
+bettercode agent create
 ```
 
 このコマンドは、カスタムシステムプロンプトとツール構成を使用して新しいエージェントを作成する手順を示します。
@@ -106,7 +106,7 @@ nanocode agent create
 利用可能なエージェントをすべてリストします。
 
 ```bash
-nanocode agent list
+bettercode agent list
 ```
 
 ---
@@ -116,20 +116,20 @@ nanocode agent list
 プロバイダーの資格情報とログインを管理するコマンド。
 
 ```bash
-nanocode auth [command]
+bettercode auth [command]
 ```
 
 ---
 
 #### login
 
-NanoCode は [Models.dev](https://models.dev) のプロバイダーリストを利用しているため、`nanocode auth login` を使用して、使用したいプロバイダーの API キーを構成できます。これは `~/.local/share/nanocode/auth.json` に保存されます。
+BetterCode は [Models.dev](https://models.dev) のプロバイダーリストを利用しているため、`bettercode auth login` を使用して、使用したいプロバイダーの API キーを構成できます。これは `~/.local/share/bettercode/auth.json` に保存されます。
 
 ```bash
-nanocode auth login
+bettercode auth login
 ```
 
-NanoCode が起動すると、認証情報ファイルからプロバイダーがロードされます。また、環境またはプロジェクト内の `.env` ファイルで定義されたキーがあるかどうかも確認します。
+BetterCode が起動すると、認証情報ファイルからプロバイダーがロードされます。また、環境またはプロジェクト内の `.env` ファイルで定義されたキーがあるかどうかも確認します。
 
 ---
 
@@ -138,13 +138,13 @@ NanoCode が起動すると、認証情報ファイルからプロバイダー�
 認証情報ファイルに保存されているすべての認証されたプロバイダーをリストします。
 
 ```bash
-nanocode auth list
+bettercode auth list
 ```
 
 またはショートバージョン。
 
 ```bash
-nanocode auth ls
+bettercode auth ls
 ```
 
 ---
@@ -154,7 +154,7 @@ nanocode auth ls
 資格情報ファイルからプロバイダーをクリアすることで、プロバイダーからログアウトします。
 
 ```bash
-nanocode auth logout
+bettercode auth logout
 ```
 
 ---
@@ -164,7 +164,7 @@ nanocode auth logout
 リポジトリ自動化のための GitHub エージェントを管理します。
 
 ```bash
-nanocode github [command]
+bettercode github [command]
 ```
 
 ---
@@ -174,7 +174,7 @@ nanocode github [command]
 GitHub エージェントをリポジトリにインストールします。
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 これにより、必要な GitHub Actions ワークフローが設定され、構成プロセスがガイドされます。 [詳細はこちら](/docs/github)。
@@ -186,7 +186,7 @@ nanocode github install
 GitHub エージェントを実行します。これは通常、GitHub Actions で使用されます。
 
 ```bash
-nanocode github run
+bettercode github run
 ```
 
 ##### フラグ
@@ -203,7 +203,7 @@ nanocode github run
 モデルコンテキストプロトコルサーバーを管理します。
 
 ```bash
-nanocode mcp [command]
+bettercode mcp [command]
 ```
 
 ---
@@ -213,7 +213,7 @@ nanocode mcp [command]
 MCP サーバーを構成に追加します。
 
 ```bash
-nanocode mcp add
+bettercode mcp add
 ```
 
 このコマンドは、ローカルまたはリモートの MCP サーバーを追加する手順を示します。
@@ -225,13 +225,13 @@ nanocode mcp add
 構成されているすべての MCP サーバーとその接続ステータスをリストします。
 
 ```bash
-nanocode mcp list
+bettercode mcp list
 ```
 
 または、短いバージョンを使用してください。
 
 ```bash
-nanocode mcp ls
+bettercode mcp ls
 ```
 
 ---
@@ -241,7 +241,7 @@ nanocode mcp ls
 OAuth 対応の MCP サーバーで認証します。
 
 ```bash
-nanocode mcp auth [name]
+bettercode mcp auth [name]
 ```
 
 サーバー名を指定しない場合は、利用可能な OAuth 対応サーバーから選択するように求められます。
@@ -249,13 +249,13 @@ nanocode mcp auth [name]
 OAuth 対応サーバーとその認証ステータスを一覧表示することもできます。
 
 ```bash
-nanocode mcp auth list
+bettercode mcp auth list
 ```
 
 または、短いバージョンを使用してください。
 
 ```bash
-nanocode mcp auth ls
+bettercode mcp auth ls
 ```
 
 ---
@@ -265,7 +265,7 @@ nanocode mcp auth ls
 MCP サーバーの OAuth 資格情報を削除します。
 
 ```bash
-nanocode mcp logout [name]
+bettercode mcp logout [name]
 ```
 
 ---
@@ -275,7 +275,7 @@ nanocode mcp logout [name]
 MCP サーバーの OAuth 接続の問題をデバッグします。
 
 ```bash
-nanocode mcp debug <name>
+bettercode mcp debug <name>
 ```
 
 ---
@@ -285,7 +285,7 @@ nanocode mcp debug <name>
 構成されたプロバイダーから利用可能なすべてのモデルをリストします。
 
 ```bash
-nanocode models [provider]
+bettercode models [provider]
 ```
 
 このコマンドは、構成されたプロバイダー全体で利用可能なすべてのモデルを `provider/model` の形式で表示します。
@@ -295,7 +295,7 @@ nanocode models [provider]
 オプションでプロバイダー ID を渡して、そのプロバイダーによってモデルをフィルターできます。
 
 ```bash
-nanocode models anthropic
+bettercode models anthropic
 ```
 
 #### フラグ
@@ -305,36 +305,36 @@ nanocode models anthropic
 | <nobr><code>{"--refresh"}</code></nobr> | models.dev からモデルキャッシュを更新します。                   |
 | <nobr><code>{"--verbose"}</code></nobr> | より詳細なモデル出力を使用します (コストなどのメタデータを含む) |
 
-`--refresh` フラグを使用して、キャッシュされたモデルリストを更新します。これは、新しいモデルがプロバイダーに追加され、それを NanoCode で確認したい場合に便利です。
+`--refresh` フラグを使用して、キャッシュされたモデルリストを更新します。これは、新しいモデルがプロバイダーに追加され、それを BetterCode で確認したい場合に便利です。
 
 ```bash
-nanocode models --refresh
+bettercode models --refresh
 ```
 
 ---
 
 ### run
 
-プロンプトを直接渡して、非対話モードで nanocode を実行します。
+プロンプトを直接渡して、非対話モードで bettercode を実行します。
 
 ```bash
-nanocode run [message..]
+bettercode run [message..]
 ```
 
 これは、スクリプト作成、自動化、または完全な TUI を起動せずに迅速な回答が必要な場合に便利です。例えば。
 
-```bash "nanocode run"
-nanocode run Explain the use of context in Go
+```bash "bettercode run"
+bettercode run Explain the use of context in Go
 ```
 
-実行中の `nanocode serve` インスタンスにアタッチして、実行ごとの MCP サーバーのコールドブート時間を回避することもできます。
+実行中の `bettercode serve` インスタンスにアタッチして、実行ごとの MCP サーバーのコールドブート時間を回避することもできます。
 
 ```bash
 # Start a headless server in one terminal
-nanocode serve
+bettercode serve
 
 # In another terminal, run commands that attach to it
-nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+bettercode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### フラグ
@@ -351,9 +351,9 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f`     | メッセージに添付するファイル                                                              |
 | <nobr><code>{"--format"}</code></nobr>   |          | 形式: デフォルト (フォーマット済み) または json (生の JSON イベント)                      |
 | <nobr><code>{"--title"}</code></nobr>    |          | セッションのタイトル (値が指定されていない場合は、切り詰められたプロンプトが使用されます) |
-| <nobr><code>{"--attach"}</code></nobr>   |          | 実行中の nanocode サーバー (http://localhost:4096 など) に接続します。                    |
-| <nobr><code>{"--password"}</code></nobr> | `-p`     | Basic 認証パスワード（デフォルトは `NANOCODE_SERVER_PASSWORD`）                           |
-| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `NANOCODE_SERVER_USERNAME` または `nanocode`）         |
+| <nobr><code>{"--attach"}</code></nobr>   |          | 実行中の bettercode サーバー (http://localhost:4096 など) に接続します。                    |
+| <nobr><code>{"--password"}</code></nobr> | `-p`     | Basic 認証パスワード（デフォルトは `BETTERCODE_SERVER_PASSWORD`）                           |
+| <nobr><code>{"--username"}</code></nobr> | `-u`     | Basic 認証ユーザー名（デフォルトは `BETTERCODE_SERVER_USERNAME` または `bettercode`）         |
 | <nobr><code>{"--dir"}</code></nobr>      |          | 実行ディレクトリ、またはアタッチ時のリモートサーバー上のパス                              |
 | <nobr><code>{"--variant"}</code></nobr>  |          | モデルバリアント（プロバイダー固有の推論レベル）                                          |
 | <nobr><code>{"--thinking"}</code></nobr> |          | 思考ブロックを表示                                                                        |
@@ -363,13 +363,13 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 
 ### serve
 
-API アクセスのためにヘッドレス NanoCode サーバーを起動します。完全な HTTP インターフェイスについては、[サーバーのドキュメント](/docs/server) を確認してください。
+API アクセスのためにヘッドレス BetterCode サーバーを起動します。完全な HTTP インターフェイスについては、[サーバーのドキュメント](/docs/server) を確認してください。
 
 ```bash
-nanocode serve
+bettercode serve
 ```
 
-これにより、TUI インターフェイスを使用せずに nanocode 機能への API アクセスを提供する HTTP サーバーが起動します。 `NANOCODE_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `nanocode`)。
+これにより、TUI インターフェイスを使用せずに bettercode 機能への API アクセスを提供する HTTP サーバーが起動します。 `BETTERCODE_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `bettercode`)。
 
 #### フラグ
 
@@ -384,20 +384,20 @@ nanocode serve
 
 ### session
 
-NanoCode セッションを管理します。
+BetterCode セッションを管理します。
 
 ```bash
-nanocode session [command]
+bettercode session [command]
 ```
 
 ---
 
 #### list
 
-すべての NanoCode セッションをリストします。
+すべての BetterCode セッションをリストします。
 
 ```bash
-nanocode session list
+bettercode session list
 ```
 
 ##### フラグ
@@ -411,10 +411,10 @@ nanocode session list
 
 ### stats
 
-NanoCode セッションのトークンの使用状況とコストの統計を表示します。
+BetterCode セッションのトークンの使用状況とコストの統計を表示します。
 
 ```bash
-nanocode stats
+bettercode stats
 ```
 
 #### フラグ
@@ -433,7 +433,7 @@ nanocode stats
 セッションデータを JSON としてエクスポートします。
 
 ```bash
-nanocode export [sessionID]
+bettercode export [sessionID]
 ```
 
 セッション ID を指定しない場合は、利用可能なセッションから選択するように求められます。
@@ -442,30 +442,30 @@ nanocode export [sessionID]
 
 ### import
 
-JSON ファイルまたは NanoCode 共有 URL からセッションデータをインポートします。
+JSON ファイルまたは BetterCode 共有 URL からセッションデータをインポートします。
 
 ```bash
-nanocode import <file>
+bettercode import <file>
 ```
 
-ローカルファイルまたは NanoCode 共有 URL からインポートできます。
+ローカルファイルまたは BetterCode 共有 URL からインポートできます。
 
 ```bash
-nanocode import session.json
-nanocode import https://opncd.ai/s/abc123
+bettercode import session.json
+bettercode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-Web インターフェイスを使用してヘッドレス NanoCode サーバーを起動します。
+Web インターフェイスを使用してヘッドレス BetterCode サーバーを起動します。
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-これにより、HTTP サーバーが起動し、Web ブラウザが開き、Web インターフェイスを通じて NanoCode にアクセスします。 `NANOCODE_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `nanocode`)。
+これにより、HTTP サーバーが起動し、Web ブラウザが開き、Web インターフェイスを通じて BetterCode にアクセスします。 `BETTERCODE_SERVER_PASSWORD` を設定して HTTP 基本認証を有効にします (ユーザー名のデフォルトは `bettercode`)。
 
 #### フラグ
 
@@ -483,7 +483,7 @@ nanocode web
 ACP (エージェントクライアントプロトコル) サーバーを起動します。
 
 ```bash
-nanocode acp
+bettercode acp
 ```
 
 このコマンドは、nd-JSON を使用して stdin/stdout 経由で通信する ACP サーバーを起動します。
@@ -500,10 +500,10 @@ nanocode acp
 
 ### uninstall
 
-NanoCode をアンインストールし、関連ファイルをすべて削除します。
+BetterCode をアンインストールし、関連ファイルをすべて削除します。
 
 ```bash
-nanocode uninstall
+bettercode uninstall
 ```
 
 #### フラグ
@@ -519,22 +519,22 @@ nanocode uninstall
 
 ### upgrade
 
-nanocode を最新バージョンまたは特定のバージョンに更新します。
+bettercode を最新バージョンまたは特定のバージョンに更新します。
 
 ```bash
-nanocode upgrade [target]
+bettercode upgrade [target]
 ```
 
 最新バージョンにアップグレードするには。
 
 ```bash
-nanocode upgrade
+bettercode upgrade
 ```
 
 特定のバージョンにアップグレードするには。
 
 ```bash
-nanocode upgrade v0.1.48
+bettercode upgrade v0.1.48
 ```
 
 #### フラグ
@@ -547,7 +547,7 @@ nanocode upgrade v0.1.48
 
 ## グローバルフラグ
 
-nanocode CLI は次のグローバルフラグを受け取ります。
+bettercode CLI は次のグローバルフラグを受け取ります。
 
 | フラグ                                     | ショート | 説明                                  |
 | ------------------------------------------ | -------- | ------------------------------------- |
@@ -560,33 +560,33 @@ nanocode CLI は次のグローバルフラグを受け取ります。
 
 ## 環境変数
 
-NanoCode は環境変数を使用して構成できます。
+BetterCode は環境変数を使用して構成できます。
 
 | 変数                                  | タイプ   | 説明                                                                |
 | ------------------------------------- | -------- | ------------------------------------------------------------------- |
-| `NANOCODE_AUTO_SHARE`                 | ブール値 | セッションを自動的に共有する                                        |
-| `NANOCODE_GIT_BASH_PATH`              | 文字列   | Windows 上で実行可能な Git Bash へのパス                            |
-| `NANOCODE_CONFIG`                     | 文字列   | 構成ファイルへのパス                                                |
-| `NANOCODE_CONFIG_DIR`                 | 文字列   | config ディレクトリへのパス                                         |
-| `NANOCODE_CONFIG_CONTENT`             | 文字列   | インライン JSON 構成コンテンツ                                      |
-| `NANOCODE_DISABLE_AUTOUPDATE`         | ブール値 | 自動更新チェックを無効にする                                        |
-| `NANOCODE_DISABLE_PRUNE`              | ブール値 | 古いデータのプルーニングを無効にする                                |
-| `NANOCODE_DISABLE_TERMINAL_TITLE`     | ブール値 | ターミナルタイトルの自動更新を無効にする                            |
-| `NANOCODE_PERMISSION`                 | 文字列   | インライン化された json 権限設定                                    |
-| `NANOCODE_DISABLE_DEFAULT_PLUGINS`    | ブール値 | デフォルトのプラグインを無効にする                                  |
-| `NANOCODE_DISABLE_LSP_DOWNLOAD`       | ブール値 | LSP サーバーの自動ダウンロードを無効にする                          |
-| `NANOCODE_ENABLE_EXPERIMENTAL_MODELS` | ブール値 | 実験モデルを有効にする                                              |
-| `NANOCODE_DISABLE_AUTOCOMPACT`        | ブール値 | 自動コンテキスト圧縮を無効にする                                    |
-| `NANOCODE_DISABLE_CLAUDE_CODE`        | ブール値 | `.claude` からの読み取りを無効にする (プロンプト + スキル)          |
-| `NANOCODE_DISABLE_CLAUDE_CODE_PROMPT` | ブール値 | `~/.claude/CLAUDE.md` の読み取りを無効にする                        |
-| `NANOCODE_DISABLE_CLAUDE_CODE_SKILLS` | ブール値 | `.claude/skills` のロードを無効にする                               |
-| `NANOCODE_DISABLE_MODELS_FETCH`       | ブール値 | リモートソースからのモデルの取得を無効にする                        |
-| `NANOCODE_FAKE_VCS`                   | 文字列   | テスト目的の偽の VCS プロバイダー                                   |
-| `NANOCODE_CLIENT`                     | 文字列   | クライアント識別子 (デフォルトは `cli`)                             |
-| `NANOCODE_ENABLE_EXA`                 | ブール値 | Exa Web 検索ツールを有効にする                                      |
-| `NANOCODE_SERVER_PASSWORD`            | 文字列   | `serve`/`web` の基本認証を有効にする                                |
-| `NANOCODE_SERVER_USERNAME`            | 文字列   | 基本認証ユーザー名 (デフォルト `nanocode`) をオーバーライドします。 |
-| `NANOCODE_MODELS_URL`                 | 文字列   | モデル設定を取得するためのカスタム URL                              |
+| `BETTERCODE_AUTO_SHARE`                 | ブール値 | セッションを自動的に共有する                                        |
+| `BETTERCODE_GIT_BASH_PATH`              | 文字列   | Windows 上で実行可能な Git Bash へのパス                            |
+| `BETTERCODE_CONFIG`                     | 文字列   | 構成ファイルへのパス                                                |
+| `BETTERCODE_CONFIG_DIR`                 | 文字列   | config ディレクトリへのパス                                         |
+| `BETTERCODE_CONFIG_CONTENT`             | 文字列   | インライン JSON 構成コンテンツ                                      |
+| `BETTERCODE_DISABLE_AUTOUPDATE`         | ブール値 | 自動更新チェックを無効にする                                        |
+| `BETTERCODE_DISABLE_PRUNE`              | ブール値 | 古いデータのプルーニングを無効にする                                |
+| `BETTERCODE_DISABLE_TERMINAL_TITLE`     | ブール値 | ターミナルタイトルの自動更新を無効にする                            |
+| `BETTERCODE_PERMISSION`                 | 文字列   | インライン化された json 権限設定                                    |
+| `BETTERCODE_DISABLE_DEFAULT_PLUGINS`    | ブール値 | デフォルトのプラグインを無効にする                                  |
+| `BETTERCODE_DISABLE_LSP_DOWNLOAD`       | ブール値 | LSP サーバーの自動ダウンロードを無効にする                          |
+| `BETTERCODE_ENABLE_EXPERIMENTAL_MODELS` | ブール値 | 実験モデルを有効にする                                              |
+| `BETTERCODE_DISABLE_AUTOCOMPACT`        | ブール値 | 自動コンテキスト圧縮を無効にする                                    |
+| `BETTERCODE_DISABLE_CLAUDE_CODE`        | ブール値 | `.claude` からの読み取りを無効にする (プロンプト + スキル)          |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_PROMPT` | ブール値 | `~/.claude/CLAUDE.md` の読み取りを無効にする                        |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_SKILLS` | ブール値 | `.claude/skills` のロードを無効にする                               |
+| `BETTERCODE_DISABLE_MODELS_FETCH`       | ブール値 | リモートソースからのモデルの取得を無効にする                        |
+| `BETTERCODE_FAKE_VCS`                   | 文字列   | テスト目的の偽の VCS プロバイダー                                   |
+| `BETTERCODE_CLIENT`                     | 文字列   | クライアント識別子 (デフォルトは `cli`)                             |
+| `BETTERCODE_ENABLE_EXA`                 | ブール値 | Exa Web 検索ツールを有効にする                                      |
+| `BETTERCODE_SERVER_PASSWORD`            | 文字列   | `serve`/`web` の基本認証を有効にする                                |
+| `BETTERCODE_SERVER_USERNAME`            | 文字列   | 基本認証ユーザー名 (デフォルト `bettercode`) をオーバーライドします。 |
+| `BETTERCODE_MODELS_URL`                 | 文字列   | モデル設定を取得するためのカスタム URL                              |
 
 ---
 
@@ -596,21 +596,21 @@ NanoCode は環境変数を使用して構成できます。
 
 | 変数                                            | タイプ   | 説明                                             |
 | ----------------------------------------------- | -------- | ------------------------------------------------ |
-| `NANOCODE_EXPERIMENTAL`                         | ブール値 | アンブレラフラグ配下の実験的機能を有効にする     |
-| `NANOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | ブール値 | アイコン検出を有効にする                         |
-| `NANOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | ブール値 | TUI で選択時のコピーを無効にする                 |
-| `NANOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | 数値     | bash コマンドのデフォルトのタイムアウト (ミリ秒) |
-| `NANOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | 数値     | LLM 応答の最大出力トークン                       |
-| `NANOCODE_EXPERIMENTAL_FILEWATCHER`             | ブール値 | ディレクトリ全体のファイル監視を有効にする       |
-| `NANOCODE_EXPERIMENTAL_OXFMT`                   | ブール値 | oxfmt フォーマッタを有効にする                   |
-| `NANOCODE_EXPERIMENTAL_LSP_TOOL`                | ブール値 | 実験的な LSP ツールを有効にする                  |
-| `NANOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | ブール値 | ファイルウォッチャーを無効にする                 |
-| `NANOCODE_EXPERIMENTAL_EXA`                     | ブール値 | 実験的な Exa 機能を有効にする                    |
-| `NANOCODE_EXPERIMENTAL_LSP_TY`                  | ブール値 | python ファイルの TY LSP を有効にする            |
-| `NANOCODE_EXPERIMENTAL_PLAN_MODE`               | ブール値 | プランモードを有効にする                         |
-| `NANOCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | ブール値 | バックグラウンド subagent タスクを有効にする     |
-| `NANOCODE_EXPERIMENTAL_EVENT_SYSTEM`            | ブール値 | 実験的なイベントシステムを有効にする             |
-| `NANOCODE_EXPERIMENTAL_NATIVE_LLM`              | ブール値 | ネイティブ LLM リクエスト経路を有効にする        |
-| `NANOCODE_EXPERIMENTAL_PARALLEL`                | ブール値 | 並列 Web 検索実行を有効にする                    |
-| `NANOCODE_EXPERIMENTAL_SCOUT`                   | ブール値 | Scout subagent を有効にする                      |
-| `NANOCODE_EXPERIMENTAL_WORKSPACES`              | ブール値 | ワークスペースサポートを有効にする               |
+| `BETTERCODE_EXPERIMENTAL`                         | ブール値 | アンブレラフラグ配下の実験的機能を有効にする     |
+| `BETTERCODE_EXPERIMENTAL_ICON_DISCOVERY`          | ブール値 | アイコン検出を有効にする                         |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | ブール値 | TUI で選択時のコピーを無効にする                 |
+| `BETTERCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | 数値     | bash コマンドのデフォルトのタイムアウト (ミリ秒) |
+| `BETTERCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | 数値     | LLM 応答の最大出力トークン                       |
+| `BETTERCODE_EXPERIMENTAL_FILEWATCHER`             | ブール値 | ディレクトリ全体のファイル監視を有効にする       |
+| `BETTERCODE_EXPERIMENTAL_OXFMT`                   | ブール値 | oxfmt フォーマッタを有効にする                   |
+| `BETTERCODE_EXPERIMENTAL_LSP_TOOL`                | ブール値 | 実験的な LSP ツールを有効にする                  |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | ブール値 | ファイルウォッチャーを無効にする                 |
+| `BETTERCODE_EXPERIMENTAL_EXA`                     | ブール値 | 実験的な Exa 機能を有効にする                    |
+| `BETTERCODE_EXPERIMENTAL_LSP_TY`                  | ブール値 | python ファイルの TY LSP を有効にする            |
+| `BETTERCODE_EXPERIMENTAL_PLAN_MODE`               | ブール値 | プランモードを有効にする                         |
+| `BETTERCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | ブール値 | バックグラウンド subagent タスクを有効にする     |
+| `BETTERCODE_EXPERIMENTAL_EVENT_SYSTEM`            | ブール値 | 実験的なイベントシステムを有効にする             |
+| `BETTERCODE_EXPERIMENTAL_NATIVE_LLM`              | ブール値 | ネイティブ LLM リクエスト経路を有効にする        |
+| `BETTERCODE_EXPERIMENTAL_PARALLEL`                | ブール値 | 並列 Web 検索実行を有効にする                    |
+| `BETTERCODE_EXPERIMENTAL_SCOUT`                   | ブール値 | Scout subagent を有効にする                      |
+| `BETTERCODE_EXPERIMENTAL_WORKSPACES`              | ブール値 | ワークスペースサポートを有効にする               |

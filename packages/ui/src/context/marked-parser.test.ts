@@ -4,8 +4,8 @@ import { createMarkdownParser } from "./marked-parser"
 const parser = createMarkdownParser((code, language) => `<pre data-language="${language}">${code}</pre>`)
 
 test("renders links with application attributes", async () => {
-  expect(await parser.parse("[NanoCode](https://nanocode.ai)")).toBe(
-    '<p><a href="https://nanocode.ai" class="external-link" target="_blank" rel="noopener noreferrer">NanoCode</a></p>\n',
+  expect(await parser.parse("[BetterCode](https://bettercode.ai)")).toBe(
+    '<p><a href="https://bettercode.ai" class="external-link" target="_blank" rel="noopener noreferrer">BetterCode</a></p>\n',
   )
 })
 

@@ -1,4 +1,4 @@
-import type { FileSystemEntry } from "@nanocode-ai/sdk/v2/types"
+import type { FileSystemEntry } from "@bettercode-ai/sdk/v2/types"
 import type { Effect } from "effect"
 
 export interface FileSystem {

@@ -1,17 +1,17 @@
-import { Binary } from "@nanocode-ai/core/util/binary"
-import { retry } from "@nanocode-ai/core/util/retry"
-import type { NanoCodeEvent, SessionApi, SessionMessageInfo } from "@nanocode-ai/client/promise"
+import { Binary } from "@bettercode-ai/core/util/binary"
+import { retry } from "@bettercode-ai/core/util/retry"
+import type { BetterCodeEvent, SessionApi, SessionMessageInfo } from "@bettercode-ai/client/promise"
 import type {
   Message,
-  NanocodeClient,
+  BettercodeClient,
   Part,
   PermissionRequest,
   QuestionRequest,
   Session,
   SessionStatus,
   Todo,
-} from "@nanocode-ai/sdk/v2/client"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
+} from "@bettercode-ai/sdk/v2/client"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
 import { batch } from "solid-js"
 import { createStore, produce, reconcile } from "solid-js/store"
 import { message as cleanMessage } from "@/utils/diffs"
@@ -186,7 +186,7 @@ function reconcileFetched<T extends { id: string }>(
 type ServerSessionOptions = { retry?: typeof retry; protocol?: Promise<"v1" | "v2"> }
 
 export function createServerSession(
-  client: NanocodeClient,
+  client: BettercodeClient,
   sessionApiOrOptions?: SessionApi | ServerSessionOptions,
   messageApi?: MessageApi,
   currentOptions?: ServerSessionOptions,
@@ -933,7 +933,7 @@ export function createServerSession(
       .catch(() => {})
   }
 
-  const applyV2 = (event: NanoCodeEvent) => {
+  const applyV2 = (event: BetterCodeEvent) => {
     if (!("data" in event) || !("sessionID" in event.data) || typeof event.data.sessionID !== "string") return
     const sessionID = event.data.sessionID
     const reduction = v2.reduce(data.session_message[sessionID] ?? [], event)

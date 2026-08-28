@@ -1,8 +1,8 @@
 import { Component, createMemo, Show } from "solid-js"
 import { useSync } from "@/context/sync"
-import { Dialog } from "@nanocode-ai/ui/dialog"
-import { List } from "@nanocode-ai/ui/list"
-import { Switch } from "@nanocode-ai/ui/switch"
+import { Dialog } from "@bettercode-ai/ui/dialog"
+import { List } from "@bettercode-ai/ui/list"
+import { Switch } from "@bettercode-ai/ui/switch"
 import { useLanguage } from "@/context/language"
 import { useMcpToggle } from "@/context/mcp"
 

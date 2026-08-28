@@ -6,8 +6,8 @@
  */
 export * as EditTool from "./edit"
 
-import { ToolFailure } from "@nanocode-ai/llm"
-import { FileDiff } from "@nanocode-ai/schema/file-diff"
+import { ToolFailure } from "@bettercode-ai/llm"
+import { FileDiff } from "@bettercode-ai/schema/file-diff"
 import { createTwoFilesPatch, diffLines } from "diff"
 import { Effect, Layer, Schema } from "effect"
 import { makeLocationNode } from "../effect/app-node"

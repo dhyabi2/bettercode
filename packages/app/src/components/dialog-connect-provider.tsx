@@ -1,17 +1,17 @@
-import type { IntegrationMethod, IntegrationOauthConnectOutput } from "@nanocode-ai/client/promise"
-import { Button } from "@nanocode-ai/ui/button"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { Dialog } from "@nanocode-ai/ui/dialog"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { IconButton } from "@nanocode-ai/ui/icon-button"
-import { List, type ListRef } from "@nanocode-ai/ui/list"
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
-import { Spinner } from "@nanocode-ai/ui/spinner"
-import { Tag } from "@nanocode-ai/ui/tag"
-import { TextField } from "@nanocode-ai/ui/text-field"
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
-import { DialogBody, DialogHeader, DialogTitle, DialogV2 } from "@nanocode-ai/ui/v2/dialog-v2"
-import { TextInputV2 } from "@nanocode-ai/ui/v2/text-input-v2"
+import type { IntegrationMethod, IntegrationOauthConnectOutput } from "@bettercode-ai/client/promise"
+import { Button } from "@bettercode-ai/ui/button"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { Dialog } from "@bettercode-ai/ui/dialog"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { IconButton } from "@bettercode-ai/ui/icon-button"
+import { List, type ListRef } from "@bettercode-ai/ui/list"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
+import { Spinner } from "@bettercode-ai/ui/spinner"
+import { Tag } from "@bettercode-ai/ui/tag"
+import { TextField } from "@bettercode-ai/ui/text-field"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
+import { DialogBody, DialogHeader, DialogTitle, DialogV2 } from "@bettercode-ai/ui/v2/dialog-v2"
+import { TextInputV2 } from "@bettercode-ai/ui/v2/text-input-v2"
 import { showToast } from "@/utils/toast"
 import {
   type Accessor,
@@ -166,7 +166,7 @@ function ProviderPicker(props: {
     if (id === "anthropic") return language.t("dialog.provider.anthropic.note")
     if (id === "openai") return language.t("dialog.provider.openai.note")
     if (id.startsWith("github-copilot")) return language.t("dialog.provider.copilot.note")
-    if (id === "nanocode-go") return language.t("dialog.provider.nanocodeGo.tagline")
+    if (id === "bettercode-go") return language.t("dialog.provider.bettercodeGo.tagline")
     return undefined
   }
 
@@ -205,17 +205,17 @@ function ProviderPicker(props: {
         <div class="px-1.25 w-full flex items-center gap-x-3">
           <ProviderIcon data-slot="list-item-extra-icon" id={i.id} />
           <span>{i.name}</span>
-          <Show when={i.id === "nanocode"}>
-            <div class="text-14-regular text-text-weak">{language.t("dialog.provider.nanocode.tagline")}</div>
+          <Show when={i.id === "bettercode"}>
+            <div class="text-14-regular text-text-weak">{language.t("dialog.provider.bettercode.tagline")}</div>
           </Show>
           <Show when={i.id === CUSTOM_ID}>
             <Tag>{language.t("settings.providers.tag.custom")}</Tag>
           </Show>
-          <Show when={i.id === "nanocode"}>
+          <Show when={i.id === "bettercode"}>
             <Tag>{language.t("dialog.provider.tag.recommended")}</Tag>
           </Show>
           <Show when={note(i.id)}>{(value) => <div class="text-14-regular text-text-weak">{value()}</div>}</Show>
-          <Show when={i.id === "nanocode-go"}>
+          <Show when={i.id === "bettercode-go"}>
             <Tag>{language.t("dialog.provider.tag.recommended")}</Tag>
           </Show>
         </div>
@@ -236,7 +236,7 @@ function ProviderPickerV2(props: {
     active: undefined as string | undefined,
     connecting: undefined as string | undefined,
   })
-  const featured = ["nanocode", "nanocode-go", "anthropic", "openai", "google", "openrouter", "vercel"]
+  const featured = ["bettercode", "bettercode-go", "anthropic", "openai", "google", "openrouter", "vercel"]
   const custom = () => ({ id: CUSTOM_ID, name: language.t("dialog.provider.custom.label") })
   const all = createMemo(() => {
     language.locale()
@@ -333,12 +333,12 @@ function ProviderPickerV2(props: {
                       >
                         <ProviderIcon id={provider.id} class="size-4 shrink-0 text-v2-icon-icon-base" />
                         <span class="min-w-0 truncate font-[530] text-v2-text-text-base">{provider.name}</span>
-                        <Show when={provider.id === "nanocode" || provider.id === "nanocode-go"}>
+                        <Show when={provider.id === "bettercode" || provider.id === "bettercode-go"}>
                           <span class="min-w-0 truncate font-[440] text-v2-text-text-muted">
                             {language.t(
-                              provider.id === "nanocode"
-                                ? "dialog.provider.nanocode.tagline"
-                                : "dialog.provider.nanocodeGo.tagline",
+                              provider.id === "bettercode"
+                                ? "dialog.provider.bettercode.tagline"
+                                : "dialog.provider.bettercodeGo.tagline",
                             )}
                           </span>
                           <span class="flex h-4 shrink-0 items-center rounded-xs border-[0.5px] border-v2-border-border-base bg-v2-background-bg-layer-03 px-1 text-[11px] font-[530] leading-none tracking-[0.05px] text-v2-text-text-muted">
@@ -833,21 +833,21 @@ function ProviderConnection(props: {
       return (
         <div class="flex flex-col gap-5 px-3 text-[13px] font-[440] leading-5 tracking-[-0.04px] text-v2-text-text-muted">
           <Show
-            when={provider().id === "nanocode"}
+            when={provider().id === "bettercode"}
             fallback={language.t("provider.connect.apiKey.description", { provider: provider().name })}
           >
             <div class="flex flex-col gap-5">
-              <div>{language.t("provider.connect.nanocodeZen.line1")}</div>
-              <div>{language.t("provider.connect.nanocodeZen.line2")}</div>
+              <div>{language.t("provider.connect.bettercodeZen.line1")}</div>
+              <div>{language.t("provider.connect.bettercodeZen.line2")}</div>
               <div>
-                {language.t("provider.connect.nanocodeZen.visit.prefix")}
+                {language.t("provider.connect.bettercodeZen.visit.prefix")}
                 <ExternalLink
-                  href="https://nanocode.ai/zen"
+                  href="https://bettercode.ai/zen"
                   class="text-v2-text-text-base focus-visible:rounded-xs focus-visible:outline-2 focus-visible:outline-v2-border-border-focus"
                 >
-                  {language.t("provider.connect.nanocodeZen.visit.link")}
+                  {language.t("provider.connect.bettercodeZen.visit.link")}
                 </ExternalLink>
-                {language.t("provider.connect.nanocodeZen.visit.suffix")}
+                {language.t("provider.connect.bettercodeZen.visit.suffix")}
               </div>
             </div>
           </Show>
@@ -885,16 +885,16 @@ function ProviderConnection(props: {
     return (
       <div class="flex flex-col gap-6">
         <Switch>
-          <Match when={provider().id === "nanocode"}>
+          <Match when={provider().id === "bettercode"}>
             <div class="flex flex-col gap-4">
-              <div class="text-14-regular text-text-base">{language.t("provider.connect.nanocodeZen.line1")}</div>
-              <div class="text-14-regular text-text-base">{language.t("provider.connect.nanocodeZen.line2")}</div>
+              <div class="text-14-regular text-text-base">{language.t("provider.connect.bettercodeZen.line1")}</div>
+              <div class="text-14-regular text-text-base">{language.t("provider.connect.bettercodeZen.line2")}</div>
               <div class="text-14-regular text-text-base">
-                {language.t("provider.connect.nanocodeZen.visit.prefix")}
-                <ExternalLink href="https://nanocode.ai/zen" tabIndex={-1}>
-                  {language.t("provider.connect.nanocodeZen.visit.link")}
+                {language.t("provider.connect.bettercodeZen.visit.prefix")}
+                <ExternalLink href="https://bettercode.ai/zen" tabIndex={-1}>
+                  {language.t("provider.connect.bettercodeZen.visit.link")}
                 </ExternalLink>
-                {language.t("provider.connect.nanocodeZen.visit.suffix")}
+                {language.t("provider.connect.bettercodeZen.visit.suffix")}
               </div>
             </div>
           </Match>

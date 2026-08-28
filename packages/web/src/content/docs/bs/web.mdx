@@ -1,28 +1,28 @@
 ---
 title: Web
-description: Korišćenje NanoCode u vašem pretraživaču.
+description: Korišćenje BetterCode u vašem pretraživaču.
 ---
 
-NanoCode može raditi kao web aplikacija u vašem pretraživaču, pružajući isto moćno iskustvo AI kodiranja bez potrebe za terminalom.
+BetterCode može raditi kao web aplikacija u vašem pretraživaču, pružajući isto moćno iskustvo AI kodiranja bez potrebe za terminalom.
 
-![NanoCode Web - Nova sesija](../../../assets/web/web-homepage-new-session.png)
+![BetterCode Web - Nova sesija](../../../assets/web/web-homepage-new-session.png)
 
 ## Početak rada
 
 Pokrenite web interfejs tako što ćete pokrenuti:
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-Ovo pokreće lokalni server na `127.0.0.1` sa nasumičnim dostupnim portom i automatski otvara NanoCode u vašem podrazumevanom pretraživaču.
+Ovo pokreće lokalni server na `127.0.0.1` sa nasumičnim dostupnim portom i automatski otvara BetterCode u vašem podrazumevanom pretraživaču.
 
 :::caution
-Ako `NANOCODE_SERVER_PASSWORD` nije postavljen, server će biti nezaštićen. Ovo je u redu za lokalnu upotrebu, ali bi trebalo biti postavljeno za pristup mreži.
+Ako `BETTERCODE_SERVER_PASSWORD` nije postavljen, server će biti nezaštićen. Ovo je u redu za lokalnu upotrebu, ali bi trebalo biti postavljeno za pristup mreži.
 :::
 
 :::tip[Windows korisnici]
-Za najbolje iskustvo, pokrenite `nanocode web` iz [WSL](/docs/windows-wsl) umjesto PowerShell-a. Ovo osigurava pravilan pristup sistemu datoteka i integraciju terminala.
+Za najbolje iskustvo, pokrenite `bettercode web` iz [WSL](/docs/windows-wsl) umjesto PowerShell-a. Ovo osigurava pravilan pristup sistemu datoteka i integraciju terminala.
 :::
 
 ---
@@ -33,21 +33,21 @@ Možete konfigurirati web server koristeći oznake komandne linije ili u vašoj 
 
 ### Port
 
-NanoCode podrazumevano bira dostupni port. Možete odrediti port:
+BetterCode podrazumevano bira dostupni port. Možete odrediti port:
 
 ```bash
-nanocode web --port 4096
+bettercode web --port 4096
 ```
 
 ### Ime hosta
 
-Podrazumevano, server se vezuje za `127.0.0.1` (samo lokalni host). Da biste NanoCode učinili dostupnim na vašoj mreži:
+Podrazumevano, server se vezuje za `127.0.0.1` (samo lokalni host). Da biste BetterCode učinili dostupnim na vašoj mreži:
 
 ```bash
-nanocode web --hostname 0.0.0.0
+bettercode web --hostname 0.0.0.0
 ```
 
-Kada koristite `0.0.0.0`, NanoCode će prikazati i lokalne i mrežne adrese:
+Kada koristite `0.0.0.0`, BetterCode će prikazati i lokalne i mrežne adrese:
 
 ```
   Local access:       http://localhost:4096
@@ -59,15 +59,15 @@ Kada koristite `0.0.0.0`, NanoCode će prikazati i lokalne i mrežne adrese:
 Omogućite mDNS kako bi vaš server bio vidljiv na lokalnoj mreži:
 
 ```bash
-nanocode web --mdns
+bettercode web --mdns
 ```
 
-Ovo automatski postavlja ime hosta na `0.0.0.0` i oglašava server kao `nanocode.local`.
+Ovo automatski postavlja ime hosta na `0.0.0.0` i oglašava server kao `bettercode.local`.
 
 Možete prilagoditi ime mDNS domene za pokretanje više instanci na istoj mreži:
 
 ```bash
-nanocode web --mdns --mdns-domain myproject.local
+bettercode web --mdns --mdns-domain myproject.local
 ```
 
 ### CORS
@@ -75,36 +75,36 @@ nanocode web --mdns --mdns-domain myproject.local
 Da biste omogućili dodatne domene za CORS (korisno za prilagođene frontendove):
 
 ```bash
-nanocode web --cors https://example.com
+bettercode web --cors https://example.com
 ```
 
 ### Autentifikacija
 
-Da biste zaštitili pristup, postavite lozinku koristeći varijablu okruženja `NANOCODE_SERVER_PASSWORD`:
+Da biste zaštitili pristup, postavite lozinku koristeći varijablu okruženja `BETTERCODE_SERVER_PASSWORD`:
 
 ```bash
-NANOCODE_SERVER_PASSWORD=secret nanocode web
+BETTERCODE_SERVER_PASSWORD=secret bettercode web
 ```
 
-Korisničko ime podrazumevano je `nanocode`, ali se može promeniti sa `NANOCODE_SERVER_USERNAME`.
+Korisničko ime podrazumevano je `bettercode`, ali se može promeniti sa `BETTERCODE_SERVER_USERNAME`.
 
 ---
 
 ## Korištenje web sučelja
 
-Jednom pokrenut, web sučelje pruža pristup vašim NanoCode sesijama.
+Jednom pokrenut, web sučelje pruža pristup vašim BetterCode sesijama.
 
 ### Sesije
 
 Pregledajte i upravljajte svojim sesijama sa početne stranice. Možete vidjeti aktivne sesije i započeti nove.
 
-![NanoCode Web - aktivna sesija](../../../assets/web/web-homepage-active-session.png)
+![BetterCode Web - aktivna sesija](../../../assets/web/web-homepage-active-session.png)
 
 ### Status servera
 
 Kliknite "Pogledajte servere" da vidite povezane servere i njihov status.
 
-![NanoCode Web - Vidi servere](../../../assets/web/web-homepage-see-servers.png)
+![BetterCode Web - Vidi servere](../../../assets/web/web-homepage-see-servers.png)
 
 ---
 
@@ -114,10 +114,10 @@ Možete priključiti TUI terminala na aktivni web server:
 
 ```bash
 # Start the web server
-nanocode web --port 4096
+bettercode web --port 4096
 
 # In another terminal, attach the TUI
-nanocode attach http://localhost:4096
+bettercode attach http://localhost:4096
 ```
 
 Ovo vam omogućava da istovremeno koristite i web sučelje i terminal, dijeleći iste sesije i stanje.
@@ -126,7 +126,7 @@ Ovo vam omogućava da istovremeno koristite i web sučelje i terminal, dijeleći
 
 ## Konfiguracioni fajl
 
-Također možete konfigurirati postavke servera u svom `nanocode.json` konfiguracijskom fajlu:
+Također možete konfigurirati postavke servera u svom `bettercode.json` konfiguracijskom fajlu:
 
 ```json
 {

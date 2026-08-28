@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { SessionV2Info } from "@nanocode-ai/sdk/v2/client"
+import type { SessionV2Info } from "@bettercode-ai/sdk/v2/client"
 import {
   applyHomeSessionEvent,
   appendHomeSessionEvent,

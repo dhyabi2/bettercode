@@ -13,7 +13,7 @@ import { Ripgrep } from "../ripgrep"
 import { RelativePath } from "../schema"
 import { Flag } from "../flag/flag"
 import { EventV2 } from "../event"
-import { FileSystemWatcher } from "@nanocode-ai/schema/filesystem-watcher"
+import { FileSystemWatcher } from "@bettercode-ai/schema/filesystem-watcher"
 
 export interface Interface {
   readonly find: (input: FileSystem.FindInput) => Effect.Effect<FileSystem.Entry[]>
@@ -21,7 +21,7 @@ export interface Interface {
   readonly grep: (input: FileSystem.GrepInput) => Effect.Effect<readonly FileSystem.Match[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/v2/FileSystem/Search") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/v2/FileSystem/Search") {}
 
 const SCAN_LIMIT = 500_000
 
@@ -298,7 +298,7 @@ export const fffLayer = Layer.effect(
   }),
 )
 
-const layer = Layer.unwrap(Effect.sync(() => (Flag.NANOCODE_DISABLE_FFF || !Fff.available() ? ripgrepLayer : fffLayer)))
+const layer = Layer.unwrap(Effect.sync(() => (Flag.BETTERCODE_DISABLE_FFF || !Fff.available() ? ripgrepLayer : fffLayer)))
 
 export const locationLayer = layer
 

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@nanocode-ai/sdk",
+  "name": "@bettercode-ai/sdk",
   "version": "1.18.21",
   "type": "module",
   "license": "MIT",

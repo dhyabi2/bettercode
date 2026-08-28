@@ -1,8 +1,8 @@
 import { describe, test, expect } from "bun:test"
 import { Effect, FileSystem } from "effect"
-import { LayerNodePlatform } from "@nanocode-ai/core/effect/app-node-platform"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { FSUtil } from "@nanocode-ai/core/fs-util"
+import { LayerNodePlatform } from "@bettercode-ai/core/effect/app-node-platform"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { FSUtil } from "@bettercode-ai/core/fs-util"
 import { testEffect } from "../lib/effect"
 import path from "path"
 

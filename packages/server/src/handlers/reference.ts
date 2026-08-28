@@ -1,4 +1,4 @@
-import { Reference } from "@nanocode-ai/core/reference"
+import { Reference } from "@bettercode-ai/core/reference"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"
 import { response } from "../location"

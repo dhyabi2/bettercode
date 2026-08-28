@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
-import { LLM, LLMClient, Provider } from "@nanocode-ai/llm"
-import { Route, Protocol } from "@nanocode-ai/llm/route"
-import { Provider as ProviderSubpath } from "@nanocode-ai/llm/provider"
+import { LLM, LLMClient, Provider } from "@bettercode-ai/llm"
+import { Route, Protocol } from "@bettercode-ai/llm/route"
+import { Provider as ProviderSubpath } from "@bettercode-ai/llm/provider"
 import {
   CloudflareAIGateway,
   CloudflareWorkersAI,
@@ -9,10 +9,10 @@ import {
   OpenAICompatible,
   OpenRouter,
   XAI,
-} from "@nanocode-ai/llm/providers"
-import * as GitHubCopilot from "@nanocode-ai/llm/providers/github-copilot"
-import { OpenAIChat, OpenAICompatibleChat, OpenAIResponses } from "@nanocode-ai/llm/protocols"
-import * as AnthropicMessages from "@nanocode-ai/llm/protocols/anthropic-messages"
+} from "@bettercode-ai/llm/providers"
+import * as GitHubCopilot from "@bettercode-ai/llm/providers/github-copilot"
+import { OpenAIChat, OpenAICompatibleChat, OpenAIResponses } from "@bettercode-ai/llm/protocols"
+import * as AnthropicMessages from "@bettercode-ai/llm/protocols/anthropic-messages"
 
 describe("public exports", () => {
   test("root exposes app-facing runtime APIs", () => {

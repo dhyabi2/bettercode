@@ -120,34 +120,34 @@ export default function Download() {
             <div data-component="section-content">
               <button
                 data-component="cli-row"
-                onClick={handleCopyClick("curl -fsSL https://nanocode.ai/install | bash")}
+                onClick={handleCopyClick("curl -fsSL https://bettercode.ai/install | bash")}
               >
                 <code>
-                  curl -fsSL https://<strong>nanocode.ai/install</strong> | bash
+                  curl -fsSL https://<strong>bettercode.ai/install</strong> | bash
                 </code>
                 <CopyStatus />
               </button>
-              <button data-component="cli-row" onClick={handleCopyClick("npm i -g nanocode-ai")}>
+              <button data-component="cli-row" onClick={handleCopyClick("npm i -g bettercode-ai")}>
                 <code>
-                  npm i -g <strong>nanocode-ai</strong>
+                  npm i -g <strong>bettercode-ai</strong>
                 </code>
                 <CopyStatus />
               </button>
-              <button data-component="cli-row" onClick={handleCopyClick("bun add -g nanocode-ai")}>
+              <button data-component="cli-row" onClick={handleCopyClick("bun add -g bettercode-ai")}>
                 <code>
-                  bun add -g <strong>nanocode-ai</strong>
+                  bun add -g <strong>bettercode-ai</strong>
                 </code>
                 <CopyStatus />
               </button>
-              <button data-component="cli-row" onClick={handleCopyClick("brew install dhyabi2/tap/nanocode")}>
+              <button data-component="cli-row" onClick={handleCopyClick("brew install dhyabi2/tap/bettercode")}>
                 <code>
-                  brew install <strong>dhyabi2/tap/nanocode</strong>
+                  brew install <strong>dhyabi2/tap/bettercode</strong>
                 </code>
                 <CopyStatus />
               </button>
-              <button data-component="cli-row" onClick={handleCopyClick("paru -S nanocode")}>
+              <button data-component="cli-row" onClick={handleCopyClick("paru -S bettercode")}>
                 <code>
-                  paru -S <strong>nanocode</strong>
+                  paru -S <strong>bettercode</strong>
                 </code>
                 <CopyStatus />
               </button>
@@ -159,9 +159,9 @@ export default function Download() {
               <span>[2]</span> {i18n.t("download.section.desktop")}
             </div>
             <div data-component="section-content">
-              <button data-component="cli-row" onClick={handleCopyClick("brew install --cask nanocode-desktop")}>
+              <button data-component="cli-row" onClick={handleCopyClick("brew install --cask bettercode-desktop")}>
                 <code>
-                  brew install --cask <strong>nanocode-desktop</strong>
+                  brew install --cask <strong>bettercode-desktop</strong>
                 </code>
                 <CopyStatus />
               </button>

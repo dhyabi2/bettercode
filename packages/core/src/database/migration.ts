@@ -3,7 +3,7 @@ export * as DatabaseMigration from "./migration"
 import { sql } from "drizzle-orm"
 import { Effect, Schedule, Semaphore } from "effect"
 import { isSqlError } from "effect/unstable/sql/SqlError"
-import type { EffectDrizzleSqlite } from "@nanocode-ai/effect-drizzle-sqlite"
+import type { EffectDrizzleSqlite } from "@bettercode-ai/effect-drizzle-sqlite"
 import { migrations } from "./migration.gen"
 import schema from "./schema.gen"
 

@@ -4,16 +4,16 @@ import fs from "fs/promises"
 import path from "path"
 import { eq } from "drizzle-orm"
 import { Effect, Fiber, Stream } from "effect"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { Git } from "@nanocode-ai/core/git"
-import { Database } from "@nanocode-ai/core/database/database"
-import { EventV2 } from "@nanocode-ai/core/event"
-import { Project } from "@nanocode-ai/core/project"
-import { ProjectDirectoryTable, ProjectTable } from "@nanocode-ai/core/project/sql"
-import { ProjectCopy } from "@nanocode-ai/core/project/copy"
-import { ProjectDirectories } from "@nanocode-ai/core/project/directories"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { Git } from "@bettercode-ai/core/git"
+import { Database } from "@bettercode-ai/core/database/database"
+import { EventV2 } from "@bettercode-ai/core/event"
+import { Project } from "@bettercode-ai/core/project"
+import { ProjectDirectoryTable, ProjectTable } from "@bettercode-ai/core/project/sql"
+import { ProjectCopy } from "@bettercode-ai/core/project/copy"
+import { ProjectDirectories } from "@bettercode-ai/core/project/directories"
 import { tmpdir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
 
@@ -31,7 +31,7 @@ async function initRepo(directory: string) {
   await $`git init`.cwd(directory).quiet()
   await $`git config core.fsmonitor false`.cwd(directory).quiet()
   await $`git config commit.gpgsign false`.cwd(directory).quiet()
-  await $`git config user.email test@nanocode.test`.cwd(directory).quiet()
+  await $`git config user.email test@bettercode.test`.cwd(directory).quiet()
   await $`git config user.name Test`.cwd(directory).quiet()
   await $`git commit --allow-empty -m root`.cwd(directory).quiet()
 }

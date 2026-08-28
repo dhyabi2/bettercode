@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://nanocode.ai/desktop-theme.json",
-  "title": "NanoCode Desktop Theme",
-  "description": "A theme definition for the NanoCode desktop application",
+  "$id": "https://bettercode.ai/desktop-theme.json",
+  "title": "BetterCode Desktop Theme",
+  "description": "A theme definition for the BetterCode desktop application",
   "type": "object",
   "required": ["name", "id", "light", "dark"],
   "properties": {

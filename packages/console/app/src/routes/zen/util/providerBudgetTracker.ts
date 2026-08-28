@@ -1,4 +1,4 @@
-import { centsToMicroCents } from "@nanocode-ai/console-core/util/price.js"
+import { centsToMicroCents } from "@bettercode-ai/console-core/util/price.js"
 import { buildRateLimitKey, getRedis } from "./redis"
 import { logger } from "./logger"
 

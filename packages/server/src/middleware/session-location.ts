@@ -1,21 +1,21 @@
-import { Database } from "@nanocode-ai/core/database/database"
-import { LocationServiceMap } from "@nanocode-ai/core/location-services"
-import { Location } from "@nanocode-ai/core/location"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { SessionV2 } from "@nanocode-ai/core/session"
-import { SessionTable } from "@nanocode-ai/core/session/sql"
-import { WorkspaceV2 } from "@nanocode-ai/core/workspace"
+import { Database } from "@bettercode-ai/core/database/database"
+import { LocationServiceMap } from "@bettercode-ai/core/location-services"
+import { Location } from "@bettercode-ai/core/location"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { SessionV2 } from "@bettercode-ai/core/session"
+import { SessionTable } from "@bettercode-ai/core/session/sql"
+import { WorkspaceV2 } from "@bettercode-ai/core/workspace"
 import { eq } from "drizzle-orm"
 import { Effect, Layer, Schema } from "effect"
 import { HttpRouter } from "effect/unstable/http"
 import { HttpApiMiddleware } from "effect/unstable/httpapi"
-import { InvalidRequestError, SessionNotFoundError } from "@nanocode-ai/protocol/errors"
+import { InvalidRequestError, SessionNotFoundError } from "@bettercode-ai/protocol/errors"
 import type { LocationServices } from "../location"
 
 export class SessionLocationMiddleware extends HttpApiMiddleware.Service<
   SessionLocationMiddleware,
   { provides: LocationServices }
->()("@nanocode/HttpApiSessionLocation", {
+>()("@bettercode/HttpApiSessionLocation", {
   error: [InvalidRequestError, SessionNotFoundError],
 }) {}
 

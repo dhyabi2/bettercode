@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: أوامر وخيارات CLI في NanoCode.
+description: أوامر وخيارات CLI في BetterCode.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-يبدأ CLI الخاص بـ NanoCode افتراضيا واجهة [TUI](/docs/tui) عند تشغيله بدون أي معاملات.
+يبدأ CLI الخاص بـ BetterCode افتراضيا واجهة [TUI](/docs/tui) عند تشغيله بدون أي معاملات.
 
 ```bash
-nanocode
+bettercode
 ```
 
-كما يدعم أيضا أوامر موثقة في هذه الصفحة، ما يتيح لك التفاعل مع NanoCode برمجيا.
+كما يدعم أيضا أوامر موثقة في هذه الصفحة، ما يتيح لك التفاعل مع BetterCode برمجيا.
 
 ```bash
-nanocode run "Explain how closures work in JavaScript"
+bettercode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-بدء واجهة المستخدم terminal (TUI) الخاصة بـ NanoCode.
+بدء واجهة المستخدم terminal (TUI) الخاصة بـ BetterCode.
 
 ```bash
-nanocode [project]
+bettercode [project]
 ```
 
 #### الخيارات
@@ -44,36 +44,36 @@ nanocode [project]
 
 ## الأوامر
 
-يتضمن CLI الخاص بـ NanoCode أيضا الأوامر التالية.
+يتضمن CLI الخاص بـ BetterCode أيضا الأوامر التالية.
 
 ---
 
 ### agent
 
-إدارة وكلاء NanoCode.
+إدارة وكلاء BetterCode.
 
 ```bash
-nanocode agent [command]
+bettercode agent [command]
 ```
 
 ---
 
 ### attach
 
-إرفاق terminal بخادم الواجهة الخلفية لـ NanoCode قيد التشغيل بالفعل، والذي تم تشغيله عبر الأمرين `serve` أو `web`.
+إرفاق terminal بخادم الواجهة الخلفية لـ BetterCode قيد التشغيل بالفعل، والذي تم تشغيله عبر الأمرين `serve` أو `web`.
 
 ```bash
-nanocode attach [url]
+bettercode attach [url]
 ```
 
-يتيح ذلك استخدام واجهة TUI مع واجهة خلفية لـ NanoCode تعمل عن بعد. على سبيل المثال:
+يتيح ذلك استخدام واجهة TUI مع واجهة خلفية لـ BetterCode تعمل عن بعد. على سبيل المثال:
 
 ```bash
 # ابدأ خادم الواجهة الخلفية للوصول عبر الويب/الجوال
-nanocode web --port 4096 --hostname 0.0.0.0
+bettercode web --port 4096 --hostname 0.0.0.0
 
 # في محطة طرفية (terminal) أخرى، اربط TUI بالواجهة الخلفية قيد التشغيل
-nanocode attach http://10.20.30.40:4096
+bettercode attach http://10.20.30.40:4096
 ```
 
 #### الرايات
@@ -84,8 +84,8 @@ nanocode attach http://10.20.30.40:4096
 | <nobr><code>{"--continue"}</code></nobr> | `-c`    | متابعة آخر جلسة                                                                   |
 | <nobr><code>{"--session"}</code></nobr>  | `-s`    | معرّف الجلسة للمتابعة                                                             |
 | <nobr><code>{"--fork"}</code></nobr>     |         | تفريع الجلسة عند المتابعة (استخدمه مع `--continue` أو `--session`)                |
-| <nobr><code>{"--password"}</code></nobr> | `-p`    | كلمة مرور المصادقة الأساسية (الافتراضي `NANOCODE_SERVER_PASSWORD`)                |
-| <nobr><code>{"--username"}</code></nobr> | `-u`    | اسم مستخدم المصادقة الأساسية (الافتراضي `NANOCODE_SERVER_USERNAME` أو `nanocode`) |
+| <nobr><code>{"--password"}</code></nobr> | `-p`    | كلمة مرور المصادقة الأساسية (الافتراضي `BETTERCODE_SERVER_PASSWORD`)                |
+| <nobr><code>{"--username"}</code></nobr> | `-u`    | اسم مستخدم المصادقة الأساسية (الافتراضي `BETTERCODE_SERVER_USERNAME` أو `bettercode`) |
 
 ---
 
@@ -94,7 +94,7 @@ nanocode attach http://10.20.30.40:4096
 إنشاء وكيل جديد بإعدادات مخصصة.
 
 ```bash
-nanocode agent create
+bettercode agent create
 ```
 
 سيرشدك هذا الأمر خلال إنشاء وكيل جديد مع موجه نظام مخصص وإعدادات الأدوات.
@@ -106,7 +106,7 @@ nanocode agent create
 عرض جميع الوكلاء المتاحين.
 
 ```bash
-nanocode agent list
+bettercode agent list
 ```
 
 ---
@@ -116,20 +116,20 @@ nanocode agent list
 أمر لإدارة بيانات الاعتماد وتسجيل الدخول لمزودي الخدمة.
 
 ```bash
-nanocode auth [command]
+bettercode auth [command]
 ```
 
 ---
 
 #### login
 
-يعتمد NanoCode على قائمة المزودين في [Models.dev](https://models.dev)، لذا يمكنك استخدام `nanocode auth login` لتهيئة مفاتيح API لأي مزود ترغب باستخدامه. يتم حفظ ذلك في `~/.local/share/nanocode/auth.json`.
+يعتمد BetterCode على قائمة المزودين في [Models.dev](https://models.dev)، لذا يمكنك استخدام `bettercode auth login` لتهيئة مفاتيح API لأي مزود ترغب باستخدامه. يتم حفظ ذلك في `~/.local/share/bettercode/auth.json`.
 
 ```bash
-nanocode auth login
+bettercode auth login
 ```
 
-عند تشغيل NanoCode يقوم بتحميل المزودين من ملف بيانات الاعتماد، وكذلك أي مفاتيح معرّفة في متغيرات البيئة لديك أو في ملف `.env` ضمن مشروعك.
+عند تشغيل BetterCode يقوم بتحميل المزودين من ملف بيانات الاعتماد، وكذلك أي مفاتيح معرّفة في متغيرات البيئة لديك أو في ملف `.env` ضمن مشروعك.
 
 ---
 
@@ -138,13 +138,13 @@ nanocode auth login
 يسرد جميع المزودين الذين تم توثيقهم كما هم محفوظون في ملف بيانات الاعتماد.
 
 ```bash
-nanocode auth list
+bettercode auth list
 ```
 
 أو النسخة المختصرة.
 
 ```bash
-nanocode auth ls
+bettercode auth ls
 ```
 
 ---
@@ -154,7 +154,7 @@ nanocode auth ls
 يسجلك خارج مزود عبر حذفه من ملف بيانات الاعتماد.
 
 ```bash
-nanocode auth logout
+bettercode auth logout
 ```
 
 ---
@@ -164,7 +164,7 @@ nanocode auth logout
 إدارة وكيل GitHub لأتمتة المستودع.
 
 ```bash
-nanocode github [command]
+bettercode github [command]
 ```
 
 ---
@@ -174,7 +174,7 @@ nanocode github [command]
 تثبيت وكيل GitHub في مستودعك.
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 يقوم ذلك بإعداد سير عمل GitHub Actions اللازم ويرشدك خلال عملية التهيئة. [اعرف المزيد](/docs/github).
@@ -186,7 +186,7 @@ nanocode github install
 تشغيل وكيل GitHub. يُستخدم هذا عادة ضمن GitHub Actions.
 
 ```bash
-nanocode github run
+bettercode github run
 ```
 
 ##### الرايات
@@ -203,7 +203,7 @@ nanocode github run
 إدارة خوادم Model Context Protocol.
 
 ```bash
-nanocode mcp [command]
+bettercode mcp [command]
 ```
 
 ---
@@ -213,7 +213,7 @@ nanocode mcp [command]
 إضافة خادم MCP إلى تهيئتك.
 
 ```bash
-nanocode mcp add
+bettercode mcp add
 ```
 
 سيرشدك هذا الأمر خلال إضافة خادم MCP محلي أو بعيد.
@@ -225,13 +225,13 @@ nanocode mcp add
 عرض جميع خوادم MCP المُهيأة وحالة اتصالها.
 
 ```bash
-nanocode mcp list
+bettercode mcp list
 ```
 
 أو استخدم النسخة المختصرة.
 
 ```bash
-nanocode mcp ls
+bettercode mcp ls
 ```
 
 ---
@@ -241,7 +241,7 @@ nanocode mcp ls
 إجراء المصادقة مع خادم MCP يدعم OAuth.
 
 ```bash
-nanocode mcp auth [name]
+bettercode mcp auth [name]
 ```
 
 إذا لم تُحدِّد اسم خادم، فسيُطلب منك الاختيار من الخوادم المتاحة الداعمة لـ OAuth.
@@ -249,13 +249,13 @@ nanocode mcp auth [name]
 يمكنك أيضا عرض الخوادم الداعمة لـ OAuth وحالة المصادقة الخاصة بها.
 
 ```bash
-nanocode mcp auth list
+bettercode mcp auth list
 ```
 
 أو استخدم النسخة المختصرة.
 
 ```bash
-nanocode mcp auth ls
+bettercode mcp auth ls
 ```
 
 ---
@@ -265,7 +265,7 @@ nanocode mcp auth ls
 إزالة بيانات اعتماد OAuth لخادم MCP.
 
 ```bash
-nanocode mcp logout [name]
+bettercode mcp logout [name]
 ```
 
 ---
@@ -275,7 +275,7 @@ nanocode mcp logout [name]
 تشخيص مشاكل اتصال OAuth لخادم MCP.
 
 ```bash
-nanocode mcp debug <name>
+bettercode mcp debug <name>
 ```
 
 ---
@@ -285,7 +285,7 @@ nanocode mcp debug <name>
 عرض جميع النماذج المتاحة من المزودين المُهيأين.
 
 ```bash
-nanocode models [provider]
+bettercode models [provider]
 ```
 
 يعرض هذا الأمر جميع النماذج المتاحة عبر المزودين المُهيأين لديك بصيغة `provider/model`.
@@ -295,7 +295,7 @@ nanocode models [provider]
 يمكنك اختياريا تمرير معرّف مزود لتصفية النماذج حسب ذلك المزود.
 
 ```bash
-nanocode models anthropic
+bettercode models anthropic
 ```
 
 #### الرايات
@@ -305,36 +305,36 @@ nanocode models anthropic
 | <nobr><code>{"--refresh"}</code></nobr> | تحديث ذاكرة التخزين المؤقت للنماذج من models.dev              |
 | <nobr><code>{"--verbose"}</code></nobr> | استخدام مخرجات أكثر تفصيلا للنماذج (تشمل بيانات مثل التكاليف) |
 
-استخدم الراية `--refresh` لتحديث قائمة النماذج المخزنة مؤقتا. يفيد ذلك عند إضافة نماذج جديدة إلى مزود وتريد رؤيتها في NanoCode.
+استخدم الراية `--refresh` لتحديث قائمة النماذج المخزنة مؤقتا. يفيد ذلك عند إضافة نماذج جديدة إلى مزود وتريد رؤيتها في BetterCode.
 
 ```bash
-nanocode models --refresh
+bettercode models --refresh
 ```
 
 ---
 
 ### run
 
-تشغيل nanocode في وضع غير تفاعلي عبر تمرير موجه مباشرة.
+تشغيل bettercode في وضع غير تفاعلي عبر تمرير موجه مباشرة.
 
 ```bash
-nanocode run [message..]
+bettercode run [message..]
 ```
 
 هذا مفيد للبرمجة النصية والأتمتة، أو عندما تريد إجابة سريعة دون تشغيل واجهة TUI كاملة. على سبيل المثال.
 
-```bash "nanocode run"
-nanocode run Explain the use of context in Go
+```bash "bettercode run"
+bettercode run Explain the use of context in Go
 ```
 
-يمكنك أيضا الإرفاق بمثيل `nanocode serve` قيد التشغيل لتجنّب زمن الإقلاع البارد لخوادم MCP في كل تشغيل:
+يمكنك أيضا الإرفاق بمثيل `bettercode serve` قيد التشغيل لتجنّب زمن الإقلاع البارد لخوادم MCP في كل تشغيل:
 
 ```bash
 # ابدأ خادمًا بلا واجهة في محطة طرفية واحدة
-nanocode serve
+bettercode serve
 
 # في محطة طرفية أخرى، شغّل الأوامر التي ترتبط به
-nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+bettercode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### الرايات
@@ -351,9 +351,9 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | <nobr><code>{"--file"}</code></nobr>     | `-f`    | ملف/ملفات لإرفاقها بالرسالة                                                       |
 | <nobr><code>{"--format"}</code></nobr>   |         | التنسيق: default (منسق) أو json (أحداث JSON خام)                                  |
 | <nobr><code>{"--title"}</code></nobr>    |         | عنوان للجلسة (يستخدم موجهًا مقتطعًا إن لم تُحدَّد قيمة)                           |
-| <nobr><code>{"--attach"}</code></nobr>   |         | الإرفاق بخادم nanocode قيد التشغيل (مثل http://localhost:4096)                    |
-| <nobr><code>{"--password"}</code></nobr> | `-p`    | كلمة مرور المصادقة الأساسية (الافتراضي `NANOCODE_SERVER_PASSWORD`)                |
-| <nobr><code>{"--username"}</code></nobr> | `-u`    | اسم مستخدم المصادقة الأساسية (الافتراضي `NANOCODE_SERVER_USERNAME` أو `nanocode`) |
+| <nobr><code>{"--attach"}</code></nobr>   |         | الإرفاق بخادم bettercode قيد التشغيل (مثل http://localhost:4096)                    |
+| <nobr><code>{"--password"}</code></nobr> | `-p`    | كلمة مرور المصادقة الأساسية (الافتراضي `BETTERCODE_SERVER_PASSWORD`)                |
+| <nobr><code>{"--username"}</code></nobr> | `-u`    | اسم مستخدم المصادقة الأساسية (الافتراضي `BETTERCODE_SERVER_USERNAME` أو `bettercode`) |
 | <nobr><code>{"--dir"}</code></nobr>      |         | دليل التشغيل، أو المسار على الخادم البعيد عند الإرفاق                             |
 | <nobr><code>{"--variant"}</code></nobr>  |         | متغير النموذج (جهد الاستدلال الخاص بالمزود)                                       |
 | <nobr><code>{"--thinking"}</code></nobr> |         | عرض كتل التفكير                                                                   |
@@ -363,13 +363,13 @@ nanocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 
 ### serve
 
-بدء خادم NanoCode بدون واجهة للوصول عبر API. راجع [توثيق الخادم](/docs/server) لواجهة HTTP الكاملة.
+بدء خادم BetterCode بدون واجهة للوصول عبر API. راجع [توثيق الخادم](/docs/server) لواجهة HTTP الكاملة.
 
 ```bash
-nanocode serve
+bettercode serve
 ```
 
-يشغّل هذا خادم HTTP يوفّر وصولا عبر API لوظائف nanocode دون واجهة TUI. اضبط `NANOCODE_SERVER_PASSWORD` لتفعيل مصادقة HTTP الأساسية (اسم المستخدم الافتراضي `nanocode`).
+يشغّل هذا خادم HTTP يوفّر وصولا عبر API لوظائف bettercode دون واجهة TUI. اضبط `BETTERCODE_SERVER_PASSWORD` لتفعيل مصادقة HTTP الأساسية (اسم المستخدم الافتراضي `bettercode`).
 
 #### الرايات
 
@@ -384,20 +384,20 @@ nanocode serve
 
 ### session
 
-إدارة جلسات NanoCode.
+إدارة جلسات BetterCode.
 
 ```bash
-nanocode session [command]
+bettercode session [command]
 ```
 
 ---
 
 #### list
 
-عرض جميع جلسات NanoCode.
+عرض جميع جلسات BetterCode.
 
 ```bash
-nanocode session list
+bettercode session list
 ```
 
 ##### الرايات
@@ -411,10 +411,10 @@ nanocode session list
 
 ### stats
 
-عرض إحصاءات استخدام الرموز والتكلفة لجلسات NanoCode لديك.
+عرض إحصاءات استخدام الرموز والتكلفة لجلسات BetterCode لديك.
 
 ```bash
-nanocode stats
+bettercode stats
 ```
 
 #### الرايات
@@ -433,7 +433,7 @@ nanocode stats
 تصدير بيانات الجلسة بصيغة JSON.
 
 ```bash
-nanocode export [sessionID]
+bettercode export [sessionID]
 ```
 
 إذا لم تُقدّم معرّف جلسة، فسيُطلب منك الاختيار من الجلسات المتاحة.
@@ -442,30 +442,30 @@ nanocode export [sessionID]
 
 ### import
 
-استيراد بيانات الجلسة من ملف JSON أو رابط مشاركة NanoCode.
+استيراد بيانات الجلسة من ملف JSON أو رابط مشاركة BetterCode.
 
 ```bash
-nanocode import <file>
+bettercode import <file>
 ```
 
-يمكنك الاستيراد من ملف محلي أو من رابط مشاركة NanoCode.
+يمكنك الاستيراد من ملف محلي أو من رابط مشاركة BetterCode.
 
 ```bash
-nanocode import session.json
-nanocode import https://opncd.ai/s/abc123
+bettercode import session.json
+bettercode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-بدء خادم NanoCode بدون واجهة مع واجهة ويب.
+بدء خادم BetterCode بدون واجهة مع واجهة ويب.
 
 ```bash
-nanocode web
+bettercode web
 ```
 
-يشغّل هذا خادم HTTP ويفتح متصفح ويب للوصول إلى NanoCode عبر واجهة ويب. اضبط `NANOCODE_SERVER_PASSWORD` لتفعيل مصادقة HTTP الأساسية (اسم المستخدم الافتراضي `nanocode`).
+يشغّل هذا خادم HTTP ويفتح متصفح ويب للوصول إلى BetterCode عبر واجهة ويب. اضبط `BETTERCODE_SERVER_PASSWORD` لتفعيل مصادقة HTTP الأساسية (اسم المستخدم الافتراضي `bettercode`).
 
 #### الرايات
 
@@ -483,7 +483,7 @@ nanocode web
 بدء خادم ACP (Agent Client Protocol).
 
 ```bash
-nanocode acp
+bettercode acp
 ```
 
 يشغّل هذا الأمر خادم ACP يتواصل عبر stdin/stdout باستخدام nd-JSON.
@@ -500,10 +500,10 @@ nanocode acp
 
 ### uninstall
 
-إلغاء تثبيت NanoCode وإزالة جميع الملفات ذات الصلة.
+إلغاء تثبيت BetterCode وإزالة جميع الملفات ذات الصلة.
 
 ```bash
-nanocode uninstall
+bettercode uninstall
 ```
 
 #### الرايات
@@ -519,22 +519,22 @@ nanocode uninstall
 
 ### upgrade
 
-تحديث nanocode إلى أحدث إصدار أو إلى إصدار محدد.
+تحديث bettercode إلى أحدث إصدار أو إلى إصدار محدد.
 
 ```bash
-nanocode upgrade [target]
+bettercode upgrade [target]
 ```
 
 للترقية إلى أحدث إصدار.
 
 ```bash
-nanocode upgrade
+bettercode upgrade
 ```
 
 للترقية إلى إصدار محدد.
 
 ```bash
-nanocode upgrade v0.1.48
+bettercode upgrade v0.1.48
 ```
 
 #### الرايات
@@ -547,7 +547,7 @@ nanocode upgrade v0.1.48
 
 ## الخيارات العامة
 
-يدعم سطر أوامر nanocode الخيارات العامة التالية.
+يدعم سطر أوامر bettercode الخيارات العامة التالية.
 
 | الراية                                     | المختصر | الوصف                                  |
 | ------------------------------------------ | ------- | -------------------------------------- |
@@ -560,33 +560,33 @@ nanocode upgrade v0.1.48
 
 ## متغيرات البيئة
 
-يمكن تهيئة NanoCode باستخدام متغيرات البيئة.
+يمكن تهيئة BetterCode باستخدام متغيرات البيئة.
 
 | المتغير                               | النوع   | الوصف                                                     |
 | ------------------------------------- | ------- | --------------------------------------------------------- |
-| `NANOCODE_AUTO_SHARE`                 | boolean | مشاركة الجلسات تلقائيا                                    |
-| `NANOCODE_GIT_BASH_PATH`              | string  | مسار ملف Git Bash التنفيذي على Windows                    |
-| `NANOCODE_CONFIG`                     | string  | مسار ملف التهيئة                                          |
-| `NANOCODE_CONFIG_DIR`                 | string  | مسار دليل التهيئة                                         |
-| `NANOCODE_CONFIG_CONTENT`             | string  | محتوى تهيئة JSON مُضمّن                                   |
-| `NANOCODE_DISABLE_AUTOUPDATE`         | boolean | تعطيل التحقق التلقائي من التحديثات                        |
-| `NANOCODE_DISABLE_PRUNE`              | boolean | تعطيل تنقية البيانات القديمة                              |
-| `NANOCODE_DISABLE_TERMINAL_TITLE`     | boolean | تعطيل تحديث عنوان terminal تلقائيا                        |
-| `NANOCODE_PERMISSION`                 | string  | تهيئة أذونات JSON مُضمّنة                                 |
-| `NANOCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | تعطيل الإضافات الافتراضية                                 |
-| `NANOCODE_DISABLE_LSP_DOWNLOAD`       | boolean | تعطيل تنزيل خوادم LSP تلقائيا                             |
-| `NANOCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | تفعيل النماذج التجريبية                                   |
-| `NANOCODE_DISABLE_AUTOCOMPACT`        | boolean | تعطيل ضغط السياق تلقائيا                                  |
-| `NANOCODE_DISABLE_CLAUDE_CODE`        | boolean | تعطيل القراءة من `.claude` (الموجه + المهارات)            |
-| `NANOCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | تعطيل قراءة `~/.claude/CLAUDE.md`                         |
-| `NANOCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | تعطيل تحميل `.claude/skills`                              |
-| `NANOCODE_DISABLE_MODELS_FETCH`       | boolean | تعطيل جلب النماذج من مصادر بعيدة                          |
-| `NANOCODE_FAKE_VCS`                   | string  | مزود VCS وهمي لأغراض الاختبار                             |
-| `NANOCODE_CLIENT`                     | string  | معرّف العميل (الافتراضي `cli`)                            |
-| `NANOCODE_ENABLE_EXA`                 | boolean | تفعيل أدوات بحث الويب من Exa                              |
-| `NANOCODE_SERVER_PASSWORD`            | string  | تفعيل المصادقة الأساسية لخادمي `serve`/`web`              |
-| `NANOCODE_SERVER_USERNAME`            | string  | تجاوز اسم مستخدم المصادقة الأساسية (الافتراضي `nanocode`) |
-| `NANOCODE_MODELS_URL`                 | string  | رابط مخصص لجلب تهيئة النماذج                              |
+| `BETTERCODE_AUTO_SHARE`                 | boolean | مشاركة الجلسات تلقائيا                                    |
+| `BETTERCODE_GIT_BASH_PATH`              | string  | مسار ملف Git Bash التنفيذي على Windows                    |
+| `BETTERCODE_CONFIG`                     | string  | مسار ملف التهيئة                                          |
+| `BETTERCODE_CONFIG_DIR`                 | string  | مسار دليل التهيئة                                         |
+| `BETTERCODE_CONFIG_CONTENT`             | string  | محتوى تهيئة JSON مُضمّن                                   |
+| `BETTERCODE_DISABLE_AUTOUPDATE`         | boolean | تعطيل التحقق التلقائي من التحديثات                        |
+| `BETTERCODE_DISABLE_PRUNE`              | boolean | تعطيل تنقية البيانات القديمة                              |
+| `BETTERCODE_DISABLE_TERMINAL_TITLE`     | boolean | تعطيل تحديث عنوان terminal تلقائيا                        |
+| `BETTERCODE_PERMISSION`                 | string  | تهيئة أذونات JSON مُضمّنة                                 |
+| `BETTERCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | تعطيل الإضافات الافتراضية                                 |
+| `BETTERCODE_DISABLE_LSP_DOWNLOAD`       | boolean | تعطيل تنزيل خوادم LSP تلقائيا                             |
+| `BETTERCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | تفعيل النماذج التجريبية                                   |
+| `BETTERCODE_DISABLE_AUTOCOMPACT`        | boolean | تعطيل ضغط السياق تلقائيا                                  |
+| `BETTERCODE_DISABLE_CLAUDE_CODE`        | boolean | تعطيل القراءة من `.claude` (الموجه + المهارات)            |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | تعطيل قراءة `~/.claude/CLAUDE.md`                         |
+| `BETTERCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | تعطيل تحميل `.claude/skills`                              |
+| `BETTERCODE_DISABLE_MODELS_FETCH`       | boolean | تعطيل جلب النماذج من مصادر بعيدة                          |
+| `BETTERCODE_FAKE_VCS`                   | string  | مزود VCS وهمي لأغراض الاختبار                             |
+| `BETTERCODE_CLIENT`                     | string  | معرّف العميل (الافتراضي `cli`)                            |
+| `BETTERCODE_ENABLE_EXA`                 | boolean | تفعيل أدوات بحث الويب من Exa                              |
+| `BETTERCODE_SERVER_PASSWORD`            | string  | تفعيل المصادقة الأساسية لخادمي `serve`/`web`              |
+| `BETTERCODE_SERVER_USERNAME`            | string  | تجاوز اسم مستخدم المصادقة الأساسية (الافتراضي `bettercode`) |
+| `BETTERCODE_MODELS_URL`                 | string  | رابط مخصص لجلب تهيئة النماذج                              |
 
 ---
 
@@ -596,21 +596,21 @@ nanocode upgrade v0.1.48
 
 | المتغير                                         | النوع   | الوصف                                        |
 | ----------------------------------------------- | ------- | -------------------------------------------- |
-| `NANOCODE_EXPERIMENTAL`                         | boolean | تفعيل الميزات التجريبية الخاضعة للعلم الشامل |
-| `NANOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | تفعيل اكتشاف الأيقونات                       |
-| `NANOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | تعطيل النسخ عند التحديد في TUI               |
-| `NANOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | المهلة الافتراضية لأوامر bash بالميلي ثانية  |
-| `NANOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | الحد الأقصى لرموز المخرجات لاستجابات LLM     |
-| `NANOCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | تفعيل مراقب الملفات لكامل الدليل             |
-| `NANOCODE_EXPERIMENTAL_OXFMT`                   | boolean | تفعيل مُنسّق oxfmt                           |
-| `NANOCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | تفعيل أداة LSP تجريبية                       |
-| `NANOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | تعطيل مراقب الملفات                          |
-| `NANOCODE_EXPERIMENTAL_EXA`                     | boolean | تفعيل ميزات Exa التجريبية                    |
-| `NANOCODE_EXPERIMENTAL_LSP_TY`                  | boolean | تمكين TY LSP لملفات python                   |
-| `NANOCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | تفعيل وضع الخطة                              |
-| `NANOCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | boolean | تفعيل مهام subagent في الخلفية               |
-| `NANOCODE_EXPERIMENTAL_EVENT_SYSTEM`            | boolean | تفعيل نظام الأحداث التجريبي                  |
-| `NANOCODE_EXPERIMENTAL_NATIVE_LLM`              | boolean | تفعيل مسار طلبات LLM الأصلي                  |
-| `NANOCODE_EXPERIMENTAL_PARALLEL`                | boolean | تفعيل تنفيذ بحث الويب بالتوازي               |
-| `NANOCODE_EXPERIMENTAL_SCOUT`                   | boolean | تفعيل Scout subagent                         |
-| `NANOCODE_EXPERIMENTAL_WORKSPACES`              | boolean | تفعيل دعم مساحات العمل                       |
+| `BETTERCODE_EXPERIMENTAL`                         | boolean | تفعيل الميزات التجريبية الخاضعة للعلم الشامل |
+| `BETTERCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | تفعيل اكتشاف الأيقونات                       |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | تعطيل النسخ عند التحديد في TUI               |
+| `BETTERCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | المهلة الافتراضية لأوامر bash بالميلي ثانية  |
+| `BETTERCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | الحد الأقصى لرموز المخرجات لاستجابات LLM     |
+| `BETTERCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | تفعيل مراقب الملفات لكامل الدليل             |
+| `BETTERCODE_EXPERIMENTAL_OXFMT`                   | boolean | تفعيل مُنسّق oxfmt                           |
+| `BETTERCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | تفعيل أداة LSP تجريبية                       |
+| `BETTERCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | تعطيل مراقب الملفات                          |
+| `BETTERCODE_EXPERIMENTAL_EXA`                     | boolean | تفعيل ميزات Exa التجريبية                    |
+| `BETTERCODE_EXPERIMENTAL_LSP_TY`                  | boolean | تمكين TY LSP لملفات python                   |
+| `BETTERCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | تفعيل وضع الخطة                              |
+| `BETTERCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS`    | boolean | تفعيل مهام subagent في الخلفية               |
+| `BETTERCODE_EXPERIMENTAL_EVENT_SYSTEM`            | boolean | تفعيل نظام الأحداث التجريبي                  |
+| `BETTERCODE_EXPERIMENTAL_NATIVE_LLM`              | boolean | تفعيل مسار طلبات LLM الأصلي                  |
+| `BETTERCODE_EXPERIMENTAL_PARALLEL`                | boolean | تفعيل تنفيذ بحث الويب بالتوازي               |
+| `BETTERCODE_EXPERIMENTAL_SCOUT`                   | boolean | تفعيل Scout subagent                         |
+| `BETTERCODE_EXPERIMENTAL_WORKSPACES`              | boolean | تفعيل دعم مساحات العمل                       |

@@ -1,4 +1,4 @@
-import type { TuiPluginApi } from "@nanocode-ai/plugin/tui"
+import type { TuiPluginApi } from "@bettercode-ai/plugin/tui"
 import { RGBA } from "@opentui/core"
 import { createTuiResolvedConfig } from "./tui-runtime"
 

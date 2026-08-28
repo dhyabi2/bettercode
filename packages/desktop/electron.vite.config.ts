@@ -1,14 +1,14 @@
 import { sentryVitePlugin } from "@sentry/vite-plugin"
 import { defineConfig } from "electron-vite"
-import appPlugin from "@nanocode-ai/app/vite"
+import appPlugin from "@bettercode-ai/app/vite"
 import * as fs from "node:fs/promises"
 
-const NANOCODE_SERVER_DIST = "../nanocode/dist/node"
+const BETTERCODE_SERVER_DIST = "../bettercode/dist/node"
 
 const channel = (() => {
-  const raw = process.env.NANOCODE_CHANNEL
+  const raw = process.env.BETTERCODE_CHANNEL
   if (raw === "dev" || raw === "beta" || raw === "prod") return raw
-  if (process.env.NANOCODE_CHANNEL === "latest") return "prod"
+  if (process.env.BETTERCODE_CHANNEL === "latest") return "prod"
   return "dev"
 })()
 
@@ -34,7 +34,7 @@ const sentry =
 export default defineConfig({
   main: {
     define: {
-      "import.meta.env.NANOCODE_CHANNEL": JSON.stringify(channel),
+      "import.meta.env.BETTERCODE_CHANNEL": JSON.stringify(channel),
     },
     build: {
       rollupOptions: {
@@ -55,25 +55,25 @@ const require = __cjs_mod__.createRequire(import.meta.url);
     },
     plugins: [
       {
-        name: "nanocode:node-pty-narrower",
+        name: "bettercode:node-pty-narrower",
         enforce: "pre",
         resolveId(s) {
           if (s === "@lydell/node-pty") return nodePtyPkg
         },
       },
       {
-        name: "nanocode:virtual-server-module",
+        name: "bettercode:virtual-server-module",
         enforce: "pre",
         resolveId(id) {
-          if (id === "virtual:nanocode-server") return this.resolve(`${NANOCODE_SERVER_DIST}/node.js`)
+          if (id === "virtual:bettercode-server") return this.resolve(`${BETTERCODE_SERVER_DIST}/node.js`)
         },
       },
       {
-        name: "nanocode:copy-server-assets",
+        name: "bettercode:copy-server-assets",
         async writeBundle() {
-          for (const l of await fs.readdir(NANOCODE_SERVER_DIST)) {
+          for (const l of await fs.readdir(BETTERCODE_SERVER_DIST)) {
             if (!l.endsWith(".wasm")) continue
-            await fs.writeFile(`./out/main/chunks/${l}`, await fs.readFile(`${NANOCODE_SERVER_DIST}/${l}`))
+            await fs.writeFile(`./out/main/chunks/${l}`, await fs.readFile(`${BETTERCODE_SERVER_DIST}/${l}`))
           }
         },
       },

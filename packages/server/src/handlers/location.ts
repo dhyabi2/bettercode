@@ -1,4 +1,4 @@
-import { Location } from "@nanocode-ai/core/location"
+import { Location } from "@bettercode-ai/core/location"
 import { Effect } from "effect"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"

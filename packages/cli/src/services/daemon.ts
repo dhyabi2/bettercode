@@ -1,7 +1,7 @@
-import { Global } from "@nanocode-ai/core/global"
-import { InstallationVersion } from "@nanocode-ai/core/installation/version"
-import { createNanocodeClient } from "@nanocode-ai/sdk/v2/client"
-import { ServerAuth } from "@nanocode-ai/server/auth"
+import { Global } from "@bettercode-ai/core/global"
+import { InstallationVersion } from "@bettercode-ai/core/installation/version"
+import { createBettercodeClient } from "@bettercode-ai/sdk/v2/client"
+import { ServerAuth } from "@bettercode-ai/server/auth"
 import { Context, Effect, FileSystem, Layer, Option, Schedule, Schema, Scope } from "effect"
 import { HttpServer } from "effect/unstable/http"
 import { randomBytes, randomUUID } from "crypto"
@@ -9,7 +9,7 @@ import { spawn } from "node:child_process"
 import path from "path"
 
 export interface Interface {
-  readonly client: () => Effect.Effect<ReturnType<typeof createNanocodeClient>, unknown>
+  readonly client: () => Effect.Effect<ReturnType<typeof createBettercodeClient>, unknown>
   readonly transport: () => Effect.Effect<{ url: string; headers: RequestInit["headers"] }, unknown>
   readonly start: () => Effect.Effect<string, Error>
   readonly status: () => Effect.Effect<string | undefined>
@@ -18,7 +18,7 @@ export interface Interface {
   readonly register: (address: HttpServer.Address) => Effect.Effect<void, unknown, Scope.Scope>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/cli/Daemon") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/cli/Daemon") {}
 
 const Registration = Schema.Struct({
   id: Schema.optional(Schema.String),
@@ -60,7 +60,7 @@ export const layer = Layer.effect(
     })
 
     const createClient = Effect.fnUntraced(function* (url: string) {
-      return createNanocodeClient({ baseUrl: url, headers: ServerAuth.headers({ password: yield* password() }) })
+      return createBettercodeClient({ baseUrl: url, headers: ServerAuth.headers({ password: yield* password() }) })
     })
 
     const healthy = Effect.fnUntraced(function* () {
@@ -140,7 +140,7 @@ export const layer = Layer.effect(
 
     const client = Effect.fn("cli.daemon.client")(function* () {
       const connection = yield* transport()
-      return createNanocodeClient({ baseUrl: connection.url, headers: connection.headers })
+      return createBettercodeClient({ baseUrl: connection.url, headers: connection.headers })
     })
 
     const status = Effect.fn("cli.daemon.status")(function* () {

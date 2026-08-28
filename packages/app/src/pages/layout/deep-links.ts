@@ -1,7 +1,7 @@
-export const deepLinkEvent = "nanocode:deep-link"
+export const deepLinkEvent = "bettercode:deep-link"
 
 const parseUrl = (input: string) => {
-  if (!input.startsWith("nanocode://")) return
+  if (!input.startsWith("bettercode://")) return
   if (typeof URL.canParse === "function" && !URL.canParse(input)) return
   try {
     return new URL(input)
@@ -36,15 +36,15 @@ export const collectOpenProjectDeepLinks = (urls: string[]) =>
 export const collectNewSessionDeepLinks = (urls: string[]) =>
   urls.map(parseNewSessionDeepLink).filter((link): link is { directory: string; prompt?: string } => !!link)
 
-type NanoCodeWindow = Window & {
-  __NANOCODE__?: {
+type BetterCodeWindow = Window & {
+  __BETTERCODE__?: {
     deepLinks?: string[]
   }
 }
 
-export const drainPendingDeepLinks = (target: NanoCodeWindow) => {
-  const pending = target.__NANOCODE__?.deepLinks ?? []
+export const drainPendingDeepLinks = (target: BetterCodeWindow) => {
+  const pending = target.__BETTERCODE__?.deepLinks ?? []
   if (pending.length === 0) return []
-  if (target.__NANOCODE__) target.__NANOCODE__.deepLinks = []
+  if (target.__BETTERCODE__) target.__BETTERCODE__.deepLinks = []
   return pending
 }

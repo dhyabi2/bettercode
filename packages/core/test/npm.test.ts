@@ -2,9 +2,9 @@ import fs from "fs/promises"
 import path from "path"
 import { describe, expect, test } from "bun:test"
 import { Effect, Option } from "effect"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { Global } from "@nanocode-ai/core/global"
-import { Npm } from "@nanocode-ai/core/npm"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { Global } from "@bettercode-ai/core/global"
+import { Npm } from "@bettercode-ai/core/npm"
 import { tmpdir } from "./fixture/tmpdir"
 
 const win = process.platform === "win32"
@@ -23,14 +23,14 @@ const npmLayer = (cache: string) =>
 
 describe("Npm.sanitize", () => {
   test("keeps normal scoped package specs unchanged", () => {
-    expect(Npm.sanitize("@nanocode/acme")).toBe("@nanocode/acme")
-    expect(Npm.sanitize("@nanocode/acme@1.0.0")).toBe("@nanocode/acme@1.0.0")
+    expect(Npm.sanitize("@bettercode/acme")).toBe("@bettercode/acme")
+    expect(Npm.sanitize("@bettercode/acme@1.0.0")).toBe("@bettercode/acme@1.0.0")
     expect(Npm.sanitize("prettier")).toBe("prettier")
   })
 
   test("handles git https specs", () => {
-    const spec = "acme@git+https://github.com/nanocode/acme.git"
-    const expected = win ? "acme@git+https_//github.com/nanocode/acme.git" : spec
+    const spec = "acme@git+https://github.com/bettercode/acme.git"
+    const expected = win ? "acme@git+https_//github.com/bettercode/acme.git" : spec
     expect(Npm.sanitize(spec)).toBe(expected)
   })
 })

@@ -1,5 +1,5 @@
-import { Model } from "@nanocode-ai/schema/model"
-import { Location } from "@nanocode-ai/schema/location"
+import { Model } from "@bettercode-ai/schema/model"
+import { Location } from "@bettercode-ai/schema/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { ServiceUnavailableError } from "../errors"

@@ -1,4 +1,4 @@
-import { Catalog } from "@nanocode-ai/core/catalog"
+import { Catalog } from "@bettercode-ai/core/catalog"
 import { Effect } from "effect"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"

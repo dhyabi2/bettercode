@@ -1,10 +1,10 @@
 import { describe, expect } from "bun:test"
 import path from "path"
 import { Effect, FileSystem } from "effect"
-import { LayerNodePlatform } from "@nanocode-ai/core/effect/app-node-platform"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { FSUtil } from "@nanocode-ai/core/fs-util"
-import { ReadToolFileSystem } from "@nanocode-ai/core/tool/read-filesystem"
+import { LayerNodePlatform } from "@bettercode-ai/core/effect/app-node-platform"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { FSUtil } from "@bettercode-ai/core/fs-util"
+import { ReadToolFileSystem } from "@bettercode-ai/core/tool/read-filesystem"
 import { testEffect } from "./lib/effect"
 
 const it = testEffect(LayerNode.compile(LayerNode.group([FSUtil.node, LayerNodePlatform.filesystem])))

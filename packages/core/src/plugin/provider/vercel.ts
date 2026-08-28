@@ -10,8 +10,8 @@ export const VercelPlugin = define({
           if (item.provider.api.type !== "aisdk") continue
           if (item.provider.api.package !== "@ai-sdk/vercel") continue
           evt.provider.update(item.provider.id, (provider) => {
-            provider.request.headers["http-referer"] = "https://nanocode.ai/"
-            provider.request.headers["x-title"] = "nanocode"
+            provider.request.headers["http-referer"] = "https://bettercode.ai/"
+            provider.request.headers["x-title"] = "bettercode"
           })
         }
       }),

@@ -1,7 +1,7 @@
 import path from "path"
 import { Context, Duration, Effect, Layer, Option, Ref, Schedule, Schema } from "effect"
 import { FetchHttpClient, HttpClient, HttpClientRequest } from "effect/unstable/http"
-import { ModelsDev } from "@nanocode-ai/schema/models-dev"
+import { ModelsDev } from "@bettercode-ai/schema/models-dev"
 import { Global } from "./global"
 import { Flag } from "./flag/flag"
 import { Flock } from "./util/flock"
@@ -20,7 +20,7 @@ const InterleavedField = Schema.Union([
   Schema.String,
 ])
 
-const USER_AGENT = `nanocode/${InstallationChannel}/${InstallationVersion}/${Flag.NANOCODE_CLIENT}`
+const USER_AGENT = `bettercode/${InstallationChannel}/${InstallationVersion}/${Flag.BETTERCODE_CLIENT}`
 
 const CostTier = Schema.Struct({
   input: Schema.Finite,
@@ -133,14 +133,14 @@ export type Provider = Schema.Schema.Type<typeof Provider>
 
 export const Event = ModelsDev.Event
 
-declare const NANOCODE_MODELS_DEV: Record<string, Provider> | undefined
+declare const BETTERCODE_MODELS_DEV: Record<string, Provider> | undefined
 
 export interface Interface {
   readonly get: () => Effect.Effect<Record<string, Provider>>
   readonly refresh: (force?: boolean) => Effect.Effect<void>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/ModelsDev") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/ModelsDev") {}
 
 const layer = Layer.effect(
   Service,
@@ -157,7 +157,7 @@ const layer = Layer.effect(
       ),
     )
 
-    const source = Flag.NANOCODE_MODELS_URL || "https://models.dev"
+    const source = Flag.BETTERCODE_MODELS_URL || "https://models.dev"
     const filepath = path.join(
       Global.Path.cache,
       source === "https://models.dev" ? "models.json" : `models-${Hash.fast(source)}.json`,
@@ -182,10 +182,10 @@ const layer = Layer.effect(
       )
     })
 
-    const loadFromDisk = fs.readJson(Flag.NANOCODE_MODELS_PATH ?? filepath).pipe(
+    const loadFromDisk = fs.readJson(Flag.BETTERCODE_MODELS_PATH ?? filepath).pipe(
       Effect.catch((error) => {
         if (
-          Flag.NANOCODE_MODELS_PATH === undefined &&
+          Flag.BETTERCODE_MODELS_PATH === undefined &&
           error._tag === "FileSystemError" &&
           error.method === "readJson"
         ) {
@@ -197,7 +197,7 @@ const layer = Layer.effect(
     )
 
     const loadSnapshot = Effect.sync(() =>
-      typeof NANOCODE_MODELS_DEV === "undefined" ? undefined : NANOCODE_MODELS_DEV,
+      typeof BETTERCODE_MODELS_DEV === "undefined" ? undefined : BETTERCODE_MODELS_DEV,
     )
 
     const fetchAndWrite = Effect.fn("ModelsDev.fetchAndWrite")(function* () {
@@ -220,8 +220,8 @@ const layer = Layer.effect(
       if (fromDisk) return fromDisk
       const snapshot = yield* loadSnapshot
       if (snapshot) return snapshot
-      if (Flag.NANOCODE_DISABLE_MODELS_FETCH) return {}
-      // Flock is cross-process: concurrent nanocode CLIs can race on this cache file.
+      if (Flag.BETTERCODE_DISABLE_MODELS_FETCH) return {}
+      // Flock is cross-process: concurrent bettercode CLIs can race on this cache file.
       const text = yield* Effect.scoped(
         Effect.gen(function* () {
           yield* Flock.effect(lockKey)
@@ -269,7 +269,7 @@ const layer = Layer.effect(
       )
     })
 
-    if (!Flag.NANOCODE_DISABLE_MODELS_FETCH && !process.argv.includes("--get-yargs-completions")) {
+    if (!Flag.BETTERCODE_DISABLE_MODELS_FETCH && !process.argv.includes("--get-yargs-completions")) {
       yield* Effect.forkScoped(
         Effect.gen(function* () {
           while (true) {

@@ -5,14 +5,14 @@ import StarlightLanguageSelect from "@astrojs/starlight/components/LanguageSelec
 const locales = Object.keys(config.locales ?? {})
 ---
 
-<nanocode-language-select data-locales={JSON.stringify(locales)}>
+<bettercode-language-select data-locales={JSON.stringify(locales)}>
   <StarlightLanguageSelect />
-</nanocode-language-select>
+</bettercode-language-select>
 
 <script>
   document.addEventListener("change", (event) => {
     if (!(event.target instanceof HTMLSelectElement)) return
-    const wrapper = event.target.closest("nanocode-language-select")
+    const wrapper = event.target.closest("bettercode-language-select")
     if (!(wrapper instanceof HTMLElement)) return
 
     const locales = JSON.parse(wrapper.dataset.locales ?? "[]") as string[]
@@ -23,7 +23,7 @@ const locales = Object.keys(config.locales ?? {})
 </script>
 
 <style>
-  nanocode-language-select {
+  bettercode-language-select {
     display: contents;
   }
 </style>

@@ -9,9 +9,9 @@
 
 ## Local Dev
 
-- `nanocode dev web` proxies `https://app.nanocode.ai`, so local UI/CSS changes will not show there.
+- `bettercode dev web` proxies `https://app.bettercode.ai`, so local UI/CSS changes will not show there.
 - For local UI changes, run the backend and app dev servers separately.
-- Backend (from `packages/nanocode`): `bun run --conditions=browser ./src/index.ts serve --port 4096`
+- Backend (from `packages/bettercode`): `bun run --conditions=browser ./src/index.ts serve --port 4096`
 - App (from `packages/app`): `bun dev -- --port 4444`
 - Open `http://localhost:4444` to verify UI changes (it targets the backend at `http://localhost:4096`).
 

@@ -18,18 +18,18 @@ import { useTuiConfig } from "./config"
 import { TuiKeybind } from "./config/keybind"
 
 export const LEADER_TOKEN = "leader"
-export const NANOCODE_BASE_MODE = "base"
+export const BETTERCODE_BASE_MODE = "base"
 export const COMMAND_PALETTE_COMMAND = "command.palette.show"
 
-const NANOCODE_MODE_KEY = "nanocode.mode"
+const BETTERCODE_MODE_KEY = "bettercode.mode"
 
-export const NanocodeKeymapProvider = KeymapProvider
-export const useNanocodeKeymap = useKeymap
+export const BettercodeKeymapProvider = KeymapProvider
+export const useBettercodeKeymap = useKeymap
 
 export { useBindings, useKeymapSelector }
 
 export type OpenTuiKeymap = ReturnType<typeof useKeymap>
-type NanocodeModeStack = ReturnType<typeof createNanocodeModeStack>
+type BettercodeModeStack = ReturnType<typeof createBettercodeModeStack>
 type CommandSlashEntry = {
   display: string
   description?: string
@@ -44,18 +44,18 @@ type BindingLookup = {
 type FormatConfig = { keybinds: BindingLookup }
 type ResolvedKeymapConfig = FormatConfig & { leader_timeout: number }
 
-const modeStacks = new WeakMap<OpenTuiKeymap, NanocodeModeStack>()
+const modeStacks = new WeakMap<OpenTuiKeymap, BettercodeModeStack>()
 
 function isVisiblePaletteCommand(command: Command) {
   return command.hidden !== true && command.name !== COMMAND_PALETTE_COMMAND
 }
 
-export function createNanocodeModeStack(keymap: OpenTuiKeymap) {
-  keymap.setData(NANOCODE_MODE_KEY, NANOCODE_BASE_MODE)
+export function createBettercodeModeStack(keymap: OpenTuiKeymap) {
+  keymap.setData(BETTERCODE_MODE_KEY, BETTERCODE_BASE_MODE)
 
   const offFields = keymap.registerLayerFields({
     mode(value, ctx) {
-      ctx.require(NANOCODE_MODE_KEY, value)
+      ctx.require(BETTERCODE_MODE_KEY, value)
     },
   })
 
@@ -63,12 +63,12 @@ export function createNanocodeModeStack(keymap: OpenTuiKeymap) {
   let disposed = false
 
   const update = () => {
-    keymap.setData(NANOCODE_MODE_KEY, stack.at(-1)?.mode ?? NANOCODE_BASE_MODE)
+    keymap.setData(BETTERCODE_MODE_KEY, stack.at(-1)?.mode ?? BETTERCODE_BASE_MODE)
   }
 
   const stackApi = {
     current() {
-      return stack.at(-1)?.mode ?? NANOCODE_BASE_MODE
+      return stack.at(-1)?.mode ?? BETTERCODE_BASE_MODE
     },
     push(mode: string) {
       if (disposed) return () => {}
@@ -90,7 +90,7 @@ export function createNanocodeModeStack(keymap: OpenTuiKeymap) {
       disposed = true
       stack.length = 0
       offFields()
-      keymap.setData(NANOCODE_MODE_KEY, undefined)
+      keymap.setData(BETTERCODE_MODE_KEY, undefined)
       modeStacks.delete(keymap)
     },
   }
@@ -99,13 +99,13 @@ export function createNanocodeModeStack(keymap: OpenTuiKeymap) {
   return stackApi
 }
 
-export function useNanocodeModeStack() {
-  return getNanocodeModeStack(useNanocodeKeymap())
+export function useBettercodeModeStack() {
+  return getBettercodeModeStack(useBettercodeKeymap())
 }
 
-export function getNanocodeModeStack(keymap: OpenTuiKeymap) {
+export function getBettercodeModeStack(keymap: OpenTuiKeymap) {
   const value = modeStacks.get(keymap)
-  if (!value) throw new Error("Nanocode mode stack is not registered for this keymap")
+  if (!value) throw new Error("Bettercode mode stack is not registered for this keymap")
   return value
 }
 
@@ -211,8 +211,8 @@ export function formatKeyBindings(bindings: Parameters<typeof formatCommandBindi
   return formatCommandBindingsExtra(bindings, formatOptions(config))
 }
 
-export function registerNanocodeKeymap(keymap: OpenTuiKeymap, renderer: CliRenderer, config: ResolvedKeymapConfig) {
-  const modeStack = createNanocodeModeStack(keymap)
+export function registerBettercodeKeymap(keymap: OpenTuiKeymap, renderer: CliRenderer, config: ResolvedKeymapConfig) {
+  const modeStack = createBettercodeModeStack(keymap)
   const offCommaBindings = registerCommaBindings(keymap)
   const offAliasExpander = registerKeyAliases(keymap)
   const offBaseLayout = registerBaseLayoutFallback(keymap)
@@ -258,7 +258,7 @@ export function useCommandShortcut(command: string): Accessor<string> {
 }
 
 export function useCommandSlashes(): Accessor<readonly CommandSlashEntry[]> {
-  const keymap = useNanocodeKeymap()
+  const keymap = useBettercodeKeymap()
   const entries = useKeymapSelector((keymap: OpenTuiKeymap) =>
     keymap.getCommandEntries({
       visibility: "reachable",

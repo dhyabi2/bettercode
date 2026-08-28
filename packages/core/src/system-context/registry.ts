@@ -14,7 +14,7 @@ export interface Interface {
   readonly load: () => Effect.Effect<SystemContext.SystemContext>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/v2/SystemContextRegistry") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/v2/SystemContextRegistry") {}
 
 const layer = Layer.effect(
   Service,

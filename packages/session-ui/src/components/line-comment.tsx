@@ -1,11 +1,11 @@
-import { useFilteredList } from "@nanocode-ai/ui/hooks"
-import { getDirectory, getFilename } from "@nanocode-ai/core/util/path"
+import { useFilteredList } from "@bettercode-ai/ui/hooks"
+import { getDirectory, getFilename } from "@bettercode-ai/core/util/path"
 import { createSignal, For, onMount, Show, splitProps, type JSX } from "solid-js"
-import { Button } from "@nanocode-ai/ui/button"
-import { FileIcon } from "@nanocode-ai/ui/file-icon"
-import { Icon } from "@nanocode-ai/ui/icon"
+import { Button } from "@bettercode-ai/ui/button"
+import { FileIcon } from "@bettercode-ai/ui/file-icon"
+import { Icon } from "@bettercode-ai/ui/icon"
 import { installLineCommentStyles } from "./line-comment-styles"
-import { useI18n } from "@nanocode-ai/ui/context/i18n"
+import { useI18n } from "@bettercode-ai/ui/context/i18n"
 
 installLineCommentStyles()
 

@@ -18,7 +18,7 @@ describe("translate app", () => {
     expect(parseTranslationArgs(["fr"])).toEqual({
       target: "fr",
       concurrency: 1,
-      model: "nanocode/gpt-5.5",
+      model: "bettercode/gpt-5.5",
       variant: "xhigh",
       dryRun: false,
       check: false,
@@ -33,7 +33,7 @@ describe("translate app", () => {
         "--concurrency",
         "7",
         "--model",
-        "nanocode/gpt-5.4",
+        "bettercode/gpt-5.4",
         "--variant",
         "high",
         "--dry-run",
@@ -41,7 +41,7 @@ describe("translate app", () => {
     ).toEqual({
       target: "all",
       concurrency: 7,
-      model: "nanocode/gpt-5.4",
+      model: "bettercode/gpt-5.4",
       variant: "high",
       dryRun: true,
       check: false,
@@ -78,9 +78,9 @@ describe("translate app", () => {
   })
 
   test("maps product locale codes to their glossaries", () => {
-    expect(glossaryFile("fr")).toBe(".nanocode/glossary/fr.md")
-    expect(glossaryFile("zh")).toBe(".nanocode/glossary/zh-cn.md")
-    expect(glossaryFile("zht")).toBe(".nanocode/glossary/zh-tw.md")
+    expect(glossaryFile("fr")).toBe(".bettercode/glossary/fr.md")
+    expect(glossaryFile("zh")).toBe(".bettercode/glossary/zh-cn.md")
+    expect(glossaryFile("zht")).toBe(".bettercode/glossary/zh-tw.md")
   })
 
   test("finds key and placeholder drift", () => {
@@ -160,14 +160,14 @@ describe("translate app", () => {
           {
             info: {
               role: "assistant",
-              providerID: "nanocode",
+              providerID: "bettercode",
               modelID: "gpt-5.5",
               variant: "xhigh",
             },
           },
         ],
       }),
-    ).toEqual([{ model: "nanocode/gpt-5.5", variant: "xhigh" }])
+    ).toEqual([{ model: "bettercode/gpt-5.5", variant: "xhigh" }])
     expect(
       textFromEvents(
         'shared: https://example.test\n{"type":"text","sessionID":"ses_test","part":{"text":"finished"}}\n',
@@ -176,21 +176,21 @@ describe("translate app", () => {
   })
 
   test("resolves variants from verbose model output", () => {
-    const output = `nanocode/other
+    const output = `bettercode/other
 {"variants":{}}
-nanocode/gpt-5.5
+bettercode/gpt-5.5
 {"variants":{"high":{"reasoningEffort":"high"},"xhigh":{"reasoningEffort":"xhigh"}}}
-nanocode/next
+bettercode/next
 {"variants":{}}
 `
-    expect(modelVariants(output, "nanocode/gpt-5.5")).toEqual({
+    expect(modelVariants(output, "bettercode/gpt-5.5")).toEqual({
       high: { reasoningEffort: "high" },
       xhigh: { reasoningEffort: "xhigh" },
     })
   })
 
   test("disables side effects and scopes edits for the translation agent", () => {
-    const config = translationConfig("translate-app-fr", "nanocode/gpt-5.5", ["packages/app/src/i18n/fr.ts"])
+    const config = translationConfig("translate-app-fr", "bettercode/gpt-5.5", ["packages/app/src/i18n/fr.ts"])
     expect(config.share).toBe("disabled")
     expect(config.formatter).toBe(false)
     expect(config.lsp).toBe(false)

@@ -3,7 +3,7 @@ title: استكشاف الأخطاء وإصلاحها
 description: المشكلات الشائعة وكيفية حلها.
 ---
 
-لاستكشاف المشكلات في NanoCode وإصلاحها، ابدأ بالتحقق من السجلات والبيانات المحلية التي يخزنها على القرص.
+لاستكشاف المشكلات في BetterCode وإصلاحها، ابدأ بالتحقق من السجلات والبيانات المحلية التي يخزنها على القرص.
 
 ---
 
@@ -11,21 +11,21 @@ description: المشكلات الشائعة وكيفية حلها.
 
 يتم حفظ ملفات السجل في:
 
-- **macOS/Linux**: `~/.local/share/nanocode/log/`
-- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.local\share\nanocode\log`
+- **macOS/Linux**: `~/.local/share/bettercode/log/`
+- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.local\share\bettercode\log`
 
 تتم تسمية ملفات السجل بطوابع زمنية (مثل `2025-01-09T123456.log`) ويتم الاحتفاظ بأحدث 10 ملفات سجل.
 
-يمكنك ضبط مستوى السجل باستخدام خيار CLI `--log-level` للحصول على معلومات تصحيح أكثر تفصيلا. على سبيل المثال: `nanocode --log-level DEBUG`.
+يمكنك ضبط مستوى السجل باستخدام خيار CLI `--log-level` للحصول على معلومات تصحيح أكثر تفصيلا. على سبيل المثال: `bettercode --log-level DEBUG`.
 
 ---
 
 ## التخزين
 
-يخزن nanocode بيانات الجلسات وبيانات التطبيق الأخرى على القرص في:
+يخزن bettercode بيانات الجلسات وبيانات التطبيق الأخرى على القرص في:
 
-- **macOS/Linux**: `~/.local/share/nanocode/`
-- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.local\share\nanocode`
+- **macOS/Linux**: `~/.local/share/bettercode/`
+- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.local\share\bettercode`
 
 يحتوي هذا الدليل على:
 
@@ -39,13 +39,13 @@ description: المشكلات الشائعة وكيفية حلها.
 
 ## تطبيق سطح المكتب
 
-يشغل NanoCode Desktop خادما محليا لـ NanoCode (العملية الجانبية `nanocode-cli`) في الخلفية. معظم المشكلات سببها إضافة لا تعمل بشكل صحيح، أو ذاكرة تخزين مؤقت تالفة، أو إعداد خادم غير صحيح.
+يشغل BetterCode Desktop خادما محليا لـ BetterCode (العملية الجانبية `bettercode-cli`) في الخلفية. معظم المشكلات سببها إضافة لا تعمل بشكل صحيح، أو ذاكرة تخزين مؤقت تالفة، أو إعداد خادم غير صحيح.
 
 ### فحوصات سريعة
 
 - أغلق التطبيق تماما ثم أعد تشغيله.
 - إذا عرض التطبيق شاشة خطأ، انقر **Restart** وانسخ تفاصيل الخطأ.
-- على macOS فقط: قائمة `NanoCode` -> **Reload Webview** (يفيد إذا كانت الواجهة فارغة/متجمدة).
+- على macOS فقط: قائمة `BetterCode` -> **Reload Webview** (يفيد إذا كانت الواجهة فارغة/متجمدة).
 
 ---
 
@@ -57,28 +57,28 @@ description: المشكلات الشائعة وكيفية حلها.
 
 افتح ملف الإعدادات العام وابحث عن المفتاح `plugin`.
 
-- **macOS/Linux**: `~/.config/nanocode/nanocode.jsonc` (أو `~/.config/nanocode/nanocode.json`)
-- **macOS/Linux** (عمليات تثبيت أقدم): `~/.local/share/nanocode/nanocode.jsonc`
-- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.config\nanocode\nanocode.jsonc`
+- **macOS/Linux**: `~/.config/bettercode/bettercode.jsonc` (أو `~/.config/bettercode/bettercode.json`)
+- **macOS/Linux** (عمليات تثبيت أقدم): `~/.local/share/bettercode/bettercode.jsonc`
+- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.config\bettercode\bettercode.jsonc`
 
 إذا كانت لديك إضافات مضبوطة، فقم بتعطيلها مؤقتا بإزالة المفتاح أو ضبطه على مصفوفة فارغة:
 
 ```jsonc
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "plugin": [],
 }
 ```
 
 #### تحقق من أدلة الإضافات
 
-يمكن لـ NanoCode أيضا تحميل إضافات محلية من القرص. انقلها مؤقتا إلى مكان آخر (أو أعد تسمية المجلد) ثم أعد تشغيل تطبيق سطح المكتب:
+يمكن لـ BetterCode أيضا تحميل إضافات محلية من القرص. انقلها مؤقتا إلى مكان آخر (أو أعد تسمية المجلد) ثم أعد تشغيل تطبيق سطح المكتب:
 
 - **إضافات عامة**
-  - **macOS/Linux**: `~/.config/nanocode/plugins/`
-  - **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.config\nanocode\plugins`
+  - **macOS/Linux**: `~/.config/bettercode/plugins/`
+  - **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.config\bettercode\plugins`
 - **إضافات المشروع** (فقط إذا كنت تستخدم إعدادات لكل مشروع)
-  - `<your-project>/.nanocode/plugins/`
+  - `<your-project>/.bettercode/plugins/`
 
 إذا عاد التطبيق للعمل، فأعد تفعيل الإضافات واحدة تلو الأخرى لمعرفة أيها يسبب المشكلة.
 
@@ -86,22 +86,22 @@ description: المشكلات الشائعة وكيفية حلها.
 
 ### مسح ذاكرة التخزين المؤقت
 
-إذا لم يساعد تعطيل الإضافات (أو كانت عملية تثبيت إضافة عالقة)، فامسح ذاكرة التخزين المؤقت حتى يتمكن NanoCode من إعادة بنائها.
+إذا لم يساعد تعطيل الإضافات (أو كانت عملية تثبيت إضافة عالقة)، فامسح ذاكرة التخزين المؤقت حتى يتمكن BetterCode من إعادة بنائها.
 
-1. أغلق NanoCode Desktop تماما.
+1. أغلق BetterCode Desktop تماما.
 2. احذف دليل ذاكرة التخزين المؤقت:
 
-- **macOS**: Finder -> `Cmd+Shift+G` -> الصق `~/.cache/nanocode`
-- **Linux**: احذف `~/.cache/nanocode` (أو شغّل `rm -rf ~/.cache/nanocode`)
-- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.cache\nanocode`
+- **macOS**: Finder -> `Cmd+Shift+G` -> الصق `~/.cache/bettercode`
+- **Linux**: احذف `~/.cache/bettercode` (أو شغّل `rm -rf ~/.cache/bettercode`)
+- **Windows**: اضغط `WIN+R` والصق `%USERPROFILE%\.cache\bettercode`
 
-3. أعد تشغيل NanoCode Desktop.
+3. أعد تشغيل BetterCode Desktop.
 
 ---
 
 ### إصلاح مشكلات اتصال الخادم
 
-يمكن لـ NanoCode Desktop إما تشغيل خادمه المحلي (افتراضيا) أو الاتصال بعنوان URL لخادم قمت بتهيئته.
+يمكن لـ BetterCode Desktop إما تشغيل خادمه المحلي (افتراضيا) أو الاتصال بعنوان URL لخادم قمت بتهيئته.
 
 إذا ظهرت نافذة **"Connection Failed"** (أو لم يتجاوز التطبيق شاشة البداية)، فتحقق مما إذا كان هناك عنوان URL مخصص للخادم.
 
@@ -111,13 +111,13 @@ description: المشكلات الشائعة وكيفية حلها.
 
 #### إزالة `server.port` / `server.hostname` من الإعدادات
 
-إذا كان `nanocode.json(c)` يحتوي على قسم `server`، فأزله مؤقتا ثم أعد تشغيل تطبيق سطح المكتب.
+إذا كان `bettercode.json(c)` يحتوي على قسم `server`، فأزله مؤقتا ثم أعد تشغيل تطبيق سطح المكتب.
 
 #### تحقق من متغيرات البيئة
 
-إذا كان `NANOCODE_PORT` مضبوطا في بيئتك، فسيحاول تطبيق سطح المكتب استخدام ذلك المنفذ للخادم المحلي.
+إذا كان `BETTERCODE_PORT` مضبوطا في بيئتك، فسيحاول تطبيق سطح المكتب استخدام ذلك المنفذ للخادم المحلي.
 
-- أزل ضبط `NANOCODE_PORT` (أو اختر منفذا متاحا) ثم أعد التشغيل.
+- أزل ضبط `BETTERCODE_PORT` (أو اختر منفذا متاحا) ثم أعد التشغيل.
 
 ---
 
@@ -132,21 +132,21 @@ description: المشكلات الشائعة وكيفية حلها.
 
 ### Windows: بيئة تشغيل WebView2
 
-على Windows، يتطلب NanoCode Desktop وجود **WebView2 Runtime** الخاصة بـ Microsoft Edge. إذا فتح التطبيق نافذة فارغة أو لم يبدأ، فقم بتثبيت/تحديث WebView2 ثم جرّب مجددا.
+على Windows، يتطلب BetterCode Desktop وجود **WebView2 Runtime** الخاصة بـ Microsoft Edge. إذا فتح التطبيق نافذة فارغة أو لم يبدأ، فقم بتثبيت/تحديث WebView2 ثم جرّب مجددا.
 
 ---
 
 ### Windows: مشكلات الأداء العامة
 
-إذا كنت تواجه بطءا في الأداء، أو مشكلات في الوصول إلى الملفات، أو مشكلات في terminal على Windows، فجرّب استخدام [WSL (نظام Windows الفرعي لـ Linux)](/docs/windows-wsl). يوفر WSL بيئة Linux تعمل بسلاسة أكبر مع ميزات NanoCode.
+إذا كنت تواجه بطءا في الأداء، أو مشكلات في الوصول إلى الملفات، أو مشكلات في terminal على Windows، فجرّب استخدام [WSL (نظام Windows الفرعي لـ Linux)](/docs/windows-wsl). يوفر WSL بيئة Linux تعمل بسلاسة أكبر مع ميزات BetterCode.
 
 ---
 
 ### الإشعارات لا تظهر
 
-لا يعرض NanoCode Desktop إشعارات النظام إلا عندما:
+لا يعرض BetterCode Desktop إشعارات النظام إلا عندما:
 
-- تكون الإشعارات مفعلة لـ NanoCode في إعدادات نظام التشغيل، و
+- تكون الإشعارات مفعلة لـ BetterCode في إعدادات نظام التشغيل، و
 - تكون نافذة التطبيق غير نشطة.
 
 ---
@@ -155,11 +155,11 @@ description: المشكلات الشائعة وكيفية حلها.
 
 إذا لم يبدأ التطبيق ولم تتمكن من مسح الإعدادات من داخل الواجهة، فأعد تعيين الحالة المحفوظة لتطبيق سطح المكتب.
 
-1. أغلق NanoCode Desktop.
-2. اعثر على هذه الملفات واحذفها (توجد في دليل بيانات تطبيق NanoCode Desktop):
+1. أغلق BetterCode Desktop.
+2. اعثر على هذه الملفات واحذفها (توجد في دليل بيانات تطبيق BetterCode Desktop):
 
-- `nanocode.settings.dat` (عنوان URL الافتراضي لخادم سطح المكتب)
-- `nanocode.global.dat` و `nanocode.workspace.*.dat` (حالة الواجهة مثل الخوادم/المشاريع الأخيرة)
+- `bettercode.settings.dat` (عنوان URL الافتراضي لخادم سطح المكتب)
+- `bettercode.global.dat` و `bettercode.workspace.*.dat` (حالة الواجهة مثل الخوادم/المشاريع الأخيرة)
 
 للعثور على الدليل بسرعة:
 
@@ -171,13 +171,13 @@ description: المشكلات الشائعة وكيفية حلها.
 
 ## الحصول على المساعدة
 
-إذا كنت تواجه مشكلات مع NanoCode:
+إذا كنت تواجه مشكلات مع BetterCode:
 
 1. **الإبلاغ عن المشكلات على GitHub**
 
    أفضل طريقة للإبلاغ عن الأخطاء أو طلب الميزات هي عبر مستودعنا على GitHub:
 
-   [**github.com/dhyabi2/nanocode/issues**](https://github.com/dhyabi2/nanocode/issues)
+   [**github.com/dhyabi2/bettercode/issues**](https://github.com/dhyabi2/bettercode/issues)
 
    قبل إنشاء مشكلة جديدة، ابحث في المشكلات الموجودة لمعرفة ما إذا كانت مشكلتك قد تم الإبلاغ عنها بالفعل.
 
@@ -185,7 +185,7 @@ description: المشكلات الشائعة وكيفية حلها.
 
    للحصول على مساعدة فورية ونقاشات المجتمع، انضم إلى خادم Discord الخاص بنا:
 
-   [**nanocode.ai/discord**](https://nanocode.ai/discord)
+   [**bettercode.ai/discord**](https://bettercode.ai/discord)
 
 ---
 
@@ -195,11 +195,11 @@ description: المشكلات الشائعة وكيفية حلها.
 
 ---
 
-### NanoCode لا يبدأ
+### BetterCode لا يبدأ
 
 1. تحقق من السجلات بحثا عن رسائل الخطأ
 2. جرّب التشغيل مع `--print-logs` لرؤية المخرجات في terminal
-3. تأكد من أنك تستخدم أحدث إصدار عبر `nanocode upgrade`
+3. تأكد من أنك تستخدم أحدث إصدار عبر `bettercode upgrade`
 
 ---
 
@@ -224,9 +224,9 @@ description: المشكلات الشائعة وكيفية حلها.
 
 - `openai/gpt-4.1`
 - `openrouter/google/gemini-2.5-flash`
-- `nanocode/kimi-k2`
+- `bettercode/kimi-k2`
 
-لمعرفة النماذج التي لديك صلاحية الوصول إليها، شغّل `nanocode models`
+لمعرفة النماذج التي لديك صلاحية الوصول إليها، شغّل `bettercode models`
 
 ---
 
@@ -240,10 +240,10 @@ description: المشكلات الشائعة وكيفية حلها.
 2. إذا استمرت المشكلة، فجرّب مسح الإعدادات المخزنة لديك:
 
    ```bash
-   rm -rf ~/.local/share/nanocode
+   rm -rf ~/.local/share/bettercode
    ```
 
-   على Windows، اضغط `WIN+R` واحذف: `%USERPROFILE%\.local\share\nanocode`
+   على Windows، اضغط `WIN+R` واحذف: `%USERPROFILE%\.local\share\bettercode`
 
 3. أعد المصادقة مع المزوّد باستخدام الأمر `/connect` في واجهة TUI.
 
@@ -251,21 +251,21 @@ description: المشكلات الشائعة وكيفية حلها.
 
 ### AI_APICallError ومشكلات حزم المزوّد
 
-إذا واجهت أخطاء في استدعاءات API، فقد يكون السبب حزم مزوّد قديمة. يقوم nanocode بتثبيت حزم المزوّد (OpenAI و Anthropic و Google وغير ذلك) ديناميكيا عند الحاجة ويقوم بتخزينها مؤقتا محليا.
+إذا واجهت أخطاء في استدعاءات API، فقد يكون السبب حزم مزوّد قديمة. يقوم bettercode بتثبيت حزم المزوّد (OpenAI و Anthropic و Google وغير ذلك) ديناميكيا عند الحاجة ويقوم بتخزينها مؤقتا محليا.
 
 لحل مشكلات حزم المزوّد:
 
 1. امسح ذاكرة التخزين المؤقت لحزم المزوّد:
 
    ```bash
-   rm -rf ~/.cache/nanocode
+   rm -rf ~/.cache/bettercode
    ```
 
-   على Windows، اضغط `WIN+R` واحذف: `%USERPROFILE%\.cache\nanocode`
+   على Windows، اضغط `WIN+R` واحذف: `%USERPROFILE%\.cache\bettercode`
 
-2. أعد تشغيل nanocode لإعادة تثبيت أحدث حزم المزوّد
+2. أعد تشغيل bettercode لإعادة تثبيت أحدث حزم المزوّد
 
-سيجبر ذلك nanocode على تنزيل أحدث إصدارات حزم المزوّد، وهو ما يحل غالبا مشكلات التوافق مع معاملات النماذج وتغييرات API.
+سيجبر ذلك bettercode على تنزيل أحدث إصدارات حزم المزوّد، وهو ما يحل غالبا مشكلات التوافق مع معاملات النماذج وتغييرات API.
 
 ---
 
@@ -296,4 +296,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-سيكتشف nanocode ما إذا كنت تستخدم Wayland ويفضل `wl-clipboard`، وإلا فسيحاول العثور على أدوات الحافظة بالترتيب التالي: `xclip` ثم `xsel`.
+سيكتشف bettercode ما إذا كنت تستخدم Wayland ويفضل `wl-clipboard`، وإلا فسيحاول العثور على أدوات الحافظة بالترتيب التالي: `xclip` ثم `xsel`.

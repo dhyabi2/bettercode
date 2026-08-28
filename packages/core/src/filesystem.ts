@@ -7,8 +7,8 @@ import { FSUtil } from "./fs-util"
 import { Location } from "./location"
 import { PositiveInt, RelativePath } from "./schema"
 import { FileSystemSearch } from "./filesystem/search"
-import { Entry, FileSystem, FindInput, Match } from "@nanocode-ai/schema/filesystem"
-export { Entry, Match, Submatch } from "@nanocode-ai/schema/filesystem"
+import { Entry, FileSystem, FindInput, Match } from "@bettercode-ai/schema/filesystem"
+export { Entry, Match, Submatch } from "@bettercode-ai/schema/filesystem"
 
 export const ReadInput = Schema.Struct({
   path: RelativePath,
@@ -54,7 +54,7 @@ export interface Interface {
   readonly grep: (input: GrepInput) => Effect.Effect<readonly Match[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/v2/FileSystem") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/v2/FileSystem") {}
 
 const baseLayer = Layer.effect(
   Service,

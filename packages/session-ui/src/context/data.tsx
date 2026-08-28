@@ -1,6 +1,6 @@
-import type { Message, Session, Part, SnapshotFileDiff, SessionStatus, Provider } from "@nanocode-ai/sdk/v2"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
-import { createSimpleContext } from "@nanocode-ai/ui/context"
+import type { Message, Session, Part, SnapshotFileDiff, SessionStatus, Provider } from "@bettercode-ai/sdk/v2"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
+import { createSimpleContext } from "@bettercode-ai/ui/context"
 import { PreloadMultiFileDiffResult } from "@pierre/diffs/ssr"
 
 export type NormalizedProviderListResponse = {

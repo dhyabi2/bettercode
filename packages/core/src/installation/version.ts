@@ -1,8 +1,8 @@
 declare global {
-  const NANOCODE_VERSION: string
-  const NANOCODE_CHANNEL: string
+  const BETTERCODE_VERSION: string
+  const BETTERCODE_CHANNEL: string
 }
 
-export const InstallationVersion = typeof NANOCODE_VERSION === "string" ? NANOCODE_VERSION : "local"
-export const InstallationChannel = typeof NANOCODE_CHANNEL === "string" ? NANOCODE_CHANNEL : "local"
+export const InstallationVersion = typeof BETTERCODE_VERSION === "string" ? BETTERCODE_VERSION : "local"
+export const InstallationChannel = typeof BETTERCODE_CHANNEL === "string" ? BETTERCODE_CHANNEL : "local"
 export const InstallationLocal = InstallationChannel === "local"

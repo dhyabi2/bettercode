@@ -1,11 +1,11 @@
 import type { APIEvent } from "@solidjs/start/server"
-import { and, Database, eq, isNull } from "@nanocode-ai/console-core/drizzle/index.js"
-import { BillingTable, LiteTable } from "@nanocode-ai/console-core/schema/billing.sql.js"
-import { KeyTable } from "@nanocode-ai/console-core/schema/key.sql.js"
-import { UserTable } from "@nanocode-ai/console-core/schema/user.sql.js"
-import { WorkspaceTable } from "@nanocode-ai/console-core/schema/workspace.sql.js"
-import { LiteData } from "@nanocode-ai/console-core/lite.js"
-import { Subscription } from "@nanocode-ai/console-core/subscription.js"
+import { and, Database, eq, isNull } from "@bettercode-ai/console-core/drizzle/index.js"
+import { BillingTable, LiteTable } from "@bettercode-ai/console-core/schema/billing.sql.js"
+import { KeyTable } from "@bettercode-ai/console-core/schema/key.sql.js"
+import { UserTable } from "@bettercode-ai/console-core/schema/user.sql.js"
+import { WorkspaceTable } from "@bettercode-ai/console-core/schema/workspace.sql.js"
+import { LiteData } from "@bettercode-ai/console-core/lite.js"
+import { Subscription } from "@bettercode-ai/console-core/subscription.js"
 
 export async function GET(input: APIEvent) {
   const apiKey = input.request.headers.get("authorization")?.match(/^Bearer (\S+)$/)?.[1]
@@ -98,7 +98,7 @@ export async function GET(input: APIEvent) {
         type: "error",
         error: {
           type: "EntitlementError",
-          message: "NanoCode Go subscription required.",
+          message: "BetterCode Go subscription required.",
         },
       }),
       {

@@ -1,7 +1,7 @@
 export * as ProjectSchema from "./schema"
 
 import { Schema } from "effect"
-import { Project } from "@nanocode-ai/schema/project"
+import { Project } from "@bettercode-ai/schema/project"
 import { AbsolutePath } from "../schema"
 
 export const ID = Project.ID

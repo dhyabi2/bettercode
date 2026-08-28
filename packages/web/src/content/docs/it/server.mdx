@@ -1,19 +1,19 @@
 ---
 title: Server
-description: Interagisci con il server nanocode via HTTP.
+description: Interagisci con il server bettercode via HTTP.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-Il comando `nanocode serve` avvia un server HTTP headless che espone un endpoint OpenAPI utilizzabile da un client nanocode.
+Il comando `bettercode serve` avvia un server HTTP headless che espone un endpoint OpenAPI utilizzabile da un client bettercode.
 
 ---
 
 ### Utilizzo
 
 ```bash
-nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
+bettercode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 ```
 
 #### Opzioni
@@ -23,38 +23,38 @@ nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | Porta su cui ascoltare                  | `4096`           |
 | `--hostname`    | Hostname su cui ascoltare               | `127.0.0.1`      |
 | `--mdns`        | Abilita la scoperta mDNS                | `false`          |
-| `--mdns-domain` | Nome di dominio personalizzato mDNS     | `nanocode.local` |
+| `--mdns-domain` | Nome di dominio personalizzato mDNS     | `bettercode.local` |
 | `--cors`        | Origin browser aggiuntive da permettere | `[]`             |
 
 `--cors` puo essere passato piu volte:
 
 ```bash
-nanocode serve --cors http://localhost:5173 --cors https://app.example.com
+bettercode serve --cors http://localhost:5173 --cors https://app.example.com
 ```
 
 ---
 
 ### Autenticazione
 
-Imposta `NANOCODE_SERVER_PASSWORD` per proteggere il server con HTTP basic auth. Lo username predefinito e `nanocode`, oppure imposta `NANOCODE_SERVER_USERNAME` per sovrascriverlo. Questo vale sia per `nanocode serve` sia per `nanocode web`.
+Imposta `BETTERCODE_SERVER_PASSWORD` per proteggere il server con HTTP basic auth. Lo username predefinito e `bettercode`, oppure imposta `BETTERCODE_SERVER_USERNAME` per sovrascriverlo. Questo vale sia per `bettercode serve` sia per `bettercode web`.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve
 ```
 
 ---
 
 ### Come funziona
 
-Quando esegui `nanocode` avvia una TUI e un server. La TUI e il client che parla col server. Il server espone un endpoint con specifica OpenAPI 3.1. Questo endpoint viene anche usato per generare un [SDK](/docs/sdk).
+Quando esegui `bettercode` avvia una TUI e un server. La TUI e il client che parla col server. Il server espone un endpoint con specifica OpenAPI 3.1. Questo endpoint viene anche usato per generare un [SDK](/docs/sdk).
 
 :::tip
-Usa il server nanocode per interagire con nanocode in modo programmatico.
+Usa il server bettercode per interagire con bettercode in modo programmatico.
 :::
 
-Questa architettura permette a nanocode di supportare piu client e di essere usato in modo programmatico.
+Questa architettura permette a bettercode di supportare piu client e di essere usato in modo programmatico.
 
-Puoi eseguire `nanocode serve` per avviare un server standalone. Se la TUI di nanocode e gia in esecuzione, `nanocode serve` avviera un nuovo server.
+Puoi eseguire `bettercode serve` per avviare un server standalone. Se la TUI di bettercode e gia in esecuzione, `bettercode serve` avviera un nuovo server.
 
 ---
 
@@ -62,7 +62,7 @@ Puoi eseguire `nanocode serve` per avviare un server standalone. Se la TUI di na
 
 Quando avvii la TUI assegna casualmente porta e hostname. In alternativa puoi passare i [flag](/docs/cli) `--hostname` e `--port` e poi usare questi valori per connetterti al suo server.
 
-L'endpoint [`/tui`](#tui) puo essere usato per pilotare la TUI tramite il server. Per esempio, puoi precompilare o eseguire un prompt. Questa configurazione e usata dai plugin [IDE](/docs/ide) di NanoCode.
+L'endpoint [`/tui`](#tui) puo essere usato per pilotare la TUI tramite il server. Per esempio, puoi precompilare o eseguire un prompt. Questa configurazione e usata dai plugin [IDE](/docs/ide) di BetterCode.
 
 ---
 
@@ -80,7 +80,7 @@ Per esempio, `http://localhost:4096/doc`. Usa la spec per generare client o ispe
 
 ## API
 
-Il server nanocode espone le seguenti API.
+Il server bettercode espone le seguenti API.
 
 ---
 

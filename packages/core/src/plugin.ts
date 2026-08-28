@@ -2,8 +2,8 @@ export * as PluginV2 from "./plugin"
 
 import { makeLocationNode } from "./effect/app-node"
 import { Context, Deferred, Effect, Exit, Layer, Scope } from "effect"
-import type { Plugin as PluginRuntime } from "@nanocode-ai/plugin/v2/effect"
-import { Plugin } from "@nanocode-ai/schema/plugin"
+import type { Plugin as PluginRuntime } from "@bettercode-ai/plugin/v2/effect"
+import { Plugin } from "@bettercode-ai/schema/plugin"
 import { AgentV2 } from "./agent"
 import { AISDK } from "./aisdk"
 import { Catalog } from "./catalog"
@@ -26,7 +26,7 @@ export interface Interface {
   readonly wait: (id: ID) => Effect.Effect<void>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/v2/Plugin") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/v2/Plugin") {}
 
 const layer = Layer.effect(
   Service,

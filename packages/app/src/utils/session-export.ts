@@ -1,6 +1,6 @@
-import type { Message, Part, Session } from "@nanocode-ai/sdk/v2/client"
+import type { Message, Part, Session } from "@bettercode-ai/sdk/v2/client"
 
-// Matches the exact `{ info, messages: [{ info, parts }] }` structure produced by `nanocode export` CLI
+// Matches the exact `{ info, messages: [{ info, parts }] }` structure produced by `bettercode export` CLI
 export type SessionExportData = {
   info: Session
   messages: {

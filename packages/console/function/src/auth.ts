@@ -7,16 +7,16 @@ import { THEME_OPENAUTH } from "@openauthjs/openauth/ui/theme"
 import { GithubProvider } from "@openauthjs/openauth/provider/github"
 import { GoogleOidcProvider } from "@openauthjs/openauth/provider/google"
 import { CloudflareStorage } from "@openauthjs/openauth/storage/cloudflare"
-import { Account } from "@nanocode-ai/console-core/account.js"
-import { Workspace } from "@nanocode-ai/console-core/workspace.js"
-import { Actor } from "@nanocode-ai/console-core/actor.js"
-import { Resource } from "@nanocode-ai/console-resource"
-import { User } from "@nanocode-ai/console-core/user.js"
-import { and, Database, eq, isNull, or } from "@nanocode-ai/console-core/drizzle/index.js"
-import { WorkspaceTable } from "@nanocode-ai/console-core/schema/workspace.sql.js"
-import { UserTable } from "@nanocode-ai/console-core/schema/user.sql.js"
-import { AuthTable } from "@nanocode-ai/console-core/schema/auth.sql.js"
-import { Identifier } from "@nanocode-ai/console-core/identifier.js"
+import { Account } from "@bettercode-ai/console-core/account.js"
+import { Workspace } from "@bettercode-ai/console-core/workspace.js"
+import { Actor } from "@bettercode-ai/console-core/actor.js"
+import { Resource } from "@bettercode-ai/console-resource"
+import { User } from "@bettercode-ai/console-core/user.js"
+import { and, Database, eq, isNull, or } from "@bettercode-ai/console-core/drizzle/index.js"
+import { WorkspaceTable } from "@bettercode-ai/console-core/schema/workspace.sql.js"
+import { UserTable } from "@bettercode-ai/console-core/schema/user.sql.js"
+import { AuthTable } from "@bettercode-ai/console-core/schema/auth.sql.js"
+import { Identifier } from "@bettercode-ai/console-core/identifier.js"
 
 type Env = {
   AuthStorage: KVNamespace
@@ -36,7 +36,7 @@ export const subjects = createSubjects({
 
 const MY_THEME: Theme = {
   ...THEME_OPENAUTH,
-  logo: "https://nanocode.ai/favicon-v3.svg",
+  logo: "https://bettercode.ai/favicon-v3.svg",
 }
 
 export default {
@@ -112,14 +112,14 @@ export default {
           const emails = (await fetch("https://api.github.com/user/emails", {
             headers: {
               Authorization: `Bearer ${response.tokenset.access}`,
-              "User-Agent": "nanocode",
+              "User-Agent": "bettercode",
               Accept: "application/vnd.github+json",
             },
           }).then((x) => x.json())) as any
           const user = (await fetch("https://api.github.com/user", {
             headers: {
               Authorization: `Bearer ${response.tokenset.access}`,
-              "User-Agent": "nanocode",
+              "User-Agent": "bettercode",
               Accept: "application/vnd.github+json",
             },
           }).then((x) => x.json())) as any

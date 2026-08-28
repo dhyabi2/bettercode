@@ -2,8 +2,8 @@ export * as Credential from "./credential"
 
 import { asc, eq } from "drizzle-orm"
 import { Context, Effect, Layer, Schema } from "effect"
-import { Credential } from "@nanocode-ai/schema/credential"
-import { Integration } from "@nanocode-ai/schema/integration"
+import { Credential } from "@bettercode-ai/schema/credential"
+import { Integration } from "@bettercode-ai/schema/integration"
 import { Database } from "./database/database"
 import { makeGlobalNode } from "./effect/app-node"
 import { CredentialTable } from "./credential/sql"
@@ -46,7 +46,7 @@ export interface Interface {
   readonly remove: (id: ID) => Effect.Effect<void>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/v2/Credential") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/v2/Credential") {}
 
 const layer = Layer.effect(
   Service,

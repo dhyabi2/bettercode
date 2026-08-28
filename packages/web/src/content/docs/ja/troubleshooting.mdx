@@ -3,7 +3,7 @@ title: トラブルシューティング
 description: よくある問題とその解決方法。
 ---
 
-NanoCode の問題をデバッグするには、まず、ディスク上に保存されているログとローカルデータを確認します。
+BetterCode の問題をデバッグするには、まず、ディスク上に保存されているログとローカルデータを確認します。
 
 ---
 
@@ -11,21 +11,21 @@ NanoCode の問題をデバッグするには、まず、ディスク上に保�
 
 ログファイルは次の場所に書き込まれます。
 
-- **macOS/Linux**: `~/.local/share/nanocode/log/`
-- **Windows**: `WIN+R` を押して `%USERPROFILE%\.local\share\nanocode\log` を貼り付けます
+- **macOS/Linux**: `~/.local/share/bettercode/log/`
+- **Windows**: `WIN+R` を押して `%USERPROFILE%\.local\share\bettercode\log` を貼り付けます
 
 ログファイルにはタイムスタンプ付きの名前が付けられ (例: `2025-01-09T123456.log`)、最新の 10 個のログファイルが保存されます。
 
-`--log-level` コマンドラインオプションを使用してログレベルを設定すると、より詳細なデバッグ情報を取得できます。たとえば、`nanocode --log-level DEBUG`。
+`--log-level` コマンドラインオプションを使用してログレベルを設定すると、より詳細なデバッグ情報を取得できます。たとえば、`bettercode --log-level DEBUG`。
 
 ---
 
 ## ストレージ
 
-NanoCode は、セッションデータとその他のアプリケーションデータをディスク上の次の場所に保存します。
+BetterCode は、セッションデータとその他のアプリケーションデータをディスク上の次の場所に保存します。
 
-- **macOS/Linux**: `~/.local/share/nanocode/`
-- **Windows**: `WIN+R` を押して `%USERPROFILE%\.local\share\nanocode` を貼り付けます
+- **macOS/Linux**: `~/.local/share/bettercode/`
+- **Windows**: `WIN+R` を押して `%USERPROFILE%\.local\share\bettercode` を貼り付けます
 
 このディレクトリには次のものが含まれます。
 
@@ -39,13 +39,13 @@ NanoCode は、セッションデータとその他のアプリケーション�
 
 ## デスクトップアプリ
 
-NanoCode Desktop は、ローカル NanoCode サーバー (`nanocode-cli` サイドカー) をバックグラウンドで実行します。ほとんどの問題は、誤動作しているプラグイン、破損したキャッシュ、または不正なサーバー設定によって発生します。
+BetterCode Desktop は、ローカル BetterCode サーバー (`bettercode-cli` サイドカー) をバックグラウンドで実行します。ほとんどの問題は、誤動作しているプラグイン、破損したキャッシュ、または不正なサーバー設定によって発生します。
 
 ### クイックチェック
 
 - アプリを完全に終了して再起動します。
 - アプリにエラー画面が表示された場合は、**再起動** をクリックしてエラーの詳細をコピーします。
-- macOS のみ: `NanoCode` メニュー -> **Webview をリロード** (UI が空白またはフリーズしている場合に役立ちます)。
+- macOS のみ: `BetterCode` メニュー -> **Webview をリロード** (UI が空白またはフリーズしている場合に役立ちます)。
 
 ---
 
@@ -57,28 +57,28 @@ NanoCode Desktop は、ローカル NanoCode サーバー (`nanocode-cli` サイ
 
 グローバル設定ファイルを開き、`plugin` キーを探します。
 
-- **macOS/Linux**: `~/.config/nanocode/nanocode.jsonc` (または `~/.config/nanocode/nanocode.json`)
-- **macOS/Linux** (古いインストール): `~/.local/share/nanocode/nanocode.jsonc`
-- **Windows**: `WIN+R` を押して `%USERPROFILE%\.config\nanocode\nanocode.jsonc` を貼り付けます
+- **macOS/Linux**: `~/.config/bettercode/bettercode.jsonc` (または `~/.config/bettercode/bettercode.json`)
+- **macOS/Linux** (古いインストール): `~/.local/share/bettercode/bettercode.jsonc`
+- **Windows**: `WIN+R` を押して `%USERPROFILE%\.config\bettercode\bettercode.jsonc` を貼り付けます
 
 プラグインを構成している場合は、キーを削除するか空の配列に設定して、プラグインを一時的に無効にします。
 
 ```jsonc
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "plugin": [],
 }
 ```
 
 #### プラグインディレクトリの確認
 
-NanoCode はディスクからローカルプラグインをロードすることもできます。これらを一時的に邪魔にならない場所に移動し (またはフォルダーの名前を変更し)、デスクトップアプリを再起動します。
+BetterCode はディスクからローカルプラグインをロードすることもできます。これらを一時的に邪魔にならない場所に移動し (またはフォルダーの名前を変更し)、デスクトップアプリを再起動します。
 
 - **グローバルプラグイン**
-  - **macOS/Linux**: `~/.config/nanocode/plugins/`
-  - **Windows**: `WIN+R` を押して `%USERPROFILE%\.config\nanocode\plugins` を貼り付けます
+  - **macOS/Linux**: `~/.config/bettercode/plugins/`
+  - **Windows**: `WIN+R` を押して `%USERPROFILE%\.config\bettercode\plugins` を貼り付けます
 - **プロジェクトプラグイン** (プロジェクトごとの構成を使用する場合のみ)
-  - `<your-project>/.nanocode/plugins/`
+  - `<your-project>/.bettercode/plugins/`
 
 アプリが再び動作し始めた場合は、プラグインを 1 つずつ再度有効にして、問題の原因となっているプラ​​グインを特定します。
 
@@ -86,22 +86,22 @@ NanoCode はディスクからローカルプラグインをロードするこ�
 
 ### キャッシュをクリアする
 
-プラグインを無効にしても解決しない場合 (またはプラグインのインストールが停止した場合)、NanoCode がキャッシュを再構築できるようにキャッシュをクリアします。
+プラグインを無効にしても解決しない場合 (またはプラグインのインストールが停止した場合)、BetterCode がキャッシュを再構築できるようにキャッシュをクリアします。
 
-1. NanoCode Desktop を完全に終了します。
+1. BetterCode Desktop を完全に終了します。
 2. キャッシュディレクトリを削除します。
 
-- **macOS**: Finder -> `Cmd+Shift+G` -> `~/.cache/nanocode` を貼り付け
-- **Linux**: `~/.cache/nanocode` を削除します (または `rm -rf ~/.cache/nanocode` を実行します)。
-- **Windows**: `WIN+R` を押して `%USERPROFILE%\.cache\nanocode` を貼り付けます
+- **macOS**: Finder -> `Cmd+Shift+G` -> `~/.cache/bettercode` を貼り付け
+- **Linux**: `~/.cache/bettercode` を削除します (または `rm -rf ~/.cache/bettercode` を実行します)。
+- **Windows**: `WIN+R` を押して `%USERPROFILE%\.cache\bettercode` を貼り付けます
 
-3. NanoCode デスクトップを再起動します。
+3. BetterCode デスクトップを再起動します。
 
 ---
 
 ### サーバー接続の問題の修正
 
-NanoCode Desktop は、独自のローカルサーバー (デフォルト) を起動することも、構成したサーバー URL に接続することもできます。
+BetterCode Desktop は、独自のローカルサーバー (デフォルト) を起動することも、構成したサーバー URL に接続することもできます。
 
 **「接続に失敗しました」** ダイアログが表示された場合 (またはアプリがスプラッシュ画面を通過できない場合)、カスタムサーバー URL を確認してください。
 
@@ -111,13 +111,13 @@ NanoCode Desktop は、独自のローカルサーバー (デフォルト) を�
 
 #### 設定から `server.port` / `server.hostname` を削除します
 
-`nanocode.json(c)` に `server` セクションが含まれている場合は、それを一時的に削除し、デスクトップアプリを再起動します。
+`bettercode.json(c)` に `server` セクションが含まれている場合は、それを一時的に削除し、デスクトップアプリを再起動します。
 
 #### 環境変数を確認する
 
-環境に `NANOCODE_PORT` が設定されている場合、デスクトップアプリはローカルサーバーにそのポートを使用しようとします。
+環境に `BETTERCODE_PORT` が設定されている場合、デスクトップアプリはローカルサーバーにそのポートを使用しようとします。
 
-- `NANOCODE_PORT` の設定を解除して (または空きポートを選択して)、再起動します。
+- `BETTERCODE_PORT` の設定を解除して (または空きポートを選択して)、再起動します。
 
 ---
 
@@ -132,21 +132,21 @@ Linux では、一部の Wayland セットアップにより、空白のウィ�
 
 ### Windows: WebView2 ランタイム
 
-Windows では、NanoCode Desktop には Microsoft Edge **WebView2 ランタイム**が必要です。アプリが空白のウィンドウで開くか、起動しない場合は、WebView2 をインストールまたは更新して、もう一度試してください。
+Windows では、BetterCode Desktop には Microsoft Edge **WebView2 ランタイム**が必要です。アプリが空白のウィンドウで開くか、起動しない場合は、WebView2 をインストールまたは更新して、もう一度試してください。
 
 ---
 
 ### Windows: 一般的なパフォーマンスの問題
 
-Windows でパフォーマンスの低下、ファイルアクセスの問題、またはターミナルの問題が発生している場合は、[WSL (Windows Subsystem for Linux)](/docs/windows-wsl) を使用してみてください。 WSL は、NanoCode の機能とよりシームレスに連携する Linux 環境を提供します。
+Windows でパフォーマンスの低下、ファイルアクセスの問題、またはターミナルの問題が発生している場合は、[WSL (Windows Subsystem for Linux)](/docs/windows-wsl) を使用してみてください。 WSL は、BetterCode の機能とよりシームレスに連携する Linux 環境を提供します。
 
 ---
 
 ### 通知が表示されない
 
-NanoCode Desktop では、次の場合にのみシステム通知が表示されます。
+BetterCode Desktop では、次の場合にのみシステム通知が表示されます。
 
-- OS 設定で NanoCode の通知が有効になっており、
+- OS 設定で BetterCode の通知が有効になっており、
 - アプリウィンドウにフォーカスがありません。
 
 ---
@@ -155,11 +155,11 @@ NanoCode Desktop では、次の場合にのみシステム通知が表示され
 
 アプリが起動せず、UI 内から設定をクリアできない場合は、デスクトップアプリの保存された状態をリセットします。
 
-1. NanoCode デスクトップを終了します。
-2. これらのファイルを見つけて削除します (これらのファイルは NanoCode デスクトップアプリのデータディレクトリにあります)。
+1. BetterCode デスクトップを終了します。
+2. これらのファイルを見つけて削除します (これらのファイルは BetterCode デスクトップアプリのデータディレクトリにあります)。
 
-- `nanocode.settings.dat` (デスクトップのデフォルトサーバー URL)
-- `nanocode.global.dat` および `nanocode.workspace.*.dat` (最近のサーバー/プロジェクトなどの UI 状態)
+- `bettercode.settings.dat` (デスクトップのデフォルトサーバー URL)
+- `bettercode.global.dat` および `bettercode.workspace.*.dat` (最近のサーバー/プロジェクトなどの UI 状態)
 
 ディレクトリをすばやく見つけるには:
 
@@ -171,13 +171,13 @@ NanoCode Desktop では、次の場合にのみシステム通知が表示され
 
 ## ヘルプを求める
 
-NanoCode で問題が発生している場合:
+BetterCode で問題が発生している場合:
 
 1. **GitHub で問題を報告してください**
 
 バグを報告したり、機能をリクエストしたりする最良の方法は、GitHub リポジトリを使用することです。
 
-[**github.com/dhyabi2/nanocode/issues**](https://github.com/dhyabi2/nanocode/issues)
+[**github.com/dhyabi2/bettercode/issues**](https://github.com/dhyabi2/bettercode/issues)
 
 新しい問題を作成する前に、既存の問題を検索して、問題がすでに報告されているかどうかを確認してください。
 
@@ -185,7 +185,7 @@ NanoCode で問題が発生している場合:
 
 リアルタイムのヘルプやコミュニティのディスカッションについては、Discord サーバーに参加してください。
 
-[**nanocode.ai/discord**](https://nanocode.ai/discord)
+[**bettercode.ai/discord**](https://bettercode.ai/discord)
 
 ---
 
@@ -195,11 +195,11 @@ NanoCode で問題が発生している場合:
 
 ---
 
-### NanoCode が起動しない
+### BetterCode が起動しない
 
 1. ログでエラーメッセージを確認する
 2. `--print-logs` で実行して、ターミナルに出力を確認してください。
-3. `nanocode upgrade` を含む最新バージョンを使用していることを確認してください
+3. `bettercode upgrade` を含む最新バージョンを使用していることを確認してください
 
 ---
 
@@ -225,9 +225,9 @@ NanoCode で問題が発生している場合:
 
 - `openai/gpt-4.1`
 - `openrouter/google/gemini-2.5-flash`
-- `nanocode/kimi-k2`
+- `bettercode/kimi-k2`
 
-どのモデルにアクセスできるかを確認するには、`nanocode models` を実行します。
+どのモデルにアクセスできるかを確認するには、`bettercode models` を実行します。
 
 ---
 
@@ -241,10 +241,10 @@ ProviderInitError が発生した場合は、構成が無効または破損し�
 2. 問題が解決しない場合は、保存されている構成をクリアしてみてください。
 
    ```bash
-   rm -rf ~/.local/share/nanocode
+   rm -rf ~/.local/share/bettercode
    ```
 
-   Windows では、`WIN+R` を押して、`%USERPROFILE%\.local\share\nanocode` を削除します。
+   Windows では、`WIN+R` を押して、`%USERPROFILE%\.local\share\bettercode` を削除します。
 
 3. TUI の `/connect` コマンドを使用して、プロバイダーで再認証します。
 
@@ -252,21 +252,21 @@ ProviderInitError が発生した場合は、構成が無効または破損し�
 
 ### AI_APICallError とプロバイダーパッケージの問題
 
-API 呼び出しエラーが発生した場合は、プロバイダーパッケージが古いことが原因である可能性があります。 NanoCode は、必要に応じてプロバイダーパッケージ (OpenAI、Anthropic、Google など) を動的にインストールし、ローカルにキャッシュします。
+API 呼び出しエラーが発生した場合は、プロバイダーパッケージが古いことが原因である可能性があります。 BetterCode は、必要に応じてプロバイダーパッケージ (OpenAI、Anthropic、Google など) を動的にインストールし、ローカルにキャッシュします。
 
 プロバイダーパッケージの問題を解決するには:
 
 1. プロバイダーパッケージのキャッシュをクリアします。
 
    ```bash
-   rm -rf ~/.cache/nanocode
+   rm -rf ~/.cache/bettercode
    ```
 
-   Windows では、`WIN+R` を押して、`%USERPROFILE%\.cache\nanocode` を削除します。
+   Windows では、`WIN+R` を押して、`%USERPROFILE%\.cache\bettercode` を削除します。
 
-2. NanoCode を再起動して最新のプロバイダーパッケージを再インストールします
+2. BetterCode を再起動して最新のプロバイダーパッケージを再インストールします
 
-これにより、NanoCode はプロバイダーパッケージの最新バージョンを強制的にダウンロードすることになり、多くの場合、モデルパラメーターや API の変更に関する互換性の問題が解決されます。
+これにより、BetterCode はプロバイダーパッケージの最新バージョンを強制的にダウンロードすることになり、多くの場合、モデルパラメーターや API の変更に関する互換性の問題が解決されます。
 
 ---
 
@@ -297,4 +297,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-NanoCode は、Wayland を使用していて `wl-clipboard` を優先しているかどうかを検出します。そうでない場合は、`xclip` および `xsel` の順序でクリップボードツールを検索しようとします。
+BetterCode は、Wayland を使用していて `wl-clipboard` を優先しているかどうかを検出します。そうでない場合は、`xclip` および `xsel` の順序でクリップボードツールを検索しようとします。

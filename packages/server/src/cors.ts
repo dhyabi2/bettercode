@@ -1,10 +1,10 @@
 import { Context } from "effect"
 
-const nanocodeOrigin = /^https:\/\/([a-z0-9-]+\.)*nanocode\.ai$/
+const bettercodeOrigin = /^https:\/\/([a-z0-9-]+\.)*bettercode\.ai$/
 
 export type CorsOptions = { readonly cors?: ReadonlyArray<string> }
 
-export const CorsConfig = Context.Reference<CorsOptions | undefined>("@nanocode/ServerCorsConfig", {
+export const CorsConfig = Context.Reference<CorsOptions | undefined>("@bettercode/ServerCorsConfig", {
   defaultValue: () => undefined,
 })
 
@@ -15,7 +15,7 @@ export function isAllowedCorsOrigin(input: string | undefined, opts?: CorsOption
   if (input.startsWith("oc://renderer")) return true
   if (input === "tauri://localhost" || input === "http://tauri.localhost" || input === "https://tauri.localhost")
     return true
-  if (nanocodeOrigin.test(input)) return true
+  if (bettercodeOrigin.test(input)) return true
   return opts?.cors?.includes(input) ?? false
 }
 

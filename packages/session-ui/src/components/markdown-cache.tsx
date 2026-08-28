@@ -1,4 +1,4 @@
-import { checksum } from "@nanocode-ai/core/util/encode"
+import { checksum } from "@bettercode-ai/core/util/encode"
 import DOMPurify from "dompurify"
 import { parseMarkdown } from "./markdown-worker"
 

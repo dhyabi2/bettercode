@@ -1,1 +1,1 @@
-export * as Identifier from "@nanocode-ai/schema/identifier"
+export * as Identifier from "@bettercode-ai/schema/identifier"

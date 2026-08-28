@@ -12,10 +12,10 @@ import type {
   SessionStatus,
   Todo,
   VcsInfo,
-} from "@nanocode-ai/sdk/v2/client"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
-import { NormalizedProviderListResponse } from "@nanocode-ai/session-ui/context"
-import type { CommandInfo, McpResource, McpServer, SessionMessageInfo } from "@nanocode-ai/client/promise"
+} from "@bettercode-ai/sdk/v2/client"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
+import { NormalizedProviderListResponse } from "@bettercode-ai/session-ui/context"
+import type { CommandInfo, McpResource, McpServer, SessionMessageInfo } from "@bettercode-ai/client/promise"
 import type { Accessor } from "solid-js"
 import type { SetStoreFunction, Store } from "solid-js/store"
 

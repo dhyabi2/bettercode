@@ -1,12 +1,12 @@
-import { AISDK } from "@nanocode-ai/core/aisdk"
+import { AISDK } from "@bettercode-ai/core/aisdk"
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@nanocode-ai/core/catalog"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { PluginHost } from "@nanocode-ai/core/plugin/host"
-import { VercelPlugin } from "@nanocode-ai/core/plugin/provider/vercel"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
+import { Catalog } from "@bettercode-ai/core/catalog"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { PluginHost } from "@bettercode-ai/core/plugin/host"
+import { VercelPlugin } from "@bettercode-ai/core/plugin/provider/vercel"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
 
@@ -32,8 +32,8 @@ describe("VercelPlugin", () => {
       yield* addPlugin()
       expect((yield* catalog.provider.get(ProviderV2.ID.make("vercel")))?.request.headers).toEqual({
         Existing: "1",
-        "http-referer": "https://nanocode.ai/",
-        "x-title": "nanocode",
+        "http-referer": "https://bettercode.ai/",
+        "x-title": "bettercode",
       })
     }),
   )

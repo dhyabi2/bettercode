@@ -1,4 +1,4 @@
-import type { NanoCodeEventEncoded } from "@nanocode-ai/protocol/groups/event"
+import type { BetterCodeEventEncoded } from "@bettercode-ai/protocol/groups/event"
 
 export type JsonValue =
   | null
@@ -2538,7 +2538,7 @@ export type SkillsListOutput = {
   }>
 }
 
-export type EventsSubscribeOutput = NanoCodeEventEncoded
+export type EventsSubscribeOutput = BetterCodeEventEncoded
 
 export type PtysListInput = {
   readonly location?: {

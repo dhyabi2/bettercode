@@ -3,7 +3,7 @@ import type { ElectronAPI } from "../preload/types"
 declare global {
   interface Window {
     api: ElectronAPI
-    __NANOCODE__?: {
+    __BETTERCODE__?: {
       deepLinks?: string[]
     }
   }

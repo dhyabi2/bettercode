@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { createStore } from "solid-js/store"
-import type { Todo } from "@nanocode-ai/sdk/v2"
+import type { Todo } from "@bettercode-ai/sdk/v2"
 import { createPromptState } from "@/context/prompt"
 import { SessionComposerRegion, createSessionComposerRegionController } from "@/pages/session/composer"
 import { createPromptInputHistory, PromptInput } from "./prompt-input"

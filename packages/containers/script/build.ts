@@ -22,11 +22,11 @@ const images = ["base", "bun-node", "rust", "tauri-linux", "publish"]
 const setup = async () => {
   if (!push) return
   const list = await $`docker buildx ls`.text()
-  if (list.includes("nanocode")) {
-    await $`docker buildx use nanocode`
+  if (list.includes("bettercode")) {
+    await $`docker buildx use bettercode`
     return
   }
-  await $`docker buildx create --name nanocode --use`
+  await $`docker buildx create --name bettercode --use`
 }
 
 await setup()

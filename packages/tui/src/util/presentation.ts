@@ -1,5 +1,5 @@
 const logo = {
-  left: ["                   ", "█▀▀▄ ▀▀▀█ █▀▀▄ █▀▀█", "█__█ █^^█ █__█ █__█", "▀~~▀ ▀▀▀▀ ▀~~▀ ▀▀▀▀"],
+  left: ["▄          ▄    ▄            ", "█▀▀█ █▀▀█ ▀█▀▀ ▀█▀▀ █▀▀█ █▀▀█", "█__█ █^^^ _█__ _█__ █^^^ █_▀▄", "▀▀▀▀ ▀▀▀▀ _▀__ _▀__ ▀▀▀▀ ▀__▀"],
   right: ["             ▄     ", "█▀▀▀ █▀▀█ █▀▀█ █▀▀█", "█___ █__█ █__█ █^^^", "▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀"],
 }
 
@@ -32,7 +32,7 @@ export function sessionEpilogue(input: { title: string; sessionID?: string }) {
     ...wordmark("  "),
     "",
     `  ${weak("Session")}${bold}${input.title}${reset}`,
-    `  ${weak("Continue")}${bold}nanocode -s ${input.sessionID}${reset}`,
+    `  ${weak("Continue")}${bold}bettercode -s ${input.sessionID}${reset}`,
     "",
   ].join("\n")
 }

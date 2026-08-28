@@ -1,15 +1,15 @@
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { Dialog } from "@nanocode-ai/ui/dialog"
-import { FileIcon } from "@nanocode-ai/ui/file-icon"
-import { List } from "@nanocode-ai/ui/list"
-import type { ListRef } from "@nanocode-ai/ui/list"
-import { getDirectory, getFilename } from "@nanocode-ai/core/util/path"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { Dialog } from "@bettercode-ai/ui/dialog"
+import { FileIcon } from "@bettercode-ai/ui/file-icon"
+import { List } from "@bettercode-ai/ui/list"
+import type { ListRef } from "@bettercode-ai/ui/list"
+import { getDirectory, getFilename } from "@bettercode-ai/core/util/path"
 import { createMemo, createResource, createSignal } from "solid-js"
 import { useLanguage } from "@/context/language"
 import { ServerConnection } from "@/context/server"
 import { useGlobal } from "@/context/global"
 import { cleanPickerInput, createDirectorySearch, displayPickerPath } from "./directory-picker-domain"
-import type { Path } from "@nanocode-ai/sdk/v2/client"
+import type { Path } from "@bettercode-ai/sdk/v2/client"
 
 interface DialogSelectDirectoryProps {
   title?: string

@@ -24,9 +24,9 @@ const words = [
 const sourceID = "ses_smoke_source"
 const targetID = "ses_smoke_target"
 const childID = "ses_smoke_child"
-const directory = "C:/NanoCode/SmokeProject"
+const directory = "C:/BetterCode/SmokeProject"
 const projectID = "proj_smoke_timeline"
-const model = { providerID: "nanocode", modelID: "claude-opus-4-6", variant: "max" }
+const model = { providerID: "bettercode", modelID: "claude-opus-4-6", variant: "max" }
 
 type MessageInfo = Record<string, unknown> & { id: string; role: "user" | "assistant" }
 type MessagePart = Record<string, unknown> & { id: string; type: string; text?: string; tool?: string }
@@ -292,13 +292,13 @@ export const fixture = {
   provider: {
     all: [
       {
-        id: "nanocode",
-        name: "NanoCode",
+        id: "bettercode",
+        name: "BetterCode",
         models: { "claude-opus-4-6": { id: "claude-opus-4-6", name: "Claude Opus 4.6", limit: { context: 200_000 } } },
       },
     ],
-    connected: ["nanocode"],
-    default: { providerID: "nanocode", modelID: "claude-opus-4-6" },
+    connected: ["bettercode"],
+    default: { providerID: "bettercode", modelID: "claude-opus-4-6" },
   },
   sessions: [
     {

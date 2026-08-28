@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://nanocode.ai">
+  <a href="https://bettercode.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="NanoCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="BetterCode logo">
     </picture>
   </a>
 </p>
 <p align="center">오픈 소스 AI 코딩 에이전트.</p>
 <p align="center">
-  <a href="https://nanocode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/nanocode-ai"><img alt="npm" src="https://img.shields.io/npm/v/nanocode-ai?style=flat-square" /></a>
-  <a href="https://github.com/dhyabi2/nanocode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/nanocode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://bettercode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/bettercode-ai"><img alt="npm" src="https://img.shields.io/npm/v/bettercode-ai?style=flat-square" /></a>
+  <a href="https://github.com/dhyabi2/bettercode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhyabi2/bettercode/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -39,7 +39,7 @@
   <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![NanoCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://nanocode.ai)
+[![BetterCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://bettercode.ai)
 
 ---
 
@@ -47,18 +47,18 @@
 
 ```bash
 # YOLO
-curl -fsSL https://nanocode.ai/install | bash
+curl -fsSL https://bettercode.ai/install | bash
 
 # 패키지 매니저
-npm i -g nanocode-ai@latest        # bun/pnpm/yarn 도 가능
-scoop install nanocode             # Windows
-choco install nanocode             # Windows
-brew install dhyabi2/tap/nanocode # macOS 및 Linux (권장, 항상 최신)
-brew install nanocode              # macOS 및 Linux (공식 brew formula, 업데이트 빈도 낮음)
-sudo pacman -S nanocode            # Arch Linux (Stable)
-paru -S nanocode-bin               # Arch Linux (Latest from AUR)
-mise use -g nanocode               # 어떤 OS든
-nix run nixpkgs#nanocode           # 또는 github:dhyabi2/nanocode 로 최신 dev 브랜치
+npm i -g bettercode-ai@latest        # bun/pnpm/yarn 도 가능
+scoop install bettercode             # Windows
+choco install bettercode             # Windows
+brew install dhyabi2/tap/bettercode # macOS 및 Linux (권장, 항상 최신)
+brew install bettercode              # macOS 및 Linux (공식 brew formula, 업데이트 빈도 낮음)
+sudo pacman -S bettercode            # Arch Linux (Stable)
+paru -S bettercode-bin               # Arch Linux (Latest from AUR)
+mise use -g bettercode               # 어떤 OS든
+nix run nixpkgs#bettercode           # 또는 github:dhyabi2/bettercode 로 최신 dev 브랜치
 ```
 
 > [!TIP]
@@ -66,40 +66,40 @@ nix run nixpkgs#nanocode           # 또는 github:dhyabi2/nanocode 로 최신 d
 
 ### 데스크톱 앱 (BETA)
 
-NanoCode 는 데스크톱 앱으로도 제공됩니다. [releases page](https://github.com/dhyabi2/nanocode/releases) 에서 직접 다운로드하거나 [nanocode.ai/download](https://nanocode.ai/download) 를 이용하세요.
+BetterCode 는 데스크톱 앱으로도 제공됩니다. [releases page](https://github.com/dhyabi2/bettercode/releases) 에서 직접 다운로드하거나 [bettercode.ai/download](https://bettercode.ai/download) 를 이용하세요.
 
 | 플랫폼                | 다운로드                           |
 | --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `nanocode-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `nanocode-desktop-mac-x64.dmg`     |
-| Windows               | `nanocode-desktop-windows-x64.exe` |
+| macOS (Apple Silicon) | `bettercode-desktop-mac-arm64.dmg`   |
+| macOS (Intel)         | `bettercode-desktop-mac-x64.dmg`     |
+| Windows               | `bettercode-desktop-windows-x64.exe` |
 | Linux                 | `.deb`, `.rpm`, 또는 AppImage      |
 
 ```bash
 # macOS (Homebrew)
-brew install --cask nanocode-desktop
+brew install --cask bettercode-desktop
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/nanocode-desktop
+scoop bucket add extras; scoop install extras/bettercode-desktop
 ```
 
 #### 설치 디렉터리
 
 설치 스크립트는 설치 경로를 다음 우선순위로 결정합니다.
 
-1. `$NANOCODE_INSTALL_DIR` - 사용자 지정 설치 디렉터리
+1. `$BETTERCODE_INSTALL_DIR` - 사용자 지정 설치 디렉터리
 2. `$XDG_BIN_DIR` - XDG Base Directory Specification 준수 경로
 3. `$HOME/bin` - 표준 사용자 바이너리 디렉터리 (존재하거나 생성 가능할 경우)
-4. `$HOME/.nanocode/bin` - 기본 폴백
+4. `$HOME/.bettercode/bin` - 기본 폴백
 
 ```bash
 # 예시
-NANOCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://nanocode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://nanocode.ai/install | bash
+BETTERCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://bettercode.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://bettercode.ai/install | bash
 ```
 
 ### Agents
 
-NanoCode 에는 내장 에이전트 2개가 있으며 `Tab` 키로 전환할 수 있습니다.
+BetterCode 에는 내장 에이전트 2개가 있으며 `Tab` 키로 전환할 수 있습니다.
 
 - **build** - 기본값, 개발 작업을 위한 전체 권한 에이전트
 - **plan** - 분석 및 코드 탐색을 위한 읽기 전용 에이전트
@@ -110,20 +110,20 @@ NanoCode 에는 내장 에이전트 2개가 있으며 `Tab` 키로 전환할 수
 또한 복잡한 검색과 여러 단계 작업을 위한 **general** 서브 에이전트가 포함되어 있습니다.
 내부적으로 사용되며, 메시지에서 `@general` 로 호출할 수 있습니다.
 
-[agents](https://nanocode.ai/docs/agents) 에 대해 더 알아보세요.
+[agents](https://bettercode.ai/docs/agents) 에 대해 더 알아보세요.
 
 ### 문서
 
-NanoCode 설정에 대한 자세한 내용은 [**문서**](https://nanocode.ai/docs) 를 참고하세요.
+BetterCode 설정에 대한 자세한 내용은 [**문서**](https://bettercode.ai/docs) 를 참고하세요.
 
 ### 기여하기
 
-NanoCode 에 기여하고 싶다면, Pull Request 를 제출하기 전에 [contributing docs](./CONTRIBUTING.md) 를 읽어주세요.
+BetterCode 에 기여하고 싶다면, Pull Request 를 제출하기 전에 [contributing docs](./CONTRIBUTING.md) 를 읽어주세요.
 
-### NanoCode 기반으로 만들기
+### BetterCode 기반으로 만들기
 
-NanoCode 와 관련된 프로젝트를 진행하면서 이름에 "nanocode"(예: "nanocode-dashboard" 또는 "nanocode-mobile") 를 포함한다면, README 에 해당 프로젝트가 NanoCode 팀이 만든 것이 아니며 어떤 방식으로도 우리와 제휴되어 있지 않다는 점을 명시해 주세요.
+BetterCode 와 관련된 프로젝트를 진행하면서 이름에 "bettercode"(예: "bettercode-dashboard" 또는 "bettercode-mobile") 를 포함한다면, README 에 해당 프로젝트가 BetterCode 팀이 만든 것이 아니며 어떤 방식으로도 우리와 제휴되어 있지 않다는 점을 명시해 주세요.
 
 ---
 
-**커뮤니티에 참여하기** [Discord](https://discord.gg/nanocode) | [X.com](https://x.com/nanocode)
+**커뮤니티에 참여하기** [Discord](https://discord.gg/bettercode) | [X.com](https://x.com/bettercode)

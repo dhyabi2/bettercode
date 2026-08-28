@@ -10,10 +10,10 @@ const packageDir = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(packageDir, "../..")
 const signScript = path.join(rootDir, "script", "sign-windows.ps1")
 // The Electron 42 packaging update briefly installed Linux launchers/icons under
-// "nanocode-desktop". Keep that hidden desktop entry around so existing GNOME/KDE
-// pins still resolve after the canonical app id changes back to ai.nanocode.desktop.
-const legacyDesktopEntry = path.join(packageDir, "resources", "linux", "nanocode-desktop.desktop")
-const legacyDesktopEntryFpm = `${legacyDesktopEntry}=/usr/share/applications/nanocode-desktop.desktop`
+// "bettercode-desktop". Keep that hidden desktop entry around so existing GNOME/KDE
+// pins still resolve after the canonical app id changes back to ai.bettercode.desktop.
+const legacyDesktopEntry = path.join(packageDir, "resources", "linux", "bettercode-desktop.desktop")
+const legacyDesktopEntryFpm = `${legacyDesktopEntry}=/usr/share/applications/bettercode-desktop.desktop`
 
 const metainfoFpm = (appId: string) =>
   `${path.join(packageDir, "resources", `${appId}.metainfo.xml`)}=/usr/share/metainfo/${appId}.metainfo.xml`
@@ -30,39 +30,39 @@ async function signWindows(configuration: { path: string }) {
 }
 
 const channel = (() => {
-  const raw = process.env.NANOCODE_CHANNEL
+  const raw = process.env.BETTERCODE_CHANNEL
   if (raw === "dev" || raw === "beta" || raw === "prod") return raw
   return "dev"
 })()
 
 const APP_IDS = {
-  dev: "ai.nanocode.desktop.dev",
-  beta: "ai.nanocode.desktop.beta",
-  prod: "ai.nanocode.desktop",
+  dev: "ai.bettercode.desktop.dev",
+  beta: "ai.bettercode.desktop.beta",
+  prod: "ai.bettercode.desktop",
 } as const
 
 const getBase = (appId: string): Configuration => ({
-  artifactName: "nanocode-desktop-${os}-${arch}.${ext}",
+  artifactName: "bettercode-desktop-${os}-${arch}.${ext}",
   directories: {
     output: "dist",
     buildResources: "resources",
   },
   // Linux launchers are .desktop files, so this is the desktop file name,
-  // not just the app id. For prod, app id "ai.nanocode.desktop" becomes
-  // "ai.nanocode.desktop.desktop".
+  // not just the app id. For prod, app id "ai.bettercode.desktop" becomes
+  // "ai.bettercode.desktop.desktop".
   // https://developer.gnome.org/documentation/guidelines/maintainer/integrating.html
   // https://www.electron.build/docs/linux/
   extraMetadata: {
     desktopName: `${appId}.desktop`,
   },
-  files: ["out/**/*", "resources/**/*", "!resources/nanocode-cli*"],
+  files: ["out/**/*", "resources/**/*", "!resources/bettercode-cli*"],
   extraResources: [
     ...(channel === "dev"
       ? [
           {
             from: "resources/",
             to: "",
-            filter: ["nanocode-cli*"],
+            filter: ["bettercode-cli*"],
           },
         ]
       : []),
@@ -86,8 +86,8 @@ const getBase = (appId: string): Configuration => ({
     sign: true,
   },
   protocols: {
-    name: "NanoCode",
-    schemes: ["nanocode"],
+    name: "BetterCode",
+    schemes: ["bettercode"],
   },
   win: {
     icon: `resources/icons/icon.ico`,
@@ -127,31 +127,31 @@ function getConfig() {
       return {
         ...base,
         appId,
-        productName: "NanoCode Dev",
+        productName: "BetterCode Dev",
         deb: { fpm: [metainfoFpm(appId)] },
-        rpm: { packageName: "nanocode-dev", fpm: [metainfoFpm(appId)] },
+        rpm: { packageName: "bettercode-dev", fpm: [metainfoFpm(appId)] },
       }
     }
     case "beta": {
       return {
         ...base,
         appId,
-        productName: "NanoCode Beta",
-        protocols: { name: "NanoCode Beta", schemes: ["nanocode"] },
-        publish: { provider: "github", owner: "dhyabi2", repo: "nanocode-beta", channel: "latest" },
+        productName: "BetterCode Beta",
+        protocols: { name: "BetterCode Beta", schemes: ["bettercode"] },
+        publish: { provider: "github", owner: "dhyabi2", repo: "bettercode-beta", channel: "latest" },
         deb: { fpm: [metainfoFpm(appId)] },
-        rpm: { packageName: "nanocode-beta", fpm: [metainfoFpm(appId)] },
+        rpm: { packageName: "bettercode-beta", fpm: [metainfoFpm(appId)] },
       }
     }
     case "prod": {
       return {
         ...base,
         appId,
-        productName: "NanoCode",
-        protocols: { name: "NanoCode", schemes: ["nanocode"] },
-        publish: { provider: "github", owner: "dhyabi2", repo: "nanocode", channel: "latest" },
+        productName: "BetterCode",
+        protocols: { name: "BetterCode", schemes: ["bettercode"] },
+        publish: { provider: "github", owner: "dhyabi2", repo: "bettercode", channel: "latest" },
         deb: { fpm: [metainfoFpm(appId), legacyDesktopEntryFpm] },
-        rpm: { packageName: "nanocode", fpm: [metainfoFpm(appId), legacyDesktopEntryFpm] },
+        rpm: { packageName: "bettercode", fpm: [metainfoFpm(appId), legacyDesktopEntryFpm] },
       }
     }
   }

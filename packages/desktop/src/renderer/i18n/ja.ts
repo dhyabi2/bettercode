@@ -11,18 +11,18 @@ export const dict = {
   "desktop.updater.checkFailed.title": "アップデートの確認に失敗しました",
   "desktop.updater.checkFailed.message": "アップデートを確認できませんでした",
   "desktop.updater.none.title": "利用可能なアップデートはありません",
-  "desktop.updater.none.message": "すでに最新バージョンの NanoCode を使用しています",
+  "desktop.updater.none.message": "すでに最新バージョンの BetterCode を使用しています",
   "desktop.updater.downloadFailed.title": "アップデートに失敗しました",
   "desktop.updater.downloadFailed.message": "アップデートをダウンロードできませんでした",
   "desktop.updater.downloaded.title": "アップデートをダウンロードしました",
   "desktop.updater.downloaded.prompt":
-    "NanoCode のバージョン {{version}} がダウンロードされました。インストールして再起動しますか？",
+    "BetterCode のバージョン {{version}} がダウンロードされました。インストールして再起動しますか？",
   "desktop.updater.installFailed.title": "アップデートに失敗しました",
   "desktop.updater.installFailed.message": "アップデートをインストールできませんでした",
 
   "desktop.cli.installed.title": "CLI をインストールしました",
   "desktop.cli.installed.message":
-    "CLI を {{path}} にインストールしました\n\nターミナルを再起動して 'nanocode' コマンドを使用してください。",
+    "CLI を {{path}} にインストールしました\n\nターミナルを再起動して 'bettercode' コマンドを使用してください。",
   "desktop.cli.failed.title": "インストールに失敗しました",
   "desktop.cli.failed.message": "CLI のインストールに失敗しました: {{error}}",
 

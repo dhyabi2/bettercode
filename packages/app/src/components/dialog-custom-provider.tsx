@@ -1,10 +1,10 @@
-import { Button } from "@nanocode-ai/ui/button"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { Dialog } from "@nanocode-ai/ui/dialog"
-import { IconButton } from "@nanocode-ai/ui/icon-button"
-import { ProviderIcon } from "@nanocode-ai/ui/provider-icon"
+import { Button } from "@bettercode-ai/ui/button"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { Dialog } from "@bettercode-ai/ui/dialog"
+import { IconButton } from "@bettercode-ai/ui/icon-button"
+import { ProviderIcon } from "@bettercode-ai/ui/provider-icon"
 import { useMutation } from "@tanstack/solid-query"
-import { TextField } from "@nanocode-ai/ui/text-field"
+import { TextField } from "@bettercode-ai/ui/text-field"
 import { showToast } from "@/utils/toast"
 import { batch, For } from "solid-js"
 import { createStore, produce } from "solid-js/store"
@@ -185,7 +185,7 @@ export function CustomProviderForm(props: { autofocus?: boolean } = {}) {
       <form onSubmit={save} class="px-2.5 pb-6 flex flex-col gap-6">
         <p class="text-14-regular text-text-base">
           {language.t("provider.custom.description.prefix")}
-          <ExternalLink href="https://nanocode.ai/docs/providers/#custom-provider" tabIndex={-1}>
+          <ExternalLink href="https://bettercode.ai/docs/providers/#custom-provider" tabIndex={-1}>
             {language.t("provider.custom.description.link")}
           </ExternalLink>
           {language.t("provider.custom.description.suffix")}

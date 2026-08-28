@@ -1,1 +1,1 @@
-export { ID as PtyID } from "@nanocode-ai/schema/pty"
+export { ID as PtyID } from "@bettercode-ai/schema/pty"

@@ -1,4 +1,4 @@
-import type { McpServer } from "@nanocode-ai/client/promise"
+import type { McpServer } from "@bettercode-ai/client/promise"
 
 export async function toggleMcp(input: {
   status: McpServer["status"]["status"]

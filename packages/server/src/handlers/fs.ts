@@ -1,5 +1,5 @@
-import { FileSystem } from "@nanocode-ai/core/filesystem"
-import { RelativePath } from "@nanocode-ai/core/schema"
+import { FileSystem } from "@bettercode-ai/core/filesystem"
+import { RelativePath } from "@bettercode-ai/core/schema"
 import { Effect } from "effect"
 import { HttpServerResponse } from "effect/unstable/http"
 import { HttpApiBuilder } from "effect/unstable/httpapi"

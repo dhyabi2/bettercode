@@ -1,8 +1,8 @@
 export function hasExistingAppState(entries: Array<{ name: string; isDirectory: () => boolean }>) {
   return entries.some((entry) => {
-    if (entry.name === "nanocode.settings") return true
+    if (entry.name === "bettercode.settings") return true
     if (entry.name.endsWith(".dat")) return true
     if (/^window-state-.+\.json$/.test(entry.name)) return true
-    return entry.isDirectory() && entry.name === "nanocode"
+    return entry.isDirectory() && entry.name === "bettercode"
   })
 }

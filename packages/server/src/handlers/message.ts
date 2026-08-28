@@ -1,9 +1,9 @@
-import { SessionMessage } from "@nanocode-ai/core/session/message"
-import { SessionV2 } from "@nanocode-ai/core/session"
+import { SessionMessage } from "@bettercode-ai/core/session/message"
+import { SessionV2 } from "@bettercode-ai/core/session"
 import { Effect, Schema } from "effect"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"
-import { InvalidCursorError, SessionNotFoundError, UnknownError } from "@nanocode-ai/protocol/errors"
+import { InvalidCursorError, SessionNotFoundError, UnknownError } from "@bettercode-ai/protocol/errors"
 
 const DefaultMessagesLimit = 50
 

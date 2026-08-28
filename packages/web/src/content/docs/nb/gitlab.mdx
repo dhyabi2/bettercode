@@ -1,68 +1,68 @@
 ---
 title: GitLab
-description: Bruk nanocode i GitLab-problemer og Merge Requests.
+description: Bruk bettercode i GitLab-problemer og Merge Requests.
 ---
 
-NanoCode integreres med GitLab arbeidsflyten gjennom GitLab CI/CD pipeline eller med GitLab Duo.
+BetterCode integreres med GitLab arbeidsflyten gjennom GitLab CI/CD pipeline eller med GitLab Duo.
 
-I begge tilfeller vil NanoCode kjøre på GitLab Runners.
+I begge tilfeller vil BetterCode kjøre på GitLab Runners.
 
 ---
 
 ## GitLab CI
 
-NanoCode fungerer i en vanlig GitLab-pipeline. Du kan bygge den inn i en pipeline som en [CI-komponent](https://docs.gitlab.com/ee/ci/components/)
+BetterCode fungerer i en vanlig GitLab-pipeline. Du kan bygge den inn i en pipeline som en [CI-komponent](https://docs.gitlab.com/ee/ci/components/)
 
-Her bruker vi en fellesskapsskapt CI/CD-komponent for NanoCode — [nagyv/gitlab-nanocode](https://gitlab.com/nagyv/gitlab-nanocode).
+Her bruker vi en fellesskapsskapt CI/CD-komponent for BetterCode — [nagyv/gitlab-bettercode](https://gitlab.com/nagyv/gitlab-bettercode).
 
 ---
 
 ### Funksjoner
 
-- **Bruk tilpasset konfigurasjon per jobb**: Konfigurer NanoCode med en tilpasset konfigurasjonskatalog, for eksempel `./config/#custom-directory` for å aktivere eller deaktivere funksjonalitet per NanoCode-anrop.
-- **Minimalt oppsett**: CI-komponenten setter opp NanoCode i bakgrunnen, du trenger bare å lage NanoCode-konfigurasjonen og den første ledeteksten.
+- **Bruk tilpasset konfigurasjon per jobb**: Konfigurer BetterCode med en tilpasset konfigurasjonskatalog, for eksempel `./config/#custom-directory` for å aktivere eller deaktivere funksjonalitet per BetterCode-anrop.
+- **Minimalt oppsett**: CI-komponenten setter opp BetterCode i bakgrunnen, du trenger bare å lage BetterCode-konfigurasjonen og den første ledeteksten.
 - **Fleksibel**: CI-komponenten støtter flere innganger for å tilpasse virkemåten
 
 ---
 
 ### Oppsett
 
-1. Lagre NanoCode sin autentiserings-JSON som en CI-miljøvariabel av typen Fil under **Innstillinger** > **CI/CD** > **Variabler**. Sørg for å merke dem som "Masked and hidden".
+1. Lagre BetterCode sin autentiserings-JSON som en CI-miljøvariabel av typen Fil under **Innstillinger** > **CI/CD** > **Variabler**. Sørg for å merke dem som "Masked and hidden".
 2. Legg til følgende i `.gitlab-ci.yml`-filen.
 
    ```yaml title=".gitlab-ci.yml"
    include:
-     - component: $CI_SERVER_FQDN/nagyv/gitlab-nanocode/nanocode@2
+     - component: $CI_SERVER_FQDN/nagyv/gitlab-bettercode/bettercode@2
        inputs:
-         config_dir: ${CI_PROJECT_DIR}/nanocode-config
-         auth_json: $NANOCODE_AUTH_JSON # The variable name for your NanoCode authentication JSON
+         config_dir: ${CI_PROJECT_DIR}/bettercode-config
+         auth_json: $BETTERCODE_AUTH_JSON # The variable name for your BetterCode authentication JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```
 
-For flere inndata og brukstilfeller [sjekk ut dokumentene](https://gitlab.com/explore/catalog/nagyv/gitlab-nanocode) for denne komponenten.
+For flere inndata og brukstilfeller [sjekk ut dokumentene](https://gitlab.com/explore/catalog/nagyv/gitlab-bettercode) for denne komponenten.
 
 ---
 
 ## GitLab Duo
 
-NanoCode integreres med din GitLab arbeidsflyt.
-Nevn `@nanocode` i en kommentar, og NanoCode vil utføre oppgaver innenfor din GitLab CI-pipeline.
+BetterCode integreres med din GitLab arbeidsflyt.
+Nevn `@bettercode` i en kommentar, og BetterCode vil utføre oppgaver innenfor din GitLab CI-pipeline.
 
 ---
 
 ### Funksjoner
 
-- **Triage av saker**: Be NanoCode se på en sak og forklare den for deg.
-- **Fiks og implementer**: Be NanoCode om å fikse en sak eller implementere en funksjon.
+- **Triage av saker**: Be BetterCode se på en sak og forklare den for deg.
+- **Fiks og implementer**: Be BetterCode om å fikse en sak eller implementere en funksjon.
   Det vil opprette en ny gren og sende en Merge Request med endringene.
-- **Sikkert**: NanoCode kjører på GitLab Runners.
+- **Sikkert**: BetterCode kjører på GitLab Runners.
 
 ---
 
 ### Oppsett
 
-NanoCode kjører i GitLab CI/CD pipeline, her er det du trenger for å sette den opp:
+BetterCode kjører i GitLab CI/CD pipeline, her er det du trenger for å sette den opp:
 
 :::tip
 Sjekk ut [**GitLab-dokumentene**](https://docs.gitlab.com/user/duo_agent_platform/agent_assistant/) for oppdaterte instruksjoner.
@@ -82,19 +82,19 @@ Sjekk ut [**GitLab-dokumentene**](https://docs.gitlab.com/user/duo_agent_platfor
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing nanocode"
-      - npm install --global nanocode-ai
+      - echo "Installing bettercode"
+      - npm install --global bettercode-ai
       - echo "Installing glab"
-      - export GITLAB_TOKEN=$GITLAB_TOKEN_NANOCODE
+      - export GITLAB_TOKEN=$GITLAB_TOKEN_BETTERCODE
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
       - curl --silent --show-error --location "https://raw.githubusercontent.com/upciti/wakemeops/main/assets/install_repository" | bash
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating NanoCode auth configuration"
-      - mkdir --parents ~/.local/share/nanocode
+      - echo "Creating BetterCode auth configuration"
+      - mkdir --parents ~/.local/share/bettercode
       - |
-        cat > ~/.local/share/nanocode/auth.json << EOF
+        cat > ~/.local/share/bettercode/auth.json << EOF
         {
           "anthropic": {
             "type": "api",
@@ -103,13 +103,13 @@ Sjekk ut [**GitLab-dokumentene**](https://docs.gitlab.com/user/duo_agent_platfor
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "nanocode@gitlab.com"
-      - git config --global user.name "NanoCode"
+      - git config --global user.email "bettercode@gitlab.com"
+      - git config --global user.name "BetterCode"
       - echo "Testing glab"
       - glab issue list
-      - echo "Running NanoCode"
+      - echo "Running BetterCode"
       - |
-        nanocode run "
+        bettercode run "
         You are an AI assistant helping with GitLab operations.
 
         Context: $AI_FLOW_CONTEXT
@@ -146,7 +146,7 @@ Sjekk ut [**GitLab-dokumentene**](https://docs.gitlab.com/user/duo_agent_platfor
         fi
     variables:
       - ANTHROPIC_API_KEY
-      - GITLAB_TOKEN_NANOCODE
+      - GITLAB_TOKEN_BETTERCODE
       - GITLAB_HOST
     ```
 
@@ -158,10 +158,10 @@ Du kan se [GitLab CLI agents docs](https://docs.gitlab.com/user/duo_agent_platfo
 
 ### Eksempler
 
-Her er noen eksempler på hvordan du kan bruke NanoCode i GitLab.
+Her er noen eksempler på hvordan du kan bruke BetterCode i GitLab.
 
 :::tip
-Du kan konfigurere til å bruke en annen triggerfrase enn `@nanocode`.
+Du kan konfigurere til å bruke en annen triggerfrase enn `@bettercode`.
 :::
 
 - **Forklar en sak**
@@ -169,27 +169,27 @@ Du kan konfigurere til å bruke en annen triggerfrase enn `@nanocode`.
   Legg til denne kommentaren i en GitLab-sak.
 
   ```
-  @nanocode explain this issue
+  @bettercode explain this issue
   ```
 
-  NanoCode vil lese saken og svare med en klar forklaring.
+  BetterCode vil lese saken og svare med en klar forklaring.
 
 - **Fiks en sak**
 
   I en GitLab-sak, si:
 
   ```
-  @nanocode fix this
+  @bettercode fix this
   ```
 
-  NanoCode vil opprette en ny gren, implementere endringene og åpne en Merge Request med endringene.
+  BetterCode vil opprette en ny gren, implementere endringene og åpne en Merge Request med endringene.
 
 - **Review av Merge Requests**
 
   Legg igjen følgende kommentar på en GitLab Merge Request.
 
   ```
-  @nanocode review this merge request
+  @bettercode review this merge request
   ```
 
-  NanoCode vil gjennomgå Merge Request-en og gi tilbakemelding.
+  BetterCode vil gjennomgå Merge Request-en og gi tilbakemelding.

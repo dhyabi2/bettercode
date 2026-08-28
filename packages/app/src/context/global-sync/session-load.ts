@@ -1,6 +1,6 @@
-import type { SessionApi } from "@nanocode-ai/client/promise"
+import type { SessionApi } from "@bettercode-ai/client/promise"
 import { normalizeSessionInfo } from "@/utils/session"
-import type { NanocodeClient } from "@nanocode-ai/sdk/v2/client"
+import type { BettercodeClient } from "@bettercode-ai/sdk/v2/client"
 
 export async function loadRootSessions(input: { api: Pick<SessionApi, "list">; directory: string; limit: number }) {
   const result = await input.api.list({
@@ -16,7 +16,7 @@ export async function loadRootSessions(input: { api: Pick<SessionApi, "list">; d
   } as const
 }
 
-export async function loadRootSessionsV1(input: { client: NanocodeClient; directory: string; limit: number }) {
+export async function loadRootSessionsV1(input: { client: BettercodeClient; directory: string; limit: number }) {
   try {
     const result = await input.client.session.list({ directory: input.directory, roots: true, limit: input.limit })
     return { data: result.data, limit: input.limit, limited: true } as const

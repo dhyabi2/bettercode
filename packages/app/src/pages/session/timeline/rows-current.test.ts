@@ -1,8 +1,8 @@
 import { describe, expect, mock, test } from "bun:test"
-import type { SessionMessageInfo } from "@nanocode-ai/client/promise"
+import type { SessionMessageInfo } from "@bettercode-ai/client/promise"
 import { normalizeSessionMessages } from "@/utils/session-message"
 
-mock.module("@nanocode-ai/session-ui/message-part", () => ({
+mock.module("@bettercode-ai/session-ui/message-part", () => ({
   renderable: () => true,
   groupParts: (refs: Array<{ messageID: string; part: { id: string } }>) =>
     refs.map((ref) => ({

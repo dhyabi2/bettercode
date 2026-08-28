@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { SessionMessageInfo } from "@nanocode-ai/client/promise"
+import type { SessionMessageInfo } from "@bettercode-ai/client/promise"
 import { normalizeSessionMessages } from "./session-message"
 
 describe("normalizeSessionMessages", () => {

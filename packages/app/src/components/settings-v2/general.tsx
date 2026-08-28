@@ -1,10 +1,10 @@
 import { Component, Show, createMemo, createResource } from "solid-js"
 import { createMediaQuery } from "@solid-primitives/media"
-import { ButtonV2 } from "@nanocode-ai/ui/v2/button-v2"
-import { SelectV2 } from "@nanocode-ai/ui/v2/select-v2"
-import { Switch } from "@nanocode-ai/ui/v2/switch-v2"
-import { TextInputV2 } from "@nanocode-ai/ui/v2/text-input-v2"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
+import { ButtonV2 } from "@bettercode-ai/ui/v2/button-v2"
+import { SelectV2 } from "@bettercode-ai/ui/v2/select-v2"
+import { Switch } from "@bettercode-ai/ui/v2/switch-v2"
+import { TextInputV2 } from "@bettercode-ai/ui/v2/text-input-v2"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
 import { useLanguage } from "@/context/language"
 import { usePlatform } from "@/context/platform"
 import { useUpdaterAction } from "../updater-action"
@@ -150,7 +150,7 @@ const AppearanceSection: Component<{ controller: AppearanceSettingsController }>
           description={
             <>
               {language.t("settings.general.row.theme.description")}{" "}
-              <ExternalLink class="settings-v2-link" href="https://nanocode.ai/docs/themes/">
+              <ExternalLink class="settings-v2-link" href="https://bettercode.ai/docs/themes/">
                 {language.t("common.learnMore")}
               </ExternalLink>
             </>
@@ -369,7 +369,7 @@ export const SettingsGeneralV2: Component<{
           </div>
         </SettingsRowV2>
 
-        <Show when={mobile() && import.meta.env.VITE_NANOCODE_CHANNEL !== "prod"}>
+        <Show when={mobile() && import.meta.env.VITE_BETTERCODE_CHANNEL !== "prod"}>
           <SettingsRowV2
             title={language.t("settings.general.row.mobileTitlebarBottom.title")}
             description={language.t("settings.general.row.mobileTitlebarBottom.description")}

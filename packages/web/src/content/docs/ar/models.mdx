@@ -3,13 +3,13 @@ title: النماذج
 description: تهيئة مزوّد LLM والنموذج.
 ---
 
-يستخدم NanoCode كلاً من [AI SDK](https://ai-sdk.dev/) و[Models.dev](https://models.dev) لدعم **أكثر من 75 مزوّداً لنماذج LLM**، كما يدعم تشغيل النماذج محلياً.
+يستخدم BetterCode كلاً من [AI SDK](https://ai-sdk.dev/) و[Models.dev](https://models.dev) لدعم **أكثر من 75 مزوّداً لنماذج LLM**، كما يدعم تشغيل النماذج محلياً.
 
 ---
 
 ## المزوّدون
 
-أكثر المزوّدين شيوعاً مُحمَّلون مسبقاً افتراضياً. إذا أضفت بيانات اعتماد أحد المزوّدين عبر الأمر `/connect` فستكون متاحة عند تشغيل NanoCode.
+أكثر المزوّدين شيوعاً مُحمَّلون مسبقاً افتراضياً. إذا أضفت بيانات اعتماد أحد المزوّدين عبر الأمر `/connect` فستكون متاحة عند تشغيل BetterCode.
 
 تعرّف على المزيد حول [المزوّدين](/docs/providers).
 
@@ -35,7 +35,7 @@ description: تهيئة مزوّد LLM والنموذج.
 
 لكن القليل منها فقط يكون جيداً في كلٍ من توليد الشيفرة واستدعاء الأدوات.
 
-فيما يلي عدة نماذج تعمل جيداً مع NanoCode، دون ترتيب معيّن. (هذه ليست قائمة شاملة وقد لا تكون محدَّثة دائماً):
+فيما يلي عدة نماذج تعمل جيداً مع BetterCode، دون ترتيب معيّن. (هذه ليست قائمة شاملة وقد لا تكون محدَّثة دائماً):
 
 - GPT 5.2
 - GPT 5.1 Codex
@@ -48,16 +48,16 @@ description: تهيئة مزوّد LLM والنموذج.
 
 ## تعيين الافتراضي
 
-لتعيين أحد هذه النماذج كنموذج افتراضي، يمكنك ضبط المفتاح `model` في ملف إعدادات NanoCode.
+لتعيين أحد هذه النماذج كنموذج افتراضي، يمكنك ضبط المفتاح `model` في ملف إعدادات BetterCode.
 
-```json title="nanocode.json" {3}
+```json title="bettercode.json" {3}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "model": "lmstudio/google/gemma-3n-e4b"
 }
 ```
 
-المعرّف الكامل هنا يكون بالشكل `provider_id/model_id`. على سبيل المثال، إذا كنت تستخدم [NanoCode Zen](/docs/zen) فستستخدم `nanocode/gpt-5.1-codex` لنموذج GPT 5.1 Codex.
+المعرّف الكامل هنا يكون بالشكل `provider_id/model_id`. على سبيل المثال، إذا كنت تستخدم [BetterCode Zen](/docs/zen) فستستخدم `bettercode/gpt-5.1-codex` لنموذج GPT 5.1 Codex.
 
 إذا كنت قد هيّأت [مزوّداً مخصّصاً](/docs/providers#custom)، فإن `provider_id` هو المفتاح الموجود ضمن قسم `provider` في إعداداتك، و`model_id` هو المفتاح الموجود ضمن `provider.models`.
 
@@ -67,9 +67,9 @@ description: تهيئة مزوّد LLM والنموذج.
 
 يمكنك ضبط خيارات النموذج على مستوى عام عبر ملف الإعدادات.
 
-```jsonc title="nanocode.jsonc" {7-12,19-24}
+```jsonc title="bettercode.jsonc" {7-12,19-24}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "openai": {
       "models": {
@@ -106,11 +106,11 @@ description: تهيئة مزوّد LLM والنموذج.
 
 كما يمكنك تعريف متغيّرات مخصّصة تُوسّع المتغيّرات المدمجة. تتيح لك المتغيّرات ضبط إعدادات مختلفة للنموذج نفسه دون إنشاء إدخالات مكرّرة:
 
-```jsonc title="nanocode.jsonc" {6-21}
+```jsonc title="bettercode.jsonc" {6-21}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
-    "nanocode": {
+    "bettercode": {
       "models": {
         "gpt-5": {
           "variants": {
@@ -136,11 +136,11 @@ description: تهيئة مزوّد LLM والنموذج.
 
 ## المتغيّرات
 
-تدعم العديد من النماذج عدة متغيّرات بإعدادات مختلفة. يأتي NanoCode مع متغيّرات افتراضية مدمجة للمزوّدين الشائعين.
+تدعم العديد من النماذج عدة متغيّرات بإعدادات مختلفة. يأتي BetterCode مع متغيّرات افتراضية مدمجة للمزوّدين الشائعين.
 
 ### المتغيّرات المدمجة
 
-يأتي NanoCode مع متغيّرات افتراضية لعدد كبير من المزوّدين:
+يأتي BetterCode مع متغيّرات افتراضية لعدد كبير من المزوّدين:
 
 **Anthropic**:
 
@@ -171,9 +171,9 @@ description: تهيئة مزوّد LLM والنموذج.
 
 يمكنك تجاوز المتغيّرات الموجودة أو إضافة متغيّراتك الخاصة:
 
-```jsonc title="nanocode.jsonc" {7-18}
+```jsonc title="bettercode.jsonc" {7-18}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "openai": {
       "models": {
@@ -202,15 +202,15 @@ description: تهيئة مزوّد LLM والنموذج.
 
 ## تحميل النماذج
 
-عند بدء تشغيل NanoCode، يتحقق من النماذج وفق ترتيب الأولوية التالي:
+عند بدء تشغيل BetterCode، يتحقق من النماذج وفق ترتيب الأولوية التالي:
 
 1. خيار CLI `--model` أو `-m`. الصيغة هي نفسها الموجودة في ملف الإعدادات: `provider_id/model_id`.
 
-2. قائمة النماذج في إعدادات NanoCode.
+2. قائمة النماذج في إعدادات BetterCode.
 
-   ```json title="nanocode.json"
+   ```json title="bettercode.json"
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "model": "anthropic/claude-sonnet-4-20250514"
    }
    ```

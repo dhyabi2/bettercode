@@ -1,17 +1,17 @@
 ---
 title: GitHub
-description: Verwenden Sie NanoCode in GitHub-Problemen und Pull-Requests.
+description: Verwenden Sie BetterCode in GitHub-Problemen und Pull-Requests.
 ---
 
-NanoCode lässt sich in Ihren GitHub-Workflow integrieren. Erwähnen Sie `/nanocode` oder `/oc` in Ihrem Kommentar, und NanoCode führt Aufgaben in Ihrem GitHub Actions-Runner aus.
+BetterCode lässt sich in Ihren GitHub-Workflow integrieren. Erwähnen Sie `/bettercode` oder `/oc` in Ihrem Kommentar, und BetterCode führt Aufgaben in Ihrem GitHub Actions-Runner aus.
 
 ---
 
 ## Funktionen
 
-- **Issue Triage**: Bitten Sie NanoCode, ein Problem zu untersuchen und es Ihnen zu erklären.
-- **Reparieren und implementieren**: Bitten Sie NanoCode, ein Problem zu beheben oder eine Funktion zu implementieren. Und es funktioniert in einem neuen Branch und sendet ein PR mit allen Änderungen.
-- **Sicher**: NanoCode läuft in den Runners Ihres GitHub.
+- **Issue Triage**: Bitten Sie BetterCode, ein Problem zu untersuchen und es Ihnen zu erklären.
+- **Reparieren und implementieren**: Bitten Sie BetterCode, ein Problem zu beheben oder eine Funktion zu implementieren. Und es funktioniert in einem neuen Branch und sendet ein PR mit allen Änderungen.
+- **Sicher**: BetterCode läuft in den Runners Ihres GitHub.
 
 ---
 
@@ -20,7 +20,7 @@ NanoCode lässt sich in Ihren GitHub-Workflow integrieren. Erwähnen Sie `/nanoc
 Führen Sie den folgenden Befehl in einem Projekt aus, das sich in einem GitHub-Repository befindet:
 
 ```bash
-nanocode github install
+bettercode github install
 ```
 
 Dies führt Sie durch die Installation der GitHub-App, das Erstellen des Workflows und das Einrichten von Secrets.
@@ -33,14 +33,14 @@ Oder Sie können es manuell einrichten.
 
 1. **Installieren Sie die GitHub-App**
 
-   Gehen Sie zu [**github.com/apps/nanocode-agent**](https://github.com/apps/nanocode-agent). Stellen Sie sicher, dass es im Ziel-Repository installiert ist.
+   Gehen Sie zu [**github.com/apps/bettercode-agent**](https://github.com/apps/bettercode-agent). Stellen Sie sicher, dass es im Ziel-Repository installiert ist.
 
 2. **Den Workflow hinzufügen**
 
-   Fügen Sie die folgende Workflowdatei zu `.github/workflows/nanocode.yml` in Ihrem Repository hinzu. Stellen Sie sicher, dass Sie in `env` die passenden Werte für `model` und `api_key` setzen.
+   Fügen Sie die folgende Workflowdatei zu `.github/workflows/bettercode.yml` in Ihrem Repository hinzu. Stellen Sie sicher, dass Sie in `env` die passenden Werte für `model` und `api_key` setzen.
 
-   ```yml title=".github/workflows/nanocode.yml" {24,26}
-   name: nanocode
+   ```yml title=".github/workflows/bettercode.yml" {24,26}
+   name: bettercode
 
    on:
      issue_comment:
@@ -49,10 +49,10 @@ Oder Sie können es manuell einrichten.
        types: [created]
 
    jobs:
-     nanocode:
+     bettercode:
        if: |
          contains(github.event.comment.body, '/oc') ||
-         contains(github.event.comment.body, '/nanocode')
+         contains(github.event.comment.body, '/bettercode')
        runs-on: ubuntu-latest
        permissions:
          id-token: write
@@ -63,8 +63,8 @@ Oder Sie können es manuell einrichten.
               fetch-depth: 1
               persist-credentials: false
 
-          - name: Run NanoCode
-           uses: dhyabi2/nanocode/github@latest
+          - name: Run BetterCode
+           uses: dhyabi2/bettercode/github@latest
            env:
              ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
            with:
@@ -81,13 +81,13 @@ Oder Sie können es manuell einrichten.
 
 ## Konfiguration
 
-- `model`: Das mit NanoCode zu verwendende Modell. Nimmt das Format `provider/model` an. Dies ist **erforderlich**.
+- `model`: Das mit BetterCode zu verwendende Modell. Nimmt das Format `provider/model` an. Dies ist **erforderlich**.
 - `agent`: Der zu verwendende Agent. Muss ein Hauptagent sein. Fällt aus der Konfiguration auf `default_agent` oder `"build"` zurück, wenn es nicht gefunden wird.
-- `share`: Ob die NanoCode-Sitzung geteilt werden soll. Der Standardwert ist **true** für öffentliche Repositorys.
-- `prompt`: Optionale benutzerdefinierte Eingabeaufforderung zum Überschreiben des Standardverhaltens. Verwenden Sie dies, um anzupassen, wie NanoCode Anfragen verarbeitet.
-- `token`: Optionales GitHub-Zugriffstoken zum Ausführen von Vorgängen wie dem Erstellen von Kommentaren, dem Festschreiben von Änderungen und dem Öffnen von Pull Requests. Standardmäßig verwendet NanoCode das Installation Access Token der NanoCode GitHub-App, sodass Commits, Kommentare und Pull Requests so aussehen, als würden sie von der App kommen.
+- `share`: Ob die BetterCode-Sitzung geteilt werden soll. Der Standardwert ist **true** für öffentliche Repositorys.
+- `prompt`: Optionale benutzerdefinierte Eingabeaufforderung zum Überschreiben des Standardverhaltens. Verwenden Sie dies, um anzupassen, wie BetterCode Anfragen verarbeitet.
+- `token`: Optionales GitHub-Zugriffstoken zum Ausführen von Vorgängen wie dem Erstellen von Kommentaren, dem Festschreiben von Änderungen und dem Öffnen von Pull Requests. Standardmäßig verwendet BetterCode das Installation Access Token der BetterCode GitHub-App, sodass Commits, Kommentare und Pull Requests so aussehen, als würden sie von der App kommen.
 
-  Alternativ können Sie [built-in `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) des GitHub Action Runners verwenden, ohne die NanoCode GitHub App zu installieren. Stellen Sie einfach sicher, dass Sie in Ihrem Workflow die erforderlichen Berechtigungen erteilen:
+  Alternativ können Sie [built-in `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) des GitHub Action Runners verwenden, ohne die BetterCode GitHub App zu installieren. Stellen Sie einfach sicher, dass Sie in Ihrem Workflow die erforderlichen Berechtigungen erteilen:
 
   ```yaml
   permissions:
@@ -103,30 +103,30 @@ Oder Sie können es manuell einrichten.
 
 ## Unterstützte Events
 
-NanoCode kann durch die folgenden GitHub-Events ausgelöst werden:
+BetterCode kann durch die folgenden GitHub-Events ausgelöst werden:
 
 | Ereignistyp                   | Ausgelöst durch                                   | Einzelheiten                                                                                                                                        |
 | ----------------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `issue_comment`               | Kommentieren Sie ein Problem oder PR              | Erwähnen Sie `/nanocode` oder `/oc` in Ihrem Kommentar. NanoCode liest den Kontext und kann Branches erstellen, PRs öffnen oder antworten.          |
-| `pull_request_review_comment` | Kommentieren Sie bestimmte Codezeilen in einem PR | Erwähnen Sie `/nanocode` oder `/oc` beim Überprüfen des Codes. NanoCode empfängt Dateipfad, Zeilennummern und Diff Context.                         |
-| `issues`                      | Problem geöffnet oder bearbeitet                  | Lösen Sie NanoCode automatisch aus, wenn Probleme erstellt oder geändert werden. Erfordert `prompt`-Eingabe.                                        |
-| `pull_request`                | PR geöffnet oder aktualisiert                     | Lösen Sie NanoCode automatisch aus, wenn PRs geöffnet, synchronisiert oder erneut geöffnet werden. Nützlich für automatisierte Bewertungen.         |
-| `schedule`                    | Cron-basierter Zeitplan                           | Führen Sie NanoCode nach einem Zeitplan aus. Erfordert `prompt`-Eingabe. Die Ausgabe geht an Protokolle und PRs (kein Kommentar zu diesem Problem). |
-| `workflow_dispatch`           | Manueller Trigger von GitHub UI                   | Lösen Sie NanoCode bei Bedarf über die Actions Tab aus. Erfordert `prompt`-Eingabe. Die Ausgabe erfolgt an Protokolle und PRs.                      |
+| `issue_comment`               | Kommentieren Sie ein Problem oder PR              | Erwähnen Sie `/bettercode` oder `/oc` in Ihrem Kommentar. BetterCode liest den Kontext und kann Branches erstellen, PRs öffnen oder antworten.          |
+| `pull_request_review_comment` | Kommentieren Sie bestimmte Codezeilen in einem PR | Erwähnen Sie `/bettercode` oder `/oc` beim Überprüfen des Codes. BetterCode empfängt Dateipfad, Zeilennummern und Diff Context.                         |
+| `issues`                      | Problem geöffnet oder bearbeitet                  | Lösen Sie BetterCode automatisch aus, wenn Probleme erstellt oder geändert werden. Erfordert `prompt`-Eingabe.                                        |
+| `pull_request`                | PR geöffnet oder aktualisiert                     | Lösen Sie BetterCode automatisch aus, wenn PRs geöffnet, synchronisiert oder erneut geöffnet werden. Nützlich für automatisierte Bewertungen.         |
+| `schedule`                    | Cron-basierter Zeitplan                           | Führen Sie BetterCode nach einem Zeitplan aus. Erfordert `prompt`-Eingabe. Die Ausgabe geht an Protokolle und PRs (kein Kommentar zu diesem Problem). |
+| `workflow_dispatch`           | Manueller Trigger von GitHub UI                   | Lösen Sie BetterCode bei Bedarf über die Actions Tab aus. Erfordert `prompt`-Eingabe. Die Ausgabe erfolgt an Protokolle und PRs.                      |
 
 ### Beispiel für einen Zeitplan
 
-Führen Sie NanoCode nach einem Zeitplan aus, um automatisierte Aufgaben auszuführen:
+Führen Sie BetterCode nach einem Zeitplan aus, um automatisierte Aufgaben auszuführen:
 
-```yaml title=".github/workflows/nanocode-scheduled.yml"
-name: Scheduled NanoCode Task
+```yaml title=".github/workflows/bettercode-scheduled.yml"
+name: Scheduled BetterCode Task
 
 on:
   schedule:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  nanocode:
+  bettercode:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -139,8 +139,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run NanoCode
-        uses: dhyabi2/nanocode/github@latest
+      - name: Run BetterCode
+        uses: dhyabi2/bettercode/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         with:
@@ -150,7 +150,7 @@ jobs:
             If you find issues worth addressing, open an issue to track them.
 ```
 
-Für geplante Ereignisse ist die Eingabe `prompt` **erforderlich**, da es keinen Kommentar gibt, aus dem Anweisungen extrahiert werden können. Geplante Workflows werden ohne Benutzerkontext zur Berechtigungsprüfung ausgeführt. Daher muss der Workflow `contents: write` und `pull-requests: write` gewähren, wenn Sie erwarten, dass NanoCode Branches oder PRs erstellt.
+Für geplante Ereignisse ist die Eingabe `prompt` **erforderlich**, da es keinen Kommentar gibt, aus dem Anweisungen extrahiert werden können. Geplante Workflows werden ohne Benutzerkontext zur Berechtigungsprüfung ausgeführt. Daher muss der Workflow `contents: write` und `pull-requests: write` gewähren, wenn Sie erwarten, dass BetterCode Branches oder PRs erstellt.
 
 ---
 
@@ -158,8 +158,8 @@ Für geplante Ereignisse ist die Eingabe `prompt` **erforderlich**, da es keinen
 
 Überprüfen Sie PRs automatisch, wenn sie geöffnet oder aktualisiert werden:
 
-```yaml title=".github/workflows/nanocode-review.yml"
-name: nanocode-review
+```yaml title=".github/workflows/bettercode-review.yml"
+name: bettercode-review
 
 on:
   pull_request:
@@ -177,7 +177,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
-      - uses: dhyabi2/nanocode/github@latest
+      - uses: dhyabi2/bettercode/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -191,7 +191,7 @@ jobs:
             - Suggest improvements
 ```
 
-Wenn für `pull_request`-Ereignisse kein `prompt` bereitgestellt wird, überprüft NanoCode standardmäßig die Pull-Anfrage.
+Wenn für `pull_request`-Ereignisse kein `prompt` bereitgestellt wird, überprüft BetterCode standardmäßig die Pull-Anfrage.
 
 ---
 
@@ -199,7 +199,7 @@ Wenn für `pull_request`-Ereignisse kein `prompt` bereitgestellt wird, überprü
 
 Neue Probleme automatisch selektieren. In diesem Beispiel wird nach Konten gefiltert, die älter als 30 Tage sind, um Spam zu reduzieren:
 
-```yaml title=".github/workflows/nanocode-triage.yml"
+```yaml title=".github/workflows/bettercode-triage.yml"
 name: Issue Triage
 
 on:
@@ -233,7 +233,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: dhyabi2/nanocode/github@latest
+      - uses: dhyabi2/bettercode/github@latest
         if: steps.check.outputs.result == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -252,10 +252,10 @@ Für `issues`-Ereignisse ist die Eingabe `prompt` **erforderlich**, da es keinen
 
 ## Benutzerdefinierte Prompts
 
-Überschreiben Sie die Standardaufforderung, um das Verhalten von NanoCode für Ihren Workflow anzupassen.
+Überschreiben Sie die Standardaufforderung, um das Verhalten von BetterCode für Ihren Workflow anzupassen.
 
-```yaml title=".github/workflows/nanocode.yml"
-- uses: dhyabi2/nanocode/github@latest
+```yaml title=".github/workflows/bettercode.yml"
+- uses: dhyabi2/bettercode/github@latest
   with:
     model: anthropic/claude-sonnet-4-5
     prompt: |
@@ -271,27 +271,27 @@ Dies ist nützlich, um bestimmte Prüfkriterien, Kodierungsstandards oder Schwer
 
 ## Beispiele
 
-Hier sind einige Beispiele, wie Sie NanoCode in GitHub verwenden können.
+Hier sind einige Beispiele, wie Sie BetterCode in GitHub verwenden können.
 
 - **Erklären Sie ein Problem**
 
   Fügen Sie diesen Kommentar in einer GitHub-Ausgabe hinzu.
 
   ```
-  /nanocode explain this issue
+  /bettercode explain this issue
   ```
 
-  NanoCode liest den gesamten Thread, einschließlich aller Kommentare, und antwortet mit einer klaren Erklärung.
+  BetterCode liest den gesamten Thread, einschließlich aller Kommentare, und antwortet mit einer klaren Erklärung.
 
 - **Ein Problem beheben**
 
   Sagen Sie in einer GitHub-Ausgabe:
 
   ```
-  /nanocode fix this
+  /bettercode fix this
   ```
 
-  Und NanoCode erstellt einen neuen Branch, implementiert die Änderungen und öffnet ein PR mit den Änderungen.
+  Und BetterCode erstellt einen neuen Branch, implementiert die Änderungen und öffnet ein PR mit den Änderungen.
 
 - **PRs überprüfen und Änderungen vornehmen**
 
@@ -301,18 +301,18 @@ Hier sind einige Beispiele, wie Sie NanoCode in GitHub verwenden können.
   Delete the attachment from S3 when the note is removed /oc
   ```
 
-  NanoCode implementiert die angeforderte Änderung und schreibt sie an denselben PR fest.
+  BetterCode implementiert die angeforderte Änderung und schreibt sie an denselben PR fest.
 
 - **Überprüfen Sie bestimmte Codezeilen**
 
-  Hinterlassen Sie einen Kommentar direkt zu den Codezeilen auf der Files Tab von PR. NanoCode erkennt automatisch die Datei, Zeilennummern und den Diff Context, um präzise Antworten bereitzustellen.
+  Hinterlassen Sie einen Kommentar direkt zu den Codezeilen auf der Files Tab von PR. BetterCode erkennt automatisch die Datei, Zeilennummern und den Diff Context, um präzise Antworten bereitzustellen.
 
   ```
   [Comment on specific lines in Files tab]
   /oc add error handling here
   ```
 
-  Beim Kommentieren bestimmter Zeilen erhält NanoCode:
+  Beim Kommentieren bestimmter Zeilen erhält BetterCode:
   - Die genaue Datei, die überprüft wird
   - Die spezifischen Codezeilen
   - Der umgebende Diff Context

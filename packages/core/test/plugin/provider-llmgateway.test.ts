@@ -1,12 +1,12 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@nanocode-ai/core/catalog"
-import { Integration } from "@nanocode-ai/core/integration"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { PluginHost } from "@nanocode-ai/core/plugin/host"
-import { ProviderPlugins } from "@nanocode-ai/core/plugin/provider"
-import { LLMGatewayPlugin } from "@nanocode-ai/core/plugin/provider/llmgateway"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
+import { Catalog } from "@bettercode-ai/core/catalog"
+import { Integration } from "@bettercode-ai/core/integration"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { PluginHost } from "@bettercode-ai/core/plugin/host"
+import { ProviderPlugins } from "@bettercode-ai/core/plugin/provider"
+import { LLMGatewayPlugin } from "@bettercode-ai/core/plugin/provider/llmgateway"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
 
@@ -46,9 +46,9 @@ describe("LLMGatewayPlugin", () => {
       yield* addPlugin()
       expect((yield* catalog.provider.get(ProviderV2.ID.make("llmgateway")))?.request.headers).toEqual({
         Existing: "value",
-        "HTTP-Referer": "https://nanocode.ai/",
-        "X-Title": "nanocode",
-        "X-Source": "nanocode",
+        "HTTP-Referer": "https://bettercode.ai/",
+        "X-Title": "bettercode",
+        "X-Source": "bettercode",
       })
       expect((yield* catalog.provider.get(ProviderV2.ID.openrouter))?.request.headers).toEqual({})
     }),

@@ -1,9 +1,9 @@
 import { Effect, Stream } from "effect"
 import { HttpClient } from "effect/unstable/http"
-import { ClientError, NanoCode } from "./generated"
+import { ClientError, BetterCode } from "./generated"
 import { Missing } from "./fixture"
 
-export const program = NanoCode.make().pipe(
+export const program = BetterCode.make().pipe(
   Effect.map((client) => {
     const health = client.session.health()
     const list = client.session.list()

@@ -1,5 +1,5 @@
-import { Location } from "@nanocode-ai/schema/location"
-import { Reference } from "@nanocode-ai/schema/reference"
+import { Location } from "@bettercode-ai/schema/location"
+import { Reference } from "@bettercode-ai/schema/reference"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { LocationQuery, locationQueryOpenApi } from "./location"

@@ -1,4 +1,4 @@
-import { Resource } from "@nanocode-ai/console-resource"
+import { Resource } from "@bettercode-ai/console-resource"
 import type { TraceItem } from "@cloudflare/workers-types"
 
 export default {

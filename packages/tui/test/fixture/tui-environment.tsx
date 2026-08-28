@@ -17,10 +17,10 @@ export function TestTuiContexts(
   return (
     <TuiPathsProvider
       value={{
-        cwd: props.cwd ?? props.directory ?? "/tmp/nanocode/packages/tui",
-        home: "/tmp/nanocode/home",
-        state: "/tmp/nanocode/state",
-        worktree: "/tmp/nanocode",
+        cwd: props.cwd ?? props.directory ?? "/tmp/bettercode/packages/tui",
+        home: "/tmp/bettercode/home",
+        state: "/tmp/bettercode/state",
+        worktree: "/tmp/bettercode",
         ...props.paths,
       }}
     >

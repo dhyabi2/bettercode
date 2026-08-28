@@ -1,9 +1,9 @@
 ---
 title: المشاركة
-description: شارك محادثات NanoCode الخاصة بك.
+description: شارك محادثات BetterCode الخاصة بك.
 ---
 
-تتيح لك ميزة المشاركة في NanoCode إنشاء روابط عامة لمحادثات NanoCode الخاصة بك، بحيث يمكنك التعاون مع زملائك أو الحصول على المساعدة من الآخرين.
+تتيح لك ميزة المشاركة في BetterCode إنشاء روابط عامة لمحادثات BetterCode الخاصة بك، بحيث يمكنك التعاون مع زملائك أو الحصول على المساعدة من الآخرين.
 
 :::note
 المحادثات المشتركة متاحة للعامة لأي شخص لديه الرابط.
@@ -13,7 +13,7 @@ description: شارك محادثات NanoCode الخاصة بك.
 
 ## كيف تعمل
 
-عند مشاركة محادثة، يقوم NanoCode بما يلي:
+عند مشاركة محادثة، يقوم BetterCode بما يلي:
 
 1. ينشئ عنوان URL عاما فريدا لجلستك
 2. يزامن سجل محادثتك مع خوادمنا
@@ -23,13 +23,13 @@ description: شارك محادثات NanoCode الخاصة بك.
 
 ## المشاركة
 
-يدعم NanoCode ثلاثة أوضاع للمشاركة تتحكم في كيفية مشاركة المحادثات:
+يدعم BetterCode ثلاثة أوضاع للمشاركة تتحكم في كيفية مشاركة المحادثات:
 
 ---
 
 ### يدوي (افتراضي)
 
-افتراضيا، يستخدم NanoCode وضع المشاركة اليدوي. لا تتم مشاركة الجلسات تلقائيا، لكن يمكنك مشاركتها يدويا باستخدام الأمر `/share`:
+افتراضيا، يستخدم BetterCode وضع المشاركة اليدوي. لا تتم مشاركة الجلسات تلقائيا، لكن يمكنك مشاركتها يدويا باستخدام الأمر `/share`:
 
 ```
 /share
@@ -39,9 +39,9 @@ description: شارك محادثات NanoCode الخاصة بك.
 
 لضبط الوضع اليدوي صراحة في [ملف الإعدادات](/docs/config):
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "share": "manual"
 }
 ```
@@ -52,9 +52,9 @@ description: شارك محادثات NanoCode الخاصة بك.
 
 يمكنك تفعيل المشاركة التلقائية لجميع المحادثات الجديدة عبر ضبط خيار `share` إلى `"auto"` في [ملف الإعدادات](/docs/config):
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "share": "auto"
 }
 ```
@@ -67,14 +67,14 @@ description: شارك محادثات NanoCode الخاصة بك.
 
 يمكنك تعطيل المشاركة بالكامل عبر ضبط خيار `share` إلى `"disabled"` في [ملف الإعدادات](/docs/config):
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "share": "disabled"
 }
 ```
 
-لفرض ذلك على مستوى فريقك لمشروع معين، أضفه إلى ملف `nanocode.json` في مشروعك ثم قم بإدراجه في Git.
+لفرض ذلك على مستوى فريقك لمشروع معين، أضفه إلى ملف `bettercode.json` في مشروعك ثم قم بإدراجه في Git.
 
 ---
 
@@ -124,4 +124,4 @@ description: شارك محادثات NanoCode الخاصة بك.
 - **مقيدة** على المستخدمين الموثقين عبر SSO فقط
 - **مستضافة ذاتيا** على بنيتك التحتية الخاصة
 
-[تعرّف على المزيد](/docs/enterprise) حول استخدام NanoCode في مؤسستك.
+[تعرّف على المزيد](/docs/enterprise) حول استخدام BetterCode في مؤسستك.

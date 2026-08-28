@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { ZenData } from "@nanocode-ai/console-core/model.js"
+import type { ZenData } from "@bettercode-ai/console-core/model.js"
 import type { ProviderHelper } from "../src/routes/zen/util/provider/provider"
 import { anthropicHelper } from "../src/routes/zen/util/provider/anthropic"
 import { googleHelper } from "../src/routes/zen/util/provider/google"

@@ -3,9 +3,9 @@ export type { FileSystemEntry as LocationFileSystemEntry } from "./gen/types.gen
 
 import { createClient } from "./gen/client/client.gen.js"
 import { type Config } from "./gen/client/types.gen.js"
-import { NanocodeClient } from "./gen/sdk.gen.js"
+import { BettercodeClient } from "./gen/sdk.gen.js"
 import { wrapClientError } from "../error-interceptor.js"
-export { type Config as NanocodeClientConfig, NanocodeClient }
+export { type Config as BettercodeClientConfig, BettercodeClient }
 
 function pick(value: string | null, fallback?: string, encode?: (value: string) => string) {
   if (!value) return
@@ -22,8 +22,8 @@ function rewrite(request: Request, values: { directory?: string; workspace?: str
   let changed = false
 
   for (const [name, key] of [
-    ["x-nanocode-directory", "directory"],
-    ["x-nanocode-workspace", "workspace"],
+    ["x-bettercode-directory", "directory"],
+    ["x-bettercode-workspace", "workspace"],
   ] as const) {
     const value = pick(
       request.headers.get(name),
@@ -42,12 +42,12 @@ function rewrite(request: Request, values: { directory?: string; workspace?: str
   if (!changed) return request
 
   const next = new Request(url, request)
-  next.headers.delete("x-nanocode-directory")
-  next.headers.delete("x-nanocode-workspace")
+  next.headers.delete("x-bettercode-directory")
+  next.headers.delete("x-bettercode-workspace")
   return next
 }
 
-export function createNanocodeClient(config?: Config & { directory?: string; experimental_workspaceID?: string }) {
+export function createBettercodeClient(config?: Config & { directory?: string; experimental_workspaceID?: string }) {
   if (!config?.fetch) {
     const customFetch: any = (req: any) => {
       // @ts-ignore
@@ -63,14 +63,14 @@ export function createNanocodeClient(config?: Config & { directory?: string; exp
   if (config?.directory) {
     config.headers = {
       ...config.headers,
-      "x-nanocode-directory": encodeURIComponent(config.directory),
+      "x-bettercode-directory": encodeURIComponent(config.directory),
     }
   }
 
   if (config?.experimental_workspaceID) {
     config.headers = {
       ...config.headers,
-      "x-nanocode-workspace": config.experimental_workspaceID,
+      "x-bettercode-workspace": config.experimental_workspaceID,
     }
   }
 
@@ -84,10 +84,10 @@ export function createNanocodeClient(config?: Config & { directory?: string; exp
   client.interceptors.response.use((response) => {
     const contentType = response.headers.get("content-type")
     if (contentType === "text/html")
-      throw new Error("Request is not supported by this version of NanoCode Server (Server responded with text/html)")
+      throw new Error("Request is not supported by this version of BetterCode Server (Server responded with text/html)")
 
     return response
   })
   client.interceptors.error.use(wrapClientError)
-  return new NanocodeClient({ client })
+  return new BettercodeClient({ client })
 }

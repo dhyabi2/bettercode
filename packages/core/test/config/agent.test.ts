@@ -2,16 +2,16 @@ import { describe, expect } from "bun:test"
 import fs from "fs/promises"
 import path from "path"
 import { Effect, Schema } from "effect"
-import { AgentV2 } from "@nanocode-ai/core/agent"
-import { Config } from "@nanocode-ai/core/config"
-import { ConfigAgentPlugin } from "@nanocode-ai/core/config/plugin/agent"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { FSUtil } from "@nanocode-ai/core/fs-util"
-import { Global } from "@nanocode-ai/core/global"
-import { PermissionV2 } from "@nanocode-ai/core/permission"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { ConfigMigrateV1 } from "@nanocode-ai/core/v1/config/migrate"
+import { AgentV2 } from "@bettercode-ai/core/agent"
+import { Config } from "@bettercode-ai/core/config"
+import { ConfigAgentPlugin } from "@bettercode-ai/core/config/plugin/agent"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { FSUtil } from "@bettercode-ai/core/fs-util"
+import { Global } from "@bettercode-ai/core/global"
+import { PermissionV2 } from "@bettercode-ai/core/permission"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { ConfigMigrateV1 } from "@bettercode-ai/core/v1/config/migrate"
 import { tmpdir } from "../fixture/tmpdir"
 import { testEffect } from "../lib/effect"
 import { agentHost, host } from "../plugin/host"
@@ -23,7 +23,7 @@ describe("ConfigAgentPlugin.Plugin", () => {
   it.effect("matches POSIX paths against home-relative permissions", () =>
     Effect.gen(function* () {
       const permissions = yield* loadHomePermissions("/home/test")
-      expect(PermissionV2.evaluate("external_directory", "/home/test/p/nanocode/src/*", permissions).effect).toBe(
+      expect(PermissionV2.evaluate("external_directory", "/home/test/p/bettercode/src/*", permissions).effect).toBe(
         "allow",
       )
       expect(PermissionV2.evaluate("external_directory", "/home/test/cache/files/*", permissions).effect).toBe("deny")
@@ -37,7 +37,7 @@ describe("ConfigAgentPlugin.Plugin", () => {
     Effect.gen(function* () {
       const permissions = yield* loadHomePermissions("C:\\Users\\test")
       expect(
-        PermissionV2.evaluate("external_directory", "C:\\Users\\test\\p\\nanocode\\src\\*", permissions).effect,
+        PermissionV2.evaluate("external_directory", "C:\\Users\\test\\p\\bettercode\\src\\*", permissions).effect,
       ).toBe("allow")
       expect(PermissionV2.evaluate("external_directory", "C:\\Users\\test\\cache\\files\\*", permissions).effect).toBe(
         "deny",

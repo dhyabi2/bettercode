@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@nanocode-ai/stats-core",
+  "name": "@bettercode-ai/stats-core",
   "version": "1.18.21",
   "private": true,
   "type": "module",

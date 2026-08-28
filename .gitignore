@@ -20,14 +20,14 @@ ts-dist
 /result
 refs
 Session.vim
-/nanocode.json
+/bettercode.json
 a.out
 target
 .scripts
 .direnv/
 
 # Local dev files
-nanocode-dev
+bettercode-dev
 UPCOMING_CHANGELOG.md
 logs/
 *.bun-build

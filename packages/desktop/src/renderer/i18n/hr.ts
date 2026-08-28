@@ -9,17 +9,17 @@ export const dict = {
   "desktop.updater.checkFailed.title": "Provjera ažuriranja nije uspjela",
   "desktop.updater.checkFailed.message": "Provjera ažuriranja nije uspjela",
   "desktop.updater.none.title": "Nema dostupnih ažuriranja",
-  "desktop.updater.none.message": "Već koristite najnoviju verziju NanoCode",
+  "desktop.updater.none.message": "Već koristite najnoviju verziju BetterCode",
   "desktop.updater.downloadFailed.title": "Ažuriranje nije uspjelo",
   "desktop.updater.downloadFailed.message": "Preuzimanje ažuriranja nije uspjelo",
   "desktop.updater.downloaded.title": "Ažuriranje preuzeto",
   "desktop.updater.downloaded.prompt":
-    "Preuzeta je verzija {{version}} aplikacije NanoCode. Želite li je instalirati i ponovno pokrenuti aplikaciju?",
+    "Preuzeta je verzija {{version}} aplikacije BetterCode. Želite li je instalirati i ponovno pokrenuti aplikaciju?",
   "desktop.updater.installFailed.title": "Ažuriranje nije uspjelo",
   "desktop.updater.installFailed.message": "Instalacija ažuriranja nije uspjela",
   "desktop.cli.installed.title": "CLI je instaliran",
   "desktop.cli.installed.message":
-    "CLI instaliran na {{path}}\n\nPonovno pokrenite terminal da biste koristili naredbu 'nanocode'.",
+    "CLI instaliran na {{path}}\n\nPonovno pokrenite terminal da biste koristili naredbu 'bettercode'.",
   "desktop.cli.failed.title": "Instalacija nije uspjela",
   "desktop.cli.failed.message": "Instalacija CLI nije uspjela: {{error}}",
 

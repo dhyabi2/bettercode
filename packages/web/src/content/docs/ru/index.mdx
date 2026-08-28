@@ -1,15 +1,15 @@
 ---
 title: Введение
-description: Начните работу с nanocode.
+description: Начните работу с bettercode.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 import config from "../../../../config.mjs"
 export const console = config.console
 
-[**nanocode**](/) — это агент кодирования искусственного интеллекта с открытым исходным кодом. Он доступен в виде интерфейса на базе терминала, настольного приложения или расширения IDE.
+[**bettercode**](/) — это агент кодирования искусственного интеллекта с открытым исходным кодом. Он доступен в виде интерфейса на базе терминала, настольного приложения или расширения IDE.
 
-![nanocode TUI с темой nanocode](../../../assets/lander/screenshot.png)
+![bettercode TUI с темой bettercode](../../../assets/lander/screenshot.png)
 
 Давайте начнем.
 
@@ -17,7 +17,7 @@ export const console = config.console
 
 #### Системные требования
 
-Чтобы использовать nanocode в вашем терминале, вам понадобится:
+Чтобы использовать bettercode в вашем терминале, вам понадобится:
 
 1. Современный эмулятор терминала, например:
    - [WezTerm](https://wezterm.org), кроссплатформенный
@@ -31,10 +31,10 @@ export const console = config.console
 
 ## Установка
 
-Самый простой способ установить nanocode — через сценарий установки.
+Самый простой способ установить bettercode — через сценарий установки.
 
 ```bash
-curl -fsSL https://nanocode.ai/install | bash
+curl -fsSL https://bettercode.ai/install | bash
 ```
 
 Вы также можете установить его с помощью следующих команд:
@@ -45,28 +45,28 @@ curl -fsSL https://nanocode.ai/install | bash
 
       <TabItem label="npm">
       ```bash
-      npm install -g nanocode-ai
+      npm install -g bettercode-ai
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g nanocode-ai
+        bun install -g bettercode-ai
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g nanocode-ai
+        pnpm install -g bettercode-ai
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add nanocode-ai
+        yarn global add bettercode-ai
         ```
 
       </TabItem>
@@ -76,68 +76,68 @@ curl -fsSL https://nanocode.ai/install | bash
 - **Использование Homebrew в macOS и Linux**
 
   ```bash
-  brew install dhyabi2/tap/nanocode
+  brew install dhyabi2/tap/bettercode
   ```
 
-  > Мы рекомендуем использовать tap nanocode для получения самых последних версий. Официальная формула `brew install nanocode` поддерживается командой Homebrew и обновляется реже.
+  > Мы рекомендуем использовать tap bettercode для получения самых последних версий. Официальная формула `brew install bettercode` поддерживается командой Homebrew и обновляется реже.
 
 - **Использование Paru в Arch Linux**
 
   ```bash
-  sudo pacman -S nanocode           # Arch Linux (Stable)
-  paru -S nanocode-bin              # Arch Linux (Latest from AUR)
+  sudo pacman -S bettercode           # Arch Linux (Stable)
+  paru -S bettercode-bin              # Arch Linux (Latest from AUR)
   ```
 
 #### Windows
 
 :::tip[Рекомендуется: используйте WSL]
-Для наилучшей работы в Windows мы рекомендуем использовать [Подсистема Windows для Linux (WSL)](/docs/windows-wsl). Он обеспечивает лучшую производительность и полную совместимость с функциями nanocode.
+Для наилучшей работы в Windows мы рекомендуем использовать [Подсистема Windows для Linux (WSL)](/docs/windows-wsl). Он обеспечивает лучшую производительность и полную совместимость с функциями bettercode.
 :::
 
 - **Используя Chocolatey**
 
   ```bash
-  choco install nanocode
+  choco install bettercode
   ```
 
 - **Использование Scoop**
 
   ```bash
-  scoop install nanocode
+  scoop install bettercode
   ```
 
 - **Использование NPM**
 
   ```bash
-  npm install -g nanocode-ai
+  npm install -g bettercode-ai
   ```
 
 - **Использование Mise**
 
   ```bash
-  mise use -g github:dhyabi2/nanocode
+  mise use -g github:dhyabi2/bettercode
   ```
 
 - **Использование Docker**
 
   ```bash
-  docker run -it --rm ghcr.io/dhyabi2/nanocode
+  docker run -it --rm ghcr.io/dhyabi2/bettercode
   ```
 
-В настоящее время добавляется поддержка установки nanocode в Windows с помощью Bun.
+В настоящее время добавляется поддержка установки bettercode в Windows с помощью Bun.
 
-Вы также можете получить бинарный файл в разделе [Releases](https://github.com/dhyabi2/nanocode/releases).
+Вы также можете получить бинарный файл в разделе [Releases](https://github.com/dhyabi2/bettercode/releases).
 
 ---
 
 ## Настроить
 
-С nanocode вы можете использовать любого поставщика LLM, настроив его ключи API.
+С bettercode вы можете использовать любого поставщика LLM, настроив его ключи API.
 
-Если вы новичок в использовании поставщиков LLM, мы рекомендуем использовать [NanoCode Zen](/docs/zen).
-Это тщательно подобранный список моделей, протестированных и проверенных nanocode.
+Если вы новичок в использовании поставщиков LLM, мы рекомендуем использовать [BetterCode Zen](/docs/zen).
+Это тщательно подобранный список моделей, протестированных и проверенных bettercode.
 
-1. Запустите команду `/connect` в TUI, выберите nanocode и перейдите по адресу [nanocode.ai/auth](https://nanocode.ai/auth).
+1. Запустите команду `/connect` в TUI, выберите bettercode и перейдите по адресу [bettercode.ai/auth](https://bettercode.ai/auth).
 
    ```txt
    /connect
@@ -167,33 +167,33 @@ curl -fsSL https://nanocode.ai/install | bash
 cd /path/to/project
 ```
 
-И запустите nanocode.
+И запустите bettercode.
 
 ```bash
-nanocode
+bettercode
 ```
 
-Затем инициализируйте nanocode для проекта, выполнив следующую команду.
+Затем инициализируйте bettercode для проекта, выполнив следующую команду.
 
 ```bash frame="none"
 /init
 ```
 
-Это позволит nanocode проанализировать ваш проект и создать файл `AGENTS.md` в
+Это позволит bettercode проанализировать ваш проект и создать файл `AGENTS.md` в
 корень проекта.
 
 :::tip
 Вам следует зафиксировать файл `AGENTS.md` вашего проекта в Git.
 :::
 
-Это помогает nanocode понять структуру проекта и шаблоны кодирования.
+Это помогает bettercode понять структуру проекта и шаблоны кодирования.
 использовал.
 
 ---
 
 ## Использование
 
-Теперь вы готовы использовать nanocode для работы над своим проектом. Не стесняйтесь спрашивать о чем угодно!
+Теперь вы готовы использовать bettercode для работы над своим проектом. Не стесняйтесь спрашивать о чем угодно!
 
 Если вы новичок в использовании агента кодирования ИИ, вот несколько примеров, которые могут вам помочь.
 
@@ -201,7 +201,7 @@ nanocode
 
 ### Задавайте вопросы
 
-Вы можете попросить nanocode объяснить вам кодовую базу.
+Вы можете попросить bettercode объяснить вам кодовую базу.
 
 :::tip
 Используйте ключ `@` для нечеткого поиска файлов в проекте.
@@ -217,11 +217,11 @@ How is authentication handled in @packages/functions/src/api/index.ts
 
 ### Добавление функций
 
-Вы можете попросить nanocode добавить новые функции в ваш проект. Хотя мы сначала рекомендуем попросить его создать план.
+Вы можете попросить bettercode добавить новые функции в ваш проект. Хотя мы сначала рекомендуем попросить его создать план.
 
 1. **Составьте план**
 
-   nanocode имеет _режим планирования_, который отключает возможность вносить изменения и
+   bettercode имеет _режим планирования_, который отключает возможность вносить изменения и
    вместо этого предложите _как_ реализовать эту функцию.
 
    Переключитесь на него с помощью клавиши **Tab**. Вы увидите индикатор этого в правом нижнем углу.
@@ -238,11 +238,11 @@ How is authentication handled in @packages/functions/src/api/index.ts
    From this screen, the user can undelete a note or permanently delete it.
    ```
 
-   Нужно предоставить nanocode достаточно подробностей, чтобы ему понять, чего вы хотите. Это помогает
+   Нужно предоставить bettercode достаточно подробностей, чтобы ему понять, чего вы хотите. Это помогает
    поговорить с ним так, как будто вы разговариваете с младшим разработчиком в своей команде.
 
    :::tip
-   Дайте nanocode много контекста и примеров, чтобы помочь ему понять, что вы
+   Дайте bettercode много контекста и примеров, чтобы помочь ему понять, что вы
    хотеть.
    :::
 
@@ -259,7 +259,7 @@ How is authentication handled in @packages/functions/src/api/index.ts
    Перетащите изображения в терминал, чтобы добавить их в подсказку.
    :::
 
-   nanocode может сканировать любые изображения, которые вы ему предоставляете, и добавлять их в командную строку. Вы можете
+   bettercode может сканировать любые изображения, которые вы ему предоставляете, и добавлять их в командную строку. Вы можете
    сделать это, перетащив изображение в терминал.
 
 3. **Создайте функцию**
@@ -281,7 +281,7 @@ How is authentication handled in @packages/functions/src/api/index.ts
 
 ### Внесение изменений
 
-Для более простых изменений вы можете попросить nanocode создать их напрямую.
+Для более простых изменений вы можете попросить bettercode создать их напрямую.
 без необходимости предварительного рассмотрения плана.
 
 ```txt frame="none" "@packages/functions/src/settings.ts" "@packages/functions/src/notes.ts"
@@ -290,13 +290,13 @@ handled in the /notes route in @packages/functions/src/notes.ts and implement
 the same logic in @packages/functions/src/settings.ts
 ```
 
-Убедитесь, что предоставили достаточно деталей, чтобы nanocode внес корректные изменения.
+Убедитесь, что предоставили достаточно деталей, чтобы bettercode внес корректные изменения.
 
 ---
 
 ### Отмена изменений
 
-Допустим, вы просите nanocode внести некоторые изменения.
+Допустим, вы просите bettercode внести некоторые изменения.
 
 ```txt frame="none" "@packages/functions/src/api/index.ts"
 Can you refactor the function in @packages/functions/src/api/index.ts?
@@ -309,14 +309,14 @@ Can you refactor the function in @packages/functions/src/api/index.ts?
 /undo
 ```
 
-nanocode отменит внесенные вами изменения и покажет исходное сообщение.
+bettercode отменит внесенные вами изменения и покажет исходное сообщение.
 снова.
 
 ```txt frame="none" "@packages/functions/src/api/index.ts"
 Can you refactor the function in @packages/functions/src/api/index.ts?
 ```
 
-Отсюда вы можете настроить подсказку и попросить nanocode повторить попытку.
+Отсюда вы можете настроить подсказку и попросить bettercode повторить попытку.
 
 :::tip
 Вы можете запустить `/undo` несколько раз, чтобы отменить несколько изменений.
@@ -332,7 +332,7 @@ Can you refactor the function in @packages/functions/src/api/index.ts?
 
 ## Общий доступ
 
-Разговорами, которые вы ведете с nanocode, можно [поделиться с вашей
+Разговорами, которые вы ведете с bettercode, можно [поделиться с вашей
 командой](/docs/share).
 
 ```bash frame="none"
@@ -345,12 +345,12 @@ Can you refactor the function in @packages/functions/src/api/index.ts?
 По умолчанию общий доступ к беседам не предоставляется.
 :::
 
-Вот [пример диалога](https://nanocode.ai/s/4XP1fce5) с nanocode.
+Вот [пример диалога](https://bettercode.ai/s/4XP1fce5) с bettercode.
 
 ---
 
 ## Настроить
 
-И все! Теперь вы профессионал в использовании nanocode.
+И все! Теперь вы профессионал в использовании bettercode.
 
-Чтобы создать свою собственную, мы рекомендуем [выбрать тему](/docs/themes), [настроить привязки клавиш](/docs/keybinds), [настроить средства форматирования кода](/docs/formatters), [создать собственные команды](/docs/commands) или поиграться с файлом [nanocode config](/docs/config).
+Чтобы создать свою собственную, мы рекомендуем [выбрать тему](/docs/themes), [настроить привязки клавиш](/docs/keybinds), [настроить средства форматирования кода](/docs/formatters), [создать собственные команды](/docs/commands) или поиграться с файлом [bettercode config](/docs/config).

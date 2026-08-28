@@ -1,5 +1,5 @@
-import type { LspStatus } from "@nanocode-ai/sdk/v2/client"
-import type { McpServer } from "@nanocode-ai/client/promise"
+import type { LspStatus } from "@bettercode-ai/sdk/v2/client"
+import type { McpServer } from "@bettercode-ai/client/promise"
 
 export function hasServiceNeedingAttention(input: { mcp: Array<McpServer["status"]["status"]> }) {
   return input.mcp.some((status) => status === "needs_auth" || status === "needs_client_registration")

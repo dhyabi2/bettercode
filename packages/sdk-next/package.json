@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@nanocode-ai/sdk-next",
+  "name": "@bettercode-ai/sdk-next",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -12,9 +12,9 @@
     "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
-    "@nanocode-ai/client": "workspace:*",
-    "@nanocode-ai/core": "workspace:*",
-    "@nanocode-ai/server": "workspace:*",
+    "@bettercode-ai/client": "workspace:*",
+    "@bettercode-ai/core": "workspace:*",
+    "@bettercode-ai/server": "workspace:*",
     "effect": "catalog:"
   },
   "devDependencies": {

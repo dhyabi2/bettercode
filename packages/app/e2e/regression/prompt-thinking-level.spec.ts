@@ -1,14 +1,14 @@
 import { expect, test, type Page } from "@playwright/test"
-import { base64Encode } from "@nanocode-ai/core/util/encode"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectAppVisible } from "../utils/waits"
 
-const directory = "C:/NanoCode/PromptThinkingLevelRegression"
+const directory = "C:/BetterCode/PromptThinkingLevelRegression"
 const projectID = "proj_prompt_thinking_level_regression"
 const sessionID = "ses_prompt_thinking_level_regression"
 
 test("shows the V2 thinking level control while relevant", async ({ page }) => {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     directory,
     project: {
       id: projectID,
@@ -21,8 +21,8 @@ test("shows the V2 thinking level control while relevant", async ({ page }) => {
     provider: {
       all: [
         {
-          id: "nanocode",
-          name: "NanoCode",
+          id: "bettercode",
+          name: "BetterCode",
           models: {
             "thinking-model": {
               id: "thinking-model",
@@ -33,8 +33,8 @@ test("shows the V2 thinking level control while relevant", async ({ page }) => {
           },
         },
       ],
-      connected: ["nanocode"],
-      default: { providerID: "nanocode", modelID: "thinking-model" },
+      connected: ["bettercode"],
+      default: { providerID: "bettercode", modelID: "thinking-model" },
     },
     sessions: [
       {

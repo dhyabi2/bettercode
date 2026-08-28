@@ -5,5 +5,5 @@ Allow: /
 Disallow: /s/
 Disallow: /share/
 
-Sitemap: https://nanocode.ai/sitemap.xml
-Sitemap: https://nanocode.ai/data/sitemap.xml
+Sitemap: https://bettercode.ai/sitemap.xml
+Sitemap: https://bettercode.ai/data/sitemap.xml

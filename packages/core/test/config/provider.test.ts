@@ -1,13 +1,13 @@
 import { describe, expect } from "bun:test"
 import { Effect, Schema } from "effect"
-import { Catalog } from "@nanocode-ai/core/catalog"
-import { Config } from "@nanocode-ai/core/config"
-import { ConfigProviderPlugin } from "@nanocode-ai/core/config/plugin/provider"
-import { Integration } from "@nanocode-ai/core/integration"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { PluginHost } from "@nanocode-ai/core/plugin/host"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
+import { Catalog } from "@bettercode-ai/core/catalog"
+import { Config } from "@bettercode-ai/core/config"
+import { ConfigProviderPlugin } from "@bettercode-ai/core/config/plugin/provider"
+import { Integration } from "@bettercode-ai/core/integration"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { PluginHost } from "@bettercode-ai/core/plugin/host"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "../plugin/fixture"
 
@@ -58,7 +58,7 @@ describe("ConfigProviderPlugin.Plugin", () => {
   it.effect("keeps configured model variant bodies unchanged", () =>
     Effect.gen(function* () {
       const catalog = yield* Catalog.Service
-      const providerID = ProviderV2.ID.nanocode
+      const providerID = ProviderV2.ID.bettercode
       const modelID = ModelV2.ID.make("alpha-gpt-next")
       const config = Config.Service.of({
         entries: () =>
@@ -67,8 +67,8 @@ describe("ConfigProviderPlugin.Plugin", () => {
               type: "document",
               info: decode({
                 providers: {
-                  nanocode: {
-                    api: { type: "aisdk", package: "@ai-sdk/openai", url: "https://nanocode.test/v1" },
+                  bettercode: {
+                    api: { type: "aisdk", package: "@ai-sdk/openai", url: "https://bettercode.test/v1" },
                     models: {
                       "alpha-gpt-next": {
                         variants: [
@@ -109,7 +109,7 @@ describe("ConfigProviderPlugin.Plugin", () => {
   it.effect("keeps layered model variant bodies unchanged", () =>
     Effect.gen(function* () {
       const catalog = yield* Catalog.Service
-      const providerID = ProviderV2.ID.nanocode
+      const providerID = ProviderV2.ID.bettercode
       const modelID = ModelV2.ID.make("alpha-gpt-next")
       const config = Config.Service.of({
         entries: () =>
@@ -118,8 +118,8 @@ describe("ConfigProviderPlugin.Plugin", () => {
               type: "document",
               info: decode({
                 providers: {
-                  nanocode: {
-                    api: { type: "aisdk", package: "@ai-sdk/openai", url: "https://nanocode.test/v1" },
+                  bettercode: {
+                    api: { type: "aisdk", package: "@ai-sdk/openai", url: "https://bettercode.test/v1" },
                   },
                 },
               }),
@@ -128,7 +128,7 @@ describe("ConfigProviderPlugin.Plugin", () => {
               type: "document",
               info: decode({
                 providers: {
-                  nanocode: {
+                  bettercode: {
                     models: {
                       "alpha-gpt-next": {
                         variants: [{ id: "high", body: { reasoningEffort: "high" } }],

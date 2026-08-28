@@ -1,5 +1,5 @@
-import { EventV2 } from "@nanocode-ai/core/event"
-import { NanoCodeEvent } from "@nanocode-ai/protocol/groups/event"
+import { EventV2 } from "@bettercode-ai/core/event"
+import { BetterCodeEvent } from "@bettercode-ai/protocol/groups/event"
 import { Effect, Schema, Stream } from "effect"
 import { HttpServerResponse } from "effect/unstable/http"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
@@ -13,7 +13,7 @@ function eventData(data: unknown): Sse.Event {
     _tag: "Event",
     event: "message",
     id: undefined,
-    data: JSON.stringify(Schema.encodeUnknownSync(NanoCodeEvent)(data)),
+    data: JSON.stringify(Schema.encodeUnknownSync(BetterCodeEvent)(data)),
   }
 }
 

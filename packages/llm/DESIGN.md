@@ -1,18 +1,18 @@
 # AI Library Design
 
 > Discussion draft. This document describes the intended replacement for the
-> current private `@nanocode-ai/llm` API. Names and exact TypeScript signatures
+> current private `@bettercode-ai/llm` API. Names and exact TypeScript signatures
 > are illustrative until implementation, but the domain boundaries and defaults
 > are deliberate.
 
 ## Status
 
-- Proposed package: `@nanocode-ai/ai`
+- Proposed package: `@bettercode-ai/ai`
 - Initial stable domain: `LLM`
 - Release posture: pre-1.0, with a stable-core intent
 - Migration posture: clean break; do not preserve compatibility aliases
 - Primary audience: general-purpose TypeScript developers using Effect
-- Secondary audience: NanoCode and other durable agent runtimes
+- Secondary audience: BetterCode and other durable agent runtimes
 
 The package name leaves room for future domains such as embeddings, images, and
 speech. Those domains are not part of this design and should not be forced into
@@ -138,8 +138,8 @@ the entire protocol-authoring API is experimental.
 
 ```ts
 import { Effect } from "effect"
-import { LLM } from "@nanocode-ai/ai"
-import { OpenAI } from "@nanocode-ai/ai/providers/openai"
+import { LLM } from "@bettercode-ai/ai"
+import { OpenAI } from "@bettercode-ai/ai/providers/openai"
 
 // Environment-based credentials are a provider default. No LLMClient layer is
 // required: the Effect exposes standard runtime dependencies directly.
@@ -189,7 +189,7 @@ runtime provisioning, and makes `generate` mean a complete run.
 ### Environment defaults
 
 ```ts
-import { OpenAI } from "@nanocode-ai/ai/providers/openai"
+import { OpenAI } from "@bettercode-ai/ai/providers/openai"
 
 // Open strings receive autocomplete for IDs from the generated models.dev
 // snapshot but continue to accept newly released and fine-tuned model IDs.
@@ -320,7 +320,7 @@ There is no `LLM.updateRequest(...)` helper and no request Schema class.
 ### Conversation history
 
 ```ts
-import { Message } from "@nanocode-ai/ai"
+import { Message } from "@bettercode-ai/ai"
 
 const request = LLM.request({
   system: "You are concise.",
@@ -345,7 +345,7 @@ change at a specific point in history.
 
 ```ts
 import { Effect, Schema } from "effect"
-import { LLM, Tool } from "@nanocode-ai/ai"
+import { LLM, Tool } from "@bettercode-ai/ai"
 
 const tools = {
   getWeather: Tool.make({
@@ -448,7 +448,7 @@ only tool experience.
 
 ## One Provider Turn
 
-NanoCode and other durable runtimes need to own persistence, tool settlement,
+BetterCode and other durable runtimes need to own persistence, tool settlement,
 and continuation. They use the explicit turn API:
 
 ```ts
@@ -878,8 +878,8 @@ Promise wrappers live at a separate subpath so the root remains unambiguously
 Effect-first:
 
 ```ts
-import { LLM } from "@nanocode-ai/ai/promise"
-import { OpenAI } from "@nanocode-ai/ai/providers/openai"
+import { LLM } from "@bettercode-ai/ai/promise"
+import { OpenAI } from "@bettercode-ai/ai/providers/openai"
 
 const result = await LLM.generate({
   model: OpenAI.model("gpt-4.1-mini"),
@@ -917,7 +917,7 @@ error, stopping, or cancellation behavior.
 Schemas live in a dedicated namespace/subpath instead of flooding root exports:
 
 ```ts
-import { LLMSchema } from "@nanocode-ai/ai/schema"
+import { LLMSchema } from "@bettercode-ai/ai/schema"
 
 const request = yield * Schema.decodeUnknown(LLMSchema.Request)(input)
 ```
@@ -942,7 +942,7 @@ Provider authoring is public but experimental.
 ### Declarative provider definition
 
 ```ts
-import { Provider, Protocol } from "@nanocode-ai/ai/provider"
+import { Provider, Protocol } from "@bettercode-ai/ai/provider"
 
 export const ExampleAI = Provider.define({
   id: "example",
@@ -974,7 +974,7 @@ patching. It must not register globally.
 Built-ins export their immutable definition for advanced forking:
 
 ```ts
-import { OpenAI } from "@nanocode-ai/ai/providers/openai"
+import { OpenAI } from "@bettercode-ai/ai/providers/openai"
 
 const PatchedOpenAI = OpenAI.definition.with({
   protocols: {
@@ -1024,25 +1024,25 @@ experimental and do not receive the high-level API's compatibility promise.
 Illustrative export layout:
 
 ```text
-@nanocode-ai/ai
+@bettercode-ai/ai
   LLM
   Message
   Tool
   StopWhen
   stable domain types
 
-@nanocode-ai/ai/promise
+@bettercode-ai/ai/promise
   Promise/AsyncIterable LLM facade
 
-@nanocode-ai/ai/schema
+@bettercode-ai/ai/schema
   serializable domain schemas
 
-@nanocode-ai/ai/provider
+@bettercode-ai/ai/provider
   experimental Provider and Protocol authoring APIs
 
-@nanocode-ai/ai/providers/openai
-@nanocode-ai/ai/providers/anthropic
-@nanocode-ai/ai/providers/google
+@bettercode-ai/ai/providers/openai
+@bettercode-ai/ai/providers/anthropic
+@bettercode-ai/ai/providers/google
 ...
 ```
 
@@ -1074,7 +1074,7 @@ The redesign intentionally removes or changes these current concepts:
 
 | Current                                 | Proposed                                                    |
 | --------------------------------------- | ----------------------------------------------------------- |
-| `@nanocode-ai/llm`                      | `@nanocode-ai/ai`                                           |
+| `@bettercode-ai/llm`                      | `@bettercode-ai/ai`                                           |
 | Mandatory `LLM.request({ model, ... })` | Inline calls or model-free portable requests                |
 | `LLM.generate` means one turn           | `LLM.generate` means complete run                           |
 | `LLMClient.generate/stream`             | `LLM.generateTurn/streamTurn` for one turn                  |
@@ -1091,7 +1091,7 @@ The redesign intentionally removes or changes these current concepts:
 | `providerExecuted` dispatch check       | Distinct hosted-tool constructors                           |
 | One wrapped `LLMError`                  | Tagged domain error union                                   |
 
-NanoCode should migrate to `generateTurn` / `streamTurn`, preserving its durable
+BetterCode should migrate to `generateTurn` / `streamTurn`, preserving its durable
 prompt admission, persistence, permission, tool settlement, and continuation
 boundaries. It should not use the automatic run API for Session orchestration.
 

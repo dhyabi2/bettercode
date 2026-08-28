@@ -1,12 +1,12 @@
 {
-  "name": "nanocode",
-  "displayName": "nanocode",
-  "description": "nanocode for VS Code",
+  "name": "bettercode",
+  "displayName": "bettercode",
+  "description": "bettercode for VS Code",
   "version": "1.18.21",
   "publisher": "dhyabi2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dhyabi2/nanocode"
+    "url": "https://github.com/dhyabi2/bettercode"
   },
   "license": "MIT",
   "icon": "images/icon.png",
@@ -25,54 +25,54 @@
   "contributes": {
     "commands": [
       {
-        "command": "nanocode.openTerminal",
-        "title": "Open nanocode",
+        "command": "bettercode.openTerminal",
+        "title": "Open bettercode",
         "icon": {
           "light": "images/button-dark.svg",
           "dark": "images/button-light.svg"
         }
       },
       {
-        "command": "nanocode.openNewTerminal",
-        "title": "Open nanocode in new tab",
+        "command": "bettercode.openNewTerminal",
+        "title": "Open bettercode in new tab",
         "icon": {
           "light": "images/button-dark.svg",
           "dark": "images/button-light.svg"
         }
       },
       {
-        "command": "nanocode.addFilepathToTerminal",
+        "command": "bettercode.addFilepathToTerminal",
         "title": "Add Filepath to Terminal"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "nanocode.openNewTerminal",
+          "command": "bettercode.openNewTerminal",
           "group": "navigation"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "nanocode.openTerminal",
-        "title": "Run nanocode",
+        "command": "bettercode.openTerminal",
+        "title": "Run bettercode",
         "key": "cmd+escape",
         "mac": "cmd+escape",
         "win": "ctrl+escape",
         "linux": "ctrl+escape"
       },
       {
-        "command": "nanocode.openNewTerminal",
-        "title": "Run nanocode",
+        "command": "bettercode.openNewTerminal",
+        "title": "Run bettercode",
         "key": "cmd+shift+escape",
         "mac": "cmd+shift+escape",
         "win": "ctrl+shift+escape",
         "linux": "ctrl+shift+escape"
       },
       {
-        "command": "nanocode.addFilepathToTerminal",
-        "title": "nanocode: Insert At-Mentioned",
+        "command": "bettercode.addFilepathToTerminal",
+        "title": "bettercode: Insert At-Mentioned",
         "key": "cmd+alt+k",
         "mac": "cmd+alt+k",
         "win": "ctrl+alt+K",

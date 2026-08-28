@@ -3,13 +3,13 @@ title: Модели
 description: Настройка поставщика и модели LLM.
 ---
 
-nanocode использует [AI SDK](https://ai-sdk.dev/) и [Models.dev](https://models.dev) для поддержки **более 75 поставщиков LLM** и поддерживает запуск локальных моделей.
+bettercode использует [AI SDK](https://ai-sdk.dev/) и [Models.dev](https://models.dev) для поддержки **более 75 поставщиков LLM** и поддерживает запуск локальных моделей.
 
 ---
 
 ## Провайдеры
 
-Большинство популярных провайдеров предварительно загружены по умолчанию. Если вы добавили учетные данные для поставщика с помощью команды `/connect`, они будут доступны при запуске nanocode.
+Большинство популярных провайдеров предварительно загружены по умолчанию. Если вы добавили учетные данные для поставщика с помощью команды `/connect`, они будут доступны при запуске bettercode.
 
 Узнайте больше о [providers](/docs/providers).
 
@@ -35,7 +35,7 @@ nanocode использует [AI SDK](https://ai-sdk.dev/) и [Models.dev](http
 
 Однако лишь немногие из них хороши как в генерации кода, так и в вызове инструментов.
 
-Вот несколько моделей, которые хорошо работают с nanocode (в произвольном порядке). (Это не исчерпывающий список и не обязательно актуальный):
+Вот несколько моделей, которые хорошо работают с bettercode (в произвольном порядке). (Это не исчерпывающий список и не обязательно актуальный):
 
 - GPT 5.2
 - Кодекс GPT 5.1
@@ -49,16 +49,16 @@ nanocode использует [AI SDK](https://ai-sdk.dev/) и [Models.dev](http
 ## Установить значение по умолчанию
 
 Чтобы установить одну из них в качестве модели по умолчанию, вы можете установить ключ `model` в вашем
-Конфигурация nanocode.
+Конфигурация bettercode.
 
-```json title="nanocode.json" {3}
+```json title="bettercode.json" {3}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "model": "lmstudio/google/gemma-3n-e4b"
 }
 ```
 
-Здесь полный идентификатор `provider_id/model_id`. Например, если вы используете [NanoCode Zen](/docs/zen), вы должны использовать `nanocode/gpt-5.1-codex` для кодекса GPT 5.1.
+Здесь полный идентификатор `provider_id/model_id`. Например, если вы используете [BetterCode Zen](/docs/zen), вы должны использовать `bettercode/gpt-5.1-codex` для кодекса GPT 5.1.
 
 Если вы настроили [пользовательский поставщик](/docs/providers#custom), `provider_id` — это ключ из части `provider` вашей конфигурации, а `model_id` — это ключ из `provider.models`.
 
@@ -68,9 +68,9 @@ nanocode использует [AI SDK](https://ai-sdk.dev/) и [Models.dev](http
 
 Вы можете глобально настроить параметры модели через файл config.
 
-```jsonc title="nanocode.jsonc" {7-12,19-24}
+```jsonc title="bettercode.jsonc" {7-12,19-24}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "openai": {
       "models": {
@@ -107,11 +107,11 @@ nanocode использует [AI SDK](https://ai-sdk.dev/) и [Models.dev](http
 
 Вы также можете определить собственные варианты, расширяющие встроенные. Варианты позволяют настраивать разные параметры для одной и той же модели без создания повторяющихся записей:
 
-```jsonc title="nanocode.jsonc" {6-21}
+```jsonc title="bettercode.jsonc" {6-21}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
-    "nanocode": {
+    "bettercode": {
       "models": {
         "gpt-5": {
           "variants": {
@@ -137,11 +137,11 @@ nanocode использует [AI SDK](https://ai-sdk.dev/) и [Models.dev](http
 
 ## Варианты
 
-Многие модели поддерживают несколько вариантов с разными конфигурациями. nanocode поставляется со встроенными вариантами по умолчанию для популярных провайдеров.
+Многие модели поддерживают несколько вариантов с разными конфигурациями. bettercode поставляется со встроенными вариантами по умолчанию для популярных провайдеров.
 
 ### Встроенные варианты
 
-nanocode поставляется с вариантами по умолчанию для многих провайдеров:
+bettercode поставляется с вариантами по умолчанию для многих провайдеров:
 
 **Anthropic**:
 
@@ -172,9 +172,9 @@ nanocode поставляется с вариантами по умолчани�
 
 Вы можете переопределить существующие варианты или добавить свои собственные:
 
-```jsonc title="nanocode.jsonc" {7-18}
+```jsonc title="bettercode.jsonc" {7-18}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "provider": {
     "openai": {
       "models": {
@@ -203,15 +203,15 @@ nanocode поставляется с вариантами по умолчани�
 
 ## Загрузка моделей
 
-Когда nanocode запускается, он проверяет модели в следующем порядке приоритета:
+Когда bettercode запускается, он проверяет модели в следующем порядке приоритета:
 
 1. CLI-флаг `--model` или `-m`. Формат тот же, что и в файле конфигурации: `provider_id/model_id`.
 
-2. Список моделей в конфигурации nanocode.
+2. Список моделей в конфигурации bettercode.
 
-   ```json title="nanocode.json"
+   ```json title="bettercode.json"
    {
-     "$schema": "https://nanocode.ai/config.json",
+     "$schema": "https://bettercode.ai/config.json",
      "model": "anthropic/claude-sonnet-4-20250514"
    }
    ```

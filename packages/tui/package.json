@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@nanocode-ai/tui",
+  "name": "@bettercode-ai/tui",
   "version": "1.18.21",
   "private": true,
   "type": "module",
@@ -48,10 +48,10 @@
     "./component/register-spinner": "./src/component/register-spinner.ts"
   },
   "dependencies": {
-    "@nanocode-ai/core": "workspace:*",
-    "@nanocode-ai/plugin": "workspace:*",
-    "@nanocode-ai/sdk": "workspace:*",
-    "@nanocode-ai/ui": "workspace:*",
+    "@bettercode-ai/core": "workspace:*",
+    "@bettercode-ai/plugin": "workspace:*",
+    "@bettercode-ai/sdk": "workspace:*",
+    "@bettercode-ai/ui": "workspace:*",
     "@opentui/core": "catalog:",
     "@opentui/keymap": "catalog:",
     "@opentui/solid": "catalog:",

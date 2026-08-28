@@ -1,5 +1,5 @@
 import { drizzle } from "drizzle-orm/planetscale-serverless"
-import { Resource } from "@nanocode-ai/console-resource"
+import { Resource } from "@bettercode-ai/console-resource"
 export * from "drizzle-orm"
 import { Client } from "@planetscale/database"
 

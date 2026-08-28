@@ -1,14 +1,14 @@
 import { expect, test } from "@playwright/test"
-import { base64Encode } from "@nanocode-ai/core/util/encode"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectAppVisible } from "../utils/waits"
 
-const directory = "C:/NanoCode/PromptInputV2Editing"
+const directory = "C:/BetterCode/PromptInputV2Editing"
 const projectID = "proj_prompt_input_v2_editing"
 const sessionID = "ses_prompt_input_v2_editing"
 
 test("preserves the draft when a populated command menu triggers a built-in", async ({ page }) => {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     directory,
     project: {
       id: projectID,

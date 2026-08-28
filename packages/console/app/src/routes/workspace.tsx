@@ -4,8 +4,8 @@ import { IconWorkspaceLogo } from "../component/icon"
 import { WorkspacePicker } from "./workspace-picker"
 import { UserMenu } from "./user-menu"
 import { withActor } from "~/context/auth.withActor"
-import { User } from "@nanocode-ai/console-core/user.js"
-import { Actor } from "@nanocode-ai/console-core/actor.js"
+import { User } from "@bettercode-ai/console-core/user.js"
+import { Actor } from "@bettercode-ai/console-core/actor.js"
 import { useLanguage } from "~/context/language"
 
 const getUserEmail = query(async (workspaceID: string) => {

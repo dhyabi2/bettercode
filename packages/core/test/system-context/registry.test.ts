@@ -1,8 +1,8 @@
 import { describe, expect } from "bun:test"
 import { Cause, Effect, Exit, Schema, Scope } from "effect"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { SystemContext } from "@nanocode-ai/core/system-context"
-import { SystemContextRegistry } from "@nanocode-ai/core/system-context/registry"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { SystemContext } from "@bettercode-ai/core/system-context"
+import { SystemContextRegistry } from "@bettercode-ai/core/system-context/registry"
 import { testEffect } from "../lib/effect"
 
 const entry = (key: string, text: string, sourceKey = key) => ({

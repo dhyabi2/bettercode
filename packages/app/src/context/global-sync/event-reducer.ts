@@ -1,4 +1,4 @@
-import { Binary } from "@nanocode-ai/core/util/binary"
+import { Binary } from "@bettercode-ai/core/util/binary"
 import { produce, reconcile, type SetStoreFunction, type Store } from "solid-js/store"
 import type {
   Message,
@@ -9,8 +9,8 @@ import type {
   Session,
   SessionStatus,
   Todo,
-} from "@nanocode-ai/sdk/v2/client"
-import type { FileDiffInfo } from "@nanocode-ai/client/promise"
+} from "@bettercode-ai/sdk/v2/client"
+import type { FileDiffInfo } from "@bettercode-ai/client/promise"
 import type { State, VcsCache } from "./types"
 import { trimSessions } from "./session-trim"
 import { dropSessionCaches } from "./session-cache"

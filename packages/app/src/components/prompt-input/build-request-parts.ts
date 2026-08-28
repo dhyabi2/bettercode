@@ -1,5 +1,5 @@
-import { getFilename } from "@nanocode-ai/core/util/path"
-import { type AgentPartInput, type FilePartInput, type Part, type TextPartInput } from "@nanocode-ai/sdk/v2/client"
+import { getFilename } from "@bettercode-ai/core/util/path"
+import { type AgentPartInput, type FilePartInput, type Part, type TextPartInput } from "@bettercode-ai/sdk/v2/client"
 import type { FileSelection } from "@/context/file"
 import { encodeFilePath } from "@/context/file/path"
 import type { AgentPart, FileAttachmentPart, ImageAttachmentPart, Prompt } from "@/context/prompt"

@@ -1,5 +1,5 @@
 {
-  "name": "@nanocode-ai/console-mail",
+  "name": "@bettercode-ai/console-mail",
   "version": "1.18.21",
   "dependencies": {
     "@jsx-email/all": "2.2.3",

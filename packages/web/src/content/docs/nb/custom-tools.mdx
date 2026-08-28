@@ -1,9 +1,9 @@
 ---
 title: Egendefinerte verktøy
-description: Lag verktøy som LLM kan kalle inn NanoCode.
+description: Lag verktøy som LLM kan kalle inn BetterCode.
 ---
 
-Egendefinerte verktøy er funksjoner du oppretter som LLM kan kalle under samtaler. De fungerer sammen med NanoCode sine [innebygde verktøy](/docs/tools) som `read`, `write` og `bash`.
+Egendefinerte verktøy er funksjoner du oppretter som LLM kan kalle under samtaler. De fungerer sammen med BetterCode sine [innebygde verktøy](/docs/tools) som `read`, `write` og `bash`.
 
 ---
 
@@ -17,8 +17,8 @@ Verktøy er definert som **TypeScript**- eller **JavaScript**-filer. Verktøydef
 
 De kan defineres:
 
-- Lokalt ved å plassere dem i `.nanocode/tools/`-katalogen til prosjektet ditt.
-- Eller globalt, ved å plassere dem i `~/.config/nanocode/tools/`.
+- Lokalt ved å plassere dem i `.bettercode/tools/`-katalogen til prosjektet ditt.
+- Eller globalt, ved å plassere dem i `~/.config/bettercode/tools/`.
 
 ---
 
@@ -26,8 +26,8 @@ De kan defineres:
 
 Den enkleste måten å lage verktøy på er å bruke `tool()`-hjelperen som gir typesikkerhet og validering.
 
-```ts title=".nanocode/tools/database.ts" {1}
-import { tool } from "@nanocode-ai/plugin"
+```ts title=".bettercode/tools/database.ts" {1}
+import { tool } from "@bettercode-ai/plugin"
 
 export default tool({
   description: "Query the project database",
@@ -49,8 +49,8 @@ export default tool({
 
 Du kan også eksportere flere verktøy fra en enkelt fil. Hver eksport blir **et separat verktøy** med navnet **`<filename>_<exportname>`**:
 
-```ts title=".nanocode/tools/math.ts"
-import { tool } from "@nanocode-ai/plugin"
+```ts title=".bettercode/tools/math.ts"
+import { tool } from "@bettercode-ai/plugin"
 
 export const add = tool({
   description: "Add two numbers",
@@ -85,8 +85,8 @@ Egendefinerte verktøy er nøklet etter verktøynavn. Hvis et egendefinert verkt
 
 For eksempel erstatter denne filen det innebygde `bash`-verktøyet:
 
-```ts title=".nanocode/tools/bash.ts"
-import { tool } from "@nanocode-ai/plugin"
+```ts title=".bettercode/tools/bash.ts"
+import { tool } from "@bettercode-ai/plugin"
 
 export default tool({
   description: "Restricted bash wrapper",
@@ -138,8 +138,8 @@ export default {
 
 Verktøy mottar kontekst om gjeldende økt:
 
-```ts title=".nanocode/tools/project.ts" {8}
-import { tool } from "@nanocode-ai/plugin"
+```ts title=".bettercode/tools/project.ts" {8}
+import { tool } from "@bettercode-ai/plugin"
 
 export default tool({
   description: "Get project information",
@@ -165,7 +165,7 @@ Du kan skrive verktøyene dine på hvilket som helst språk du vil. Her er et ek
 
 Først lager du verktøyet som et Python-skript:
 
-```python title=".nanocode/tools/add.py"
+```python title=".bettercode/tools/add.py"
 import sys
 
 a = int(sys.argv[1])
@@ -175,8 +175,8 @@ print(a + b)
 
 Lag deretter verktøydefinisjonen som påkaller den:
 
-```ts title=".nanocode/tools/python-add.ts" {10}
-import { tool } from "@nanocode-ai/plugin"
+```ts title=".bettercode/tools/python-add.ts" {10}
+import { tool } from "@bettercode-ai/plugin"
 import path from "path"
 
 export default tool({
@@ -186,7 +186,7 @@ export default tool({
     b: tool.schema.number().describe("Second number"),
   },
   async execute(args, context) {
-    const script = path.join(context.worktree, ".nanocode/tools/add.py")
+    const script = path.join(context.worktree, ".bettercode/tools/add.py")
     const result = await Bun.$`python3 ${script} ${args.a} ${args.b}`.text()
     return result.trim()
   },

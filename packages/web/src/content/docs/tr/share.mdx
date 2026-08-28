@@ -1,9 +1,9 @@
 ---
 title: Paylasim
-description: nanocode konusmalarini genel baglantilarla paylasin.
+description: bettercode konusmalarini genel baglantilarla paylasin.
 ---
 
-nanocode'un paylasim ozelligi, konusmalariniz icin genel baglantilar olusturmanizi saglar. Boylece ekip arkadaslarinizla birlikte calisabilir veya diger kisilerden yardim alabilirsiniz.
+bettercode'un paylasim ozelligi, konusmalariniz icin genel baglantilar olusturmanizi saglar. Boylece ekip arkadaslarinizla birlikte calisabilir veya diger kisilerden yardim alabilirsiniz.
 
 :::note
 Paylasilan konusmalar, baglantiya sahip herkes tarafindan gorulebilir.
@@ -13,7 +13,7 @@ Paylasilan konusmalar, baglantiya sahip herkes tarafindan gorulebilir.
 
 ## Nasil calisir
 
-Bir konusmayi paylastiginizda nanocode:
+Bir konusmayi paylastiginizda bettercode:
 
 1. Oturumunuz icin benzersiz bir genel URL olusturur
 2. Konusma gecmisinizi sunucularimiza senkronize eder
@@ -23,13 +23,13 @@ Bir konusmayi paylastiginizda nanocode:
 
 ## Paylasim
 
-nanocode, konusmalarin nasil paylasilacagini kontrol eden uc farkli paylasim modu sunar:
+bettercode, konusmalarin nasil paylasilacagini kontrol eden uc farkli paylasim modu sunar:
 
 ---
 
 ### Manuel (varsayilan)
 
-Varsayilan olarak nanocode manuel paylasim modunu kullanir. Oturumlar otomatik paylasilmaz, ancak `/share` komutuyla manuel olarak paylasabilirsiniz:
+Varsayilan olarak bettercode manuel paylasim modunu kullanir. Oturumlar otomatik paylasilmaz, ancak `/share` komutuyla manuel olarak paylasabilirsiniz:
 
 ```
 /share
@@ -39,9 +39,9 @@ Bu komut benzersiz bir URL uretir ve panoya kopyalar.
 
 Manuel modu acikca ayarlamak icin [config dosyaniza](/docs/config) sunu ekleyin:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "share": "manual"
 }
 ```
@@ -52,9 +52,9 @@ Manuel modu acikca ayarlamak icin [config dosyaniza](/docs/config) sunu ekleyin:
 
 Tum yeni konusmalar icin otomatik paylasimi acmak isterseniz, [config dosyanizda](/docs/config) `share` degerini `"auto"` yapin:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "share": "auto"
 }
 ```
@@ -67,14 +67,14 @@ Otomatik paylasim acikken her yeni konusma otomatik olarak paylasilir ve bir bag
 
 Paylasimi tamamen kapatmak icin [config dosyanizda](/docs/config) `share` degerini `"disabled"` yapin:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "share": "disabled"
 }
 ```
 
-Bunu belirli bir projede tum ekip icin zorunlu kilmak icin proje icindeki `nanocode.json` dosyasina ekleyip Git'e commit edin.
+Bunu belirli bir projede tum ekip icin zorunlu kilmak icin proje icindeki `bettercode.json` dosyasina ekleyip Git'e commit edin.
 
 ---
 
@@ -124,4 +124,4 @@ Kurumsal kurulumlarda paylasim ozelligi su sekillerde yapilandirilabilir:
 - Sadece SSO ile dogrulanan kullanicilarla **sinirlandirilabilir**
 - Kendi altyapinizda **self-hosted** olarak calistirilabilir
 
-Kurulusunuzda nanocode kullanimi icin [daha fazla bilgi alin](/docs/enterprise).
+Kurulusunuzda bettercode kullanimi icin [daha fazla bilgi alin](/docs/enterprise).

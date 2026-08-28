@@ -35,13 +35,13 @@ function resourceAttributes() {
 
 export function resource(): { serviceName: string; serviceVersion: string; attributes: Record<string, string> } {
   return {
-    serviceName: "nanocode",
+    serviceName: "bettercode",
     serviceVersion: InstallationVersion,
     attributes: {
       ...resourceAttributes(),
       "deployment.environment.name": InstallationChannel,
-      "nanocode.client": Flag.NANOCODE_CLIENT,
-      "nanocode.run": runID,
+      "bettercode.client": Flag.BETTERCODE_CLIENT,
+      "bettercode.run": runID,
       "service.instance.id": runID,
     },
   }

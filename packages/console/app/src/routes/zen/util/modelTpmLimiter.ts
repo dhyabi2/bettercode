@@ -1,5 +1,5 @@
-import { and, Database, eq, inArray, sql } from "@nanocode-ai/console-core/drizzle/index.js"
-import { ModelTpmRateLimitTable } from "@nanocode-ai/console-core/schema/ip.sql.js"
+import { and, Database, eq, inArray, sql } from "@bettercode-ai/console-core/drizzle/index.js"
+import { ModelTpmRateLimitTable } from "@bettercode-ai/console-core/schema/ip.sql.js"
 import { UsageInfo } from "./provider/provider"
 
 export function createModelTpmLimiter(providers: { id: string; model: string; tpmLimit?: number }[]) {

@@ -1,5 +1,5 @@
 import fs from "fs/promises"
-import { Flock } from "@nanocode-ai/core/util/flock"
+import { Flock } from "@bettercode-ai/core/util/flock"
 
 type Msg = {
   key: string

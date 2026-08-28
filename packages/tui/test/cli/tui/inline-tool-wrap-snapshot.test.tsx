@@ -30,25 +30,25 @@ const tools: readonly ToolFixture[] = [
   {
     icon: "✱",
     label:
-      'Grep "NANOCODE.*DB|database|sqlite|drizzle|dev.*db|data.*dir|xdg|APPDATA" in packages/nanocode/src (151 matches)',
+      'Grep "BETTERCODE.*DB|database|sqlite|drizzle|dev.*db|data.*dir|xdg|APPDATA" in packages/bettercode/src (151 matches)',
   },
   {
     icon: "✱",
-    label: 'Glob "**/*db*" in packages/nanocode (6 matches)',
+    label: 'Glob "**/*db*" in packages/bettercode (6 matches)',
   },
   {
     icon: "→",
-    label: "Read packages/nanocode/src/storage/db.ts [offset=1, limit=130]",
+    label: "Read packages/bettercode/src/storage/db.ts [offset=1, limit=130]",
   },
   {
     icon: "→",
-    label: "Read packages/nanocode/src/index.ts [offset=1, limit=100]",
+    label: "Read packages/bettercode/src/index.ts [offset=1, limit=100]",
     error: "No LSP server available for this file type.",
   },
   {
     icon: "✱",
     label:
-      'Grep "export const NANOCODE_DB|NANOCODE_DB|NANOCODE_DEV|Global\\.Path\\.data|data =" in packages/nanocode/src (115 matches)',
+      'Grep "export const BETTERCODE_DB|BETTERCODE_DB|BETTERCODE_DEV|Global\\.Path\\.data|data =" in packages/bettercode/src (115 matches)',
   },
 ] as const
 

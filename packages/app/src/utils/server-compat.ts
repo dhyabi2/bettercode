@@ -1,6 +1,6 @@
 import type { ServerApi } from "./server"
 import type { ServerProtocol } from "./server-protocol"
-import type { AgentPartInput, FilePartInput, NanocodeClient, Session, TextPartInput } from "@nanocode-ai/sdk/v2/client"
+import type { AgentPartInput, FilePartInput, BettercodeClient, Session, TextPartInput } from "@bettercode-ai/sdk/v2/client"
 import type {
   Project,
   ProjectCurrent,
@@ -14,9 +14,9 @@ import type {
   SessionPromptOutput,
   SessionShellInput,
   SessionShellOutput,
-} from "@nanocode-ai/client/promise"
+} from "@bettercode-ai/client/promise"
 
-type LegacyClient = NanocodeClient
+type LegacyClient = BettercodeClient
 type LegacyFor = (directory?: string) => LegacyClient
 type CompatibleSessionApi = Omit<
   SessionApi,

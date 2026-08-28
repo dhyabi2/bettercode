@@ -1,8 +1,8 @@
-import { UserMessage } from "@nanocode-ai/sdk/v2"
+import { UserMessage } from "@bettercode-ai/sdk/v2"
 import { HoverCard } from "@kobalte/core/hover-card"
 import { ComponentProps, For, Match, Show, createSignal, splitProps, Switch } from "solid-js"
-import { DiffChanges } from "@nanocode-ai/ui/diff-changes"
-import { useI18n } from "@nanocode-ai/ui/context/i18n"
+import { DiffChanges } from "@bettercode-ai/ui/diff-changes"
+import { useI18n } from "@bettercode-ai/ui/context/i18n"
 
 export function MessageNav(
   props: ComponentProps<"ul"> & {

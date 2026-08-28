@@ -9,17 +9,17 @@ export const dict = {
   "desktop.updater.checkFailed.title": "Санҷиши навсозӣ иҷро нашуд",
   "desktop.updater.checkFailed.message": "Санҷиши навсозиҳо муяссар нашуд",
   "desktop.updater.none.title": "Навсозии дастрас нест",
-  "desktop.updater.none.message": "Шумо аллакай версияи охирини NanoCode-ро истифода мебаред",
+  "desktop.updater.none.message": "Шумо аллакай версияи охирини BetterCode-ро истифода мебаред",
   "desktop.updater.downloadFailed.title": "Навсозӣ ноком шуд",
   "desktop.updater.downloadFailed.message": "Боргирии навсозӣ муваффақ нашуд",
   "desktop.updater.downloaded.title": "Навсозии зеркашӣ",
   "desktop.updater.downloaded.prompt":
-    "Версияи {{version}} аз NanoCode зеркашӣ карда шуд, оё шумо мехоҳед онро насб кунед ва аз нав оғоз кунед?",
+    "Версияи {{version}} аз BetterCode зеркашӣ карда шуд, оё шумо мехоҳед онро насб кунед ва аз нав оғоз кунед?",
   "desktop.updater.installFailed.title": "Навсозӣ ноком шуд",
   "desktop.updater.installFailed.message": "Навсозӣ насб карда нашуд",
   "desktop.cli.installed.title": "CLI насб карда шуд",
   "desktop.cli.installed.message":
-    "CLI ба {{path}} насб карда шудааст\n\nБарои истифодаи фармони 'nanocode' терминали худро аз нав оғоз кунед.",
+    "CLI ба {{path}} насб карда шудааст\n\nБарои истифодаи фармони 'bettercode' терминали худро аз нав оғоз кунед.",
   "desktop.cli.failed.title": "Насб карда нашуд",
   "desktop.cli.failed.message": "Насб карда нашуд CLI: {{error}}",
 

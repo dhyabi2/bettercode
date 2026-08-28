@@ -38,7 +38,7 @@ export declare namespace R2Sql {
   }
 }
 
-export class R2Sql extends Context.Service<R2Sql, R2Sql.Service>()("@nanocode/stats/R2Sql") {
+export class R2Sql extends Context.Service<R2Sql, R2Sql.Service>()("@bettercode/stats/R2Sql") {
   static readonly layer: Layer.Layer<R2Sql> = Layer.succeed(
     R2Sql,
     R2Sql.of({

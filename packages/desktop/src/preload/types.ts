@@ -1,20 +1,20 @@
-import type { DesktopMenuAction } from "@nanocode-ai/app/desktop-menu"
-import type { WslServersPlatform } from "@nanocode-ai/app/wsl/types"
-import type { UpdaterState } from "@nanocode-ai/app/updater"
-import type { DesktopNativeBundle } from "@nanocode-ai/app/i18n/desktop-native"
+import type { DesktopMenuAction } from "@bettercode-ai/app/desktop-menu"
+import type { WslServersPlatform } from "@bettercode-ai/app/wsl/types"
+import type { UpdaterState } from "@bettercode-ai/app/updater"
+import type { DesktopNativeBundle } from "@bettercode-ai/app/i18n/desktop-native"
 export type {
   WslDistroProbe,
   WslInstalledDistro,
   WslJob,
   WslOnlineDistro,
-  WslNanocodeCheck,
+  WslBettercodeCheck,
   WslRuntimeCheck,
   WslServerConfig,
   WslServerItem,
   WslServerRuntime,
   WslServersEvent,
   WslServersState,
-} from "@nanocode-ai/app/wsl/types"
+} from "@bettercode-ai/app/wsl/types"
 
 export type ServerReadyData = {
   url: string

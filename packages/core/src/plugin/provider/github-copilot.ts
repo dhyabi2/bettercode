@@ -1,7 +1,7 @@
 import { Effect } from "effect"
 import { ModelV2 } from "../../model"
 import { ProviderV2 } from "../../provider"
-import type { PluginContext } from "@nanocode-ai/plugin/v2/effect"
+import type { PluginContext } from "@bettercode-ai/plugin/v2/effect"
 
 export const GithubCopilotPlugin = {
   id: "github-copilot",

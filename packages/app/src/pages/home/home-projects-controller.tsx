@@ -10,7 +10,7 @@ import { ServerConnection } from "@/context/server"
 import { closeHomeProject, errorMessage, homeProjectDirectories } from "@/pages/layout/helpers"
 import { Persist, persisted } from "@/utils/persist"
 import { showToast } from "@/utils/toast"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
 import { createResource } from "solid-js"
 import { createStore } from "solid-js/store"
 import type { HomeController } from "./home-controller"
@@ -120,7 +120,7 @@ export function createHomeProjectsController(home: HomeController) {
     },
     utility: {
       settings: openSettings,
-      help: () => platform.openExternal("https://nanocode.ai/desktop-feedback"),
+      help: () => platform.openExternal("https://bettercode.ai/desktop-feedback"),
     },
   }
 }

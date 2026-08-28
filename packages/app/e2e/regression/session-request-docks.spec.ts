@@ -1,10 +1,10 @@
-import { base64Encode } from "@nanocode-ai/core/util/encode"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
 import { expect, test, type Page } from "@playwright/test"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { installSseTransport } from "../utils/sse-transport"
 import { expectSessionTitle } from "../utils/waits"
 
-const directory = "C:/NanoCode/RequestDocks"
+const directory = "C:/BetterCode/RequestDocks"
 const projectID = "proj_request_docks"
 const sessionID = "ses_request_docks"
 const title = "Request dock regression"
@@ -172,7 +172,7 @@ async function mockServer(
     questions?: unknown[] | (() => unknown[])
   },
 ) {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     protocol: "v2",
     directory,
     project: {
@@ -186,8 +186,8 @@ async function mockServer(
     provider: {
       all: [
         {
-          id: "nanocode",
-          name: "NanoCode",
+          id: "bettercode",
+          name: "BetterCode",
           models: {
             "claude-opus-4-6": {
               id: "claude-opus-4-6",
@@ -197,8 +197,8 @@ async function mockServer(
           },
         },
       ],
-      connected: ["nanocode"],
-      default: { providerID: "nanocode", modelID: "claude-opus-4-6" },
+      connected: ["bettercode"],
+      default: { providerID: "bettercode", modelID: "claude-opus-4-6" },
     },
     sessions: [
       {

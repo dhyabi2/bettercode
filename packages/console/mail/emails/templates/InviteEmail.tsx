@@ -15,7 +15,7 @@ import {
   buttonText,
 } from "../styles"
 
-const CONSOLE_URL = "https://nanocode.ai/"
+const CONSOLE_URL = "https://bettercode.ai/"
 
 interface InviteEmailProps {
   inviter: string
@@ -34,7 +34,7 @@ export const InviteEmail = ({
   return (
     <Html lang="en">
       <Head>
-        <Title>{`NanoCode — ${messagePlain}`}</Title>
+        <Title>{`BetterCode — ${messagePlain}`}</Title>
       </Head>
       <Fonts assetsUrl={assetsUrl} />
       <Preview>{messagePlain}</Preview>
@@ -44,16 +44,16 @@ export const InviteEmail = ({
             <Row>
               <Column>
                 <A href={`${CONSOLE_URL}zen`}>
-                  <Img height="32" alt="NanoCode Logo" src={`${assetsUrl}/logo.png`} />
+                  <Img height="32" alt="BetterCode Logo" src={`${assetsUrl}/logo.png`} />
                 </A>
               </Column>
             </Row>
 
             <Section style={{ padding: `${unit * 2}px 0 0 0` }}>
-              <Text style={headingText}>Join your team's NanoCode workspace</Text>
+              <Text style={headingText}>Join your team's BetterCode workspace</Text>
               <Text style={contentText}>
                 You have been invited by <Span style={contentHighlightText}>{inviter}</Span> to join the{" "}
-                <Span style={contentHighlightText}>{workspaceName}</Span> workspace on NanoCode.
+                <Span style={contentHighlightText}>{workspaceName}</Span> workspace on BetterCode.
               </Text>
             </Section>
 

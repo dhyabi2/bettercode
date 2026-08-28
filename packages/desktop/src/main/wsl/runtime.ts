@@ -264,11 +264,11 @@ export async function installWslDistro(name: string, opts?: RunWslOptions) {
   )
 }
 
-export async function installWslNanocode(version: string, distro: string, opts?: RunWslOptions) {
+export async function installWslBettercode(version: string, distro: string, opts?: RunWslOptions) {
   return runInteractiveCommand(
     resolveSystem32Command("wsl.exe"),
     wslArgs(
-      ["bash", "-lc", `curl -fsSL https://nanocode.ai/install | bash -s -- --version ${shellEscape(version)}`],
+      ["bash", "-lc", `curl -fsSL https://bettercode.ai/install | bash -s -- --version ${shellEscape(version)}`],
       distro,
     ),
     withTimeout(opts, DEFAULT_WSL_INSTALL_TIMEOUT_MS),
@@ -307,11 +307,11 @@ export async function probeWslDistro(name: string, opts?: RunWslOptions): Promis
   }
 }
 
-export async function resolveWslNanocode(distro: string, opts?: RunWslOptions) {
+export async function resolveWslBettercode(distro: string, opts?: RunWslOptions) {
   return firstLine(
     (
       await runWslSh(
-        'if [ -x "$HOME/.nanocode/bin/nanocode" ]; then printf "%s\\n" "$HOME/.nanocode/bin/nanocode"; fi',
+        'if [ -x "$HOME/.bettercode/bin/bettercode" ]; then printf "%s\\n" "$HOME/.bettercode/bin/bettercode"; fi',
         distro,
         opts,
       )

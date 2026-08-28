@@ -1,19 +1,19 @@
 import type { APIEvent } from "@solidjs/start/server"
-import { and, Database, eq, isNull, lt, or, sql } from "@nanocode-ai/console-core/drizzle/index.js"
-import { KeyTable } from "@nanocode-ai/console-core/schema/key.sql.js"
-import { BillingTable, LiteTable, SubscriptionTable, UsageTable } from "@nanocode-ai/console-core/schema/billing.sql.js"
-import { centsToMicroCents } from "@nanocode-ai/console-core/util/price.js"
-import { getMonthlyBounds, getWeekBounds } from "@nanocode-ai/console-core/util/date.js"
-import { Identifier } from "@nanocode-ai/console-core/identifier.js"
-import { Billing } from "@nanocode-ai/console-core/billing.js"
-import { Actor } from "@nanocode-ai/console-core/actor.js"
-import { WorkspaceTable } from "@nanocode-ai/console-core/schema/workspace.sql.js"
-import { ZenData } from "@nanocode-ai/console-core/model.js"
-import { Subscription } from "@nanocode-ai/console-core/subscription.js"
-import { BlackData } from "@nanocode-ai/console-core/black.js"
-import { UserTable } from "@nanocode-ai/console-core/schema/user.sql.js"
-import { ModelTable } from "@nanocode-ai/console-core/schema/model.sql.js"
-import { ProviderTable } from "@nanocode-ai/console-core/schema/provider.sql.js"
+import { and, Database, eq, isNull, lt, or, sql } from "@bettercode-ai/console-core/drizzle/index.js"
+import { KeyTable } from "@bettercode-ai/console-core/schema/key.sql.js"
+import { BillingTable, LiteTable, SubscriptionTable, UsageTable } from "@bettercode-ai/console-core/schema/billing.sql.js"
+import { centsToMicroCents } from "@bettercode-ai/console-core/util/price.js"
+import { getMonthlyBounds, getWeekBounds } from "@bettercode-ai/console-core/util/date.js"
+import { Identifier } from "@bettercode-ai/console-core/identifier.js"
+import { Billing } from "@bettercode-ai/console-core/billing.js"
+import { Actor } from "@bettercode-ai/console-core/actor.js"
+import { WorkspaceTable } from "@bettercode-ai/console-core/schema/workspace.sql.js"
+import { ZenData } from "@bettercode-ai/console-core/model.js"
+import { Subscription } from "@bettercode-ai/console-core/subscription.js"
+import { BlackData } from "@bettercode-ai/console-core/black.js"
+import { UserTable } from "@bettercode-ai/console-core/schema/user.sql.js"
+import { ModelTable } from "@bettercode-ai/console-core/schema/model.sql.js"
+import { ProviderTable } from "@bettercode-ai/console-core/schema/provider.sql.js"
 import { logger } from "./logger"
 import {
   AuthError,
@@ -37,15 +37,15 @@ import { createRateLimiter as createIpRateLimiter } from "./ipRateLimiter"
 import { createRateLimiter as createKeyRateLimiter } from "./keyRateLimiter"
 import { createTrialLimiter } from "./trialLimiter"
 import { createStickyTracker } from "./stickyProviderTracker"
-import { LiteData } from "@nanocode-ai/console-core/lite.js"
-import { Resource } from "@nanocode-ai/console-resource"
+import { LiteData } from "@bettercode-ai/console-core/lite.js"
+import { Resource } from "@bettercode-ai/console-resource"
 import { i18n, type Key } from "~/i18n"
 import { localeFromRequest } from "~/lib/language"
 import { createModelTpmLimiter } from "./modelTpmLimiter"
 import { createModelTpsLimiter } from "./modelTpsLimiter"
 import { createProviderBudgetTracker } from "./providerBudgetTracker"
 import { accumulateUsage, HOT_WORKSPACES } from "./usageBatcher"
-import { Workspace } from "@nanocode-ai/console-core/workspace.js"
+import { Workspace } from "@bettercode-ai/console-core/workspace.js"
 import { countryFromRequest, isModelCountryRestricted } from "~/lib/request-country"
 import { isPeakPricing } from "./pricing"
 import { prepareRequestBody } from "./requestBody"
@@ -99,10 +99,10 @@ export async function handler(
     const ip = rawIp.includes(":") ? rawIp.split(":").slice(0, 4).join(":") : rawIp
     const rawZenApiKey = opts.parseApiKey(input.request.headers)
     const zenApiKey = rawZenApiKey === "public" ? undefined : rawZenApiKey
-    const sessionId = input.request.headers.get("x-nanocode-session") ?? ""
-    const requestId = input.request.headers.get("x-nanocode-request") ?? ""
-    const ocClient = input.request.headers.get("x-nanocode-client") ?? ""
-    const projectId = input.request.headers.get("x-nanocode-project") ?? ""
+    const sessionId = input.request.headers.get("x-bettercode-session") ?? ""
+    const requestId = input.request.headers.get("x-bettercode-request") ?? ""
+    const ocClient = input.request.headers.get("x-bettercode-client") ?? ""
+    const projectId = input.request.headers.get("x-bettercode-project") ?? ""
     const userAgent = input.request.headers.get("user-agent") ?? ""
     logger.metric({
       session: sessionId,
@@ -130,7 +130,7 @@ export async function handler(
     )
       throw new DataPolicyError(
         t("zen.api.error.trainingNotAllowed", {
-          consoleGoUrl: `https://nanocode.ai/workspace/${authInfo.workspaceID}/go`,
+          consoleGoUrl: `https://bettercode.ai/workspace/${authInfo.workspaceID}/go`,
         }),
       )
     const allowedRegions = authInfo?.region
@@ -149,7 +149,7 @@ export async function handler(
     )
       throw new RegionError(
         t("zen.api.error.regionNotAllowed", {
-          consoleGoUrl: `https://nanocode.ai/workspace/${authInfo.workspaceID}/go`,
+          consoleGoUrl: `https://bettercode.ai/workspace/${authInfo.workspaceID}/go`,
         }),
       )
     const stickyId = sessionId ? sessionId : (authInfo?.workspaceID ?? ip)
@@ -235,10 +235,10 @@ export async function handler(
           })
           headers.delete("host")
           headers.delete("content-length")
-          headers.delete("x-nanocode-request")
-          if (!isNewInference) headers.delete("x-nanocode-session")
-          headers.delete("x-nanocode-project")
-          headers.delete("x-nanocode-client")
+          headers.delete("x-bettercode-request")
+          if (!isNewInference) headers.delete("x-bettercode-session")
+          headers.delete("x-bettercode-project")
+          headers.delete("x-bettercode-client")
           return headers
         })(),
         body: reqBody,
@@ -251,8 +251,8 @@ export async function handler(
       logger.metric({ is_stream: isStream })
 
       if (isNewInference) {
-        const resEndpointId = res.headers.get("x-nanocode-endpoint-id")
-        const resEndpointModelId = res.headers.get("x-nanocode-upstream-model-id")
+        const resEndpointId = res.headers.get("x-bettercode-endpoint-id")
+        const resEndpointModelId = res.headers.get("x-bettercode-upstream-model-id")
         if (resEndpointId && resEndpointModelId)
           logger.metric({
             provider: resEndpointId,
@@ -536,7 +536,7 @@ export async function handler(
       throw new ModelError(
         `${t("zen.api.error.trialEnded", {
           model: modelData.name,
-          link: "https://nanocode.ai/go",
+          link: "https://bettercode.ai/go",
         })}`,
       )
 
@@ -868,7 +868,7 @@ export async function handler(
       if (Object.values(modelInfo.cost).every((price) => price === 0)) return "lite"
 
       try {
-        const consoleGoUrl = `https://nanocode.ai/workspace/${authInfo.workspaceID}/go`
+        const consoleGoUrl = `https://bettercode.ai/workspace/${authInfo.workspaceID}/go`
         const sub = authInfo.lite
         const liteData = LiteData.getLimits()
 
@@ -939,8 +939,8 @@ export async function handler(
 
     // Validate pay as you go billing
     const billing = authInfo.billing
-    const billingUrl = `https://nanocode.ai/workspace/${authInfo.workspaceID}/billing`
-    const membersUrl = `https://nanocode.ai/workspace/${authInfo.workspaceID}/members`
+    const billingUrl = `https://bettercode.ai/workspace/${authInfo.workspaceID}/billing`
+    const membersUrl = `https://bettercode.ai/workspace/${authInfo.workspaceID}/members`
     if (!billing.paymentMethodID && billing.balance <= 0)
       throw new CreditsError(t("zen.api.error.noPaymentMethod", { billingUrl }))
     if (billing.balance <= 0) throw new CreditsError(t("zen.api.error.insufficientBalance", { billingUrl }))

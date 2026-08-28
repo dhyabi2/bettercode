@@ -1,10 +1,10 @@
 import { createEffect, For, Match, on, onCleanup, onMount, Show, Switch, type Accessor, type JSX } from "solid-js"
 import { animate, type AnimationPlaybackControls } from "motion"
-import { useI18n } from "@nanocode-ai/ui/context/i18n"
+import { useI18n } from "@bettercode-ai/ui/context/i18n"
 import { createStore } from "solid-js/store"
-import { Collapsible } from "@nanocode-ai/ui/collapsible"
-import type { IconProps } from "@nanocode-ai/ui/icon"
-import { TextShimmer } from "@nanocode-ai/ui/text-shimmer"
+import { Collapsible } from "@bettercode-ai/ui/collapsible"
+import type { IconProps } from "@bettercode-ai/ui/icon"
+import { TextShimmer } from "@bettercode-ai/ui/text-shimmer"
 
 export type TriggerTitle = {
   title: string

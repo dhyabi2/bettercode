@@ -1,8 +1,8 @@
-import { Button } from "@nanocode-ai/ui/button"
-import { useDialog } from "@nanocode-ai/ui/context/dialog"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { Switch } from "@nanocode-ai/ui/switch"
-import { Tabs } from "@nanocode-ai/ui/tabs"
+import { Button } from "@bettercode-ai/ui/button"
+import { useDialog } from "@bettercode-ai/ui/context/dialog"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { Switch } from "@bettercode-ai/ui/switch"
+import { Tabs } from "@bettercode-ai/ui/tabs"
 import { showToast } from "@/utils/toast"
 import { useNavigate } from "@solidjs/router"
 import { type Accessor, createEffect, createMemo, For, type JSXElement, onCleanup, Show } from "solid-js"
@@ -295,7 +295,7 @@ export function StatusPopoverBody(props: { shown: Accessor<boolean> }) {
     (sync().data.config.plugin ?? []).map((item) => (typeof item === "string" ? item : item[0])),
   )
   const pluginCount = createMemo(() => plugins().length)
-  const pluginEmpty = createMemo(() => pluginEmptyMessage(language.t("dialog.plugins.empty"), "nanocode.json"))
+  const pluginEmpty = createMemo(() => pluginEmptyMessage(language.t("dialog.plugins.empty"), "bettercode.json"))
 
   return (
     <div class="flex items-center gap-1 w-[360px] rounded-xl shadow-[var(--shadow-lg-border-base)]">

@@ -1,13 +1,13 @@
-import { AppIcon } from "@nanocode-ai/ui/app-icon"
-import { Button } from "@nanocode-ai/ui/button"
-import { DropdownMenu } from "@nanocode-ai/ui/dropdown-menu"
-import { Icon } from "@nanocode-ai/ui/icon"
-import { IconButton } from "@nanocode-ai/ui/icon-button"
-import { Keybind } from "@nanocode-ai/ui/keybind"
-import { Spinner } from "@nanocode-ai/ui/spinner"
+import { AppIcon } from "@bettercode-ai/ui/app-icon"
+import { Button } from "@bettercode-ai/ui/button"
+import { DropdownMenu } from "@bettercode-ai/ui/dropdown-menu"
+import { Icon } from "@bettercode-ai/ui/icon"
+import { IconButton } from "@bettercode-ai/ui/icon-button"
+import { Keybind } from "@bettercode-ai/ui/keybind"
+import { Spinner } from "@bettercode-ai/ui/spinner"
 import { showToast } from "@/utils/toast"
-import { Tooltip, TooltipKeybind } from "@nanocode-ai/ui/tooltip"
-import { getFilename } from "@nanocode-ai/core/util/path"
+import { Tooltip, TooltipKeybind } from "@bettercode-ai/ui/tooltip"
+import { getFilename } from "@bettercode-ai/core/util/path"
 import { createEffect, createMemo, createSignal, For, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { createMediaQuery } from "@solid-primitives/media"
@@ -27,10 +27,10 @@ import { decode64 } from "@/utils/base64"
 import { fileManagerApp } from "@/utils/file-manager"
 import { Persist, persisted } from "@/utils/persist"
 import { StatusPopover, StatusPopoverV2 } from "../status-popover"
-import { IconButtonV2 } from "@nanocode-ai/ui/v2/icon-button-v2"
-import { Icon as IconV2 } from "@nanocode-ai/ui/v2/icon"
-import { KeybindV2 } from "@nanocode-ai/ui/v2/keybind-v2"
-import { TooltipV2 } from "@nanocode-ai/ui/v2/tooltip-v2"
+import { IconButtonV2 } from "@bettercode-ai/ui/v2/icon-button-v2"
+import { Icon as IconV2 } from "@bettercode-ai/ui/v2/icon"
+import { KeybindV2 } from "@bettercode-ai/ui/v2/keybind-v2"
+import { TooltipV2 } from "@bettercode-ai/ui/v2/tooltip-v2"
 import { reviewTooltipKeybind } from "../command-tooltip-keybind"
 import { useTitlebarRightMount } from "../titlebar"
 
@@ -284,7 +284,7 @@ export function SessionHeader() {
   const [centerMount, setCenterMount] = createSignal<HTMLElement | null>(null)
   const rightMount = useTitlebarRightMount()
   onMount(() => {
-    setCenterMount(document.getElementById("nanocode-titlebar-center"))
+    setCenterMount(document.getElementById("bettercode-titlebar-center"))
   })
 
   return (

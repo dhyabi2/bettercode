@@ -1,1 +1,1 @@
-export { AgentAttachment, FileAttachment, Prompt, Source } from "@nanocode-ai/schema/prompt"
+export { AgentAttachment, FileAttachment, Prompt, Source } from "@bettercode-ai/schema/prompt"

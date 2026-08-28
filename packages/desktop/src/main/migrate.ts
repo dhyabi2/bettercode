@@ -23,19 +23,19 @@ function tauriDir(id: string) {
 
 // The Tauri app identifier changes between dev/beta/prod builds.
 const TAURI_APP_IDS: Record<string, string> = {
-  dev: "ai.nanocode.desktop.dev",
-  beta: "ai.nanocode.desktop.beta",
-  prod: "ai.nanocode.desktop",
+  dev: "ai.bettercode.desktop.dev",
+  beta: "ai.bettercode.desktop.beta",
+  prod: "ai.bettercode.desktop",
 }
 function tauriAppId() {
-  return app.isPackaged ? TAURI_APP_IDS[CHANNEL] : "ai.nanocode.desktop.dev"
+  return app.isPackaged ? TAURI_APP_IDS[CHANNEL] : "ai.bettercode.desktop.dev"
 }
 
 // Migrate a single Tauri .dat file into the corresponding electron-store.
-// `nanocode.settings.dat` is special: it maps to the `nanocode.settings` store
+// `bettercode.settings.dat` is special: it maps to the `bettercode.settings` store
 // (the electron-store name without the `.dat` extension). All other .dat files
 // keep their full filename as the electron-store name so they match what the
-// renderer already passes via IPC (e.g. `"default.dat"`, `"nanocode.global.dat"`).
+// renderer already passes via IPC (e.g. `"default.dat"`, `"bettercode.global.dat"`).
 function migrateFile(datPath: string, filename: string) {
   let data: Record<string, unknown>
   try {
@@ -45,10 +45,10 @@ function migrateFile(datPath: string, filename: string) {
     return
   }
 
-  // nanocode.settings.dat → the electron settings store ("nanocode.settings").
+  // bettercode.settings.dat → the electron settings store ("bettercode.settings").
   // All other .dat files keep their full filename as the store name so they match
-  // what the renderer passes via IPC (e.g. "default.dat", "nanocode.global.dat").
-  const storeName = filename === "nanocode.settings.dat" ? "nanocode.settings" : filename
+  // what the renderer passes via IPC (e.g. "default.dat", "bettercode.global.dat").
+  const storeName = filename === "bettercode.settings.dat" ? "bettercode.settings" : filename
   const target = getStore(storeName)
   const migrated: string[] = []
   const skipped: string[] = []

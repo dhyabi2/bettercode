@@ -1,19 +1,19 @@
 export * as EventV2 from "./event"
 
 import { Cause, Context, Effect, Layer, Option, PubSub, Queue, Schema, Stream } from "effect"
-import { Event } from "@nanocode-ai/schema/event"
-import type { Data, Definition, Payload } from "@nanocode-ai/schema/event"
+import { Event } from "@bettercode-ai/schema/event"
+import type { Data, Definition, Payload } from "@bettercode-ai/schema/event"
 import { and, asc, eq, gt, inArray, sql } from "drizzle-orm"
 import { Database } from "./database/database"
 import { EventSequenceTable, EventTable } from "./event/sql"
 import { Location } from "./location"
 import { makeGlobalNode } from "./effect/app-node"
 import { isDeepStrictEqual } from "node:util"
-import { Durable } from "@nanocode-ai/schema/durable-event-manifest"
+import { Durable } from "@bettercode-ai/schema/durable-event-manifest"
 
 export const ID = Event.ID
-export type ID = import("@nanocode-ai/schema/event").ID
-export type { Data, Definition, Payload } from "@nanocode-ai/schema/event"
+export type ID = import("@bettercode-ai/schema/event").ID
+export type { Data, Definition, Payload } from "@bettercode-ai/schema/event"
 
 export type Subscriber<D extends Definition = Definition> = (event: Payload<D>) => Effect.Effect<void>
 export type Unsubscribe = Effect.Effect<void>
@@ -158,7 +158,7 @@ export interface Interface {
   readonly claim: (aggregateID: string, ownerID: string) => Effect.Effect<void>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/Event") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/Event") {}
 
 export const allBounded = (events: Interface, capacity: number) =>
   Effect.gen(function* () {

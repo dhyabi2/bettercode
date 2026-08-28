@@ -1,15 +1,15 @@
 ---
 title: Introduksjon
-description: Kom i gang med NanoCode.
+description: Kom i gang med BetterCode.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 import config from "../../../../config.mjs"
 export const console = config.console
 
-[**NanoCode**](/) er en åpen kildekode AI kodeagent. Den er tilgjengelig som et terminalbasert grensesnitt, skrivebordsapp eller IDE-utvidelse.
+[**BetterCode**](/) er en åpen kildekode AI kodeagent. Den er tilgjengelig som et terminalbasert grensesnitt, skrivebordsapp eller IDE-utvidelse.
 
-![NanoCode TUI med nanocode-temaet](../../../assets/lander/screenshot.png)
+![BetterCode TUI med bettercode-temaet](../../../assets/lander/screenshot.png)
 
 La oss komme i gang.
 
@@ -17,7 +17,7 @@ La oss komme i gang.
 
 #### Forutsetninger
 
-For å bruke NanoCode i terminalen din trenger du:
+For å bruke BetterCode i terminalen din trenger du:
 
 1. En moderne terminalemulator som:
    - [WezTerm](https://wezterm.org), på tvers av plattformer
@@ -31,10 +31,10 @@ For å bruke NanoCode i terminalen din trenger du:
 
 ## Installasjon
 
-Den enkleste måten å installere NanoCode på er gjennom installasjonsskriptet.
+Den enkleste måten å installere BetterCode på er gjennom installasjonsskriptet.
 
 ```bash
-curl -fsSL https://nanocode.ai/install | bash
+curl -fsSL https://bettercode.ai/install | bash
 ```
 
 Du kan også installere den med følgende kommandoer:
@@ -45,28 +45,28 @@ Du kan også installere den med følgende kommandoer:
 
       <TabItem label="npm">
       ```bash
-      npm install -g nanocode-ai
+      npm install -g bettercode-ai
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g nanocode-ai
+        bun install -g bettercode-ai
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g nanocode-ai
+        pnpm install -g bettercode-ai
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add nanocode-ai
+        yarn global add bettercode-ai
         ```
 
       </TabItem>
@@ -76,68 +76,68 @@ Du kan også installere den med følgende kommandoer:
 - **Bruke Homebrew på macOS og Linux**
 
   ```bash
-  brew install dhyabi2/tap/nanocode
+  brew install dhyabi2/tap/bettercode
   ```
 
-  > Vi anbefaler å bruke NanoCode-tappen for de mest oppdaterte utgivelsene. Den offisielle `brew install nanocode`-formelen vedlikeholdes av Homebrew-teamet og oppdateres sjeldnere.
+  > Vi anbefaler å bruke BetterCode-tappen for de mest oppdaterte utgivelsene. Den offisielle `brew install bettercode`-formelen vedlikeholdes av Homebrew-teamet og oppdateres sjeldnere.
 
 - **Bruke Paru på Arch Linux**
 
   ```bash
-  sudo pacman -S nanocode           # Arch Linux (Stable)
-  paru -S nanocode-bin              # Arch Linux (Latest from AUR)
+  sudo pacman -S bettercode           # Arch Linux (Stable)
+  paru -S bettercode-bin              # Arch Linux (Latest from AUR)
   ```
 
 #### Windows
 
 :::tip[Anbefalt: Bruk WSL]
-For den beste opplevelsen på Windows anbefaler vi å bruke [Windows Subsystem for Linux (WSL)](/docs/windows-wsl). Det gir bedre ytelse og full kompatibilitet med funksjonene i NanoCode.
+For den beste opplevelsen på Windows anbefaler vi å bruke [Windows Subsystem for Linux (WSL)](/docs/windows-wsl). Det gir bedre ytelse og full kompatibilitet med funksjonene i BetterCode.
 :::
 
 - **Bruke Chocolatey**
 
   ```bash
-  choco install nanocode
+  choco install bettercode
   ```
 
 - **Bruke Scoop**
 
   ```bash
-  scoop install nanocode
+  scoop install bettercode
   ```
 
 - **Bruke npm**
 
   ```bash
-  npm install -g nanocode-ai
+  npm install -g bettercode-ai
   ```
 
 - **Bruke Mise**
 
   ```bash
-  mise use -g github:dhyabi2/nanocode
+  mise use -g github:dhyabi2/bettercode
   ```
 
 - **Bruke Docker**
 
   ```bash
-  docker run -it --rm ghcr.io/dhyabi2/nanocode
+  docker run -it --rm ghcr.io/dhyabi2/bettercode
   ```
 
-Støtte for installasjon av NanoCode på Windows med Bun er under arbeid.
+Støtte for installasjon av BetterCode på Windows med Bun er under arbeid.
 
-Du kan også hente binæren fra [Releases](https://github.com/dhyabi2/nanocode/releases).
+Du kan også hente binæren fra [Releases](https://github.com/dhyabi2/bettercode/releases).
 
 ---
 
 ## Konfigurasjon
 
-Med NanoCode kan du bruke hvilken som helst LLM-leverandør ved å konfigurere deres API-nøkler.
+Med BetterCode kan du bruke hvilken som helst LLM-leverandør ved å konfigurere deres API-nøkler.
 
-Hvis du er ukjent med LLM-leverandører, anbefaler vi å bruke [NanoCode Zen](/docs/zen).
-Det er en kuratert liste over modeller som har blitt testet og verifisert av NanoCode-teamet.
+Hvis du er ukjent med LLM-leverandører, anbefaler vi å bruke [BetterCode Zen](/docs/zen).
+Det er en kuratert liste over modeller som har blitt testet og verifisert av BetterCode-teamet.
 
-1. Kjør kommandoen `/connect` i TUI, velg NanoCode og gå til [nanocode.ai/auth](https://nanocode.ai/auth).
+1. Kjør kommandoen `/connect` i TUI, velg BetterCode og gå til [bettercode.ai/auth](https://bettercode.ai/auth).
 
    ```txt
    /connect
@@ -167,33 +167,33 @@ du vil jobbe med.
 cd /path/to/project
 ```
 
-Og kjør NanoCode.
+Og kjør BetterCode.
 
 ```bash
-nanocode
+bettercode
 ```
 
-Deretter initialiserer du NanoCode for prosjektet ved å kjøre følgende kommando.
+Deretter initialiserer du BetterCode for prosjektet ved å kjøre følgende kommando.
 
 ```bash frame="none"
 /init
 ```
 
-Dette vil få NanoCode til å analysere prosjektet ditt og opprette en `AGENTS.md`-fil i
+Dette vil få BetterCode til å analysere prosjektet ditt og opprette en `AGENTS.md`-fil i
 prosjektroten.
 
 :::tip
 Du bør overgi prosjektets `AGENTS.md`-fil til Git.
 :::
 
-Dette hjelper NanoCode med å forstå prosjektstrukturen og kodingsmønstrene
+Dette hjelper BetterCode med å forstå prosjektstrukturen og kodingsmønstrene
 brukt.
 
 ---
 
 ## Bruk
 
-Du er nå klar til å bruke NanoCode for å jobbe med prosjektet ditt. Spør det gjerne
+Du er nå klar til å bruke BetterCode for å jobbe med prosjektet ditt. Spør det gjerne
 noe!
 
 Hvis du er ukjent med AI-kodeagenter, her er noen eksempler som kan
@@ -203,7 +203,7 @@ hjelpe.
 
 ### Still spørsmål
 
-Du kan be NanoCode forklare kodebasen for deg.
+Du kan be BetterCode forklare kodebasen for deg.
 
 :::tip
 Bruk `@`-tasten for uklart søk etter filer i prosjektet.
@@ -219,11 +219,11 @@ Dette er nyttig hvis det er en del av kodebasen du ikke har jobbet med.
 
 ### Legg til funksjonalitet
 
-Du kan be NanoCode legge til nye funksjoner i prosjektet ditt. Selv om vi først anbefaler å be den om å lage en plan.
+Du kan be BetterCode legge til nye funksjoner i prosjektet ditt. Selv om vi først anbefaler å be den om å lage en plan.
 
 1. **Lag en plan**
 
-   NanoCode har en _Plan-modus_ som deaktiverer muligheten til å gjøre endringer og
+   BetterCode har en _Plan-modus_ som deaktiverer muligheten til å gjøre endringer og
    foreslår i stedet _hvordan_ den vil implementere funksjonen.
 
    Bytt til den ved å bruke **Tab**-tasten. Du vil se en indikator for dette i nedre høyre hjørne.
@@ -240,11 +240,11 @@ Du kan be NanoCode legge til nye funksjoner i prosjektet ditt. Selv om vi først
    From this screen, the user can undelete a note or permanently delete it.
    ```
 
-   Du bør gi NanoCode nok detaljer til å forstå hva du ønsker. Det hjelper
+   Du bør gi BetterCode nok detaljer til å forstå hva du ønsker. Det hjelper
    å snakke med det som om du snakker med en juniorutvikler på laget ditt.
 
    :::tip
-   Gi NanoCode mye kontekst og eksempler for å hjelpe den å forstå hva du
+   Gi BetterCode mye kontekst og eksempler for å hjelpe den å forstå hva du
    ønsker.
    :::
 
@@ -261,7 +261,7 @@ Du kan be NanoCode legge til nye funksjoner i prosjektet ditt. Selv om vi først
    Dra og slipp bilder i terminalen for å legge dem til ledeteksten.
    :::
 
-   NanoCode kan skanne alle bilder du gir den og legge dem til i ledeteksten. Du kan
+   BetterCode kan skanne alle bilder du gir den og legge dem til i ledeteksten. Du kan
    gjør dette ved å dra og slippe et bilde inn i terminalen.
 
 3. **Bygg funksjonen**
@@ -283,7 +283,7 @@ Du kan be NanoCode legge til nye funksjoner i prosjektet ditt. Selv om vi først
 
 ### Gjør endringer
 
-For mer enkle endringer kan du be NanoCode om å bygge det direkte
+For mer enkle endringer kan du be BetterCode om å bygge det direkte
 uten å måtte gjennomgå planen først.
 
 ```txt frame="none" "@packages/functions/src/settings.ts" "@packages/functions/src/notes.ts"
@@ -292,14 +292,14 @@ handled in the /notes route in @packages/functions/src/notes.ts and implement
 the same logic in @packages/functions/src/settings.ts
 ```
 
-Sørg for å gi nok detaljer, slik at NanoCode gjør de rette
+Sørg for å gi nok detaljer, slik at BetterCode gjør de rette
 endringene.
 
 ---
 
 ### Angre endringer
 
-La oss si at du ber NanoCode om å gjøre noen endringer.
+La oss si at du ber BetterCode om å gjøre noen endringer.
 
 ```txt frame="none" "@packages/functions/src/api/index.ts"
 Can you refactor the function in @packages/functions/src/api/index.ts?
@@ -312,14 +312,14 @@ ved å bruke kommandoen `/undo`.
 /undo
 ```
 
-NanoCode vil nå tilbakestille endringene du har gjort og vise den opprinnelige meldingen
+BetterCode vil nå tilbakestille endringene du har gjort og vise den opprinnelige meldingen
 igjen.
 
 ```txt frame="none" "@packages/functions/src/api/index.ts"
 Can you refactor the function in @packages/functions/src/api/index.ts?
 ```
 
-Herfra kan du justere ledeteksten og be NanoCode om å prøve igjen.
+Herfra kan du justere ledeteksten og be BetterCode om å prøve igjen.
 
 :::tip
 Du kan kjøre `/undo` flere ganger for å angre flere endringer.
@@ -335,7 +335,7 @@ Eller du **kan gjøre om** endringene ved å bruke `/redo`-kommandoen.
 
 ## Deling
 
-Samtalene du har med NanoCode kan [deles med din
+Samtalene du har med BetterCode kan [deles med din
 team](/docs/share).
 
 ```bash frame="none"
@@ -348,12 +348,12 @@ Dette vil opprette en kobling til den gjeldende samtalen og kopiere den til utkl
 Samtaler deles ikke som standard.
 :::
 
-Her er en [eksempelsamtale](https://nanocode.ai/s/4XP1fce5) med NanoCode.
+Her er en [eksempelsamtale](https://bettercode.ai/s/4XP1fce5) med BetterCode.
 
 ---
 
 ## Tilpasning
 
-Og det er det! Du er nå en proff på å bruke NanoCode.
+Og det er det! Du er nå en proff på å bruke BetterCode.
 
-For å tilpasse det anbefaler vi å [velge et tema](/docs/themes), [tilpasse tastebindingene](/docs/keybinds), [konfigurere kodeformattere](/docs/formatters), [opprette egendefinerte kommandoer](/docs/commands) eller leke med [NanoCode-konfigurasjonen](/docs/config).
+For å tilpasse det anbefaler vi å [velge et tema](/docs/themes), [tilpasse tastebindingene](/docs/keybinds), [konfigurere kodeformattere](/docs/formatters), [opprette egendefinerte kommandoer](/docs/commands) eller leke med [BetterCode-konfigurasjonen](/docs/config).

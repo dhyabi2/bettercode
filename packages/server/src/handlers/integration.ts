@@ -1,8 +1,8 @@
-import { Integration } from "@nanocode-ai/core/integration"
+import { Integration } from "@bettercode-ai/core/integration"
 import { Effect } from "effect"
 import { HttpApiBuilder, HttpApiSchema } from "effect/unstable/httpapi"
 import { Api } from "../api"
-import { InvalidRequestError } from "@nanocode-ai/protocol/errors"
+import { InvalidRequestError } from "@bettercode-ai/protocol/errors"
 import { response } from "../location"
 
 const authorize = <A, R>(effect: Effect.Effect<A, Integration.AuthorizationError, R>) =>

@@ -41,8 +41,8 @@ export const Basic = {
   render: () => (
     <div style={{ display: "grid", gap: "8px" }}>
       <mod.Font />
-      <div style={{ "font-family": "var(--font-family-sans)" }}>NanoCode Sans Sample</div>
-      <div style={{ "font-family": "var(--font-family-mono)" }}>NanoCode Mono Sample</div>
+      <div style={{ "font-family": "var(--font-family-sans)" }}>BetterCode Sans Sample</div>
+      <div style={{ "font-family": "var(--font-family-mono)" }}>BetterCode Mono Sample</div>
     </div>
   ),
 }

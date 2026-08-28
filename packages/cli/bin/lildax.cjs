@@ -29,12 +29,12 @@ function run(target) {
   })
 }
 
-const envPath = process.env.NANOCODE_BIN_PATH
+const envPath = process.env.BETTERCODE_BIN_PATH
 const scriptDir = path.dirname(fs.realpathSync(__filename))
 const cached = path.join(scriptDir, ".lildax")
 const platform = { darwin: "darwin", linux: "linux", win32: "windows" }[os.platform()] || os.platform()
 const arch = { x64: "x64", arm64: "arm64", arm: "arm" }[os.arch()] || os.arch()
-const base = "@nanocode-ai/cli-" + platform + "-" + arch
+const base = "@bettercode-ai/cli-" + platform + "-" + arch
 const binary = platform === "windows" ? "lildax.exe" : "lildax"
 
 function supportsAvx2() {

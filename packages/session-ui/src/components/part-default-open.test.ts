@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { Part as PartType } from "@nanocode-ai/sdk/v2"
+import type { Part as PartType } from "@bettercode-ai/sdk/v2"
 import { partDefaultOpen } from "./part-default-open"
 
 describe("partDefaultOpen", () => {

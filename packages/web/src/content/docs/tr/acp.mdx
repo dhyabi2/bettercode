@@ -1,9 +1,9 @@
 ---
 title: ACP Desteği
-description: nanocode'u ACP uyumlu herhangi bir editörde kullanın.
+description: bettercode'u ACP uyumlu herhangi bir editörde kullanın.
 ---
 
-nanocode, [Agent Client Protocol](https://agentclientprotocol.com) veya (ACP) dosyalarını destekleyerek onu doğrudan uyumlu editörlerde ve IDE'lerde kullanmanızı sağlar.
+bettercode, [Agent Client Protocol](https://agentclientprotocol.com) veya (ACP) dosyalarını destekleyerek onu doğrudan uyumlu editörlerde ve IDE'lerde kullanmanızı sağlar.
 
 :::tip
 ACP'yi destekleyen editörlerin ve araçların listesi için [ACP progress report](https://zed.dev/blog/acp-progress-report#available-now)'e bakın.
@@ -15,9 +15,9 @@ ACP, kod editörleri ile AI kodlama ajanları arasındaki iletişimi standartla�
 
 ## Yapılandırma
 
-nanocode'u ACP aracılığıyla kullanmak için düzenleyicinizi `nanocode acp` komutunu çalıştıracak şekilde yapılandırın.
+bettercode'u ACP aracılığıyla kullanmak için düzenleyicinizi `bettercode acp` komutunu çalıştıracak şekilde yapılandırın.
 
-Komut, nanocode'u, editörünüzle stdio aracılığıyla JSON-RPC üzerinden iletişim kuran ACP uyumlu bir alt süreç olarak başlatır.
+Komut, bettercode'u, editörünüzle stdio aracılığıyla JSON-RPC üzerinden iletişim kuran ACP uyumlu bir alt süreç olarak başlatır.
 
 Aşağıda ACP'yi destekleyen popüler düzenleyicilere ilişkin örnekler verilmiştir.
 
@@ -30,8 +30,8 @@ Aşağıda ACP'yi destekleyen popüler düzenleyicilere ilişkin örnekler veril
 ```json title="~/.config/zed/settings.json"
 {
   "agent_servers": {
-    "NanoCode": {
-      "command": "nanocode",
+    "BetterCode": {
+      "command": "bettercode",
       "args": ["acp"]
     }
   }
@@ -51,9 +51,9 @@ Açmak için **Komut Paleti**'ndeki `agent: new thread` eylemini kullanın.
         {
           "agent": {
             "custom": {
-              "name": "NanoCode",
+              "name": "BetterCode",
               "command": {
-                "command": "nanocode",
+                "command": "bettercode",
                 "args": ["acp"]
               }
             }
@@ -74,15 +74,15 @@ Açmak için **Komut Paleti**'ndeki `agent: new thread` eylemini kullanın.
 ```json title="acp.json"
 {
   "agent_servers": {
-    "NanoCode": {
-      "command": "/absolute/path/bin/nanocode",
+    "BetterCode": {
+      "command": "/absolute/path/bin/bettercode",
       "args": ["acp"]
     }
   }
 }
 ```
 
-Açmak için AI Chat agent seçicisindeki yeni 'NanoCode' ajanını kullanın.
+Açmak için AI Chat agent seçicisindeki yeni 'BetterCode' ajanını kullanın.
 
 ---
 
@@ -93,8 +93,8 @@ Açmak için AI Chat agent seçicisindeki yeni 'NanoCode' ajanını kullanın.
 ```lua
 {
   acp_providers = {
-    ["nanocode"] = {
-      command = "nanocode",
+    ["bettercode"] = {
+      command = "bettercode",
       args = { "acp" }
     }
   }
@@ -106,11 +106,11 @@ Ortam değişkenlerini iletmeniz gerekiyor:
 ```lua {6-8}
 {
   acp_providers = {
-    ["nanocode"] = {
-      command = "nanocode",
+    ["bettercode"] = {
+      command = "bettercode",
       args = { "acp" },
       env = {
-        NANOCODE_API_KEY = os.getenv("NANOCODE_API_KEY")
+        BETTERCODE_API_KEY = os.getenv("BETTERCODE_API_KEY")
       }
     }
   }
@@ -121,14 +121,14 @@ Ortam değişkenlerini iletmeniz gerekiyor:
 
 ### CodeCompanion.nvim
 
-nanocode'u [CodeCompanion.nvim](https://github.com/olimorris/codecompanion.nvim)'de ACP ajanı olarak kullanmak için Neovim yapılandırmanıza aşağıdakileri ekleyin:
+bettercode'u [CodeCompanion.nvim](https://github.com/olimorris/codecompanion.nvim)'de ACP ajanı olarak kullanmak için Neovim yapılandırmanıza aşağıdakileri ekleyin:
 
 ```lua
 require("codecompanion").setup({
   interactions = {
     chat = {
       adapter = {
-        name = "nanocode",
+        name = "bettercode",
         model = "claude-sonnet-4",
       },
     },
@@ -136,13 +136,13 @@ require("codecompanion").setup({
 })
 ```
 
-Bu yapılandırma, CodeCompanion'ı nanocode'u sohbet için ACP ajanı olarak kullanacak şekilde ayarlar.
+Bu yapılandırma, CodeCompanion'ı bettercode'u sohbet için ACP ajanı olarak kullanacak şekilde ayarlar.
 
-Ortam değişkenlerini (`NANOCODE_API_KEY` gibi) iletmeniz gerekiyorsa, tüm ayrıntılar için CodeCompanion.nvim belgelerindeki [Configuring Adapters: Environment Variables](https://codecompanion.olimorris.dev/getting-started#setting-an-api-key)'ye bakın.
+Ortam değişkenlerini (`BETTERCODE_API_KEY` gibi) iletmeniz gerekiyorsa, tüm ayrıntılar için CodeCompanion.nvim belgelerindeki [Configuring Adapters: Environment Variables](https://codecompanion.olimorris.dev/getting-started#setting-an-api-key)'ye bakın.
 
 ## Destek
 
-nanocode, terminalde olduğu gibi ACP aracılığıyla aynı şekilde çalışır. Tüm özellikler desteklenir:
+bettercode, terminalde olduğu gibi ACP aracılığıyla aynı şekilde çalışır. Tüm özellikler desteklenir:
 
 :::note
 `/undo` ve `/redo` gibi bazı yerleşik slash komutları şu anda desteklenmemektedir.
@@ -150,7 +150,7 @@ nanocode, terminalde olduğu gibi ACP aracılığıyla aynı şekilde çalışı
 
 - Yerleşik araçlar (dosya işlemleri, terminal komutları vb.)
 - Özel araçlar ve slash komutları
-- nanocode yapılandırmanızda yapılandırılmış MCP sunucuları
+- bettercode yapılandırmanızda yapılandırılmış MCP sunucuları
 - `AGENTS.md`'dan projeye özel kurallar
 - Özel biçimlendiriciler ve linter'lar
 - Aracılar ve izin sistemi

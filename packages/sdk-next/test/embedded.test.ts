@@ -2,22 +2,22 @@ import { expect, test } from "bun:test"
 import { mkdtemp, rm } from "node:fs/promises"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
-import { Flag } from "@nanocode-ai/core/flag/flag"
+import { Flag } from "@bettercode-ai/core/flag/flag"
 import { Deferred, Effect, Latch, Option, Schema, Stream } from "effect"
-import type { NanoCodeEvent } from "../src"
+import type { BetterCodeEvent } from "../src"
 
 test("embedded client uses the real router and handlers", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "nanocode-embedded-"))
-  const database = Flag.NANOCODE_DB
-  Flag.NANOCODE_DB = join(directory, "nanocode.sqlite")
-  const { AbsolutePath, Agent, Location, Model, NanoCode, Prompt, Provider, Session, Tool } = await import("../src")
+  const directory = await mkdtemp(join(tmpdir(), "bettercode-embedded-"))
+  const database = Flag.BETTERCODE_DB
+  Flag.BETTERCODE_DB = join(directory, "bettercode.sqlite")
+  const { AbsolutePath, Agent, Location, Model, BetterCode, Prompt, Provider, Session, Tool } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
   const model = Model.Ref.make({ id: Model.ID.make("embedded"), providerID: Provider.ID.make("test") })
 
   try {
     const program = Effect.gen(function* () {
-      const nanocode = yield* NanoCode.create()
-      yield* nanocode.tools.register({
+      const bettercode = yield* BetterCode.create()
+      yield* bettercode.tools.register({
         embedded_tool: Tool.make({
           description: "Embedded test tool",
           input: Schema.Struct({}),
@@ -26,54 +26,54 @@ test("embedded client uses the real router and handlers", async () => {
         }),
       })
 
-      const created = yield* nanocode.sessions.create({
+      const created = yield* bettercode.sessions.create({
         id: sessionID,
         agent: Agent.ID.make("build"),
         location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
       })
-      yield* nanocode.sessions.switchModel({ sessionID, model })
-      const selected = yield* nanocode.sessions.get({ sessionID })
-      const page = yield* nanocode.sessions.list({ directory: AbsolutePath.make(directory) })
-      const active = yield* nanocode.sessions.active()
-      const admitted = yield* nanocode.sessions.prompt({
+      yield* bettercode.sessions.switchModel({ sessionID, model })
+      const selected = yield* bettercode.sessions.get({ sessionID })
+      const page = yield* bettercode.sessions.list({ directory: AbsolutePath.make(directory) })
+      const active = yield* bettercode.sessions.active()
+      const admitted = yield* bettercode.sessions.prompt({
         sessionID,
         prompt: Prompt.make({ text: "Do not run" }),
         resume: false,
       })
-      const context = yield* nanocode.sessions.context({ sessionID })
-      const wake = yield* nanocode.sessions.prompt({
+      const context = yield* bettercode.sessions.context({ sessionID })
+      const wake = yield* bettercode.sessions.prompt({
         sessionID,
         prompt: Prompt.make({ text: "Promote this input" }),
       })
-      const prompted = yield* nanocode.sessions.events({ sessionID }).pipe(
+      const prompted = yield* bettercode.sessions.events({ sessionID }).pipe(
         Stream.filter((event) => event.type === "session.next.prompted" && event.data.messageID === wake.id),
         Stream.runHead,
         Effect.timeout("10 seconds"),
         Effect.map(Option.getOrThrow),
       )
-      const wakeContext = yield* nanocode.sessions.context({ sessionID })
-      const event = yield* nanocode.sessions
+      const wakeContext = yield* bettercode.sessions.context({ sessionID })
+      const event = yield* bettercode.sessions
         .events({ sessionID })
         .pipe(Stream.take(1), Stream.runHead, Effect.map(Option.getOrUndefined))
       const modelMessage = Option.fromNullishOr(context.find((message) => message.type === "model-switched")).pipe(
         Option.getOrThrow,
       )
-      const message = yield* nanocode.sessions.message({ sessionID, messageID: modelMessage.id })
-      yield* nanocode.sessions.interrupt({ sessionID })
-      const other = yield* nanocode.sessions.create({
+      const message = yield* bettercode.sessions.message({ sessionID, messageID: modelMessage.id })
+      yield* bettercode.sessions.interrupt({ sessionID })
+      const other = yield* bettercode.sessions.create({
         location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
       })
       const missingSessionID = Session.ID.make(`ses_missing_${crypto.randomUUID()}`)
       const missing = yield* Effect.all(
         [
-          nanocode.sessions.events({ sessionID: missingSessionID }).pipe(Stream.runHead, Effect.flip),
-          nanocode.sessions.interrupt({ sessionID: missingSessionID }).pipe(Effect.flip),
-          nanocode.sessions.message({ sessionID: missingSessionID, messageID: modelMessage.id }).pipe(Effect.flip),
+          bettercode.sessions.events({ sessionID: missingSessionID }).pipe(Stream.runHead, Effect.flip),
+          bettercode.sessions.interrupt({ sessionID: missingSessionID }).pipe(Effect.flip),
+          bettercode.sessions.message({ sessionID: missingSessionID, messageID: modelMessage.id }).pipe(Effect.flip),
         ],
         { concurrency: "unbounded" },
       )
       const missingMessage = yield* Effect.flip(
-        nanocode.sessions.message({
+        bettercode.sessions.message({
           sessionID: other.id,
           messageID: modelMessage.id,
         }),
@@ -99,24 +99,24 @@ test("embedded client uses the real router and handlers", async () => {
     })
     await Effect.runPromise(Effect.scoped(program))
   } finally {
-    Flag.NANOCODE_DB = database
+    Flag.BETTERCODE_DB = database
     await rm(directory, { recursive: true, force: true })
   }
 })
 
 test("Location-owned runner events reach the ready global client", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "nanocode-embedded-events-"))
-  const database = Flag.NANOCODE_DB
-  Flag.NANOCODE_DB = join(directory, "nanocode.sqlite")
-  const { AbsolutePath, Location, NanoCode, Prompt, Session } = await import("../src")
+  const directory = await mkdtemp(join(tmpdir(), "bettercode-embedded-events-"))
+  const database = Flag.BETTERCODE_DB
+  Flag.BETTERCODE_DB = join(directory, "bettercode.sqlite")
+  const { AbsolutePath, Location, BetterCode, Prompt, Session } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
 
   try {
     const program = Effect.gen(function* () {
-      const nanocode = yield* NanoCode.create()
+      const bettercode = yield* BetterCode.create()
       const connected = yield* Latch.make(false)
-      const prompted = yield* Deferred.make<NanoCodeEvent>()
-      yield* nanocode.events.subscribe().pipe(
+      const prompted = yield* Deferred.make<BetterCodeEvent>()
+      yield* bettercode.events.subscribe().pipe(
         Stream.runForEach((event) =>
           event.type === "server.connected"
             ? connected.open
@@ -127,39 +127,39 @@ test("Location-owned runner events reach the ready global client", async () => {
         Effect.forkScoped,
       )
       yield* connected.await
-      yield* nanocode.sessions.create({
+      yield* bettercode.sessions.create({
         id: sessionID,
         location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
       })
-      yield* nanocode.sessions.prompt({ sessionID, prompt: Prompt.make({ text: "Observe this input" }) })
+      yield* bettercode.sessions.prompt({ sessionID, prompt: Prompt.make({ text: "Observe this input" }) })
 
       const event = yield* Deferred.await(prompted).pipe(Effect.timeout("4 seconds"))
       expect(event.durable).toEqual(expect.objectContaining({ aggregateID: sessionID, seq: expect.any(Number) }))
     })
     await Effect.runPromise(Effect.scoped(program))
   } finally {
-    Flag.NANOCODE_DB = database
+    Flag.BETTERCODE_DB = database
     await rm(directory, { recursive: true, force: true })
   }
 }, 10_000)
 
 test("independent embedded hosts do not share live notifications", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "nanocode-embedded-hosts-"))
-  const database = Flag.NANOCODE_DB
-  Flag.NANOCODE_DB = join(directory, "nanocode.sqlite")
-  const { AbsolutePath, Agent, Location, NanoCode, Session } = await import("../src")
+  const directory = await mkdtemp(join(tmpdir(), "bettercode-embedded-hosts-"))
+  const database = Flag.BETTERCODE_DB
+  Flag.BETTERCODE_DB = join(directory, "bettercode.sqlite")
+  const { AbsolutePath, Agent, Location, BetterCode, Session } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
 
   try {
     const program = Effect.gen(function* () {
-      const first = yield* NanoCode.create()
-      const second = yield* NanoCode.create()
+      const first = yield* BetterCode.create()
+      const second = yield* BetterCode.create()
       const firstReady = yield* Latch.make(false)
       const secondReady = yield* Latch.make(false)
       const firstEvent = yield* Latch.make(false)
       const secondEvent = yield* Latch.make(false)
       const observe = (ready: Latch.Latch, event: Latch.Latch) =>
-        Stream.runForEach((notification: NanoCodeEvent) =>
+        Stream.runForEach((notification: BetterCodeEvent) =>
           notification.type === "server.connected"
             ? ready.open
             : notification.type === "session.next.agent.switched" && notification.data.sessionID === sessionID
@@ -181,32 +181,32 @@ test("independent embedded hosts do not share live notifications", async () => {
     })
     await Effect.runPromise(Effect.scoped(program))
   } finally {
-    Flag.NANOCODE_DB = database
+    Flag.BETTERCODE_DB = database
     await rm(directory, { recursive: true, force: true })
   }
 }, 10_000)
 
 test("embedded client is available as a Layer service", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "nanocode-embedded-layer-"))
-  const database = Flag.NANOCODE_DB
-  Flag.NANOCODE_DB = join(directory, "nanocode.sqlite")
-  const { AbsolutePath, Location, NanoCode, Session } = await import("../src")
+  const directory = await mkdtemp(join(tmpdir(), "bettercode-embedded-layer-"))
+  const database = Flag.BETTERCODE_DB
+  Flag.BETTERCODE_DB = join(directory, "bettercode.sqlite")
+  const { AbsolutePath, Location, BetterCode, Session } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
 
   try {
     const created = await Effect.runPromise(
       Effect.gen(function* () {
-        const nanocode = yield* NanoCode.Service
-        return yield* nanocode.sessions.create({
+        const bettercode = yield* BetterCode.Service
+        return yield* bettercode.sessions.create({
           id: sessionID,
           location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
         })
-      }).pipe(Effect.provide(NanoCode.layer), Effect.scoped),
+      }).pipe(Effect.provide(BetterCode.layer), Effect.scoped),
     )
 
     expect(created.id).toBe(sessionID)
   } finally {
-    Flag.NANOCODE_DB = database
+    Flag.BETTERCODE_DB = database
     await rm(directory, { recursive: true, force: true })
   }
 })

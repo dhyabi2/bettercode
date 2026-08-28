@@ -1,6 +1,6 @@
-import { AgentV2 } from "@nanocode-ai/core/agent"
-import { SessionMessage } from "@nanocode-ai/core/session/message"
-import { ToolRegistry } from "@nanocode-ai/core/tool/registry"
+import { AgentV2 } from "@bettercode-ai/core/agent"
+import { SessionMessage } from "@bettercode-ai/core/session/message"
+import { ToolRegistry } from "@bettercode-ai/core/tool/registry"
 import { Effect } from "effect"
 
 export const toolIdentity = {

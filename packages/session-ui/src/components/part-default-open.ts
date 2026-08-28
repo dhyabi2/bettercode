@@ -1,4 +1,4 @@
-import type { Part as PartType, ToolPart } from "@nanocode-ai/sdk/v2"
+import type { Part as PartType, ToolPart } from "@bettercode-ai/sdk/v2"
 
 function deletionOnly(part: ToolPart) {
   if (!("metadata" in part.state)) return false

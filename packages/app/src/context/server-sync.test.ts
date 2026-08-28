@@ -1,12 +1,12 @@
 import { describe, expect, test } from "bun:test"
-import type { NanocodeClient } from "@nanocode-ai/sdk/v2/client"
+import type { BettercodeClient } from "@bettercode-ai/sdk/v2/client"
 import type {
   McpListInput,
   McpResourceCatalogInput,
   SessionApi,
   SessionInfo,
   SessionListInput,
-} from "@nanocode-ai/client/promise"
+} from "@bettercode-ai/client/promise"
 import { QueryClient } from "@tanstack/solid-query"
 import { canDisposeDirectory, pickDirectoriesToEvict } from "./global-sync/eviction"
 import { estimateRootSessionTotal, loadRootSessions } from "./global-sync/session-load"
@@ -84,7 +84,7 @@ describe("active session query", () => {
   })
 
   test("does not overwrite statuses already written by events", () => {
-    const session = createServerSession({} as NanocodeClient)
+    const session = createServerSession({} as BettercodeClient)
     session.set("session_status", "ses_retry", { type: "retry", attempt: 2, message: "retrying", next: 10 })
 
     seedActiveSessionStatuses(session, {

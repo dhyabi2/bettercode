@@ -1,25 +1,25 @@
 ---
 title: Regeln
-description: Lege eigene Anweisungen fuer nanocode fest.
+description: Lege eigene Anweisungen fuer bettercode fest.
 ---
 
-Du kannst nanocode ueber eine `AGENTS.md`-Datei mit eigenen Anweisungen steuern.
+Du kannst bettercode ueber eine `AGENTS.md`-Datei mit eigenen Anweisungen steuern.
 Das ist aehnlich zu den Regeln in Cursor und wird direkt in den LLM-Kontext geladen.
 
 ---
 
 ## Initialisierung
 
-Um eine neue `AGENTS.md` zu erstellen, fuehre in nanocode den Befehl `/init` aus.
+Um eine neue `AGENTS.md` zu erstellen, fuehre in bettercode den Befehl `/init` aus.
 
 :::tip
 Du solltest die `AGENTS.md` deines Projekts in Git committen.
 :::
 
 Der Befehl scannt dein Projekt und erzeugt daraus eine passende `AGENTS.md`.
-So kann nanocode sich in deinem Code besser orientieren.
+So kann bettercode sich in deinem Code besser orientieren.
 
-Wenn bereits eine `AGENTS.md` existiert, versucht nanocode sie zu erweitern.
+Wenn bereits eine `AGENTS.md` existiert, versucht bettercode sie zu erweitern.
 
 ---
 
@@ -57,7 +57,7 @@ Hier hinterlegst du projektspezifische Regeln, die dein Team gemeinsam nutzt.
 
 ## Typen
 
-nanocode kann `AGENTS.md` aus mehreren Orten lesen.
+bettercode kann `AGENTS.md` aus mehreren Orten lesen.
 Die Orte haben unterschiedliche Zwecke.
 
 ### Projekt
@@ -67,35 +67,35 @@ Diese gelten nur in diesem Verzeichnis und seinen Unterordnern.
 
 ### Global
 
-Du kannst auch globale Regeln in `~/.config/nanocode/AGENTS.md` speichern.
-Diese gelten in allen nanocode-Sitzungen.
+Du kannst auch globale Regeln in `~/.config/bettercode/AGENTS.md` speichern.
+Diese gelten in allen bettercode-Sitzungen.
 
 Da diese Datei nicht in Git landet und nicht mit dem Team geteilt wird, eignet sie sich fuer persoenliche Regeln.
 
 ### Claude Code-Kompatibilität
 
-Wenn du von Claude Code kommst, unterstuetzt NanoCode dessen Dateikonventionen als Fallback:
+Wenn du von Claude Code kommst, unterstuetzt BetterCode dessen Dateikonventionen als Fallback:
 
 - **Projektregeln**: `CLAUDE.md` im Projekt (wenn keine `AGENTS.md` existiert)
-- **Globale Regeln**: `~/.claude/CLAUDE.md` (wenn keine `~/.config/nanocode/AGENTS.md` existiert)
+- **Globale Regeln**: `~/.claude/CLAUDE.md` (wenn keine `~/.config/bettercode/AGENTS.md` existiert)
 - **Skills**: `~/.claude/skills/` - siehe [Agent Skills](/docs/skills/) fuer Details
 
 Um die Claude-Code-Kompatibilitaet zu deaktivieren, setze eine dieser Umgebungsvariablen:
 
 ```bash
-export NANOCODE_DISABLE_CLAUDE_CODE=1        # Disable all .claude support
-export NANOCODE_DISABLE_CLAUDE_CODE_PROMPT=1 # Disable only ~/.claude/CLAUDE.md
-export NANOCODE_DISABLE_CLAUDE_CODE_SKILLS=1 # Disable only .claude/skills
+export BETTERCODE_DISABLE_CLAUDE_CODE=1        # Disable all .claude support
+export BETTERCODE_DISABLE_CLAUDE_CODE_PROMPT=1 # Disable only ~/.claude/CLAUDE.md
+export BETTERCODE_DISABLE_CLAUDE_CODE_SKILLS=1 # Disable only .claude/skills
 ```
 
 ---
 
 ## Rangfolge
 
-Beim Start sucht nanocode in dieser Reihenfolge nach Regeldateien:
+Beim Start sucht bettercode in dieser Reihenfolge nach Regeldateien:
 
 1. **Lokale Dateien** beim Hochlaufen ab dem aktuellen Verzeichnis (`AGENTS.md`, `CLAUDE.md`)
-2. **Globale Datei** unter `~/.config/nanocode/AGENTS.md`
+2. **Globale Datei** unter `~/.config/bettercode/AGENTS.md`
 3. **Claude-Code-Datei** unter `~/.claude/CLAUDE.md` (falls nicht deaktiviert)
 
 Pro Kategorie gewinnt die zuerst passende Datei.
@@ -105,23 +105,23 @@ Wenn sowohl `AGENTS.md` als auch `CLAUDE.md` existieren, wird nur `AGENTS.md` ve
 
 ## Eigene Anweisungen
 
-Du kannst zusaetzliche Anweisungsdateien in deiner `nanocode.json` oder in `~/.config/nanocode/nanocode.json` angeben.
+Du kannst zusaetzliche Anweisungsdateien in deiner `bettercode.json` oder in `~/.config/bettercode/bettercode.json` angeben.
 So kann dein Team bestehende Regeln wiederverwenden, statt Inhalte in `AGENTS.md` zu duplizieren.
 
 Beispiel:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
 
 Du kannst auch Remote-URLs nutzen, um Regeln aus dem Web zu laden.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["https://raw.githubusercontent.com/my-org/shared-rules/main/style.md"]
 }
 ```
@@ -134,23 +134,23 @@ Alle Anweisungsdateien werden mit deinen `AGENTS.md`-Dateien kombiniert.
 
 ## Externe Dateien referenzieren
 
-nanocode parst Datei-Referenzen in `AGENTS.md` nicht automatisch.
+bettercode parst Datei-Referenzen in `AGENTS.md` nicht automatisch.
 Du erreichst aehnliches Verhalten auf zwei Wegen.
 
-### Mit nanocode.json
+### Mit bettercode.json
 
-Empfohlen ist das `instructions`-Feld in der `nanocode.json`:
+Empfohlen ist das `instructions`-Feld in der `bettercode.json`:
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "instructions": ["docs/development-standards.md", "test/testing-guidelines.md", "packages/*/AGENTS.md"]
 }
 ```
 
 ### Manuelle Anweisungen in AGENTS.md
 
-Du kannst nanocode explizit anweisen, externe Dateien zu lesen.
+Du kannst bettercode explizit anweisen, externe Dateien zu lesen.
 Hier ein praxisnahes Beispiel:
 
 ```markdown title="AGENTS.md"
@@ -186,5 +186,5 @@ Damit kannst du:
 - Sicherstellen, dass Dateien nur bei Bedarf geladen werden
 
 :::tip
-Fuer Monorepos oder gemeinsame Standards ist `nanocode.json` mit Glob-Mustern (z. B. `packages/*/AGENTS.md`) oft wartbarer als manuelle Anweisungen.
+Fuer Monorepos oder gemeinsame Standards ist `bettercode.json` mit Glob-Mustern (z. B. `packages/*/AGENTS.md`) oft wartbarer als manuelle Anweisungen.
 :::

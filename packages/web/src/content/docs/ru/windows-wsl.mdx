@@ -1,14 +1,14 @@
 ---
 title: Windows (WSL)
-description: Запускайте nanocode в Windows через WSL.
+description: Запускайте bettercode в Windows через WSL.
 ---
 
 import { Steps } from "@astrojs/starlight/components"
 
-nanocode можно запускать напрямую в Windows, но для лучшего опыта мы рекомендуем [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install). WSL дает Linux-среду, которая отлично работает с возможностями nanocode.
+bettercode можно запускать напрямую в Windows, но для лучшего опыта мы рекомендуем [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install). WSL дает Linux-среду, которая отлично работает с возможностями bettercode.
 
 :::tip[Почему WSL?]
-WSL дает более высокую производительность файловой системы, полноценную поддержку терминала и совместимость с инструментами разработки, на которые опирается nanocode.
+WSL дает более высокую производительность файловой системы, полноценную поддержку терминала и совместимость с инструментами разработки, на которые опирается bettercode.
 :::
 
 ---
@@ -21,21 +21,21 @@ WSL дает более высокую производительность фа
 
    Если вы еще не сделали этого, установите WSL по [официальному руководству Microsoft](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-2. **Установите nanocode в WSL**
+2. **Установите bettercode в WSL**
 
-   После настройки WSL откройте терминал WSL и установите nanocode одним из [способов установки](/docs/).
+   После настройки WSL откройте терминал WSL и установите bettercode одним из [способов установки](/docs/).
 
    ```bash
-   curl -fsSL https://nanocode.ai/install | bash
+   curl -fsSL https://bettercode.ai/install | bash
    ```
 
-3. **Запускайте nanocode из WSL**
+3. **Запускайте bettercode из WSL**
 
-   Перейдите в каталог проекта (к файлам Windows можно обращаться через `/mnt/c/`, `/mnt/d/` и т.д.) и запустите nanocode.
+   Перейдите в каталог проекта (к файлам Windows можно обращаться через `/mnt/c/`, `/mnt/d/` и т.д.) и запустите bettercode.
 
    ```bash
    cd /mnt/c/Users/YourName/project
-   nanocode
+   bettercode
    ```
 
 </Steps>
@@ -44,12 +44,12 @@ WSL дает более высокую производительность фа
 
 ## Десктопное приложение + сервер в WSL
 
-Если вы предпочитаете nanocode Desktop, но хотите запускать сервер в WSL:
+Если вы предпочитаете bettercode Desktop, но хотите запускать сервер в WSL:
 
 1. **Запустите сервер в WSL** с параметром `--hostname 0.0.0.0`, чтобы разрешить внешние подключения:
 
    ```bash
-   nanocode serve --hostname 0.0.0.0 --port 4096
+   bettercode serve --hostname 0.0.0.0 --port 4096
    ```
 
 2. **Подключите десктопное приложение** к `http://localhost:4096`
@@ -59,10 +59,10 @@ WSL дает более высокую производительность фа
 :::
 
 :::caution
-При использовании `--hostname 0.0.0.0` задайте `NANOCODE_SERVER_PASSWORD`, чтобы защитить сервер.
+При использовании `--hostname 0.0.0.0` задайте `BETTERCODE_SERVER_PASSWORD`, чтобы защитить сервер.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve --hostname 0.0.0.0
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve --hostname 0.0.0.0
 ```
 
 :::
@@ -73,15 +73,15 @@ NANOCODE_SERVER_PASSWORD=your-password nanocode serve --hostname 0.0.0.0
 
 Для лучшего веб-опыта в Windows:
 
-1. **Запускайте `nanocode web` в терминале WSL**, а не в PowerShell:
+1. **Запускайте `bettercode web` в терминале WSL**, а не в PowerShell:
 
    ```bash
-   nanocode web --hostname 0.0.0.0
+   bettercode web --hostname 0.0.0.0
    ```
 
-2. **Открывайте в браузере Windows** адрес `http://localhost:<port>` (nanocode выведет URL)
+2. **Открывайте в браузере Windows** адрес `http://localhost:<port>` (bettercode выведет URL)
 
-Запуск `nanocode web` из WSL обеспечивает корректный доступ к файловой системе и интеграцию с терминалом, при этом интерфейс остается доступным из браузера Windows.
+Запуск `bettercode web` из WSL обеспечивает корректный доступ к файловой системе и интеграцию с терминалом, при этом интерфейс остается доступным из браузера Windows.
 
 ---
 
@@ -97,17 +97,17 @@ WSL может получать доступ ко всем вашим файла
 
 ```bash
 cd /mnt/c/Users/YourName/Documents/project
-nanocode
+bettercode
 ```
 
 :::tip
-Для максимально плавной работы стоит клонировать или скопировать репозиторий в файловую систему WSL (например, в `~/code/`) и запускать nanocode оттуда.
+Для максимально плавной работы стоит клонировать или скопировать репозиторий в файловую систему WSL (например, в `~/code/`) и запускать bettercode оттуда.
 :::
 
 ---
 
 ## Советы
 
-- Даже для проектов на дисках Windows запускайте nanocode в WSL, чтобы получить более плавный доступ к файлам
-- Используйте nanocode вместе с [расширением WSL для VS Code](https://code.visualstudio.com/docs/remote/wsl) для единого рабочего процесса
-- Конфигурация и сессии nanocode хранятся в среде WSL по пути `~/.local/share/nanocode/`
+- Даже для проектов на дисках Windows запускайте bettercode в WSL, чтобы получить более плавный доступ к файлам
+- Используйте bettercode вместе с [расширением WSL для VS Code](https://code.visualstudio.com/docs/remote/wsl) для единого рабочего процесса
+- Конфигурация и сессии bettercode хранятся в среде WSL по пути `~/.local/share/bettercode/`

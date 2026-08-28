@@ -1,4 +1,4 @@
-import { sampledChecksum } from "@nanocode-ai/core/util/encode"
+import { sampledChecksum } from "@bettercode-ai/core/util/encode"
 import {
   areFilesEqual,
   areOptionsEqual,

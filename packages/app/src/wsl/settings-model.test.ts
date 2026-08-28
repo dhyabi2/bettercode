@@ -6,7 +6,7 @@ import {
   autoProbePlan,
   createProbeFailureGate,
   runAddableProbePlan,
-  wslNanocodeAction,
+  wslBettercodeAction,
   wslRuntimeRetryable,
 } from "./settings-model"
 import type { WslServersState } from "./types"
@@ -19,7 +19,7 @@ function readyState(input: Partial<WslServersState> = {}): WslServersState {
     installed: [],
     online: [],
     distroProbes: {},
-    nanocodeChecks: {},
+    bettercodeChecks: {},
     pendingRestart: false,
     servers: [],
     job: null,
@@ -37,10 +37,10 @@ describe("WSL server settings presentation", () => {
     expect(wslRuntimeRetryable({ kind: "stopped" })).toBe(true)
   })
 
-  test("offers install and update only when NanoCode needs attention", () => {
-    expect(wslNanocodeAction(undefined)).toBeUndefined()
+  test("offers install and update only when BetterCode needs attention", () => {
+    expect(wslBettercodeAction(undefined)).toBeUndefined()
     expect(
-      wslNanocodeAction({
+      wslBettercodeAction({
         distro: "Debian",
         resolvedPath: null,
         version: null,
@@ -48,21 +48,21 @@ describe("WSL server settings presentation", () => {
         matchesDesktop: null,
         error: null,
       }),
-    ).toBe("wsl.onboarding.installNanocode")
+    ).toBe("wsl.onboarding.installBettercode")
     expect(
-      wslNanocodeAction({
+      wslBettercodeAction({
         distro: "Debian",
-        resolvedPath: "/usr/local/bin/nanocode",
+        resolvedPath: "/usr/local/bin/bettercode",
         version: "1.2.2",
         expectedVersion: "1.2.3",
         matchesDesktop: false,
         error: null,
       }),
-    ).toBe("wsl.onboarding.updateNanocode")
+    ).toBe("wsl.onboarding.updateBettercode")
     expect(
-      wslNanocodeAction({
+      wslBettercodeAction({
         distro: "Debian",
-        resolvedPath: "/usr/local/bin/nanocode",
+        resolvedPath: "/usr/local/bin/bettercode",
         version: "1.2.3",
         expectedVersion: "1.2.3",
         matchesDesktop: true,
@@ -179,7 +179,7 @@ describe("WSL server settings presentation", () => {
     expect(model.busy).toBe(true)
   })
 
-  test("does not report ready when NanoCode is present but cannot run", () => {
+  test("does not report ready when BetterCode is present but cannot run", () => {
     const model = addServerViewModel({
       state: {
         ...readyWslState,
@@ -188,14 +188,14 @@ describe("WSL server settings presentation", () => {
         distroProbes: {
           Debian: { name: "Debian", canExecute: true, hasBash: true, hasCurl: true, error: null },
         },
-        nanocodeChecks: {
+        bettercodeChecks: {
           Debian: {
             distro: "Debian",
-            resolvedPath: "/home/me/.nanocode/bin/nanocode",
+            resolvedPath: "/home/me/.bettercode/bin/bettercode",
             version: null,
             expectedVersion: "1.2.3",
             matchesDesktop: null,
-            error: "nanocode is installed but could not run",
+            error: "bettercode is installed but could not run",
           },
         },
       },
@@ -208,10 +208,10 @@ describe("WSL server settings presentation", () => {
     })
 
     expect(model.distroStatuses.Debian).toEqual({
-      label: { key: "wsl.onboarding.installNanocode" },
+      label: { key: "wsl.onboarding.installBettercode" },
       tone: "warning",
     })
-    expect(model.primaryButton.action).toBe("install-nanocode")
+    expect(model.primaryButton.action).toBe("install-bettercode")
   })
 
   test("delegates addable probe plans to one batch command", async () => {

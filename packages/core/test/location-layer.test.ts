@@ -2,21 +2,21 @@ import fs from "fs/promises"
 import path from "path"
 import { describe, expect } from "bun:test"
 import { DateTime, Effect, Equal, Hash, Schema } from "effect"
-import { Tool } from "@nanocode-ai/core/tool/tool"
-import { define } from "@nanocode-ai/plugin/v2/effect"
-import { AgentV2 } from "@nanocode-ai/core/agent"
-import { Catalog } from "@nanocode-ai/core/catalog"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
-import { LocationServiceMap } from "@nanocode-ai/core/location-services"
-import { Location } from "@nanocode-ai/core/location"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { ModelV2 } from "@nanocode-ai/core/model"
-import { ProjectV2 } from "@nanocode-ai/core/project"
-import { ProviderV2 } from "@nanocode-ai/core/provider"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { SessionV2 } from "@nanocode-ai/core/session"
-import { SessionRunnerModel } from "@nanocode-ai/core/session/runner/model"
+import { Tool } from "@bettercode-ai/core/tool/tool"
+import { define } from "@bettercode-ai/plugin/v2/effect"
+import { AgentV2 } from "@bettercode-ai/core/agent"
+import { Catalog } from "@bettercode-ai/core/catalog"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
+import { LocationServiceMap } from "@bettercode-ai/core/location-services"
+import { Location } from "@bettercode-ai/core/location"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { ModelV2 } from "@bettercode-ai/core/model"
+import { ProjectV2 } from "@bettercode-ai/core/project"
+import { ProviderV2 } from "@bettercode-ai/core/provider"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { SessionV2 } from "@bettercode-ai/core/session"
+import { SessionRunnerModel } from "@bettercode-ai/core/session/runner/model"
 import { tmpdir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
 import { toolDefinitions } from "./lib/tool"
@@ -78,7 +78,7 @@ describe("LocationServiceMap", () => {
           })
           yield* Effect.promise(() =>
             fs.writeFile(
-              path.join(blocked.path, "nanocode.json"),
+              path.join(blocked.path, "bettercode.json"),
               JSON.stringify({
                 experimental: { policies: [{ effect: "deny", action: "provider.use", resource: "test" }] },
               }),
@@ -150,7 +150,7 @@ describe("LocationServiceMap", () => {
           const location = Location.Ref.make({ directory: AbsolutePath.make(dir.path) })
           yield* Effect.promise(() =>
             fs.writeFile(
-              path.join(dir.path, "nanocode.json"),
+              path.join(dir.path, "bettercode.json"),
               JSON.stringify({
                 providers: {
                   unavailable: {

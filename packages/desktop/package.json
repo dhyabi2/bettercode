@@ -1,13 +1,13 @@
 {
-  "name": "@nanocode-ai/desktop",
+  "name": "@bettercode-ai/desktop",
   "private": true,
   "version": "1.18.21",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://nanocode.ai",
+  "homepage": "https://bettercode.ai",
   "author": {
-    "name": "NanoCode",
-    "email": "hello@nanocode.ai"
+    "name": "BetterCode",
+    "email": "hello@bettercode.ai"
   },
   "scripts": {
     "typecheck": "tsgo -b",
@@ -36,8 +36,8 @@
   "devDependencies": {
     "@actions/artifact": "4.0.0",
     "@lydell/node-pty": "catalog:",
-    "@nanocode-ai/app": "workspace:*",
-    "@nanocode-ai/ui": "workspace:*",
+    "@bettercode-ai/app": "workspace:*",
+    "@bettercode-ai/ui": "workspace:*",
     "@sentry/solid": "catalog:",
     "@sentry/vite-plugin": "catalog:",
     "@solid-primitives/i18n": "2.2.1",

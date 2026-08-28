@@ -3,7 +3,7 @@ title: Fejlfinding
 description: Almindelige problemer, og hvordan de løses.
 ---
 
-For at fejlfinde problemer med NanoCode, start med at tjekke logfilerne og de lokale data, den gemmer på disken.
+For at fejlfinde problemer med BetterCode, start med at tjekke logfilerne og de lokale data, den gemmer på disken.
 
 ---
 
@@ -11,21 +11,21 @@ For at fejlfinde problemer med NanoCode, start med at tjekke logfilerne og de lo
 
 Logfiler skrives til:
 
-- **macOS/Linux**: `~/.local/share/nanocode/log/`
-- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.local\share\nanocode\log`
+- **macOS/Linux**: `~/.local/share/bettercode/log/`
+- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.local\share\bettercode\log`
 
 Logfiler navngives med tidsstempler (f.eks. `2025-01-09T123456.log`) og de sidste 10 logfiler beholdes.
 
-Du kan angive logniveauet med kommandolinjeflaget `--log-level` for at få mere detaljeret fejlfindingsinformation. For eksempel `nanocode --log-level DEBUG`.
+Du kan angive logniveauet med kommandolinjeflaget `--log-level` for at få mere detaljeret fejlfindingsinformation. For eksempel `bettercode --log-level DEBUG`.
 
 ---
 
 ## Lagring
 
-nanocode gemmer sessionsdata og andre applikationsdata på disken på:
+bettercode gemmer sessionsdata og andre applikationsdata på disken på:
 
-- **macOS/Linux**: `~/.local/share/nanocode/`
-- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.local\share\nanocode`
+- **macOS/Linux**: `~/.local/share/bettercode/`
+- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.local\share\bettercode`
 
 Denne mappe indeholder:
 
@@ -39,13 +39,13 @@ Denne mappe indeholder:
 
 ## Desktop-app
 
-NanoCode Desktop kører en lokal NanoCode-server (`nanocode-cli` sidevognen) i baggrunden. De fleste problemer er forårsaget af et plugin, der fungerer dårligt, en ødelagt cache eller en dårlig serverindstilling.
+BetterCode Desktop kører en lokal BetterCode-server (`bettercode-cli` sidevognen) i baggrunden. De fleste problemer er forårsaget af et plugin, der fungerer dårligt, en ødelagt cache eller en dårlig serverindstilling.
 
 ### Hurtige tjek
 
 - Afslut og start appen på ny.
 - Hvis appen viser en fejlskærm, klikker du på **Start på ny** og kopierer fejldetaljerne.
-- Kun macOS: `NanoCode`-menu -> **Genindlæs webvisning** (hjælper hvis UI er tom/frosset).
+- Kun macOS: `BetterCode`-menu -> **Genindlæs webvisning** (hjælper hvis UI er tom/frosset).
 
 ---
 
@@ -57,28 +57,28 @@ Hvis skrivebordsappen går ned ved opstart, hænger eller opfører sig mærkelig
 
 Åbn den globale konfigurationsfil og se efter en `plugin`-nøgle.
 
-- **macOS/Linux**: `~/.config/nanocode/nanocode.jsonc` (eller `~/.config/nanocode/nanocode.json`)
-- **macOS/Linux** (ældre installationer): `~/.local/share/nanocode/nanocode.jsonc`
-- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.config\nanocode\nanocode.jsonc`
+- **macOS/Linux**: `~/.config/bettercode/bettercode.jsonc` (eller `~/.config/bettercode/bettercode.json`)
+- **macOS/Linux** (ældre installationer): `~/.local/share/bettercode/bettercode.jsonc`
+- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.config\bettercode\bettercode.jsonc`
 
 Hvis du har konfigureret plugins, deaktiver dem midlertidigt ved at fjerne nøglen eller sætte den til et tomt array:
 
 ```jsonc
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "plugin": [],
 }
 ```
 
 #### Tjek plugin-mapper
 
-NanoCode kan også indlæse lokale plugins fra disken. Flyt disse midlertidigt væk (eller giv mappen nyt navn) og start skrivebordsappen på ny:
+BetterCode kan også indlæse lokale plugins fra disken. Flyt disse midlertidigt væk (eller giv mappen nyt navn) og start skrivebordsappen på ny:
 
 - **Globale plugins**
-  - **macOS/Linux**: `~/.config/nanocode/plugins/`
-  - **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.config\nanocode\plugins`
+  - **macOS/Linux**: `~/.config/bettercode/plugins/`
+  - **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.config\bettercode\plugins`
 - **Projektplugins** (kun hvis du bruger konfiguration per projekt)
-  - `<your-project>/.nanocode/plugins/`
+  - `<your-project>/.bettercode/plugins/`
 
 Hvis appen begynder at fungere igen, aktiverer du plugins én ad gangen for at finde ud af, hvilken som forårsager problemet.
 
@@ -86,22 +86,22 @@ Hvis appen begynder at fungere igen, aktiverer du plugins én ad gangen for at f
 
 ### Ryd cachen
 
-Hvis deaktivering af plugins ikke hjælper (eller en plugin-installation sidder fast), tøm cachen så NanoCode kan genopbygge den.
+Hvis deaktivering af plugins ikke hjælper (eller en plugin-installation sidder fast), tøm cachen så BetterCode kan genopbygge den.
 
-1. Afslut NanoCode Desktop helt.
+1. Afslut BetterCode Desktop helt.
 2. Slet cache-mappen:
 
-- **macOS**: Finder -> `Cmd+Shift+G` -> indsæt `~/.cache/nanocode`
-- **Linux**: slet `~/.cache/nanocode` (eller kør `rm -rf ~/.cache/nanocode`)
-- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.cache\nanocode`
+- **macOS**: Finder -> `Cmd+Shift+G` -> indsæt `~/.cache/bettercode`
+- **Linux**: slet `~/.cache/bettercode` (eller kør `rm -rf ~/.cache/bettercode`)
+- **Windows**: Tryk `WIN+R` og indsæt `%USERPROFILE%\.cache\bettercode`
 
-3. Start NanoCode Desktop på ny.
+3. Start BetterCode Desktop på ny.
 
 ---
 
 ### Løs problemer med serverforbindelse
 
-NanoCode Desktop kan enten starte sin egen lokale server (standard) eller forbinde til en server URL, du har konfigureret.
+BetterCode Desktop kan enten starte sin egen lokale server (standard) eller forbinde til en server URL, du har konfigureret.
 
 Hvis du ser en **"Forbindelse mislykkedes"**-dialogboks (eller appen kommer aldrig forbi splash-skærmen), se efter en brugerdefineret server URL.
 
@@ -111,13 +111,13 @@ Fra startskærmen klikker du på servernavnet (med statusprikken) for at åbne s
 
 #### Fjern `server.port` / `server.hostname` fra din konfiguration
 
-Hvis `nanocode.json(c)` indeholder en `server`-del, fjern den midlertidigt og start skrivebordsappen på ny.
+Hvis `bettercode.json(c)` indeholder en `server`-del, fjern den midlertidigt og start skrivebordsappen på ny.
 
 #### Tjek miljøvariabler
 
-Hvis du har `NANOCODE_PORT` sat i dit miljø, vil skrivebordsappen prøve at bruge den port for den lokale server.
+Hvis du har `BETTERCODE_PORT` sat i dit miljø, vil skrivebordsappen prøve at bruge den port for den lokale server.
 
-- Deaktiver `NANOCODE_PORT` (eller vælg en ledig port) og start på ny.
+- Deaktiver `BETTERCODE_PORT` (eller vælg en ledig port) og start på ny.
 
 ---
 
@@ -132,21 +132,21 @@ På Linux kan nogle Wayland-opsætninger forårsage tomme vinduer eller komposit
 
 ### Windows: WebView2-runtime
 
-På Windows kræver NanoCode Desktop Microsoft Edge **WebView2 Runtime**. Hvis appen åbnes i et tomt vindue eller ikke starter, installer/opdater WebView2 og prøv igen.
+På Windows kræver BetterCode Desktop Microsoft Edge **WebView2 Runtime**. Hvis appen åbnes i et tomt vindue eller ikke starter, installer/opdater WebView2 og prøv igen.
 
 ---
 
 ### Windows: Generelle ydeevneproblemer
 
-Hvis du oplever langsom ydeevne, problemer med filadgang eller terminalproblemer på Windows, kan du prøve at bruge [WSL (Windows Subsystem for Linux)](/docs/windows-wsl). WSL giver et Linux-miljø som fungerer mere sømløst med funktionerne i NanoCode.
+Hvis du oplever langsom ydeevne, problemer med filadgang eller terminalproblemer på Windows, kan du prøve at bruge [WSL (Windows Subsystem for Linux)](/docs/windows-wsl). WSL giver et Linux-miljø som fungerer mere sømløst med funktionerne i BetterCode.
 
 ---
 
 ### Meddelelser vises ikke
 
-NanoCode Desktop viser kun systemvarsler når:
+BetterCode Desktop viser kun systemvarsler når:
 
-- varsler er aktiveret for NanoCode i dine OS-indstillinger, og
+- varsler er aktiveret for BetterCode i dine OS-indstillinger, og
 - appvinduet ikke er fokuseret.
 
 ---
@@ -155,11 +155,11 @@ NanoCode Desktop viser kun systemvarsler når:
 
 Hvis appen ikke starter og du ikke kan slette indstillingerne fra UI, nulstil skrivebordsappens gemte tilstand.
 
-1. Afslut NanoCode Desktop.
-2. Find og slet disse filer (de findes i NanoCode Desktop-appens datamappe):
+1. Afslut BetterCode Desktop.
+2. Find og slet disse filer (de findes i BetterCode Desktop-appens datamappe):
 
-- `nanocode.settings.dat` (skrivebordsstandardserver URL)
-- `nanocode.global.dat` og `nanocode.workspace.*.dat` (UI tilstand som nylige servere/projekter)
+- `bettercode.settings.dat` (skrivebordsstandardserver URL)
+- `bettercode.global.dat` og `bettercode.workspace.*.dat` (UI tilstand som nylige servere/projekter)
 
 Sådan finder du mappen hurtigt:
 
@@ -171,13 +171,13 @@ Sådan finder du mappen hurtigt:
 
 ## Få hjælp
 
-Hvis du oplever problemer med NanoCode:
+Hvis du oplever problemer med BetterCode:
 
 1. **Rapporter problemer på GitHub**
 
    Den bedste måde at rapportere fejl eller bede om funktioner på er gennem vores GitHub-repo:
 
-   [**github.com/dhyabi2/nanocode/issues**](https://github.com/dhyabi2/nanocode/issues)
+   [**github.com/dhyabi2/bettercode/issues**](https://github.com/dhyabi2/bettercode/issues)
 
    Før du opretter et nyt issue, søg i eksisterende issues for at se om dit problem allerede er rapporteret.
 
@@ -185,7 +185,7 @@ Hvis du oplever problemer med NanoCode:
 
    For hjælp i realtid og fællesskabsdiskussion, bliv en del af vores Discord-server:
 
-   [**nanocode.ai/discord**](https://nanocode.ai/discord)
+   [**bettercode.ai/discord**](https://bettercode.ai/discord)
 
 ---
 
@@ -195,11 +195,11 @@ Her er nogle almindelige problemer og hvordan du kan løse dem.
 
 ---
 
-### NanoCode vil ikke starte
+### BetterCode vil ikke starte
 
 1. Tjek logfilerne for fejlmeddelelser
 2. Prøv at køre med `--print-logs` for at se output i terminalen
-3. Sørg for at du har den nyeste version med `nanocode upgrade`
+3. Sørg for at du har den nyeste version med `bettercode upgrade`
 
 ---
 
@@ -225,9 +225,9 @@ Eksempler:
 
 - `openai/gpt-4.1`
 - `openrouter/google/gemini-2.5-flash`
-- `nanocode/kimi-k2`
+- `bettercode/kimi-k2`
 
-For at finde ud af hvilke modeller du har adgang til, kør `nanocode models`
+For at finde ud af hvilke modeller du har adgang til, kør `bettercode models`
 
 ---
 
@@ -241,10 +241,10 @@ For at løse dette:
 2. Hvis problemet vedvarer, prøv at tømme den gemte konfiguration:
 
    ```bash
-   rm -rf ~/.local/share/nanocode
+   rm -rf ~/.local/share/bettercode
    ```
 
-   På Windows, tryk `WIN+R` og slet: `%USERPROFILE%\.local\share\nanocode`
+   På Windows, tryk `WIN+R` og slet: `%USERPROFILE%\.local\share\bettercode`
 
 3. Godkend på ny med din udbyder ved at bruge kommandoen `/connect` i TUI.
 
@@ -252,21 +252,21 @@ For at løse dette:
 
 ### AI_APICallError og udbyderpakkeproblemer
 
-Hvis du støder på API-kaldsfejl, kan dette skyldes forældede udbyderpakker. nanocode installerer dynamisk udbyderpakker (OpenAI, Anthropic, Google, etc.) efter behov og cacher dem lokalt.
+Hvis du støder på API-kaldsfejl, kan dette skyldes forældede udbyderpakker. bettercode installerer dynamisk udbyderpakker (OpenAI, Anthropic, Google, etc.) efter behov og cacher dem lokalt.
 
 For at løse problemer med udbyderpakke:
 
 1. Tøm udbyderens pakkecache:
 
    ```bash
-   rm -rf ~/.cache/nanocode
+   rm -rf ~/.cache/bettercode
    ```
 
-   På Windows, tryk `WIN+R` og slet: `%USERPROFILE%\.cache\nanocode`
+   På Windows, tryk `WIN+R` og slet: `%USERPROFILE%\.cache\bettercode`
 
-2. Start nanocode på ny for at installere de nyeste udbyderpakker på ny
+2. Start bettercode på ny for at installere de nyeste udbyderpakker på ny
 
-Dette vil tvinge nanocode til at downloade de nyeste versioner af udbyderpakkerne, som ofte løser kompatibilitetsproblemer med modelparametre og API-ændringer.
+Dette vil tvinge bettercode til at downloade de nyeste versioner af udbyderpakkerne, som ofte løser kompatibilitetsproblemer med modelparametre og API-ændringer.
 
 ---
 
@@ -297,4 +297,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-nanocode vil opdage om du bruger Wayland og foretrække `wl-clipboard`, ellers vil den prøve at finde udklipsholderværktøjer i rækkefølgen: `xclip` og `xsel`.
+bettercode vil opdage om du bruger Wayland og foretrække `wl-clipboard`, ellers vil den prøve at finde udklipsholderværktøjer i rækkefølgen: `xclip` og `xsel`.

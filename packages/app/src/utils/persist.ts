@@ -1,6 +1,6 @@
 import { Platform, usePlatform } from "@/context/platform"
 import { makePersisted, type AsyncStorage, type SyncStorage } from "@solid-primitives/storage"
-import { checksum } from "@nanocode-ai/core/util/encode"
+import { checksum } from "@bettercode-ai/core/util/encode"
 import { createResource, type Accessor } from "solid-js"
 import type { SetStoreFunction, Store } from "solid-js/store"
 import { pathKey } from "@/utils/path-key"
@@ -25,9 +25,9 @@ type PersistTarget = {
 }
 
 const LEGACY_STORAGE = "default.dat"
-const GLOBAL_STORAGE = "nanocode.global.dat"
-const WINDOW_STORAGE = "nanocode.window"
-const LOCAL_PREFIX = "nanocode."
+const GLOBAL_STORAGE = "bettercode.global.dat"
+const WINDOW_STORAGE = "bettercode.window"
+const LOCAL_PREFIX = "bettercode."
 const fallback = new Map<string, boolean>()
 
 const CACHE_MAX_ENTRIES = 500
@@ -349,13 +349,13 @@ async function migrateLegacyAsync(input: {
 function workspaceStorage(dir: string) {
   const head = (dir.slice(0, 12) || "workspace").replace(/[^a-zA-Z0-9._-]/g, "-")
   const sum = checksum(dir) ?? "0"
-  return `nanocode.workspace.${head}.${sum}.dat`
+  return `bettercode.workspace.${head}.${sum}.dat`
 }
 
 function draftStorage(draftID: string) {
   const head = (draftID.slice(0, 12) || "draft").replace(/[^a-zA-Z0-9._-]/g, "-")
   const sum = checksum(draftID) ?? "0"
-  return `nanocode.draft.${head}.${sum}.dat`
+  return `bettercode.draft.${head}.${sum}.dat`
 }
 
 function windowStorage(windowID: string) {

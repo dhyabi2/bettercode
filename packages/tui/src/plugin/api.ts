@@ -1,4 +1,4 @@
-import type { TuiPluginApi, TuiRouteDefinition } from "@nanocode-ai/plugin/tui"
+import type { TuiPluginApi, TuiRouteDefinition } from "@bettercode-ai/plugin/tui"
 import { createSignal } from "solid-js"
 
 type RouteEntry = {

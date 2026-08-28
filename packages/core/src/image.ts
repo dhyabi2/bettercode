@@ -42,7 +42,7 @@ export interface Interface {
   >
 }
 
-export class Service extends Context.Service<Service, Interface>()("@nanocode/Image") {}
+export class Service extends Context.Service<Service, Interface>()("@bettercode/Image") {}
 
 const layer = Layer.effect(
   Service,

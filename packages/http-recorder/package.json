@@ -1,17 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "version": "1.18.21",
-  "name": "@nanocode-ai/http-recorder",
+  "name": "@bettercode-ai/http-recorder",
   "description": "Record and replay Effect HTTP client traffic with deterministic cassettes",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dhyabi2/nanocode.git",
+    "url": "git+https://github.com/dhyabi2/bettercode.git",
     "directory": "packages/http-recorder"
   },
-  "homepage": "https://github.com/dhyabi2/nanocode/tree/dev/packages/http-recorder",
-  "bugs": "https://github.com/dhyabi2/nanocode/issues",
+  "homepage": "https://github.com/dhyabi2/bettercode/tree/dev/packages/http-recorder",
+  "bugs": "https://github.com/dhyabi2/bettercode/issues",
   "keywords": [
     "effect",
     "http",

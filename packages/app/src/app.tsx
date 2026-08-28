@@ -1,12 +1,12 @@
 import "@/index.css"
 import * as Sentry from "@sentry/solid"
-import { I18nProvider } from "@nanocode-ai/ui/context"
-import { DialogProvider } from "@nanocode-ai/ui/context/dialog"
-import { FileComponentProvider } from "@nanocode-ai/ui/context/file"
-import { File } from "@nanocode-ai/session-ui/file"
-import { Font } from "@nanocode-ai/ui/font"
-import { Splash } from "@nanocode-ai/ui/logo"
-import { ThemeProvider } from "@nanocode-ai/ui/theme/context"
+import { I18nProvider } from "@bettercode-ai/ui/context"
+import { DialogProvider } from "@bettercode-ai/ui/context/dialog"
+import { FileComponentProvider } from "@bettercode-ai/ui/context/file"
+import { File } from "@bettercode-ai/session-ui/file"
+import { Font } from "@bettercode-ai/ui/font"
+import { Splash } from "@bettercode-ai/ui/logo"
+import { ThemeProvider } from "@bettercode-ai/ui/theme/context"
 import { MetaProvider } from "@solidjs/meta"
 import {
   type BaseRouterProps,
@@ -20,7 +20,7 @@ import {
 } from "@solidjs/router"
 import { QueryClient, QueryClientProvider } from "@tanstack/solid-query"
 import { Effect } from "effect"
-import { base64Encode } from "@nanocode-ai/core/util/encode"
+import { base64Encode } from "@bettercode-ai/core/util/encode"
 import {
   type Component,
   createEffect,
@@ -268,7 +268,7 @@ function LayoutCompatibility(props: ParentProps) {
 
 declare global {
   interface Window {
-    __NANOCODE__?: {
+    __BETTERCODE__?: {
       deepLinks?: string[]
     }
     api?: {

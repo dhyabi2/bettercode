@@ -1,5 +1,5 @@
 import { Types } from "effect"
-import { Model } from "@nanocode-ai/schema/model"
+import { Model } from "@bettercode-ai/schema/model"
 import { ProviderV2 } from "./provider"
 
 export const ID = Model.ID

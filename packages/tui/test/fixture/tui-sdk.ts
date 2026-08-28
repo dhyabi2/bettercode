@@ -1,7 +1,7 @@
-import type { GlobalEvent } from "@nanocode-ai/sdk/v2"
+import type { GlobalEvent } from "@bettercode-ai/sdk/v2"
 import type { EventSource } from "../../src/context/sdk"
 
-export const worktree = "/tmp/nanocode"
+export const worktree = "/tmp/bettercode"
 export const directory = `${worktree}/packages/tui`
 
 export function json(data: unknown, init?: ResponseInit) {

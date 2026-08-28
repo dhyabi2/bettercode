@@ -1,5 +1,5 @@
 import { AwsClient } from "aws4fetch"
-import { lazy } from "@nanocode-ai/core/util/lazy"
+import { lazy } from "@bettercode-ai/core/util/lazy"
 
 export namespace Storage {
   export interface Adapter {
@@ -64,27 +64,27 @@ export namespace Storage {
   }
 
   function s3(): Adapter {
-    const bucket = process.env.NANOCODE_STORAGE_BUCKET!
-    const region = process.env.NANOCODE_STORAGE_REGION || "us-east-1"
+    const bucket = process.env.BETTERCODE_STORAGE_BUCKET!
+    const region = process.env.BETTERCODE_STORAGE_REGION || "us-east-1"
     const client = new AwsClient({
       region,
-      accessKeyId: process.env.NANOCODE_STORAGE_ACCESS_KEY_ID!,
-      secretAccessKey: process.env.NANOCODE_STORAGE_SECRET_ACCESS_KEY!,
+      accessKeyId: process.env.BETTERCODE_STORAGE_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.BETTERCODE_STORAGE_SECRET_ACCESS_KEY!,
     })
     return createAdapter(client, `https://s3.${region}.amazonaws.com`, bucket)
   }
 
   function r2() {
-    const accountId = process.env.NANOCODE_STORAGE_ACCOUNT_ID!
+    const accountId = process.env.BETTERCODE_STORAGE_ACCOUNT_ID!
     const client = new AwsClient({
-      accessKeyId: process.env.NANOCODE_STORAGE_ACCESS_KEY_ID!,
-      secretAccessKey: process.env.NANOCODE_STORAGE_SECRET_ACCESS_KEY!,
+      accessKeyId: process.env.BETTERCODE_STORAGE_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.BETTERCODE_STORAGE_SECRET_ACCESS_KEY!,
     })
-    return createAdapter(client, `https://${accountId}.r2.cloudflarestorage.com`, process.env.NANOCODE_STORAGE_BUCKET!)
+    return createAdapter(client, `https://${accountId}.r2.cloudflarestorage.com`, process.env.BETTERCODE_STORAGE_BUCKET!)
   }
 
   const adapter = lazy(() => {
-    const type = process.env.NANOCODE_STORAGE_ADAPTER
+    const type = process.env.BETTERCODE_STORAGE_ADAPTER
     if (type === "r2") return r2()
     if (type === "s3") return s3()
     throw new Error("No storage adapter configured")

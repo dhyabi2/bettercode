@@ -16,7 +16,7 @@ type SidecarMessage =
 
 export type SidecarListener = { stop: () => Promise<void> }
 
-const SIDECAR_SERVICE_NAME = "nanocode server"
+const SIDECAR_SERVICE_NAME = "bettercode server"
 const SIDECAR_START_STALL_TIMEOUT = 60_000
 const SIDECAR_STOP_TIMEOUT = 6_000
 
@@ -46,9 +46,9 @@ export function preferAppEnv(userDataPath: string) {
   const shellEnv = shell ? loadShellEnv(shell, getLogger()) : null
   Object.assign(process.env, {
     ...shellEnv,
-    NANOCODE_EXPERIMENTAL_ICON_DISCOVERY: "true",
-    NANOCODE_EXPERIMENTAL_FILEWATCHER: "true",
-    NANOCODE_CLIENT: "desktop",
+    BETTERCODE_EXPERIMENTAL_ICON_DISCOVERY: "true",
+    BETTERCODE_EXPERIMENTAL_FILEWATCHER: "true",
+    BETTERCODE_CLIENT: "desktop",
     XDG_STATE_HOME: process.env.XDG_STATE_HOME ?? userDataPath,
   })
   return shellEnv
@@ -193,7 +193,7 @@ export async function checkHealth(url: string, password?: string | null): Promis
 
   const headers = new Headers()
   if (password) {
-    const auth = Buffer.from(`nanocode:${password}`).toString("base64")
+    const auth = Buffer.from(`bettercode:${password}`).toString("base64")
     headers.set("authorization", `Basic ${auth}`)
   }
 

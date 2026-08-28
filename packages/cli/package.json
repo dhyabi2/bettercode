@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@nanocode-ai/cli",
+  "name": "@bettercode-ai/cli",
   "version": "1.18.21",
   "type": "module",
   "license": "MIT",
@@ -17,10 +17,10 @@
   },
   "dependencies": {
     "@effect/platform-node": "catalog:",
-    "@nanocode-ai/core": "workspace:*",
-    "@nanocode-ai/sdk": "workspace:*",
-    "@nanocode-ai/server": "workspace:*",
-    "@nanocode-ai/tui": "workspace:*",
+    "@bettercode-ai/core": "workspace:*",
+    "@bettercode-ai/sdk": "workspace:*",
+    "@bettercode-ai/server": "workspace:*",
+    "@bettercode-ai/tui": "workspace:*",
     "@opentui/core": "catalog:",
     "@opentui/solid": "catalog:",
     "@parcel/watcher": "2.5.1",
@@ -28,7 +28,7 @@
     "solid-js": "catalog:"
   },
   "devDependencies": {
-    "@nanocode-ai/script": "workspace:*",
+    "@bettercode-ai/script": "workspace:*",
     "@tsconfig/bun": "catalog:",
     "@types/bun": "catalog:",
     "@typescript/native-preview": "catalog:"

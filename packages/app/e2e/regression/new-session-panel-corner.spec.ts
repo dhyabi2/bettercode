@@ -1,9 +1,9 @@
 import { expect, test } from "@playwright/test"
-import { mockNanoCodeServer } from "../utils/mock-server"
+import { mockBetterCodeServer } from "../utils/mock-server"
 import { expectAppVisible } from "../utils/waits"
 
 const draftID = "draft_new_session_panel_corner"
-const directory = "C:/NanoCode/NewSessionPanelCorner"
+const directory = "C:/BetterCode/NewSessionPanelCorner"
 const server = `http://${process.env.PLAYWRIGHT_SERVER_HOST ?? "127.0.0.1"}:${process.env.PLAYWRIGHT_SERVER_PORT ?? "4096"}`
 
 test.use({
@@ -12,7 +12,7 @@ test.use({
 })
 
 test("matches the rounded panel corners to the dark new-session background", async ({ page }, testInfo) => {
-  await mockNanoCodeServer(page, {
+  await mockBetterCodeServer(page, {
     directory,
     project: {
       id: "proj_new_session_panel_corner",
@@ -29,17 +29,17 @@ test("matches the rounded panel corners to the dark new-session background", asy
   await page.addInitScript(
     ({ directory, draftID, server }) => {
       localStorage.setItem("settings.v3", JSON.stringify({ general: { newLayoutDesigns: true } }))
-      localStorage.setItem("nanocode-theme-id", "oc-2")
-      localStorage.setItem("nanocode-color-scheme", "dark")
+      localStorage.setItem("bettercode-theme-id", "oc-2")
+      localStorage.setItem("bettercode-color-scheme", "dark")
       localStorage.setItem(
-        "nanocode.global.dat:server",
+        "bettercode.global.dat:server",
         JSON.stringify({
           projects: { local: [{ worktree: directory, expanded: true }] },
           lastProject: { local: directory },
         }),
       )
       localStorage.setItem(
-        "nanocode.window.browser.dat:tabs",
+        "bettercode.window.browser.dat:tabs",
         JSON.stringify([{ type: "draft", draftID, server, directory }]),
       )
     },

@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { Location } from "@nanocode-ai/core/location"
-import { Policy } from "@nanocode-ai/core/policy"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { Location } from "@bettercode-ai/core/location"
+import { Policy } from "@bettercode-ai/core/policy"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
 import { location } from "./fixture/location"
 import { testEffect } from "./lib/effect"
 

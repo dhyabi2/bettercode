@@ -1,10 +1,10 @@
-import { Location } from "@nanocode-ai/core/location"
-import { PermissionV2 } from "@nanocode-ai/core/permission"
-import { PermissionSaved } from "@nanocode-ai/core/permission/saved"
+import { Location } from "@bettercode-ai/core/location"
+import { PermissionV2 } from "@bettercode-ai/core/permission"
+import { PermissionSaved } from "@bettercode-ai/core/permission/saved"
 import { Effect } from "effect"
 import { HttpApiBuilder, HttpApiSchema } from "effect/unstable/httpapi"
 import { Api } from "../api"
-import { PermissionNotFoundError, SessionNotFoundError } from "@nanocode-ai/protocol/errors"
+import { PermissionNotFoundError, SessionNotFoundError } from "@bettercode-ai/protocol/errors"
 import { response } from "../location"
 
 function missingRequest(id: PermissionV2.ID) {

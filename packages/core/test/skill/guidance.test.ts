@@ -1,12 +1,12 @@
 import path from "path"
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { AgentV2 } from "@nanocode-ai/core/agent"
-import { AppNodeBuilder } from "@nanocode-ai/core/effect/app-node-builder"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
-import { SkillV2 } from "@nanocode-ai/core/skill"
-import { SystemContext } from "@nanocode-ai/core/system-context"
-import { SkillGuidance } from "@nanocode-ai/core/skill/guidance"
+import { AgentV2 } from "@bettercode-ai/core/agent"
+import { AppNodeBuilder } from "@bettercode-ai/core/effect/app-node-builder"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
+import { SkillV2 } from "@bettercode-ai/core/skill"
+import { SystemContext } from "@bettercode-ai/core/system-context"
+import { SkillGuidance } from "@bettercode-ai/core/skill/guidance"
 import { it } from "../lib/effect"
 
 const build = AgentV2.ID.make("build")

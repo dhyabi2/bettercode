@@ -20,7 +20,7 @@ jobs:
         id: team-check
         run: |
           LOGIN="${{ github.event.pull_request.user.login }}"
-          if [ "$LOGIN" = "nanocode-agent[bot]" ] || grep -qxF "$LOGIN" .github/TEAM_MEMBERS; then
+          if [ "$LOGIN" = "bettercode-agent[bot]" ] || grep -qxF "$LOGIN" .github/TEAM_MEMBERS; then
             echo "is_team=true" >> "$GITHUB_OUTPUT"
             echo "Skipping: $LOGIN is a team member or bot"
           else
@@ -35,9 +35,9 @@ jobs:
         if: steps.team-check.outputs.is_team != 'true'
         run: bun install
 
-      - name: Install nanocode
+      - name: Install bettercode
         if: steps.team-check.outputs.is_team != 'true'
-        run: curl -fsSL https://nanocode.ai/install | bash
+        run: curl -fsSL https://bettercode.ai/install | bash
 
       - name: Build prompt
         if: steps.team-check.outputs.is_team != 'true'
@@ -59,7 +59,7 @@ jobs:
       - name: Check for duplicate PRs
         if: steps.team-check.outputs.is_team != 'true'
         env:
-          NANOCODE_API_KEY: ${{ secrets.NANOCODE_API_KEY }}
+          BETTERCODE_API_KEY: ${{ secrets.BETTERCODE_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |

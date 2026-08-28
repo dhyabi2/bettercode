@@ -1,15 +1,15 @@
 ---
 title: Formattere
-description: NanoCode bruker språkspesifikke formattere.
+description: BetterCode bruker språkspesifikke formattere.
 ---
 
-NanoCode formaterer automatisk filer etter at de er skrevet eller redigert ved hjelp av språkspesifikke formattere. Dette sikrer at koden som genereres følger kodestilene til prosjektet ditt.
+BetterCode formaterer automatisk filer etter at de er skrevet eller redigert ved hjelp av språkspesifikke formattere. Dette sikrer at koden som genereres følger kodestilene til prosjektet ditt.
 
 ---
 
 ## Innebygde formattere
 
-NanoCode kommer med flere innebygde formattere for populære språk og rammeverk. Nedenfor er en liste over formattere, støttede filendelser og kommandoer eller konfigurasjonsalternativer den krever.
+BetterCode kommer med flere innebygde formattere for populære språk og rammeverk. Nedenfor er en liste over formattere, støttede filendelser og kommandoer eller konfigurasjonsalternativer den krever.
 
 | Formatter              | Filendelser                                                                                             | Krav                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -39,13 +39,13 @@ NanoCode kommer med flere innebygde formattere for populære språk og rammeverk
 | oxfmt (Eksperimentell) | .js, .jsx, .ts, .tsx                                                                                    | `oxfmt` avhengighet i `package.json` og et [eksperimentelt env variabel flagg](/docs/cli/#experimental) |
 | ormolu                 | .hs                                                                                                     | `ormolu` kommando tilgjengelig                                                                          |
 
-Så hvis prosjektet ditt har `prettier` i `package.json`, vil NanoCode automatisk bruke det.
+Så hvis prosjektet ditt har `prettier` i `package.json`, vil BetterCode automatisk bruke det.
 
 ---
 
 ## Slik fungerer det
 
-Når NanoCode skriver eller redigerer en fil, gjør den:
+Når BetterCode skriver eller redigerer en fil, gjør den:
 
 1. Kontrollerer filtypen mot alle aktiverte formattere.
 2. Kjører riktig formateringskommando på filen.
@@ -57,11 +57,11 @@ Denne prosessen skjer i bakgrunnen, og sikrer at kodestilene dine opprettholdes 
 
 ## Konfigurasjon
 
-Du kan tilpasse formattere gjennom `formatter`-delen i NanoCode-konfigurasjonen.
+Du kan tilpasse formattere gjennom `formatter`-delen i BetterCode-konfigurasjonen.
 
-```json title="nanocode.json"
+```json title="bettercode.json"
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {}
 }
 ```
@@ -83,18 +83,18 @@ La oss se på noen eksempler.
 
 For å deaktivere **alle** formattere globalt, sett `formatter` til `false`:
 
-```json title="nanocode.json" {3}
+```json title="bettercode.json" {3}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": false
 }
 ```
 
 For å deaktivere en **spesifikk** formatter, sett `disabled` til `true`:
 
-```json title="nanocode.json" {5}
+```json title="bettercode.json" {5}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -109,9 +109,9 @@ For å deaktivere en **spesifikk** formatter, sett `disabled` til `true`:
 
 Du kan overstyre de innebygde formatterne eller legge til nye ved å spesifisere kommandoen, miljøvariablene og filtypene:
 
-```json title="nanocode.json" {4-14}
+```json title="bettercode.json" {4-14}
 {
-  "$schema": "https://nanocode.ai/config.json",
+  "$schema": "https://bettercode.ai/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

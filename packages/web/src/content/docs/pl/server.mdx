@@ -1,19 +1,19 @@
 ---
 title: Serwer
-description: Interakcja z serwerem nanocode za pośrednictwem protokołu HTTP.
+description: Interakcja z serwerem bettercode za pośrednictwem protokołu HTTP.
 ---
 
 import config from "../../../../config.mjs"
 export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types.gen.ts`
 
-Komenda `nanocode serve` uruchamia bezgłowy serwer HTTP, który udostępnia punkt końcowy OpenAPI, z którego może korzystać klient nanocode.
+Komenda `bettercode serve` uruchamia bezgłowy serwer HTTP, który udostępnia punkt końcowy OpenAPI, z którego może korzystać klient bettercode.
 
 ---
 
 ### Użycie
 
 ```bash
-nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
+bettercode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 ```
 
 #### Opcje
@@ -23,41 +23,41 @@ nanocode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | Port nasłuchiwania                           | `4096`           |
 | `--hostname`    | Nazwa hosta do nasłuchiwania                 | `127.0.0.1`      |
 | `--mdns`        | Włącz wykrywanie mDNS                        | `false`          |
-| `--mdns-domain` | Niestandardowa nazwa domeny dla usługi mDNS  | `nanocode.local` |
+| `--mdns-domain` | Niestandardowa nazwa domeny dla usługi mDNS  | `bettercode.local` |
 | `--cors`        | Dodatkowe originy przeglądarki do dozwolenia | `[]`             |
 
 `--cors` można przekazać wiele razy:
 
 ```bash
-nanocode serve --cors http://localhost:5173 --cors https://app.example.com
+bettercode serve --cors http://localhost:5173 --cors https://app.example.com
 ```
 
 ---
 
 ### Uwierzytelnianie
 
-Ustaw `NANOCODE_SERVER_PASSWORD`, aby chronić serwer za pomocą podstawowego uwierzytelniania HTTP. Domyślną nazwą użytkownika jest `nanocode` lub ustaw `NANOCODE_SERVER_USERNAME`, aby ją zastąpić. Dotyczy to zarówno `nanocode serve`, jak i `nanocode web`.
+Ustaw `BETTERCODE_SERVER_PASSWORD`, aby chronić serwer za pomocą podstawowego uwierzytelniania HTTP. Domyślną nazwą użytkownika jest `bettercode` lub ustaw `BETTERCODE_SERVER_USERNAME`, aby ją zastąpić. Dotyczy to zarówno `bettercode serve`, jak i `bettercode web`.
 
 ```bash
-NANOCODE_SERVER_PASSWORD=your-password nanocode serve
+BETTERCODE_SERVER_PASSWORD=your-password bettercode serve
 ```
 
 ---
 
 ### Jak to działa
 
-Kiedy uruchomisz `nanocode`, uruchomi się TUI i serwer. Gdzie jest TUI
+Kiedy uruchomisz `bettercode`, uruchomi się TUI i serwer. Gdzie jest TUI
 klient komunikujący się z serwerem. Serwer udostępnia specyfikację OpenAPI 3.1
 punkt końcowy. Ten punkt końcowy jest również używany do generowania [SDK](/docs/sdk).
 
 :::tip
-Użyj serwera nanocode do programowej interakcji z nanocode.
+Użyj serwera bettercode do programowej interakcji z bettercode.
 :::
 
-Ta architektura umożliwia obsługę wielu klientów przez nanocode i programową interakcję z kodem otwartym.
+Ta architektura umożliwia obsługę wielu klientów przez bettercode i programową interakcję z kodem otwartym.
 
-Możesz uruchomić `nanocode serve`, aby uruchomić samodzielny serwer. Jeśli masz
-nanocode TUI działa, `nanocode serve` uruchomi nowy serwer.
+Możesz uruchomić `bettercode serve`, aby uruchomić samodzielny serwer. Jeśli masz
+bettercode TUI działa, `bettercode serve` uruchomi nowy serwer.
 
 ---
 
@@ -65,7 +65,7 @@ nanocode TUI działa, `nanocode serve` uruchomi nowy serwer.
 
 Po uruchomieniu TUI losowo przypisuje port i nazwę hosta. Zamiast tego możesz przekazać `--hostname` i `--port` [flagi](/docs/cli). Następnie użyj tego, aby połączyć się z serwerem.
 
-Punktu końcowego [`/tui`](#TUI) można użyć do sterowania TUI przez serwer. Można na przykład wstępnie wypełnić lub uruchomić monit. Ta konfiguracja jest używana przez wtyczki nanocode [IDE](/docs/ide).
+Punktu końcowego [`/tui`](#TUI) można użyć do sterowania TUI przez serwer. Można na przykład wstępnie wypełnić lub uruchomić monit. Ta konfiguracja jest używana przez wtyczki bettercode [IDE](/docs/ide).
 
 ---
 
@@ -83,7 +83,7 @@ Na przykład `http://localhost:4096/doc`. Użyj specyfikacji, aby wygenerować k
 
 ## API
 
-Serwer nanocode udostępnia następujące interfejsy API.
+Serwer bettercode udostępnia następujące interfejsy API.
 
 ---
 

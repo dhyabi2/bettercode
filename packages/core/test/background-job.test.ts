@@ -1,6 +1,6 @@
 import { describe, expect } from "bun:test"
-import { BackgroundJob } from "@nanocode-ai/core/background-job"
-import { LayerNode } from "@nanocode-ai/core/effect/layer-node"
+import { BackgroundJob } from "@bettercode-ai/core/background-job"
+import { LayerNode } from "@bettercode-ai/core/effect/layer-node"
 import { Deferred, Effect, Exit, Scope } from "effect"
 import { it } from "./lib/effect"
 

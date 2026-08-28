@@ -18,7 +18,7 @@ import { WalProbe } from "./wal-probe"
 
 const ATTR_DB_SYSTEM_NAME = "db.system.name"
 
-const TypeId = "~@nanocode-ai/core/database/SqliteBun" as const
+const TypeId = "~@bettercode-ai/core/database/SqliteBun" as const
 type TypeId = typeof TypeId
 
 interface SqliteClient extends Client.SqlClient {

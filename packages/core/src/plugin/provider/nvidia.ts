@@ -11,9 +11,9 @@ export const NvidiaPlugin = define({
           if (item.provider.api.package !== "@ai-sdk/openai-compatible") continue
           if (item.provider.api.url !== "https://integrate.api.nvidia.com/v1") continue
           evt.provider.update(item.provider.id, (provider) => {
-            provider.request.headers["HTTP-Referer"] = "https://nanocode.ai/"
-            provider.request.headers["X-Title"] = "nanocode"
-            provider.request.headers["X-BILLING-INVOKE-ORIGIN"] ??= "NanoCode"
+            provider.request.headers["HTTP-Referer"] = "https://bettercode.ai/"
+            provider.request.headers["X-Title"] = "bettercode"
+            provider.request.headers["X-BILLING-INVOKE-ORIGIN"] ??= "BetterCode"
           })
         }
       }),

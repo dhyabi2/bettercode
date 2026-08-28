@@ -1,68 +1,68 @@
 ---
 title: GitLab
-description: Utilice NanoCode en problemas GitLab y solicitudes de fusión.
+description: Utilice BetterCode en problemas GitLab y solicitudes de fusión.
 ---
 
-NanoCode se integra con su flujo de trabajo GitLab a través de su canal de CI/CD GitLab o con GitLab Duo.
+BetterCode se integra con su flujo de trabajo GitLab a través de su canal de CI/CD GitLab o con GitLab Duo.
 
-En ambos casos, NanoCode se ejecutará en tus corredores GitLab.
+En ambos casos, BetterCode se ejecutará en tus corredores GitLab.
 
 ---
 
 ## GitLab CI
 
-NanoCode funciona en una tubería GitLab normal. Puede integrarlo en una canalización como un [componente de CI](https://docs.gitlab.com/ee/ci/components/)
+BetterCode funciona en una tubería GitLab normal. Puede integrarlo en una canalización como un [componente de CI](https://docs.gitlab.com/ee/ci/components/)
 
-Aquí estamos utilizando un componente CI/CD creado por la comunidad para NanoCode — [nagyv/gitlab-nanocode](https://gitlab.com/nagyv/gitlab-nanocode).
+Aquí estamos utilizando un componente CI/CD creado por la comunidad para BetterCode — [nagyv/gitlab-bettercode](https://gitlab.com/nagyv/gitlab-bettercode).
 
 ---
 
 ### Características
 
-- **Usar configuración personalizada por trabajo**: configure NanoCode con un directorio de configuración personalizado, por ejemplo `./config/#custom-directory` para habilitar o deshabilitar la funcionalidad por invocación de NanoCode.
-- **Configuración mínima**: el componente CI configura NanoCode en segundo plano, solo necesita crear la configuración NanoCode y el mensaje inicial.
+- **Usar configuración personalizada por trabajo**: configure BetterCode con un directorio de configuración personalizado, por ejemplo `./config/#custom-directory` para habilitar o deshabilitar la funcionalidad por invocación de BetterCode.
+- **Configuración mínima**: el componente CI configura BetterCode en segundo plano, solo necesita crear la configuración BetterCode y el mensaje inicial.
 - **Flexible**: el componente CI admite varias entradas para personalizar su comportamiento
 
 ---
 
 ### Configuración
 
-1. Guarde su NanoCode autenticación JSON como variables de entorno de CI de tipo de archivo en **Configuración** > **CI/CD** > **Variables**. Asegúrate de marcarlos como "Enmascarados y ocultos".
+1. Guarde su BetterCode autenticación JSON como variables de entorno de CI de tipo de archivo en **Configuración** > **CI/CD** > **Variables**. Asegúrate de marcarlos como "Enmascarados y ocultos".
 2. Agregue lo siguiente a su archivo `.gitlab-ci.yml`.
 
    ```yaml title=".gitlab-ci.yml"
    include:
-     - component: $CI_SERVER_FQDN/nagyv/gitlab-nanocode/nanocode@2
+     - component: $CI_SERVER_FQDN/nagyv/gitlab-bettercode/bettercode@2
        inputs:
-         config_dir: ${CI_PROJECT_DIR}/nanocode-config
-         auth_json: $NANOCODE_AUTH_JSON # The variable name for your NanoCode authentication JSON
+         config_dir: ${CI_PROJECT_DIR}/bettercode-config
+         auth_json: $BETTERCODE_AUTH_JSON # The variable name for your BetterCode authentication JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```
 
-Para obtener más entradas y casos de uso, [consulte los documentos](https://gitlab.com/explore/catalog/nagyv/gitlab-nanocode) de este componente.
+Para obtener más entradas y casos de uso, [consulte los documentos](https://gitlab.com/explore/catalog/nagyv/gitlab-bettercode) de este componente.
 
 ---
 
 ## GitLab Duo
 
-NanoCode se integra con su flujo de trabajo GitLab.
-Mencione `@nanocode` en un comentario y NanoCode ejecutará tareas dentro de su canal de CI GitLab.
+BetterCode se integra con su flujo de trabajo GitLab.
+Mencione `@bettercode` en un comentario y BetterCode ejecutará tareas dentro de su canal de CI GitLab.
 
 ---
 
 ### Características
 
-- **Clasificación de problemas**: Pídele a NanoCode que investigue un problema y te lo explique.
-- **Reparar e implementar**: pídale a NanoCode que solucione un problema o implemente una función.
+- **Clasificación de problemas**: Pídele a BetterCode que investigue un problema y te lo explique.
+- **Reparar e implementar**: pídale a BetterCode que solucione un problema o implemente una función.
   Creará una nueva rama y generará una solicitud de fusión con los cambios.
-- **Seguro**: NanoCode se ejecuta en tus corredores GitLab.
+- **Seguro**: BetterCode se ejecuta en tus corredores GitLab.
 
 ---
 
 ### Configuración
 
-NanoCode se ejecuta en su canalización de CI/CD GitLab. Esto es lo que necesitará para configurarlo:
+BetterCode se ejecuta en su canalización de CI/CD GitLab. Esto es lo que necesitará para configurarlo:
 
 :::tip
 Consulte los [**GitLab documentos**](https://docs.gitlab.com/user/duo_agent_platform/agent_assistant/) para obtener instrucciones actualizadas.
@@ -82,19 +82,19 @@ Consulte los [**GitLab documentos**](https://docs.gitlab.com/user/duo_agent_plat
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing nanocode"
-      - npm install --global nanocode-ai
+      - echo "Installing bettercode"
+      - npm install --global bettercode-ai
       - echo "Installing glab"
-      - export GITLAB_TOKEN=$GITLAB_TOKEN_NANOCODE
+      - export GITLAB_TOKEN=$GITLAB_TOKEN_BETTERCODE
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
       - curl --silent --show-error --location "https://raw.githubusercontent.com/upciti/wakemeops/main/assets/install_repository" | bash
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating NanoCode auth configuration"
-      - mkdir --parents ~/.local/share/nanocode
+      - echo "Creating BetterCode auth configuration"
+      - mkdir --parents ~/.local/share/bettercode
       - |
-        cat > ~/.local/share/nanocode/auth.json << EOF
+        cat > ~/.local/share/bettercode/auth.json << EOF
         {
           "anthropic": {
             "type": "api",
@@ -103,13 +103,13 @@ Consulte los [**GitLab documentos**](https://docs.gitlab.com/user/duo_agent_plat
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "nanocode@gitlab.com"
-      - git config --global user.name "NanoCode"
+      - git config --global user.email "bettercode@gitlab.com"
+      - git config --global user.name "BetterCode"
       - echo "Testing glab"
       - glab issue list
-      - echo "Running NanoCode"
+      - echo "Running BetterCode"
       - |
-        nanocode run "
+        bettercode run "
         You are an AI assistant helping with GitLab operations.
 
         Context: $AI_FLOW_CONTEXT
@@ -146,7 +146,7 @@ Consulte los [**GitLab documentos**](https://docs.gitlab.com/user/duo_agent_plat
         fi
     variables:
       - ANTHROPIC_API_KEY
-      - GITLAB_TOKEN_NANOCODE
+      - GITLAB_TOKEN_BETTERCODE
       - GITLAB_HOST
     ```
 
@@ -158,10 +158,10 @@ Puede consultar los [GitLab CLI documentos de los agentes](https://docs.gitlab.c
 
 ### Ejemplos
 
-A continuación se muestran algunos ejemplos de cómo puede utilizar NanoCode en GitLab.
+A continuación se muestran algunos ejemplos de cómo puede utilizar BetterCode en GitLab.
 
 :::tip
-Puede configurarlo para utilizar una frase de activación diferente a `@nanocode`.
+Puede configurarlo para utilizar una frase de activación diferente a `@bettercode`.
 :::
 
 - **Explica un problema**
@@ -169,27 +169,27 @@ Puede configurarlo para utilizar una frase de activación diferente a `@nanocode
   Agregue este comentario en una edición GitLab.
 
   ```
-  @nanocode explain this issue
+  @bettercode explain this issue
   ```
 
-  NanoCode leerá el problema y responderá con una explicación clara.
+  BetterCode leerá el problema y responderá con una explicación clara.
 
 - **Solucionar un problema**
 
   En un problema GitLab, diga:
 
   ```
-  @nanocode fix this
+  @bettercode fix this
   ```
 
-  NanoCode creará una nueva rama, implementará los cambios y abrirá una solicitud de fusión con los cambios.
+  BetterCode creará una nueva rama, implementará los cambios y abrirá una solicitud de fusión con los cambios.
 
 - **Revisar solicitudes de fusión**
 
   Deje el siguiente comentario sobre una solicitud de fusión GitLab.
 
   ```
-  @nanocode review this merge request
+  @bettercode review this merge request
   ```
 
-  NanoCode revisará la solicitud de fusión y brindará comentarios.
+  BetterCode revisará la solicitud de fusión y brindará comentarios.

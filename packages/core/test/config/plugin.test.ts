@@ -1,15 +1,15 @@
 import path from "path"
 import { describe, expect } from "bun:test"
 import { Effect, Schema } from "effect"
-import { AgentV2 } from "@nanocode-ai/core/agent"
-import { Config } from "@nanocode-ai/core/config"
-import { ConfigExternalPlugin } from "@nanocode-ai/core/config/plugin/external"
-import { FSUtil } from "@nanocode-ai/core/fs-util"
-import { Location } from "@nanocode-ai/core/location"
-import { Npm } from "@nanocode-ai/core/npm"
-import { PluginV2 } from "@nanocode-ai/core/plugin"
-import { PluginHost } from "@nanocode-ai/core/plugin/host"
-import { AbsolutePath } from "@nanocode-ai/core/schema"
+import { AgentV2 } from "@bettercode-ai/core/agent"
+import { Config } from "@bettercode-ai/core/config"
+import { ConfigExternalPlugin } from "@bettercode-ai/core/config/plugin/external"
+import { FSUtil } from "@bettercode-ai/core/fs-util"
+import { Location } from "@bettercode-ai/core/location"
+import { Npm } from "@bettercode-ai/core/npm"
+import { PluginV2 } from "@bettercode-ai/core/plugin"
+import { PluginHost } from "@bettercode-ai/core/plugin/host"
+import { AbsolutePath } from "@bettercode-ai/core/schema"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "../plugin/fixture"
 
@@ -25,7 +25,7 @@ describe("ConfigExternalPlugin", () => {
       const location = yield* Location.Service
       const npm = yield* Npm.Service
       const host = yield* PluginHost.make(plugins)
-      const document = path.join(import.meta.dir, "nanocode.json")
+      const document = path.join(import.meta.dir, "bettercode.json")
 
       yield* ConfigExternalPlugin.Plugin.effect(host).pipe(
         Effect.provideService(PluginV2.Service, plugins),
@@ -82,7 +82,7 @@ describe("ConfigExternalPlugin", () => {
               Effect.succeed([
                 new Config.Document({
                   type: "document",
-                  path: path.join(import.meta.dir, "nanocode.json"),
+                  path: path.join(import.meta.dir, "bettercode.json"),
                   info: decode({
                     plugins: [
                       {
@@ -125,7 +125,7 @@ describe("ConfigExternalPlugin", () => {
               Effect.succeed([
                 new Config.Document({
                   type: "document",
-                  path: path.join(import.meta.dir, "nanocode.json"),
+                  path: path.join(import.meta.dir, "bettercode.json"),
                   info: decode({
                     plugins: [
                       "../plugin/fixtures/missing-plugin.ts",
