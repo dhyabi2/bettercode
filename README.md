@@ -46,41 +46,15 @@
 ### Installation
 
 ```bash
-# YOLO
-curl -fsSL https://bettercode.ai/install | bash
-
-# Package managers
-npm i -g bettercode-ai@latest        # or bun/pnpm/yarn
-scoop install bettercode             # Windows
-choco install bettercode             # Windows
-brew install dhyabi2/tap/bettercode # macOS and Linux (recommended, always up to date)
-brew install bettercode              # macOS and Linux (official brew formula, updated less)
-sudo pacman -S bettercode            # Arch Linux (Stable)
-paru -S bettercode-bin               # Arch Linux (Latest from AUR)
-mise use -g bettercode               # Any OS
-nix run nixpkgs#bettercode           # or github:dhyabi2/bettercode for latest dev branch
+curl -fsSL https://raw.githubusercontent.com/dhyabi2/bettercode/main/install | bash
 ```
 
-> [!TIP]
-> Remove versions older than 0.1.x before installing.
+Or grab the archive for your platform from the [releases page](https://github.com/dhyabi2/bettercode/releases/latest), extract it, and put the `bettercode` binary on your `PATH`. Prebuilt binaries: macOS (Apple Silicon, Intel), Linux (x64, arm64, glibc and musl), Windows (x64, arm64).
 
-### Desktop App (BETA)
+To install a specific version: `curl -fsSL .../install | bash -s -- --version 1.0.0` (or set `VERSION=1.0.0`).
 
-BetterCode is also available as a desktop application. Download directly from the [releases page](https://github.com/dhyabi2/bettercode/releases) or [bettercode.ai/download](https://bettercode.ai/download).
-
-| Platform              | Download                           |
-| --------------------- | ---------------------------------- |
-| macOS (Apple Silicon) | `bettercode-desktop-mac-arm64.dmg`   |
-| macOS (Intel)         | `bettercode-desktop-mac-x64.dmg`     |
-| Windows               | `bettercode-desktop-windows-x64.exe` |
-| Linux                 | `.deb`, `.rpm`, or `.AppImage`     |
-
-```bash
-# macOS (Homebrew)
-brew install --cask bettercode-desktop
-# Windows (Scoop)
-scoop bucket add extras; scoop install extras/bettercode-desktop
-```
+> [!NOTE]
+> npm, Homebrew, Scoop, AUR and Nix packages are not published yet.
 
 #### Installation Directory
 
