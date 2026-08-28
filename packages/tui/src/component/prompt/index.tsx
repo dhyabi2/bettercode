@@ -1102,8 +1102,10 @@ export function Prompt(props: PromptProps) {
     if (store.mode === "shell") {
       move.startSubmit()
       setStore("mode", "normal")
-      try {
-        await sdk.client.session.shell(
+      // shell/command only resolve once the whole turn ends, so they cannot be awaited before
+      // committing: a turn blocked on a permission would never let the session view mount.
+      void sdk.client.session
+        .shell(
           {
             sessionID,
             agent: agent.name,
@@ -1115,16 +1117,15 @@ export function Prompt(props: PromptProps) {
           },
           { throwOnError: true },
         )
-        commitSubmit(false, sessionID)
-      } catch (error) {
-        toast.show({
-          title: "Failed to run command",
-          message: errorMessage(error),
-          variant: "error",
+        .catch((error) => {
+          toast.show({
+            title: "Failed to run command",
+            message: errorMessage(error),
+            variant: "error",
+          })
         })
-      } finally {
-        if (finishMoveProgress) move.finishSubmit()
-      }
+      commitSubmit(false, sessionID)
+      if (finishMoveProgress) move.finishSubmit()
     } else if (
       inputText.startsWith("/") &&
       sync.data.command.some((x) => x.name === inputText.split("\n")[0].split(" ")[0].slice(1))
@@ -1137,8 +1138,8 @@ export function Prompt(props: PromptProps) {
       const restOfInput = firstLineEnd === -1 ? "" : inputText.slice(firstLineEnd + 1)
       const args = firstLineArgs.join(" ") + (restOfInput ? "\n" + restOfInput : "")
 
-      try {
-        await sdk.client.session.command(
+      void sdk.client.session
+        .command(
           {
             sessionID,
             command: command.slice(1),
@@ -1150,20 +1151,20 @@ export function Prompt(props: PromptProps) {
           },
           { throwOnError: true },
         )
-        commitSubmit(false, sessionID)
-      } catch (error) {
-        toast.show({
-          title: "Failed to run command",
-          message: errorMessage(error),
-          variant: "error",
+        .catch((error) => {
+          toast.show({
+            title: "Failed to run command",
+            message: errorMessage(error),
+            variant: "error",
+          })
         })
-      } finally {
-        if (finishMoveProgress) move.finishSubmit()
-      }
+      commitSubmit(false, sessionID)
+      if (finishMoveProgress) move.finishSubmit()
     } else {
       move.startSubmit()
       try {
-        await sdk.client.session.prompt(
+        // promptAsync returns as soon as the server accepts the prompt (prompt would block for the whole turn)
+        await sdk.client.session.promptAsync(
           {
             sessionID,
             ...selectedModel,
